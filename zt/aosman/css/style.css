@@ -1,0 +1,133 @@
+.backdrop{
+    height:3750px;
+    background:url(../images/bg.png) center top no-repeat;
+}
+.content{
+    width:1000px;
+    margin:0 auto;
+    height:3750px;
+    text-align:center;
+}
+.side_float{
+    width:40px;
+    height:40px;
+    background:url(../images/gotop.png);
+    position:fixed;
+    bottom:50px;
+    z-index: 8;
+    margin-left:1010px;
+}
+
+.tie_1{
+    height:300px;
+    margin-top: -2950px;
+    background:url(../images/4.png) center top no-repeat;
+}
+.tie_2{
+    height:283px;
+    margin-top: 1050px;
+    margin-bottom: 1260px;
+    background:url(../images/5.png) center top no-repeat;
+}
+._title{
+    width: 1280px;
+    height: 951px;
+    margin-left: -140px;
+    margin-top:25px;
+    background: url(../images/title.png);
+}
+._time{
+    width:858px;
+    height:48px;
+    z-index: 2;
+    position: absolute;
+    margin-top:-60px;
+    margin-left:90px;
+    background: url(../images/time.png);
+}
+._title2{
+    width:421px;
+    height:140px;
+    z-index: 2;
+    position: absolute;
+    margin-top:1270px;
+    margin-left:300px;
+    background: url(../images/title2.png);
+}
+._gonglve{
+    width:1000px;
+    height:1015px;
+    margin-top:150px;
+    position: absolute;
+    background: url(../images/1.png);
+}
+._gonglve span{
+    font-size:21.5px;
+    font-weight: bold;
+    color:white;
+}
+._gonglve p{
+    font-size:18px;
+    text-align: left;
+}
+._star{
+    width:1307px;
+    height:900px;
+    margin-top: 1300px;
+    margin-left: -240px;
+    position: absolute;
+    z-index: 3;
+    background: url(../images/2.png);
+}
+.img_show{
+    width: 1000px;
+    height: 403px;
+    margin-top: 1650px;
+    position: absolute;
+    z-index: 3;
+    background: url(../images/img1.png);
+}
+.btn{
+    width: 170px;
+    height: 39px;
+    margin-top: 1605px;
+    position: absolute;
+    z-index: 3;
+    background: url(../images/btn.png);
+    font-size: 24px;
+    font-weight: bold;
+    color:white;
+    line-height: 35px;
+}
+.tmall{
+    width: 473px;
+    height:183px;
+    background: url(../images/3.png);
+    margin-top: 2150px;
+    margin-left: 270px;
+}
+.logo{
+    width: 169px;
+    height: 80px;
+    background: url(../images/logo.png);
+    margin-left: 410px;
+    margin-top: 50px;
+}
+.qrcode{
+    width: 265px;
+    height:252px;
+    position:fixed;
+    top: 200px;
+    margin-left: -280px;
+    z-index: 8;
+    background: url(../images/qrcode.png) no-repeat center center;
+}
+@media (max-width: 1500px){
+    .side_float{
+        right:10px;
+    }
+    .qrcode{
+        margin-left: 0;
+        left:10px;
+    }
+}

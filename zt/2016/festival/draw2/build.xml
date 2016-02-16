@@ -1,0 +1,15 @@
+<?xml version="1.0"?>		
+<project name="Javascript compress project" basedir="." default="compile">		
+    <taskdef name="jscomp" classname="com.google.javascript.jscomp.ant.CompileTask"		
+             classpath="${basedir}/tools/compiler.jar"/>		
+    <target name="compile">		
+        <jscomp compilationLevel="simple" warning="quiet"		
+                debug="false" output="chou.min.js">		
+                <!--sourceMapOutputFile="E:\Projects\cocos2d-js\samples\js-tests\publish\html5\sourcemap" sourceMapFormat="V3" -->		
+            <sources dir="${basedir}">		
+                	<file name="js/bg.js"/>
+								
+            </sources>		
+        </jscomp>		
+    </target>		
+</project>		

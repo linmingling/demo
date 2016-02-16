@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/global.css?v=1" />
+		<link rel="stylesheet" href="css/layout.css?v=1" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js" ></script>
+		<title>莫说课堂第二期-打好秋季“三防”保卫战</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="banner relative">
+			</div>
+			<div class="mid">
+				<div class="mid_note">
+					<img src="img/common/leafL.png?v=1" id="leafL"/>
+					<img src="img/common/leafR.png?v=1" id="leafR"/>
+					<img src="img/mid/0.png?v=1" width="827" height="1150" id="mid_src"/>
+					<div class="norBtn" id="one" index="0" style="color: #ffffff;">第一防</div>
+					<div class="norBtn" id="two" index="1">第二防</div>
+					<div class="norBtn" id="three" index="2">第三防</div>
+					<div id="midplayer">
+						<div class="wh100 relative">
+							<img src="img/mid/player/0.png?v=1" id="midplayer_img"/>
+							<img src="img/mid/player/leftBtn.png?v=1" id="leftBtn"/>
+							<img src="img/mid/player/rightBtn.png?v=1" id="rightBtn"/>
+							<div class="norCir_con">
+								<span class="norCir active"></span>
+								<span class="norCir"></span>
+								<span class="norCir"></span>
+								<span class="norCir"></span>
+								<span class="norCir"></span>
+								<span class="norCir"></span>
+								<span class="norCir"></span>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>
+			<div class="end">
+				<div class="t_c">
+					<img src="img/end/bg.png"/>
+				</div>
+			</div>
+		</div>
+		<script>
+		$(".norBtn").bind("mouseenter",function(){
+			var index=parseInt($(this).attr("index"));
+			if(index==2){
+				$("#midplayer").show();
+			}
+			else{
+				$("#midplayer").hide();
+			}
+			$(".norBtn").each(function(){
+				$(this).css("color","#000000");
+			});
+			$(this).css("color","#ffffff");
+			$("#mid_src").attr("src","img/mid/"+index+".png?v=1");
+		});
+		(function(){
+			var index=0;
+			$("#leftBtn").click(function(){
+				index-=1;
+				if(index<0){index=6}
+				$(".norCir_con .norCir").each(function(){
+					$(this).css("background-color","#fff3c0");
+					if($(this).index()==index){	
+						$(this).css("background-color","#a88740");
+					}
+				});
+				
+				$("#midplayer_img").attr("src","img/mid/player/"+index+".png?v=1")
+			});
+			$("#rightBtn").click(function(){
+				index+=1;
+				if(index>6){index=0}
+				$(".norCir_con .norCir").each(function(){
+					$(this).css("background-color","#fff3c0");
+					if($(this).index()==index){	
+						$(this).css("background-color","#a88740");
+					}
+				});
+				$("#midplayer_img").attr("src","img/mid/player/"+index+".png?v=1")
+			});
+		})();
+		</script>
+		<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->	
+<!--#include virtual="/public/tongji.html"-->
+	</body>
+</html>

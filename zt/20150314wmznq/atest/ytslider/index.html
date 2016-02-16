@@ -1,0 +1,581 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ytSlider js 滑动插件</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/default.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="content">
+
+        <div class="wrapper">
+
+            <h1>ytSlider</h1>
+           <p class="pt">
+              ytSlider 一款pc端的滑动插件 提供js版本 （压缩10kb） 和jQuery版本(压缩6kb) 兼容IE6以上浏览器 提供了丰富的参数配置 ，易扩展 。
+                <a title="点击下载" href="ytSlider.zip"><b>点击下载</b></a> 
+           </p>
+            <div class="cn">
+                <h2>
+                    1.1、左右滑动  - 默认"swing" 缓动效果
+                </h2>
+                <div class="yt-slider" id="slider1">
+                    <ul>
+                        <li>
+                            <a href="#"><img src="images/banner1.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner2.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner3.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner4.jpg" /></a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+              <div class="cn">
+                <h2>
+                    1.2、左右滑动  - 内置缓动效果 "ease" 只支持js版
+                </h2>
+                <div class="yt-slider" id="slider1_2">
+                    <ul>
+                        <li>
+                            <a href="#"><img src="images/banner1.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner2.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner3.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner4.jpg" /></a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+            <div class="cn">
+                <h2>
+                    2、向上滑动
+                </h2>
+                <div class="yt-slider" id="slider2">
+                    <ul>
+                        <li>
+                           <a href="#"><img src="images/banner1.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner2.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner3.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner4.jpg" /></a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="cn">
+                <h2>
+                    3、淡入淡出
+                </h2>
+                <div class="yt-slider" id="slider3">
+                    <ul>
+                        <li>
+                            <a href="#"><img src="images/banner1.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner2.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner3.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="images/banner4.jpg" /></a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="cn">
+                <h2>
+                    4、加标题
+                </h2>
+                <div class="yt-slider yt-slider-txt" id="slider4">
+                    <ul>
+                        <li>
+                            <a href="#"><img title="1111111111" src="images/banner1.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img title="222222222" src="images/banner2.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img title="333333333" src="images/banner3.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img title="4444444444" src="images/banner4.jpg" /></a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="cn">
+                <h2>
+                    <span>5、扩展Easing缓动函数实例 </span>
+                    <span>选择效果：</span>
+                    <span><select id="selectEasing">
+                        <option value="linear">linear</option>
+                        <option value="swing">swing</option>
+                        <option value="easeInQuad">easeInQuad</option>
+                        <option value="easeOutQuad">easeOutQuad</option>
+                        <option value="easeInOutQuad">easeInOutQuad</option>
+                        <option value="easeInCubic">easeInCubic</option>
+                        <option value="easeOutCubic">easeOutCubic</option>
+                        <option value="easeInOutCubic">easeInOutCubic</option>
+                        <option value="easeInQuart">easeInQuart</option>
+                        <option value="easeOutQuart" >easeOutQuart</option>
+                        <option value="easeInOutQuart">easeInOutQuart</option>
+                        <option value="easeInQuint">easeInQuint</option>
+                        <option value="easeOutQuint">easeOutQuint</option>
+                        <option value="easeInOutQuint">easeInOutQuint</option>
+                        <option value="easeInSine">easeInSine</option>
+                        <option value="easeOutSine">easeOutSine</option>
+                        <option value="easeInOutSine">easeInOutSine</option>
+                        <option value="easeInExpo">easeInExpo</option>
+                        <option value="easeOutExpo">easeOutExpo</option>
+                        <option value="easeInOutExpo">easeInOutExpo</option>
+                        <option value="easeInCirc">easeInCirc</option>
+                        <option value="easeOutCirc">easeOutCirc</option>
+                        <option value="easeInOutCirc" >easeInOutCirc</option>
+                        <option value="easeInElastic">easeInElastic</option>
+                        <option value="easeOutElastic" selected="selected" >easeOutElastic</option>
+                        <option value="easeInOutElastic">easeInOutElastic</option>
+                        <option value="easeInBack">easeInBack</option>
+                        <option value="easeOutBack">easeOutBack</option>
+                        <option value="easeInOutBack">easeInOutBack</option>
+                        <option value="easeInBounce">easeInBounce</option>
+                        <option value="easeOutBounce">easeOutBounce</option>
+                        <option value="easeInOutBounce">easeInOutBounce</option>
+                        </select>
+                    </span>
+                </h2>
+                <div class="yt-slider yt-slider4" id="slider5">
+                    <ul>
+                        <li>
+                            <a href="#"><img title="1111111111" src="images/banner1.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img title="222222222" src="images/banner2.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img title="333333333" src="images/banner3.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img title="4444444444" src="images/banner4.jpg" /></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="cn">
+                     <h2>
+                    6、多图滚动实例
+                </h2>
+
+                <div class="yt-slider-run" id="slider6">
+                    <div class="slider-pn">
+                        <a class="slider-prev" href="javascript:;"></a>
+                        <a class="slider-next" href="javascript:;"></a>
+                    </div>
+                    <div class="slider-list">
+                        <ul>
+                            <li>
+                                <div class="c-i">
+                                    <div class="c-img">
+                                        <a href="#" title="#">
+                                            <img src="images/imgs/img2.png" />
+                                        </a>
+                                    </div>
+
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="c-i">
+                                    <div class="c-img">
+                                        <a href="#" title="#">
+                                            <img src="images/imgs/img2.png" />
+                                        </a>
+                                    </div>
+
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="c-i">
+                                    <div class="c-img">
+                                        <a href="#" title="#">
+                                            <img src="images/imgs/img5.png" />
+                                        </a>
+                                    </div>
+
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="c-i">
+                                    <div class="c-img">
+                                        <a href="#" title="#">
+                                            <img src="images/imgs/img5.png" />
+                                        </a>
+                                    </div>
+
+
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="c-i">
+                                    <div class="c-img">
+                                        <a href="#" title="#">
+                                            <img src="images/imgs/img4.png" />
+                                        </a>
+                                    </div>
+
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="c-i">
+                                    <div class="c-img">
+                                        <a href="#" title="#">
+                                            <img src="images/imgs/img2.png" />
+                                        </a>
+                                    </div>
+
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="c-i">
+                                    <div class="c-img">
+                                        <a href="#" title="#">
+                                            <img src="images/imgs/img3.png" />
+                                        </a>
+                                    </div>
+
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+             
+
+            </div>
+
+
+            <div class="cn">
+                <h2>配置参数</h2>
+                <p>
+                            <table cellspacing="0" width="100%">
+    
+            <thead>
+                <tr><th scope="col">参数</th><th scope="col">类型</th><th scope="col">默认值</th><th scope="col">说明</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>idBox</b></td>
+                    <td>String || Object</td>
+                    <td>null</td>
+                    <td>滑动容器节点的id 或 节点的HTMLElement对象（必选）</td>
+                </tr>
+
+                <tr>
+                    <td><b>idScn</b></td>
+                    <td>String</td>
+                    <td>null</td>
+                    <td>滑动容器内容节点的id</td>
+                </tr>
+                
+                <tr>
+                    <td><b>idNav</b></td>
+                    <td>String</td>
+                    <td>null</td>
+                    <td>导航容器节点的id</td>
+                </tr>
+                 <tr>
+                    <td><b>idText</b></td>
+                    <td>String</td>
+                    <td>null</td>
+                    <td>标题容器节点id</td>
+                </tr>
+                 <tr>
+                    <td><b>idPn</b></td>
+                    <td>String</td>
+                    <td>null</td>
+                    <td>左右切换按钮父节点的id</td>
+                </tr>
+                 <tr>
+                    <td><b>clsScn</b></td>
+                    <td>String</td>
+                    <td>slider-scn</td>
+                    <td>滑动内容块节点className</td>
+                </tr>
+                 <tr>
+                    <td><b>clsText</b></td>
+                    <td>String</td>
+                    <td>slider-txt</td>
+                    <td>标题容器节点className</td>
+                </tr>
+                 <tr>
+                    <td><b>clsNav</b></td>
+                    <td>String</td>
+                    <td>slider-txt</td>
+                    <td>导航容器节点className</td>
+                </tr>
+                 <tr>
+                    <td><b>clsPn</b></td>
+                    <td>String</td>
+                    <td>slider-pn</td>
+                    <td>左右切换按钮父节点的className</td>
+                </tr>
+                <tr>
+                    <td><b>clsPrev</b></td>
+                    <td>String</td>
+                    <td>slider-prev</td>
+                    <td>左右切换左按钮节点的className</td>
+                </tr>
+                <tr>
+                    <td><b>clsNext</b></td>
+                    <td>String</td>
+                    <td>slider-prev</td>
+                    <td>左右切换右按钮节点的className</td>
+                </tr>
+                 <tr>
+                    <td><b>clsActive</b></td>
+                    <td>String</td>
+                    <td>active</td>
+                    <td>导航按钮当前选中节点的className</td>
+                </tr>
+                 <tr>
+                    <td><b>clsActive</b></td>
+                    <td>String</td>
+                    <td>active</td>
+                    <td>导航按钮当前选中节点的className</td>
+                </tr>
+                 <tr>
+                    <td><b>eleNav</b></td>
+                    <td>String</td>
+                    <td>ol</td>
+                    <td>自动创建的导航节点名称</td>
+                </tr>
+                 <tr>
+                    <td><b>eleNavChild</b></td>
+                    <td>String</td>
+                    <td>li</td>
+                    <td>自动创建的导航节点子元素</td>
+                </tr>
+                 <tr>
+                    <td><b>activeEvent</b></td>
+                    <td>String</td>
+                    <td>mouseover</td>
+                    <td>导航按钮的触发方式 click 或 mouseover</td>
+                </tr>
+                 <tr>
+                    <td><b>prevText</b></td>
+                    <td>String</td>
+                    <td>mouseover</td>
+                    <td>左切换按钮的文本</td>
+                </tr>
+                  <tr>
+                    <td><b>nextText</b></td>
+                    <td>String</td>
+                    <td>mouseover</td>
+                    <td>右切换按钮的文本</td>
+                </tr>
+                  <tr>
+                    <td><b>isShowText</b></td>
+                    <td>Boolean</td>
+                    <td>false</td>
+                    <td>是否显示模块标题</td>
+                </tr>
+                    <tr>
+                    <td><b>isRunText</b></td>
+                    <td>Boolean</td>
+                    <td>true</td>
+                    <td>标题是否动画</td>
+                </tr>
+                   <tr>
+                    <td><b>isShowPn</b></td>
+                    <td>Boolean</td>
+                    <td>true</td>
+                    <td>是否显示左右切换按钮</td>
+                </tr>
+                  <tr>
+                    <td><b>isShowNav</b></td>
+                    <td>Boolean</td>
+                    <td>true</td>
+                    <td>否显示导航按钮</td>
+                </tr>
+                 <tr>
+                    <td><b>slideType</b></td>
+                    <td>String</td>
+                    <td>left</td>
+                    <td>滑动类型  left top fade</td>
+                </tr>
+                <tr>
+                    <td><b>slideAuto</b></td>
+                    <td>Boolean</td>
+                    <td>true</td>
+                    <td>是否自动滑动</td>
+                </tr>
+                 <tr>
+                    <td><b>activeIndex</b></td>
+                    <td>Number</td>
+                    <td>0</td>
+                    <td>滑动的开始索引值</td>
+                </tr>
+                 <tr>
+                    <td><b>speed</b></td>
+                    <td>Number</td>
+                    <td>400</td>
+                    <td>滑动速度（毫秒）</td>
+                </tr>
+               <tr>
+                    <td><b>delay</b></td>
+                    <td>Number</td>
+                    <td>5000</td>
+                    <td>滑动延时时间（毫秒）</td>
+                </tr>
+                <tr>
+                    <td><b>easing</b></td>
+                    <td>Function || String</td>
+                    <td>swing</td>
+                    <td>
+                        滑动时的缓动函数 <br />
+                        内置 linear、ease、swing、 easeOutQuart<br />
+                        ease 为 js版本才有 <br />
+                        设置 ease 后 speed参数无效 <br />
+                     </td>
+                </tr>
+                 <tr>
+                    <td><b>initBefore</b></td>
+                    <td>Function</td>
+                    <td>null</td>
+                    <td>函数初始化前的回调函数</td>
+                </tr>
+                 <tr>
+                    <td><b>initAfter</b></td>
+                    <td>Function</td>
+                    <td>null</td>
+                    <td>函数初始化后的回调函数</td>
+                </tr>
+                  <tr>
+                    <td><b>slideBefore</b></td>
+                    <td>Function</td>
+                    <td>null</td>
+                    <td>滑动前的回调函数</td>
+                </tr>
+                 <tr>
+                    <td><b>slideAfter</b></td>
+                    <td>Function</td>
+                    <td>null</td>
+                    <td>滑动后的回调函数</td>
+                </tr>
+      
+            </tbody>
+        </table>
+
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+   
+
+    <script src="js/ytSlider.js"></script>
+    <script src="js/Easing.js"></script>
+    <script type="text/javascript">
+       //1、左右滑动
+        ytSlider("slider1");
+         ytSlider({
+            idBox: "slider1_2",
+            easing: !window.jQuery ? "ease" : "easeOutQuart"
+        });
+        
+
+       //2、向上滑动
+        ytSlider({
+            idBox: "slider2",
+            slideType: "top"
+        });
+
+
+
+        //3、淡入淡出
+        ytSlider({
+            idBox: "slider3",
+            speed: 1000,
+            slideType: "fade"
+        });
+
+        //4、加标题
+        ytSlider({
+            idBox: "slider4",
+            isShowText: true
+        });
+
+        //5、缓动函数Easing实例
+        var bindSlider = function (easing) {
+            ytSlider({
+                idBox: "slider5",
+                easing: easing || Easing.easeOutElastic,
+                speed: 1000
+
+            });
+        };
+
+        bindSlider();
+        var select = document.getElementById("selectEasing");
+        select.onchange = function () {
+
+            bindSlider(Easing[select.options[select.selectedIndex].value]);
+
+        };
+        
+
+        //6、多图滚动实例
+        ytSlider({
+            idBox: "slider6",
+            slideAuto: false,
+            isShowNav: false
+        });
+
+        
+    </script>
+
+
+
+
+</body>
+</html>

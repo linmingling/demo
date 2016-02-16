@@ -1,0 +1,909 @@
+@charset "utf-8";
+
+.unShow {
+    display: none;
+}
+
+.Mc_mask {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.Mc_mask2 {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#OpenModule .Door {
+    width: 320px;
+    height: 100%;
+    overflow: hidden;
+}
+
+#OpenModule .l_door {
+    position: absolute;
+    left: 0px;
+    -webkit-transform-origin: left;
+    transform-origin: left;
+}
+
+#OpenModule .r_door {
+    position: absolute;
+    right: 0px;
+    -webkit-transform-origin: right;
+    transform-origin: right;
+}
+
+.AniOpenL {
+    -webkit-animation: openL 2s forwards ease-in-out;
+    -o-animation: openL 2s forwards ease-in-out;
+    animation: openL 2s forwards ease-in-out;
+}
+
+.AniOpenR {
+    -webkit-animation: openR 2s forwards ease-in-out;
+    -o-animation: openR 2s forwards ease-in-out;
+    animation: openR 2s forwards ease-in-out;
+}
+
+@-webkit-keyframes openL {
+    0% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+    100% {
+        -webkit-transform: translateX(-320px);
+        transform: translateX(-320px);
+    }
+}
+
+@-webkit-keyframes openR {
+    0% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px);
+    }
+    100% {
+        -webkit-transform: translateX(320px);
+        transform: translateX(320px);
+    }
+}
+
+#OpenModule .r_door .OpenBox {
+    -webkit-transform: translateX(-320px);
+    transform: translateX(-320px);
+}
+
+.OpenBox {
+    background: url("../images/P1_bg.jpg") center;
+    background-size: cover;
+}
+
+#OpenModule .ShowBox1 {
+    width: 640px;
+    height: 815px;
+}
+
+#OpenModule .P1_txt1 {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    margin-left: -90px;
+}
+
+#OpenModule .P1_txt2 {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    margin-left: -150px;
+}
+
+#OpenModule .P1_tit {
+    position: absolute;
+    top: 120px;
+    left: 90px;
+}
+
+#OpenModule .P1_txt3 {
+    position: absolute;
+    top: 130px;
+    right: 50px;
+}
+
+#OpenModule .P1_hand {
+    position: absolute;
+    top: 123px;
+    right: 100px;
+}
+
+.AniHand {
+    -webkit-animation: flash 4s infinite ease-out;
+    -o-animation: flash 4s infinite ease-out;
+    animation: flash 4s infinite ease-out;
+}
+
+@-webkit-keyframes flash {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+#OpenModule .L_knob {
+    position: absolute;
+    bottom: -50px;
+    left: 30px;
+}
+
+#OpenModule .R_knob {
+    position: absolute;
+    bottom: -50px;
+    right: 30px;
+}
+
+#OpenModule .P1_logo1 {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+
+#OpenModule .P1_logo2 {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -181px;
+}
+
+#SwiperModule .swiper-wrapper {
+    background: url("../images/P2_bg.jpg") center;
+    background-size: cover;
+}
+
+#MenuModule .ShowBox2 {
+    width: 100%;
+    height: 790px;
+}
+
+#MenuModule .P2_show {
+    position: absolute;
+    left: 0px;
+    bottom: -10px;
+}
+
+#MenuModule .P2_txt1 {
+    position: absolute;
+    right: 100px;
+    top: 0px;
+}
+
+#MenuModule .P2_txt2 {
+    position: absolute;
+    right: 185px;
+    top: 115px;
+}
+
+#MenuModule .P2_txt3 {
+    position: absolute;
+    right: 15px;
+    top: 170px;
+}
+
+#MenuModule .P2_input {
+    position: absolute;
+    right: 0px;
+    top: 240px;
+}
+
+#MenuModule #Btn_menu1 {
+    position: absolute;
+    right: 10px;
+    top: 370px;
+}
+
+#MenuModule #Btn_menu2 {
+    position: absolute;
+    right: 10px;
+    top: 480px;
+}
+
+#MenuModule #Btn_menu3 {
+    position: absolute;
+    right: 10px;
+    top: 590px;
+}
+
+#MenuModule #Btn_rule {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+#MenuModule .P2_logo1 {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+
+#MenuModule .P2_logo2 {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -181px;
+}
+
+#RuleModule {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 300;
+    display: none;
+}
+
+#RuleModule .RuleContent {
+    position: absolute;
+    top: 140px;
+    left: 30px;
+    width: 480px;
+    height: 665px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#ShareModule {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 300;
+    display: none;
+}
+
+#ShareModule .P5_txt1 {
+    position: absolute;
+    top: 355px;
+    right: 50px;
+}
+
+#ShareModule .Mc_arrow {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+#OverModule1 {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 100;
+    overflow: hidden;
+    display: none;
+}
+
+#OverModule1 .Mc_bg_over2 {
+    position: absolute;
+    right: 0px;
+    bottom: -70px;
+}
+
+#OverModule1 .P4_txt1 {
+    position: absolute;
+    left: 150px;
+    bottom: 380px;
+}
+
+#OverModule1 .P4_txt3 {
+    position: absolute;
+    left: 195px;
+    bottom: 335px;
+}
+
+#OverModule1 .Mc_QRcode {
+    position: absolute;
+    right: 83px;
+    bottom: 20px;
+}
+
+#OverModule1 #Btn_again {
+    position: absolute;
+    left: 80px;
+    bottom: 50px;
+}
+
+#OverModule1 #Txt_tip1 {
+    position: absolute;
+    bottom: 170px;
+    width: 230px;
+    left: 80px;
+    font-size: 27px;
+    color: #151515;
+    font-family: "Microsoft YaHei";
+}
+
+#OverModule1 #Txt_count1 {
+    position: absolute;
+    bottom: 322px;
+    left: 248px;
+    font-size: 50px;
+    color: white;
+    width: 40px;
+    font-family: "Microsoft YaHei";
+}
+
+#Txt_per1 {
+    position: absolute;
+    left: 382px;
+    bottom: 372px;
+}
+
+#OverModule2 {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 100;
+    overflow: hidden;
+    display: none;
+}
+
+#OverModule2 .Mc_bg_over2 {
+    position: absolute;
+    right: 0px;
+    bottom: -70px;
+}
+
+#OverModule2 .P4_txt1 {
+    position: absolute;
+    left: 150px;
+    bottom: 380px;
+}
+
+#OverModule2 .P4_txt2 {
+    position: absolute;
+    left: 125px;
+    bottom: 335px;
+}
+
+#OverModule2 .Mc_QRcode {
+    position: absolute;
+    right: 83px;
+    bottom: 20px;
+}
+
+#OverModule2 #Btn_share {
+    position: absolute;
+    left: 80px;
+    bottom: 50px;
+}
+
+#OverModule2 #Txt_tip2 {
+    position: absolute;
+    bottom: 160px;
+    width: 230px;
+    left: 80px;
+    font-size: 25px;
+    color: #151515;
+    font-family: "Microsoft YaHei";
+}
+
+#Txt_tip2 strong {
+    font-size: 25px;
+    color: white;
+}
+
+#OverModule2 #Txt_count2 {
+    position: absolute;
+    bottom: 322px;
+    left: 177px;
+    font-size: 50px;
+    color: white;
+    width: 40px;
+    font-family: "Microsoft YaHei";
+}
+
+#Txt_per2 {
+    position: absolute;
+    left: 382px;
+    bottom: 372px;
+}
+
+.ArtTxt div {
+    float: left;
+}
+
+#OverModule3 {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 100;
+    overflow: hidden;
+    display: none;
+}
+
+#OverModule3 .Mc_bg_over1 {
+    position: absolute;
+    bottom: -70px;
+    left: 55px;
+}
+
+#OverModule3 .Mc_QRcode {
+    position: absolute;
+    right: 83px;
+    bottom: 20px;
+}
+
+#OverModule3 #Txt_code {
+    position: absolute;
+    left: 95px;
+    bottom: 63px;
+    font-family: "Microsoft YaHei";
+    color: white;
+    font-size: 43px;
+}
+
+.font0 {
+    width: 56px;
+    height: 73px;
+    background: url("../images/Mc_font1.png") 0 0 no-repeat;
+}
+
+.font1 {
+    width: 56px;
+    height: 73px;
+    background: url("../images/Mc_font1.png") -56px 0 no-repeat;
+}
+
+.font2 {
+    width: 56px;
+    height: 73px;
+    background: url("../images/Mc_font1.png") -112px 0 no-repeat;
+}
+
+.font3 {
+    width: 56px;
+    height: 73px;
+    background: url("../images/Mc_font1.png") -168px 0 no-repeat;
+}
+
+.font4 {
+    width: 56px;
+    height: 73px;
+    background: url("../images/Mc_font1.png") -224px 0 no-repeat;
+}
+
+.font5 {
+    width: 56px;
+    height: 73px;
+    background: url("../images/Mc_font1.png") -280px 0 no-repeat;
+}
+
+.font6 {
+    width: 56px;
+    height: 73px;
+    background: url("../images/Mc_font1.png") -336px 0 no-repeat;
+}
+
+.font7 {
+    width: 56px;
+    height: 73px;
+    background: url("../images/Mc_font1.png") -392px 0 no-repeat;
+}
+
+.font8 {
+    width: 56px;
+    height: 73px;
+    background: url("../images/Mc_font1.png") -448px 0 no-repeat;
+}
+
+.font9 {
+    width: 56px;
+    height: 73px;
+    background: url("../images/Mc_font1.png") -504px 0 no-repeat;
+}
+
+.font10 {
+    width: 56px;
+    height: 73px;
+    background: url("../images/Mc_font1.png") -560px 0 no-repeat;
+}
+
+.circle1 {
+    position: absolute;
+    left: 145px;
+    top: 75px;
+}
+
+.circle2 {
+    position: absolute;
+    left: 80px;
+    top: 320px;
+}
+
+.circle3 {
+    position: absolute;
+    right: 80px;
+    top: 260px;
+}
+
+.circle4 {
+    position: absolute;
+    right: 130px;
+    top: 120px;
+}
+
+.circle5 {
+    position: absolute;
+    left: 50px;
+    top: 30px;
+}
+
+.triangle1 {
+    position: absolute;
+    left: 80px;
+    top: 150px;
+}
+
+.triangle2 {
+    position: absolute;
+    right: 110px;
+    top: 345px;
+}
+
+.AniObj1 {
+    width: 25px;
+    height: 25px;
+    background-color: rgb(255, 255, 0);
+    border-radius: 100%;
+    -webkit-animation: AniFrames1 2s infinite linear;
+    -o-animation: AniFrames1 2s infinite linear;
+    animation: AniFrames1 2s infinite linear;
+}
+
+.AniObj2 {
+    width: 25px;
+    height: 25px;
+    background-color: rgb(192, 31, 9);
+    border-radius: 100%;
+    -webkit-animation: AniFrames1 2.5s infinite linear;
+    -o-animation: AniFrames1 2.5s infinite linear;
+    animation: AniFrames1 2.5s infinite linear;
+}
+
+.AniObj3 {
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 25px solid rgb(192, 31, 9);
+    -webkit-animation: AniFrames2 2.5s infinite linear;
+    -o-animation: AniFrames2 2.5s infinite linear;
+    animation: AniFrames2 2.5s infinite linear;
+}
+
+@-webkit-keyframes AniFrames2 {
+    0% {
+        -webkit-transform: perspective(120px);
+        opacity: 0;
+    }
+    50% {
+        -webkit-transform: perspective(120px) rotateY(180deg);
+        opacity: 1;
+
+    }
+    100% {
+        -webkit-transform: perspective(120px);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes AniFrames1 {
+    0%, 100% {
+        -webkit-transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#GameModule .GameBox {
+    background: url("../images/P3_bg.jpg") center;
+    background-size: cover;
+}
+
+#GameModule .Mc_tree {
+    position: absolute;
+    right: 0px;
+    bottom: -10px;
+}
+
+#GameModule .PerBox {
+    position: absolute;
+    width: 221px;
+    height: 221px;
+    left: 50%;
+    margin-left: -111px;
+    bottom: 160px;
+}
+
+#GameModule .TxtBox {
+    position: absolute;
+    top: -25px;
+}
+
+#Txt_per3 {
+    position: relative;
+}
+
+#GameModule .P2_logo1 {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+}
+
+#GameModule .P3_logo2 {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    margin-left: -181px;
+}
+
+#GameModule .bag {
+    -webkit-transform-origin: center top;
+    transform-origin: center top;
+}
+
+.fontR0 {
+    width: 28px;
+    height: 37px;
+    background: url("../images/Mc_font2.png") 0 0 no-repeat;
+}
+
+.fontR1 {
+    width: 28px;
+    height: 37px;
+    background: url("../images/Mc_font2.png") -28px 0 no-repeat;
+}
+
+.fontR2 {
+    width: 28px;
+    height: 37px;
+    background: url("../images/Mc_font2.png") -56px 0 no-repeat;
+}
+
+.fontR3 {
+    width: 28px;
+    height: 37px;
+    background: url("../images/Mc_font2.png") -84px 0 no-repeat;
+}
+
+.fontR4 {
+    width: 28px;
+    height: 37px;
+    background: url("../images/Mc_font2.png") -112px 0 no-repeat;
+}
+
+.fontR5 {
+    width: 28px;
+    height: 37px;
+    background: url("../images/Mc_font2.png") -140px 0 no-repeat;
+}
+
+.fontR6 {
+    width: 28px;
+    height: 37px;
+    background: url("../images/Mc_font2.png") -168px 0 no-repeat;
+}
+
+.fontR7 {
+    width: 28px;
+    height: 37px;
+    background: url("../images/Mc_font2.png") -196px 0 no-repeat;
+}
+
+.fontR8 {
+    width: 28px;
+    height: 37px;
+    background: url("../images/Mc_font2.png") -224px 0 no-repeat;
+}
+
+.fontR9 {
+    width: 28px;
+    height: 37px;
+    background: url("../images/Mc_font2.png") -252px 0 no-repeat;
+}
+
+.fontR10 {
+    width: 28px;
+    height: 37px;
+    background: url("../images/Mc_font2.png") -280px 0 no-repeat;
+}
+
+#TipsModule {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 100;
+    display: none;
+}
+
+#TipsModule #Btn_start {
+    margin-top: 230px;
+}
+
+#LeafModule {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 200;
+    pointer-events: none;
+    display: none;
+}
+
+.layer:nth-child(1) {
+    margin-top: -49px;
+    margin-left: -93px;
+}
+
+.layer:nth-child(2) {
+    margin-top: 900px;
+    margin-left: 516px;
+}
+
+.layer:nth-child(3) {
+    margin-top: 522px;
+    margin-left: 577px;
+}
+
+.layer:nth-child(4) {
+    margin-top: 756px;
+    margin-left: -23px;
+}
+
+.layer:nth-child(5) {
+    margin-top: 1120px;
+    margin-left: 150px;
+}
+
+.layer:nth-child(6) {
+    margin-top: 70px;
+    margin-left: 389px;
+}
+
+#LoadModule {
+    background: #970505;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1200;
+}
+
+.spinner {
+    margin: -100px auto 0;
+    width: 150px;
+    text-align: center;
+}
+
+.spinner > div {
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    /* Prevent first frame from flickering when animation starts */
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0.0)
+    }
+    40% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes bouncedelay {
+    0%, 80%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    40% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
+
+#PopsModule{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 100;
+    display: none;
+}
+
+#PopsModule .Txt_pop1{
+    color: #fda206;
+    font-size: 30px;
+    font-family: "Microsoft YaHei";
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#PopsModule .Txt_pop2{
+    color: white;
+    font-size: 23px;
+    font-family: "Microsoft YaHei";
+    text-align: center;
+    margin-top: 15px;
+    width: 365px;
+    line-height: 50px;
+}
+
+#Btn_sound {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 500;
+}
+
+.SoundAni {
+    -webkit-animation: sound 2s infinite linear;
+    -o-animation: sound 2s infinite linear;
+    animation: sound 2s infinite linear;
+}
+
+@keyframes sound {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes sound {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+
+

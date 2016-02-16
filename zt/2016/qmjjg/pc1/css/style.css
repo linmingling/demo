@@ -1,0 +1,81 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video,ol {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    font-family: "Microsoft Yahei";
+    vertical-align:baseline;
+    list-style: none;
+}
+body,html{
+    font-family: "微软雅黑";
+    width: 100%;
+    height: 100%;
+    /* overflow-y: hidden; */
+}
+
+.bg{width: 100%;height:4768px;background:url(../images/images/bg3.jpg) center no-repeat;}
+.wrap{height:4768px; width:1004px;  margin: 0 auto;position: relative;}
+.active{position: absolute;top: 199px; left: 392px;z-index: 10;}
+.allactive{position: absolute;top: 203px;left:362px;}
+.snav{height:422px;width:154px;background:url(../images/images/cnav_09.png) no-repeat; position: fixed;right:5%;top:128px; z-index: 10;}
+.cnav{position: absolute;right:18px;top:95px;}
+.cnav li{width:121px;height:47px;text-align: center;line-height: 47px;cursor:pointer;color:#fff;font-size: 18px;}
+.top{position: absolute;bottom:8px;left:50%;margin-left:-28px; font-size: 26px;font-weight: bold;cursor:pointer;}
+.one{position: absolute;top: 1176px;}
+.one li{float: left;margin-left: 6px;}
+.two{position: absolute;top: 1572px;}
+.two li{float:left;margin-left: 6px;}
+.three{position: absolute;left:-180px;top: 1936px; }
+.threect{position: absolute;height:304px;width:939px;left:32px;top:2073px;}
+.date li{width:235px;height:101px;}
+.date1.current{background:url(../images/images/dateh_03.jpg) no-repeat;}
+.date2.current{background:url(../images/images/dateh_05.jpg) no-repeat;}
+.date3.current{background:url(../images/images/dateh_06.jpg) no-repeat;}
+
+.datect li{height:100px; width:680px; border-bottom: 1px dashed #ccc;box-sizing: border-box;padding-top: 30px;padding-left: 28px;}
+.datehd{font-size: 20px;margin-bottom:4px;}
+.xq{width:89px; background:#ccc;line-height: 28px;text-align: center;padding-left: 4px; color:#000;text-decoration: none;}
+.xq a{text-decoration: none;color:#444444;}
+
+
+
+.datect2,.datect3{display: none;}
+.datect2 li,.datect3 li{height:100px; width:680px; border-bottom: 1px dashed #ccc;box-sizing: border-box;padding-top: 30px;padding-left: 28px;}
+.dl_left{position: absolute;left:-161px;top:2055px;}
+.dl_right{position: absolute;right:-168px;top:2055px;}
+.four_l{position: absolute;top: 2688px; left:31px;width:604px;height:401px;background:pink;overflow:hidden;}
+.four_l ul{position: relative;width:10000px;}
+.four_l ul li{float:left; margin-left: 1px;margin-top: 1px;width:607px;background: #7b1719;}
+.four_l ol{height:56px;width:604px;background: #000; position: absolute;bottom:0;opacity: 0.7;box-sizing: border-box;padding-top: 22px;padding-left:159px;margin-left: 1px;}
+.four_l ol li{height:10px;width:10px;border-radius: 20px;background: #ccc;float:left;margin-left: 10px;}
+.four_l ol li.current{background:red;}
+.four_r{position: absolute;top: 2616px; left:675px;width:288px;height:458px;}
+.prev{position: absolute;left:36px;top:356px;cursor:pointer;}
+.next{position: absolute;right:36px;top:356px;cursor:pointer;}
+.city{width:288px;list-style:   circle;box-sizing: border-box; padding-top: 18px;}
+.city li{width:144px;float: left;text-align: center;position: relative;height:30px;font-weight: bold;color:#ffba00; height:36px;}
+.city li:before{content: "";height:12px;width:12px;background:url(../images/images/dot_13.jpg) no-repeat;position: absolute;top:6px; left:30px;}
+.vd{width:650px; height:413px;position:absolute; top: 3406px;background:pink;left:9px;}
+.vdright{width:376px; height:418px;background:url(../images/images/vd_right_03.png) no-repeat right;position: absolute;top:3402px;right:0px;}
+.vdrighthd{padding-left: 64px;line-height: 36px;color: #fff;font-family:"微软雅黑";font-weight:bold;font-size: 19.48px;}
+.news{margin-left:66px;margin-top: 1px; overflow-y:scroll;height:361px;width:294px;}
+.newshd{font-family:"微软雅黑";font-weight:bold;font-size:14px;color:#8c5b3f;margin-bottom: 8px;}
+.news li{border-bottom: 1px dashed #ccc;width:272px;height:140px;box-sizing: border-box;padding-top: 11px;font-size: 12px;position: relative;}
+.news li a{text-decoration: none;color:#000;}
+
+.six{position: absolute;top: 4111px;}
+.six li{float:left;margin-left: 5px;margin-right: 5px;}
+
+.fter{position: absolute;bottom: 0;left:50%; margin-left:-178px;}
+.read{position: absolute;bottom:8px;right:0;}
+.dapai{position: absolute;left:-141px;top: 1530px;}
+.people{position: absolute;left:0; top: 0;}

@@ -1,0 +1,170 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video,ol {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    font-family: "Microsoft Yahei";
+    vertical-align:baseline;
+    list-style: none;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    ;
+    /* overflow-y: hidden; */
+}
+
+
+/*侧栏导航*/
+ul.sidenav{position: fixed; right:60px; top:40%;z-index: 6;}
+ul.sidenav li{height: 14px;width: 14px;background: #fff; border-radius: 10px; z-index: 6; margin-bottom: 14px;border: 1px solid #ff741b;cursor:pointer;}
+ul.sidenav li.current{background: #51a662; box-shadow: 1px 1px 12px #ff741b;}
+/*主体*/
+.bigbox{width: 100%;height: 100%;position: fixed;top:0;left: 0; }
+.right-top{height: 150px;width: 137px;background:url(../images/right_t_03.png);position: fixed; right:50px;top:6%;z-index: 4;}
+/*第一页*/
+
+.page{width:100%;height:100%;box-sizing:border-box;overflow: hidden; position: relative; z-index: 1; }
+.logo1{width:326px;height: 60px;background:url(../images/logo3_03.png) no-repeat; background-size: 100%; position: absolute; left: 14%;top:8%;z-index: 6;}
+.logo2{width:326px;height: 60px;background:url(../images/logo3_2.png) no-repeat; background-size: 100%; position: absolute; left: 14%;top:8%;z-index: 6;}
+.wrap{width:1000px;height:100%; margin:0 auto;position: relative;}
+
+.page1{background:url(../img/one.jpg) center;  position: relative;}
+.heart{position: absolute;left:192px;top: 98px;}
+.suihua{position: absolute;left:600px;top:280px;}
+.suihua img{
+    
+    -webkit-animation:suihua 3s linear 0s infinite;
+    animation:suihua 3s linear 0s infinite;
+}
+.flower{position: absolute;left: -160px;top: 196px;}
+.suihua{position: absolute;left: 794px;top: 60px;}
+.people{margin-left: 300px;margin-top: 30px;}
+.hand{position: absolute;left:669px;top:113px;}
+.hand img{
+    -webkit-animation:hands 0.8s linear 0s infinite;
+    animation:hands 0.8s linear 0s infinite;
+}
+@-webkit-keyframes hands{
+    from{
+        transform:none;
+    }
+    to{
+        transform:rotate(-5deg) ;
+        transform-origin:34px 160px;
+    }
+}
+.one-word{margin-top: -60px;margin-left: 50px;position: relative;}
+.heartpic{
+    -webkit-animation:circle 1s linear 0s infinite;
+    animation:circle 1s linear 0s infinite;
+}
+@-webkit-keyframes circle{
+    from{
+        transform:none;
+    }
+    to{
+        transform:scale(1.2,1.2) ;
+    }
+}
+@-webkit-keyframes suihua{
+    from{
+        transform:rotate(0);
+
+    }
+    to{
+        transform:  rotate(360deg);
+    }
+}
+@-webkit-keyframes xuan{
+    from{
+        transform:rotate(0);
+
+    }
+    to{
+        transform:  translateY(200px) ;
+    }
+}
+.ye1{position: absolute;left:100px;top: 0;}
+.ye1 img{
+    -webkit-animation:luo 6s linear 0s infinite;
+    animation:luo 6s linear 0s infinite;
+}
+@-webkit-keyframes luo{
+    from{
+        transform:rotate(0);
+
+    }
+    to{
+        transform:  translate(-200px,800px) ;
+    }
+}
+
+
+.word{position: absolute;bottom:80px; width:608px; left:50%;font-size: 14px;margin-left: -304px;color:#010000;top:196px;}
+
+
+.page2{background:url(../img/two.jpg) center; padding-top: 0; position: relative;}
+.page2main{width: 872px;height: 660px;margin: 30px auto;}
+.open-top{position: absolute;left: 0;top:188px;}
+.open{margin-left:160px;margin-top: -190px;position: relative; z-index: 4; display: none;}
+.close{position: absolute;left: -20px; top:50%;margin-top: -50px; cursor:pointer;}
+.detail{position: absolute;right:-43px;top: 500px;cursor:pointer;}
+.beforeword{position: absolute;left:-500px;width:500px;top:110px;font-size: 14px;color:#010000;}
+.two-word{position: absolute;width:672px;bottom:20px;margin-left: -306px;left: 50%;top:36px;font-size: 14px;color:#010000;}
+
+.page3{background:url(../img/three.jpg) center; padding-top: 0; position: relative;}
+.threemain{float: left;margin-left: 30px;margin-top: 40px;margin-bottom: 10px;}
+.threeword{float:right;width:513px;height:160px;margin-top: 110px; overflow-y:scroll;font-size: 14px;}
+::-webkit-scrollbar  
+{  
+    width: 10px;  
+    height: 10px; 
+    border-radius:10px ; 
+    background-color: #2b7938;  
+}  
+::-webkit-scrollbar-thumb  
+{  
+    border-radius: 10px;  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+    background-color: #8ed99c;  
+} 
+.guan{width:1101px;height: 440px; background:url(../images/guan_03.png);position: absolute;top:288px;left:-40px;}
+.guanpic{margin-top:-48px; margin-left: -56px;}
+.jiemi{width:1200px;position: absolute;bottom:60px; left:99px; }
+.jiemi li{float: left;margin-left: 46px;box-sizing: border-box;padding:20px 20px;font-size: 14px;position: absolute;bottom:0;display:none;cursor:pointer;color:#010000;border-radius: 3px;}
+.jiemi li:nth-of-type(2){margin-left: 264px;}
+.jiemi li:nth-of-type(3){margin-left: 476px;}
+.jiemi li:nth-of-type(4){margin-left: 714px;}
+.topj{margin-top:-26px;margin-left:12px;}
+
+
+.page4,.page5,.page6{background:url(../img/four.jpg) center; padding-top: 0; position: relative;}
+.fourbg{width:1160px;height:675px;background:url(../images/fourbg_03.png);margin-left: -12px;margin-top: 60px;overflow:hidden;}
+.fourword{ width:630px; margin-left: 316px;margin-top: 106px;font-size: 14px;color:#fff;}
+.fourbg ul{margin-left: 285px; margin-top: 25px;}
+.fourbg ul li{float:left; margin-left: 12px;}
+.fourbg ol{width:780px;margin-left:350px;margin-top: 198px;}
+.fourbg ol li{width:352px; float:left;line-height: 52px;color:#fff; font-size: 18px; font-weight: bold;}
+.fivemain{width:1087px;height:740px;background:url(../images/five_03.png); margin-top: 40px;position: relative;}
+.fiveword{width:356px;position: absolute; left:590px;top:120px;font-size: 14px;color: #fff;}
+.fivemain ul{margin-top:384px;margin-left: 30px;position: absolute;}
+.fivemain ul li{float:left; margin-left: 88px;color:#fff;font-size: 14px;}
+.one1{width:182px;}
+.one2{width:263px;}
+.one3{width:184px; }
+
+.guan ul{margin-left:104px;margin-top: 68px;}
+.guan ul li{ float:left;margin-left: 46px; cursor:pointer;font-size: 14px;}
+
+.sixword{width:306px;box-sizing:border-box;padding-left: 10px; font-size: 14px;color:#fff;margin-top: 40px;}
+.logoji{position: absolute;right: 10px;top: 122px;}
+.footer{position:fixed;bottom:0;}

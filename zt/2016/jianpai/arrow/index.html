@@ -1,0 +1,164 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="front-end technicist" content="jinger"/>
+    <title></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="front-end technicist" content="jinger">
+    <link type="text/css" rel="stylesheet" href="css/style.css?v=1.0"/>
+    <link type="text/css" rel="stylesheet" href="css/global.css?v=1.0"/>
+</head>
+<body>
+<div class="backdrop">
+    <div class="content">
+        <div class="_title1"></div>
+        <div>
+            <div class="box1">
+                <div class="btn1" id="11"></div>
+                <div class="btn2" id="12"></div>
+                <div id="btn1" class="arr" style="" onclick="btn(this)"><</div>
+                <div id="btn2" class="arr" style="margin-left: 1020px;margin-top: 300px;" onclick="btn(this)">></div>
+            </div>
+            <div class="box1_img">
+                <div class="box1_img1"></div>
+            </div>
+            <div class="box2">
+                <div class="btn1" style="margin-left:175px;" id="21"></div>
+                <div class="btn2" style="margin-left:370px;" id="22"></div>
+                <div id="btn1" class="arr" style="margin-left: 25px;" onclick="btn(this)"><</div>
+                <div id="btn2" class="arr" style="margin-left: 630px;margin-top: 300px;" onclick="btn(this)">></div>
+            </div>
+            <div class="box2_img">
+                <div class="box2_img1"></div>
+            </div>
+            <div class="box3">
+                <div class="btn1" id="31"></div>
+                <div class="btn2" id="32"></div>
+                <div id="btn1" class="arr" style="" onclick="btn(this)"><</div>
+                <div id="btn2" class="arr" style="margin-left: 1020px;margin-top: 300px;" onclick="btn(this)">></div>
+            </div>
+            <div class="box3_img">
+                <div class="box3_img1"></div>
+            </div>
+        </div>
+        <div class="_title2"></div>
+        <div class="box4">
+            <div style="width:994px;height:612px;position:relative;overflow: hidden;">
+                <div class="bar1" onclick="change(1)"><img src="images/test1.png"></div>
+                <div class="bar2" onclick="change(2)"><img src="images/test2.png"></div>
+                <div class="bar3" onclick="change(3)"><img src="images/test3.png"></div>
+            </div>
+        </div>
+        <div class="_title3"></div>
+        <div class="con3"></div>
+        <div class="qrcode"></div>
+        <div class="side_float">
+            <div style="margin-top:160px;"><a href="http://www.arrowwardrobe.com/zh-CN/index.html" target="_blank"><img
+                    src="images/nav1.png"></a></div>
+            <div style="margin-top:20px;"><a href="javascript:jump(1179);" target="_blank"><img
+                    src="images/nav2.png"></a></div>
+            <div style="margin-top:25px;"><a href="javascript:jump(1868);" target="_blank"><img
+                    src="images/nav3.png"></a></div>
+            <div style="margin-top:25px;"><a href="javascript:jump(2574);" target="_blank"><img
+                    src="images/nav4.png"></a></div>
+            <div style="margin-top:25px;"><a href="javascript:jump(3274);" target="_blank"><img
+                    src="images/nav5.png"></a></div>
+            <div style="margin-top:20px;"><a href="javascript:jump(4121);" target="_blank"><img
+                    src="images/nav6.png"></a></div>
+            <div style="margin-top:25px;"><a href="javascript:jump(0);" target="_blank"><img src="images/nav7.png"></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script>
+    var n = 0;
+    function move() {
+        n++;
+        if (n >= 5) {
+            n = 1;
+        }
+        $(".box1_img").css("background", "url(images/box1_" + n + ".png?v=1.0)");
+        $(".box2_img").css("background", "url(images/box2_" + n + ".png?v=1.0)");
+        $(".box3_img").css("background", "url(images/box3_" + n + ".png?v=1.0)");
+
+    }
+    timer = setInterval(move, 2000);
+
+    function btn(obj) {
+        clearInterval(timer);
+        if (obj.id == "btn2") {
+            n++;
+            if (n >= 5) {
+                n = 1;
+            }
+            $(".box1_img").css("background", "url(images/box1_" + n + ".png?v=1.0)");
+            $(".box2_img").css("background", "url(images/box2_" + n + ".png?v=1.0)");
+            $(".box3_img").css("background", "url(images/box3_" + n + ".png?v=1.0)");
+        } else if (obj.id == "btn1") {
+            n--;
+            if (n <= 0) {
+                n = 4;
+            }
+            $(".box1_img").css("background", "url(images/box1_" + n + ".png?v=1.0)");
+            $(".box2_img").css("background", "url(images/box2_" + n + ".png?v=1.0)");
+            $(".box3_img").css("background", "url(images/box3_" + n + ".png?v=1.0)");
+        }
+    }
+        $(".arr").hover(function(){
+            clearInterval(timer);
+            $(this).css("opacity","0.8");
+        },function(){
+            $(this).css("opacity","0.5");
+            timer = setInterval(move, 2000);
+        });
+
+    $(".btn1").hover(function () {
+        var id = $(this).attr("id");
+        var f = id.substr(0, 1);
+        $(".box" + f + "_img1").css("background", "url(images/" + id + ".png)");
+    }, function () {
+        var id = $(this).attr("id");
+        var f = id.substr(0, 1);
+        $(".box" + f + "_img1").css("background", "none");
+    })
+    $(".btn2").hover(function () {
+        var id = $(this).attr("id");
+        var f = id.substr(0, 1);
+        $(".box" + f + "_img1").css("background", "url(images/" + id + ".png)");
+    }, function () {
+        var id = $(this).attr("id");
+        var f = id.substr(0, 1);
+        $(".box" + f + "_img1").css("background", "none");
+    })
+
+    function change(n) {
+        $(".box4_img").css("background", "url(images/" + n + ".jpg)");
+        if (n == 1) {
+            $(".bar1").animate({marginLeft: "5px"}, "fast");
+            $(".bar2").animate({marginLeft: "876px"}, "fast");
+            $(".bar3").animate({marginLeft: "935px"}, "fast");
+        }
+        if (n == 2) {
+            $(".bar1").animate({marginLeft: "5px"}, "fast");
+            $(".bar2").animate({marginLeft: "64px"}, "fast");
+            $(".bar3").animate({marginLeft: "935px"}, "fast");
+        }
+        if (n == 3) {
+            $(".bar1").animate({marginLeft: "5px"}, "fast");
+            $(".bar2").animate({marginLeft: "64px"}, "fast");
+            $(".bar3").animate({marginLeft: "123px"}, "fast");
+        }
+    }
+
+    function jump(pos) {
+        document.body.scrollTop = pos;
+    }
+</script>
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

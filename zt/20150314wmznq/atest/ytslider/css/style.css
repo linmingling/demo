@@ -1,0 +1,29 @@
+﻿@charset "utf-8";
+
+/* common*/
+body {height:100%;  font: 13px/1.75 "Microsoft YaHei",Helvetia,"lucida Grande",Verdana,Arial;color:#333;}
+div, html, body, p, ul, ol, li, a, form, img, table, td, h1, h2, h3, h4, h5, h6, blockquote, header, section, footer, aside, nav, article, figure, figcaption, dl, dt, dd {margin:0;padding:0;} 
+header, section, footer, aside, nav, article, figure, figcaption {display: block;}
+table {border-collapse:collapse;}
+img {border:none;}
+ul, li {list-style:none;}
+input:focus, textarea:focus {outline:none;}
+.cf:before,.cf:after{content:"";display:table;}.cf:after{clear:both;}.cf{zoom:1;}
+.clear{height:0px; line-height:0px;clear:both;font-size:1px;}
+a,a:link{color:#333;text-decoration:none;}
+a:hover{color:red;text-decoration:underline;}
+.content{padding:20px;}
+.wrapper {width:700px;margin:auto;}
+
+
+h1 {font-size: 24px;height: 50px;line-height: 50px;margin-bottom:10px}
+h2 {font-size: 16px;line-height: 30px;height: 30px;margin-bottom: 5px;}
+h2 span {display: block; height: 30px;float: left;margin-right: 10px;}
+table{box-shadow:1px 2px 5px rgba(0,0,0,0.08);}
+table td,table th{border-collapse:collapse;}
+table td,table th{padding:5px 10px;border:1px solid #ccc;}
+table th{background:#eee;text-align:left;font-size:15px;}
+.cn {margin-bottom: 50px;}
+.pt{padding:10px;background:#f6f6f6;border-radius:5px;margin-bottom:20px;color:#666;}
+
+

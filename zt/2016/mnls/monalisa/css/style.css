@@ -1,0 +1,130 @@
+.backdrop{
+    height:7428px;
+    background:url(../images/bg.png) center top no-repeat;
+}
+.content{
+    width:1000px;
+    margin:0 auto;
+    text-align:center;
+    padding-top:780px;
+}
+.step1{
+    height:372px;
+    background:url(../images/bg1.png) center top no-repeat;
+}
+.step1_txt{
+    position:absolute;
+    margin-top:310px;
+    margin-left: 105px;
+    width:820px;
+    text-align: left;
+}
+.step1_btn{
+    float:left;
+    margin-top: 100px;
+    width:111px;
+    height:111px;
+}
+.step2_title{
+    height:123px;
+    background:url(../images/bg3.png) center top no-repeat;
+}
+.step2_txt{
+    margin-top:20px;
+    text-align:left;
+    width:125px;
+    float:left;
+}
+.step3_1{
+    height:802px;
+    width:1018px;
+    margin-top:210px;
+    background:url(../images/bg4.png) center top no-repeat;
+}
+.step3_2{
+    height:837px;
+    width:1000px;
+    background:url(../images/bg5.png) center top no-repeat;
+}
+.step3_3{
+    height:695px;
+    width:1097px;
+    background:url(../images/bg6.png) center top no-repeat;
+}
+.step3_4{
+     height:763px;
+     width:1000px;
+     background:url(../images/bg7.png) center top no-repeat;
+ }
+.step3_5{
+    height:924px;
+    width:1000px;
+    background:url(../images/bg8.png) center top no-repeat;
+}
+.more{
+    width:95px;
+    height:40px;
+    border:2px solid black;
+    font-size:16px;
+    position: absolute;
+}
+.step4_title{
+    height:375px;
+    width:1000px;
+    background:url(../images/bg9.png) center top no-repeat;
+}
+.step4_con{
+    height:414px;
+    width:1000px;
+    position: absolute;
+    margin-top: 150px;
+    background:url(../images/bg11.png) center top no-repeat;
+}
+.step5{
+    margin-top:650px;
+}
+.step5_con{
+    width:945px;
+    height:483px;
+    margin-left: 10px;
+    margin-top: 80px;
+    position:absolute;
+    z-index:4;
+    background:url(../images/b_img1.png) center top no-repeat;
+}
+.bg_mask{
+    top:0;
+    left:0;
+    height:7428px;
+    width:100%;
+    position:absolute;
+    z-index:3;
+    background-color:#000000;
+    opacity:0.5;
+    -moz-opacity:0.5;
+    filter:alpha(opacity=50);
+}
+.nav{
+    width:169px;
+    height:325px;
+    background:url(../images/nav.png);
+    position:fixed;
+    top:200px;
+    z-index: 3;
+    margin-left:1010px;
+    display:none;
+}
+@media (max-width: 1500px){
+    .nav{
+        right:10px;
+    }
+}
+.nav_d{
+    width:107px;
+    height:29px;
+    margin-left:30px;
+    margin-top:14px;
+}
+.step5_btn:hover{
+    opacity: 0.5;
+}

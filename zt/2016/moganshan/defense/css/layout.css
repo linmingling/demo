@@ -1,0 +1,22 @@
+.container{width: 100%;max-width: 1920px;min-width: 1000px;overflow-x: hidden;background:url(../img/common/bg.jpg?v=1) repeat;}
+
+.banner{height: 714px;background: url(../img/banner/bg.png?v=1) no-repeat center center;}
+.mid{margin-top:80px;}
+.mid_note{width: 1000px;height: 1223px;background: url(../img/mid/note.png?v=1) no-repeat center center;margin: 0 auto;position: relative;}
+#leafL,#leafR{position: absolute;z-index: 3;top: 0;}
+#leafL{left: -330px;top: 100px;}
+#leafR{right: -300px;top: 230px;}
+#mid_src{position: absolute;right:67px;bottom: 9px;}
+.end{margin-top: 60px;margin-bottom: 73px;}
+.norBtn{width: 25px;height: 153px;position: absolute;right: 8px;z-index: 9999;cursor: pointer;font-size: 25px;font-weight: bold;}
+#one{top: 115px;right: 20px;}
+#two{top: 298px;right: 18px;}
+#three{top: 478px;right: 18px;}
+#midplayer{position: absolute;bottom:73px;left:370px;z-index: 88;display: none;}
+#leftBtn,#rightBtn{position: absolute;bottom: 0;right: 0;cursor: pointer;}
+#leftBtn{right: 145px;}
+#rightBtn{right: 5px;}
+.norCir{width: 10px;height: 10px;display: inline-block;background-color: #fff3c0;border-radius: 50em;margin-right: 1px;}
+.active{background-color: #a88740;}
+.norCir_con{position: absolute;right: 38px;bottom: 3px;}
+

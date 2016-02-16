@@ -1,0 +1,38 @@
+.container{width: 100%;max-width: 1920px;min-width: 1000px;overflow-x: hidden;}
+.safearea{width: 1000px;margin: 0 auto;}
+.banner{background: url(../img/banner/bg.jpg) no-repeat center center;height: 786px;margin-bottom: 50px;}
+.banner_ul{position: absolute;top: 70px;right: 0px;font-size: 19px;color: #ffffff;text-shadow:2px 2px 2px #505050;}
+.banner_ul li{float: left;display: inline-block;margin-left:50px;cursor: pointer;}
+.endorsments_bg{text-indent: -80px;}
+.endorsments_vd{position: absolute;left: 30px;top: 141px;}
+.meet{margin-top: 94px;margin-bottom: 125px;}
+.meet_bg{height:459px;background: url(../img/meet/bg.png?v=4) no-repeat center center;margin-top: 39px;padding-top: 70px;}
+.meet_video{height: 20px;background: url(../img/meet/product.jpg) no-repeat center center;text-align: center;margin-top: 78px;}
+.meet_vd{margin-top: -180px;border: 7px solid #FFFFFF;}
+.meet_before{color: #f9e23c;margin: 0 auto;text-align: center;height: 318px;line-height: 3.2;}
+.meet_before h1{font-size:35px;font-weight: normal;}
+.meet_time{width: 898px;height: 167px;line-height: 167px;background: url(../img/meet/pai.png) no-repeat center center;margin: 0 auto;}
+.meet_before p{color: #FFFFFF;font-size: 22px;text-shadow:2px 2px 2px #505050;}
+.meet_before_sqday,.meet_before_sqhour{position: absolute;top: 28px;left: 340px;line-height: 0;z-index: 3;text-align: center;}
+.meet_before_sqhour{left: 565px;}
+.meet_before_sq_text{line-height: 111px;width: 117px;height: 111px;position: absolute;top: 0;left: 0;z-index: 3;font-size:80px;color: #FFFFFF;}
+.meet_border{position: absolute;left: 10px;top:83px;z-index: 99;}
+.meet_plane{position: absolute;bottom: -60px;left: 100px;}
+.meet_after{width: 890px;height: 305px;margin: 0 auto;}
+
+.prize{height: 2136px;min-width: 1000px;background: url(../img/prize/bg.jpg?v=2) no-repeat center center;}
+.prize_liucheng img{margin-top: 37px;}
+.planeL{position: absolute;left: -140px;bottom: 260px;z-index: 33;}
+.prize_border{width: 975px;height: 677px;background: url(../img/prize/border.png) no-repeat center center;margin: 0 auto;margin-top: 93px;}
+.prize_select{position: absolute;top: 51px;left: -40px;z-index: 33;}
+.prize_select li{margin-bottom: 7px;cursor:pointer;}
+#prize_detail{width: 730px;height: 497px;position: absolute;left: 193px;top: 99px;z-index: 33;}
+
+.container .nav{position: fixed;top: 50%;margin-top: -129.5px;right:36px;z-index: 99;display: none;}
+.nav_ora{width: 94px;height: 24px;line-height: 24px;background-color: #d07821;color: #FFFFFF;text-align: center;font-size: 16px;visibility:hidden;}
+.nav_common div{float: left;vertical-align: middle;line-height: 24px;}
+
+.nav_common .nav_icon{font-size: 0;margin-left: 11px;cursor: pointer;}
+.nav_con{position: absolute;width: 120px;left:-102px;top: 59px;}/*97*/
+.nav_common{margin-bottom: 13px;display: inline;float: left;}
+

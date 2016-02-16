@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/global.css" />
+		<link rel="stylesheet" href="css/layout.css" />
+
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="js/semlessNoScale.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+		<div class="container">
+			<!--banner-->
+			<div class="banner">
+				<div class="w980 relative">
+					<img src="img/banner/logo.png" class="banner_logo" />
+					<img src="img/banner/banner_tit.png" class="banner_tit" />
+					<ul id="scene" class="wh100 relative">
+						<img class="layer" src="img/banner/0.png" data-depth="0.8" style="margin-left: -190px;padding-top: 51px;" />
+						<img class="layer" src="img/banner/1.png" data-depth="0.20" style="margin-left:920px;padding-top: 291px;" />
+						<img class="layer" src="img/banner/2.png" data-depth="0.60" style="margin-left: 720px;padding-top: 51px;" />
+					</ul>
+				</div>
+			</div>
+			<!--banner-->
+			<!--one-->
+			<div class="one">
+				<div class="w1000 relative">
+					<div class="one_wra relative">
+						<img src="img/common/stone_plane.png" style="position: absolute;top: 120px;left: -150px;"/>
+						<img src="img/one/plane.png" class="one_plane" />
+					</div>
+					<div class="one_txt relative">
+						<!--onePlayerCon-->
+						<div class="onePlayerCon">
+							<div class="onePlayer relative">
+								<img src="img/common/left.png" class="left" style="position: absolute;left: -31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+								<img src="img/common/right.png" class="right" style="position: absolute;right:-31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+								<div class="seamlessWrapper" id="seamlessWrapper">
+									<div class="seamlessChild">
+										<img src="img/one/0.png" />
+									</div>
+									<div class="seamlessChild">
+										<img src="img/one/1.png" />
+									</div>
+									<div class="seamlessChild">
+										<img src="img/one/2.png" />
+									</div>
+									<div class="seamlessChild">
+										<img src="img/one/3.png" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--onePlayerCon-->
+						<div class="common_long"></div>
+					</div>
+				</div>
+			</div>
+			<!--one-->
+
+			<!--two-->
+			<div class="two">
+				<div class="w1000 relative">
+
+					<div class="two_wra relative">
+						<img src="img/common/stone_feidie.png" style="position: absolute;bottom: 90px;right: -160px;"/>
+						<img src="img/two/feidie.png" class="feidie" />
+					</div>
+					<div class="tabBg">
+						<div id="two_btn0" class="btn">
+							<img src="img/two/1_on.png" />
+							<img src="img/two/1_off.png" style="display: none;" class="off"/>
+						</div>
+						<div id="two_btn1" class="btn">
+							<img src="img/two/2_on.png" style="display: none;"/>
+							<img src="img/two/2_off.png" class="off"/>
+						</div>
+						<div id="two_btn2" class="btn">
+							<img src="img/two/3_on.png" style="display: none;"/>
+							<img src="img/two/3_off.png" class="off"/>
+						</div>
+					</div>
+					<div class="two_txt relative">
+						<!--partOneWra-->
+						<div class="partOneWra partWra" style="visibility:visible;">
+							<div class="wh100 relative">
+								<!--partOneCon-->
+								<div class="partOneCon common_two_player">
+									<div class="partOne relative">
+										<img src="img/common/left.png" class="left" style="position: absolute;left: -31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<img src="img/common/right.png" class="right" style="position: absolute;right:-31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<div class="seamlessWrapper" id="seamlessWrapper">
+											<div class="seamlessChild"><img src="img/two/0/0.png" /></div>
+											<div class="seamlessChild"><img src="img/two/0/1.png" /></div>
+											<div class="seamlessChild"><img src="img/two/0/2.png" /></div>
+											<div class="seamlessChild"><img src="img/two/0/3.png" /></div>
+											<div class="seamlessChild"><img src="img/two/0/4.png" /></div>
+											<div class="seamlessChild"><img src="img/two/0/5.png" /></div>
+											<div class="seamlessChild"><img src="img/two/0/6.png" /></div>
+											<div class="seamlessChild"><img src="img/two/0/7.png" /></div>
+											<div class="seamlessChild"><img src="img/two/0/8.png" /></div>
+											<div class="seamlessChild"><img src="img/two/0/9.png" /></div>
+											<div class="seamlessChild"><img src="img/two/0/10.png" /></div>
+											<div class="seamlessChild"><img src="img/two/0/11.png" /></div>
+										</div>
+									</div>
+								</div>
+								<!--partOneCon-->
+							</div>
+
+						</div>
+						<!--partOneWra-->
+
+						<!--partTwoWra-->
+						<!--style="visibility: visible;"-->
+						<div class="partTwoWra partWra" style="visibility: hidden;">
+							<div class="wh100 relative">
+								<div class="zhenshen">
+									揭示真身：此类抛晶砖有称抛釉砖、釉面抛光砖，其实是在坯体表面施一层耐磨透明釉，经烧成、抛光而成的。而特地的抛金砖是在抛晶砖表面增加电气镀的工艺，描上金色或者银色等，属于抛晶砖的一个种类。相对于抛晶砖来说，特地的抛金砖具有吸水率低、材质性能好的特点，又克服了彩釉砖釉上装施不耐磨、抗化学腐蚀的性能差和瓷质砖装饰方法简单的弊端。而且它采用纳米技术经过专业三度烧和多次印花工艺集合烧制而成。而微晶石侧是通过特殊的工艺烧结而成，质地均匀，密度大、硬度高，抗压、抗弯、耐冲击等性能优于天然石材，经久耐磨，不易受损，更没有天然石材常见的细碎裂纹。其中，特地极具特色的微晶玻化石更是行业首款集玻化砖、微晶石优势为一体的仿玉全通体玻化石，有着微晶石的完美饰面质感和玻化砖的卓越性能；特地•微晶玻化石不仅有着天然石材丰富的肌理，又同时兼具玉石的晶莹、温润、细腻。
+								</div>
+								<ul class="partTwoList">
+									<li class="seltxt" index="0" name="抛金砖" _src="img/two/1/paojin.png" >特地抛金砖</li>
+									<li>|</li>
+									<li class="seltxt" index="1" name="微晶石" _src="img/two/1/weijing.png">微晶石</li>
+									<li>|</li>
+									<li class="seltxt" index="2" name="玻化石" _src="img/two/1/weijing.png">微晶玻化石</li>
+								</ul>
+								<div class="listName">-抛金砖主场秀-</div>
+								<div class="product_name">抛金砖效果图</div>
+								<!--part2_1-->
+								<div class="common_two_player">
+									<div class="part21 relative">
+										<img src="img/common/left.png" class="left" style="position: absolute;left: -31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<img src="img/common/right.png" class="right" style="position: absolute;right:-31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<div class="seamlessWrapper" id="seamlessWrapper">
+											<div class="seamlessChild"><img src="img/two/1/paojin/0.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/paojin/1.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/paojin/2.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/paojin/3.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/paojin/4.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/paojin/5.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/paojin/6.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/paojin/7.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/paojin/8.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/paojin/9.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/paojin/10.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/paojin/11.png" /></div>
+										</div>
+									</div>
+								</div>
+								<!--part2_1-->
+								<!--part2_2-->
+								<div class="common_two_player" style="bottom: 430px;">
+									<div class="part22 relative">
+										<img src="img/common/left.png" class="left" style="position: absolute;left: -31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<img src="img/common/right.png" class="right" style="position: absolute;right:-31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<div class="seamlessWrapper" id="seamlessWrapper">
+											<div class="seamlessChild"><img src="img/two/1/weijin/0.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/weijin/1.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/weijin/2.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/weijin/3.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/weijin/4.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/weijin/5.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/weijin/6.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/weijin/7.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/weijin/8.png" /></div>
+										</div>
+									</div>
+								</div>
+								<!--part2_2-->
+								<!--part2_3-->
+								<div class="common_two_player" style="bottom: 430px;">
+									<div class="part23 relative">
+										<img src="img/common/left.png" class="left" style="position: absolute;left: -31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<img src="img/common/right.png" class="right" style="position: absolute;right:-31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<div class="seamlessWrapper" id="seamlessWrapper">
+											<div class="seamlessChild"><img src="img/two/1/bohua/0.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/bohua/1.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/bohua/2.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/bohua/3.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/bohua/4.png" /></div>
+											<div class="seamlessChild"><img src="img/two/1/bohua/5.png" /></div>
+										</div>
+									</div>
+								</div>
+								<!--part2_3-->
+							</div>
+						</div>
+						<!--partTwoWra-->
+
+						<!--partTwoWra-->
+						<!--style="visibility: visible;"-->
+						<div class="partThreeWra partWra" style="visibility: hidden;">
+							<div class="wh100 relative">
+								<div class="zhenshen">
+揭示真身：实际上，以上说的仿各种材质的砖，都属仿古砖，而仿古砖也属于釉面砖的一种。特地的木纹砖是仿古砖仿木质纹理的一种高档砖，它是近几年陶瓷行业在仿古砖基础上新研发出来的一种产品，但与仿古砖走的是不同的路，中国人对木的感情使得它越来越被消费者接受。而特地的大理石瓷砖具有天然大理石逼真的装饰效果和瓷砖的优越性能，摒弃天然大理石的各种天然缺陷，它是建陶行业划时代的革新者，也是现代顶级瓷砖制造工艺的代表作，是继瓷片、抛光砖、仿古砖、微晶石瓷砖之后的又一瓷砖新品类。									
+								</div>
+								<ul class="partTwoList">
+									<li class="seltxt" index="0" name="特地木纹砖" _src="img/two/1/muwen.png">特地木纹砖</li>
+									<li>|</li>
+									<li class="seltxt" index="1" name="大理石瓷砖" _src="img/two/1/dalishi.png">大理石瓷砖</li>
+								</ul>
+								<div class="listName">-特地木纹砖主场秀-</div>
+								<div class="product_name">特地木纹砖效果图</div>
+								<!--part3_1-->
+								<div class="common_two_player" style="bottom: 345px;">
+									<div class="part31 relative">
+										<img src="img/common/left.png" class="left" style="position: absolute;left: -31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<img src="img/common/right.png" class="right" style="position: absolute;right:-31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<div class="seamlessWrapper" id="seamlessWrapper">
+											<div class="seamlessChild"><img src="img/two/2/muwen/0.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/muwen/1.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/muwen/2.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/muwen/3.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/muwen/4.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/muwen/5.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/muwen/6.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/muwen/7.png" /></div>
+										</div>
+									</div>
+								</div>
+								<!--part3_1-->
+								<!--part3_2-->
+								<div class="common_two_player" style="bottom: 370px;">
+									<div class="part32 relative">
+										<img src="img/common/left.png" class="left" style="position: absolute;left: -31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<img src="img/common/right.png" class="right" style="position: absolute;right:-31px;top: 50%;margin-top: -20px;z-index: 99;cursor: pointer;" />
+										<div class="seamlessWrapper" id="seamlessWrapper">
+											<div class="seamlessChild"><img src="img/two/2/dalishi/0.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/dalishi/1.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/dalishi/2.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/dalishi/3.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/dalishi/4.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/dalishi/5.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/dalishi/6.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/dalishi/7.png" /></div>
+											<div class="seamlessChild"><img src="img/two/2/dalishi/8.png" /></div>
+										</div>
+									</div>
+								</div>
+								<!--part3_2-->
+							</div>
+						</div>
+						<!--partTwoWra-->
+						<div class="common_long"></div>
+					</div>
+				</div>
+			</div>
+			<!--two-->
+			<div class="end">
+				<div class="w980">
+					<div style="width: 973px;height: 253px;background: url(img/end/tit.png) no-repeat;">
+						<div class="wh100 relative">
+							<img src="img/common/stoneend.png" style="position: absolute;left: -300px;top: 0;"/>
+							<img src="img/common/stoneend2.png" style="position: absolute;bottom: -320px;right: 100px;"/>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+
+		</div>
+		<script type="text/javascript" src="js/jquery.parallax.js"></script>
+		<script>
+			$('#scene').parallax();
+			$("html,body").bind("mousewheel", function() {
+				var scrollTop = document.documentElement.scrollTop + document.body.scrollTop;
+				if (scrollTop > $(".one").offset().top - 250) {
+					$(".one_plane").css({
+						"transform": "scale(1)",
+						"opacity": 1
+					})
+				}
+				if (scrollTop > $(".two").offset().top - 250) {
+					$(".feidie").css({
+						"transform": "scale(1)",
+						"opacity": 1
+					})
+				}
+			});
+			var partOne = function() {
+				var sm = $(".onePlayer").semlessNoScale({
+					"mode": "hor",
+					"vis": 3, //显示几个
+					"normal": [254, 210], //常规图片size
+					"margin": 0, //图片相邻的边距
+					//				"imgborder": "0px solid red",//图片是否需要边框
+					"spd": 500 //切换速度
+				});
+				
+				$(".common_long").semless()
+			};
+			var partTwo = function() {
+				$("#two_btn0").click(function() {
+					$(".btn").find("img").hide();
+					$(".off").show();
+					$(this).find("img").eq(0).show();
+					$(this).find("img").eq(1).hide();
+					$(".partWra").css("visibility", "hidden");
+					$(".common_two_player").css("visibility","hidden");
+					$(".partOneWra .common_two_player").css("visibility", "visible");
+					$(".partOneWra").css("visibility", "visible");
+					$(".two_txt").css("background-image", "url(img/two/0/txtBg.png)");
+					$(".two .common_long").css("background-image","url(img/two/1/quanpao.png)");
+				});
+				$("#two_btn1").click(function() {
+					$(".btn").find("img").hide();
+					$(".off").show();
+					$(this).find("img").eq(0).show();
+					$(this).find("img").eq(1).hide();
+					
+					$(".partWra").css("visibility", "hidden");
+					$(".partTwoWra").css("visibility", "visible");
+					$(".common_two_player").css("visibility", "hidden");
+					$(".partTwoWra .common_two_player").eq(0).css("visibility","visible");
+					$(".partTwoWra .listName").html("-"+"特地抛金砖"+"主场秀-");
+					$(".partTwoWra .product_name").html("特地抛金砖效果图");
+					$(".two_txt").css("background-image", "url(img/two/1/txtBg.png)");
+					$(".two .common_long").css("background-image","url(img/two/1/paojin.png)");
+				});
+				$("#two_btn2").click(function() {
+					$(".btn").find("img").hide();
+					$(".off").show();
+					$(this).find("img").eq(0).show();
+					$(this).find("img").eq(1).hide();
+					$(".partWra").css("visibility", "hidden");
+					$(".partThreeWra").css("visibility", "visible");
+					$(".common_two_player").css("visibility", "hidden");
+					$(".partThreeWra .common_two_player").eq(0).css("visibility","visible");
+					$(".two_txt").css("background-image", "url(img/two/2/txtBg.png)");
+					$(".partThreeWra .listName").html("-特地木纹砖主场秀-");
+					$(".partThreeWra .product_name").html("特地木纹砖效果图");	
+					$(".two .common_long").css("background-image","url(img/two/1/muwen.png)")
+				});
+				$(".partTwoWra .seltxt").bind("mouseenter",function(){
+					var q=parseInt($(this).attr("index"));
+					$(".partTwoWra .common_two_player").css("visibility","hidden");
+					$(".partTwoWra .common_two_player").eq(q).css("visibility","visible");
+					$(".partTwoWra .listName").html("-"+$(this).html()+"主场秀-");
+					$(".partTwoWra .product_name").html($(this).attr("name")+"效果图");
+					console.log($(this).attr("_src"))
+					$(".two .common_long").css("background-image","url("+$(this).attr("_src")+")")
+				});
+				$(".partThreeWra .seltxt").bind("mouseenter",function(){
+					var q=parseInt($(this).attr("index"));
+					$(".partThreeWra .common_two_player").css("visibility","hidden");
+					$(".partThreeWra .common_two_player").eq(q).css("visibility","visible");
+					$(".partThreeWra .listName").html("-"+$(this).html()+"主场秀-");
+					$(".partThreeWra .product_name").html($(this).attr("name")+"效果图");
+					$(".two .common_long").css("background-image","url("+$(this).attr("_src")+")")
+				});
+			
+				var a = $(".two .partOne").semlessNoScale({
+					"mode": "hor",
+					"vis": 3, //显示几个
+					"normal": [247, 208], //常规图片size
+					"margin": 0, //图片相邻的边距
+					//				"imgborder": "0px solid red",//图片是否需要边框
+					"spd": 500 //切换速度
+				});
+				var p21 = $(".two .part21").semlessNoScale({
+					"mode": "hor",
+					"vis": 3, //显示几个
+					"normal": [253, 230], //常规图片size
+					"margin": 0, //图片相邻的边距
+					//				"imgborder": "0px solid red",//图片是否需要边框
+					"spd": 500 //切换速度
+				});
+				var p22 = $(".two .part22").semlessNoScale({
+					"mode": "hor",
+					"vis": 3, //显示几个
+					"normal": [249, 207], //常规图片size
+					"margin": 0, //图片相邻的边距
+					//				"imgborder": "0px solid red",//图片是否需要边框
+					"spd": 500 //切换速度
+				});
+				var p23 = $(".two .part23").semlessNoScale({
+					"mode": "hor",
+					"vis": 3, //显示几个
+					"normal": [249, 207], //常规图片size
+					"margin": 0, //图片相邻的边距
+					//				"imgborder": "0px solid red",//图片是否需要边框
+					"spd": 500 //切换速度
+				});
+				var p31 = $(".two .part31").semlessNoScale({
+					"mode": "hor",
+					"vis": 3, //显示几个
+					"normal": [257, 265], //常规图片size
+					"margin": 0, //图片相邻的边距
+					//				"imgborder": "0px solid red",//图片是否需要边框
+					"spd": 500 //切换速度
+				});
+				var p32= $(".two .part32").semlessNoScale({
+					"mode": "hor",
+					"vis": 3, //显示几个
+					"normal": [245, 208], //常规图片size
+					"margin": 0, //图片相邻的边距
+					//				"imgborder": "0px solid red",//图片是否需要边框
+					"spd": 500 //切换速度
+				});
+			}
+			partOne();
+			partTwo();
+		</script>
+		<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->	
+<!--#include virtual="/public/tongji.html"-->
+	</body>
+
+</html>

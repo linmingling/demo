@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no, email=no" />
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="HandheldFriendly" content="true">
+		<meta name="MobileOptimized" content="640">
+		<meta name="screen-orientation" content="portrait">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="browsermode" content="application">
+		<meta name="x5-page-mode" content="app">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="width=640,target-densitydpi=device-dpi,maximum-scale=1.0, user-scalable=no">
+		<script type="text/javascript">
+			function setWidth(a) {
+				if (/Andriod/i.test(navigator.userAgent)) {
+					var c, b = window.innerWidth;
+					(b != a) && (c = b / a), document.addEventListener("DOMContentLoaded", function() {
+						var d = document.getElementsByTagName("body")[0];
+						d.style.webkitTransformOrigin = "left top";
+						d.style.webkitTransform = "scale(" + c + ")";
+					}, !1)
+				}
+			}
+			setWidth(640);
+		</script>
+		<link rel="stylesheet" href="css/global.css" />
+		<link rel="stylesheet" href="css/swiper.css" />
+		<link rel="stylesheet" href="css/animate.min.css" />
+		<link rel="stylesheet" href="css/layout.css?v=2.0" />
+		<link rel="stylesheet" href="css/spinners.css" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+
+		<script type="text/javascript" src="js/wx_common.js"></script>
+		<script>
+			window.onload=function(){
+				var soundRes = [{
+					name: "bg",
+					src: "sound/bg.mp3",
+					loop: true,
+					autoplay: true
+				}];
+				var SoundPlayer = {
+					total: soundRes.length,
+					count: 0,
+					autoplayArr:[],
+					play: function(res) {
+						SoundPlayer[res].play();
+					},
+					pause: function(res) {
+						SoundPlayer[res].pause();
+					},
+					replay: function(res) {
+						SoundPlayer[res].currentTime = 0;
+						SoundPlayer[res].play();
+					},
+					onLoop: function(res) {
+						SoundPlayer[res].loop = true;
+					},
+					noLoop: function(res) {
+						SoundPlayer[res].loop = false;
+					}
+				};
+				WxLoadAudio(soundRes);
+				function WxLoadAudio(res, progress, complete) {
+					var first = res.shift();
+					if (first == undefined) {
+						if (complete) {
+							complete();
+						}
+						SoundPlayer.autoplayArr[0].play();
+						return false;
+					}
+					var audioElement = new Audio(first.src);
+					audioElement.loop = first.loop;
+					document.body.appendChild(audioElement);
+					audioElement.play();
+					audioElement.addEventListener("loadedmetadata", loadedmetadataFn);
+					audioElement.addEventListener("canplaythrough", canplaythroughFn);
+					function loadedmetadataFn() {
+						audioElement.pause();
+						audioElement.currentTime = 0;
+					}
+					function canplaythroughFn() {
+						audioElement.removeEventListener("loadeddata", loadedmetadataFn);
+						audioElement.removeEventListener("canplaythrough", canplaythroughFn);
+						SoundPlayer.count += 1;
+						SoundPlayer[first.name] = audioElement;
+						if(first.autoplay){
+							SoundPlayer.autoplayArr[0]=audioElement;
+						}
+						if (progress) {
+							progress(SoundPlayer.count, SoundPlayer.total);
+						}
+						WxLoadAudio(res, progress, complete);
+					}
+				};				
+			}
+		</script>
+		<title></title>
+	</head>
+
+	<body>
+		<div style="position: fixed;z-index: 9999;top: 0;left:0;right: 0;bottom: 0;background-color: #37bcda;" id="loadCon">
+			<div class="n_wrapper ver">
+				<span class="spinner-loader">Loading&#8230;</span>
+				<p>加载中</p>
+			</div>
+		</div>
+		<div class="container">
+
+			<div class="swiper-container n_wrapper screen">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide pg1 relative">
+						<img src="img/pg1/1.jpg" style="display: none;"/>
+						<div class="shitCon">
+						<img src="img/pg1/logo.png" class="pg1_logo ani" swiper-animate-effect="zoomInDown" swiper-animate-duration="1s" swiper-animate-delay="0s"/>
+						<img src="img/pg1/zhudan.png" class="pg1_zhudan ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="1s"/>
+						<img src="img/pg1/danname.png" class="pg1_danname ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1s" swiper-animate-delay="2s"/>
+						<img src="img/pg1/tit.png" class="pg1_tit ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="1s" swiper-animate-delay="1s"/>
+						<img src="img/common/logof.png" class="common_bot" />
+						</div>
+					</div>
+					<div class="swiper-slide pg2 ver relative">
+						<img src="img/pg2/2.jpg" style="display: none;"/>
+						<img src="img/common/logoh.png" class="common_tit" />
+						<div style="width: 552px;height: 700px;">
+							<p class="t_center" class="pg2_tit"><img src="img/pg2/tit.png" class="ani"  swiper-animate-effect="bounceIn" swiper-animate-duration="1s" swiper-animate-delay="0s"/></p>
+							<div class="pg2_icon">
+								<img src="img/pg2/0.png" class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="1s"/>
+								<img src="img/pg2/1.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="1s"/>
+								<img src="img/pg2/2.png" class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="1s"/>
+								<img src="img/pg2/3.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="1s"/>
+								<img src="img/pg2/4.png" class="ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="1s"/>
+								<img src="img/pg2/5.png" class="ani" swiper-animate-effect="fadeInRight" swiper-animate-duration=".7s" swiper-animate-delay="1s"/>
+							</div>
+						</div>
+						<img src="img/common/logof.png" class="common_bot" />
+					</div>
+					<div class="swiper-slide pg3 relative">
+						<img src="img/pg3/3.jpg" style="display: none;"/>
+						<img src="img/common/logoh.png" class="common_tit" />
+						<img src="img/common/logof.png" class="common_bot" />
+						<img src="img/pg3/text.png" class="pg3_text ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration=".7s" swiper-animate-delay="0s"/>
+						<img src="img/pg3/luo.png" class="pg3_luo ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="1s" swiper-animate-delay="0s"/>
+						<img src="img/pg3/bot.png" class="pg3_bot ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1s" swiper-animate-delay=".7s"/>
+					</div>
+					<div class="swiper-slide pg4 relative">
+						<img src="img/pg4/4.jpg" style="display: none;"/>
+						<img src="img/common/logoh.png" class="common_tit" />
+						<img src="img/common/logof.png" class="common_bot" />
+						<div class="pg4_wra">
+							<div class="n_wrapper relative" id="divCon" style="display: none;"> 
+								<div class="scaleDiv" style="position: absolute;left:100px;top: 30px;"></div>
+								<div class="scaleDiv" style="position: absolute;left: 300px;top: 20px;"></div>
+								<div class="scaleDiv" style="position: absolute;left: 180px;top:320px;"></div>
+								<div class="scaleDiv" style="position: absolute;left: 400px;top:280px;"></div>
+								<div class="scaleDiv" style="position: absolute;left: 320px;top:220px;"></div>
+								<div class="scaleDiv" style="position: absolute;left: 480px;top:100px;"></div>
+								<div class="scaleDiv" style="position: absolute;left: 80px;top:180px;"></div>
+								<div class="scaleDiv" style="position: absolute;left: 0px;top:280px;"></div>
+							</div>
+						</div>					
+						<img src="img/pg4/fireBtn.png" class="fireBtn" />
+						<img src="img/pg4/pin.png" class="pin" />
+					</div>
+					<div class="swiper-slide pg5 relative">
+						<img src="img/pg5/5.jpg" style="display: none;"/>
+						<img src="img/common/logoh.png" class="common_tit" />
+						<img src="img/common/logof.png" class="common_bot" />
+						<div class="pg5_wra">
+							<div class="n_wrapper relative">
+								<img src="img/pg5/tit.png" class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1s" swiper-animate-delay="0s"/>
+								<img src="img/pg5/mid.png" class="mid ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay=".8s"/>
+								<img src="img/pg5/0.png" class="pg5_0 ani" swiper-animate-effect="bounceIn" swiper-animate-duration=".8s" swiper-animate-delay="1.6s"/>
+								<img src="img/pg5/1.png" class="pg5_1 ani" swiper-animate-effect="bounceIn" swiper-animate-duration=".8s" swiper-animate-delay="1.6s"/>
+								<img src="img/pg5/2.png" class="pg5_2 ani" swiper-animate-effect="bounceIn" swiper-animate-duration=".8s" swiper-animate-delay="1.6s"/>
+								<img src="img/pg5/3.png" class="pg5_3 ani" swiper-animate-effect="bounceIn" swiper-animate-duration=".8s" swiper-animate-delay="1.6s"/>
+								<img src="img/pg5/4.png" class="pg5_4 ani" swiper-animate-effect="bounceIn" swiper-animate-duration=".8s" swiper-animate-delay="1.6s"/>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide pg6">
+						<div class="n_wrapper relative ver">
+							<img src="img/pg6/6.jpg" style="display: none;"/>
+							<img src="img/common/logoh.png" class="common_tit" />
+							<img src="img/common/logof.png" class="common_bot" />
+							<div class="pg6_wra">
+								<img src="img/pg6/tit.png" class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1s" swiper-animate-delay="0s"/>
+								<div class="city_con">
+									<div class="city swiper-container n_wrapper" style="overflow: hidden;">
+										<div class="swiper-wrapper" >
+											<div class="swiper-slide" style="">
+												<div class="citydiv">北京</div>
+												<div class="citydiv">天津</div>
+												<div class="citydiv">上海</div>
+												<div class="citydiv" style="margin-right: 0;">沧州</div>
+												<div class="citydiv">承德</div>
+												<div class="citydiv">秦皇岛</div>
+												<div class="citydiv">邢台</div>
+												<div class="citydiv" style="margin-right: 0;">石家庄</div>
+												<div class="citydiv">衡水</div>
+												<div class="citydiv">邯郸</div>
+												<div class="citydiv">唐山</div>
+												<div class="citydiv" style="margin-right: 0;">张家口</div>
+												<div class="citydiv">廊坊</div>
+												<div class="citydiv">保定</div>
+												<div class="citydiv">哈尔滨</div>
+												<div class="citydiv" style="margin-right: 0;">佳木斯</div>
+												<div class="citydiv">齐齐哈尔</div>
+												<div class="citydiv">绥化</div>
+												<div class="citydiv">济南</div>
+												<div class="citydiv" style="margin-right: 0;">青岛</div>
+												<div class="citydiv">淄博</div>
+												<div class="citydiv">东营</div>
+												<div class="citydiv">滨州</div>
+												<div class="citydiv" style="margin-right: 0;">聊城</div>
+												<div class="citydiv">菏泽</div>
+												<div class="citydiv">德州</div>
+												<div class="citydiv">潍坊</div>
+												<div class="citydiv" style="margin-right: 0;">泰安</div>
+												<div class="clear"></div>
+											</div>
+											<div class="swiper-slide">
+												<div class="citydiv">烟台</div>
+												<div class="citydiv">太原</div>
+												<div class="citydiv">太原</div>
+												<div class="citydiv" style="margin-right: 0;">太原</div>
+												<div class="citydiv">晋城</div>
+												<div class="citydiv">临汾</div>
+												<div class="citydiv">忻州</div>
+												<div class="citydiv" style="margin-right: 0;">阳泉</div>
+												<div class="citydiv">乐山</div>
+												<div class="citydiv">绵阳</div>
+												<div class="citydiv">南充</div>
+												<div class="citydiv" style="margin-right: 0;">自贡</div>
+												<div class="citydiv">常州</div>
+												<div class="citydiv">黄山</div>
+												<div class="citydiv">昆明</div>
+
+												<div class="clear"></div>
+											</div>
+										</div>	
+									</div>
+								</div>
+								<p class="t_center"><img src="img/pg6/hand.png" class="handTip"/></p>
+								<div style="width: 389px;margin: 0 auto;">
+									<img src="img/pg6/hesui.png" id="hesui"  class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay=".8s"/>
+									<img src="img/pg6/shuaidan.png" id="shuaidan" style="float: right;"  class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration=".8s" swiper-animate-delay=".8s"/>
+									<div class="clear"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide pg7 relative">
+						<img src="img/pg7/7.jpg" style="display: none;"/>
+						<img src="img/common/logoh.png" class="common_tit" />
+						<img src="img/common/logof.png" class="common_bot" />
+						<div class="pg7_wra">
+							<p class="t_center"><img src="img/pg7/0.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay="0s"/></p>
+							<p class="t_right"><img src="img/pg7/1.png" class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="1s" swiper-animate-delay=".8s"/></p>
+							<img src="img/pg7/2.png" class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1s" swiper-animate-delay="1.8s"/>
+						</div>
+					</div>
+					<div class="swiper-slide pg8 relative">
+						<img src="img/pg8/8.jpg" style="display: none;"/>
+						<img src="img/common/logoh.png" class="common_tit" />
+						<img src="img/common/logof.png" class="common_bot" />
+						<div class="pg8_wra">
+							<p class="t_center"><img src="img/pg8/0.png" class="ani" swiper-animate-effect="pulse" swiper-animate-duration="1s" swiper-animate-delay="0"/></p>
+							<p class="t_center"><img src="img/pg8/1.png" class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s" swiper-animate-delay="1s"/></p>
+							<p class="t_center"><img src="img/pg8/2.png" class="ani" swiper-animate-effect="bounceIn" swiper-animate-duration="1s" swiper-animate-delay="3s"/></p>
+							<p class="t_center"><img src="img/pg8/3.png" class="ani" swiper-animate-effect="bounceInUp" swiper-animate-duration="1s" swiper-animate-delay="2s"/></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+				<script type="text/javascript" src="js/swiper.3.1.7.min.js"></script>
+		<script type="text/javascript" src="js/swiper.animate1.0.2.min.js" ></script>
+		<script>
+			var arr=[.8,.6,.4,.2,0];
+			var mySwiper = new Swiper('.screen', {
+				direction: 'vertical',
+				resistanceRatio: 0,
+				updateOnImagesReady:true,
+				onImagesReady: function(swiper){
+					setTimeout(function(){
+						$("#loadCon").hide();
+						swiperAnimateCache(swiper); //隐藏动画元素 
+						swiperAnimate(swiper); 
+					},1000);
+    			},
+				onSlideChangeEnd: function(swiper) {
+					if(swiper.activeIndex==3){
+						$("#divCon").show();
+					}
+					swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+				}
+			});
+			var city=new Swiper(".city",{
+				direction:'horizontal',
+				resistanceRatio: 0,
+				pagination : '.swiper-pagination',
+			});
+			
+						$(".scaleDiv").each(function(){
+							$(this).css("-webkit-animation-delay",arr[$.ranNum(0,arr.length-1)]+"s");
+							$(this).addClass("scaleAni");
+						})
+			$(".scaleDiv").bind("webkitAnimationEnd",function(){
+				$(this).removeClass("scaleAni");
+				$(this)[0].offsetWidth=$(this)[0].offsetWidth;
+				$(this).addClass("scaleAni");
+				$(this).css("-webkit-animation-delay",arr[$.ranNum(0,arr.length-1)]+"s");
+			})
+			$("#hesui").bind(Event.MOUSEUP,function(){
+				window.location.href="http://zt.jia360.com/2016/qmjjg/report3/index.php?from=timeline&isappinstalled=0";
+			});
+			$("#shuaidan").bind(Event.MOUSEUP,function(){
+				window.location.href="http://zt.jia360.com/qmjjg_zj/index.php?from=timeline&isappinstalled=0";
+			});			
+		</script>
+		<!--#include virtual="/public/tongji.html"-->
+	</body>
+	</html>

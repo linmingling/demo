@@ -1,0 +1,58 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video,ol {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    font-family: "Microsoft Yahei";
+    vertical-align:baseline;
+    list-style: none;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+    font-family: "微软雅黑";
+    ;
+    /* overflow-y: hidden; */
+}
+body{background:url(../img/bg.jpg) center no-repeat;height:900px;background-size:170%;}
+.contant,.contant2{height: 640px;width:1080px; position: absolute; top: 50%;margin-top:-360px;left: 50%;margin-left: -540px;}
+.ticket,.ticket2{position: absolute;bottom:116px;left:94px;}
+.ticket li,.ticket2 li{height:1px; float:left; width:138px;margin-left: 54px;position: absolute;bottom:-8px; }
+
+.onemath,.twomath,.threemath,.onemath2,.twomath2,.threemath2{position: absolute;top:-60px;width:138px; text-align: center;color:#fff;font-size: 30px;}
+.one,.one2{background:url(../images/zhu_03.png) no-repeat; background-size: 100%;}
+.two,.two2{background:url(../images/zhu2_03.png) no-repeat;  left:325px; height:100px;background-size: 100%;}
+.three,.three2{background:url(../images/zhu3_05.png) no-repeat;left:646px;background-size: 100%;}
+.company,.company2{position: absolute;bottom: -22px;left:102px;}
+.company li,.company2 li{float: left;text-align: center;color: #000; width:224px; height:149px;margin-right: 102px;}
+.company li:nth-of-type(1){background:url(../images/conpany_03.png);}
+.company li:nth-of-type(2){background:url(../images/conpany_05.png);}
+.company li:nth-of-type(3){background:url(../images/conpany_07.png);}
+
+.company2 li:nth-of-type(1){background:url(../images/conpany_03.png);}
+.company2 li:nth-of-type(2){background:url(../images/conpany_05.png);}
+.company2 li:nth-of-type(3){background:url(../images/conpany_07.png);}
+
+.btn,.btn2{position: absolute;border-radius: 3px;border:none;color: #fff;cursor: pointer; }
+.btn{display:none;left:50%;margin-left: -156px;top: 180px;}
+.btn2{top: 160px;left:50%;margin-left:-106px ;}
+.contant2{display: none;}
+.clock{height:150px;width: 150px;position: absolute;left: 50%;top:60px;margin-left: -75px; line-height: 150px;text-align: center;color:#fff;font-size: 100px; display:none;}
+.btn3{position: absolute;left:50%;margin-left: -156px; border-radius: 3px;border:none;color: #fff;cursor: pointer;top: 180px;}
+.one_people{height:20px;width:20px;background:red; margin-left: 20px;margin-top: 30px;position: relative;display:none;}
+.one_name,.two_name,.three_name{line-height:96px; font-size: 30px; font-weight: bold;}
+
+.two_people{height:20px;width:20px;background:yellow;margin-left: 20px;margin-top: 30px;position: relative;display:none;}
+/*.two_name{width:80px; height:30px;line-height: 20px;position: absolute; right:-100px;}*/
+.three_people{height:20px;width:20px;background:green;margin-left: 20px;margin-top: 30px;position: relative;display:none;}
+/*.three_name{width:80px; height:30px;line-height: 20px;position: absolute; right:-100px;}*/
+.special{margin: 0 auto;color:#ffde00; font-size: 34px;position: absolute;left: 50%;top:20px;margin-left: -52px;font-weight: bold;}

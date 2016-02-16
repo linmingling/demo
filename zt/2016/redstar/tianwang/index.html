@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/global.css?v=4" />
+		<link rel="stylesheet" href="css/layout.css?v=4" />
+		<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<title>天王之旅 舒适之选</title>
+		<style>
+			.liveplayer {
+				width: 890px;
+				height: 305px;
+				line-height: 305px;
+				overflow: hidden;
+				margin: 0 auto;
+				font-size: 0;
+			}
+			
+			.seamlessWrapper {
+				position: relative;
+				/*overflow: hidden;*/
+			}
+			.seamlessWrapper img{
+				vertical-align: middle;
+				width: 100%;
+				}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="nav relative">
+				<img src="img/nav/bg.png?v=4" />
+				<img src="img/nav/totop.png" style="position: absolute;bottom: 0;cursor: pointer;z-index: 9;" id="totop" />
+				<div class="nav_con">
+					<div class="nav_common">
+						<div class="nav_ora" style="visibility: visible;">首页</div>
+						<div class="nav_icon" index="0"><img src="img/nav/on.png" /></div>
+					</div>
+					<div class="nav_common">
+						<div class="nav_ora">天王之旅</div>
+						<div class="nav_icon" index="1"><img src="img/nav/off.png" /></div>
+					</div>
+					<div class="nav_common">
+						<div class="nav_ora">天王之约</div>
+						<div class="nav_icon" index="2"><img src="img/nav/off.png" /></div>
+					</div>
+					<div class="nav_common">
+						<div class="nav_ora">天王豪礼</div>
+						<div class="nav_icon" index="3"><img src="img/nav/off.png" /></div>
+					</div>
+				</div>
+			</div>
+			<!--banner-->
+			<div class="banner offset">
+				<div class="safearea relative">
+					<ul class="banner_ul">
+						<li><strong>首页 </strong></li>
+						<li><strong>天王之旅</strong></li>
+						<li><strong>天王之约</strong></li>
+						<li><strong>天王豪礼</strong></li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!--banner-->
+			<!--endorsments-->
+			<div class="endorsments offset">
+				<div class="safearea relative">
+					<div class="t_c endorsments_bg relative">
+						<img src="img/endorsments/bg.png" />
+						<iframe class="endorsments_vd" scrolling="no" frameborder="0" width="400" height="300" src="http://v.qq.com/iframe/player.html?vid=r0178ieb3o2&tiny=0&auto=0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+			<!--endorsments-->
+			<!--meet-->
+			<div class="meet offset">
+				<div class="t_c"><img src="img/meet/tit.png" /></div>
+				<div class="meet_bg relative">
+					<!--meet_before-->
+					<!--<div class="meet_before">
+						<h1>2016芝华仕<strong>品牌大使发布会</strong></h1>
+						<div class="meet_time relative">
+							<img src="img/meet/border.jpg" class="meet_border" />
+							<img src="img/meet/time.png" />
+							<div class="meet_before_sqday">
+								<img src="img/meet/sq.png" />
+								<div class="meet_before_sq_text" id="sq_day"></div>
+							</div>
+							<div class="meet_before_sqhour">
+								<img src="img/meet/sq.png" />
+								<div class="meet_before_sq_text" id="sq_hour"></div>
+							</div>
+						</div>
+						<p><strong>天王巨星亲临现场  </strong> | 上海•红星美凯龙沪南店</p>
+					</div>-->
+					<!--meet_before-->
+					<div class="meet_after relative">
+						<img src="img/meet/lef.png" id="right" style="position: absolute;left:-60px;top: 50%;margin-top: -20px;z-index: 999;cursor: pointer;"/>
+						<img src="img/meet/rig.png" id="left" style="position: absolute;right:-60px;top: 50%;margin-top: -20px;z-index: 999;cursor: pointer;"/>
+		<div class="liveplayer relative">
+			
+			<div class="seamlessWrapper real" id="seamlessWrapper">
+				<div>
+					<img src="img/meet/after/0.jpg?v=1" />
+				</div>
+				<div>
+					<img src="img/meet/after/1.jpg?v=1" />
+				</div>
+				<div class="active">
+					<img src="img/meet/after/2.jpg?v=1" />
+				</div>
+				<div>
+					<img src="img/meet/after/3.jpg?v=1" />
+				</div>
+				<div>
+					<img src="img/meet/after/4.jpg?v=1" />
+				</div>
+				<div>
+					<img src="img/meet/after/5.jpg?v=1" />
+				</div>
+				<div>
+					<img src="img/meet/after/6.jpg?v=1" />
+				</div>
+				<div>
+					<img src="img/meet/after/7.jpg?v=1" />
+				</div>	
+				<div>
+					<img src="img/meet/after/8.jpg?v=1" />
+				</div>			
+				<div>
+					<img src="img/meet/after/9.jpg?v=1" />
+				</div>
+				<div>
+					<img src="img/meet/after/10.jpg?v=1" />
+				</div>				
+			</div>
+		</div>						
+					</div>
+					<div class="meet_common">
+						<img src="img/meet/plane.png" class="meet_plane" />
+
+					</div>
+				</div>
+				<div class="meet_video relative">
+					<iframe class="meet_vd" scrolling="no" frameborder="0" width="389" height="292" src="http://v.qq.com/iframe/player.html?vid=j0178r00gem&tiny=0&auto=0" allowfullscreen></iframe>
+				</div>
+			</div>
+			<!--meet-->
+			<!--prize-->
+			<div class="prize relative offset">
+				<div class="t_c prize_liucheng">
+					<img src="img/prize/liucheng.png" />
+				</div>
+				<img src="img/prize/planeL.png" class="planeL" />
+				<div class="prize_border relative">
+					<ul class="prize_select">
+						<li><img src="img/prize/1_on.jpg" /></li>
+						<li><img src="img/prize/2_off.jpg" /></li>
+						<li><img src="img/prize/3_off.jpg" /></li>
+						<li><img src="img/prize/4_off.jpg" /></li>
+						<li><img src="img/prize/5_off.jpg" /></li>
+						<li><img src="img/prize/6_off.jpg" /></li>
+						<li><img src="img/prize/7_off.jpg" /></li>
+					</ul>
+					<div id="prize_detail">
+						<img src="img/prize/det/1.png?v=4" width="730" height="497" id="prize_detail_img" />
+					</div>
+				</div>
+			</div>
+			<!--prize-->
+		</div>
+		<script>
+			(function() {
+				$(window).bind("mousewheel", function(e) {
+					$("html,body").stop();
+					var scrollTop = document.documentElement.scrollTop + document.body.scrollTop;
+					if (scrollTop > 600) {
+						$(".container .nav").show();
+					} else {
+						$(".container .nav").hide();
+					}
+				});
+				var offsetArr = [];
+				$(".offset").each(function() {
+					offsetArr.push($(this).offset().top);
+				});
+				$(".nav_icon").bind("mouseenter", function() {
+					$(".nav_ora").css("visibility", "hidden");
+					$(".nav_icon").find("img").attr("src", "img/nav/off.png");
+					$(this).parent().find(".nav_ora").css("visibility", "visible");
+					$(this).find("img").attr("src", "img/nav/on.png");
+				});
+				$(".nav_icon").click(function() {
+					var index = parseInt($(this).attr("index"));
+					$("html,body").animate({
+						"scrollTop": offsetArr[index]
+					});
+				});
+				$(".banner_ul li").click(function() {
+					$("html,body").animate({
+						"scrollTop": offsetArr[$(this).index()]
+					});
+				})
+				$("#totop").click(function() {
+					$("html,body").animate({
+						"scrollTop": offsetArr[0]
+					});
+				});
+			})();
+			(function() {
+				function check(i) {
+					if (i < 10) {
+						var d = "0" + i;
+						return d;
+					} else {
+						return i
+					}
+				}
+
+				function count_down(o) {
+					var www_qsyz_net = /^[\d]{4}-[\d]{1,2}-[\d]{1,2}( [\d]{1,2}:[\d]{1,2}(:[\d]{1,2})?)?$/ig,
+						str = '',
+						conn, s;
+					if (!o.match(www_qsyz_net)) {
+						alert('参数格式为2012-01-01[ 01:01[:01]].\r其中[]内的内容可省略');
+						return false;
+					}
+					var sec = (new Date(o.replace(/-/ig, '/')).getTime() - new Date().getTime()) / 1000;
+					if (sec > 0) {
+						conn = '还有';
+					} else {
+						conn = '已过去';
+						sec *= -1;
+					}
+					s = {
+						day: check(parseInt(sec / 24 / 3600)),
+						hour: check(parseInt(sec / 3600 % 24)),
+						min: check(parseInt(sec / 60 % 60)),
+						secs: check(parseInt(sec % 60))
+					};
+					for (i in s) {
+						if (Math.floor(s[i]) > 0) str += Math.floor(s[i]) + i;
+					}
+					if (Math.floor(sec) == 0) {
+						str = '0秒';
+					}
+					$("#sq_day").html(s.day);
+					$("#sq_hour").html(s.hour);
+					setTimeout(function() {
+						count_down(o)
+					}, 60000);
+				}
+				count_down('2016-01-17 14:00');
+			})();
+			(function() {
+				var now = 1;
+				var pre = 1;
+				var inside = true;
+				var parentNode = $(".prize_select li");
+				parentNode.bind("mouseenter", function() {
+					now = $(this).index() + 1;
+					if (now == pre) {
+						return false;
+					}
+					$(this).find("img").attr("src", "img/prize/" + now + "_on.jpg");
+					$("#prize_detail_img").attr("src", "img/prize/det/" + now + ".png?v=4")
+					parentNode.eq(pre - 1).find("img").attr("src", "img/prize/" + pre + "_off.jpg");
+					pre = now;
+				});
+			})();
+			(function(){
+			var miniSize = [156, 209];
+			var maxSize = [226, 305];
+			var index = 0;
+			var spd = 500;
+			var width = 156;
+			var active = 2;
+			var queueArr = [];
+			var canClick = false;
+			var margin = 10;
+			var posArr = [];
+			var seamlessDiv=$(".seamlessWrapper div");
+			var sumIndex = seamlessDiv.size() + 1;
+			var maxIndex = seamlessDiv.size() - 1;
+			
+			seamlessDiv.each(function(i) {
+				var index = i - 1;
+				if (i == 0) {
+					var left = 0;
+				} else {
+					var left =seamlessDiv.eq(index).position().left + seamlessDiv.eq(index).width() + margin;
+				}
+				if ($(this).hasClass("active")) {
+					var isActive=true;
+				} 
+				$(this).attr("index", i);
+				posArr.push(left);
+				$(this).css({
+					"display":"table",
+					"width":isActive?maxSize[0]:miniSize[0],
+					"height":isActive?maxSize[1]:miniSize[1],
+					"position": "absolute",
+					"left":left
+				});
+			});
+			posArr.push(posArr[posArr.length - 1] + miniSize[0] + margin);
+			posArr.splice(0, 0, posArr[0] - miniSize[0] - margin);
+			$("#left").click(function() {
+				//左转
+				if (canClick) {
+					return false;
+				}
+				canClick = true;
+				active -= 1;
+				if (active < 0) {
+					active = maxIndex;
+				}
+				var insertDiv = $(".seamlessWrapper div").last().clone();
+				insertDiv.css("left", posArr[0]);
+				$(".seamlessWrapper").prepend(insertDiv);
+				$(".pre").removeClass("pre");
+				$(".active").removeClass("active").addClass("pre");
+				$(".seamlessWrapper div").each(function(i) {
+					var index = $(this).index()
+					if (parseInt($(this).attr("index")) == active) {
+						var isActive = true;
+						$(this).addClass("active");
+					}
+					$(this).animate({
+						"width": isActive ? maxSize[0] : miniSize[0],
+						"height": isActive ? maxSize[1] : miniSize[1],
+						"left": posArr[i + 1]
+					}, spd, function() {
+						queueArr.push($(this));
+						if (queueArr.length == sumIndex) {
+							queueArr = [];
+							$(".seamlessWrapper div").last().remove();
+						}
+						canClick = false;
+					});
+				});
+			});
+			$("#right").click(function() {
+				//右转
+				if (canClick) {
+					return false;
+				}
+				canClick = true;
+				active += 1;
+				if (active > maxIndex) {
+					active = 0;
+				}
+				var insertDiv = $(".seamlessWrapper div").first().clone();
+				insertDiv.css("left", posArr[posArr.length - 1]);
+				$(".seamlessWrapper").append(insertDiv);
+				$(".pre").removeClass("pre");
+				$(".active").removeClass("active").addClass("pre");
+				$(".seamlessWrapper div").each(function(i) {
+					var index = $(this).index();
+					if (parseInt($(this).attr("index")) == active) {
+						$(this).addClass("active");
+						var isActive = true;
+					}
+					$(this).animate({
+						"width": isActive ? maxSize[0] : miniSize[0],
+						"height": isActive ? maxSize[1] : miniSize[1],
+						"left": posArr[i]
+					}, spd, function() {
+						queueArr.push($(this));
+						if (queueArr.length == sumIndex) {
+							queueArr = [];
+							$(".seamlessWrapper div").first().remove();
+						}
+						canClick = false;
+					});
+				})
+			});				
+			})();
+		</script>
+		<!--#include virtual="/public/head.html"-->
+		<!--#include virtual="/public/footer.html"-->
+		<!--#include virtual="/public/tongji.html"-->
+
+	</body>
+
+</html>

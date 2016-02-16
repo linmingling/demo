@@ -1,0 +1,35 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video,ol {
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    font-family: "Microsoft Yahei";
+    vertical-align:baseline;
+    list-style: none;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+    ;
+    /* overflow-y: hidden; */
+}
+.contant,.contant2{height: 500px;width:700px;background:rgba( 0,0,0,0.1); margin: 100px auto 0;position: relative; box-shadow: 1px 1px 3px #ccc; border-radius: 3px;}
+.ticket,.ticket2{position: absolute;bottom:100px;left:150px;}
+.ticket li,.ticket2 li{border-radius: 3px;height:1px; float:left; width:80px;margin-left: 40px;position: absolute;bottom:0;}
+.onemath,.twomath,.threemath,.onemath2,.twomath2,.threemath2{position: absolute;top:-30px;width:80px; text-align: center;}
+.one,.one2{background:red;}
+.two,.two2{background:yellow; left:120px;}
+.three,.three2{background:green;left:240px;}
+.company,.company2{position: absolute;bottom: 80px;left:150px;}
+.company li,.company2 li{float: left;margin-left: 40px;width:80px;text-align: center;color: #000;}
+.btn,.btn2{position: absolute;bottom:30px;left:50%;margin-left: -30px; height:30px;width:60px;background:red;border-radius: 3px;border:none;color: #fff;cursor: pointer;}
+.contant2{display: none;}
