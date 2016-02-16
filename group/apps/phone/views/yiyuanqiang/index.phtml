@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	{% if actionid == 17 %}
+		<title>优居网·广州下雪不怕冷，奥普给您送温暖</title>
+		<meta name="keywords" content="优居网·广州下雪不怕冷，奥普给您送温暖">
+		<meta name="description" content="优居网·广州下雪不怕冷，奥普给您送温暖">	
+	{% else %}
+		<title>优居网-大牌新品尝鲜 全民砍价1元购</title>
+		<meta name="keywords" content="优居网-大牌新品尝鲜 全民砍价1元购">
+		<meta name="description" content="优居网-大牌新品尝鲜 全民砍价1元购">
+	{% endif %}
+	
+	<meta name="front-end technicist" content="jinger">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<link type="text/css" rel="stylesheet" href="/yiyuanqiang/css/index.css?vid=1.2" media="all" /> 
+</head>
+<body>
+    <!-- loading -->
+    <div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <!-- 头部 -->
+        <header class="head">
+            <span class="menuIcon ctl" id="menuIcon"></span>
+            <a class="userIcon ctr" href="{{payDomain}}/phone/pay/order"></a>
+            <p class="title grey">
+                <span class="titleText f13">优居网-全民砍价</span>
+                <span id="citySelect" class="citySelect">{{ cityname }}<i class="ctr"></i></span>
+            </p>
+            <div class="menu hide" id="menu" show=0 >
+                <p class="f14"><a href="/phone/zhan/index">一站购</a></p>
+                <p class="line"></p>
+                <p class="f14"><a href="/phone/yiyuanqiang/list">一元抢</a></p>
+                <p class="line"></p>
+                <p class="f14"><a href="/phone/group/index">优品团</a></p>
+            </div>
+        </header>
+
+        <div class="banner">
+            <div id="swiper1" class="swiper">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                    {% if indexinfo['adv1_img'] %}
+                        <div class="swiper-slide">
+                            <a href="{{ indexinfo['adv1_url'] }}" class="detail-img">
+                                <div style="background-image:url({{ indexinfo['adv1_img'] }})">
+
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                    {% if indexinfo['adv2_img'] %}
+                        <div class="swiper-slide">
+                            <a href="{{ indexinfo['adv2_url'] }}" class="detail-img">
+                                <div style="background-image:url({{ indexinfo['adv2_img'] }})">
+
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                    {% if indexinfo['adv3_img'] %}
+                        <div class="swiper-slide">
+                            <a href="{{ indexinfo['adv3_url'] }}" class="detail-img">
+                                <div style="background-image:url({{ indexinfo['adv3_img'] }})">
+
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                    {% if indexinfo['adv4_img'] %}
+                        <div class="swiper-slide">
+                            <a href="{{ indexinfo['adv4_url'] }}" class="detail-img">
+                                <div style="background-image:url({{ indexinfo['adv4_img'] }})">
+
+                                </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                        <!-- <div class="swiper-slide">
+                            <div class="detail-img">
+                                <img src="/yiyuanqiang/images/head.jpg" width="100%">
+                               
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- <img src="/yiyuanqiang/images/head.jpg" width="100%"> -->
+        </div>
+        <!-- 轮播公告 -->
+        <div class="notice">
+            <div class="notice-icon"><img src="/yiyuanqiang/images/icon-new.png" height="100%"></div>
+            <div class="notice-fg"></div>
+            <div class="notice-ly">
+                <div id="marquee" class="marquee">
+                {% if indexinfo['radio1'] != '' %}
+                    <p><a href="{{ indexinfo['radio1_url']}}">{{ indexinfo['radio1'] }}</a></p>
+                {% endif %}
+                {% if indexinfo['radio2'] != '' %}
+                    <p><a href="{{ indexinfo['radio2_url']}}">{{ indexinfo['radio2'] }}</a></p>
+                {% endif %}
+                {% if indexinfo['radio3'] != '' %}
+                    <p><a href="{{ indexinfo['radio3_url']}}">{{ indexinfo['radio3'] }}</a></p>
+                {% endif %}
+                     
+                </div>
+            </div>
+        </div>
+		
+        <div class="content">
+		{% if ngoodslist %}
+            <!-- 正在进行中 -->
+            <div class="con-title bolid-bottom" id="zzjx">
+                <div>
+                    <div class="con-title-1"></div>
+                    <div class="con-title-2">正在进行中</div>
+                    <div style="float: right;font-size: 1.2rem;">总共{{ sumjoin }}人参与</div>
+                </div>
+            </div>
+        {% endif %}
+		{% for k in ngoodslist %}
+            <div class="prd">
+                <div class="prd-img">
+                    <a href="/phone/yiyuanqiang/detail/{{ actionid }}/{{ k['id'] }}/{{ k['from_id'] }}">
+                        <div class="prd-img-div"><img data-original="{{  k['img'] }}" class="lazymy" src="/yiyuanqiang/images/grey.gif"></div>
+                    </a>
+                    <div class="prd-img-alt"><p>【{{ cityname }}】{{ k['goods_name'] }}</p></div>
+                    <div class="prd-img-time">
+                        <!-- <img src="images/myprd/icon-clock.png" > -->
+                        <i class="icon-clock"></i>&nbsp;
+                        <span>{{ k['countdown_str'] }}</span>
+                    </div>
+                    {% if k['from_id']>0 %}
+                    <div class="prd-img-kan"><img src="/yiyuanqiang/images/icon-kan.png"></div>
+                    {% endif %}
+                </div>
+                {% if k['active_quantity']>0 %}
+                <div class="prd-con prd-gey">
+                {% else %}
+                <div class="prd-con">
+                {% endif %}
+                    <div class="prd-con-1">￥<span class="f24">{{ k['lowest_price'] }}</span><s class="prd-con-2">￥{{ k['market_price'] }}</s></div>
+                   
+                    <a href="/phone/yiyuanqiang/detail/{{ actionid }}/{{ k['id'] }}/{{ k['from_id'] }}">
+                    <div class="prd-con-4">
+                        <p class="f14">仅剩{{ k['active_quantity']<0?0:k['active_quantity'] }}件</p>
+                        <p class="yellow lh">{{ k['cutcount']+k['init_join'] }}人参与</p>
+                    </div>
+                    </a>
+                   
+                    <!-- a href="/phone/yiyuanqiang/detail/{{ actionid }}/{{ k['id'] }}/{{ k['from_id'] }}">
+                    <div class="prd-con-4 ">
+                        <p class="f14">{{ k['discount'] }}折购买</p>
+                        <!-- p class="yellow lh">仅剩{{ k['goods_quantity'] }}件</p> -->
+                        <!-- p class="yellow lh">{{ k['cutcount']+k['init_join'] }}人参与</p>
+                    </div>
+                    </a-->
+                    
+                </div>
+                
+                
+	                {% if k['sales_sum']>0 %}
+                <div>
+                    <hr style="border-top:1px dotted #d7d7d7;width:97%;border-bottom: none;" align="right">
+                </div>
+	                <div class="prd-tip">
+	                    <img src="/yiyuanqiang/images/icon-bk.png" ><span>已售{{ k['sales_sum'] }}件，最低被砍至￥{{ k['pay_amount'] }}元成交</span>
+	                </div>
+	                {% endif %}
+               
+                <!-- div>
+                    <hr style="border-top:1px dotted #d7d7d7;width:97%;border-bottom: none;" align="right">
+                </div>
+                	<div class="prd-tip">
+	                    <img src="/yiyuanqiang/images/icon-zk.png" ><span>该宝贝已经被抢光啦，但您还可以{{ k['discount'] }}折购买</span>
+	                </div-->
+                
+            </div>
+            {% endfor %}
+			
+			{% if pgoodslist %}
+			<!-- 即将开始 -->
+			<div class="con-title bolid-bottom" id="jjks">
+                <div>
+                    <div class="con-title-1"></div>
+                    <div class="con-title-2">即将开始</div>
+                </div>
+            </div>
+            {% endif %}
+            {% for k in pgoodslist %}
+            <div class="prd">
+                
+                <div class="prd-img">
+                    <img data-original="{{  k['img'] }}" class="lazymy" src="/yiyuanqiang/images/grey.gif">
+                    <div class="prd-img-alt"><p>{{ k['goods_name'] }}</p></div>
+                    <div class="prd-img-time">
+                        <!-- <img src="images/myprd/icon-clock.png" > -->
+                        <i class="icon-clock"></i>&nbsp;
+                        <span>{{ k['countdown_str'] }}</span>
+                    </div>
+                    <a href="/phone/yiyuanqiang/detail/{{ actionid }}/{{ k['id'] }}/{{ k['from_id'] }}">
+                        <div class="zb-bg"></div>
+                    </a>
+                    <!-- <div class="prd-img-kan"><img src="/yiyuanqiang/images/icon-kan.png"></div> -->
+                </div>
+                <div class="prd-con prd-gey">
+                    <div class="prd-con-1">￥<span class="f24">{{ k['lowest_price'] }}</span><s class="prd-con-2">￥{{ k['market_price'] }}</s></div>
+                    <a href="/phone/yiyuanqiang/detail/{{ actionid }}/{{ k['id'] }}/{{ k['from_id'] }}">
+                        <div class="prd-con-4" style="background-color: #999999;">
+                            <p class="f15 pdt8">限量{{ k['active_quantity'] }}件</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+		{% endfor %}
+			
+            <div class="con-title bolid-bottom hide">
+                <div>
+                    <div class="con-title-1"></div>
+                    <div class="con-title-2">一站购</div>
+                    <div class="con-title-3"><img src="/yiyuanqiang/images/icon-more.png" width="100%"></div>
+                </div>
+            </div>
+            <div class="groupBox hide">
+                <a class="imgBox">
+                    <img src="/yiyuanqiang/images/yzg.jpg" />
+                    <span class="typeBg"></span>
+                    <span class="type f12">家饰</span>
+                    <p class="djs f12">
+                        <i></i>
+                        离开始还有6天
+                    </p>
+                </a>
+                <div class="infoBox">
+                    <p class="info1 f14">【10月20日】  南城区国际会展中心夏栋国际会展中</p>
+                    <div class="infoDetailBox">
+                        <p class="info2 info grey"><span>折</span>全场低至5折 线下再抽奖</p>
+                        <p class="info3 info grey"><span>赠</span>线上报名送黄金大吊坠一条</p>
+                        <!-- <p class="info4 info grey"><span>专</span></p> -->
+                        <a class="groupBtn">
+                            <p class="num"><span class="orange">500</span>人已报名</p>
+                            <p class="txt f14">立即索票</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="con-title bolid-bottom">
+                <div>
+                    <div class="con-title-1"></div>
+                    <div class="con-title-2">砍价规则</div>
+                </div>
+            </div>
+            <div class="detail-tip">
+                <div class="detail-tip-ly">
+                    <p class="f13">有效期</p>
+                    <p class="gey">每件商品都有对应的有效期限，请注意核对以免错过！</p>
+                </div>
+                <div class="detail-tip-ly">
+                    <p class="f13">帮砍须知</p>
+                    <div class="gey">
+                    {{ indexinfo['desc'] }}
+                    </div>
+                </div>
+                <div class="detail-tip-ly">
+                    <p class="f13">违规处理</p>
+                    <p class="gey">活动最终解释权归优居所有，如发现违规刷分现象我方有权取消该用户的参与资格。</p>
+                </div>
+                <div class="detail-tip-ly" style="padding-bottom: 10px;">
+                    <p class="f13">温馨提示</p>
+                    <p class="gey">商品详细信息参数及配送方式请查看商品详情。</p>
+                </div>
+            </div>
+            <!-- 常见问题 -->
+            <div class="con-title hide" id="myquestion">
+                <div>
+                    <div class="con-title-2" style="padding-left: 3%;">常见问题</div>
+                    <div class="con-title-4"><img src="/yiyuanqiang/images/icon-down.png" width="100%" ></div>
+                </div>
+
+            </div>
+            
+            <div class="question hide" >
+
+                <div>
+                    <p class="hei">下单后怎么查看我的订单？</p>
+                    <p class="gey">点击查看打开我的订单，就可以查看看您的订单了撒大大就可以查看看您的订单了！</p>
+                </div>
+                <div>
+                    <p class="hei">网上的所有产品体验馆是否都有实物展示？</p>
+                    <p class="gey">由于体验馆受面积限制，挑选了最有代表性的商品进行展出，您可就近亲临当地体验馆，实地感受家具的品质及做工了哦亲。</p>
+                </div>
+                <div style="padding-bottom: 10px;">
+                    <p class="hei">产品有味道吗？环保指数是多少呢？</p>
+                    <p class="gey">由于我们是工厂生产好后直接发货，多少都有点气味的。不过气味不大，将房间多通风，或者放些樟脑丸活性炭，过段时间就没问题了。家具板材均达到欧洲环保E1级标准用漆均为环保漆。您可以放心购买。</p>
+                </div>
+            </div>
+            <!-- 客服 -->
+            <div class="kf">
+                <a href="tel:{{ indexinfo['work_phone'] }}"><div class="kfdiv" style="padding-top: 10px;">
+                    <img src="/yiyuanqiang/images/icon-kf-1.png" height="100%" class="kfimg">
+                    <span class="jc">工作电话：{{ indexinfo['work_phone'] }}</span>
+                    <div class="kfright"><img src="/yiyuanqiang/images/icon-right.png" height="14px"></div>
+                </div></a>
+                <div><hr style="border-top:1px dotted #eeeeee;width:97%;border-bottom: none;border-left: none;border-right: none;" align="center"></div>
+                <a href="http://wpa.qq.com/msgrd?v=3&uin={{ indexinfo['work_QQ'] }}&site=qq&menu=yes"><div class="kfdiv">
+                    <img src="/yiyuanqiang/images/icon-kf-2.png" height="100%" class="kfimg">
+                    <span class="jc">工作Q&nbsp;&nbsp;Q：{{ indexinfo['work_QQ'] }}</span>
+                    <div class="kfright"><img src="/yiyuanqiang/images/icon-right.png" height="14px"></div>
+                </div></a>
+                <div><hr style="border-top:1px dotted #eeeeee;width:97%;border-bottom: none;border-left: none;border-right: none;" align="center"></div>
+                <div style="padding-bottom: 10px;" class="kfdiv">
+                    <img src="/yiyuanqiang/images/icon-kf-3.png" height="100%" class="kfimg">
+                    <span class="jc">工作时间：{{ indexinfo['work_time'] }}<span>
+                </div>
+            </div>
+            
+
+        </div>
+
+        <!-- 底部 -->
+        <div class="bottom">
+            <p>商城主页<span class="bottom-ll">|</span>会员中心<span class="bottom-ll">|</span>关注我们</p>
+            <p>@ Copyrigth 2015，版权归深圳前海优品优居网络科技有限公司所有</p>
+        </div>
+        <div class="top hide">
+            <div>
+                <img src="/yiyuanqiang/images/icon-top.png" width="100%">
+            </div>
+        </div>
+        <a href="/phone/yiyuanqiang/myprd/{{ actionid }}">
+            <div class="mybk">
+                <div>
+                    <img src="/yiyuanqiang/images/icon-mybk.png" width="100%">
+                </div>
+            </div>
+        </a>
+
+
+        <!-- 城市选择 -->
+        <div class="cityBox hide" id="cityBox" show=0 >
+            <div class="blackBg"></div>
+            <div class="cityWarp">
+                <div class="city">
+                    <p class="grey">热门城市</p>
+                    <!-- a href="/phone/yiyuanqiang/index/{{ actionid }}"><span>全国</span></a-->
+                {% for k in citylist %}
+                    <a href="/phone/yiyuanqiang/index/{{ actionid }}?city={{ k['city_id'] }}"><span>{{ k['city_name'] }}</span></a>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+	
+
+
+
+	
+    
+    
+        
+
+        
+        
+
+        
+    <script type="text/javascript" src="/yiyuanqiang/js/jquery-1.10.2.min.js"></script>
+    <script src="/yiyuanqiang/js/idangerous.swiper-2.1.min.js"></script>
+    <script type="text/javascript" src="/yiyuanqiang/js/jquery.lazyload.js"></script>
+    <script type="text/javascript">
+    /*公告滚动*/
+    function notice(speed){
+        if($("#marquee p").length>0){
+            var add = "<p>"+$("#marquee p").eq(0).html()+"</p>";
+            var marquee = $("#marquee");
+            marquee.append(add);
+            var ph = $("#marquee p").height()
+            var i = 1;
+            var length = marquee.height()/ph;
+
+            setInterval(function(){
+                if(i>length || i==length){
+                    marquee.css({"margin-top":0});
+                    i=1;    
+                }
+                marquee.animate({"margin-top":i*(-ph)},500);
+                i++;
+                
+            },speed);
+        }
+    }
+
+    $(function(){
+        $("#loading").hide();
+
+        $('.lazymy').lazyload({ 
+            placeholder : "/yiyuanqiang/images/grey.gif", 
+            effect      : "fadeIn",
+            event :"scroll",
+            threshold: -150
+        }); 
+
+        notice(2000);
+
+
+        // 城市选择出现
+        $("#citySelect").click(function(){
+            var cityBox = $("#cityBox");
+            var i= cityBox.attr("show");
+            if(i == 0){
+                cityBox.show();
+                cityBox.attr("show",1);
+                $("#menu").hide();
+                $("#menu").attr("show",0);
+            }else{
+                cityBox.hide();
+                cityBox.attr("show",0);
+            }
+        });
+        // 城市选择消失
+        $("#cityBox .blackBg").click(function(){
+            $("#cityBox").hide();
+        });
+
+        // 目录出现
+        $("#menuIcon").click(function(){
+            var menu = $("#menu");
+            var i= menu.attr("show");
+            if(i == 0){
+                menu.show();
+                menu.attr("show",1);
+            }else{
+                menu.hide();
+                menu.attr("show",0);
+            }
+        });
+
+        // 图片轮播显示
+        //$("#fy2").text($('.swiper-slide').length);
+        // $('.swiper-slide').each(function(){
+        //     // ++index;
+        //     // $(this).attr('zdy',index);
+        // });
+        //$("#fy1").text('1');
+        if(parseInt($('.swiper-slide').length)>1)
+        {
+            var mySwiper1;
+             mySwiper1 = $("#swiper1 .swiper-container").swiper({
+                mode: 'horizontal',
+                loop:true ,
+                autoplay:4000,
+                onSlideChangeEnd: function () {
+                    //$("#fy1").text($('.swiper-slide-active').attr('zdy'));
+                    mySwiper1.startAutoplay()
+                },
+            }); 
+         }
+
+         // 改变焦点图高度
+         var wh = $(window).width();
+         var imgh1 = 170*wh/640;
+         $("#swiper1 .swiper-container").height(imgh1).width(wh);
+         $("#swiper1 .swiper-container .detail-img").height(imgh1).width(wh);
+        
+        // 
+        var imgh2 = 300*(wh-20)/620;
+        $(".prd-img-div").height(imgh2);        
+    });
+    //回到顶部
+    $('.top').bind('click',function(){
+    	$('html,body').animate({scrollTop: 0}, 300);
+    })
+    // top
+    // $(window).scroll(function(){
+    //     if($(window).scrollTop()>4){
+    //         //$(".top").show();
+    //         $('.mybk').show();
+    //     }else{
+    //         //$(".top").hide();
+    //         $('.mybk').hide();
+    //     }
+    // });
+
+    $('#myquestion').bind('click',function(){
+        var _question=$('.question');
+        if(_question.css('display')=='none')
+        {
+            $('.con-title-4 img').attr('src','/yiyuanqiang/images/icon-down.png');
+            _question.slideDown(1000);
+        }
+        else{
+            $('.con-title-4 img').attr('src','/yiyuanqiang/images/icon-up.png');
+            _question.slideUp(1000);
+        }
+    })
+    </script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+var wxData = {
+		{% if actionid == 12 %}
+		imgUrl:"{{domain}}/yiyuanqiang/images/dpfx.jpg",
+		{% else %}
+		imgUrl:"{{domain}}/yiyuanqiang/images/fx.jpg",
+		{% endif %}
+		link:"{{domain}}/phone/yiyuanqiang/index/{{ actionid }}",
+		{% if actionid == 12 %}
+		desc:"东鹏全球狂欢节，瓷砖新品尝鲜，1元抢购！手快有手慢无，快来抢！",
+		title:"东鹏全球狂欢节，瓷砖新品尝鲜，1元抢购！手快有手慢无，快来抢！",
+		{% elseif actionid == 15 %}
+		desc:"优居网·芬琳漆一元抢购！芬兰原装进口约克漆1元抢购，赶快来抢！",
+		title:"优居网·芬琳漆一元抢购！芬兰原装进口约克漆1元抢购，赶快来抢！",
+		{% elseif actionid == 17 %}
+		desc:"优居-全民砍价，品牌家装建材1元购！奥普浴室空调只要1元，手快有手慢无，赶快来抢！",
+		title:"优居-全民砍价，品牌家装建材1元购！奥普浴室空调只要1元，手快有手慢无，赶快来抢！",
+		{% else %}
+		desc:"优居-全民砍价，品牌家装建材1元购！手快有手慢无，赶快来抢！",
+		title:"优居-全民砍价，品牌家装建材1元购！手快有手慢无，赶快来抢！",
+		{% endif %}
+	};
+	
+wx.config({
+      debug: false,
+      appId: "{{ signPackage['appId'] }}",
+	  timestamp: "{{ signPackage['timestamp'] }}",
+	  nonceStr: "{{ signPackage['nonceStr'] }}",
+      signature: "{{ signPackage['signature'] }}",
+      jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo'
+      ]
+});
+
+wx.ready(function () {
+	wx.onMenuShareAppMessage(wxData);
+	wx.onMenuShareTimeline(wxData);
+	wx.onMenuShareQQ(wxData);
+});
+
+</script>
+    
+</body>
+    
+</html>

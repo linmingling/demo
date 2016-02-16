@@ -1,0 +1,157 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/fileinput.css" rel="stylesheet">
+<script src="/admin/js/fileinput.min.js"></script>
+<script src="/admin/js/fileinput_locale_zh.js"></script>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{% if type == 'add' %}添加秒杀活动{% else %} 修改秒杀活动 {% endif %}</h1>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group form-group-sm">
+							<label for="name" class="col-sm-1 control-label">活动名称:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="name" name="name" value="{{ type == 'modify' ? info['name'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="starttime" class="col-sm-1 control-label">开始时间:</label>
+							<div class="col-xs-2">
+							    <div class="input-group date form_datetime" data-date="2014-09-16 05:25:07" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="starttime">
+									<input class="form-control" size="16" type="text" value="{{ type == 'modify' ? info['starttime'] : '' }}" readonly>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+								<input type="hidden" id="starttime" name="starttime" value="{{ type == 'modify' ? info['starttime'] : '' }}" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="endtime" class="col-sm-1 control-label">结束时间:</label>
+							<div class="col-xs-2">
+							    <div class="input-group date form_datetime" data-date="2014-09-16 05:25:07" data-date-format="yyyy-mm-dd hh:ii:ss" data-link-field="endtime">
+									<input class="form-control" size="16" type="text" value="{{ type == 'modify' ? info['endtime'] : '' }}" readonly>
+									<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+								</div>
+								<input type="hidden" id="endtime" name="endtime" value="{{ type == 'modify' ? info['endtime'] : '' }}" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">头部图片:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="head_url" name="head_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['head_url'] : '' }}" />
+								<input type="file" id="head_img" class="head_img pull-right" name="head_img" value="" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">广告一:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="adv1_url" name="adv1_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['adv1_url'] : '' }}" />
+								<input type="file" id="adv1_img" class="adv1_img pull-right" name="adv1_img" value="" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">广告二:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="adv2_url" name="adv2_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['adv2_url'] : '' }}" />
+								<input type="file" id="adv2_img" class="adv2_img pull-right" name="adv2_img" value="" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">广告三:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="adv3_url" name="adv3_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['adv3_url'] : '' }}" />
+								<input type="file" id="adv3_img" class="adv3_img pull-right" name="adv3_img" value="" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">广告四:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="adv4_url" name="adv4_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['adv4_url'] : '' }}" />
+								<input type="file" id="adv4_img" class="adv4_img pull-right" name="adv4_img" value="" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">说明:</label>
+							<div class="col-xs-7"><textarea class="form-control" id="desc" name="desc">{{ type == 'modify' ? info['desc'] : '' }}</textarea></div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/seckill/index" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 1,
+        showMeridian: 0,
+    });
+	/*
+	$(".uploadImg").fileinput({
+		//maxFileSize: 100,
+		overwriteInitial: true,
+		browseClass: "btn btn-primary btn-sm",
+		browseLabel: "选择图片",
+		previewFileType: "image",
+		previewSettings: {image:{width:"200px",height:"160px"}},
+		layoutTemplates: {
+			preview: '<div class="file-preview {class}">' +
+			'    <div class="close fileinput-remove">&times;</div>' +
+			'    <div class="{dropClass}">' +
+			'    <div class="file-preview-thumbnails"></div>' +
+			'    <div class="clearfix"></div>' +
+			'    <div class="file-preview-status text-center text-success"></div>' +
+			'    <div class="kv-fileinput-error"></div>' +
+			'    </div>' +
+			'</div>'
+		},
+		showPreview: false,
+		showCaption: true,
+		showRemove: false,
+		showUpload: false
+	});
+	*/
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var desc = $('#desc').code();
+	
+});
+
+</script>
+

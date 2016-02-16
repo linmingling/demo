@@ -1,0 +1,184 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+  
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">七夕家装节-返现红包数据表</h1>
+    </div>
+    <div class="wrapper-md ng-scope">
+      <div class="m-b-sm">
+        <div class="btn-group" ng-init="radioModel = 'Male'">
+          <a href="/admin/hongbao/index"><label class="btn btn-sm btn-info ng-untouched ng-valid ng-dirty active ng-valid-parse" ng-model="radioModel" btn-radio="'Male'"><i class="fa fa-check text-active"></i>发放/领取</label></a>
+          <a href="/admin/hongbao/record"><label class="btn btn-sm btn-success ng-untouched ng-valid ng-dirty" ng-model="radioModel" btn-radio="'Female'"><i class="fa fa-check text-active"></i>详情</label></a>
+          <a href="/admin/hongbao/use"><label class="btn btn-sm btn-primary ng-untouched ng-valid ng-dirty" ng-model="radioModel" btn-radio="'N/A'"><i class="fa fa-check text-active"></i>红包使用情况</label></a>
+          <a href="/admin/hongbao/budian"><label class="btn btn-sm btn-danger ng-untouched ng-valid ng-dirty" ng-model="radioModel" btn-radio="'N/A'"><i class="fa fa-check text-active"></i>数据布点</label></a>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">七夕家装节返现红包数据表（{{ count }} 条数据）
+        <span class="label bg-info"></span>
+        </div>
+        <div class="table-responsive">
+          <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+          <div class="row">
+                <div class="row wrapper">
+                  <div class="col-sm-4">
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button class="btn btn-sm btn-default" type="button"><a href="xls">导出全部数据</a></button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                  <th style="width: 233px;" class="sorting_asc" rowspan="1" colspan="1">手机号码</th>
+                  <th style="width: 250px;" class="sorting" rowspan="1" colspan="1">被领取红包数（总25个）</th>
+                  <th style="width: 250px;" class="sorting" rowspan="1" colspan="1">领取红包数</th>
+                  <th style="width: 250px;" class="sorting" rowspan="1" colspan="1">来源</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">添加时间</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">详情</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k in list %}
+                <tr class="odd">
+                    <td class="sorting_1">{{ k['phone'] }}</td>
+                    <td>
+                    {% if k['phone'] == '20150806000' %}
+                    {{ 100000 - k['num'] }} （总100000个）
+                    {% else %}
+                    {{ 25 - k['num'] }}
+                    {% endif %}
+                    </td>
+                    <td>{{ k['collect_num'] }}</td>
+                    <td>{{ k['url_source'] }}</td>
+                    <td>
+                    {% if k['add_time'] != 0 %}
+                    {{ date('Y-m-d H:i:s',k['add_time']) }}
+                    {% endif %}
+                    </td>
+                    <td>
+                    {% if k['count'] != 0 %}
+                    <a href="javascript:void(0)" data-toggle="modal" data-target=".fade-{{ k['phone'] }}"><i class="icon-speech"></i></a>
+                    {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% if page <> '' %}
+          <?php $this->partial("index/page")?>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- Large modal -->
+{% for k,key in lingqu_list %}
+<div class="modal fade-{{ k }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{ k }}发放/领取情况</h4>
+      </div>
+      <div class="modal-body">
+           <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                  <th style="width: 233px;" class="sorting_asc" rowspan="1" colspan="1">发放（总金额：{{ key['blq_money'] }}）</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for vo in key['blq'] %}
+                <tr class="odd">
+                    <td class="sorting_1">
+                    {{ vo['add_time'] }}，用户 {{ vo['phone'] }} 领取了您的红包，红包金额为：{{ vo['total'] }} 元
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% if key['lq'] != '' %}
+          <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                  <th style="width: 233px;" class="sorting_asc" rowspan="1" colspan="1">领取（总金额：{{ key['lq_money'] }}）</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for vo in key['lq'] %}
+                <tr class="odd">
+                    <td class="sorting_1">
+                    {{ vo['add_time'] }}，您领取了 {{ vo['from_phone'] }} 发放的红包，红包金额为：{{ vo['total'] }} 元
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<script type="text/javascript">
+$(function(){
+//$('#myModal').modal('toggle');
+$("#select").click(function(){
+	var type = $(this).val();
+	if(type == 'time'){
+		$(".search").hide();
+		$(".search_time").show();
+	}
+})
+})
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        linkFormat:'yyyy-mm-dd',
+        weekStart: 0,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: true,
+		startView: 2,
+		minView: 3,
+		forceParse: 0,
+        showMeridian: 1,
+    });
+	
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var sHTML = $('#desc').code();
+	
+});
+
+</script>
+<?php $this->partial("index/footer")?>

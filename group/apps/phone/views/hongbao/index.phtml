@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>七夕家装节-领抵购券</title>
+<meta name="keywords" content="七夕家装节" />
+<meta name="description" content="七夕家装节" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/hongbao/css/com.css?v=1.4"  />
+
+</head>
+<body>
+<div class="hbWarp">
+	<!-- 第一阶段领红包 -->
+	<div class="hbMain hbMain1" id="hbMain1">
+	{% if hb != '' %}
+		<img src="/hongbao/images/head1.png?v=1.1" class="headImg"/>
+	{% else %}
+		<div class="headImgWarp">
+			<img src="/hongbao/images/head2.png?v=1.1" class="headImg"/>
+			<div class="headText f12">
+				<p>您已成功报名七夕家装节</p>
+				<p>您的姓名和手机号将作为您入场的唯一凭证</p>
+			</div>
+		</div>
+	{% endif %}
+		{% if hb == '' %}
+		<!-- 自己领取 -->
+		<div class="myHB hbBox">
+			<p class="f30">恭喜您！</p>
+			<p class="f18">获得<span >25/25</span>张抵购券</p>
+			{% if is_gdt == 0 %}
+			<p class="f14 dYellow mrt20">将抵购券分享给您的亲友可以得到更多哦！</p>
+			{% endif %}
+			<span class="bt_style2 btn" tel="15820207517">自己领一张</span>
+		</div>
+		{% else %}
+		{% if num > 0 %}
+		<!-- 别人领取 -->
+		<div class="getHB hbBox">
+		{% if num_tips == 0 %}
+			<p class="f18">优居提供</p>
+		{% else %}
+		    <p class="f18">剩余抵购券数<span>{{ num_tips }}</span></p> 
+		{% endif %}
+			<p class="f18 dYellow">领取抵购券现场抵扣现金</p>
+			<p><input type="num" class="tel" name="tel" placeholder="输入手机号码，抢抵购券" /></p>
+			<span class="bt_style2 btn bt_false">领取抵购券</span>
+		</div>
+		{% else %}
+		<!-- 领取完 -->
+		<div class="hbOver hbBox">
+			<p class="f30">抵购券抢完啦！</p>
+			<p class="f14 dYellow">没关系！马上报名，即可领取更多抵购券！</p>
+			<span class="bt_style2 btn">我要报名</span>
+		</div>
+		{% endif %}
+		{% endif %}
+	</div>
+
+	<!-- 第二阶段 我的红包 -->
+	<div class="hbMain hide" id="hbMain2">
+		<img src="/hongbao/images/head1.png?v=1.1" class="headImg"/>
+		<div class="hbBox2">
+			<div class="text1 text1_1 hide">
+				<div class="new">
+					<p class="f16 ">恭喜您获得</p>
+					<div id="list1">
+					
+					</div>
+				</div>
+			</div>
+			<div class="text1 text1_2 hide">
+				<p class="f14">您已领过抵购券</p>
+			</div>
+			<div class="text2">
+				<p class="f14 ">抵购券已放入账号<span  id="_tel">13800138000</span></p>
+				<!-- <p class="f16 ">关注 <a href="http://mp.weixin.qq.com/s?__biz=MzA4MzAxNjU3OA==&mid=203455940&idx=1&sn=bf66b1d408383fcde4a2a6494f8d8b88#rd" class="blue">【优居生活】</a>公众号即可查看</p> -->
+				<p class="f14 "> <a href="/phone/hongbao/list" class="underline">点击查看</a></p>
+			</div>
+			<!-- 未报名 -->
+			<div class="btnBox btnBox1 hide" id="btnBox1">
+				<p class="f16 dYellow">立即报名七夕家装节，获得更多抵购券！</p>
+				<span class="bt_style2 btn ">我要报名</span>
+			</div>
+			<!-- 已报名 -->
+			<div class="btnBox btnBox2 hide" id="btnBox2">
+				<a href="/phone/hongbao/list" class="bt_style2 btn bk_btn">我要使用</a>
+			</div>
+			<!-- 自己领取 -->
+			<div class="btnBox btnBox3 hide" id="btnBox3">
+			    {% if is_gdt == 0 %}
+				<p class="f16 dYellow">有福同享！分享亲友可再领一张抵购券哦！</p>
+				{% endif %}
+				<span class="bt_style2 btn ">分享再领一张</span>
+			</div>
+			<!-- 返现券 -->
+			<div class="fxqWarp">
+				<!-- <p class="f16 fxqTitle">返现券</p> -->
+				<div class="list" id="list2">
+					
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+	<!-- 底部 -->
+	<div class="hbFoot">
+		<img src="/hongbao/images/foot.png" class="footBg"/>
+		<div class="hbFootText f12">
+			<p><span id="ruleOpen" class="ruleOpen">活动详情>></span></p>
+			<!-- <p>客服电话：<a href="tel:440-888-2222">440-888-2222</a></p> -->
+		</div>
+	</div>
+
+	<!-- 活动规则 -->
+	<div class="tc ruleTc hide" id="ruleTc" >
+		<div class="rule">
+			<div class="ruleMain">
+				<span class="close f30">×</span>
+				<p class="ruleTitle f16">活动详情</p>
+				<p class="ruleList f14"><span class="f24 icon">◆</span>报名七夕家装节后，可领取1张抵购券；</p>
+				<p class="ruleList f14"><span class="f24 icon">◆</span>报名成功后把连接分享给好友后，分享者可再领取1个，好友也可领取抵购券；</p>
+				<p class="ruleList f14"><span class="f24 icon">◆</span>好友报名后，可分享连接，再领取抵购券；</p>
+				<p class="ruleList f14"><span class="f24 icon">◆</span>抵购券领取个数不限；</p>
+				<p class="ruleList f14"><span class="f24 icon">◆</span>领取抵购券后，可在七夕家装节落地当天，下单后可直接抵购相应的金额；</p>
+				<p class="ruleList f14"><span class="f24 icon">◆</span>最终解释权归优居网所有。</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- loading -->
+	<div class="tc loading hide" id="loading" >
+		<div class="loadingWarp ">
+			<img src="/hongbao/images/loading.png" class="loadingImg"/>
+			<p>一大波抵购券正在袭来...</p>
+			<p class="loadingBar"><span></span></p>
+		</div>
+	</div>
+	<!-- 分享提示 -->
+	<div class="tc shareTc hide" id="shareTc" >
+		<img src="/hongbao/images/share_text.png?v=1.0" class="shareText"/>
+		<img src="/hongbao/images/ewm.png" class="ewm"/>
+	</div>
+
+</div>
+
+<script src="/common/js/jquery-1.8.3.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+	var isMine = false;
+	function init_h(){
+		$(".hbMain").height("auto")
+		win_h = $(window).height();
+		main_h = $(".hbWarp").height();
+
+		if(main_h<win_h){
+			//console.log(main_h+" , "+win_h)
+			$(".hbMain").height(win_h-115)
+		}
+		
+	}
+	function getHB(content, isLQ){
+		
+		if(content['isBM']){
+			var isBM = true;  //此号码是否已报名
+		} else {
+			var isBM = false;  //此号码是否已报名
+		}
+// 		var isLQ = true;  //此号码是否已领取
+		//new Array("券id","类型","金额","时间","使用限制")
+		var fxq = new Array(
+			new Array(content['sn'],"1",content['total'],content['expire_time'])
+		) 
+		
+		$("#_tel").html(content['phone']);
+		$("#_num").html(fxq.length);
+		
+		if(!isLQ){
+			var list = $("#list1");
+			for(var i=0;i<fxq.length;i++){
+    			list.append('<a class="fxqBox type1" fxqID='+fxq[i][0]+' href="http://mp.weixin.qq.com/s?__biz=MzA4MzAxNjU3OA==&mid=203455940&idx=1&sn=bf66b1d408383fcde4a2a6494f8d8b88#rd">'+
+    							/*'<div class="money">'+
+    								'<span class="dYellow">￥'+fxq[i][2]+'</span>'+
+    							'</div>'+
+    							'<div class="tips">'+
+    								'<p class="time">'+fxq[i][3]+'到期</p>'+
+    							'</div>'+
+    							'<div class="type type1"><p>点我</p><p>使用</p><p>﹀</p></div>'+*/
+									'<div class="money">￥<span>'+fxq[i][2]+'</span></div>'+
+									'<div class="time">'+fxq[i][3]+'到期</div>'+
+    						'</a>');
+    		}
+			$("#hbMain2").addClass("hbMain1");
+			$("#hbMain2 .text1_1").show();
+			$(".fxqWarp").hide();
+		}else{
+			var list = $("#list2");
+			for(var i=0;i<fxq.length;i++){
+    			list.append('<a class="fxqBox type1" fxqID='+fxq[i][0]+' href="http://mp.weixin.qq.com/s?__biz=MzA4MzAxNjU3OA==&mid=203455940&idx=1&sn=bf66b1d408383fcde4a2a6494f8d8b88#rd">'+
+									'<div class="money">￥<span>'+fxq[i][2]+'</span></div>'+
+									'<div class="time">'+fxq[i][3]+'到期</div>'+
+    						'</a>');
+    		}
+    		$("#hbMain2").addClass("hbMain2");
+			$("#hbMain2 .text1_2").show();
+			$("._tel").html(content['phone']);
+			$(".fxqWarp").show();
+			
+		}
+		if(isMine){
+			$("#hbMain2 .btnBox3").show();
+		}else if(isBM){
+			$("#hbMain2 .btnBox2").show();
+		}else{
+			$("#hbMain2 .btnBox1").show();
+		}
+		
+		$("#hbMain1").hide();
+		$("#hbMain2").show();
+		init_h();
+		$("#loading").hide();
+
+	}
+	function useHB(dom){
+		//console.log(1);
+    	$("#use_money").html($(dom).find(".money span").html());
+    	$("#use_id").html(dom.attr("fxqid"));
+    	$("#useTc input").val("");
+    	$("#useTc").show();
+	}
+	$(function(){
+		init_h();
+		$("#ruleTc .close").click(function(){
+			$("#ruleTc").hide();
+		});
+		$("#useTc .close").click(function(){
+			$("#useTc").hide();
+		});
+		$(".ruleOpen").click(function(){
+			$("#ruleTc").show();
+		});
+		$(".tel").keyup(function(){
+	        var tel = $(".getHB .tel").val();
+	        var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+	  		//console.log(tel+" , "+mob.test(tel));
+	        if(tel =="" || !mob.test(tel)){
+	            $(".getHB .btn").addClass("bt_false");
+	            return false;
+	        }else{
+	            $(".getHB .btn").removeClass("bt_false");
+	        }
+	    });
+	    
+	    //别人领红包
+	    $("#hbMain1 .getHB .btn").click(function(){
+	    	if($(this).hasClass("bt_false")){
+	    		return;
+	    	}
+	    	$("#loading").show();
+	    	var tel = $(".getHB .tel").val();
+        	$.ajax({
+    			async:true,
+    			url:'/phone/hongbao/get_hongbao',
+    			data:{tel:tel},
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+        			if(result.errcode == 1002){
+        				getHB(result, true);
+            		} else if(result.errcode == 1100){
+        		    	alert(result.errmsg);return;
+            		} else {
+        		    	getHB(result, false);
+            		}
+    			}
+    		});
+	    });
+	    
+	    $("#btnBox3 .btn").click(function(){
+	    	$("#shareTc").show();
+        	$.ajax({
+    			async:true,
+    			url:'/phone/hongbao/onclick',
+    			data:{btn_id:2},
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+    			}
+    		});
+	    });
+	    $("#btnBox1 .btn").click(function(){
+        	$.ajax({
+    			async:true,
+    			url:'/phone/hongbao/onclick',
+    			data:{btn_id:3},
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+    				location.href="/phone/qixi/index?from=hongbao"
+    			}
+    		});
+	    });
+	    
+	    $(".hbOver .btn").click(function(){
+        	$.ajax({
+    			async:true,
+    			url:'/phone/hongbao/onclick',
+    			data:{btn_id:3},
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+    				location.href="/phone/qixi/index?from=hongbao"
+    			}
+    		});
+	    });
+	    
+	    $("#shareTc").click(function(){
+	    	$("#shareTc").hide();
+	    });
+
+	    //自己领红包
+	    $("#hbMain1 .myHB .btn").click(function(){
+	    	//var tel = $(this).attr("tel");
+	    	$("#loading").show();
+        	$.ajax({
+    			async:true,
+    			url:'/phone/hongbao/get_myhongbao',
+    			data:'',
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+    				isMine = true;//开启个人模式
+        			if(result.errcode){
+        		    	getHB(result, true);
+            		} else {
+        		    	getHB(result, false);
+            		}
+    			}
+    		});
+	    });
+	   
+	   //使用红包
+	   $("#useTc .btn").click(function(){
+	    	var qid = $("#use_id").html();
+	    	var oid = $("#useTc .order_num").val();
+	    	var money = $("#useTc .order_money").val();
+	    	var brand  = $("#useTc .brand").val();
+	    	if(oid =="" || money =="" || brand ==""){
+	            $("#useTc .err").html("请填写订单信息！");
+	            return false;
+	        }else{
+	        	 $("#useTc .err").html("");
+	        	 //传数据然后就没有然后了
+	        }
+	    });
+	    
+	});
+
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: '<?php echo $signPackage["timestamp"];?>',
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	      signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+            'checkJsApi',
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+		var wxData = {
+			"imgUrl":'{{domain}}/qixi/images/share.jpg',
+			"link":'{{ share_link }}',
+			"desc":"家居建材采购狂欢节！15个一线品牌，20个一线城市同时落地，年中5折大促！",
+			"title":"七夕家装节发抵购券啦，数量有限，抢完即止！",
+			success:function(){
+				$("#shareTc").hide();
+			}
+		};
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+	});
+	</script>
+</body>
+</html>

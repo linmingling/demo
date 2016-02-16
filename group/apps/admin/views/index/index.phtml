@@ -1,0 +1,196 @@
+﻿<?php $this->partial("index/head")?>
+<!-- menu -->
+<?php $this->partial("index/menu")?>
+<!--  / menu -->
+    <!-- content -->
+    <div class="app-content">
+      <div></div>
+      <div class="app-content-body fade-in-up">
+        <!-- COPY the content from "tpl/" -->
+         <div class="hbox hbox-auto-xs hbox-auto-sm">
+  <!-- main -->
+  <div class="col">
+    <!-- main header -->
+    <div class="bg-light lter b-b wrapper-md">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <h1 class="m-n font-thin h3 text-black">工作面板</h1>
+          <small class="text-muted">Welcome to yoju application</small>
+        </div>
+      </div>
+    </div>
+    <!-- / main header -->
+    <div class="wrapper-md">
+      <!-- stats -->
+      <div class="row">
+      <div class="col-sm-6 connected">
+         <div class="panel panel-info" draggable="true">
+            <div class="panel-heading">系统信息</div>
+            <div class="list-group bg-white">
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-desktop"></i> 服务器操作系统：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['system'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-cloud"></i> 服务器：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['server'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-book"></i> 程序目录：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['app_dir'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-cubes"></i> GD库版本：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['gd'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-clock-o"></i> 服务器时间：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['server_time'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-lock"></i> allow_url_fopen:
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['fopen'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-retweet"></i> magic_quotes_gpc:
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['quotes_gpc'] }}</i>
+                </span>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-sm-6 connected">
+        <div class="panel panel-success" draggable="true">
+            <div class="panel-heading">系统信息</div>
+            <div class="list-group bg-white">
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-sitemap"></i> 主机名IP端口：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['hostport'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-rocket"></i> PHP运行方式：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['php_env'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-database"></i> MYSQL版本：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['mysql'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-tachometer"></i> 剩余空间：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['disk_free'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-history"></i> 北京时间：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['beijing_time'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-code"></i> register_globals：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['reg_gbl'] }}</i>
+                </span>
+              </div>
+              <div class="list-group-item">
+                <i class="fa fa-fw fa-info"></i> magic_quotes_runtime：
+                <span class="pull-right text-success">
+                <i class=" fa">{{ info['quotes_runtime'] }}</i>
+                </span>
+              </div>
+            </div>
+        </div>
+      </div>
+      
+        <div class="col-md-5">
+          <div class="row row-sm text-center">
+
+            
+            <div class="col-xs-6" data-toggle="modal" data-target=".remove-cache">
+              <a href="javascript:void(0)" class="block panel padder-v bg-primary item">
+                <span class="text-white font-thin h1 block">清除缓存</span>
+                <span class="text-muted text-xs">Remove Cache</span>
+                <span class="bottom text-right w-full">
+                  <i class="fa fa-trash-o text-muted m-r-sm"></i>
+                </span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-7">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        <!-- PASTE above -->
+  </div>
+</div>
+    <!-- /content -->
+
+    <!-- aside right -->
+    <!-- / aside right -->
+<div class="modal remove-cache" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">清除缓存</h4>
+      </div>
+      <div class="modal-body">是否要清除全站缓存</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">否</button>
+        <button type="button" class="btn btn-primary remove_cache">是</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body tips"></div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$('.remove_cache').click(function(){
+    	$.ajax({
+			async:true,
+			url:'/admin/index/remove_cache',
+			data:{},
+			type: 'post',
+			dataType:'json',
+			success:function(result){
+				$(".remove-cache").hide();
+			    $(".tips").html(result.errmsg);
+				$('#myModal').modal("show");
+			}
+		});
+	})
+})
+</script>
+<?php $this->partial("index/footer")?>

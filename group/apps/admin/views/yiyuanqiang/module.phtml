@@ -1,0 +1,199 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/fileinput.css" rel="stylesheet">
+<script src="/admin/js/fileinput.min.js"></script>
+<script src="/admin/js/fileinput_locale_zh.js"></script>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{% if type == 'add' %}添加模块{% else %} 修改模块{% endif %}</h1>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group form-group-sm">
+							<label for="name" class="col-sm-1 control-label">模块名称:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="module" name="module" value="{{ type == 'modify' ? info['module'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="name" class="col-sm-1 control-label">一站购ID:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="yizhangou_id" name="yizhangou_id" value="{{ type == 'modify' ? info['yizhangou_id'] : '' }}"  placeholder="一站购活动id" /><div style="color:red">多个id可用英文字符逗号分隔</div></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_img" class="col-sm-1 control-label">头部图片:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="head_url" name="head_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['head_url'] : '' }}" />
+								<input type="file" id="head_img" class="head_img pull-right" name="head_img" value="" />
+							</div>
+						</div>
+						<hr>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">广播一:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="radio1" name="radio1" style="width:300px;" placeholder="广播文字" value="{{ type == 'modify' ? info['radio1'] : '' }}" />
+								<input class="form-control" type="text" id="radio1_url" name="radio1_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['radio1_url'] : '' }}" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">广播二:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="radio2" name="radio2" style="width:300px;" placeholder="广播文字" value="{{ type == 'modify' ? info['radio2'] : '' }}" />
+								<input class="form-control" type="text" id="radio2_url" name="radio2_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['radio2_url'] : '' }}" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">广播三:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="radio3" name="radio3" style="width:300px;" placeholder="广播文字" value="{{ type == 'modify' ? info['radio3'] : '' }}" />
+								<input class="form-control" type="text" id="radio3_url" name="radio3_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['radio3_url'] : '' }}" />
+							</div>
+						</div>
+						<hr>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">广告一:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="adv1_url" name="adv1_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['adv1_url'] : '' }}" />
+								<input type="file" id="adv1_img" class="adv1_img pull-right" name="adv1_img" value="" />
+								{% if info['adv1_img'] !='' %}<img src="/uploads/yiyuanqiang/{{ info['adv1_img'] }}" width='100%'  height='85'/>{% if type == 'modify' %}<a class="btn btn-default btn-sm" href="javascript:delimg('adv1_img')" role="button">删除图片</a>{% endif %}{% endif %}
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">广告二:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="adv2_url" name="adv2_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['adv2_url'] : '' }}" />
+								<input type="file" id="adv2_img" class="adv2_img pull-right" name="adv2_img" value="" />
+								{% if info['adv2_img'] !='' %}<img src="/uploads/yiyuanqiang/{{ info['adv2_img'] }}" width='100%'  height='85'/>{% if type == 'modify' %}<a class="btn btn-default btn-sm" href="javascript:delimg('adv2_img')" role="button">删除图片</a>{% endif %}{% endif %}
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">广告三:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="adv3_url" name="adv3_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['adv3_url'] : '' }}" />
+								<input type="file" id="adv3_img" class="adv3_img pull-right" name="adv3_img" value="" />
+								{% if info['adv3_img'] !='' %}<img src="/uploads/yiyuanqiang/{{ info['adv3_img'] }}" width='100%'  height='85'/>{% if type == 'modify' %}<a class="btn btn-default btn-sm" href="javascript:delimg('adv3_img')" role="button">删除图片</a>{% endif %}{% endif %}
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">广告四:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="adv4_url" name="adv4_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['adv4_url'] : '' }}" />
+								<input type="file" id="adv4_img" class="adv4_img pull-right" name="adv4_img" value="" />
+								{% if info['adv4_img'] !='' %}<img src="/uploads/yiyuanqiang/{{ info['adv4_img'] }}" width='100%'  height='85'/>{% if type == 'modify' %}<a class="btn btn-default btn-sm" href="javascript:delimg('adv4_img')" role="button">删除图片</a>{% endif %}{% endif %}
+							</div>
+						</div>
+						<hr>
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">说明:</label>
+							<div class="col-xs-7"><textarea class="form-control" id="desc" name="desc">{{ type == 'modify' ? info['desc'] : '' }}</textarea></div>
+						</div>
+						<hr>
+						<div class="form-group form-group-sm">
+							<label for="name" class="col-sm-1 control-label">工作电话:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="work_phone" name="work_phone" value="{{ type == 'modify' ? info['work_phone'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="name" class="col-sm-1 control-label">工作QQ:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="work_QQ" name="work_QQ" value="{{ type == 'modify' ? info['work_QQ'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="name" class="col-sm-1 control-label">工作时间:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="work_time" name="work_time" value="{{ type == 'modify' ? info['work_time'] : '' }}" /></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">是否禁用:</label>
+							<div class="col-xs-8">
+								<label class="radio-inline"><input type="radio" name="is_close" id="is_close1" {% if type == 'modify' and info['is_close'] == 1 %} checked {% endif %} value="1">是</label>
+								<label class="radio-inline"><input type="radio" name="is_close" id="is_close2" {% if type == 'modify' and info['is_close'] == 0 %} checked {% endif %} value="0">否</label>
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/yiyuanqiang/index" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delimg(m)
+{
+	var r=confirm("你确定要删除该图片吗？");
+	if(r == true){
+		location.href="/admin/yiyuanqiang/index/delimg/{{ actionid }}/"+m;
+	}
+}
+
+$(document).ready(function() {
+
+
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 1,
+        showMeridian: 0,
+    });
+	/*
+	$(".uploadImg").fileinput({
+		//maxFileSize: 100,
+		overwriteInitial: true,
+		browseClass: "btn btn-primary btn-sm",
+		browseLabel: "选择图片",
+		previewFileType: "image",
+		previewSettings: {image:{width:"200px",height:"160px"}},
+		layoutTemplates: {
+			preview: '<div class="file-preview {class}">' +
+			'    <div class="close fileinput-remove">&times;</div>' +
+			'    <div class="{dropClass}">' +
+			'    <div class="file-preview-thumbnails"></div>' +
+			'    <div class="clearfix"></div>' +
+			'    <div class="file-preview-status text-center text-success"></div>' +
+			'    <div class="kv-fileinput-error"></div>' +
+			'    </div>' +
+			'</div>'
+		},
+		showPreview: false,
+		showCaption: true,
+		showRemove: false,
+		showUpload: false
+	});
+	*/
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var desc = $('#desc').code();
+	
+});
+
+</script>
+

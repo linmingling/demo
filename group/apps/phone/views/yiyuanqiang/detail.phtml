@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% if actionid == 17 %}
+        <title>优居网·广州下雪不怕冷，奥普给您送温暖</title>
+        <meta name="keywords" content="优居网·广州下雪不怕冷，奥普给您送温暖">
+        <meta name="description" content="优居网·广州下雪不怕冷，奥普给您送温暖"> 
+    {% else %}
+        <title>优居网-大牌新品尝鲜 全民砍价1元购</title>
+        <meta name="keywords" content="优居网-大牌新品尝鲜 全民砍价1元购">
+        <meta name="description" content="优居网-大牌新品尝鲜 全民砍价1元购">
+    {% endif %}
+    <meta name="front-end technicist" content="jinger">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="/yiyuanqiang/css/detail.css?vid=1.2" media="all" /> 
+</head>
+<body>
+    <!-- loading -->
+    <div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="title">
+            <div class="title-ly">
+            <div class="title-1"><a onclick="history.go(-1);"><img src="/yiyuanqiang/images/icon-fan.png" height="100%"></a></div>
+            <div class="title-2">
+                
+                <p>商品详情</p>
+            </div>
+            <div class="title-3"><a href="/phone/yiyuanqiang/index/{{ actionid }}"><img src="/yiyuanqiang/images/icon-index.png" height="100%"></a></div></div>
+        </div>
+        <div class="banner">
+            
+                <div id="swiper1" class="swiper">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <!-- <div class="swiper-slide">
+                                <div class="detail-img">
+                                    <img src="{{ goodsinfo['img'] }}" >
+                                    <div class="detail-img-alt"><p>{{ goodsinfo['goods_name'] }}</p></div>
+                                </div>
+                            </div> -->
+                            {% for k in goodsinfo['goods_imgs']%}
+                            <div class="swiper-slide">
+                                <a href="{{ indexinfo['adv2_url'] }}" class="detail-img">
+                                    <div class="detail-img-child" style="background-image:url({{ k['img'] }})" my-date="{{ k['img'] }}">
+                                        <div class="detail-img-alt"><p>{{ goodsinfo['goods_name'] }}</p></div>
+    
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- <div class="swiper-slide">
+                                <div class="detail-img">
+                                    <img src="{{ k['img'] }}">
+                                    <div class="detail-img-alt"><p>{{ goodsinfo['goods_name'] }}</p></div>
+                                </div>
+                            </div> -->
+                            {% endfor %}
+                            <!-- <div class="swiper-slide"><img src="http://pic14.nipic.com/20110522/7411759_164157418126_2.jpg" ></div>
+                            <div class="swiper-slide"><img src="http://pic.nipic.com/2007-11-09/200711912453162_2.jpg" ></div> -->
+                        </div>
+                        <div class="pagination"></div>
+                    </div>
+                </div>
+
+                <div class="detail-img-fy"><span id="fy1"></span>/<span id="fy2"></span></div>
+            
+            
+            {% if status == 'D' %}
+            <div class="detail-djs">
+                <p class="hei f12">活动还未开始!</p>
+            </div>
+            {% else %}
+            <div class="detail-djs">
+                <p class="gey">距离活动结束还剩：</p>
+                <div class="detail-djs-time">
+                    <div class="time-bg djs-day1"></div><div class="time-bg djs-day2"></div><div class="time-ft">天</div>
+                    <div class="time-bg djs-hour1"></div><div class="time-bg djs-hour2"></div><div class="time-ft">时</div>
+                    <div class="time-bg djs-min1"></div><div class="time-bg djs-min2"></div><div class="time-ft">分</div>
+                    <div class="time-bg djs-sec1"></div><div class="time-bg djs-sec2"></div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="kjb">
+           <!-- 进度条 -->
+           
+            <div class="detail-jdt">
+                <div class="detail-jdt-1">
+                    <div style="margin-left:87%" id="now-price-pn1"><!-- 此宽度=进度条宽度-图像宽度26%/2 -->
+                    <p style="padding-top: 2px;">独享价</p>
+                    <p class="f12" style="margin-top: -2px;"><span id="now-price-num"></span></p></div>
+                </div>
+                <div class="detail-jdt-2">
+                    <!-- 9=图标宽度18/2 -->
+                    <div class="detail-jdt-2-btn" style="left:0;margin-left:-9px">
+                        <img src="/yiyuanqiang/images/jd-h.png" >
+                    </div>
+                    <div class="detail-jdt-2-btn" style="margin-left:-9px" id="bk-price-pn1">
+                        <img src="/yiyuanqiang/images/jd-h.png" >
+                    </div>
+                    <div class="detail-jdt-2-btn" style="left:100%;margin-left:-9px" id="big-price-pn">
+                        <img src="/yiyuanqiang/images/jd.png" >
+                    </div>
+                    <div class="detail-jdt-2-a" style="width:100%;"></div>
+                    <div class="detail-jdt-2-b" style="width:100%;" id="now-price-pn2"></div>
+                </div>
+                <div class="detail-jdt-3">
+                    <!-- 30=图标宽度60/2 -->
+                    <div style="left:0;margin-left:-30px" class="orange">
+                        <p>最低价</p>
+                        <p id="s-price"></p>
+                    </div>
+                    <div style="margin-left:-40px" class="gey2"  id="bk-price-pn2"><!-- 在往左移10px-->
+                        <p style="padding-left: 16px;">帮砍价</p>
+                        <p id="bk-price"></p>
+                    </div>
+                    <div style="left:100%;margin-left:-35px" class="gey2">
+                        <p>原价</p>
+                        <p id="big-price"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 相关按钮 -->
+
+            {% if status == 'B' %}
+            <!-- 帮别人帮砍 -->
+            <div class="detail-btn height50" id="brkj-ly">
+                <div class="detail-btn-1 bgorange" id="btkj">帮TA砍价</div>
+                <div class="detail-btn-2 bgorange2" id="fqbk">我要参加</div>
+            </div>
+             {% elseif status == 'A' and goodsinfo['active_quantity']>0 %}
+            <!-- 我发起的帮砍 -->
+            <div class="detail-btn height50">
+                {% if cutcount>0 %}
+                <div class="detail-btn-1 bgorange" id="bmykj">砍价（<span>{{ cutcount }}</span>次）</div>
+                <div class="detail-btn-2 bgorange2" id="yqbk">邀请砍价</div>
+                {% else %}
+                <div class="detail-btn-1 bggey" id="bmykj">砍价（<span>{{ cutcount }}</span>次）</div>
+                <div class="detail-btn-2 bgorange2" id="yqbk">邀请砍价</div>
+                {% endif %}
+            </div>
+             {% elseif status == 'C' %}
+            <!-- 发起帮砍 -->
+            <div class="detail-btn " >
+                <p class="detail-btn-p gey">您还没发起该宝贝的帮砍，时不我待，赶快参加吧！</p>
+                <div class="detail-btn-3 bgorange" id="fqbk">发起并砍价</div>
+            </div>
+             {% elseif status == 'D' %}
+            <!-- 即将开始 -->
+            <div class="detail-btn " >
+                <p class="detail-btn-p hei f14">本次活动将于{{ goodsinfo['countdown_str'] }}开始</p>
+                <hr style="border-top:1px solid #dfdfdf;width:96%">
+                <div class="detail-btn-text">
+                    <input type="text" placeholder="请输入您的手机号码" id="start-mobile">
+                </div>
+                <div class="detail-btn-3 bggey" id="start-mobile-btn">开售提醒</div>
+            </div>
+             {% elseif status == 'E' %}
+            <!-- 已经被抢光 -->
+            <div class="detail-btn ">
+                <div class="detail-btn-end">
+                    <!-- <p class="white f14" style="padding-top:4px">此商品已经被抢光！</p> -->
+                     <!-- <div class="detail-btn-end-n">
+                        <p>您可以以<span class="orange">{{ goodsinfo['discount'] }}折</span>（￥{{ goodsinfo['discount_price'] }}）优惠价购买！</p>
+                    </div> -->
+                    <div class="detail-btn-end-n">
+                        <p class="f14">此商品已经被抢光！</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <!-- 排行榜 -->
+            <div class="detail-phb">
+                <div style="position: absolute;height: 40px;width: 40px;top:-10px;left:5px"><img src="{{ headpic }}" style="height:100%;width:100%;border-radius:40px;"></div>
+                <!-- <div><img src="/yiyuanqiang/images/touxiang1.png"></div> -->
+                <div class="detail-phb-1 gey">
+                {% if status == "A" %}
+                    通过努力，您额外获得<span class="orange">{{ cutinfo['share_count']+cutinfo['att_count'] }}</span>次砍价机会
+                {% else %}
+                    通过努力，TA获得额外的砍价机会
+                {% endif %}
+                    <a id="countTips"><u class="orange hide" style="padding-left: 5px;" >查看详情</u></a>
+                </div>
+                <div class="detail-phb-2">
+                    {% if toprank %}
+                    <span class="orange sy">砍价榜</span>已有<span class="orange">{{ helpsum }}</span>个小伙伴帮忙降价，共降<span class="orange">{{ cutsum }}</span>元
+                    {% endif %}
+                </div>
+                <div class="detail-phb-3">
+                    <div class="detail-phb-3-ly">
+                    <!-- 砍价榜有信息 -->
+                        
+                        {% if toprank %}
+                        <!-- 最高 -->
+                        <div>
+                            <table>
+                              <tr>
+                                <th>
+                                    <img src="/yiyuanqiang/images/icon-guan.png" width="15px" style="padding-right:1px">
+                                    <span id="kjb-top-name">{% if toprank['username'] == '' %}{{ toprank['phone'] }}{% else %}{{ toprank['username'] }}{% endif %}</span>
+                                </th>
+                                <th class="gey" id="kjb-top-text">有史以来最强一刀，狂砍了</th>
+                                <th class="orange"><span id="kjb-top-price"></span>{{ toprank['lower_money'] }}元</th>
+                              </tr>
+                            </table>
+                        </div>
+                        <!-- 新增 -->
+                        <div class="hide" id="kjb-top">
+                            <table>
+                              
+                            </table>
+                        </div>
+                        <!-- 普通 -->
+                        <table>
+                        {% for k in ranklist %}
+                          <tr>
+                            <th class="tb-1" >{% if k['username'] == '' %}{{ k['phone'] }}{% else %}{{ k['username'] }}{% endif %}</th>
+                            <th class="tb-2" >大刀一挥，轻轻松松砍了</th>
+                            <th class="tb-3" >{{ k['lower_money'] }}元</th>
+                          </tr>
+                        {% endfor %}
+                        </table>
+                    {% else %}
+                    <!-- 砍价榜没信息 -->
+                    <p class="detail-phb-3-ly-p" id="kjb-p">还没有小伙伴帮你砍价哦~</p>
+                    {% endif %}
+                    </div>
+                </div>
+                <div class="detail-phb-4">
+                    <!-- <div id="gzyju">关注优居生活再获一次砍价机会</div> -->
+                    <div id="gzyju">多砍一次</div>
+                </div>
+            </div>
+        </div>
+        <div class="detail-tip hide">
+            <div class="detail-tip-1">
+                <div style="width:100%"><hr style="border-top:1px solid #dfdfdf;width:100%"></div>
+                <div class="detail-tip-1-2"><p class="f14">帮砍须知</p></div>
+            </div>
+            <div class="detail-tip-ly" style="padding-top:10px">
+                <p>有效期</p>
+                <p class="gey">每件商品都有对应的有效期限，请注意核对以免错过！</p>
+            </div>
+            <div class="detail-tip-ly">
+                <p>砍价规则</p>
+                <p class="gey">1. 任何一件商品的砍价都必须发起才能砍价或邀请帮砍。</p>
+                <p class="gey">2. 发起砍价时优居会核对您的用户信息，如未登录者须先验证手机号码。</p>
+                <p class="gey">3. 您可对自己发起的砍价商品进行多次砍价，此外还可通过关注公众号、分享等行为获得额外砍价机会。</p>
+                <p class="gey">4. 您帮朋友砍价时，可以通过帮TA分享获得额外一次帮TA砍价的机会。</p>
+                <p class="gey">5. 同一个砍价商品每个用户限购一件。</p>
+                <p class="gey">6. 您可在任意价格区间购买对应商品；若未抢到还可以优惠价格直接购买哦~</p>
+            </div>
+            <div class="detail-tip-ly">
+                <p>违规处理</p>
+                <p class="gey">活动最终解释权归优居所有，如发现违规刷分现象我方取消该用户的参与资格。</p>
+            </div>
+            <div class="detail-tip-ly">
+                <p>温馨提示</p>
+                <p class="gey">商品详细信息参数及配送方式请查看商品详情。</p>
+            </div>
+        </div>
+        <div class="detail-ad">
+            <div style="padding-top: 20px;text-align:center" class="hide">
+                <p class="f14">优居商城购买保证</p>
+            </div>
+            <div style="padding-top: 5px;" class="hide">
+                <hr style="width:90%">
+            </div>
+            <div class="detail-ad-img hide" >
+                <div>
+                    <img src="/yiyuanqiang/images/bz1.png" width="70%">
+                </div>
+                <div>
+                    <img src="/yiyuanqiang/images/bz2.png" width="70%">
+                </div>
+                <div>
+                    <img src="/yiyuanqiang/images/bz3.png" width="70%">
+                </div>
+                <div>
+                    <img src="/yiyuanqiang/images/bz4.png" width="70%">
+                </div>
+            </div>
+            <div class="detail-ad-ft">继续拖动，查看产品详情</div>
+            
+        </div>
+<!-- 拖拽后加载 -->
+        <div>
+            <!-- 广告位 -->
+            <div class="detail-bigimg hide">
+            {{ goodsinfo['desc'] }}
+<!--                 <img > -->
+            </div>
+            <!-- 一站购 -->
+            <div class="detail-yzg hide"  id="myhide">
+                <div class="con-title">
+                    <div>
+                        <div class="con-title-1"></div>
+                        <div class="con-title-2">一站购</div>
+                        <div class="con-title-3"><img src="/yiyuanqiang/images/icon-more.png" width="100%"></div>
+                    </div>
+                </div>
+                <div class="groupBox">
+                    <a class="imgBox">
+                        <img src="/yiyuanqiang/images/yzg.jpg" />
+                        <span class="typeBg"></span>
+                        <span class="type f12">家饰</span>
+                        <p class="djs f12">
+                            <i></i>
+                            离开始还有6天
+                        </p>
+                    </a>
+                    <div class="infoBox">
+                        <p class="info1 f14">【10月20日】  南城区国际会展中心夏栋国际会展中</p>
+                        <div class="infoDetailBox">
+                            <p class="info2 info grey"><span>折</span>全场低至5折 线下再抽奖</p>
+                            <p class="info3 info grey"><span>赠</span>线上报名送黄金大吊坠一条</p>
+                            <!-- <p class="info4 info grey"><span>专</span></p> -->
+                            <a class="groupBtn">
+                                <p class="num"><span class="orange">500</span>人已报名</p>
+                                <p class="txt f14">立即索票</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 抵扣券 -->
+        {% if status == 'A'  and ishost and couponuse>0 and coupons>0 %}
+        <div class="dkj f12" id="dkj">
+            您有<span class="orange f13">{{ coupons }}</span>张￥100抵扣券（每次仅限1张）<img src="/yiyuanqiang/images/dkj-n.png" id="dkjimg"/>
+        </div>
+        {% endif %}
+        <!-- 立刻购买 -->
+        
+        
+       {% if status == 'B' or status == 'C' or status == 'D' or status == 'E'%}
+       {% else %}
+        <div class="buy">
+            {% if status == 'A' and goodsinfo['active_quantity']>0 %}
+                {% if ishost%}
+                <div class="buy-1">独享价 : <span class="orange goubuy">￥{{ goodsinfo['cut_price'] }}</span>（仅剩<span>{{ goodsinfo['active_quantity']<0?0:goodsinfo['active_quantity'] }}</span>件）</div>
+                <a href="{{payDomain}}/phone/pay/buy?fromid=4&actionid={{ actionid }}&goodsid={{ goodsinfo['goods_id'] }}&note={{ goodsinfo['id']}}:1:{{ fromid }}" class="buyurl">
+                <div class="buy-2 btnorange">
+                    <img src="/yiyuanqiang/images/icon-gwc.png" height="100%">
+                    <span>立刻购买</span>
+                </div>
+                </a>
+                {% endif %}
+            {% elseif status == 'E' %}
+                
+                <div class="buy-1">优惠价 : <span class="orange goubuy">￥{{ goodsinfo['discount_price'] }}</span>（仅剩<span>{{ goodsinfo['goods_quantity'] }}</span>件）</div>
+                <a href="{{payDomain}}/phone/pay/buy?fromid=4&actionid={{ actionid }}&goodsid={{ goodsinfo['goods_id'] }}&note={{ goodsinfo['id']}}:0:0:0" class="buyurl">
+                <div class="buy-2 btnorange">
+                    <img src="/yiyuanqiang/images/icon-gwc.png" height="100%">
+                    <span>立刻购买</span>
+                </div>
+                </a>
+            {% endif %}
+        </div>
+       {% endif %}
+
+       
+        
+      
+
+
+
+        <!-- 底部 -->
+        <div class="bottom">
+            <p>商城主页<span class="bottom-ll">|</span>会员中心<span class="bottom-ll">|</span>关注我们</p>
+            <p>@ Copyrigth 2015，版权归深圳前海优品优居网络科技有限公司所有</p>
+        </div>
+
+        <div class="top hide">
+            <div>
+                <img src="/yiyuanqiang/images/icon-top.png" width="100%">
+            </div>
+        </div>
+        <a href="/phone/yiyuanqiang/myprd/{{ actionid }}">
+            <div class="mybk hide">
+                <div>
+                    <img src="/yiyuanqiang/images/icon-mybk.png" width="100%">
+                </div>
+            </div>
+        </a>
+
+        <!-- 弹窗弹弹弹 -->
+        <div class="bg hide"></div>
+        <div class="pop-bk hide" id="popbk">
+            <div class="pop-bk-1" >
+                <img src="/yiyuanqiang/images/pop-bg.png" width="100%">
+            </div>
+            <div class="pop-bk-2">
+                <p>您已成功砍了 <span id="popbk-price"></span> 元！</p>
+                <div class="pop-bk-3">确定</div>
+            </div>
+            <div class="pop-bk-4"><img src="/yiyuanqiang/images/pop-close.png" width="100%"></div>
+        </div>
+        
+        <!-- 公共弹窗 -->
+        <div class="pop-common hide" id="popcommom">
+            <div class="pop-common-1">
+                <p></p>
+                <div class="pop-common-2">确定</div>
+            </div>
+        </div>
+
+        <!-- 参加活动，弹出输入手机框 -->
+        <div class="pop-cj hide" id="popcj">
+            <div class="pop-cj-1">
+                <input type="text" placeholder="请输入您的手机号码" id="cj-mobile">
+            </div>
+            <div class="pop-cj-2">
+                <input type="text" placeholder="输入短信验证码" id="cj-msg"><div class="pop-cj-4 btnorange" id="send-msg">获取验证码</div>
+            </div>
+            <div class="pop-cj-3" id="cj-bm">立即参加</div>
+            <div class="pop-cj-5" id="cj-close"><img src="/yiyuanqiang/images/pop-close2.png" width="100%"></div>
+        </div>
+
+        <!-- 分享引导 -->
+        <div class="bg2 hide"></div>
+        <div class="pop-fxyd hide" id="popydc">
+            <img src="/yiyuanqiang/images/fxyd.png" width="100%" >
+        </div>
+
+        <!-- 公众号 -->
+        <div class="pop-qrcode hide">
+            <div class="pop-qrcode-1">
+                <div  class="pop-qrcode-title">
+                    <!-- <p>长按识别二维码，关注优居公众号！</p> -->
+                    <p>你懂的</p>
+                </div>
+                <div  class="qrcode"><img src="/yiyuanqiang/images/qrcode.png"></div>
+                <div class="qrcode-close"><img src="/yiyuanqiang/images/tan-close.png" /></div>
+            </div>
+        </div>
+
+
+    </div>
+        
+
+        
+        
+
+        
+    <script type="text/javascript" src="/yiyuanqiang/js/jquery-1.10.2.min.js"></script>
+    <script src="/yiyuanqiang/js/idangerous.swiper-2.1.min.js"></script>
+    
+    <script type="text/javascript">
+    var wxData = {
+            imgUrl:"{{ goodsinfo['img'] }}",
+            link:"{{domain}}/phone/yiyuanqiang/detail/{{ actionid }}/{{ goodsid }}/{{ fromid }}",
+            desc:"优居-全民砍价，品牌家装建材1元购！手快有手慢无，赶快来抢！",
+            title:"优居-全民砍价，品牌家装建材1元购！手快有手慢无，赶快来抢！",
+            success: function () {
+                $.ajax({
+                    async:false,
+                    url: '/phone/yiyuanqiang/invite?auth=1',
+                    type: "post",
+                    dataType:'json',
+                    data:{actionid:{{ actionid }},goodsid:{{ goodsid }},fromid:{{ fromid }}},
+                    success:function(result){
+                        
+                            alert("分享成功");
+                        
+                    }
+                })
+            }
+        };
+    
+    var EndTime=new Date();
+    $(function(){
+        var index=0;
+        $("#loading").hide();
+        //wx_ydc () ;
+        
+        
+        // 图片轮播显示
+        $("#fy2").text($('.swiper-slide').length);
+        $('.swiper-slide').each(function(){
+            ++index;
+            $(this).attr('zdy',index);
+
+        });
+        $("#fy1").text('1');
+        var mySwiper1;
+        if(parseInt($('.swiper-slide').length)>1)
+        {
+             mySwiper1 = $("#swiper1 .swiper-container").swiper({
+                mode: 'horizontal',
+                pagination : '.pagination',
+                loop:true ,
+                autoplay:4000,
+                onSlideChangeEnd: function () {
+                    $("#fy1").text($('.swiper-slide-active').attr('zdy'));
+                    mySwiper1.startAutoplay()
+                },
+            }); 
+        }
+
+        var wh = $(window).width();
+        var imgh1 = 348*wh/640;
+        $("#swiper1 .detail-img").height(imgh1);
+        $("#swiper1 .swiper-container").height(imgh1);
+
+        $("#swiper1 .detail-img .detail-img-child").each(function(){
+            var myimg=new Image(); 
+            myimg.src = $(this).attr('my-date');
+            console.log(myimg.height/myimg.width);
+
+            if(myimg.height/myimg.width<348/640)
+            {
+                $(this).css('background-size','auto 100%');
+            }
+
+        });
+
+
+        
+
+
+         
+         {% if status == 'C' or status == 'D' or status == 'E' %}
+         jdt_init({{ goodsinfo['lowest_price'] }},{{ goodsinfo['market_price'] }},{{ goodsinfo['kan_price'] }},{{ goodsinfo['kan_price'] }}); 
+         {% else %}
+         jdt_init({{ goodsinfo['lowest_price'] }},{{ goodsinfo['market_price'] }},{{ goodsinfo['kan_price'] }},{{ goodsinfo['cut_price'] }}); 
+         {% endif %}
+         
+         EndTime=new Date("{{ goodsinfo['countdown'] }}")
+    })
+    
+    $("#countTips").click(function(){
+        var countStr = "<p style=\"text-align:center;font-size: 1.6rem;font-weight: 700;\">额外奖励来源</p><br/>1.发起帮砍+2<br/>2.关注“优居生活”公众号+1<br/>3.成功分享任意商品给亲友+1";
+        pop_common(countStr);
+        //alert(countStr);
+        
+    });
+
+    //抵扣券
+    $('#dkjimg').click(function(){
+        if($(this).attr('src')=='/yiyuanqiang/images/dkj-n.png')
+        {
+            $(this).attr('src','/yiyuanqiang/images/dkj-y.png');
+            //勾选
+            var _href="{{payDomain}}/phone/pay/buy?fromid=4&actionid={{ actionid }}&goodsid={{ goodsinfo['goods_id'] }}&note={{ goodsinfo['id']}}:1:{{ fromid }}:1";
+            $('.buyurl').attr('href',_href);
+            $('.goubuy').text('￥'+(Number($('.goubuy').text().split('￥')[1])-100).toFixed(2));
+        }
+        else{
+            $(this).attr('src','/yiyuanqiang/images/dkj-n.png');
+            //没勾选
+            var _href="{{payDomain}}/phone/pay/buy?fromid=4&actionid={{ actionid }}&goodsid={{ goodsinfo['goods_id'] }}&note={{ goodsinfo['id']}}:1:{{ fromid }}:0";
+            $('.buyurl').attr('href',_href);
+            $('.goubuy').text('￥'+(Number($('.goubuy').text().split('￥')[1])+100).toFixed(2));
+        }
+        
+    })
+
+    //帮他砍价
+    $("#btkj").bind('click',function(){
+        $.ajax({
+            async:false,
+            url: '/phone/yiyuanqiang/cut?auth=1',
+            data:{type:'help',actionid:{{ actionid }},goodsid:{{ goodsid }},fromid:{{ fromid }}},
+            type: "post",
+            dataType:'json',
+            success:function(result){
+                var myhtml='<div class="detail-btn-1 bgorange" id="yqbk">帮TA分享</div>';
+                if(result.code == 1000)
+                {
+                    //没登陆
+                    pop_cj ();
+                    return false;
+                }
+                else if(result.code > 1000)
+                {
+                    if(result.code == 1002)
+                    {
+                        $('#btkj').addClass('hide');
+                        $("#brkj-ly").append(myhtml);
+                        $("#fqbk").removeClass('bgorange2').addClass('bgorange');
+                        alert(result.msg.msg);
+                        return false;
+                    }
+                    else
+                    {
+                        //报错
+                        alert(result.msg.msg);
+                        return false
+                    }
+                }
+                else
+                {
+                    //成功
+                    jdt_kj(result.msg.curr_price,result.msg.cut_money);
+                    kjbtop('您','大刀一挥，轻轻松松砍了',result.msg.curr_price);
+                    // 帮分享者砍价后：左侧按钮显示【帮TA分享】；右侧【我要参加】按钮回复原色且可点击。
+                    $('#btkj').addClass('hide');
+                    $("#brkj-ly").append(myhtml);
+                    $("#fqbk").removeClass('bgorange2').addClass('bgorange');
+
+                    wxData.desc = "凭借着高超的人品与砍价技能，价值¥{{ goodsinfo['market_price'] }}元的{{ goodsinfo['goods_name'] }}被我砍掉了"+result.msg.curr_price+"元，你也来试试，一起把它砍到1元吧！";
+                    wxData.title = "凭借着高超的人品与砍价技能，价值¥{{ goodsinfo['market_price'] }}元的{{ goodsinfo['goods_name'] }}被我砍掉了"+result.msg.curr_price+"元，你也来试试，一起把它砍到1元吧！";
+                    
+                    
+                    return false;
+                }
+                
+            }
+        });
+        
+    })
+    //自己砍价
+    $("#bmykj").bind('click',function(){
+        //当前次数
+        var _ycount=parseInt($("#bmykj span").text());
+        if(_ycount>0)
+        {
+            $.ajax({
+                async:false,
+                url: '/phone/yiyuanqiang/cut?auth=1',
+                data:{type:'my',actionid:{{ actionid }},goodsid:{{ goodsid }},fromid:{{ fromid }}},
+                type: "post",
+                dataType:'json',
+                success:function(result){
+                    if(result.code == 1000)
+                    {
+                        //没登陆
+                        pop_cj ();
+                        return false;
+                    }
+                    else if(result.code > 1000)
+                    {
+                        //报错
+                        alert(result.msg.msg);
+                        return false
+                    }
+                    else
+                    {
+                        //成功
+                        jdt_kj(result.msg.curr_price,result.msg.cut_money);
+                        mybkcount();
+                        kjbtop('您','大刀一挥，轻轻松松砍了',result.msg.curr_price);
+                        wxData.desc = "价值¥{{ goodsinfo['market_price'] }}元的{{ goodsinfo['goods_name'] }}被我砍掉了"+result.msg.curr_price+"元，展现友情力量的时候到了，快来帮我砍价到1元吧！";
+                        wxData.title = "价值¥{{ goodsinfo['market_price'] }}元的{{ goodsinfo['goods_name'] }}被我砍掉了"+result.msg.curr_price+"元，展现友情力量的时候到了，快来帮我砍价到1元吧！";
+                        return false;
+                    }
+                    
+                }
+            });
+        }
+    })
+    
+    //发起帮砍
+    $("#fqbk").bind('click',function(){
+        $.ajax({
+            async:false,
+            url: '/phone/yiyuanqiang/start?auth=1',
+            data:{actionid:{{ actionid }},goodsid:{{ goodsid }}},
+            type: "post",
+            dataType:'json',
+            success:function(result){
+                if(result.code == 1000)
+                {
+                    //没登陆
+                    pop_cj ();
+                    return false;
+                }
+                else if(result.code > 1000)
+                {
+                    if(result.code == 1003)
+                    {
+                        location.href="/phone/yiyuanqiang/detail/{{ actionid }}/{{ goodsid }}/"+result.msg;
+                        return false;
+                    }
+                    else
+                    {
+                        //报错
+                        alert(result.msg);
+                        return false
+                    }
+                }
+                else
+                {
+                    //成功
+                    location.href="/phone/yiyuanqiang/detail/"+result.msg.action_id+"/"+result.msg.goods_id+"/"+result.msg.from_id;
+                    return false;
+                }
+                
+            }
+        });
+    })
+    //全局变量验证码
+    var msg_flag=false;
+    //我要参加
+    function pop_cj () {
+        $("#popcj").fadeIn();
+        $('.bg').fadeIn();
+    }
+    //我要参加各项信息获取
+    $("#cj-bm").bind('click',function(){
+        var _cjmsg=$("#cj-msg").val();
+        var _cjmobile=$("#cj-mobile").val();
+        var telReg = !!_cjmobile.match(/^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/);
+        if(telReg==false)
+        {
+            alert('请输入正确的手机号');
+            return false;
+        }
+        
+        if(_cjmsg == '')
+        {
+            alert('请输入验证码');
+            return false;
+        }
+        
+        //判断验证码
+        $.ajax({
+            async:false,
+            url: '/phone/yiyuanqiang/register/check?auth=1',
+            data:{phone:_cjmobile,code:_cjmsg},
+            type: "post",
+            dataType:'json',
+            success:function(result){
+                if(result.code != 0)
+                {
+                    alert(result.msg);
+                    return false;
+                }
+                else
+                {
+                    $("#popcj").fadeOut();
+                    $('.bg').fadeOut();
+                    return false;
+                }
+                
+            }
+        });
+            
+        
+    })
+    var vv=true;
+    //发送短信验证码
+    $("#send-msg").bind('click',function(){
+        var _cjmobile=$("#cj-mobile").val();
+        if(_cjmobile == '')
+        {
+            alert('请输入手机号');
+            return false;
+        }
+        if(vv){
+            
+            $.ajax({
+                async:false,
+                url: '/phone/yiyuanqiang/register/captcha?auth=1',
+                data:{phone:_cjmobile},
+                type: "post",
+                dataType:'json',
+                success:function(result){
+                    if(result.code != 0)
+                    {
+                        alert(result.msg);
+                        return false;
+                    }
+                    else
+                    {
+                        vv=false;
+                        var step = 60;
+                        var _res = setInterval(function()
+                        {   
+                            $("#send-msg").removeClass("btnorange").addClass('btngey');
+                            $('#send-msg').text(step+'s后重新发送');
+                            if(step <= 0){
+                            $("#send-msg").removeClass("btngey").addClass('btnorange');
+                            $('#send-msg').text('获取验证码');
+                            clearInterval(_res);//清除setInterval
+                            vv=true;
+                            }
+                            step-=1;
+                        },1000)
+                        alert(result.msg);
+                        return false;
+                    }
+                    
+                }
+            })
+        }
+    })
+    //我要参加关闭按钮
+    $("#cj-close").bind('click',function(){
+        //弹出框关闭,清空数据
+        $("#cj-msg").val('');
+        $("#cj-mobile").val('');
+        $("#popcj").fadeOut();
+        $('.bg').fadeOut();
+    })
+
+    //关注优居生活按钮
+    $("#gzyju").bind('click',function(){
+        $('.bg').fadeIn();
+        $('.pop-qrcode').fadeIn();
+    })
+
+    $('.qrcode-close').bind('click',function(){
+        $('.bg').fadeOut();
+        $('.pop-qrcode').fadeOut();
+    })
+
+
+
+    //初始化的进度条模板
+    //s_price=最低价,big_price=最高价,bk_price=帮砍价,now_price=当前价
+    function jdt_init (s_price,big_price,bk_price,now_price) {
+        //各种价格,强制保留两位小数
+        $("#s-price").text('￥'+s_price.toFixed(2));//最低价
+        $("#big-price").text('￥'+big_price.toFixed(2));//最高价
+        //帮砍价0或空时，下面信息不显示
+        if(bk_price==''||bk_price==0)
+        {
+            $("#bk-price-pn1").hide();
+            $("#bk-price-pn2").hide();
+            $("#now-price-pn1").hide();
+            $("#big-price-pn img").attr('src','/yiyuanqiang/images/jd-h.png');
+        }
+        else{
+            $("#bk-price").text('￥'+bk_price.toFixed(2));//帮砍价
+            
+            
+            //$("#now-price-num").text('￥'+now_price.toFixed(2));
+
+            //各坐标位置
+            //帮砍价位置
+            var _bkpn=(bk_price-s_price)/(big_price-s_price)*100;
+            //console.log(_bkpn);
+            $("#bk-price-pn1").css('left',_bkpn+'%');
+            $("#bk-price-pn2").css('left',_bkpn+'%');
+
+            //进度条位置now-price-pn2
+            var _jdtpn=(now_price-s_price)/(big_price-s_price)*100;
+            //console.log(_jdtpn);
+            //$("#now-price-pn1").css('margin-left',(100-13)+'%');//13=图像宽度26/2 
+            //$("#now-price-pn2").css('width',100+'%');
+            
+            num_change(now_price,big_price,'now-price-num',10,3000);//当前价
+            $("#now-price-pn1").animate({marginLeft:(_jdtpn-13)+'%'},3000);//13=图像宽度26/2 
+            $("#now-price-pn2").animate({width:_jdtpn+'%'},3000);
+            //判断图标是否需要替换
+            if(now_price<bk_price)
+            {
+                $('#bk-price-pn1 img').attr('src','/yiyuanqiang/images/jd.png');
+            }
+            else
+            {
+                $('#bk-price-pn1 img').attr('src','/yiyuanqiang/images/jd-h.png');
+            }
+        }
+        
+    }
+    var _n_price;//全局变量，当前的价格
+    //砍价进度条,price为砍的钱数
+    function jdt_kj (price,n_price) {
+        //进度条位置now-price-pn2
+        var big_price=Number($("#big-price").text().replace('￥',''));
+        var s_price=Number($("#s-price").text().replace('￥',''));
+        var now_price=Number(n_price);
+        var bk_price=Number($("#bk-price").text().replace('￥',''));
+        var _jdtpn=(now_price-s_price)/(big_price-s_price)*100;
+        if(now_price>0)
+        {
+            _n_price=now_price;
+            //弹出框框
+            $('.bg').fadeIn();
+    　　    $("#popbk").fadeIn();
+            $('#popbk-price').text(price);
+            // //进度条
+            // $("#now-price-num").text('￥'+Math.round(now_price*100)/100);//当前价
+            // $("#now-price-pn1").animate({marginLeft:(_jdtpn-13)+'%'},1000);//13=图像宽度26/2 
+            // $("#now-price-pn2").animate({width:_jdtpn+'%'},1000);
+            // //判断图标是否需要替换
+            // if(now_price<bk_price)
+            // {
+            //     $('#bk-price-pn1 img').attr('src','/yiyuanqiang/images/jd.png');
+            // }
+            // else
+            // {
+            //     $('#bk-price-pn1 img').attr('src','/yiyuanqiang/images/jd-h.png');
+            // }
+        }
+        else{
+            pop_common('已经小于最低价了！');
+        }
+        
+    }
+
+    //砍价后点击确定
+    $('.pop-bk-3,.pop-bk-4').bind('click',function(){
+        //插入一条新的记录
+//         kjbtop('骑着蜗牛旅行','大刀一挥，轻轻松松砍了','60');
+        $('#popbk').fadeOut();
+        $('.bg').fadeOut();
+
+
+        //进度条
+        var big_price=Number($("#big-price").text().replace('￥',''));
+        var s_price=Number($("#s-price").text().replace('￥',''));
+        var now_price=Number(_n_price);//砍完后的价格
+        var bk_price=Number($("#bk-price").text().replace('￥',''));
+        var _jdtpn=(now_price-s_price)/(big_price-s_price)*100;
+        var n_price=Number($("#now-price-num").text().replace('￥',''));//没砍之前的价格
+
+        //$("#now-price-num").text('￥'+Math.round(now_price*100)/100);
+        num_change(now_price,n_price,'now-price-num',10,2000);//当前价
+        $("#now-price-pn1").animate({marginLeft:(_jdtpn-13)+'%'},2000);//13=图像宽度26/2 
+        $("#now-price-pn2").animate({width:_jdtpn+'%'},2000);
+        //判断图标是否需要替换
+        if(now_price<bk_price)
+        {
+            $('#bk-price-pn1 img').attr('src','/yiyuanqiang/images/jd.png');
+        }
+        else
+        {
+            $('#bk-price-pn1 img').attr('src','/yiyuanqiang/images/jd-h.png');
+        }
+        
+    })
+
+    //减少次数
+    function mybkcount(){
+        var _count=parseInt($("#bmykj span").text())-1;
+        $("#bmykj span").text(_count);
+        if(_count==0)
+        {
+            $("#bmykj").removeClass('bgorange').addClass('bggey');
+            $("#yqbk").removeClass('bgorange2').addClass('bgorange');
+        }
+    }
+
+    //砍价榜将最新一条记录置顶
+    function kjbtop(name,text,price){
+        var myhtml='';
+        price=price.toFixed(2);
+        myhtml+='<tr><th class="tb-1">'+name+'</th><th class="tb-2" >'+text+'</th><th class="tb-3" >'+price+'元</th></tr>';
+        $('#kjb-top table').append(myhtml);
+        $('#kjb-top').fadeIn();
+        //隐藏还没有小伙伴帮你砍价哦~
+        $("#kjb-p").hide();
+    }
+
+    //公共弹窗
+    function pop_common (text) {
+        var _popcommom=$("#popcommom");
+        var _text=$('.pop-common-1 p');
+        if (text !== null && text !== undefined && text !== '') {
+            $('.bg').fadeIn();
+    　　    _popcommom.fadeIn();
+            _text.html(text);
+    　　}
+    }
+    //公共弹窗关闭
+    $('.pop-common-2').bind('click',function(){
+        $('.bg').fadeOut();
+    　　$("#popcommom").fadeOut();
+    })
+
+    //弹出分享引导层
+    $("#brkj-ly").on("click",'#yqbk',function(){
+        wx_ydc ();
+    })
+    $('#yqbk').bind("click",function(){
+        wx_ydc ();
+    })
+    //关闭分享引导层
+    $("#popydc,.bg2").bind('click',function(){
+        $('.bg2').fadeOut();
+    　　$("#popydc").fadeOut();
+    })
+    //弹出微信分享引导层
+    function wx_ydc () {
+        var browser = {
+            versions: function () {
+                var u = navigator.userAgent, app = navigator.appVersion;
+                return {         //移动终端浏览器版本信息
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                    ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                };
+            }(),
+            language: (navigator.browserLanguage || navigator.language).toLowerCase()
+        }
+        if (browser.versions.mobile) {//判断是否是移动设备打开。browser代码在下面
+                var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+                if (ua.match(/MicroMessenger/i) == "micromessenger") {
+                    //在微信中打开
+                    //$("#popydc img").attr('src','/yiyuanqiang/images/fxyd.png');
+                    //$("#popydc").css('height','100%');
+                }
+                else if (ua.match(/QQ/i) == "qq") {
+                    //在QQ空间打开  
+                    //$("#popydc img").attr('src','/yiyuanqiang/images/fxyd.png'); 
+                    //$("#popydc").css('height','100%');
+                }
+                else{
+                    //其他移动浏览器
+                    //$("#popydc img").attr('src','/yiyuanqiang/images/fxyd2.png');
+                }
+                
+        } else {
+            //否则就是PC浏览器打开
+            //$("#popydc img").attr('src','/yiyuanqiang/images/fxyd2.png');
+        }  
+        $("#popydc img").attr('src','/yiyuanqiang/images/fxyd3.png');
+
+        $('.bg2').fadeIn();
+    　　$("#popydc").fadeIn();
+
+
+    }
+    //监视当输入框内数字达到11位时，“开售提醒”四字点亮，点击开启开售提醒功能。
+    $("#start-mobile").bind("input propertychange",function (){
+        phone=$("#start-mobile").val();
+        var telReg = !!phone.match(/^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/);
+        //如果手机号码不能通过验证
+        
+        if(telReg)
+        {
+            $("#start-mobile-btn").removeClass('bggey').addClass('bgorange');
+            $('#start-mobile-btn').bind('click',function(){
+                $.ajax({
+                    async:false,
+                    url: '/phone/yiyuanqiang/remind?auth=1',
+                    data:{phone:phone,starttime:"{{ goodsinfo['starttime'] }}",goodsname:"{{ goodsinfo['goods_name'] }}",goodsid:"{{ goodsinfo['id'] }}"},
+                    type: "post",
+                    dataType:'json',
+                    success:function(result){
+                        if(result.code != 0)
+                        {
+                            alert(result.msg);
+                            return false;
+                        }
+                        else
+                        {
+                            alert(result.msg);
+                            $("#start-mobile-btn").removeClass('bgorange').addClass('bggey');
+                            $("#start-mobile").val('');
+                            $('#start-mobile-btn').unbind('click');
+                            return false;
+                        }
+                        
+                    }
+                });
+            
+            })
+        }
+        else{
+            $("#start-mobile-btn").removeClass('bgorange').addClass('bggey');
+            $('#start-mobile-btn').unbind('click');
+        }
+        
+     })
+
+
+    //坑爹的倒计时
+    setInterval(GetRTime,1000);
+    
+    function GetRTime(){
+       //console.log(EndTime);
+       var NowTime = new Date();
+       var t =EndTime.getTime() - NowTime.getTime();
+       if(t<0){
+            $('.djs-day1').text(0);
+            $('.djs-day2').text(0);
+            $('.djs-hour1').text(0);
+            $('.djs-hour2').text(0);
+            $('.djs-min1').text(0);
+            $('.djs-min2').text(0);
+            $('.djs-sec1').text(0);
+            $('.djs-sec2').text(0);
+            return;
+       }
+       var d=Math.floor(t/1000/60/60/24);
+       var h=Math.floor(t/1000/60/60%24);
+       var m=Math.floor(t/1000/60%60);
+       var s=Math.floor(t/1000%60);
+
+       
+        if(d<10){
+            $('.djs-day1').text(0);
+            $('.djs-day2').text(d.toString().substring(0,1));
+        }
+        else{
+            $('.djs-day1').text(d.toString().substring(0,1));
+            $('.djs-day2').text(d.toString().substring(1,2));
+        }
+
+        if(h<10){
+            $('.djs-hour1').text(0);
+            $('.djs-hour2').text(h.toString().substring(0,1));
+        }
+        else{
+            $('.djs-hour1').text(h.toString().substring(0,1));
+            $('.djs-hour2').text(h.toString().substring(1,2));
+        }
+
+        if(m<10){
+            $('.djs-min1').text(0);
+            $('.djs-min2').text(m.toString().substring(0,1));
+        }
+        else{
+            $('.djs-min1').text(m.toString().substring(0,1));
+            $('.djs-min2').text(m.toString().substring(1,2));
+        }
+
+        if(s<10){
+            $('.djs-sec1').text(0);
+            $('.djs-sec2').text(s.toString().substring(0,1));
+        }
+        else{
+            $('.djs-sec1').text(s.toString().substring(0,1));
+            $('.djs-sec2').text(s.toString().substring(1,2));
+        }
+        
+   }
+   
+    //回到顶部
+    $('.top').bind('click',function(){
+        $('html,body').animate({scrollTop: 0}, 300);
+    })
+    // top
+    $(window).scroll(function(){
+        if($(window).scrollTop()>4){
+            //$(".top").show();
+            //$('.mybk').show();
+        }else{
+           // $(".top").hide();
+            //$('.mybk').hide();
+        }
+    });
+       // var i=0;
+    //向下后加载
+     $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        if (scrollTop + windowHeight == scrollHeight) {
+        //此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+            // if(i>0)
+            // {
+            //     $('.detail-bigimg').fadeIn();
+            //     $("#myhide").fadeIn();
+            // }
+            // i++;
+            $('.detail-bigimg').fadeIn();
+            $('.detail-ad-ft').text('');
+            //暂时屏蔽一站购
+            //$("#myhide").fadeIn();
+        }
+    });
+
+     //数字动态变化
+    function num_change(c_price,origin_price,id,times,waste_time){
+
+        //每次变化数
+        var i,n;
+        i = 0;
+        n = (origin_price - c_price) /times;
+        var time = setInterval(function(){
+            if (i<=times) {
+                var current = origin_price-i*n;
+                $('#'+id).html('￥'+current.toFixed(2));
+                i++;
+            } else {
+                clearInterval(time);
+            }
+        },waste_time/times);
+    }
+    
+    
+
+    </script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+
+wx.config({
+      debug: false,
+      appId: "{{ signPackage['appId'] }}",
+      timestamp: "{{ signPackage['timestamp'] }}",
+      nonceStr: "{{ signPackage['nonceStr'] }}",
+      signature: "{{ signPackage['signature'] }}",
+      jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo'
+      ]
+});
+
+wx.ready(function () {
+    wx.onMenuShareAppMessage(wxData);
+    wx.onMenuShareTimeline(wxData);
+    wx.onMenuShareQQ(wxData);
+});
+
+</script>
+    
+</body>
+    
+</html>

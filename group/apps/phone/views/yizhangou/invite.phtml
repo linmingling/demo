@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{data['name']}}-一站购</title>
+<meta name="keywords" content="{{data['name']}} 一站购" />
+<meta name="description" content="{{data['name']}} 一站购" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/yizhangou/css/com.css?v=1.1" />
+
+</head>
+<body>
+	<!-- loading -->
+	<div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+	<div class="wraper inviteWraper">
+		<!-- 头部 -->
+<!-- 		<header class="head">
+			<a class="returnIcon ctl" id="returnIcon" style="background:none;"></a>
+			<a class="homeIcon11 ctr" href="#"></a>
+			<p class="title grey">
+				<span class="titleText f16">{{data['name']}}</span>
+			</p>
+		</header>	 -->
+		<!-- 主要内容 -->
+		<div class="main inviteMain">
+			<!-- 城市选择 -->
+		<?php if(count($city) > 1 ){ ?>
+			<div class="cityOpen">
+				<span><?php echo $city[$data['id']];?>站</span>
+			</div>
+		<?php } ?>
+			<!-- 第一块 焦点图及时间地点 -->
+			<div class="inviteInfo distribution ">
+				<div class="topImg">
+					<img  src="/uploads/yizhangou/{{data['subjectimg'][0]['name']}}" alt="">
+				</div>
+			<!--
+				<div class="infoBox">
+					<div class="infoText timeBox f14">活动时间:{{dateStr}}</div>
+					<div class="infoText addressBox f14">地址:<?php echo base64_decode($address[0]['address']); ?></div>
+				</div>
+			-->
+			</div>
+			<!-- 详细信息 -->
+			<div class="inviteDetail">
+				
+			{% for k in item %}
+				{% for m,n in lianimg[k['name']] %}
+					{% if k['name'] == '品牌表' %}
+						<div class="logo distribution ">		
+							<!--part3 品牌表2 -->	
+							<div class="detailBox ">
+								<img  class="lazy" data-original="/uploads/yizhangou/{{n['name']}}" alt="">
+							</div>
+							<!-- 产品轮播图 -->
+							<div class="dbMain logobox yyq">
+								<div id="swiper1" class="swiper">
+									<div class="swiper-container">
+										<div class="swiper-wrapper">
+											<?php foreach($logo2img as $h=>$p){  ?>
+												<div class="swiper-slide">
+													<div class="logoImgBox">
+													{% for j in p %}
+														<div class="imgBox">
+														<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/uploads/yizhangou/{{j['name']}}" data-original="/uploads/yizhangou/{{j['name']}}" class="lazy" />
+														
+														<div class="price">￥<span>1</span></div>
+														</div>
+													{% endfor %}
+													</div>
+												</div>
+											<?php } ?>
+										</div>
+									</div>
+								</div>
+								<div class="pagination1" id="pagination1"></div>
+							</div>
+						</div>
+
+						
+					{% elseif k['name'] == '品牌表2' %}
+
+						<div class="logo distribution ">		
+							<!--part3 品牌表 -->	
+							<div class="detailBox ">
+								<img  class="lazy" data-original="/uploads/yizhangou/{{n['name']}}" alt="">
+							</div>
+							<!-- 产品轮播图 -->
+							<div id="logo2lb" class="dbMain logobox zg">
+								<div id="swiper2" class="swiper2">
+									<div class="swiper-container">
+										<div class="swiper-wrapper">
+											<?php foreach($logoimg as $h=>$p){  ?>
+												<div class="swiper-slide">
+													<div class="logoImgBox">
+													{% for j in p %}
+														<div class="imgBox">
+														<img src="/yizhangou/images/default_ad.png" data-src="/uploads/yizhangou/{{j['name']}}" data-original="/uploads/yizhangou/{{j['name']}}" class="lazy"  />
+														</div>
+													{% endfor %}
+													</div>
+												</div>
+											<?php } ?>
+										</div>
+									</div>
+								</div>
+								<div class="pagination2" id="pagination2"></div>
+							</div>
+						</div>
+					{% elseif k['name'] == '品牌表3' %}
+						<div class="logo distribution ">		
+							<!--part3 品牌表3 -->	
+							<div class="detailBox ">
+								<img  class="lazy" data-original="/uploads/yizhangou/{{n['name']}}" alt="">
+							</div>
+							<!-- 产品轮播图 -->
+							<div class="dbMain logobox pp">
+								<div id="swiper3" class="swiper3">
+									<div class="swiper-container">
+										<div class="swiper-wrapper">
+											<?php foreach($logo3img as $h=>$p){  ?>
+												<div class="swiper-slide">
+													<div class="logoImgBox">
+													{% for j in p %}
+														<div class="imgBox">
+														<img src="/qmjjg/images/default_logo.png"  data-src="/uploads/yizhangou/{{j['name']}}" data-original="/uploads/yizhangou/{{j['name']}}" class="lazy" />
+														<!-- <img src="/yizhangou/images/top.png" /> -->
+														</div>
+													
+													{% endfor %}
+													</div>
+												</div>
+											<?php } ?>
+										</div>
+									</div>
+								</div>
+								<div class="pagination3" id="pagination3"></div>
+							</div>
+						</div>
+					{% elseif k['name'] == '地图' %}
+						<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=55TvHWH5h9OAPPLtfdqFFBRB"></script>
+						<div class="detailBox mapbox distribution ">
+							<img  class="lazy" data-original="/yizhangou/images/p5.png" alt="">
+							<div class="dbMain">
+							{% for k,v in address %}
+								<div class="mapWarp close first">
+									<div class="name f16"><?php echo base64_decode($v['name']); ?></div>
+									<div class="addressBox2 f14"><i></i><?php echo base64_decode($v['address']); ?></div>
+									<div class="map" id="map{{k}}" jd="{{v['latitude'][0]}}" wd="{{v['latitude'][1]}}"></div>
+								</div>
+							{% endfor %}
+								
+								
+								<!-- 10个地址之后 增加hide -->
+							<!--
+								<div class="mapWarp close first hide">
+									<div class="name f16">格美电器（体育西路店）</div>
+									<div class="addressBox2 f14"><i></i>{{data['address']}}</div>
+									<div class="map" id="map4" jd="121.454941" wd="31.224448"></div>
+								</div>
+								<div class="mapWarp close first hide">
+									<div class="name f16">格美电器（体育西路店）</div>
+									<div class="addressBox2 f14"><i></i>{{data['address']}}</div>
+									<div class="map" id="map5" jd="106.52267" wd="29.597632"></div>
+								</div>
+							-->
+							<?php if (count($address) > 10){ ?>
+								<div class="mapMore">
+									<div class="line"></div>
+									<span class="f12">点击加载更多</span>
+								</div>
+							<?php } ?>
+							</div>
+						</div>
+					{% else %}
+						<div class="detailBox distribution ">
+							<img  class="lazy" data-original="/uploads/yizhangou/{{n['name']}}" alt="">
+						</div>
+					{% endif %}
+				 	
+				{% endfor %}
+			{% endfor %}
+
+			</div>
+		</div>
+		<!-- gototop -->
+	    <a href="javascript:void(0)" class="top hide"><img src="/yizhangou/images/top.png" alt=""></a>
+
+	</div>
+	<div class="ff"></div>
+	<!-- 底部报名按钮 -->
+	<div class="bottom" id="bmOpen">
+	{% if data['bottomimg'][0]['name'] %}
+		<img src="/uploads/yizhangou/{{data['bottomimg'][0]['name']}}" alt="">
+	{% else %}
+		<div class="br f16 ctr title" >0元领券</div>
+		<div class="bl f14 ctl">已有<span>{{bmNum + 2000}}</span>人报名</div>
+	{% endif %}
+	</div>
+	
+	<div class="bmWarp hide" id="bmBox2">
+		<div class="bmBox">
+			<span class="close">×</span>
+			<div class="bmHead">
+				<p class="lph">0元领券</p>
+			</div>
+			<div class="text">
+				<p class="f14 tips1">已有<span class="red">{{bmNum + 5000}}</span>人领取</p>
+				<p class="f14 tips2 hide">还剩<span class="red">{{bmNum}}</span>张，马上抢入</p>
+			</div>
+			<div class="form form1">
+
+				<p class="bmItem">
+					<input type="text" class="name" placeholder="请填写您的姓名" />
+					<input type="text" class="phone" placeholder="请填写手机号码" />
+				</p>
+				
+				<p class="bmItem codeItem hide">
+					<input type="text" class="code" id="code" placeholder="请输入短信验证码" />
+					<span class="getCode">获取验证码</span>
+				</p>
+				<div class="bmBtnBox1">
+					<p class="bmBtn f16 false" id="bmBtn2">领取</p>
+					<!--<p class="text2">价值100元的V卡免费快递到家</p>-->
+				</div>
+				<p class="bmBtn f16 false hide" id="bmBtn3">确认</p>
+			</div>
+		
+		</div>
+	</div>
+
+<?php if(count($city) > 1 ){ ?>
+	<div class="citySelect hide" id="citySelect">
+		<div class="black_bg"></div>
+		<div class="cityWarp">
+			<div class="cityHead">
+				<p class="cityClose"><span><?php echo $city[$data['id']];?>站</span></p>
+			</div>
+			<div class="cityBody">
+				<p class="ip">我们猜您在：<span><?php echo $nowcity?></span></p>
+				{% if is_city <> '' %}
+				<p class="grey">您当前选择的城市站为：<span style="font-weight: bold;color:#e70000"><?php echo $city[$data['id']];?>站</span></p>
+				{% else %}
+				<p class="grey">我们为您推荐最近城市站：<span style="font-weight: bold;color:#e70000"><?php echo $city[$data['id']];?>站</span>，您也可以选择：</p>
+				{% endif %}
+				<div class="city cf">
+				{% for k,v in city %}
+					<a href="/phone/yizhangou/invite/{{k}}?location=1">{{v}}</a>
+				{% endfor %}		
+				</div>
+			</div>
+		</div>
+	</div>
+<?php } ?>
+
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+
+<script src="/common/js/idangerous.swiper-2.1.min.js"></script>
+<script src="/common/js/jquery.lazyload.js"></script>
+
+
+<script>
+	//页面布点
+	$('.click_btn').click(function(){
+		var btn_id = $(this).attr('data-id');
+		$("#btn_id").attr('value', btn_id);
+		$.ajax({
+			async:true,
+			url:'/phone/qixi/click',
+			data:{btn_id:btn_id},
+			type: 'post',
+			dataType:'json',
+			success:function(result){
+			}
+		});
+	});
+	$(".cityOpen").click(function(){
+	    $("#citySelect").show();
+	});
+	$("#citySelect .cityClose").click(function(){
+	    $("#citySelect").hide();
+	});
+	$("#citySelect .black_bg").click(function(){
+	    $("#citySelect").hide();
+	});
+
+
+	
+	// 表单验证
+	function check1(){
+		var flag = true;
+		var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+		var name = $("#bmBox2 .name");
+		var tel = $("#bmBox2 .phone").val();
+		// 检测input是否为空
+		if(name.val() == ""){
+			flag = false;
+		}
+		if(!mob.test(tel)){
+			flag = false;
+		}
+
+		if(flag){
+			$("#bmBtn2").removeClass("false");
+		}else{
+			$("#bmBtn2").addClass("false");
+		}
+	}
+	function check2(){
+		var flag = true;
+		var code = $("#bmBox2 .code");
+		// 检测input是否为空
+		if(code.val() == ""){
+			flag = false;
+		}
+
+		if(flag){
+			$("#bmBtn3").removeClass("false");
+		}else{
+			$("#bmBtn3").addClass("false");
+		}
+	}
+	var djsTime;
+	// 倒计时
+	function djs(time){
+		if(time > 1){
+			$("#bmBox2 .getCode").addClass("false").html(time+"s后重新获取");
+			time--;
+			setTimeout(function(){
+				djsTime = djs(time);
+			},1000)
+		}else{
+			$("#bmBox2 .getCode").removeClass("false").html("获取验证码");
+			clearTimeout(djsTime);
+		}
+	}
+
+	// 布点
+	function distribution(){
+		var win = $(window);
+		var distribution = $(".distribution");
+		var dt = new Array();
+		var wh = win.height();
+		var wt = win.scrollTop() + wh/2;
+		var view=0;
+		if(win.scrollTop() == 0){
+			view=1;
+		}else{
+			distribution.each(function(i){
+				// console.log(distribution.eq(i).height());
+				if(i>0){
+					dt[i] = dt[i-1] + distribution.eq(i-1).height();
+				}else{
+					dt[i] = 40;
+				}
+			});
+			// console.log(dt+" , "+wt);
+			
+			for(view=0;view<dt.length;view++){
+				if(dt[view]>wt){
+					
+					break;
+				}
+			}
+		}
+		console.log(view);
+		$.ajax({
+			async:true,
+			url:"/phone/yizhangou/click/{{data['id']}}",
+			data:"tn="+view,
+			type: 'post',
+			dataType:'json',
+			success:function(result){
+				//console.log(result);
+			}
+		});		
+		return view;
+	}
+	// 地图初始化
+	function mapInit(i){
+		var dom = $(".mapbox .map").eq(i);
+		var jd = dom.attr("jd");
+		var wd = dom.attr("wd");
+		console.log(i+","+jd+","+wd)
+
+		var map = new BMap.Map("map"+i);           // 创建Map实例
+	    var point = new BMap.Point(jd,wd);  //输入经纬度
+	    map.centerAndZoom(point,16);               
+	    map.enableScrollWheelZoom();  
+	    var marker = new BMap.Marker(point);  // 创建标注
+		map.addOverlay(marker);               // 将标注添加到地图中
+		
+
+
+		//地图添加工具
+		var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+		map.addControl(top_left_navigation);
+
+		$(".mapbox .addressBox2").eq(i).click(function(){
+			map.panTo(new BMap.Point(jd,wd));
+		});
+	}
+
+	$(function(){
+		$("#loading").hide();
+		// lazyload
+		$('.lazy').lazyload({
+			effect : "fadeIn" ,
+			threshold : 50
+		});
+		// gototop
+		var first = true;
+	    $(window).scroll(function(){
+	        if($(window).scrollTop()>4){
+	            $(".top").show();
+	        }else{
+	            $(".top").hide();
+	        }
+
+	        if(first && $(window).scrollTop()>500){
+	        	first = false;
+	            $(".swiper img, .swiper2 img, .swiper3 img").each(function(){
+	            	if($(this).attr("data-src")){
+		                $(this).attr("src",$(this).attr("data-src"));
+		            }
+	            })
+	        }
+	    });
+	    $(".top").click(function(){
+	        if(scroll=="off") return;
+	        $("html,body").animate({scrollTop: 0}, 100);
+	    });
+
+		function onSlideChangeEnd(){
+		
+			$("#swiper1 .swiper-container img").each(function(){
+	            if($(this).attr("data-src")){
+	                $(this).attr("src",$(this).attr("data-src"));
+	            }
+	        });
+			$("#swiper2 .swiper-container img").each(function(){
+	            if($(this).attr("data-src")){
+	                $(this).attr("src",$(this).attr("data-src"));
+	            }
+	        });
+			$("#swiper3 .swiper-container img").each(function(){
+	            if($(this).attr("data-src")){
+	                $(this).attr("src",$(this).attr("data-src"));
+	            }
+	        });
+		}
+		// 初始化logo滚动显示
+		var mySwiper1 = $("#swiper1 .swiper-container").swiper({
+            mode: 'horizontal',
+            loop:true ,
+            pagination :"#pagination1",
+            onSlideChangeEnd: onSlideChangeEnd
+        });
+
+		var mySwiper2 = $("#swiper2 .swiper-container").swiper({
+            mode: 'horizontal',
+            loop:true ,
+            pagination :"#pagination2",
+            onSlideChangeEnd: onSlideChangeEnd
+        });
+
+		var mySwiper3 = $("#swiper3 .swiper-container").swiper({
+            mode: 'horizontal',
+            loop:true ,
+            pagination :"#pagination3",
+            onSlideChangeEnd: onSlideChangeEnd
+        });
+
+        $(".mapWarp .name").click(function(){
+        	var dom = $(this).closest(".mapWarp");
+        	if(dom.hasClass("close")){
+        		dom.removeClass("close").addClass("open");
+        	}else{
+        		dom.removeClass("open").addClass("close");
+        	}
+        	
+        	if(dom.hasClass("first")){
+        		mapInit(dom.index());
+        		dom.removeClass("first");
+        	}
+        });
+        $(".mapMore").click(function(){
+        	
+        	$(".mapbox .mapWarp").show();
+        	$(this).hide();
+        });
+        $(".mapWarp .name").eq(0).click();
+
+		// 关闭报名层
+		$(".bmWarp .close").click(function(){
+			$(this).closest(".bmWarp").hide();
+		})
+
+		// 触发表单验证
+		$("#bmBox2 .name, #bmBox2 .phone ").keyup(function(){
+			check1();
+		});
+		$("#bmBox2 .code").keyup(function(){
+			check2();
+		});
+
+{% if islogin %}
+	$("#bmOpen").click(function(){
+		
+		var view = distribution(); 
+		var hmID = "yzg_{{data['id']}}_page"+view+'_bmOpen';
+        _hmt.push(['_trackEvent', '一站购', 'yzg_{{data['id']}}_0元领票按钮', hmID]);
+
+		window.location.href = "/phone/yizhangou/baoming/check/{{data['id']}}";
+	})
+	
+	$("#logo2lb").click(function(){
+
+		distribution(); 
+		var hmID = "yzg_{{data['id']}}_logo2lb";
+	    _hmt.push(['_trackEvent', '一站购', 'yzg_{{data['id']}}_抵购券', hmID]);
+
+		window.location.href = "/phone/yizhangou/baoming/check/{{data['id']}}";
+	})
+{% else %}
+		// 打开报名层
+		$("#bmOpen").click(function(){
+			$("#bmBox2 .lph").html("0元领票");
+			$("#bmBox2 .tips1").show();
+			$("#bmBox2 .tips2").hide();
+			
+			var view = distribution(); 
+			var hmID = "yzg_{{data['id']}}_page"+view+'_bmOpen';
+	        _hmt.push(['_trackEvent', '一站购', 'yzg_{{data['id']}}_0元领票按钮', hmID]);
+
+			$(".bmWarp").show();
+		})
+		
+		$("#logo2lb").click(function(){
+			$("#bmBox2 .lph").html("领抵扣券");
+			$("#bmBox2 .tips1").hide();
+			$("#bmBox2 .tips2").show();
+			
+			distribution(); 
+			var hmID = "yzg_{{data['id']}}_logo2lb";
+	        _hmt.push(['_trackEvent', '一站购', 'yzg_{{data['id']}}_抵购券', hmID]);
+			
+			$(".bmWarp").show();
+		})
+		
+{% endif %}
+
+		// 未登录未报名  第一个表单提交
+		$("#bmBtn2").click(function(){
+
+			var hmID = "yzg_{{data['id']}}_bmBtn2";
+	        _hmt.push(['_trackEvent', '一站购', 'yzg_{{data['id']}}_提交手机号', hmID]);
+			
+			if($(this).hasClass("false")) return false;
+			$(this).addClass("false");
+
+			var name = $("#bmBox2 .name").val();
+			var phone = $("#bmBox2 .phone").val();
+			var ispiao =  0;
+			var isquan = 0;
+			if($("#bmBox2 .lph").html() == '0元领票') ispiao = 1;
+			if($("#bmBox2 .lph").html() == '领抵扣券') isquan = 1;
+			
+			$.ajax({
+    			async:true,
+    			url:"/phone/yizhangou/baoming/check/{{data['id']}}",
+    			data:"name="+name+"&phone="+phone+"&from={{from}}&ispiao="+ispiao+"&isquan="+isquan,
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+					console.log(result);
+					if(result.state == 1){
+						//成功下一步
+						djs(60);
+						$("#bmBox2 .bmBtnBox1").hide();
+						$("#bmBox2 .codeItem").show();
+						$("#bmBtn3").show();
+						
+					}else{
+						alert(result.msg);
+						$("#bmBtn2").removeClass("false");
+					}
+    				
+    			}
+    		});
+		});
+
+		// 未登录未报名  第二个表单提交
+		$("#bmBtn3").click(function(){
+			var hmID = "yzg_{{data['id']}}_bmBtn3";
+	        _hmt.push(['_trackEvent', '一站购', 'yzg_{{data['id']}}_提交验证码', hmID]);
+
+			if($(this).hasClass("false")) return false;
+			$(this).addClass("false");
+
+			var name = $("#bmBox2 .name").val();
+			var phone = $("#bmBox2 .phone").val();
+			var code = $("#bmBox2 .code").val();
+			
+			$.ajax({
+    			async:true,
+    			url:"/phone/yizhangou/baoming/code/{{data['id']}}",
+    			data:"name="+name+"&phone="+phone+"&code="+code,
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+					console.log(result);
+					if(result.state == 1){
+    				//报名成功跳转
+		    			//$("#succeed").show();
+						window.location.href = "/phone/yizhangou/success/show/{{data['id']}}";
+					}else{
+						alert(result.msg);
+						$("#bmBtn3").removeClass("false");
+					}
+    		
+    			}
+    		});
+		});
+		
+		// 重新获取验证码
+		$("#bmBox2 .form1 .getCode").click(function(){
+			var hmID = "yzg_{{data['id']}}_getCode";
+	        _hmt.push(['_trackEvent', '一站购', 'yzg_{{data['id']}}_重新获取验证码', hmID]);
+
+			if($("#bmBox2 .form1 .getCode").hasClass("false")) return false;
+			
+			var name = $("#bmBox2 .name").val();
+			var phone = $("#bmBox2 .phone").val();
+
+			$.ajax({
+    			async:true,
+    			url:"/phone/yizhangou/baoming/check/{{data['id']}}",
+    			data:"name="+name+"&phone="+phone,
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+					console.log(result);
+					if(result.state == 1){
+						//成功下一步
+						djs(60);
+						//$("#bmBox2 .bmBtnBox1").hide();
+						//$("#bmBox2 .codeItem").show();
+						//$("#bmBtn3").show();
+					}else{
+						alert(result.msg);
+						$("#bmBox2 .form1 .getCode").removeClass("false");
+					}
+    				
+    			}
+    		});
+		});
+
+
+	});
+</script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: '<?php echo $signPackage["timestamp"];?>',
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	      signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+            'checkJsApi',
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+	{% if data['name'] == '欧派家居狂欢节' %}
+		var wxData = {
+			"imgUrl":"{{domain}}/uploads/yizhangou/{{data['subjectimg'][0]['name']}}",
+			"link":"{{domain}}/phone/yizhangou/invite/{{data['id']}}",
+			"desc":"欧派家居狂欢节-门票免费限量发放中",
+			"title":"欧派家居狂欢节-门票免费限量发放中"
+		};
+	{% elseif data['name'] == '全民家居购' %}
+		var wxData = {
+			"imgUrl":'{{domain}}/yizhangou/images/share2.jpg',
+			"link":"{{domain}}/phone/yizhangou/invite/{{data['id']}}",
+			"desc":"免费领家博会门票 {{data['name']}}免费门票限量发放中，点击领取",
+			"title":"免费领家博会门票 {{data['name']}}免费门票限量发放中，点击领取"
+		};
+	{% else %}
+		var wxData = {
+			"imgUrl":'{{domain}}/yizhangou/images/share.jpg',
+			"link":"{{domain}}/phone/yizhangou/invite/{{data['id']}}",
+			"desc":"免费领家博会门票 {{data['name']}}免费门票限量发放中，点击领取",
+			"title":"免费领家博会门票 {{data['name']}}免费门票限量发放中，点击领取"
+		};
+	{% endif %}
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+		wx.onMenuShareQQ(wxData);
+	});
+</script>
+</body>
+</html>

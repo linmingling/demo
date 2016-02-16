@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+        <title>优居网 - 优品团</title>
+		<meta name="keywords" content="优居网 - 优品团">
+		<meta name="description" content="优居网 - 优品团">
+		<link rel="stylesheet" href="/group/css/buy.css?v=1.1" type="text/css"/>
+		<link rel="stylesheet" href="/group/css/pay.css?v=1.1" type="text/css"/>
+		<script type="text/javascript" src="/common/js/zepto.min.js"></script>
+		<script type="text/javascript" src="/group/js/phone_index.js"></script>
+    </head>
+<body>
+<div class="warp" id="warp">
+	<header class="header f14">
+		<a class="backIcon l" href="{{backoutpay}}" >返回</a>
+		<a class="homeIcon r" href="{{history}}"></a>
+		<p>订单详情</p>
+	</header>
+	<div class="main">
+		<!--商品信息模块-->
+		<div class="orderBox productInfoBox">
+			<p class="orderTime grey">{{ date('Y-m-d H:i:s') }}</p>
+			<div class="productInfo clearfix">
+				<img src="{{ info['goods_img'][0] }}" alt="" class="l"/>
+				<div class="textBox r">
+					<p class="title"><a href="javascript:void(0)">{{ info['goods_name'] }}</a></p>
+					<div class="priceBox">
+						<p class="price red f16">￥<span class="newPrice">{{ info['exclusive_price'] }}</span></p>
+						<span class="old grey">￥<span class="oldPrice">{{ info['market_price'] }}</span></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<!--收货地址模块-->
+		<div class="orderBox addBox">
+			<a href="{{payDomain}}/phone/pay/address/list?gobackurl={{gobackurl}}">
+			{% if default_add != ''%}
+				<p>
+				    <span class="name">{{ default_add['consignee'] }}</span>
+				    <span>{{ default_add['mobile'] }}</span>
+				</p>
+				<p>{{ default_add['province'] }} {{ default_add['city'] }} {{ default_add['district']}} {{ default_add['address'] }}</p>
+			    <span class="goIcon"></span>
+			{% else %}
+			<span style="margin:11px 5px 0 10px;display: inline-block;">请选择收货地址</span>
+			<span class="goIcon" style="margin:9px 5px 0 10px"></span>
+			{% endif %}
+			</a>
+		</div>
+
+		<!--支付方式模块-->
+		<div class="orderBox payType">
+			<p id="zffs">
+				<span class="item">支付方式</span>
+			{% if pay_id == 1 %}
+				<span class="zfb">
+					<input type="radio" name='zffs' checked='checked' value="1"/>
+					<label>支付宝</label>
+				</span>
+			{% else %}
+			   <span class="zfb">
+					<input type="radio" name='zffs' checked='checked' value="6"/>
+					<label>微信支付</label>
+			   </span>
+			{% endif %}
+			</p>
+		</div>
+	</div>
+	
+</div>
+
+<div class="footBox flowFoot">
+	<div class="total l">
+		<p>金额：<span class="red">￥<span>{{ info['exclusive_price'] }}</span></span></p>
+		<p class="grey">为您节省：￥<span>{{ info['market_price'] - info['exclusive_price'] }}</span></p>
+	</div>
+	<a class="btn r" id="post">
+		<span>确认提交 </span>
+	</a>
+</div>
+</body>
+<script>
+//确认提交
+$(function(){
+	$("#post").click(function(){
+		var result = $(".name").html();
+ 		if(!result) {
+			tips("请选择收货地址!");
+		} else {
+			location.href = "/phone/group/pay/{{ info['id'] }}";
+		}
+	});
+})
+</script>
+</html>

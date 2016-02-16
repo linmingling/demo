@@ -1,0 +1,135 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+  
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+
+        <h1 class="m-n font-thin h3">【{{ act_name }}】-城市排行（共有<font style="color: red;font-weight:bold;">{{ mb_count }}</font>人报名）</h1>
+
+    </div>
+    <div class="wrapper-md ng-scope">
+    <?php $this->partial("zhan/navigation")?>
+      <div class="panel panel-default">
+        <div class="panel-heading">{{ act_name }} - 城市排行数据表</div>
+        <div class="table-responsive">
+          <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+           <div class="row">
+            <div class="row wrapper">
+            <form action="/admin/zhan/city_ranking/{{ act_id }}" method="post">
+              <div class="col-sm-6 m-b-xs">
+                                                   时间：
+                <input class="input-sm form-control" type="text" style="width: 185px;" name="starttime" value="{%if starttime == ''%}{{date('Y-m-d')}}{%else%}{{ starttime }}{%endif%}" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /> - 
+                <input class="input-sm form-control" type="text" style="width: 185px;" name="endtime" value="{%if endtime == ''%}{{date('Y-m-d')}}{%else%}{{ endtime }}{%endif%}" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+				<input type="hidden" name="zhan_id" value="{{ data['zhan_id'] }}">
+                <button class="btn btn-sm btn-info">查询 </button>                
+              </div>
+             </form>
+             <div class="col-sm-3">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                  {% if !starttime %}
+                      <a href="/admin/zhan/city_ranking_xls/{{ act_id }}/all"><button class="btn btn-sm btn-info" type="button" style="margin-right: 5px">导出全部数据</button></a>
+                  {% else %}
+                      <a href="/admin/zhan/city_ranking_xls/{{ act_id }}"><button class="btn btn-sm btn-info" type="button" style="margin-right: 5px">导出当前搜索数据</button></a>
+                      <a href="/admin/zhan/city_ranking_xls/{{ act_id }}/all"><button class="btn btn-sm btn-info" type="button" style="margin-right: 5px">导出全部数据</button></a>
+                  {% endif %}
+                  		<a class="btn btn-default btn-sm" href="/admin/zhan/action/list" role="button" style="margin-right:10px;">返回</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                  <th style="width: 250px;" class="sorting_asc" rowspan="1" colspan="1">时间</th>
+                  <th style="width: 150px;" class="sorting" rowspan="1" colspan="1">排行</th>
+                  <th style="width: 200px;" class="sorting" rowspan="1" colspan="1">城市</th>
+                  <th style="width: 150px;" class="sorting" rowspan="1" colspan="1">报名人数</th>
+                  <th style="width: 250px;" class="sorting" rowspan="1" colspan="1">已验证数</th>
+                  <th style="width: 120px;" class="sorting" rowspan="1" colspan="1">同城数</th>
+                  <th style="width: 220px;" class="sorting" rowspan="1" colspan="1">填写地址数</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">手机验证率</th>
+                  <th style="width: 150px;" class="sorting" rowspan="1" colspan="1">同城率</th>
+                  <th style="width: 255px;" class="sorting" rowspan="1" colspan="1">填写地址率</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for key,k in city_list %}
+                <tr class="odd">
+                    <td class="sorting_1">{{ k['time'] }}</td>
+                    <td>{{key+1}}</td>
+                    <td>{{ k['city_name'] }}</td>
+                    <td>{{ k['num'] }}</td>
+                    <td>{{ k['yz'] }}</td>
+                    <td>{{ k['tc'] }}</td>
+                    <td>{{ k['dz'] }}</td>
+                    <td>{{ k['yzl'] }}%</td>
+                    <td>{{ k['tcl'] }}%</td>
+                    <td>{{ k['dzl'] }}%</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% if page <> '' %}
+          <?php $this->partial("index/page")?>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+$("#select").click(function(){
+	var type = $(this).val();
+	if(type == 'time'){
+		$(".search").hide();
+		$(".search_time").show();
+	}
+})
+})
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        linkFormat:'yyyy-mm-dd',
+        weekStart: 0,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: true,
+		startView: 2,
+		minView: 3,
+		forceParse: 0,
+        showMeridian: 1,
+    });
+	
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var sHTML = $('#desc').code();
+	
+});
+
+</script>
+<?php $this->partial("index/footer")?>

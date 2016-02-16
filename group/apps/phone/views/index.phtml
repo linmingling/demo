@@ -1,0 +1,31 @@
+<?php define("servername", $_SERVER['SERVER_NAME'])?>
+
+<script>
+{% if constant('servername') == 'group.yoju360.com' %}
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?34bee5be661dddf2d19cf7ba67db68cf";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+{% else %}
+
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?faa63bc1b83f9300309e61b568d99362";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+{% endif %}
+</script>
+{{ content() }}
+
+<script type="text/javascript">
+	var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cspan id='cnzz_stat_icon_1256651496'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/q_stat.php%3Fid%3D1256651496' type='text/javascript'%3E%3C/script%3E"));
+</script>

@@ -1,0 +1,164 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+  
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+
+        <h1 class="m-n font-thin h3">【{{ data['zhan_name'] }}】-总用户报名数据（共有<font style="color: red;font-weight:bold;">{{ a_count }}</font>人报名）</h1>
+
+    </div>
+    <div class="wrapper-md ng-scope">
+    <?php $this->partial("zhan/navigation")?>
+      <div class="panel panel-default">
+        <div class="panel-heading">{{ data['zhan_name'] }}报名数据表
+        {% if page <> '' %}
+        <span class="label bg-info"><?php echo $page['totalRows']?> 条记录</span>
+        {% endif %}
+        </div>
+        <div class="table-responsive">
+          <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+          <div class="row">
+                <div class="row wrapper">
+                <form action="/admin/zhan/usersearch/{{ data['zhan_id'] }}" method="post">
+                  <div class="col-sm-8 m-b-xs">
+                    <select class="input-sm form-control w-sm inline v-middle" name="city_id" id="city_id">
+                      <option value="">=请选择城市=</option>
+                    {% for k in cityList %}
+                      <option value="{{ k['c_id'] }}"  {% if input['city_id'] === k['c_id'] %}selected{% endif %}>{{ citybox[k['city_id']]['region_name']}}</option>
+                    {% endfor %}
+                    </select>
+                    <select class="input-sm form-control w-sm inline v-middle" name="auth" id="auth">
+                      <option value="">=是否验证手机号=</option>
+                      <option value="1" {% if input['auth'] == '是' %}selected{% endif %}>是</option>
+                      <option value="0" {% if input['auth'] == '否' %}selected{% endif %}>否</option>
+                    </select>
+                    
+                    <input type="text" class="input-sm form-control search" placeholder="数据来源" name="from" value="{{ input['from'] }}">&nbsp;&nbsp;&nbsp;
+                    报名时间段
+                    <input class="input-sm form-control search" type="text" name="starttime" value="{{ input['starttime'] }}" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" /> - 
+                    <input class="input-sm form-control search" type="text" name="endtime" value="{{ input['endtime'] }}" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" />
+					<input type="hidden" name="zhan_id" value="{{ data['zhan_id'] }}">
+                    <button class="btn btn-sm btn-info"> 查询 </button>                
+                  </div>
+                 </form>
+                  <div class="col-sm-4">
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                      {% if !searchtag %}
+                          <a href="/admin/zhan/bmtable_allxls/{{ data['zhan_id'] }}?r=<?php echo rand(1000,9999);?>"><button class="btn btn-sm btn-info" type="button" style="margin-right: 5px">导出全部数据</button></a>
+                      {% else %}
+                          <a href="/admin/zhan/bmtable_xls/{{ data['zhan_id'] }}"><button class="btn btn-sm btn-info" type="button" style="margin-right: 5px">导出当前搜索数据</button></a>
+                          <a href="/admin/zhan/bmtable_allxls/{{ data['zhan_id'] }}?r=<?php echo rand(1000,9999);?>"><button class="btn btn-sm btn-info" type="button" style="margin-right: 5px">导出全部数据</button></a>
+                      {% endif %}
+                      		<a class="btn btn-default btn-sm" href="/admin/zhan/action/list" role="button" style="margin-right:10px;">返回</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                  <th style="width: 200px;" class="sorting_asc" rowspan="1" colspan="1">姓名</th>
+                  <th style="width: 150px;" class="sorting" rowspan="1" colspan="1">报名城市</th>
+                  <th style="width: 150px;" class="sorting" rowspan="1" colspan="1">手机号码</th>
+                  <th style="width: 200px;" class="sorting" rowspan="1" colspan="1">手机归属地</th>
+                  <th style="width: 150px;" class="sorting" rowspan="1" colspan="1">是否验证</th>
+                  <th style="width: 355px;" class="sorting" rowspan="1" colspan="1">详细地址</th>
+                  <th style="width: 120px;" class="sorting" rowspan="1" colspan="1">来源</th>
+                  <th style="width: 150px;" class="sorting" rowspan="1" colspan="1">报名形式</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">IP地址</th>
+                  <th style="width: 180px;" class="sorting" rowspan="1" colspan="1">IP所属地址</th>
+                  <th style="width: 255px;" class="sorting" rowspan="1" colspan="1">报名时间</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k in list %}
+                <tr class="odd">
+                    <td class="sorting_1">{{ k['name'] }}</td>
+                    <td>{{ citybox[k['city_id']]['region_name'] }}</td>
+                    <td>{{ k['phone'] }}</td>
+                    <td>{{ k['phone_province'] }}{{ k['phone_city'] }}</td>
+                    <td>
+                    {% if k['auth'] == 0 %}<span class="label bg-danger">未验证</span>
+                    {% else %}<span class="label bg-success">已验证</span>
+                    {% endif %}
+                    </td>
+                    <td>{{ citybox[k['addr_city']]['region_name'] }}{{ citybox[k['addr_district']]['region_name'] }}{{ k['address'] }}</td>
+                    <td>{{ k['from'] }}</td>
+                    <td>
+                    {% if k['type'] == 1 %}平滑
+                    {% else %}翻页
+                    {% endif %}
+                    </td>
+                    <td>{{ k['ip'] }}</td>
+                    <td>{{ k['ip_province'] }}{{ k['ip_city'] }}</td>
+                    <td>{{ k['addtime'] }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% if page <> '' %}
+          <?php $this->partial("index/page")?>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+$("#select").click(function(){
+	var type = $(this).val();
+	if(type == 'time'){
+		$(".search").hide();
+		$(".search_time").show();
+	}
+})
+})
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        linkFormat:'yyyy-mm-dd',
+        weekStart: 0,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: true,
+		startView: 2,
+		minView: 3,
+		forceParse: 0,
+        showMeridian: 1,
+    });
+	
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var sHTML = $('#desc').code();
+	
+});
+
+</script>
+<?php $this->partial("index/footer")?>

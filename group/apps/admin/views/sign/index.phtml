@@ -1,0 +1,115 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+  
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">七夕入场签到数据表</h1>
+    </div>
+    <div class="wrapper-md ng-scope">
+      <div class="panel panel-default">
+        <div class="panel-heading">七夕入场签到数据表
+        {% if page <> '' %}
+        <span class="label bg-info"><?php echo $page['totalRows']?> 条记录，其中通过线上报名 {{ bm_count }} 人</span>
+        {% endif %}
+        </div>
+        <div class="table-responsive">
+          <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+          <div class="row">
+                <div class="row wrapper">
+                  <div class="col-sm-4">
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button class="btn btn-sm btn-default" type="button"><a href="xls">导出全部数据</a></button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                  <th style="width: 250px;" class="sorting" rowspan="1" colspan="1">手机号码</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">是否报名</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">签到时间</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k in list %}
+                <tr class="odd">
+                    <td>{{ k['phone'] }}</td>
+                    <td>
+                    {% if k['is_bm'] == 0 %}<span class="label bg-danger">未报名</span>
+                    {% else %}<span class="label bg-success">已报名</span>
+                    {% endif %}
+                    </td>
+                    <td>
+                    {% if k['add_time'] != 0 %}
+                    {{ date('Y-m-d H:i:s',k['add_time']) }}
+                    {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% if page <> '' %}
+          <?php $this->partial("index/page")?>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+$("#select").click(function(){
+	var type = $(this).val();
+	if(type == 'time'){
+		$(".search").hide();
+		$(".search_time").show();
+	}
+})
+})
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        linkFormat:'yyyy-mm-dd',
+        weekStart: 0,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: true,
+		startView: 2,
+		minView: 3,
+		forceParse: 0,
+        showMeridian: 1,
+    });
+	
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var sHTML = $('#desc').code();
+	
+});
+
+</script>
+<?php $this->partial("index/footer")?>

@@ -1,0 +1,71 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">秒杀活动列表</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" href="/admin/seckill/index/add" role="button">添加活动</a>
+			</div>			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>活动名称</th>
+									<th>创建人</th>
+									<th>创建时间</th>
+									<th>开始时间</th>
+									<th>结束时间</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in data %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ k['name'] }}</td>
+									<td>{{ k['create_man'] }}</td>
+									<td>{{ k['createtime'] }}</td>
+									<td>{{ k['starttime'] }}</td>
+									<td>{{ k['endtime'] }}</td>
+									<td>
+										<a href="/admin/seckill/goods/list/{{ k['id'] }}">商品</a>&nbsp;|&nbsp;
+										<a href="/admin/seckill/time/list/{{ k['id'] }}">时间段</a>&nbsp;|&nbsp;
+										<a href="/admin/seckill/order/{{ k['id'] }}">订单</a>&nbsp;|&nbsp;
+										<a href="/admin/seckill/user/{{ k['id'] }}">用户</a>&nbsp;|&nbsp;
+										<a href="/admin/seckill/share/{{ k['id'] }}">分享</a>&nbsp;|&nbsp;
+										<a href="/admin/seckill/statistics/{{ k['id'] }}/1">统计</a>&nbsp;|&nbsp;
+										<a href="/admin/seckill/shipping/list/{{ k['id'] }}">提货</a>&nbsp;|&nbsp;
+										<a href="/admin/seckill/index/modify/{{ k['id'] }}">编辑</a>&nbsp;|&nbsp;
+										<a href="javascript:delaction({{k['id']}})">删除</a>
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delaction(m){
+	var r=confirm("你确定要删除该活动吗？");
+	if(r == true){
+		location.href="/admin/seckill/index/delete/"+m;
+	}
+}
+
+</script>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>优居-家博会，家装建材1元购！</title>
+	<meta name="keywords" content="优居-家博会，家装建材1元购！" />
+	<meta name="description" content="优居-家博会，家装建材1元购！" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<link rel="stylesheet" type="text/css"  href="/markdown/css/pd.css" />
+	<link rel="stylesheet" type="text/css" href="/markdown/css/swiper.min.css">
+	<script src="/common/js/jquery-2.1.4.min.js"></script>
+	<script src="/markdown/js/my.js"></script>
+	<script src="/markdown/js/swiper.min.js"></script>
+	<script src="/markdown/js/easyscroll.js"></script>
+
+</head>
+<body>
+	<div class="bg2">
+	    <div class="head">
+			<div class="title2">产品详情</div>
+			<a href="/phone/markdown/index/{{ info['id'] }}" class="b-cls"><img src="/markdown/images/back.png" alt=""></a>
+			{% if orderurl == 1 %}<a href="{{payDomain}}/phone/pay/order" class="l-btn">我的订单</a>{% endif %}
+        </div>
+
+        <div id="p-show">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<div class="p1"><img src="{{ goods['img'] }}" alt=""><div class="pname"><span class="p-title">{{ goods['name'] }}</span></div></div>
+					</div>	            			            			            
+				</div>
+			    <div class="swiper-pagination"></div>
+			    <br>
+			</div> 
+        </div>
+		
+		<!-- 帮砍 -->
+		<div class="bk">
+			<div class="tiao">
+				<div class="tiaoPrice">独享价:&nbsp&nbsp¥<span class="Bargain">{{ lastPrice }}</span><span class="point"></span></div>
+				
+				<div class="tiaoColor"><img src="/markdown/images/pd/slide2.png"> <div  class="tiaoGray"></div></div>
+			</div>
+			<div class="tiaoDes">
+				<div class="D_left"><span class="D_top">最低价</span><span class="D_bottom">¥{{ goods['lowestPrice'] }}</span></div>
+				<div class="D_center"><span>帮砍价</span><span>¥<span class="prefer" style="display:inline-block">{{ goods['promotePrice'] }}</span></span></div>
+				<div class="D_right"><span>原价</span><span>¥<span class="originprice" style="display:inline-block">{{ goods['marketPrice'] }}</span></span></div>
+			</div>
+			
+		{% if goods['goods_num'] < 1 %}
+			<div class="endButton">已抢完</div>
+		{% elseif info['starttime'] > timeNow %}
+			<!-- 未开始 -->
+			<div class="endButton">即将开始
+				<img src="/markdown/images/pd/clock.png" alt="">
+				<div class="time-item bk-fore" djs="{{activeTime}}">
+					<strong id="day_show" class="days">00</strong><span>天</span>
+					<strong id="hour_show" class="hours">00</strong><span>时</span>
+					<strong id="minute_show" class="minutes">00</strong><span>分</span>
+					<strong id="second_show" class="seconds">00</strong><span>秒</span>
+				</div>
+			</div>
+		{% elseif info['endtime'] < timeNow %}
+			<!-- 活动结束 -->
+			<div class="endButton">已结束</div>
+		{% else %}
+			{% if isBang == 0 %}
+				<!-- 发起者 -->
+				{% if hasCut == 0 %}
+					<div class="helpButton" data-btn='1'>我要砍价</div><div class="inviteButton hide">邀请好友帮砍<span class="ib-t">每日分享好友可<span class="bk-num">【多获1次砍价】</span>机会!</span></div>	
+				{% elseif hasCut == 2 %}
+					<div class="helpButton" data-btn='2'>再砍一刀</div><div class="inviteButton hide">邀请好友帮砍<span class="ib-t">每日分享好友可<span class="bk-num">【多获1次砍价】</span>机会！</span></div>
+				{% else %}
+					<!-- 砍完后邀请 -->
+					<div class="helpButton hide" data-btn='1'>我要砍价</div><div class="inviteButton">邀请好友帮砍<span class="ib-t">每日分享好友可<span class="bk-num">【多获1次砍价】</span>机会！</span></div>
+				{% endif %}
+			{% else %}
+				{% if hasCut == 0 or hasCut == 2 %}
+					<!-- 好友打开 -->
+					<div class="helpButton" data-btn='3'>帮他砍价</div><div class="bangButton hide" onclick="javascript:location.href='/phone/markdown/index/{{ info['id'] }}?btn=4'">我也要参与</div>
+				{% else %}
+					<div class="helpButton hide" data-btn='3'>帮他砍价</div><div class="bangButton" onclick="javascript:location.href='/phone/markdown/index/{{ info['id'] }}?btn=4'">我也要参与</div>
+				{% endif %}
+					<div class="u-pic">
+						<img src="{{headPic}}" />
+						<span class="u-msg">一个好汉三个帮，赶快帮砍吧！</span>
+					</div>
+			{% endif %}
+		{% endif %}
+		
+			<!-- 砍价榜 -->
+			<div class="bkrank">
+				<a href="javascript:void()" class="bk-l">砍价榜</a>
+				<div class="bk-r">已有<span class="num">{{ bangNumber }}</span>个小伙伴帮{% if isBang == 0 %}你{% else %}TA{% endif %}降价，共降<span class="cutnum">{{ offsetMoney }}</span>元</div>
+				<div class="{% if banglist %} rk-num {% else %} rk-num hide {% endif %}">
+			{% if banglist %}
+				{% for k in banglist %}
+					<div class="ranker">
+						<span class="rk-name">{{ k['username'] }}</span>
+						<span class="rk-word">{{ k['tips'] }}</span>
+						<span class="rk-cost">{{ k['money'] }}元</span>
+					</div>
+				{% endfor %}
+			{% endif %}
+				</div>
+				
+			</div>
+
+			
+			<div class="info">继续拖动，查看产品信息</div>
+			<div class="info-line"></div>
+		
+			<div class="pd-pic">{{goods['desc']}}</div>
+		
+			<!-- 购买浮动框 -->
+			<div class="bottom hide">
+				<div class="bott-box"></div>
+				<!-- 如果产品未抢完 -->
+				<span class="b_left">独享价:¥<span id="buy_price">{{ lastPrice }}</span></span>
+				<span class="b_left hide">最低价:¥<span>{{goods['lowestPrice']}}</span></span>
+				<span class="b_center">(仅剩{{ goods['goods_num'] }}件)</span>
+				{% if goods['goods_num'] < 1 %}
+					<a href="javascript:void(0);" class="b_right hide"><img src="/markdown/images/pd/carp.jpg" alt=""><span class="buy">已抢完</span></a>
+				{% elseif info['starttime'] > timeNow and info['endtime'] < timeNow %}
+					<a href="javascript:void(0);" class="b_right hide"><img src="/markdown/images/pd/carp.jpg" alt=""><span class="buy">已结束</span></a>
+				{% else %}
+					<a href="{{payDomain}}/phone/pay/buy?fromid=2&actionid={{actionId}}&goodsid={{goods['goods_id']}}" class="b_right"><img src="/markdown/images/pd/carp.jpg" alt=""><span class="buy">立即购买</span></a>
+				{% endif %}
+			</div>
+		</div>
+             
+			<!-- gototop -->
+             <a href="javascript:void(0)" class="top hide"><img src="/markdown/images/top.png" alt=""></a>
+		<!-- 底部信息 -->
+		<div class="bottom-info">
+			<span class="brand">名牌正品&nbsp|&nbsp全场低价&nbsp|&nbsp媒体权威</span>
+			<span class="cr">@Copyright 2009-2015,版权所有亚太传媒股份有限公司</span>
+		</div>
+		
+		<!--分享层 -->
+		<div class="share hide"><img src="/markdown/images/jp/s-p.png"></div>
+	
+		<!-- 砍价成功-未关注 -->
+		<div class="warning bk2 hide">
+			<div class="bk2-con">	
+				<img src="/markdown/images/jp/kf-p.png" alt="">
+				<div class="cls"><img src="/markdown/images/jp/k-cls.png" alt=""></div>			   
+				<div class="line">
+					<span class="fin">您已成功帮TA砍了 <span class="num">20.8</span> 元！</span>
+					<span class="word">砍一次不足以表达友情深厚?</span>
+					<h1>关注优居生活微信号，多获1次砍价机会</h1>
+					<img src="/markdown/images/jp/fp-code.png" alt="">
+				</div>
+			</div>
+		</div>
+		
+		<!-- 砍价成功-->
+		<div class="warning bk3 kan1 hide">
+			<div class="bk3-con">	
+				<img src="/markdown/images/jp/kfd-p.png" alt="">
+				<div class="cls"><img src="/markdown/images/jp/k-cls.png" alt=""></div>			   
+				<div class="line">
+					<span class="fin">已成功砍了 <span class="num">20.8</span> 元！</span>
+					<span class="bk-btn">邀请好友帮砍</span>
+					<span class="word" onclick="javascrip:yaoqing()" >每日分享好友可多获一次砍价机会</span>
+				</div>
+			</div>
+	   </div>
+	  
+	  
+		<div class="warning bk3 kan2 hide">
+			<div class="bk3-con">	
+				<img src="/markdown/images/jp/kfd-p.png" alt="">
+				<div class="cls"><img src="/markdown/images/jp/k-cls.png" alt=""></div>			   
+				<div class="line">
+					<span class="fin">您已成功帮TA砍了 <span class="num">20.8</span> 元！</span>
+					<span class="bk-btn">发起我的商品砍价</span>
+					<span class="word" onclick="javascrip:location.href='/phone/markdown/index/{{ info['id'] }}'" >现在发起帮砍，首次帮自己砍价，1刀顶5刀</span>
+				</div>
+			</div>
+	   </div>
+	
+    </div>
+
+	<!-- 浏览器判断弹窗 -->
+	<div class="warning wx hide">
+		<div class="wx-con">	
+			<img src="/markdown/images/jp/wx-p.png" alt="">		   
+			<div class="line">
+			    <div class="cls"><img src="/markdown/images/jp/cls.png" alt=""></div>
+				    <div class="txt">
+						<h1 class="t1">此操作需要在微信中进行!</h1>
+						<h2 class="t2">关注优居生活，送返现红包!</h2>
+						<p class="tips">关注方式有:</p>
+				    </div>
+			    <div class="con">
+					<img src="/markdown/images/jp/code.png" alt="">
+					<span class="way">● 长按二维码，保存图片到手机，使用微信扫一扫关注！</span>
+					<span class="way2">● 打开微信，搜索微信公众号：优居生活（微信号：youju2099)，点击关注。</span>	
+				</div>				
+			</div>		
+		</div>
+	</div>
+	
+	<!-- 未关注-发起者 -->
+	<div class="warning bk1 hide">
+		<div class="bk1-con">	
+			<div class="cls"><img src="/markdown/images/jp/cls.png" alt=""></div>			   
+			<div class="line">
+				<p>砍1次还不够过瘾?</p>
+				<h1>关注优居生活微信号，马上多获1次砍价机会</h1>
+				<img src="/markdown/images/jp/fp-code.png" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="warning bk6 hide">
+		<div class="bk6-con">	
+			<img src="/markdown/images/jp/kf-p.png" alt="">
+			<div class="cls"><img src="/markdown/images/jp/k-cls.png" alt=""></div>			   
+			<div class="line">
+				<span class="fin">已成功砍了 <span class="num">20.8</span> 元！</span>
+				<span class="word">砍1次还不够过瘾?</span>
+				<h1>关注优居生活微信号，多获1次砍价机会</h1>
+				<img src="/markdown/images/jp/fp-code.png" alt="">
+			</div>
+		</div>
+	</div>
+
+	<!-- 下单 -->
+	<div class="warning bk4 hide">
+		<div class="bk4-con">	
+			<img src="/markdown/images/jp/kfd-p.png" alt="">
+			<div class="cls"><img src="/markdown/images/jp/k-cls.png" alt=""></div>
+			<div class="line">
+				<span class="fin">马上下单，晚了就被抢走了！</span>
+				<span class="word">好腻害！你已经将这款商品砍至最低价  <span class="num">¥1.00</span> 啦！赶紧提单支付吧，晚了会被抢走的哦！</span>
+				<span class="fin-btn">提交订单</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+
+function yaoqing(){
+	$(".warning").hide();
+	$('.share').show();
+}
+
+var wxData = {
+	imgUrl:"{{ goods['img'] }}",
+	link:"{{domain}}/phone/markdown/invite/{{ info['id'] }}/{{ goods['goods_id'] }}/{{ toUser }}",
+	desc:"我把{{ goods['promotePrice'] }}元{{ goods['name'] }}砍掉了{{ offsetMoney }}元，展现友情力量的时候到了，快来帮我砍价到1元吧！",
+	title:"我把{{ goods['promotePrice'] }}元{{ goods['name'] }}砍掉了{{ offsetMoney }}元，展现友情力量的时候到了，快来帮我砍价到1元吧！",
+	success: function () {
+		$('.share').hide();
+		$.ajax({
+			type: 'POST',
+			url: '/phone/markdown/share',
+			contentType: "application/json",
+			dataType: 'json',
+			data : JSON.stringify({ actionId:{{ info['id'] }},gId:{{ goods['gid'] }} }),
+			success:function(res){
+				if(res.state == 1 && res.msg == 0){
+					if($(".helpButton").hasClass("hide")){
+						$(".helpButton").removeClass("hide");
+						$('.inviteButton').addClass("hide");
+						$(".helpButton").html("再砍一刀");
+					{% if isBang == 0 %}
+						$(".helpButton").attr('data-btn','2');
+						$(".inviteButton").addClass('hide');
+					{% else %}
+						$(".helpButton").attr('data-btn','5');
+						$(".bangButton").addClass('hide');
+					{% endif %}
+					}
+				}
+			}
+		})
+	}
+};
+
+$(function(){
+	
+	$('.cls').click(function(){
+		$(".warning").hide();
+    })
+    
+	$('.share').click(function(){
+		$(this).hide();
+	});	
+    
+	// 分享层
+	$('.inviteButton').click(function(){
+		$('.share').show();
+	});
+
+	var chars = ['小试牛刀，随手砍了','很爱你哦，用心砍了','大刀一挥，轻轻松松砍了','斧头帮神级人物，指头一弹砍了'];
+	var current =  $('.Bargain').html();
+	var prefer  = $('.prefer').html();
+	var origin  = $('.originprice').html();
+
+	pricechange(current,origin,10);
+
+	$('.tiaoGray').css({'width':jingduwidth(prefer,current)*100+'%'});
+	$('.tiaoPrice').css('left',jingduleft(prefer,current)*100+'%');
+	$('.tiaoGray').css('background-size',$('.tiaoColor').width());
+	
+	$('.helpButton').attr('data-state','0');
+	
+	$('.helpButton').click(function(){
+		var btn = $('.helpButton').attr('data-btn');
+		if(parseInt($('.helpButton').attr('data-state')) == 0){
+			$.ajax({
+				url : "/phone/markdown/cut/{{ info['id'] }}/{{ goods['gid'] }}/",
+				type : "POST",
+				data : "touser={{ toUser }}&btn="+btn,
+				dataType : "json",
+				beforeSend : function(){
+					$('.helpButton').attr('data-state','1');
+				},
+				success : function(code){
+					//alert(code.state+"---"+code.msg+"---"+code.subscribe)
+					var current =  $('.Bargain').html();
+					if(code.state > 0){
+						if (code.state == 5){
+							$('.wx').show();
+						}else if (code.state == 4){
+							alert(code.msg);
+						}else if (code.state == 3){
+							alert(code.msg);
+							if(!$('.helpButton').hasClass("hide")) $('.helpButton').addClass('hide');
+							$('.inviteButton').removeClass('hide');
+							$('.bangButton').removeClass('hide');
+						} else {
+							var cutPrice = code.msg;
+							var buy_price = ($('#buy_price').html() - cutPrice).toFixed(1);
+							$('#buy_price').html(buy_price);
+						
+							if(code.subscribe == 0){
+						{% if isBang == 0 %}
+								$('.bk6 .num').html(cutPrice);  //未关注用户 帮自己砍价弹窗
+								$('.bk6').show();
+						{% else %}
+								$('.bk2 .num').html(cutPrice); //未关注用户 帮朋友砍价弹窗
+								$('.bk2').show();
+						{% endif %}
+							}else if(code.subscribe == 2){
+						{% if isBang == 0 %}
+								$('.kan1 .num').html(cutPrice); //已关注用户 帮自己砍价弹窗
+								$('.kan1').show();
+						{% else %}
+								$('.kan2 .num').html(cutPrice); //已关注用户 帮朋友砍价弹窗
+								$('.kan2').show();
+						{% endif %}
+							}
+							
+							if (cutPrice <= 1.5) {
+								var friendrate = chars[0];
+							} else if (cutPrice <= 2.5) {
+								var friendrate = chars[1];
+							} else {
+								var friendrate = chars[2];
+							}
+							if($('.bkrank .rk-num').hasClass("hide")) $('.bkrank .rk-num').removeClass('hide');
+							$('.bkrank .rk-num .scroll_absolute').append("<div class='ranker'><span class='rk-name'>{{ wechaname }}</span><span class='rk-word'>"+friendrate+"</span><span class='rk-cost'>"+cutPrice+"元</span></div>" );
+
+							// 砍价榜数据变化
+							// 小伙伴数
+							$(".bk-r .num").html(parseInt($(".bk-r .num").html()) + 1);
+							// 每次降价
+							$(".bk-r .cutnum").html(parseFloat(parseFloat($(".bk-r .cutnum").html()) + cutPrice).toFixed(2));
+
+							//价钱进度条
+							$('.tiaoGray').css('width',eval(jingduwidth(prefer,current) + cutPrice/prefer*0.658)*100+'%');
+							$('.tiaoPrice').css('left',eval(jingduleft(prefer,current) - cutPrice/prefer*0.658)*100+'%');
+
+							
+							wxData.desc = "我把{{ goods['promotePrice'] }}元"+$('.p-title').html()+"砍掉了"+cutPrice+"元，展现友情力量的时候到了，快来帮我砍价到1元吧！";
+							wxData.title = "我把{{ goods['promotePrice'] }}元"+$('.p-title').html()+"砍掉了"+cutPrice+"元，展现友情力量的时候到了，快来帮我砍价到1元吧！";
+							
+							//当前价
+							var after_price = current - cutPrice; 
+							if(after_price <= 0 || after_price < {{goods['lowestPrice']}}){
+								after_price = {{goods['lowestPrice']}};
+							}
+							pricechange(after_price,current,5);
+							
+							if(code.subscribe == 1){
+								if(!$('.helpButton').hasClass("hide")) $('.helpButton').addClass('hide');
+								$('.inviteButton').removeClass('hide');
+								$('.bangButton').removeClass('hide');
+								return
+							}				
+			
+							if(code.state == 1){
+								if(!$('.helpButton').hasClass("hide")) $('.helpButton').addClass('hide');
+								$('.inviteButton').removeClass('hide');
+								$('.bangButton').removeClass('hide');
+							} else if (code.state == 2){
+								$(".helpButton").html("再砍一刀");
+								{% if isBang == 0 %}
+									$(".helpButton").attr('data-btn','2');
+									$(".inviteButton").addClass('hide');
+								{% else %}
+									$(".helpButton").attr('data-btn','5');
+									$(".bangButton").addClass('hide');
+								{% endif %}
+									$('.kan1 .num').html(cutPrice);
+									$('.kan1').show();
+							}
+							current = after_price;
+						}
+					}else{
+						alert(code.msg);
+					}
+				},
+				complete : function(){
+					$('.helpButton').attr('data-state','0');
+				}
+			});
+		}
+	});
+
+});
+
+	// top
+    $(window).scroll(function(){
+        if($(window).scrollTop()>4){
+            $(".top").show();
+        }else{
+            $(".top").hide();
+        }
+    });
+    $(".top").click(function(){
+        if(scroll=="off") return;
+        $("html,body").animate({scrollTop: 0}, 100);
+    });
+
+// scrollbar
+$(function(){$('.rk-num').scroll_absolute({arrows:false})});
+
+{% if isBang == 0 %}
+	// 浮动购买框
+	$(window).scroll(function() {
+		if($(window).scrollTop()>100){
+			if($('.bottom').hasClass("hide")) $('.bottom').removeClass("hide");
+		} else {
+			$('.bottom').addClass("hide");
+		}
+	});
+{% endif %}
+
+var swiper = new Swiper('#p-show .swiper-container', {
+	pagination : '.swiper-pagination',
+	paginationClickable :true,
+	loop: true,
+});
+
+</script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+
+wx.config({
+      debug: false,
+      appId: "{{ signPackage['appId'] }}",
+	  timestamp: "{{ signPackage['timestamp'] }}",
+	  nonceStr: "{{ signPackage['nonceStr'] }}",
+      signature: "{{ signPackage['signature'] }}",
+      jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo'
+      ]
+});
+
+wx.ready(function () {
+	wx.onMenuShareAppMessage(wxData);
+	wx.onMenuShareTimeline(wxData);
+	wx.onMenuShareQQ(wxData);
+});
+
+</script>

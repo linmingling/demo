@@ -1,0 +1,50 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<div class="app-content">
+   <div class="app-content-body fade-in-up">
+   <div class="hbox hbox-auto-xs hbox-auto-sm">
+   <div class="col">
+        <div class="wrapper-md">
+    
+            <div class="col-lg-4 col-md-4 col-sm-6" style="margin: 10% 30%;">
+              <div class="panel b-a">
+                <div class="panel-heading text-center {% if sys_message['auto'] =='TRUE' %}bg-success{% else %}bg-warning{% endif %} no-border">
+                  <span class="text-u-c m-b-none font-bold">提示信息</span>          
+                </div>
+                <div class="wrapper text-center b-b b-light">
+                  <h2 class="m-t-none">
+                    {{ sys_message['msg'] }}
+                  </h2>
+                </div>
+                <ul class="list-group text-center no-borders m-t-sm">
+                  <li class="list-group-item">
+                    <i class="icon-clock {% if sys_message['auto'] =='TRUE' %}text-success{% else %}text-danger{% endif %} m-r-xs"></i> <span id="msg_time">3</span> 秒后自动跳转
+                  </li>
+                </ul>
+                <div class=" text-center">
+                  <a href="{{ sys_message['goto'] }}" class="btn {% if sys_message['auto'] =='TRUE' %}btn-success{% else %}btn-warning{% endif %} font-bold m">返回</a>
+                </div>
+              </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+<script>
+setTimeout(function(){
+	var msg_time = $("#msg_time").html();
+	djs(msg_time - 1);
+},1000);
+
+function djs(i){
+    if(i<1){
+    	location = '<?php echo $sys_message['goto']; ?>';
+    }else{
+    	$("#msg_time").html(i);
+        setTimeout(function(){djs(i - 1)},1000);
+    }
+}
+</script>
+<?php $this->partial("index/footer")?>

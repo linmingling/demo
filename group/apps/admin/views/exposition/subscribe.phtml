@@ -1,0 +1,66 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+  
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">第三届优居家博会</h1>
+    </div>
+    <div class="wrapper-md ng-scope">
+    <div class="m-b-sm">
+    <div class="btn-group" ng-init="radioModel = 'Male'">
+      <a href="/admin/exposition/index"><label class="btn btn-default btn-sm"><i class="fa fa-check text-active"></i>报名数据表</label></a>
+      <a href="/admin/exposition/subscribe"><label class="btn btn-default btn-sm"><i class="fa fa-check text-active"></i>产品预定数据表</label></a>
+      <a href="/admin/exposition/goods_list"><label class="btn btn-default btn-sm"><i class="fa fa-check text-active"></i>商品管理</label></a>
+    </div>
+    </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        {% if page <> '' %}
+        <span class="label bg-info"><?php echo $page['totalRows']?> 条记录</span>
+        {% endif %}
+        </div>
+        <div class="table-responsive">
+          <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+          <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                  <th style="width: 250px;" class="sorting" rowspan="1" colspan="1">姓名</th>
+                  <th style="width: 250px;" class="sorting" rowspan="1" colspan="1">手机号码</th>
+                  <th style="width: 200px;" class="sorting" rowspan="1" colspan="1">商品ID</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">商品名称</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">预约时间</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k in list %}
+                <tr class="odd">
+                    <td class="sorting_1">{{ k['name'] }}</td>
+                    <td class="sorting_1">{{ k['phone'] }}</td>
+                    <td>{{ k['goods_id'] }}</td>
+                    <td>{{ k['goods_name'] }}</td>
+                    <td>
+                    {% if k['add_time'] != 0 %}
+                    {{ date('Y-m-d H:i:s',k['add_time']) }}
+                    {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% if page <> '' %}
+          <?php $this->partial("index/page")?>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<?php $this->partial("index/footer")?>

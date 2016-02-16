@@ -1,0 +1,78 @@
+html,body,canvas {margin: 0px;padding: 0px;border:none;text-align: center;background-color: black;}
+
+.hide{display: none;}
+.cf:before,.cf:after{content:"";display:table;}.cf:after{clear:both;}.cf{zoom:1;}
+
+.warp{width:100%;height:100%;background: url(../images/bg.jpg) no-repeat center;background-size: 100% 100%;position: relative;}
+
+/* 游戏 */
+canvas {position: absolute;bottom: 0;left: 0}
+/* 首屏 */
+.index{width:100%;height:100%;background: url(../images/bg.jpg) no-repeat center;background-size: 100% 100%;position: absolute;z-index: 1}
+.indexWarp{width:100%;height:100%;background: url(../images/bgBottom.png) no-repeat center bottom;background-size: 100%}
+.index img{width: 100%}
+.index .title{width: 86%;margin: 5% 7% 0 7%}
+.index .rule{position: relative;}
+.index .rule .ruleText{width:65%;position: absolute;top: 25%;left: 18%;color: #f5d500;font-size: 12px;text-align: left;}
+.index .form{width:80%;margin-left: 10%;margin-top: -30px;position: relative;}
+.index .form input{width:100%;height: 40px;line-height: 40px;border:2px solid #000;background: #fff;border-radius: 50px;text-align: center;margin-bottom: 10px}
+
+/* 排行榜 */
+.rank{width:100%;height:100%;background: url(../images/bgBottom.png) no-repeat center 120%;background-size: 100%;position: absolute;top:0;left: 0}
+.rank .rankTitle{width: 100%;margin-top: 5%}
+.rank .rankList{width:80%;margin:0 10%;color: #fff;font-size: 14px}
+.rank .rankList p{height: 16px;overflow: hidden;margin:10px 0;}
+.rank .rankList .r1{width:20%;float: left;}
+.rank .rankList .r2{width:60%;float: left;}
+.rank .rankList .r3{width:20%;float: left;}
+.rank .youRank{color: #f5d500}
+
+/* 我的资产 */
+.my{width:100%;height:100%;color: #f4c066;background: url(../images/bgBottom.png) no-repeat center 120%;background-size: 100%;position: absolute;top:0;left: 0}
+.my .name{font-size: 24px;padding-top:10px;margin:0;}
+.my .score{font-size: 18px;margin:10px 0}
+.my .myTitle{width: 100%;margin-top: 5px}
+.my .myList{width:96%;margin:0 2%;color: #fff;font-size: 14px}
+.my .myList p{height: 16px;overflow: hidden;margin:10px 0;}
+.my .myList .r1{width:50%;float: left;}
+.my .myList .r2{width:50%;float: left;text-align: left;}
+.myWarp .myTips{color: #f5d500;font-size:12px;}
+
+/* 结果 */
+.result{width:100%;height:100%;background: url(../images/tcBg.png) repeat ;background-size: 100% 100%;position: absolute;left: 0;top: 0;z-index: 1}
+.result .resultHead{width: 80%;margin:30px auto 10px auto;position: relative;z-index: 1}
+.result .resultWarp{width: 60%;height:25%;margin: 0 20%;padding:20% 0% 20px 0%;background: url(../images/resultBg.png) no-repeat top;background-size: 100% 100%;position: relative;}
+.result .resultWarp p{font-size: 30px;line-height: 30px;margin: 5px;font-weight: bold;}
+.result .resultWarp .btn{width: 80%;margin:20px auto 0 auto;}
+.result .light{width:100%;position: absolute;top: 10%;left: 0;
+-webkit-animation:light 8s linear both infinite;animation:light 8s linear both infinite;
+}
+
+/* 第一次打开 */
+.frist{width:100%;height:100%;background: #000;position: absolute;left: 0;top: 0;z-index: 1}
+.frist .fristWarp{width: 60%;margin:20% 10% 0 10%;padding:20px 10%;background: #fff3b9;border-radius: 10px;position: relative;}
+.frist .fristWarp select, .frist .fristWarp input{width: 100%;height: 30px;padding:0 5%;border:1px solid #000;background: #fff;border-radius: 20px;}
+.frist .loginBtn{width: 100%}
+
+
+
+.btnBox{width:100%;position: absolute;bottom: 3%;left:0;}
+.btnBox img{width: 40%;}
+
+@media only screen and (max-height:520px) {
+	.index .form{width:70%;margin-left: 15%;}
+	.btnBox{bottom: 5px;}
+	.index .title{width: 70%;margin:5% 15% 0 15%;}
+}
+@media only screen and (max-height:500px) {
+	.index .title{width: 60%;margin:0 20%;}
+}
+
+@-webkit-keyframes light{
+    0%{-webkit-transform:rotate(0)}
+    100%{-webkit-transform:rotate(360deg)}
+}
+@keyframes light{
+    0%{transform:rotate(0);}
+    100%{transform:rotate(360deg);}
+}

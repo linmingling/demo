@@ -1,0 +1,50 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">用户与权限</h1></div>
+
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">	
+				<a class="btn btn-default btn-sm" href="/admin/user/add" role="button">添加用户</a>
+			</div>			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th class="sorting" rowspan="1" colspan="1">用户名</th>
+									<th class="sorting" rowspan="1" colspan="1">说明</th>
+									<th class="sorting" rowspan="1" colspan="1">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% if list %}
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['username'] }}</td>
+									<td>{{ k['desc'] }}</td>
+									<td><a href="/admin/user/modify/{{k['id']}}">修改权限</a>&nbsp;|&nbsp;<a href="/admin/user/delete/{{k['id']}}">删除权限</a></td>
+								</tr>
+						{% endfor %}
+						{% endif %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>												
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+
+
+</script>
+

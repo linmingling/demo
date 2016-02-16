@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>优居-家博会，家装建材1元购！</title>
+	<meta name="keywords" content="优居-家博会，家装建材1元购！" />
+	<meta name="description" content="优居-家博会，家装建材1元购！" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<link rel="stylesheet" type="text/css"  href="/markdown/css/main.css" />
+	<script src="/common/js/jquery-2.1.4.min.js"></script>
+	<script src="/markdown/js/my.js"></script>
+</head>
+<body>
+<div class="bg">
+	<div class="title">全民砍价</div>
+	<!-- banner -->
+	<div class="banner">
+		<img src="/uploads/markdown/{{info['head_img']}}">
+		<a href="{% if info['head_url'] %} {{info['head_url']}} {% else %} javascript:void(0); {% endif %}" class="r-btn"></a>
+		<div class="count">
+		{% if activeState == 1 %}
+			<div class="t-pre">离开始时间还差:</div>
+		{% elseif activeState == 2 %}
+			<div class="t-ing">离结束时间还差</div>
+		{% endif %}
+			   <div class="time-item fore" djs="{{activeTime}}">
+				   <strong id="day_show" class="days">00</strong><span>天</span>
+				   <strong id="hour_show" class="hours">00</strong><span>时</span>
+				   <strong id="minute_show" class="minutes">00</strong><span>分</span>
+				   <strong id="second_show" class="seconds">00</strong><span>秒</span>
+				</div>
+		{% if activeState == 1 %}
+			<div class="slo ">帮忙砍价的人越多，价格越优惠</div>
+		{% elseif activeState == 2 or activeState == 3 %}	
+			<div class="slo2">已有<span class="p-user">{{join}}</span>人参与本次活动</div>
+		{% endif %}
+		</div>
+	</div>
+	<div class="k-news"  onclick="javascript:location.href='/phone/markdown/rank/{{ info['id'] }}'">
+		<div class="news-main">
+		<img src="/markdown/images/pd/news.png" alt="">
+	{% if activeState == 1 %}
+		<span class="kj">砍价王出炉: 全民砍价，等你来拿冠!</span>
+	{% elseif activeState == 2 %}
+		<span class="kj">砍价王出炉:</span>
+		<marquee  scrollAmount=2 direction=up class="gun">
+		{% for k in paylist %}
+			<p>{{k['username']}} 轻松砍至<span class="fc">&nbsp¥{{k['moneyPaid']}}&nbsp</span>成交!</p>
+		{% endfor %}
+		</marquee>
+	{% endif %}
+		</div>
+	</div>
+
+	<a href="javascript:void(0)" class="top hide"><img src="/markdown/images/top.png" alt=""></a>
+	
+	<!-- product -->
+{% for k in goods %}
+	<div class="p1">
+		<div class="p-main">
+			<a href="/phone/markdown/invite/{{ info['id'] }}/{{ k['goods_id'] }}" class="goods"><img src="{{ k['img'] }}" alt=""></a>
+			<div class="pname"><span class="p-title">{{ k['name'] }}</span></div>
+			<div class="p-price">
+				<div class="price">
+					<span class="m-mark">¥</span><span class="m-num">{{k['lowest_price']}}</span><span class="d-num">¥&nbsp{{ k['market_price'] }}</span> 
+					<span class="k-price">已砍至:&nbsp<span class="k-num">¥ {% if k['min_price'] <= k['promote_price'] and k['min_price'] > 0 %}
+					{% if k['min_price'] > k['lowest_price'] %} {{ k['min_price'] }} {% else %} {{k['lowest_price']}} {% endif %}
+					{% else %} 
+					{{k['promote_price']}} 
+					{% endif %}</span></span>
+				</div>
+				<div class="rest">
+					<img src="/markdown/images/price.png" alt="">
+					<span class="p-num">仅剩{{ k['goods_num'] }}件</span>
+					<span class="p-num2 hide">仅剩{{ k['goods_num'] }}件</span>
+					<span class="j-num">{{ k['num'] + k['init_join'] }}人参与</span>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}
+
+	<div class="ad cf">
+	{% if info['adv1_img'] %}<a href="{{info['adv1_url']}}" class="ad1"><img src="/uploads/markdown/{{info['adv1_img']}}" alt=""></a>{% endif %}
+	{% if info['adv2_img'] %}<a href="{{info['adv2_url']}}" class="ad2"><img src="/uploads/markdown/{{info['adv2_img']}}" alt=""></a>{% endif %}
+	{% if info['adv3_img'] %}<a href="{{info['adv3_url']}}" class="ad3"><img src="/uploads/markdown/{{info['adv3_img']}}" alt=""></a>{% endif %}
+	{% if info['adv4_img'] %}<a href="{{info['adv4_url']}}" class="ad4"><img src="/uploads/markdown/{{info['adv4_img']}}" alt=""></a>{% endif %}
+	</div>
+
+	<div class="bottom">
+		<p class="brand">名牌正品&nbsp|&nbsp全场低价&nbsp|&nbsp媒体权威</p>
+		<p class="cr">@Copyright 2009-2015&nbsp版权所有亚太传媒股份有限公司</p>
+	</div>
+</div>
+
+<!-- 活动规则弹窗 -->
+<div class="rule hide">				
+	<div class="r-con">			   
+		<!-- <div>{{info['desc']}}</div> -->
+		   <div class="line">
+		        <div class="cls"><img src="/markdown/images/jp/cls.png" alt=""></div>
+			   <h1>活动规则</h1>
+			   <div class="rule1">
+			   {{info['desc']}}
+			  </div>
+		   </div>				
+	</div>
+</div>
+
+<script>
+    $(window).scroll(function(){
+        if($(window).scrollTop()>4){
+            $(".top").show();
+        }else{
+            $(".top").hide();
+        }
+    });
+    $(".top").click(function(){
+        if(scroll=="off") return;
+        $("html,body").animate({scrollTop: 0}, 100);
+    });
+
+</script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+
+wx.config({
+      debug: false,
+      appId: "{{ signPackage['appId'] }}",
+	  timestamp: "{{ signPackage['timestamp'] }}",
+	  nonceStr: "{{ signPackage['nonceStr'] }}",
+      signature: "{{ signPackage['signature'] }}",
+      jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo'
+      ]
+});
+
+var wxData = {
+	imgUrl:"{{domain}}/markdown/images/markdownshare.jpg",
+	link:"{{domain}}/phone/markdown/index/{{ info['id'] }}",
+	desc:"优居-家博会，品牌家装建材1元购！手快有手慢无，赶快来抢！",
+	title:"优居-家博会，品牌家装建材1元购！手快有手慢无，赶快来抢！",
+	success: function () {
+		//$('.share').hide();
+	}
+};
+
+wx.ready(function () {
+	wx.onMenuShareAppMessage(wxData);
+	wx.onMenuShareTimeline(wxData);
+});
+</script>
+</body>
+</html>

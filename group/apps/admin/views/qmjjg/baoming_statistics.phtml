@@ -1,0 +1,101 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">全民家居购-报名数据统计</h1>
+    </div>
+    <div class="wrapper-md ng-scope">
+    <?php $this->partial("qmjjg/navigation")?>
+       <div class="row">
+       <div class="col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">报名统计</div>
+            <table class="table table-striped m-b-none">
+              <tbody>
+                <tr>                    
+                  <td><span class="label bg-success">报名成功(已验证)数</span></td>
+                  <td class="text-success" style="width:70px;">
+                    <i class="fa"></i> {{ success_num }}
+                  </td>
+                </tr>
+                <tr>                    
+                  <td><span class="label bg-danger">报名失败(未验证)数</span></td>
+                  <td class="text-success" style="width:70px;">
+                    <i class="fa"></i> {{ fail_num }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+            <span class="label bg-info pull-right m-t-xs">{{ city_num }} 个城市站</span>
+                                        城市站报名排行情况
+            </div>
+            <table class="table table-striped m-b-none">
+              <thead>
+                <tr>
+                  <th>城市站</th>
+                  <th style="width: 200px"></th>
+                  <th>总占比</th>
+                  <th style="width: 110px"><span class="label bg-success">已验证数</span></th>
+                  <th style="width: 110px"><span class="label bg-danger">未验证数</span></th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for k in array_sort %}
+                <tr>
+                  <td>{{ k['city'] }}</td>
+                  <td>
+                    <div class="progress progress-sm progress-striped active m-t-xs m-b-none">
+                      <div class="progress-bar {{ k['color'] }}" data-toggle="tooltip" data-original-title="{{ k['proportion'] }}%" style="width: {{ k['proportion'] }}%"></div>
+                    </div>
+                  </td>
+                  <td>{{ k['proportion'] }}%</td>
+                  <td>{{ k['success'] }}</td>
+                  <td>{{ k['fail'] }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+              <div class="panel panel-default">
+        <div class="panel-heading">
+                            每天各站报名数量情况
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light">
+            <thead>
+              <tr>
+                <th>时间</th>
+                {% for k,key in city_list %}
+                <th>{{ key['city'] }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+            {% for k,key in list %}
+              <tr>
+                <td>{{ k }}</td>
+                {% for part,vo in key %}
+                <td>{{ vo }}</td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+        </footer>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<?php $this->partial("index/footer")?>

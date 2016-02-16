@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{info['zhan_name']}} - {{zhanCity[info['c_id']]['city_name']}} - 一站购，家居团购, 建材团购 - 腾讯家居O2O平台</title>
+<meta name="keywords" content=" 一站购，优居网，家居商城，家居特卖，家居O2O 平台，优品特卖" />
+<meta name="description" content="一站购，优居网是腾讯家居的O2O平台，集合建材，家具，灯饰，厨卫等家居一线品牌，通过线上报名，线下周周团购，让您买到优质、实惠、安心的家居产品，实现靠谱的家居优品特卖！" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/zhan/css/com.css?v=1.1" />
+<link rel="stylesheet" type="text/css"  href="/zhan/css/ph.css?v=1.0" />
+</head>
+<body>
+	<!-- loading -->
+	<div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+	<div class="wraper inviteWraper" id="inviteBM">
+		<!-- 主要内容 -->
+		<div class="main inviteMain">
+	<?php 
+	if(count($zhanCity) > 1){
+	?>
+			<!-- 城市选择 -->
+			<div class="cityOpen">
+				<span>{% if specifiedCity %}{{ specifiedCity['region_name'] }}站{% else %}{{zhanCity[info['c_id']]['city_name']}}站{% endif %}</span>
+			</div>
+	<?php 
+	}
+	?>
+			<!-- 详细信息 -->
+			<div class="inviteDetail">
+		{% for k in itemSort %}
+			{% if k['sort'] > 0 %}
+				{% if itemBox[k['id']]['row'] == 0 and itemBox[k['id']]['column'] == 0 %}
+					<!--普通页 {{itemBox[k['id']]['item_name']}}-->
+					<div class="distribution" lanmu="{{itemBox[k['id']]['item_name']}}">
+						<div class="detailBox {% if imgBox[k['id']]['bg']['click_bmWnd'] == 1 %} bmOpen2 {% endif %}">
+							<img  class="lazy" data-original="/uploads/zhan/{{imgBox[k['id']]['bg']['name']}}" alt="">
+						</div>
+					</div>
+				{% else %}
+					<!--滑动页 {{itemBox[k['id']]['item_name']}}-->
+					<div class="swiperPage distribution " lanmu="{{itemBox[k['id']]['item_name']}}">
+						<!--背景图 -->	
+						<div class="detailBox">
+							<img class="lazy" data-original="/uploads/zhan/{{imgBox[k['id']]['bg']['name']}}" alt="">
+						</div>
+						<!-- 轮播图 -->
+						<div id="swiper_{{k['id']}}" class="swiperModule" data-row="{{itemBox[k['id']]['row']}}" data-column="{{itemBox[k['id']]['column']}}">
+							<div class="swiper">
+								<div class="swiper-container">
+									<div class="swiper-wrapper">
+									{% for m in imgBox[k['id']]['list'] %}
+										<div class="swiper-slide">
+										{% for n in m %}
+											<div class="imgBox {% if imgBox[k['id']]['bg']['click_bmWnd'] == 1 %} bmOpen2 {% endif %}"><img data-original="/uploads/zhan/{{n['name']}}"  /></div>
+										{% endfor %}
+										</div>
+									{% endfor %}
+									</div>
+								</div>
+								<div class="pagination"></div>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+			</div>
+		</div>
+
+		<!-- gototop -->
+	    <a href="javascript:void(0)" class="top hide" id="gototop"><img src="/zhan/images/top.png" alt=""></a>
+
+		
+
+		{% for k,v in sysBox %}
+				{% if v['sys_default'] == 2 %}
+				<!-- 底部报名按钮 -->
+				<div class="bottom" id="bmOpen">
+					<img src="/uploads/zhan/{{imgBox[v['item_id']]['bg']['name']}}" alt="">
+				</div>
+				{% endif %}
+				{% if v['sys_default'] == 3 %}
+				<!-- 报名弹窗 -->
+				<div class="baoming {% if tab_name == 'T1' %} bmStyle2 {% endif %} hide" id="baoming" data-from="{{from}}" data-id="{{info['c_id']}}" data-zhan="{{info['zhan_id']}}" >
+					<div class="bmWarp">
+						<span class="bmClose">×</span>
+						<div class="bmHead">
+							<div class="lph">
+							{% if info['bmwnd_txt_1'] %}
+								{{info['bmwnd_txt_1']}}
+							{% else %}
+								{{info['zhan_name']}} 领取门票
+							{% endif %}
+							</div>
+						</div>
+						<!-- 领票 -->
+						<div class="lpForm">
+						    <p class="bmmsg">{{info['tobm_txt_1']}}</p>
+							<p><input type="text" name="name" class="name" placeholder="请填写姓名" /></p>
+							<p><input type="number" name="tel" class="tel" placeholder="请填写手机号码" /></p>
+							<p class="tips">*手机号仅用于本次活动</p>
+							<p class="imgcodeP "><input type="text" name="imgCode" class="imgCode" placeholder="请输入验证码" /><img src="/phone/zhan/captcha" class="getImgCode"></p>
+							<p class="codeP hide"><input type="number" name="code" class="code" placeholder="请验证手机号码" /><span class="getCode">获取验证码</span></p>	
+							<input id="from_page" type="hidden" />
+							<p class="lpBtn false" >{{ info['submit_btn_txt_1'] }}</p>
+							<p class="lpBtn2 false ">{{ info['submit_btn_txt_1'] }}</p>	
+						</div>
+						<!-- 提交验证 -->
+						<div class="bmForm hide">
+							<p class="tips">*请完善您的收件地址，我们会免费为您寄送门票！</p>
+							<p><select data-id="{{info['city_id']}}" id="area" class="area"></select></p>
+							<p><input type="text" id="address" name="address" class="address" placeholder="请填写详细地址" /></p>
+							<p>
+								<select id="buy" class="buy">
+									<option value="">请选择购买需求</option>
+									<option value="硬装">硬装</option>
+									<option value="软装">软装</option>
+									<option value="全部">全部</option>
+								</select>
+							</p>
+							
+							<p class="tips"></p>				
+							<p class="bmBtn false">提交</p>
+						</div>
+					</div>
+				</div>
+				<!-- 报名挽留弹窗 -->
+				<div class="stay  {% if tab_name == 'T1' %} stayStyle2 {% endif %} hide" id="stay" >
+					<div class="stayWarp">
+						<span class="stayClose">×</span>
+						<div class="stayBox">
+							{% if tab_name == 'T0' %}
+							<!-- 样式1 黄色 -->
+							<img class="stayBg" src="/zhan/images/stay3.png" />
+							{% else %}
+							<!-- 样式2 白色 -->
+							<img class="stayBg" src="/zhan/images/stay2.png" />
+							{% endif %}
+							<!-- 按钮 -->
+							<span class="stayBtn stayBtn1">是</span>
+							<span class="stayBtn stayBtn2">不是，继续报名</span>
+							<span class="stayImg">大图</span>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+		{% endfor %}
+		
+		<!-- 报名成功页 -->
+		<div class="succeed hide" id="succeed" {% if successBg[0] %}style="background-image:url(/uploads/zhan/{{successBg[0]['img_name']}});"{% endif %}>
+			<span class="TcClose">×</span>
+			<div class="succeedText1">{{info['bmhx_txt_1']}}</div>
+			<div class="succeedText2"><p>{{info['bmsuccess_txt_1']}}</p></div>
+		{% if dikouImg %}
+			<div class="succeedAd"><img src="/uploads/zhan/{{dikouImg['img_name']}}" /></div>
+		{% endif %}
+		{% for k in successImg %}
+			<a class="succeedAd" href="{{k['img_url']}}"><img src="/uploads/zhan/{{k['img_name']}}" /></a>
+		{% endfor %}
+		</div>
+	<?php 
+	if(count($zhanCity) > 1){
+	?>
+		<!-- 城市选择 -->
+		<div class="citySelect hide" id="citySelect">
+			<div class="black_bg"></div>
+			<div class="cityWarp">
+				<div class="cityHead">
+					<p class="cityClose"><span>{% if specifiedCity %}{{ specifiedCity['region_name'] }}站{% else %}{{zhanCity[info['c_id']]['city_name']}}站{% endif %}</span></p>
+				</div>
+				<div class="cityBody">
+					<p class="ip">我们猜您在：<span>{{location['city_name']}}</span></p>
+					<p class="grey">我们为您推荐最近城市站：<span >{% if specifiedCity %}{{ specifiedCity['region_name'] }}站{% else %}{{zhanCity[info['c_id']]['city_name']}}站{% endif %}</span>，您也可以选择：</p>
+					<div class="city cf">
+					{% for k,v in zhanCity %}
+						<a href="/phone/zhan/phinvite/{{info['zhan_id']}}?city={{zhanCity[k]['city_pinyin']}}">{{v['city_name']}}</a>
+					{% endfor %}
+					</div>
+
+				</div>
+			</div>
+		</div>
+	<?php 
+	}
+	?>
+	</div>
+
+	<input id="zhan_name" value="{{info['zhan_name']}}" type="hidden" />
+
+	<input id="city_name" value="{% if specifiedCity %}{{ specifiedCity['region_name'] }}{% else %}{{zhanCity[info['c_id']]['city_name']}}{% endif %}" type="hidden" />
+<!-- 	<input id="version" value="版本号v1" type="hidden" /> -->
+	<input id="tab_name" value="{{ tab_name }}" type="hidden" />
+
+	
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+<script src="/common/js/idangerous.swiper-2.1.min.js"></script>
+<script src="/common/js/jquery.lazyload.js"></script>
+<script type="text/javascript">
+	var flag = {{verifyFlag}};
+</script>
+<script src="/zhan/js/ph.js?v=1.1"></script>
+
+<!-- 统计用 2015-12-11 -->
+<script type="text/javascript">
+var _py = _py || [];
+_py.push(['a', 'NLs..PpePWihYBhJlAab9sYwYJ0']);
+_py.push(['domain','stats.ipinyou.com']);
+_py.push(['e','']);
+-function(d) {
+	var s = d.createElement('script'),
+	e = d.body.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e),
+	f = 'https:' == location.protocol;
+	s.src = (f ? 'https' : 'http') + '://'+(f?'fm.ipinyou.com':'fm.p0y.cn')+'/j/adv.js';
+}(document);
+</script>
+<noscript><img src="//stats.ipinyou.com/adv.gif?a=NLs..PpePWihYBhJlAab9sYwYJ0&e=" style="display:none;"/></noscript>
+<!-- 统计用 2015-12-11 end -->
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: '<?php echo $signPackage["timestamp"];?>',
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	      signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+            'checkJsApi',
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+
+		var wxData = {
+			"imgUrl":'{{domain}}/uploads/zhan/{{wxImg}}',
+			"link":"{{domain}}/phone/zhan/phinvite/{{info['zhan_id']}}?city={% if specifiedCity %}{{ specifiedCity['region_pinyin'] }}{% else %}{{zhanCity[info['c_id']]['city_pinyin']}}{% endif %}",
+			"desc":"{{info['wx_share_1']}}",
+			"title":"{{info['wx_share_1']}}"
+		};
+
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+		wx.onMenuShareQQ(wxData);
+	});
+
+</script>
+</body>
+</html>

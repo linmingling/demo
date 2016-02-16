@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优居网-一站购</title>
+<meta name="keywords" content="优居网 一站购" />
+<meta name="description" content="优居网 一站购" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/yizhangou/css/com.css?v=0.5" />
+
+</head>
+<body>
+	<!-- loading -->
+	<div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+	<div class="wraper">
+		<!-- 头部 -->
+<!-- 		<header class="head">
+			<span class="menuIcon1 ctl"></span>
+			<span class="userIcon1 ctr"></span>
+			<p class="title grey">
+				<span class="titleText f16">优居网</span>
+				<span id="citySelect" class="citySelect">{{city[id]['cityname']}}<i class="ctr"></i></span>
+			</p>
+			<div class="menu hide" id="menu" show=0 >
+				<p class="f14"><a href="/phone/yizhangou/index">一站购</a></p>
+				<p class="line"></p>
+				<p class="f14"><a href="/phone/yiyuanqiang/index/4">一元抢</a></p>
+				<p class="line"></p>
+				<p class="f14"><a href="/phone/group/index">优品团</a></p>
+			</div>
+		</header>	 -->
+		<!-- 主要内容 -->
+		<div class="main">
+			<!-- 广告图 --> 
+			<a href="#" class="adv">
+				<img src="/uploads/yizhangou/{{city[id]['headimg']}}" />
+			</a>
+			<!-- 轮播公告 -->
+		{% if marquee %}
+			<div class="notice">
+				<div id="marquee" class="marquee">
+				{% for k,v in marquee %}
+					<p>{{v}}，正在进行中！</p>
+				{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+			<!-- 团购会列表 -->
+			<div class="groupList">
+			{% for k in data %}
+				<div class="groupBox">
+					<a class="imgBox" href="/phone/yizhangou/invite/{{k['id']}}">
+						<img src="/uploads/yizhangou/{{k['listimg']}}" />
+						<span class="typeBg"></span>
+						<span class="type f12">{{tag[k['tag']]}}</span>
+						{% if k['day'] > 0 %}
+						<p class="djs f12">
+							<i></i>
+							离开始还有{{k['day']}}天
+						</p>
+						{% endif %}
+					</a>
+					<div class="infoBox">
+						<p class="info1 f14">{{k['starttimeStr']}}  {{k['listtitle']}}</p>
+						<div class="infoDetailBox">
+						{% if k['zhe'] %}
+							<p class="info2 info grey"><span>折</span>{{k['zhe']}}</p>
+						{% endif %}
+						{% if k['zeng'] %}
+							<p class="info3 info grey"><span>赠</span>{{k['zeng']}}</p>
+						{% endif %}
+						{% if k['zhuan'] %}
+							<p class="info4 info grey"><span>专</span>{{k['zhuan']}}</p>
+						{% endif %}
+							<a href="/phone/yizhangou/invite/{{k['id']}}" class="groupBtn">
+								<p class="num"><span class="orange">{{k['bmNum'] + 2000}}</span>人已报名</p>
+								<p class="txt f14">立即索票</p>
+							</a>
+						</div>
+					</div>
+				{% if k['logdesc'] %}
+					<div class="line"><i></i><em></em></div>
+					<div class="brandBox">
+						<span class="bTitle ctl">品牌专场</span>{{k['logdesc']}}
+					</div>
+				{% endif %}
+				</div>
+			{% endfor %}
+			</div>
+			<!-- 一元购 -->
+			<!-- 整个模块都不确定，先放个图片占个位置 -->
+			<!--<div class="yygBox">
+				<img src="/yizhangou/images/test3.jpg" />
+			</div>-->
+			<!-- 往期家博会 -->
+			<!--<a href="#" class="pastGroup">
+				<img src="/yizhangou/images/test4.jpg" />
+			</a>-->
+		</div>
+		<!-- 底部版权 -->
+		<div class="copyright">
+			Copyright 2015  版权归深圳前海优品优居网络科技有限公司所有
+		</div>
+		<!-- 城市选择 -->
+		<div class="cityBox hide" id="cityBox" show=0 >
+			<div class="blackBg"></div>
+			<div class="cityWarp">
+				<div class="city">
+					<p class="grey">热门城市</p>
+				{% for k,v in city %}
+					<a href="/phone/yizhangou/index/{{k}}"><span>{{v['cityname']}}</span></a>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+<script>
+	/*公告滚动*/
+	function notice(speed){
+		var add = "<p>"+$("#marquee p").eq(0).html()+"</p>";
+		var marquee = $("#marquee");
+		marquee.append(add);
+
+		var ph = $("#marquee p").height()
+		var i = 1;
+		var length = marquee.height()/ph;
+
+		setInterval(function(){
+			if(i>length || i==length){
+				marquee.css({"margin-top":0});
+				i=1;	
+			}
+			marquee.animate({"margin-top":i*(-ph)},500);
+			i++;
+			
+		},speed);
+	}
+	$(function(){
+		$("#loading").hide();
+		
+{% if marquee %}
+		notice(2000);
+{% endif %}
+
+		// 城市选择出现
+		$("#citySelect").click(function(){
+			var cityBox = $("#cityBox");
+			var i= cityBox.attr("show");
+			if(i == 0){
+				cityBox.show();
+				cityBox.attr("show",1);
+				$("#menu").hide();
+				$("#menu").attr("show",0);
+			}else{
+				cityBox.hide();
+				cityBox.attr("show",0);
+			}
+		});
+		// 城市选择消失
+		$("#cityBox .blackBg").click(function(){
+			$("#cityBox").hide();
+		});
+
+		// 目录出现
+		$("#menuIcon").click(function(){
+			var menu = $("#menu");
+			var i= menu.attr("show");
+			if(i == 0){
+				menu.show();
+				menu.attr("show",1);
+			}else{
+				menu.hide();
+				menu.attr("show",0);
+			}
+		});
+
+		
+		
+	});
+</script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: '<?php echo $signPackage["timestamp"];?>',
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	      signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+            'checkJsApi',
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+		var wxData = {
+			"imgUrl":'{{domain}}/yizhangou/images/share1.jpg',
+			"link":'{{domain}}/phone/yizhangou/index',
+			"desc":"优居网-一站购",
+			"title":"优居网-一站购"
+		};
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">奥普家博会-报名数据统计</h1>
+    </div>
+    <div class="wrapper-md ng-scope">
+    <div class="m-b-sm">
+    <div class="btn-group" ng-init="radioModel = 'Male'">
+      <a href="/admin/aupu/index"><label class="btn btn-default btn-sm"><i class="fa fa-check text-active"></i>报名数据表</label></a>
+      <a href="/admin/aupu/budian_statistics"><label class="btn btn-default btn-sm"><i class="fa fa-check text-active"></i>布点数据统计</label></a>
+    </div>
+    </div>
+           <!-- tips -->
+        <div class="alert ng-isolate-scope alert-info alert-dismissable">
+        <div ng-transclude=""><span class="ng-binding ng-scope">报名转化率 = ”报名按钮“的报名数 / ”报名按钮“的点击数</span></div>
+        </div>
+        <!--/ tips -->
+        <div class="panel panel-default">
+        <div class="table-responsive">
+          <div class="panel panel-default">
+            <div class="panel-heading">统计</div>
+            <table class="table table-striped m-b-none">
+              <tbody>
+                <tr>                    
+                  <td>“报名按钮”总点击数</td>
+                  <td class="text-danger" style="width:70px;">
+                    <i class="fa"></i> {{ click_num }}
+                  </td>
+                </tr>
+                <tr>                    
+                  <td>总报名数</td>
+                  <td class="text-danger" style="width:70px;">
+                    <i class="fa"></i> {{ bm_count }}
+                  </td>
+                </tr>
+                <tr>                    
+                  <td>总转化率</td>
+                  <td class="text-danger" style="width:70px;">
+                    <i class="fa"></i> {{ total_zhl }}%
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+       <div class="row">
+          <div class="col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+            <span class="label bg-info pull-right m-t-xs">{{ city_num }} 个城市站</span>
+                                       各城市站“报名按钮”点击量排行情况
+            </div>
+            <table class="table table-striped m-b-none">
+              <thead>
+                <tr>
+                  <th>城市站</th>
+                  <th style="width:50%"></th>
+                  <th>占比</th>
+                  <th>点击数</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for k in city_sort %}
+                <tr>
+                  <td>{{ k['city'] }}</td>
+                  <td>
+                    <div class="progress progress-sm progress-striped active m-t-xs m-b-none">
+                      <div class="progress-bar {{ k['color'] }}" data-toggle="tooltip" data-original-title="{{ k['proportion'] }}%" style="width: {{ k['proportion'] }}%"></div>
+                    </div>
+                  </td>
+                  <td>{{ k['proportion'] }}%</td>
+                  <td>{{ k['click_num'] }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+            <span class="label bg-info pull-right m-t-xs">{{ btn_num }} 个布点位置</span>
+                                       各屏“报名按钮”点击量排行情况
+            </div>
+            <table class="table table-striped m-b-none">
+              <thead>
+                <tr>
+                  <th>布点位置</th>
+                  <th style="width:30%"></th>
+                  <th>占比</th>
+                  <th>点击数</th>
+                  <th>报名转化率</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for k in array_sort %}
+                <tr>
+                  <td>{{ k['name'] }}</td>
+                  <td>
+                    <div class="progress progress-sm progress-striped active m-t-xs m-b-none">
+                      <div class="progress-bar {{ k['color'] }}" data-toggle="tooltip" data-original-title="{{ k['proportion'] }}%" style="width: {{ k['proportion'] }}%"></div>
+                    </div>
+                  </td>
+                  <td>{{ k['proportion'] }}%</td>
+                  <td>{{ k['click_num'] }}</td>
+                  <td>{{ k['bm_num'] }}/{{ k['click_num'] }} = {{ k['zhl'] }}%</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+                            每天报名转化率情况<span class="label bg-info">活动已进行 <?php echo $for_num?> 天，由于数据量过大，只显示最近前3天的数据</span>
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light">
+            <thead>
+              <tr>
+                <th>时间</th>
+                {% for k,key in budian_name %}
+                <th>{{ key }}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+            {% for k,key in arr %}
+              <tr>
+                <td>{{ k }}</td>
+                {% for part,vo in key %}
+                <td>{{ vo['bm_num'] }}/{{ vo['click_num'] }}  = {{ vo['zhl'] }} %</td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+        </footer>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+<?php $this->partial("index/footer")?>

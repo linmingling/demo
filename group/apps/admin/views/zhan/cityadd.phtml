@@ -1,0 +1,188 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<?php use Library\Com\SecurityContext?>
+<style type="text/css">
+	
+	.img-list{display:inline-flex;}
+	.img-list .img-row{margin-right:10px;}
+	.img-list .img-row:last-child{margin-right:0px;}
+	
+	.img-row{position:relative;}
+	.img-row .inimg{display:inherit;border:1px solid #cfdadd;}
+	.img-row img.inimg{width:195px;height:100px;background-color:#fff;border:none;}
+	.img-row .inimg.img-btn{position:absolute;opacity:0;z-index:100;top:0px;left:0px;width:195px;height:100px;cursor:pointer;}
+	.img-row .inimg.img-url{width:195px;}
+	.img-row .inimg.img-url{width:195px;}
+	.img-row .inimg.isshow{width:195px;}
+	.img-row .inimg.img-close{
+		display:block;width:15px;height:15px;left:-5px;top:-5px;cursor:pointer;z-index:200;
+		position:absolute;border:none;background:url(/admin/images/close.jpg) no-repeat;
+	}
+	
+</style>
+
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{{zhanName}} - 添加城市</h1>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group form-group-sm">
+							<label for="city" class="col-sm-1 control-label">城市:</label>
+							<div class="col-xs-2">
+								<?php if (SecurityContext::getCurrentUsername()!='admin'):?>
+								<select name='city'>
+									<option value='0'>请选择城市</option>
+									{% for k in cityBox %}<option value="{{k['region_id']}}">{{k['region_name']}}</option>{% endfor %}
+								</select>
+								<?php else:?>
+								<select name="province">
+									<option value="0">请选择省份</option>
+								{% for k in cityBox %} {% if k['parent_id'] == 1 and k['type'] == 1 %}<option value="{{k['region_id']}}">{{k['region_name']}}</option>{% endif %}{% endfor %}
+								</select>
+								<?php endif?>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="title" class="col-sm-1 control-label">活动标题:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="title" maxlength="16"/></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="topadv" class="col-sm-1 control-label">头部广告:</label>
+							<div class="col-xs-2">
+								<div class="img-row">
+									<img src="" class="inimg" />
+									<input type="file" name="topadv" class="inimg img-btn" />
+<!-- 									<input type='text' class='inimg img-url' placeholder='http://' /> -->
+<!-- 									<div class="inimg isshow"><span>是否使用</span><input type="checkbox" name="topadv_show" value='1' /></div> -->
+								</div>
+								<font color="red">* 建议尺寸：600*330（px）</font>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="zhe_txt" class="col-sm-1 control-label">折扣文案:</label>
+							<div class="col-xs-2"><textarea class="form-control" name="zhe_txt" maxlength="14"></textarea></div>
+							<font color="red">*最长14个字</font>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="zhe_txt" class="col-sm-1 control-label">优惠券文案:</label>
+							<div class="col-xs-2"><textarea class="form-control" name="coupons_txt" maxlength="14"></textarea></div>
+							<font color="red">*最长14个字</font>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="zeng_txt" class="col-sm-1 control-label">赠送文案:</label>
+							<div class="col-xs-2"><textarea class="form-control" name="zeng_txt" maxlength="14"></textarea></div>
+							<font color="red">*最长14个字</font>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="zt_txt" class="col-sm-1 control-label">专题文案:</label>
+							<div class="col-xs-2"><textarea class="form-control" name="zt_txt" maxlength="14"></textarea></div>
+							<font color="red">*最长14个字</font>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="zt_txt" class="col-sm-1 control-label">品牌专区文案:</label>
+							<div class="col-xs-2"><textarea class="form-control" name="brand_txt" maxlength="16" {% if actType=='综合建材' %}disabled{% endif %}></textarea></div>
+							<font color="red">*仅限单品牌类型输入，最长16个字</font>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="starttime" class="col-sm-1 control-label">开始时间:</label>
+							<div class="col-xs-2">
+								<input class="form-control" type="text" name="starttime" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="endtime" class="col-sm-1 control-label">结束时间:</label>
+							<div class="col-xs-2">
+								<input class="form-control" type="text" name="endtime" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="init_num" class="col-sm-1 control-label">报名数初始值:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="init_num" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="ph_show" class="col-sm-1 control-label">显示平滑页:</label>
+							<div class="col-xs-2 form-inline">
+								<input type="checkbox" name="ph_show" value='1' />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="fy_show" class="col-sm-1 control-label">显示翻页:</label>
+							<div class="col-xs-2 form-inline">
+								<input type="checkbox" name="fy_show" value='1' />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="fy_show" class="col-sm-1 control-label">列表页跳转:</label>
+							<div class="col-xs-2 form-inline">
+								<input type="checkbox" name="fy_goto" value='1' /><span>（不选默认平滑式链接）</span>
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/zhan/city/list/{{zhanId}}" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).on("change",".img-row .img-btn",function(){
+	var url = "";
+	if (window.createObjectURL != undefined) {
+		url = window.createObjectURL(this.files[0])
+	} else if (window.URL != undefined) {  // IE
+		url = window.URL.createObjectURL(this.files[0])
+	} else if (window.webkitURL != undefined) {
+		url = window.webkitURL.createObjectURL(this.files[0])
+	}
+	$(this).parent().find("img.inimg").attr('src',url);
+});
+
+$(document).ready(function() {
+	
+	$("form select[name='province']").change(function(){
+		var obj = $(this).parent();
+		var id = $(this).val();
+		$.ajax({
+			async:true,
+			url:"/admin/zhan/citylistbyid/"+id,
+			type:"get",
+			dataType:"json",
+			beforeSend:function(){
+				$("form select[name='city']").remove();
+			},
+			success:function(result){
+				if(result.code == 1){
+					var data = result.msg;
+					if(data.length > 0){
+						var str = "<select name='city'><option value='0'>请选择城市</option>";
+						for(var i in data){
+							str += "<option value='"+data[i]['city_id']+"'>"+data[i]['city_name']+"</option>";
+						}
+						str += "</select>";
+						obj.append(str);
+					}
+				}
+			}
+		});
+	});
+});
+
+</script>

@@ -1,0 +1,161 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+  
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">10月上海家博会-报名数据表</h1>
+    </div>
+    <div class="wrapper-md ng-scope">
+    <div class="m-b-sm">
+    <div class="btn-group" ng-init="radioModel = 'Male'">
+      <a href="/admin/shex/index"><label class="btn btn-sm btn-info ng-untouched ng-valid ng-dirty"><i class="fa fa-check text-active"></i>报名数据表</label></a>
+      <a href="/admin/shex/budian_statistics"><label class="btn btn-sm btn-danger ng-untouched ng-valid ng-dirty"><i class="fa fa-check text-active"></i>布点数据统计</label></a>
+      <a href="/admin/shex/reserve"><label class="btn btn-sm btn-success ng-untouched ng-valid ng-dirty"><i class="fa fa-check text-active"></i>预约数据表</label></a>
+    </div>
+    </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">10月上海家博会报名数据表
+        {% if page <> '' %}
+        <span class="label bg-info"><?php echo $page['totalRows']?> 条记录</span>
+        {% endif %}
+        </div>
+        <div class="table-responsive">
+          <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+          <div class="row">
+                <div class="row wrapper">
+                <form action="/admin/shex/search" method="post">
+                  <div class="col-sm-5 m-b-xs">
+                    <select class="input-sm form-control w-sm inline v-middle" name="select" id="select">
+                      <option value="name" {% if select == 'name' %}selected{% endif %}>姓名</option>
+                      <option value="phone" {% if select == 'phone' %}selected{% endif %}>手机号码</option>
+                      <option value="url_source" {% if select == 'url_source' %}selected{% endif %}>数据来源</option>
+                      <option value="ip" {% if select == 'ip' %}selected{% endif %}>ip地址</option>
+                      <option value="time" {% if select == 'add_time' %}selected{% endif %}>报名时间</option>
+                    </select>
+                    {% if select != 'verify_time' %}
+                    <input type="text" class="input-sm form-control search" placeholder="请输入搜索条件" name="search" value="{{ search }}">
+					{% endif %}
+					<div class="form-group form-group-sm search_time" style="{% if select != 'verify_time' %}display: none{% endif %}">
+					    <div class="input-group date form_datetime" data-date-format="yyyy-mm-dd" data-link-field="starttime">
+							<input class="form-control" size="16" type="text" value="{{ search }}" readonly>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+						</div>
+						<input type="hidden" id="starttime" name="time" value="{{ search }}" />
+					</div>
+                    <button class="btn btn-sm btn-default">搜索</button>                
+                  </div>
+                 </form>
+                  <div class="col-sm-4">
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        {% if select == ''%}
+                          <a href="bmtable_allxls"><button class="btn btn-sm btn-default" type="button">导出全部数据</button></a>
+                        {% else %}
+                          <a href="bmtable_xls"><button class="btn btn-sm btn-default" type="button">导出当前搜索数据</button></a>
+                          <a href="bmtable_allxls"><button class="btn btn-sm btn-default" type="button">导出全部数据</button></a>
+                        {% endif %}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                  <th style="width: 200px;" class="sorting_asc" rowspan="1" colspan="1">姓名</th>
+                  <th style="width: 250px;" class="sorting" rowspan="1" colspan="1">手机号码</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">区</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">街道</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">数据来源</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">ip地址</th>
+                  <th style="width: 200px;" class="sorting" rowspan="1" colspan="1">ip地址所属城市</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">报名时间</th>
+                  <th style="width: 165px;" class="sorting" rowspan="1" colspan="1">是否验证</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k in list %}
+                <tr class="odd">
+                    <td class="sorting_1">{{ k['name'] }}</td>
+                    <td>{{ k['phone'] }}</td>
+                    <td>{{ k['area'] }}</td>
+                    <td>{{ k['address'] }}</td>
+                    <td>{{ k['url_source'] }}</td>
+                    <td>{{ k['ip'] }}</td>
+                    <td>{{ k['ip_address'] }}</td>
+                    <td>
+                    {% if k['add_time'] != 0 %}
+                    {{ date('Y-m-d H:i:s',k['add_time']) }}
+                    {% endif %}
+                    </td>
+                    <td>
+                    {% if k['state'] == 0 %}<span class="label bg-danger">未验证</span>
+                    {% else %}<span class="label bg-success">已验证</span>
+                    {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% if page <> '' %}
+          <?php $this->partial("index/page")?>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+$("#select").click(function(){
+	var type = $(this).val();
+	if(type == 'time'){
+		$(".search").hide();
+		$(".search_time").show();
+	}
+})
+})
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        linkFormat:'yyyy-mm-dd',
+        weekStart: 0,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: true,
+		startView: 2,
+		minView: 3,
+		forceParse: 0,
+        showMeridian: 1,
+    });
+	
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var sHTML = $('#desc').code();
+	
+});
+
+</script>
+<?php $this->partial("index/footer")?>

@@ -1,0 +1,77 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+  
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">顶部购买信息（轮播）</h1>
+    </div>
+	<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">	
+	<a class="btn btn-default btn-sm" href="/admin/broadcast/index" role="button">返回</a>
+	
+	<a class="btn btn-default btn-sm pull-right" href="/admin/broadcast/top_add" role="button">添加信息</a>
+    </div>	
+    <div class="wrapper-md ng-scope">
+      <div class="panel panel-default">
+        <div class="table-responsive">
+          <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+          <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                  <th style="width: 200px;" class="sorting_asc" rowspan="1" colspan="1">信息</th>
+                  <th style="width: 250px;" class="sorting" rowspan="1" colspan="1">添加时间</th>
+                  <th style="width: 250px;" class="sorting" rowspan="1" colspan="1">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k in list %}
+                <tr class="odd">
+                    <td>{{ k['content'] }}</td>
+                    <td>
+                    {% if k['add_time'] != 0 %}
+                    {{ date('Y-m-d H:i:s',k['add_time']) }}
+                    {% endif %}
+                    </td>
+                    <td><a class="del" data-id="{{ k['id'] }}">删除</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+$(".del").click(function(){
+	if (!confirm("确认要删除？")) {
+        window.event.returnValue = false;
+    } else {
+    	var id = $(this).attr("data-id");
+    	$.ajax({
+    		type: 'POST',
+    		url: '/admin/broadcast/top_del',
+    		dataType: 'json',
+    		data : {id:id},
+    		async : false,
+    		success : function(result){
+    			if(result.errcode){
+        		    alert(result.errmsg);
+        		} else {
+        		    location.href = "/admin/broadcast/top_list";
+        		}
+    		},
+    	})
+    }
+})
+})
+</script>
+<?php $this->partial("index/footer")?>

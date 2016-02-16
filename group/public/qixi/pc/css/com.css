@@ -1,0 +1,100 @@
+@charset "utf-8";
+body{background: #fafafa}
+.qixiWarp{}
+.qixiBox{width: 100%;min-width: 1200px}
+.qixiWarp .insideBox{width: 1200px;margin:0 auto;position: relative;}
+.qixiBox .title{width:100%;height:90px;font-size: 0;}
+.qixiBox .boxMain{width: 100%;margin-top: 25px}
+.bmForm .red{color:#ec0000!important}
+.bmForm .false{background: #999!important}
+
+.baoming{position: absolute;left:490px;top:104px;}
+.baoming .bmHead{font-size: 24px;color: #fff;margin-bottom: 15px;}
+.baoming .bmHead .bmsTitle{}
+.baoming .bmHead .bmsTitle span{color: #ffb91e;margin:0 3px;}
+
+.baoming .bmForm .inputBox{margin-top: 9px;position: relative;}
+.baoming .bmForm input{width: 370px;height: 40px;padding:0 5px;line-height: 40px;font-size:14px;border:0;position: relative;z-index: 1;background: none}
+.baoming .bmForm .tips{width:368px;height: 40px;padding:0 5px;color: #999;font-size: 14px;line-height: 40px;border:1px solid #d7d7d7;background: #fff;position: absolute;top:0;left:0;}
+.baoming .bmForm .leftTips{width:145px;height:40px;display:block;font-size:24px;color: #fff;position: absolute;left:-145px;top:0;text-align: right;}
+.baoming .bmForm .tel{width:240px;}
+.baoming .bmForm .telBox .tips{width: 240px}
+.baoming .bmForm .getCode{width: 110px;height: 40px;line-height:40px;font-size: 14px;text-align: center;float: right;color: #fff;background: #ffab09;cursor: pointer;}
+.baoming .bmForm .tips2{color: #ff6325;margin:5px 0;}
+.baoming .bmForm .bmBtn{width: 145px;height: 145px;font-size: 0px;background: url(../images/bmBtn.png) no-repeat center center;cursor: pointer;position: absolute;right: -190px;top: 55px}
+
+
+.baoming2{width: 100%;min-width: 1200px;height:90px;background: url(../images/black_bg_08.png) repeat;position: fixed;bottom:0;left: 0}
+.baoming2 .insideBox{height: 90px}
+.baoming2 .bm2{width:443px;height: 196px;position: absolute;bottom:0;left: 0}
+.baoming2 .bmForm{width:890px;position: absolute;top:20px;left:435px;}
+.baoming2 .bmForm .inputBox{float: left;position: relative;margin-right: 5px}
+.baoming2 .bmForm input{width: 140px;height: 50px;padding:0 5px;line-height: 50px;font-size:14px;border:0;position: relative;z-index: 1;background: none}
+.baoming2 .bmForm .tips{width:140px;height: 48px;padding:0 5px;line-height: 48px;color: #999;border:1px solid #d7d7d7;font-size: 14px;background: #fff;position: absolute;top:0;left:0;}
+.baoming2 .bmForm .telBox {width: 245px}
+.baoming2 .bmForm .getCode{width: 90px;height: 50px;line-height:50px;font-size: 14px;text-align: center;float: right;color: #000;background: #ffab09;cursor: pointer;}
+.baoming2 .bmForm .bmBtn{width: 155px;height: 25px;padding-top: 25px;font-size:12px;line-height: 21px;background:url(../images/bm2_btn.png) no-repeat center center ;float: left;text-align: center;cursor: pointer;}
+
+.qixinav{width: 142px;height:550px;background: url(../images/nav.png?v=1.0) no-repeat center center;position: fixed;right:20px;top:50px;z-index: 1;color:#fff;}
+.qixinav .qixilist{width:80px;margin:65px 0 0 40px;font-size: 14px}
+.qixinav .qixilist p{height:36px;line-height: 36px;cursor: pointer;}
+.qixinav .qixilist .hover{color: #fee006}
+
+.qixiBox0{height: 480px}
+.qixiBox1{height:411px;background: url(../images/box1_bg.jpg) repeat-x center center}
+.qixiBox2{height:664px;background: url(../images/box2_bg.jpg) repeat-x center center}
+.qixiBox3{height:955px;background: url(../images/box3_bg.jpg) repeat-x center center}
+.qixiBox4{padding-bottom:35px;background: url(../images/box4_bg.jpg) repeat center center}
+.qixiBox5{height:545px;background: url(../images/box5_bg.jpg) repeat-x center center}
+.qixiBox6{height:453px;background: url(../images/box6_bg.jpg) repeat-x center center}
+.qixiBox7{height:1729px;background: url(../images/box7_bg.jpg) repeat-x center center}
+.qixiBox8{height:583px;background: url(../images/box8_bg.jpg) repeat-x center center}
+.qixiBox_dg{height:656px;background: url(../images/box8_bg.jpg) repeat center center}
+
+.qixiBox2 .title{background: url(../images/box2_title.png) no-repeat center center}
+.qixiBox3 .title{background: url(../images/box3_title.png) no-repeat center center}
+.qixiBox4 .title{background: url(../images/box4_title.png) no-repeat center center}
+.qixiBox5 .title{background: url(../images/box5_title.png) no-repeat center center}
+.qixiBox6 .title{background: url(../images/box6_title.png) no-repeat center center}
+.qixiBox7 .title{background: url(../images/box7_title.png) no-repeat center center}
+.qixiBox8 .title{background: url(../images/box8_title.png) no-repeat center center}
+.qixiBox_dg .title{background: url(../images/dongguan/newbox1_title.png) no-repeat center center}
+
+.qixiBox2 .boxMain{height:515px;background: url(../images/box2_insideBg.png) no-repeat center center}
+.qixiBox3 .boxMain{height:809px;background: url(../images/box3_insideBg.png?v=1.0) no-repeat center center}
+.qixiBox4 .boxMain{width:1100px;padding:55px;background: url(../images/box4_insideBg.png) no-repeat top center;background-size: 100% 100%}
+.qixiBox5 .boxMain{height:404px;background: url(../images/box5_insideBg.png) no-repeat center center}
+.qixiBox6 .boxMain{height:308px;background: url(../images/box6_insideBg.png) no-repeat center center}
+.qixiBox7 .boxMain{width:1094px;height:1503px;padding:40px 53px;background: url(../images/box7_insideBg.png) no-repeat center center}
+.qixiBox8 .boxMain{height:349px;background: url(../images/box8_insideBg.png) no-repeat center center}
+.qixiBox_dg .boxMain{height:509px;background: url(../images/dongguan/newbox1_1.png) no-repeat center center}
+
+.qixiBox4 .logoTitle{width: 100%;height: 50px;margin-bottom: 15px}
+.qixiBox4 .znTitle{background: url(../images/box3_1.png) no-repeat center bottom}
+.qixiBox4 .qyTitle{background: url(../images/box3_2.png) no-repeat center bottom}
+.qixiBox4 .logoBox{margin-bottom: 15px}
+.qixiBox4 .logoBox img{width: 188px;height: 80px;padding:8px;margin:4px;border:1px #d7d7d7 solid;}
+
+.qixiBox7 .imgBox{float: left;margin:3px 5px;}
+.qixiBox7 .imgBox .img{width: 196px;height: 196px;padding:5px;border: 1px solid #ffbc28;overflow: hidden;cursor: pointer;}
+.qixiBox7 .imgBox .img img{width: 196px;height: 196px;-webkit-transition: all 0.4s ease 0s;  -moz-transition: all 0.4s ease 0s;-o-transition: all 0.4s ease 0s;  -ms-transition: all 0.4s ease 0s;  transition: all 0.4s ease 0s;}
+.qixiBox7 .imgBox img:hover{-webkit-transform: scale(1.1,1.1);  -moz-transform: scale(1.1,1.1);  -ms-transform: scale(1.1,1.1);  -o-transform: scale(1.1,1.1);  transform: scale(1.1,1.1);  -webkit-transition: all 0.4s ease 0s;  -moz-transition: all 0.4s ease 0s;-o-transition: all 0.4s ease 0s;  -ms-transition: all 0.4s ease 0s;  transition: all 0.4s ease 0s;}
+
+.qixiBox7 .imgBox p{}
+.qixiBox7 .imgBox span{width:80px;height: 30px;line-height: 30px;font-size: 18px;color: #fff;background:#ffbc28;display: block;text-align: center;margin:4px auto 0 auto;}
+
+.qixiBox8 .adressBox{position: relative;}
+.qixiBox8 .map{background:#d7d7d7;width: 780px;height: 250px;position: absolute;top:42px;left: 60px}
+.qixiBox8 .info{width:285px;position: absolute;top:45px;left: 850px}
+.qixiBox8 .info .adText{font-size: 16px;margin-bottom: 40px}
+
+.bigImg{width: 100%;height:100%;position: fixed;right:0;top:0;z-index: 1;text-align: center;}
+.bigImg .bg{width: 100%;height:100%;background: url(../images/black_bg_08.png) repeat;position: absolute;right:0;top:0}
+.bigImg img{margin-top:100px;position: relative;z-index: 1}
+
+.bmcg{width: 100%;height:100%;background: url(../images/black_bg_08.png) repeat;position: fixed;right:0;top:0;z-index: 999;}
+.bmcg .bmcgWarp{width: 500px;height:260px;padding:20px 0;border-radius: 10px;margin:200px auto;background: #ec3f3f;color: #fff;text-align: center;}
+.bmcgTitle{font-size: 30px;margin-bottom: 20px}
+.bmcgMain{font-size: 18px}
+.bmcg .bmcgWarp .bmcgBtn{width: 250px;height:50px;line-height: 50px;font-size: 24px;border-bottom: 3px solid #d1c100;border-radius: 5px;background: #ffec00;display: block;margin:50px auto 0 auto;color: #333;cursor: pointer;}
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优居家博会-签到</title>
+<meta name="keywords" content="优居家博会-签到" />
+<meta name="description" content="优居家博会-签到" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<style>
+	body{background: #f1f1f1}
+	.formBox{width: 90%;margin:50px auto;}
+	.formBox input{width:100%;height: 40px;line-height:40px;border: 1px solid #7d7d7d;border-radius: 4px;font-size: 14px;text-align: center;}
+	.formBox .btn{width:100%;height: 40px;line-height:40px;text-align: center;background: #b82424;;border-radius: 4px;color: #fff;font-weight: 700;font-size: 18px;font-family:  \5FAE\8F6F\96C5\9ED1}
+	.formBox .false{background: #999!important;color: #fff}
+	.tcWarp{width: 100%;height: 100%;position: absolute;top: 0;left: 0;background: rgba(0,0,0,0.7)}
+	.tc{width:80%;position: absolute;left:10%;top: 10%;background: #fff;text-align: center;border-radius: 10px }
+	.tc .tcBtn{height:40px;line-height:40px;border-top: 1px solid #000;margin:0;}
+	.tc .style1{color: #00BB00}
+	.tc .style2{color: #FF0000}
+	.tc .style3{color: #000}
+	.hide{display: none}
+</style>
+
+</head>
+<body>
+	<div class="formBox">
+		<input type="text" class="tel" name="tel" id="tel" placeholder="输入客户手机号" />
+		<p class="btn" id="btn">确认录入</p>
+		<div class="tcWarp hide" id="tips">
+			<div class="tc">
+				<p class="tips "></p>
+				<p class="tcBtn">关闭</p>
+			</div>
+		</div>
+	</div>
+	<script src="/common/js/zepto.min.js"></script>
+	<script>
+	function tips(txt,type){
+		$("#tips .tips").removeClass("style1 style2 style3").addClass(type).html(txt);
+		$("#tips").show();
+	}
+	$(function () {
+		$("#tips .tcBtn").click(function(){
+			$("#tips").hide();
+		})
+		$("#btn").click(function(){
+			if($(this).hasClass("false")){
+				return false;
+			}
+			var tel = $("#tel").val();
+			var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+			if(tel =="" || !mob.test(tel)){
+			
+				alert("请填写正确的手机号码!");
+			}else{
+				$("#btn").html("正在录入...").addClass("false");
+				$.ajax({
+	    			async:true,
+	    			url:'/phone/sign/submit',
+	    			data:{phone:tel},
+	    			type: 'post',
+	    			dataType:'json',
+	    			success:function(result){
+	    				
+		    			if(result.errcode){
+		    				$("#btn").html("确认录入").removeClass("false");
+		    				//alert(result.errmsg);
+		    				tips(result.errmsg,"style3");
+
+			    		}else {
+			    			$("#tel").val("");
+			    			$("#btn").html("确认录入").removeClass("false");
+			    			if(result.isbm){
+			    				//alert("签到成功，用户已报名");
+			    				tips("签到成功，用户已报名","style1");
+
+				    		} else {
+				    			//alert("签到成功，用户未报名");
+				    			tips("签到成功，用户未报名","style2")
+				    		}
+			    		}
+	    			}
+	    		});
+			}
+		})
+	})
+	</script>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优居网-优品团</title>
+<meta name="keywords" content="优居网 优品团" />
+<meta name="description" content="优居网 优品团" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/group/css/com.css" />
+
+</head>
+<body>
+	
+	<div class="wraper">
+		<!-- 头部 -->
+		<header class="head">
+			<a class="returnIcon ctl" href="{{ history }}">返回</a>
+			
+			<p class="title grey">
+				<span class="titleText f14">支付结果</span>
+			</p>
+		</header>	
+		<!-- 主要内容 -->
+		<div class="main resultMain">
+		{% if errcode == 1%}
+			<p class="resultText f24 orange ">恭喜您！预定成功</p>
+		{% elseif errcode == 1000 %}
+			<p class="resultText f24 orange false">商品不存在或已下架！</p>
+		{% elseif errcode == 1001 %}
+		    <p class="resultText f24 orange false">商品不在活动时间内！</p>
+	    {% elseif errcode == 1003 %}
+	       <p class="resultText f24 orange false">已售罄！</p>
+	    {% elseif errcode == 1004 %}
+	       <p class="resultText f24 orange false">该商品为限购商品<br/>您已达购买上限！</p>
+	    {% elseif errcode == 1005 %}
+	       <p class="resultText f24 orange false">收货地址异常<br/>请设置默认收货地址！</p>
+	    {% elseif errcode == 1006 %}
+	       <p class="resultText f24 orange false">支付失败！</p>
+		{% else %}
+		    <p class="resultText f24 orange false">未知错误，请稍后重试！</p>
+		{% endif %}
+			<!-- <a href="javascript:void(0)" class="resultImg">
+				<img src="/group/images/test2.jpg" />
+			</a> -->
+			<!-- 猜你喜欢 -->
+			{% if goods_list != '' %}
+			<div class="openDetail">
+				<p class="line"></p>
+				<span>猜你喜欢</span>
+			</div>
+			{% endif %}
+			<div class="product youlike" id="youlike">
+			{% for key,k in goods_list %}
+				<div class="pBox">
+					<div class="pTop cf">
+						<div class="pBrand ctl">
+							<img src="/group/images/default100x60.png" data-original="{% if k['brand_img'] != '' %}{{ k['brand_img'] }}{% else %}/group/images/default60x60.png{% endif %}" class="ctl lazy" />
+							<span>{{ k['sale_address'] }}</span>
+						</div>
+						<!-- <div class="pDjs dGrey ctr" deadline="{{ date('m d,Y H:i:s',k['end_time']) }}">
+							距结束 <span class="hours">--</span>:<span class="minutes">--</span>:<span class="seconds">--</span> 
+						</div> -->
+						<div class="pDjs dGrey ctr">
+							距结束 {{ k['countdown'] }}
+					    </div>
+					</div>
+					<a href="/phone/group/detail/{{ k['id'] }}" onclick="budian({{k['id']}})" class="pA">
+						<div class="pImgBox">
+							<img src="/group/images/default320x100.png" data-original="{{ k['goods_img'] }}" class="pImg lazy" />
+						</div>
+						<p class="pTitle f13">{{ k['goods_name'] }}</p>
+						<div class="pInfo">
+							<div class="pInfo1 orange">
+								<span class="border">
+									<span class="discount">{{ k['discount'] }}折</span>
+									<span class="delete grey">￥{{ k['market_price'] }}</span>
+								</span>
+							</div>
+							<div class="pInfo2 orange">
+								优居专享：￥<span class="f16 fw">{{ k['exclusive_price'] }}</span>
+							</div>
+							<div class="pInfo3 grey">
+								还剩下{{ k['stock'] }}件
+							</div>
+							<div class="pBtn">
+								<p class="book">
+									<span class="progress2" reservation="{{ k['sold_num'] + k['real_num']}}" all="{{ k['stock'] + k['sold_num'] +  k['real_num']}}"></span>
+									<span class="proText">已预订{{ k['sold_num'] + k['real_num']}}件</span>
+								</p>
+								<p>马上抢</p>
+							</div>
+						</div>
+					</a>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+<script src="/common/js/jquery.lazyload.js"></script>
+<script>
+	// 进度条显示
+	function progress(){
+		$("#youlike .pBox .progress2").each(function(){
+			var dom = $(this);
+			var reservation = dom.attr("reservation");
+			var all = dom.attr("all");
+			var pro = (reservation/all)*100;
+			$(this).width(pro+"%");
+
+		});
+	}
+	$(function(){
+		// 初始化进度条
+		progress();
+
+		// 延迟加载
+		$("img.lazy").lazyload({ 
+			effect : "fadeIn" 
+		});
+	});
+</script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: '<?php echo $signPackage["timestamp"];?>',
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	      signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+            'checkJsApi',
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+		var wxData = {
+			"imgUrl":'{{domain}}/group/images/share1.jpg',
+			"link":'{{domain}}/phone/group/index',
+			"desc":"优居网-优品团",
+			"title":"优居网-优品团"
+		};
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+	});
+</script>
+</body>
+</html>

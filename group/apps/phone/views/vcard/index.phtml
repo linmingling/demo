@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>V卡激活</title>
+<meta name="keywords" content="优居网 优品团" />
+<meta name="description" content="优居网 优品团" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/vcard/css/com.css?v=1.1" />
+
+</head>
+<body>
+	<div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+	<div class="wraper">
+		
+		<!-- 主要内容 -->
+		<div class="main ">
+			<!-- vCard激活 -->
+			<div class="vCard vCard1" id="vCard1">
+				<img src="/vcard/images/logo.png" class="logo" />
+				<img src="/vcard/images/p1.png?v=1.0" class="p1" />
+				<div class="formWarp">
+					<img src="/vcard/images/hbBg.png" class="hbBg" />
+					<div class="formBox">
+						<p>
+							<select class="city" id="city">
+								<!-- <option value="0">--请选择--</option> -->
+								{% for k in citylist%}
+									<option value="{{ k['action_id'] }}" date="{{ k['timestr'] }}">{{ k['city'] }}</option>
+								{% endfor %}
+							</select>
+						</p>
+						<p>
+							<input type="text" name="tel" class="tel" id="tel" placeholder="请输入报名时手机号码" value="" />
+						</p>
+						<p class="cf">
+							<input type="text" name="code" class="code ctl" id="code" placeholder="请输入短信验证码" value="" />
+							<span class="getCode ctr false" id="getCode">获取验证码</span>
+						</p>
+						<p class="btn" id="btn1">
+							<img src="/vcard/images/btn1_2.png" class="btn1_2" />
+						</p>
+						<p class="tips">
+							已有<span class="yellow">{{ 1000+activecount }}</span>位用户激活并成功分享领取过抵扣券
+						</p>
+						<p class="ruleBtn">
+							<span class="yellow" id="ruleBtn">活动规则>></span>
+						</p>
+					</div>
+				</div>
+				<p class="copyright">Copyright 2015  版权归深圳亚太传媒科技开发有公司所有</p>
+			</div>
+			<!-- vCard激活成功 -->
+			<div class="vCard vCard2 hide" id="vCard2">
+				<img src="/vcard/images/logo.png" class="logo" />
+				<p class="icon"><img src="/vcard/images/icon.png" /></p>
+				<p class="p1">恭喜您，激活成功！</p>
+				<p class="p2">请于<span class="date">10.16-11.06</span>活动当天，携带此</p>
+				<p class="p2">卡到现场签到，有惊喜哦！</p>
+				<p class="btn2" id="shareBtn"><img src="/vcard/images/btn2.png?v=1.0" /></p>
+				<!-- <p class="ad"><img src="/vcard/images/ad.png" /></p> -->
+				<p class="copyright">Copyright 2015  版权归深圳亚太传媒科技开发有公司所有</p>
+			</div>
+			<!-- 该二维码已被激活提示 -->
+			<div class="vCard vCard3 hide">
+				<img src="/vcard/images/logo.png" class="logo" />
+				<div class="tips">
+					<p class="p1">该二维码已被激活</p>
+					<!-- <p>一些引导性的提示吧，让他去扫其他二维码、联系客服啊或者关注公众号什么的，当然不喜欢可以直接去掉这一句</p> -->
+				</div>
+				<p class="copyright">Copyright 2015  版权归深圳前海优品优居网络科技有限公司所有</p>
+			</div>
+			<!-- 规则 -->
+			<div class="rule tcBox hide" id="rule">
+				<div class="ruleWarp">
+					<p class="ruleTitle">活动规则</p>
+					<ul>
+						<li>每个用户仅限领取一次； </li>
+						<li>首次激活用户<span class="yellow">分享成功</span>后，可得抵扣券一张；</li>
+						<li>抵扣券使用有效时间：根据各城市一元购活动时间而定；</li>
+						<li>参与活动的用户若存在以不正当方式获取抵扣券者，优居网有权终止其参与活动，并且取消获取抵扣券的资格；</li>
+						<li>活动有效时间：<span class="yellow date">2015年10月26-2015年11月21</span></li>
+						<li>活动主办方：优居网</li>
+						<li>本活动最终解释权归深圳前海优品优居有限公司所有</li>
+					</ul>
+					<span class="close">×</span>
+				</div>
+			</div>
+			<!-- 分享提示 -->
+			<div class="share tcBox hide" id="share">
+				<img src="/vcard/images/shareTips.png?v=1.1" class="shareTips" />
+			</div>
+			<!-- 通用提示 -->
+			<div class="comTips tcBox hide" id="comTips">
+				<div class="tipsWarp">
+					<span class="icon">!</span>
+					<p>你已成功激活过了！</p>
+					<p class="close">确认</p>
+				</div>
+			</div>
+			<!-- 未报名提示 -->
+			<div class="bmTips tcBox hide" id="bmTips">
+				<div class="tipsWarp">
+					<p>您输入的手机号码为未报名手机号，请重新输入报名时手机号码</p>
+					<p class="close">确认</p>
+					<a href="#">还未报名？赶紧报名领取门票！</a>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+<script>
+var wxData = {
+		imgUrl:"{{domain}}/vcard/images/fx.jpg",
+		link:"{{domain}}/phone/vcard/share/{{ userid }}/{{ actionid }}",
+		desc:"送100元抵扣券-快抢全民家居购免费门票，领票就送100元抵购券。",
+		title:"送100元抵扣券-快抢全民家居购免费门票，领票就送100元抵购券。",
+		
+	};
+	function djs(i){
+        //console.log(i)
+        if(i<1){
+            $("#getCode").html("获取验证码").removeClass("false");
+        }else{
+            $("#getCode").html(i+"s重新获取").addClass("false");
+            setTimeout(function(){djs(i-1)},1000);
+        }
+    }
+    // 验证电话
+    function check1(){
+    	var tel = $("#tel").val();
+		var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+		if(!mob.test(tel) ){
+            $("#getCode").addClass("false");
+            return false;
+        }else{
+        	$("#getCode").removeClass("false");
+        }
+    }
+    // 验证电话、城市、验证码
+    function check2(){
+    	var tel = $("#tel").val();
+		var code = $("#code").val();
+		// var city = $("#city").val();
+		var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+		var flag = true;
+		if(!mob.test(tel)){
+            $("#tel").addClass("false").val("请输入正确的手机号码");
+            flag = false;
+        }
+        if(code == "" ){
+            $("#code").addClass("false").val("请输入短信验证码");
+            flag = false;
+        }
+
+        return flag;
+    }
+
+
+	$(function(){
+
+		$("#loading").hide();
+		
+		var city = 2; //后台传入当前城市代码
+		$("#city").val("{{ locationcity }}"); //默认选中当前城市
+
+		// 触发验证1
+		$("#tel").keyup(function(){
+			check1();
+		}); 
+
+
+		$("input").focus(function(){
+			if($(this).hasClass("false")){
+				$(this).removeClass("false").val("");
+			}
+		});
+
+
+		// 获取验证码
+		$("#getCode").click(function(){
+			if($(this).hasClass("false"))return false;
+
+			var tel = $("#tel").val();
+			$(this).addClass("false");
+
+// 			alert('获取前弹出来');
+			djs(60);
+			$.ajax({
+				async:true,
+				url:"/phone/vcard/captcha/captcha/{{ actionid }}?auth=1",
+				data:{phone:tel},
+				type: 'post',
+				dataType:'json',
+				success:function(result){
+					if(result.code != 0)
+    	           	{
+    	           		alert(result.msg);
+    		           	return false;
+    	           	}
+    	           	else
+    	           	{
+    	           		alert(result.msg);
+    		           	return false;
+    	           	}
+				}
+			});
+
+		});
+		// 激活
+		$("#btn1").click(function(){
+			if(!check2())return false;
+			
+			var date = $("#city").find("option:selected").attr("date");
+			$("#rule .date, #vCard2 .date").html(date);
+
+			var tel = $("#tel").val();
+			var code = $("#code").val();
+			var city = $("#city").val();
+
+			// console.log(code);
+			$.ajax({
+				async:true,
+				url:"/phone/vcard/captcha/check/{{ actionid }}?auth=1",
+				data:{phone:tel,code:code,city:city},
+				type: 'post',
+				dataType:'json',
+				success:function(result){
+					console.log(result);
+					if(result.code == 0)
+    	           	{
+						wxData.link="{{domain}}/phone/vcard/share/"+result.notic.id+"/"+result.notic.aid;
+						$("#vCard1").hide();
+						$("#vCard2").show();
+    		           	return false;
+    	           	}
+    	           	/*
+    	           	else if(result.code == 1003)
+    	           	{
+    	           		$("#bmTips").show();
+    		           	return false;
+    	           	}
+    	           	*/
+    	           	else
+    	           	{
+    	           		alert(result.msg);
+    		           	return false;
+        	        }
+				}
+			});
+
+		});
+		// 活动规则
+		$("#ruleBtn").click(function(){
+			$("#rule").show();
+		});
+		$(".tcBox .close").click(function(){
+			$(this).closest(".tcBox").hide();
+		});
+		// 分享提示
+		$("#shareBtn").click(function(){
+			$("#share").show();
+		});
+		$("#share").click(function(){
+			$("#share").hide();
+		});
+		$("#city").change(function(){
+			var date = $("#city").find("option:selected").attr("date");
+			$("#rule .date, #vCard2 .date").html(date);
+		})
+		
+	});
+</script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+
+	
+wx.config({
+      debug: false,
+      appId: "{{ signPackage['appId'] }}",
+	  timestamp: "{{ signPackage['timestamp'] }}",
+	  nonceStr: "{{ signPackage['nonceStr'] }}",
+      signature: "{{ signPackage['signature'] }}",
+      jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo'
+      ]
+});
+
+wx.ready(function () {
+	wx.onMenuShareAppMessage(wxData);
+	wx.onMenuShareTimeline(wxData);
+	wx.onMenuShareQQ(wxData);
+});
+
+</script>
+</body>
+</html>

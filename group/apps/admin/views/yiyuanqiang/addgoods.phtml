@@ -1,0 +1,248 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{% if type == 'add' %}添加帮砍商品{% else %} 修改帮砍商品 {% endif %}</h1>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<label class="col-sm-1 control-label">商品名称:</label>
+							<div class="col-sm-10"><p class="form-control-static">{{ info['name'] }}</p></div>
+						</div>
+<!-- 						<div class="form-group">
+							<label class="col-sm-1 control-label">商品图片:</label>
+							<div class="col-sm-10"><img class="form-control-static" id="goodsImg" style="max-width:200px;" src="{{pcHome}}/{{ info['image']['img'] }}" /></div>
+						</div> -->
+						<div class="form-group">
+							<label class="col-sm-1 control-label">促销价格:</label>
+							<div class="col-sm-10"><p class="form-control-static">{{ info['price']['promote'] }}</p></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_category" class="col-sm-1 control-label">商品品类:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="goods_category" name="goods_category" value="{{ type == 'modify' ? data['goods_category'] : '' }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_item" class="col-sm-1 control-label">商品类型:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="goods_item" name="goods_item" value="{{ type == 'modify' ? data['goods_item'] : '' }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="starttime" class="col-sm-1 control-label">开始时间:</label>
+							<div class="col-xs-2">
+								<input class="form-control" type="text" id="starttime" name="starttime" value="{{ type == 'modify' ? data['starttime'] : '' }}" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="endtime" class="col-sm-1 control-label">结束时间:</label>
+							<div class="col-xs-2">
+								<input class="form-control" type="text" id="endtime" name="endtime" value="{{ type == 'modify' ? data['endtime'] : '' }}" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="active_quantity" class="col-sm-1 control-label">帮砍库存:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="active_quantity" name="active_quantity" value="{{ type == 'modify' ? data['active_quantity'] : '' }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_quantity" class="col-sm-1 control-label">活动库存:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="goods_quantity" name="goods_quantity" value="{{ type == 'modify' ? data['goods_quantity'] : '' }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="discount" class="col-sm-1 control-label">购买折扣:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="discount" name="discount" value="{{ type == 'modify' ? data['discount'] : '' }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="range_min" class="col-sm-1 control-label">最低跌幅:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="range_min" name="range_min" value="{{ type == 'modify' ? data['range_min'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="range_max" class="col-sm-1 control-label">最高跌幅:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="range_max" name="range_max" value="{{ type == 'modify' ? data['range_max'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="lowest_price" class="col-sm-1 control-label">最低售价:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="lowest_price" name="lowest_price" value="{{ type == 'modify' ? data['lowest_price'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="lowest_price" class="col-sm-1 control-label">优惠价:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="discount_price" name="discount_price" value="{{ type == 'modify' ? data['discount_price'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="init_join" class="col-sm-1 control-label">初始参与人数:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="init_join" name="init_join" value="{{ type == 'modify' ? data['init_join'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="sort" class="col-sm-1 control-label">排序:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="sort" name="sort" value="{{ type == 'modify' ? data['sort'] : '' }}" /></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">商品置顶:</label>
+							<div class="col-xs-8">
+								<label class="radio-inline"><input type="radio" name="isTop" id="isTop1" {% if type == 'modify' and data['is_top'] == 1 %} checked {% endif %} value="1">是</label>
+								<label class="radio-inline"><input type="radio" name="isTop" id="isTop2" {% if type == 'modify' and data['is_top'] == 0 %} checked {% endif %} value="0">否</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+									<font style="color: red">注意↓↓↓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品图片上传格式为：640px * 348px</font>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_img" class="col-sm-1 control-label">图片1:</label>
+							<div class="col-xs-2"><input type="file" id="goods_img1" class="adv1_img pull-right" name="goods_img1" value="" />{% if data['goods_img1'] !='' %}<img src="/uploads/yiyuanqiang/{{ data['goods_img1'] }}" width='100' height='100' />{% endif %}</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_img" class="col-sm-1 control-label">图片2:</label>
+							<div class="col-xs-2"><input type="file" id="goods_img2" class="adv1_img pull-right" name="goods_img2" value="" />{% if data['goods_img2'] !='' %}<img src="/uploads/yiyuanqiang/{{ data['goods_img2'] }}" width='100' height='100' />{% endif %}</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_img" class="col-sm-1 control-label">图片3:</label>
+							<div class="col-xs-2"><input type="file" id="goods_img3" class="adv1_img pull-right" name="goods_img3" value="" />{% if data['goods_img3'] !='' %}<img src="/uploads/yiyuanqiang/{{ data['goods_img3'] }}" width='100' height='100' />{% endif %}</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_img" class="col-sm-1 control-label">图片4:</label>
+							<div class="col-xs-2"><input type="file" id="goods_img4" class="adv1_img pull-right" name="goods_img4" value="" />{% if data['goods_img4'] !='' %}<img src="/uploads/yiyuanqiang/{{ data['goods_img4'] }}" width='100' height='100' />{% endif %}</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_img" class="col-sm-1 control-label">图片5:</label>
+							<div class="col-xs-2"><input type="file" id="goods_img5" class="adv1_img pull-right" name="goods_img5" value="" />{% if data['goods_img5'] !='' %}<img src="/uploads/yiyuanqiang/{{ data['goods_img5'] }}" width='100' height='100' />{% endif %}</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_img" class="col-sm-1 control-label">图片6:</label>
+							<div class="col-xs-2"><input type="file" id="goods_img6" class="adv1_img pull-right" name="goods_img6" value="" />{% if data['goods_img6'] !='' %}<img src="/uploads/yiyuanqiang/{{ data['goods_img6'] }}" width='100' height='100' />{% endif %}</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_img" class="col-sm-1 control-label">图片7:</label>
+							<div class="col-xs-2"><input type="file" id="goods_img7" class="adv1_img pull-right" name="goods_img7" value="" />{% if data['goods_img7'] !='' %}<img src="/uploads/yiyuanqiang/{{ data['goods_img7'] }}" width='100' height='100' />{% endif %}</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_img" class="col-sm-1 control-label">图片8:</label>
+							<div class="col-xs-2"><input type="file" id="goods_img8" class="adv1_img pull-right" name="goods_img8" value="" />{% if data['goods_img8'] !='' %}<img src="/uploads/yiyuanqiang/{{ data['goods_img8'] }}" width='100' height='100' />{% endif %}</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_img" class="col-sm-1 control-label">图片9:</label>
+							<div class="col-xs-2"><input type="file" id="goods_img9" class="adv1_img pull-right" name="goods_img9" value="" />{% if data['goods_img9'] !='' %}<img src="/uploads/yiyuanqiang/{{ data['goods_img9'] }}" width='100' height='100' />{% endif %}</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">说明:</label>
+							<div class="col-xs-7"><textarea class="form-control" id="desc" name="desc">{{ type == 'modify' ? data['desc'] : '' }}</textarea></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">配送方式:</label>
+							<div class="col-xs-8">
+								<div>
+									<label class="radio-inline"><input type="radio" name="shiptype" id="shipping1" {% if type=='add' or data['shipping'] == 0%} checked {% endif %} value="0">线上配送</label>
+									<label class="radio-inline"><input type="radio" name="shiptype" id="shipping2" {% if data['shipping'] == -1%} checked {% endif %} value="-1">线下自动匹配</label>
+									<label class="radio-inline"><input type="radio" name="shiptype" id="shipping3" {% if data['shipping'] > 1 %} checked value="1"{% else %} value="1"{% endif %}>选择地址</label>
+								</div>
+								<div>
+									<a class="btn btn-primary btn-xs" id="chooseaddr" disabled data-toggle="modal" data-target=".bs-example-modal-lg" role="button">选择线下地址</a>
+									<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+										{% if addrlist %}
+											{% for k in addrlist %}
+												<div class="addr_row row{{k['shipping_id']}}" data-id="{{k['shipping_id']}}">{{k['linkman']}}&nbsp;{{k['tel']}}&nbsp;&nbsp;{{k['province']}}&nbsp;{{k['city']}}&nbsp;{{k['district']}}&nbsp;{{k['address']}} </div>
+											{% endfor %}
+										{% else %}
+											<span>您还没有提交线下提货地址</span>
+										{% endif %}
+											</div>
+										</div>
+									</div>
+									<div id="theAddr"></div>
+									<input type="hidden" name="shipping" value="{{ data['shipping'] }}"/>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">是否禁用:</label>
+							<div class="col-xs-8">
+								<label class="radio-inline"><input type="radio" name="isRemove" id="isRemove1" {% if type == 'modify' and data['is_remove'] == 1 %} checked {% endif %} value="1">是</label>
+								<label class="radio-inline"><input type="radio" name="isRemove" id="isRemove2" {% if type == 'modify' and data['is_remove'] == 0 %} checked {% endif %} value="0">否</label>
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/yiyuanqiang/goods/list/{{ actionId }}" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$(':radio[name="shiptype"]').click(function(){
+		var v = $(this).val();
+		if(v == 0){
+			$("#chooseaddr").attr("disabled",true);
+			$("#theAddr").html('');
+			$(':input[name="shipping"]').val(0);
+		}else if(v == -1){
+			$("#chooseaddr").attr("disabled",true);
+			$("#theAddr").html('');
+			$(':input[name="shipping"]').val(-1);
+		}else{
+			$("#chooseaddr").removeAttr("disabled");
+		}
+	});
+
+	$(".addr_row").click(function(){
+		var shipId = $(this).attr('data-id');
+		
+		$(':input[name="shipping"]').val(shipId);
+		
+		$("#theAddr").html($(this).html());
+		$(".modal").modal("hide");
+	});
+
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var desc = $('#desc').code();
+
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 1,
+        showMeridian: 0,
+    });
+	
+});
+
+
+</script>
+

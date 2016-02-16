@@ -1,0 +1,61 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3"><a href="/admin/group/index">优品团 ></a> 商品分类管理</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+			    <a class="btn btn-default btn-sm" href="/admin/group/index" role="button">返回</a>
+			    <a class="btn btn-default btn-sm" href="/admin/group/class_add" role="button">添加分类</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>分类名称</th>
+									<th>添加时间</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ k['class_name'] }}</td>
+									<td>{{ date('Y-m-d H:i:s',k['add_time']) }}</td>
+									<td>
+										<a href="/admin/group/class_add/id/{{ k['id'] }}">编辑</a>
+										<!-- &nbsp;|&nbsp;<a href="javascript:delaction({{k['id']}})">删除</a> -->
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+                    <?php $this->partial("index/page")?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delaction(m){
+	var r=confirm("你确定要删除该商品分类吗？注意：删除后，该分类下的商品将失效（建议进行编辑操作）");
+	if(r == true){
+		location.href="/admin/group/class_delete/id/"+m;
+	}
+}
+
+</script>

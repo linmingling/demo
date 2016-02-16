@@ -1,0 +1,91 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<style>
+  .imgBox{position: relative;display: inline-block;}
+  .imgBox .big{position: absolute;left: 50px;top: 0;background: #fff;border:3px solid #999;max-width: 900px}
+  .imgBox:hover .big{display: block !important;}
+  .table-responsive{overflow: visible;}
+</style>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3"><a href="/admin/group/index">优品团 ></a> 品牌管理</h1></div>
+			
+			<div class="table-responsive" style="padding:10px 20px 0px 20px;">
+                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+        			<div class="row">
+                        <div class="row">
+                        <div class="col-sm-0"><a class="btn btn-default btn-sm" href="/admin/group/index" role="button">返回</a></div>
+                        <form action="/admin/group/brand_search" method="post">
+                          <div class="col-sm-5 m-b-xs">
+                            <select class="input-sm form-control w-sm inline v-middle" name="select" id="select">
+                              <option value="name" {% if select == 'name' %}selected{% endif %}>品牌名称</option>
+                            </select>
+                            <input type="text" class="input-sm form-control search" placeholder="请输入搜索条件" name="search" value="{{ search }}">
+                            <button class="btn btn-sm btn-default">搜索</button>
+                            <span> 支持模糊搜索 </span>
+                          </div>
+                         </form>
+                        <div class="input-group" style="float: right;">
+                         <a class="btn btn-default btn-sm" href="/admin/group/brand_add" role="button">添加品牌</a>
+                        </div>
+                        </div>
+                    </div>
+    			</div>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>品牌名称</th>
+									<th>品牌LOGO</th>
+									<th>添加时间</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ k['name'] }}</td>
+									<td>
+									    <div class="imgBox">
+                                            <img src="{{ k['img_url'] }}"  width="50px"/>
+                                            <img src="{{ k['img_url'] }}" class="big hide"/>
+                                        </div>
+									</td>
+									<td>{{ date('Y-m-d H:i:s',k['add_time']) }}</td>
+									<td>
+										<a href="/admin/group/brand_add/id/{{ k['id'] }}">编辑</a>
+										<!-- &nbsp;|&nbsp;<a href="javascript:delaction({{k['id']}})">删除</a> -->
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+                    <?php $this->partial("index/page")?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delaction(m){
+	var r=confirm("你确定要删除该商品分类吗？注意：删除后，该分类下的商品将失效（建议进行编辑操作）");
+	if(r == true){
+		location.href="/admin/group/class_delete/id/"+m;
+	}
+}
+
+</script>

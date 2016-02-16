@@ -1,0 +1,145 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/fileinput.css" rel="stylesheet">
+<script src="/admin/js/fileinput.min.js"></script>
+<script src="/admin/js/fileinput_locale_zh.js"></script>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{% if type == 'add' %}添加页面信息{% else %} 修改页面信息{% endif %}</h1>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+				{% if type == 'add' %}
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data" action="/admin/vcard/manage/add/{{ actionid }}">
+				{% else %}
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data" action="/admin/vcard/manage/modify/{{ actionid }}">
+				{% endif %}
+						<div class="form-group form-group-sm">
+							<label for="name" class="col-sm-1 control-label">活动名称:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="active_name" name="active_name" value="{{ actionname}}" readonly/></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_img" class="col-sm-1 control-label">激活页广告:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="head_url" name="head_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['head_url'] : '' }}" />
+								<input type="file" id="head_img" class="head_img pull-right" name="head_img" value="" />
+								{% if info['head_img'] !='' %}<img src="/vcard/upload/{{ info['head_img'] }}" width='100%' />{% if type == 'modify' %}<a class="btn btn-default btn-sm" href="javascript:delimg('head_img')" role="button">删除图片</a>{% endif %}{% endif %}
+							</div>
+						</div>
+						
+						<hr>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">分享页广告一:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="adv1_url" name="adv1_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['adv1_url'] : '' }}" />
+								<input type="file" id="adv1_img" class="adv1_img pull-right" name="adv1_img" value="" />
+								{% if info['adv1_img'] !='' %}<img src="/vcard/upload/{{ info['adv1_img'] }}" width='100%'  />{% if type == 'modify' %}<a class="btn btn-default btn-sm" href="javascript:delimg('adv1_img')" role="button">删除图片</a>{% endif %}{% endif %}
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">分享页广告二:</label>
+							<div class="col-xs-5 form-inline">
+								<input class="form-control" type="text" id="adv2_url" name="adv2_url" style="width:300px;" placeholder="http://" value="{{ type == 'modify' ? info['adv2_url'] : '' }}" />
+								<input type="file" id="adv2_img" class="adv2_img pull-right" name="adv2_img" value="" />
+								{% if info['adv2_img'] !='' %}<img src="/vcard/upload{{ info['adv2_img'] }}" width='100%' />{% if type == 'modify' %}<a class="btn btn-default btn-sm" href="javascript:delimg('adv2_img')" role="button">删除图片</a>{% endif %}{% endif %}
+							</div>
+						</div>
+						
+						<!-- hr>
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">说明:</label>
+							<div class="col-xs-7"><textarea class="form-control" id="desc" name="desc">{{ type == 'modify' ? info['desc'] : '' }}</textarea></div>
+						</div-->
+						
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/vcard/action/list/{{ groupid }}" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delimg(m)
+{
+	var r=confirm("你确定要删除该图片吗？");
+	if(r == true){
+		location.href="/admin/vcard/index/delimg/{{ actionid }}/"+m;
+	}
+}
+
+$(document).ready(function() {
+
+
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 1,
+        showMeridian: 0,
+    });
+	/*
+	$(".uploadImg").fileinput({
+		//maxFileSize: 100,
+		overwriteInitial: true,
+		browseClass: "btn btn-primary btn-sm",
+		browseLabel: "选择图片",
+		previewFileType: "image",
+		previewSettings: {image:{width:"200px",height:"160px"}},
+		layoutTemplates: {
+			preview: '<div class="file-preview {class}">' +
+			'    <div class="close fileinput-remove">&times;</div>' +
+			'    <div class="{dropClass}">' +
+			'    <div class="file-preview-thumbnails"></div>' +
+			'    <div class="clearfix"></div>' +
+			'    <div class="file-preview-status text-center text-success"></div>' +
+			'    <div class="kv-fileinput-error"></div>' +
+			'    </div>' +
+			'</div>'
+		},
+		showPreview: false,
+		showCaption: true,
+		showRemove: false,
+		showUpload: false
+	});
+	*/
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var desc = $('#desc').code();
+	
+});
+
+</script>
+

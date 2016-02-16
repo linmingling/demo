@@ -1,0 +1,85 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+			 <h1 class="m-n font-thin h3"><a href="/admin/group/index">优品团 ></a> 门店管理 </h1>
+			</div>
+			
+			<div class="table-responsive" style="padding:10px 20px 0px 20px;">
+                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+        			<div class="row">
+                        <div class="row">
+                        <div class="col-sm-0"><a class="btn btn-default btn-sm" href="/admin/group/index" role="button" style="margin-right:10px;">返回</a></div>
+                        <form action="/admin/group/store_search" method="post">
+                          <div class="col-sm-5 m-b-xs">
+                            <select class="input-sm form-control w-sm inline v-middle" name="select" id="select">
+                              <option value="name" {% if select == 'name' %}selected{% endif %}>门店名称</option>
+                              <option value="address" {% if select == 'address' %}selected{% endif %}>地址</option>
+                              <option value="phone" {% if select == 'phone' %}selected{% endif %}>联系电话</option>
+                              <option value="qq" {% if select == 'qq' %}selected{% endif %}>QQ</option>
+                            </select>
+                            <input type="text" class="input-sm form-control search" placeholder="请输入搜索条件" name="search" value="{{ search }}">
+                            <button class="btn btn-sm btn-default">搜索</button>
+                            <span> 支持模糊搜索 </span>
+                          </div>
+                         </form>
+                        <div class="input-group" style="float: right;">
+                        <a class="btn btn-default btn-sm" href="/admin/group/store_add" role="button">添加门店</a>
+                        </div>
+                        </div>
+                    </div>
+    			</div>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>门店名称</th>
+									<th>地址</th>
+									<th>联系电话</th>
+									<th>QQ</th>
+									<th>编辑时间</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ k['name'] }}</td>
+									<td>{{ k['address'] }}</td>
+									<td>{{ k['phone'] }}</td>
+									<td>{{ k['qq'] }}</td>
+									<td>{{ date('Y-m-d H:i:s', k['add_time']) }}</td>
+									<td>
+										<a href="/admin/group/store_add/{{ k['id'] }}">编辑</a>&nbsp;|&nbsp;
+										<a href="javascript:delaction({{k['id']}})">删除</a>
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+                    <?php $this->partial("index/page")?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function delaction(m){
+	var r=confirm("你确定要删除吗？");
+	if(r == true){
+		location.href="/admin/group/store_delete/id/"+m;
+	}
+}
+</script>
+<?php $this->partial("index/footer")?>

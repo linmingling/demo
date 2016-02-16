@@ -1,0 +1,284 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>拆红包</title>
+
+<link rel="stylesheet" type="text/css"  href="/rpgame2/css/com.css" />
+</head>
+<body>
+	<div class="warp">
+
+		<!-- 首页 -->
+		<div class="index box " id="index">
+			<img src="/rpgame2/images/title.png" class="title" />
+			<div class="rule">
+				<img src="/rpgame2/images/ruleBg.png" class="ruleBg" />
+				<div class="ruleText">
+					<p>●  输入一个已激活的卡号ID就能拆开一个红包</p>
+					<p>●  红包内积分随机</p>
+					<p>●  每个卡号ID只能使用一次</p>
+				</div>
+			</div>
+			<div class="form">
+				<input type="text" placeholder="请输入卡号ID" id="cardID" />
+				<img src="/rpgame2/images/startBtn.png" class="startBtn" id="startBtn" />
+			</div>
+			<div class="btnBox">
+				<img src="/rpgame2/images/rankBtn.png" class="bottomBtn rankBtn"  />
+				<img src="/rpgame2/images/myBtn.png" class="bottomBtn myBtn" />
+			</div>
+		</div>
+		<!-- 倒计时 -->
+	<!-- 	<div class="djs box hide" id="djs">
+		<div class="djsWarp">
+			<img src="/rpgame2/images/djs3.png" class="djs3" />
+			<img src="/rpgame2/images/djs2.png" class="djs2 hide" />
+			<img src="/rpgame2/images/djs1.png" class="djs1 hide" />
+		</div>
+	</div> -->
+		<!-- 排行榜 -->
+		<div class="rank box hide" id="rank">
+			<div class="rankWarp">
+				<img src="/rpgame2/images/rankTitle.png" class="rankTitle" />
+				<div class="rankList"></div>
+			</div>
+			<p class="youRank">您现在处于<span class="city">{{ agentCity }}</span>排行榜第<span class="sort">xxxx</span>名</p>
+			<div class="btnBox">
+				<img src="/rpgame2/images/myBtn.png" class="bottomBtn myBtn" />
+				<img src="/rpgame2/images/indexBtn.png" class="bottomBtn indexBtn" />
+			</div>
+		</div>
+		<!-- 我的资产 -->
+		<div class="my box hide" id="my">
+			<p class="name">{{ agentName }}</p>
+			<p class="score">目前积分：0</p>
+			<div class="myWarp">
+				<img src="/rpgame2/images/myTitle.png" class="myTitle" />
+				<div class="myList"></div>
+				<p class="myTips">具体积分奖励详情请咨询线下门店负责人</p>
+				<div class="btnBox">
+					<img src="/rpgame2/images/rankBtn.png" class="bottomBtn rankBtn" />
+					<img src="/rpgame2/images/indexBtn.png" class="bottomBtn indexBtn" />
+				</div>
+			</div>
+		</div>
+		<!-- 结果 -->
+		<div class="result hide" id="result">
+			<img src="/rpgame2/images/resultHead.png" class="resultHead" />
+			<img src="/rpgame2/images/light.png" class="light" />
+			<div class="resultWarp">
+				<p>积分</p>
+				<p class="score">0</p>
+				<img src="/rpgame2/images/loginBtn.png" class="btn close" />
+			</div>
+		</div>
+		<!-- 首次登陆 -->
+		{% if agentTag %}
+		<div class="frist hide" id="frist">
+		{% else %}
+		<div class="frist" id="frist">
+		{% endif %}
+			<div class="fristWarp">
+				<p>首次登入必填</p>
+				<p>
+					<select class="city" id="city">
+						<option>您所在的城市</option>
+						<option>贵阳</option>
+						<option>哈尔滨</option>
+						<option>杭州</option>
+						<option>济南</option>
+						<option>昆明</option>
+						<option>南昌</option>
+						<option>南京</option>
+						<option>青岛</option>
+						<option>厦门</option>
+						<option>石家庄</option>
+						<option>太原</option>
+						<option>天津</option>
+						<option>武汉</option>
+						<option>西安</option>
+						<option>长沙</option>
+						<option>郑州</option>
+						<option>北京</option>
+						<option>东莞</option>
+					</select>
+				</p>
+				<p><input type="text" class="name" placeholder="您的姓名" id="name" /></p>
+				<div  >
+					<!-- <img src="/rpgame2/images/loginBtn.png" class="loginBtn" /> -->
+					<input type="button" value="点我"  id="submitinfo" >
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<script type="text/javascript" src="/common/js/jquery-2.1.4.min.js"></script>
+
+<script language="javascript">
+
+
+
+function checkCardId(){
+	var id = $("#cardID").val();
+
+	console.log(id);
+	if(!id){
+		alert("请输入卡号ID");
+		return false;
+	}else{
+		//后台验证
+		$.ajax({
+		        async:false,
+		        url:'/phone/rpgame2/checkid',
+		        data:{card:id},
+		        type: "post",
+		        dataType:'json',
+		        success:function(result){
+		            //数据返回后执行
+		            if(result.errcode != 0){
+		                alert(result.errmsg);
+		                
+		            }else{
+		            	//粗来吧 红包！
+		            	//alert("粗来吧 红包！");
+		            	$("#result .score").html(result.score);
+		            	$("#result").show();
+		            }
+		            
+		        }
+		    });
+	}
+
+}
+
+
+$(function(){
+	/*首次登陆*/
+	$("#submitinfo").click(function(){
+		var city = $("#city").val();
+		var name = $("#name").val();
+		if(city == "您所在的城市"){
+			alert("请选择城市");
+			return;
+		}else if(name == ""){
+			alert("请填写姓名");
+			return;
+		}else{
+			$.ajax({
+		        async:false,
+		        url:'/phone/rpgame2/submitinfo',
+		        data:{name:name,city:city},
+		        type: "post",
+		        dataType:'json',
+		        success:function(result){
+		            //数据返回后执行
+		            if(result.errcode != 0){
+		                alert(result.errmsg);
+		                return false;
+		            }else{
+		                alert(result.errmsg);
+		                $("#my .name").empty();
+		                $("#my .name").html(result.name);
+		                $("#my .score").empty();
+		                
+		                $("#rank .youRank .city").html(result.city);
+		            	$("#frist").hide();
+		            	$("#index").show();
+		                return false;
+		            }
+		            
+		        }
+		    });
+		
+		}
+	});
+	/*开始拆*/
+	$("#startBtn").click(function(){
+		checkCardId();
+	});
+	$("#result .close").click(function(){
+		$("#result").hide();
+	})
+	/*打开排行榜*/
+	
+	$(".rankBtn").click(function(){
+		console.log("rank")
+		var i;
+		var list = $("#rank .rankList");
+		list.empty();
+		$.ajax({
+	        async:false,
+	        url:'/phone/rpgame2/rank',
+	        type: "post",
+	        dataType:'json',
+	        success:function(result){
+	            //数据返回后执行
+	            if(result.errcode != 0){
+	                alert(result.errmsg);
+	                return false;
+	            }else{
+		            var test = result.errmsg;
+	            	for(i=0;i<test.length;i++){
+	        			list.append('<p class="cf"><span class="r1">'+test[i]['num']+'</span><span class="r2">'+test[i]['name']+'</span><span class="r3">'+test[i]['score']+'</span</p>');
+	        		}
+	        		$("#rank .youRank .sort").html(result.cur_sort);
+	        		$(".box").hide();
+	        		$("#rank").show();
+	                return false;
+	            }
+	            
+	        }
+	    });
+		
+		
+	});
+	
+	$(".myBtn").click(function(){
+		var i;
+		var list = $("#my .myList");
+		list.empty();
+		$.ajax({
+	        async:false,
+	        url:'/phone/rpgame2/worth',
+	        type: "post",
+	        dataType:'json',
+	        success:function(result){
+// 		        console.log(result);
+	            //数据返回后执行
+	            if(result.errcode != 0){
+	                alert(result.errmsg);
+	                return false;
+	            }else{
+		            var test1 = result.errmsg;
+	            	for(i=0;i<test1.length;i++){
+	        			list.append('<p class="cf">'+
+	        							'<span class="r1">'+test1[i]['add_time']+'</span>'+
+	        							'<span class="r2">拆红包获得'+test1[i]['score']+'积分</span>'+
+	        						'</p>');
+	        		}
+	            	$("#my .score").html("目前积分："+result.score);
+	        		$(".box").hide();
+	        		$("#my").show();
+	                return false;
+	            }
+	            
+	        }
+	    });
+		
+	});
+	$(".indexBtn").click(function(){
+		$(".box").hide();
+		$("#index").show();
+	});
+
+
+})
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">场景编辑</h1>
+			</div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" href="/admin/zhan/ABtest/list/{{ zhanid}}" role="button" style="margin-right:10px;">返回</a>
+				<a class="btn btn-default btn-sm"  role="button" style="margin-right:10px;"  id="add-scene">添加场景</a>
+			</div>			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form id="abtest-form" class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data" >
+						{% if data %}
+							{% for k in data%}
+							<div class="sceneWarp">
+								<div class="form-group form-group-sm scene">
+									<label for="scene" class="col-sm-1 control-label">场景{{ k['num'] }}:</label>
+									<div class="col-xs-2">
+										<select class="input-sm form-control w-sm inline v-middle " name="scene{{ k['num'] }}">
+											<option value="" >=请选择场景=</option>
+											<option value="1" {% if k['scene'] == '1'%}selected{% endif %}>黄色</option>
+											<option value="2" {% if k['scene'] == '2'%}selected{% endif %}>红白</option>
+										</select>
+									</div>
+									<a class="btn btn-danger btn-sm"  role="button" onclick="deleteScene($(this))" data="{{ k['scene'] }}">关闭</a>
+								</div>
+								<div class="form-group form-group-sm">
+									<label for="flow" class="col-sm-1 control-label">流量分配:</label>
+									<div class="col-xs-1">
+										<input class="form-control" type="text" name="flow{{ k['num'] }}"  maxlength="10"  value="{{ k['flow'] }}"/>
+									</div>
+									<font color="red">*请按照百分比输入</font>
+								</div>
+							</div>
+							{% endfor %}
+						{% else %}
+							<div class="sceneWarp">
+								<div class="form-group form-group-sm scene">
+									<label for="scene" class="col-sm-1 control-label">场景1:</label>
+									<div class="col-xs-2">
+										<select class="input-sm form-control w-sm inline v-middle " name="scene1">
+											<option value="" >=请选择场景=</option>
+											<option value="1" >黄色</option>
+											<option value="2">红白</option>
+										</select>
+									</div>
+									<a class="btn btn-danger btn-sm"  role="button" onclick="deleteScene($(this))" data="1">关闭</a>
+								</div>
+								<div class="form-group form-group-sm">
+									<label for="flow" class="col-sm-1 control-label">流量分配:</label>
+									<div class="col-xs-1">
+										<input class="form-control" type="text" name="flow1"  maxlength="10"  value="100%"/>
+									</div>
+									<font color="red">*请按照百分比输入</font>
+								</div>
+							</div>
+						{% endif %}
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="button" class="btn btn-primary btn-sm" id="abtest-submit">确定</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+function deleteScene(dom){
+	var scene = dom.attr("data");
+// 	var i = $(".sceneWarp").length;
+// 	if(i == 1){
+// 		alert("操作错误！")
+// 		return false;
+// 	}
+
+	dom.closest(".sceneWarp").remove();
+	
+	
+}
+$(document).on("click","#add-scene",function(){
+	var num = $(".scene").length + 1;
+	// console.log(num);
+	var str = "";
+	str += '<div class="sceneWarp">'
+	str += '<div class="form-group form-group-sm scene">';
+	str += '<label for="scene" class="col-sm-1 control-label">新增场景'+num+':</label>';
+	str += '<div class="col-xs-2">';
+	str += '<select class="input-sm form-control w-sm inline v-middle" name="scene'+num+'">';
+	str += '<option value="" >=请选择场景=</option>';
+	str += '<option value="1">黄色</option>';
+	str += '<option value="2">红白</option>';
+	str += '</select>';
+	str += '</div>';
+	str += '<a class="btn btn-danger btn-sm"  role="button" onclick="deleteScene($(this))" data="1">关闭</a>';
+	str += '</div>';
+	str += '<div class="form-group form-group-sm">';
+	str += '<label for="flow" class="col-sm-1 control-label">新增流量分配'+num+':</label>';
+	str += '<div class="col-xs-1">';
+	str += '<input class="form-control" type="text" name="flow'+num+'"  maxlength="10" value="100%"/>';
+	str += '</div>';
+	str += '<font color="red">*请按照百分比输入</font>';
+	str += '</div>';
+	str += '</div>';
+	$(str).insertAfter(".sceneWarp:last");
+	
+});
+
+$("#abtest-submit").click(function(){
+	$.ajax({
+        type: "POST",
+        url:"/admin/zhan/ABtest/modify/{{ zhanid }}" ,
+        data:$('#abtest-form').serialize(),
+        async: false,
+        dataType:'json',
+        success:function(result){
+        	if(result.errcode != 0){
+                alert(result.errmsg);
+            }else{
+            	window.location.href="/admin/zhan/ABtest/list/{{ zhanid}}";
+            }
+        }
+    });
+	
+});
+
+
+
+</script>

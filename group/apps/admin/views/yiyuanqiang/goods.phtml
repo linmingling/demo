@@ -1,0 +1,274 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">一元购商品列表</h1></div>
+			
+			<div id="gridSystemModal" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header" style="margin-bottom:5px;">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">请选择一个商品</h4>
+						</div>
+						<div id="custom-toolbar" class="form-inline">
+							<select id="category" class="form-control chosen-select input-sm" style="width:175px;">
+								<option value='0'>所有</option>
+								{% for k in catStr %}
+								<option value="{{k['id']}}">{{k['name']}}</option>
+								{% endfor %}
+							</select>
+							<div class="form-control checkbox input-sm"><label><input type="checkbox" id="isReal" value="1">实物</label></div>
+							<input type="text" class="form-control input-sm" id="goodsName" placeholder="商品名称">
+							<input type="text" class="form-control input-sm" id="goodsId" placeholder="商品ID" style="width:60px;">
+							<select id="province" name="province" class="form-control">
+								<option>请选择省</option>
+								{% for k,v in province %} <option value="{{k}}" {% if type=='modify' and info['province'] == k %} selected {% endif %} >{{v}}</option> {% endfor %}
+							</select>
+							<select id="city" name="city" class="form-control">
+								<option value='0'>请选择市</option>
+							</select>
+							<a class="btn btn-default btn-sm" href="javascript:searchGoods()" role="button">查找</a>
+						</div>
+						<table data-exist='0'></table>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							<button type="button" class="btn btn-primary" onclick="ModalSelectGoods()">确定</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" data-toggle="modal" data-target="#gridSystemModal" role="button">添加商品</a>
+				<a class="btn btn-default btn-sm" href="javascript:void()" role="button">删除商品</a>
+				<input type="text" class="form-control input-sm" id="keyWords" placeholder="商品名" style="width:200px;">
+				<a class="btn btn-default btn-sm" href="javascript:searchGoods2()" role="button">查找</a>
+				<a class="btn btn-default btn-sm" href="/admin/yiyuanqiang/index" role="button" style="margin-right:10px;">返回</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<table id="goodsList" data-toggle="table"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$("#province").on("change",function(){
+		var pid = parseInt($("#province").val());
+		if(pid > 0){
+			$.ajax({
+				type: 'GET',
+				url: '/admin/index/regions?pid='+pid,
+				dataType: 'json',
+				timeout: 300,
+				async : false,
+				beforeSend : function(){
+					$("#city").html("");
+				},
+				success : function(msg){
+					if(msg.state ==  1){
+						var data = msg.data.list; var str = "<option value='0'>请选择市</option>";
+						for(var m in data){
+							str = str + "<option value=" + m + ">" + data[m] + "</option>";
+						}
+						$("#city").html(str);
+					}
+				},
+			})
+		}
+	});
+	
+});
+
+
+var formatfun = {
+	market : function(m){
+		if(typeof(m) != 'undefined') return m.market
+	},
+	promote : function(m){
+		if(typeof(m) != 'undefined') return m.promote
+	},
+};
+
+var goodsList = $("#goodsList").bootstrapTable({
+	method: 'get',
+	url: '/admin/yiyuanqiang/goods/list/{{actionId}}/1',
+	classes:"table table-hover table-condensed m-b-none",
+	striped: false,
+	sidePagination:'server',
+	pagination: true,
+	pageSize: 10,
+	pageList: [5, 10, 20],
+	showColumns:false,
+	columns: [
+		{ field: 'id',title: 'id',align: 'center',valign: 'middle',sortable: true, formatter:function(m){ return "<input type='checkbox' value='"+m+"'>&nbsp;"+m;} },
+		{ field:'goods_name', title:'商品', align:'center', valign:'middle' },
+		{ field:'active_quantity', title:'帮砍库存', align:'center', valign:'middle' },
+		{ field:'goods_quantity', title:'活动库存', align:'center', valign:'middle' },
+		{ field:'join_sum', title:'参与人数', align:'center', valign:'middle' },
+		{ field:'sales_sum', title:'销售数量', align:'center', valign:'middle' },
+		{ field:'range_min', title:'最低跌幅', align:'center', valign:'middle' },
+		{ field:'range_max', title:'最高跌幅', align:'center', valign:'middle' },
+		{ field:'lowest_price', title:'最低售价', align:'center', valign:'middle' },
+		{ field:'discount_price', title:'优惠价', align:'center', valign:'middle' },
+		{ field:'price', title:'促销售价', align:'center', valign:'middle', formatter:formatfun.promote },
+		{ field:'price', title:'市场售价', align:'center', valign:'middle', formatter:formatfun.market },
+		{ field:'sort', title:'排序', align:'center', valign:'middle' },
+		{ field:'city', title:'城市', align:'center', valign:'middle' },
+		{ field:'shipping', title:'线下提货', align:'center', valign:'middle', formatter:function(m){ if(m != 0){ return "是"; }else{ return ""; } } },
+		{ field:'is_remove', title:'禁用', align:'center', valign:'middle', formatter:function(m){ if(m == 1){ return "是"; }else{ return ""; } } },
+		{ field:'os', title:'操作', align:'center', valign:'middle', formatter: function(m,n,i){ return "<a href='/admin/yiyuanqiang/goods/modify/{{actionId}}/"+n.id+"'>编辑</a>&nbsp;|&nbsp;<a href='javascript:delGoods({{actionId}},"+n.id+")'>删除</a>" } },
+	],
+	queryParams: function(params){
+		var keyWords = $("#keyWords").val();
+		return {keyWords:keyWords, sort:params.sort, order:params.order, limit:params.limit, offset:params.offset};
+	}
+});
+
+function searchGoods2(){
+	var keyWords = $("#keyWords").val();
+	console.log(keyWords);
+	goodsList.bootstrapTable('refresh', {query:{keyWords:keyWords}});
+}
+
+var table = $("#gridSystemModal table").bootstrapTable({
+	method: 'get',
+	url: '',
+	striped: false,
+	sidePagination:'server',
+	pagination: true,
+	pageSize: 10,
+	pageList: [5, 10, 20],
+	toolbar:"#custom-toolbar",
+	toolbarAlign:'left',
+	showColumns:true,
+	clickToSelect: true,
+	columns: [
+		{ field: 'state',checkbox: true },
+		{ field: 'id',title: 'ID',align: 'center',valign: 'middle',sortable: true },
+		{ field:'name', title:'名称', align:'center', valign:'middle' },
+		{ field:'sn', title:'唯一码', align:'center', valign:'middle' },
+		{ field:'price', title:'市场价', align:'center', valign:'middle', formatter:formatfun.market },
+		{ field:'price', title:'促销价', align:'center', valign:'middle', formatter:formatfun.promote },
+		{ field:'addTime', title:'上架时间', align:'center', valign:'middle' },
+	]
+});
+
+table.on('load-success.bs.table',function(){
+	$("#gridSystemModal table").attr('data-exist','1');
+});
+
+function delGoods(m,n){
+	var r=confirm("你确定要删除该商品吗？");
+	if(r == true){
+		location.href="/admin/yiyuanqiang/goods/delete/"+m+"/"+n;
+	}
+}
+
+function ModalSelectGoods(){
+	var obj = $("#gridSystemModal table").bootstrapTable('getSelections');
+	for(var k in obj){
+		var data = {
+			id:'', 
+			goods_name:obj[k]['name'],
+			active_quantity:"<input type='text' name='active_quantity' value='0' />", 
+			goods_quantity:"<input type='text' name='goods_quantity' value='0' />", 
+			join_sum:0, 
+			sales_sum:0, 
+			range_min:"<input type='text' name='range_min' value='0' />",  
+			range_max:"<input type='text' name='range_max' value='0' />", 
+			lowest_price:"<input type='text' name='lowest_price' value='0' />", 
+			discount_price:"<input type='text' name='discount_price' value='0' />", 
+			price:{promote:obj[k]['price']['promote'],market:obj[k]['price']['market']},
+			sort:"<input type='text' name='sort' value='0' />", 
+			city:cityName, 
+			shipping:0, 
+			is_remove:0
+		};
+		goodsList.bootstrapTable('append',data);
+		var str = "<button type='button' class='btn btn-primary btn-xs' data-id="+obj[k]['id']+" onclick='addRow(this)'>添加</button>&nbsp;<button type='button' class='btn btn-danger btn-xs' onclick='delRow(this)'>取消</button>";
+		$("#goodsList tr:last td:last").html(str);
+	}
+	$('#gridSystemModal').modal('hide');
+}
+
+function delRow(obj){
+	$(obj).parent().parent().remove();
+}
+
+function addRow(obj){
+	var tr = $(obj).parent().parent();
+	var data = {
+		goods_id:$(obj).attr('data-id'),
+		goods_name:tr.find("td:eq(1)").html(),
+		active_quantity:tr.find("td input[name='active_quantity']").val(),
+		goods_quantity:tr.find("td input[name='goods_quantity']").val(),
+		range_min:tr.find("td input[name='range_min']").val(),
+		range_max:tr.find("td input[name='range_max']").val(),
+		lowest_price:tr.find("td input[name='lowest_price']").val(),
+		discount_price:tr.find("td input[name='discount_price']").val(),
+		promote:tr.find("td:eq(10)").html(),
+		market:tr.find("td:eq(11)").html(),
+		sort:tr.find("td input[name='sort']").val(),
+		city:cityName,
+	};
+	$.post("/admin/yiyuanqiang/goods/add/{{actionId}}",data,function(result){
+		if(result.state == 1){
+			var str = "";
+			str = str + "<td style='text-align:center;'><input type='checkbox' value='"+result.msg.id+"'>&nbsp;"+result.msg.id+"</td>";
+			str = str + "<td style='text-align:center;'>"+result.msg.goods_name+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.active_quantity+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.goods_quantity+"</td>";
+			str = str + "<td style='text-align:center;'>0</td><td style='text-align:center;'>0</td>";
+			str = str + "<td style='text-align:center;'>"+data.range_min+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.range_max+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.lowest_price+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.discount_price+"</td>";
+			str = str + "<td style='text-align:center;'>"+result.msg.promote+"</td>";
+			str = str + "<td style='text-align:center;'>"+result.msg.market+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.sort+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.city+"</td>";
+			str = str + "<td></td><td></td>";
+			str = str + "<td style='text-align:center;'><a href='/admin/yiyuanqiang/goods/modify/{{actionId}}/"+result.msg.id+"'>编辑</a>&nbsp;|&nbsp;";
+			str = str + "<a href='javascript:delGoods({{actionId}},"+result.msg.id+")'>删除</a></td>";
+			tr.html(str);
+		}else{
+			alert(result.msg);
+		}
+	});
+}
+
+var cityName = '';
+function searchGoods(){
+	var name = $("#goodsName").val();
+	var id = $("#goodsId").val();
+	var category = $("#category").val();
+	var city = $("#city").val();
+	cityName = $("#city").find("option:selected").text()=='请选择市'?'':$("#city").find("option:selected").text(); 
+	console.log(cityName);
+	var real = 0;
+	
+	if($("#isReal").is(':checked')) real = 1;
+	table.bootstrapTable('refreshOptions',{url: '/admin/index/goods'});
+	table.bootstrapTable('refresh', {query:{catId:category, keyWords:name, goodsId:id,allowAddress:city}});
+}
+
+$('#gridSystemModal').on('shown.bs.modal', function (e) {
+	table.bootstrapTable('refreshOptions',{url: '/admin/index/goods'});
+	if($("#gridSystemModal table").attr('data-exist') == 0) table.bootstrapTable('refresh');
+})
+
+</script>
+

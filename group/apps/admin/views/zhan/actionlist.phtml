@@ -1,0 +1,82 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<?php use Library\Com\SecurityContext?>
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">一站购2.0</h1></div>
+			<?php if (SecurityContext::hasPermission('SYS_ACT_ADD')):?>
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" href="/admin/zhan/action/add" role="button">添加活动</a>
+			</div>			
+			<?php endif?>
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>活动名称</th>
+									<th>创建人</th>
+									<th>创建时间</th>
+									<th>开始时间</th>
+									<th>结束时间</th>
+									<th>禁用</th>
+									<th>总报名人数</th>
+									<th>手机验证数</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in data %}
+								<tr class="odd">
+									<td>{{ k['zhan_id'] }}</td>
+									<td><a href="/phone/zhan/phinvite/{{k['zhan_id']}}" target="_black">{{k['zhan_name']}}</a></td>
+									<td>{{ k['creater'] }}</td>
+									<td>{{ k['addtime'] }}</td>
+									<td>{% if k['starttime'] %} {{ date('Y-m-d',strtotime(k['starttime'])) }} {% endif %}</td>
+									<td>{% if k['starttime'] %} {{ date('Y-m-d',strtotime(k['endtime'])) }} {% endif %}</td>
+									<td>{% if k['show'] == 1 %} <span style='color:green'>显示</span> {% else %} <span style='color:red'>隐藏</span> {% endif %}</td>
+									<td>{{ k['sum_register'] }}</td>
+									<td>{{ k['auth_register'] }}</td>
+									<td>
+										<?php if (SecurityContext::hasPermission('SYS_ACT_VIEW_STAT')):?>
+									    <a href="/admin/zhan/register_list/{{ k['zhan_id'] }}">活动数据</a>&nbsp;|&nbsp;
+									    <?php endif?>
+										<a href="/admin/zhan/city/list/{{ k['zhan_id'] }}">分站</a>&nbsp;|&nbsp;
+										<?php if (SecurityContext::hasPermission('SYS_ACT_EDIT')):?>
+										<a href="/admin/zhan/action/modify/{{ k['zhan_id'] }}">编辑</a>&nbsp;|&nbsp;
+										<?php endif?>
+										<?php if (SecurityContext::hasPermission('SYS_ACT_DELETE')):?>
+										<a href="javascript:delaction({{k['zhan_id']}})">删除</a>&nbsp;|&nbsp;
+										<?php endif?>
+										<?php if (SecurityContext::hasPermission('SYS_ACT_AB_SETTINGS')):?>
+										<a href="/admin/zhan/ABtest/list/{{ k['zhan_id'] }}">AB配置</a>
+										<?php endif?>
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delaction(m){
+	var r=confirm("你确定要删除该活动吗？");
+	if(r == true){
+		location.href="/admin/zhan/action/delete/"+m;
+	}
+}
+
+</script>

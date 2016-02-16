@@ -1,0 +1,119 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">天津家博会-报名数据统计</h1>
+    </div>
+    
+    <div class="wrapper-md ng-scope">
+    <div class="m-b-sm">
+    <div class="btn-group" ng-init="radioModel = 'Male'">
+      <a href="/admin/tianjin/index"><label class="btn btn-sm btn-info ng-untouched ng-valid ng-dirty"><i class="fa fa-check text-active"></i>报名数据表</label></a>
+      <a href="/admin/tianjin/budian_statistics"><label class="btn btn-sm btn-danger ng-untouched ng-valid ng-dirty"><i class="fa fa-check text-active"></i>布点数据统计</label></a>
+    </div>
+    </div>
+           <!-- tips -->
+        <div class="alert ng-isolate-scope alert-info alert-dismissable">
+        <div ng-transclude=""><span class="ng-binding ng-scope">报名转化率 = ”报名按钮“的报名数 / ”报名按钮“的点击数</span></div>
+        </div>
+        <!--/ tips -->
+        <div class="panel panel-default">
+        <div class="table-responsive">
+          <div class="panel panel-default">
+            <div class="panel-heading">统计<span class="label bg-info">（数据从 2015-09-25 11:00:00 开始统计）</span></div>
+            <table class="table table-striped m-b-none">
+              <tbody>
+                <tr>                    
+                  <td>“报名按钮”总点击数</td>
+                  <td class="text-danger" style="width:70px;">
+                    <i class="fa"></i> {{ click_num }}
+                  </td>
+                </tr>
+                <tr>                    
+                  <td>总报名数</td>
+                  <td class="text-danger" style="width:70px;">
+                    <i class="fa"></i> {{ bm_count }}
+                  </td>
+                </tr>
+                <tr>                    
+                  <td>总转化率</td>
+                  <td class="text-danger" style="width:70px;">
+                    <i class="fa"></i> {{ total_zhl }}%
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+                            产品图页面的布点统计
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light">
+            <thead>
+              <tr>
+                <th>产品图的ID（ID对应产品的位置）</th>
+                <th>点击次数</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k,key in click_list %}
+              <tr>
+                <td>{{ key['btn_id'] }}</td>
+                <td>{{ key['click_num'] }}</td>
+              </tr>
+             {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+        </footer>
+      </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+                            每天报名转化率情况<span class="label bg-info">数据从 2015-09-25 11:00:00 开始统计，活动已进行 <?php echo $for_num?> 天，只显示最近前5天的数据</span>
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light">
+            <thead>
+              <tr>
+                <th>时间</th>
+                <th>首屏</th>
+                <th>2折家居建材大促</th>
+                <th>1元抢品牌好货</th>
+                <th>现在领票独享特供产品</th>
+                <th>下单还能返现</th>
+                <th>0购物到店就送礼</th>
+                <th>众多一线品牌</th>
+                <th>5大特权服务</th>
+                <th>尾页</th>
+                <th>当天总转化率</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k,key in arr %}
+              <tr>
+                <td>{{ k }}</td>
+                {% for part,vo in key %}
+                <td>{{ vo['bm_num'] }}/{{ vo['click_num'] }}  = {{ vo['zhl'] }} %</td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+        </footer>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+<?php $this->partial("index/footer")?>

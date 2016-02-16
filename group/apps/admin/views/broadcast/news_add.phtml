@@ -1,0 +1,86 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">发布最新快讯</h1>
+			</div>
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post">
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">关键词:</label>
+							<div class="col-xs-2">
+							     <input class="form-control" type="text" id="keyword" value="{{ data['keyword'] }}"/>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">标题:</label>
+							<div class="col-xs-2">
+							     <input class="form-control" type="text" id="title" value="{{ data['title'] }}"/>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">简介:</label>
+							<div class="col-xs-2">
+							     <textarea  rows="5" cols="100" id="desc">{{ data['desc'] }}</textarea>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">外链地址:</label>
+							<div class="col-xs-2">
+							     <input class="form-control" type="text" id="link" value="{{ data['link'] }}"/> 必须以 http:// 开头
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">发布时间:</label>
+							<div class="col-xs-2">
+							     <input class="form-control" type="text" id="add_time" value="{% if data['add_time'] != '' %}{{ date('Y-m-d H:i:s',data['add_time']) }}{% endif %}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="button" id="add-submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/broadcast/news_list" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#add-submit").click(function(){
+		var id = "{{ data['id'] }}";
+		var keyword = $("#keyword").val();
+		var title = $("#title").val();
+		var desc = $("#desc").val();
+		var link = $("#link").val();
+		var add_time = $("#add_time").val();
+		if(!keyword || !title || !desc || !link || !add_time){
+			alert('不能为空');
+		} else {
+    		$.ajax({
+    			type: 'POST',
+    			url: '/admin/broadcast/news_add',
+    			dataType: 'json',
+    			data : {id:id,keyword:keyword,title:title,desc:desc,link:link,add_time:add_time},
+    			async : false,
+    			success : function(result){
+    				alert(result.errmsg);
+    				if(!result.errcode){
+    					location.href = "/admin/broadcast/news_list";
+        			}
+    			},
+    		})
+ 		   }
+	   });
+});
+</script>
+<?php $this->partial("index/footer")?>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优居网-优品团</title>
+<meta name="keywords" content="优居网 优品团" />
+<meta name="description" content="优居网 优品团" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/group/css/com.css?v=1.8" />
+<link rel="stylesheet" type="text/css"  href="/index/css/foot.css" />
+
+</head>
+<body>
+	<!-- loading -->
+	<div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+	<div class="wraper pb60">
+		<!-- 头部 -->
+		<header class="head" id="header">
+			<!-- <span class="menuIcon ctl" id="menuIcon"></span>
+			<a class="userIcon ctr" href="{{payDomain}}/phone/pay/order"></a> -->
+			<span class="menuIcon ctl" id="menuIcon"></span>
+			<a class="userIcon ctr" href="{{payDomain}}/phone/pay/order"></a>
+			<p class="title grey">
+				<span class="titleText f16">优品团</span>
+				<span id="citySelect" class="citySelect"><em class="ctl"></em>{{ location['city_name'] }}<i class="ctr"></i></span>
+			</p>
+			<div class="menu hide" id="menu" show=0 >
+				<em></em>
+				<p class="f14"><a href="{{domain}}/phone/zhan/index">一站购</a></p>
+				<p class="line"></p>
+				<p class="f14"><a href="{{domain}}/phone/yiyuanqiang/index/4">一元抢</a></p>
+				<p class="line"></p>
+				<p class="f14"><a href="{{domain}}/phone/group/index">优品团</a></p>
+			</div>
+		</header>	
+		<!-- 主要内容 -->
+		<div class="main">
+			<!-- 广告图 --> 
+			<a href="{% if info['banner_url'] != '' %}{{ info['banner_url'] }}{% else %}javascript:void(0){% endif %}" class="adv">
+				<img src="/group/images/ad.png" data-original="{{ info['banner_img'] }}" class="lazy"/>
+			</a>
+			<!-- 导航 -->
+			<div class="navBox">
+				<div class="nav dGrey" id="nav">
+					<div class="navWarp">
+						<span class="hover">全部</span>
+						{% for k,key in class_list %}
+						<span>{{ key['class_name'] }}</span>
+						{% endfor %}
+					</div>
+				</div>
+				<span class="more" id="typeMore"></span> 
+			</div> 
+			<!-- 商品 -->
+			<div class="product march" id="march">
+			{% for x,y in goods_list %}
+				<div class="pType {% if x != 0 %}hide{% endif %}">
+					<!-- pBox为一个商品 -->
+					{% for k,key in y %}
+					{% if key != null %}
+					<div class="pBox">
+						<div class="pTop cf">
+							<div class="pBrand ctl">
+								<img src="/group/images/default100x60.png" data-original="{% if key['brand_img'] != '' %}{{ key['brand_img'] }}{% else %}/group/images/default60x60.png{% endif %}" class="ctl lazy" />
+								<span>{{ key['sale_address'] }}</span>
+							</div>
+							<!-- <div class="pDjs dGrey ctr" deadline="{{ date('m d,Y H:i:s',key['end_time']) }}">
+								距结束 <span class="hours">--</span>:<span class="minutes">--</span>:<span class="seconds">--</span> 
+							</div> -->
+							<div class="pDjs dGrey ctr">
+								距结束 {{ key['countdown'] }}
+							</div>
+						</div>
+						<a href="/phone/group/detail/{{ key['id'] }}" onclick="budian({{key['id']}})" class="pA">
+							<div class="pImgBox">
+								<img src="/group/images/default320x100.png" data-original="{{ key['goods_img'] }}" class="pImg lazy" />
+							</div>
+							<p class="pTitle f13">{{ key['goods_name'] }}</p>
+							<div class="pInfo">
+								<div class="pInfo1 orange">
+									优居专享：￥<span class="f24 fw">{{ key['exclusive_price'] }}</span><span class="delete grey">￥{{ key['market_price'] }}</span>
+								</div>
+								<div class="pInfo2 grey">
+									<p class="progress ctl" reservation="{{ key['sold_num'] + key['real_num']}}" all="{{ key['stock'] + key['sold_num'] +  key['real_num']}}"><span></span></p>
+									已有{{ key['sold_num'] + key['real_num']}}人预订，还剩{{ key['stock'] }}件
+								</div>
+								<div class="pBtn {% if key['stock'] <= 0 %}false{% endif %}">
+									<p class="discount">{{ key['discount'] }}折</p>
+									<p>{% if key['stock'] <= 0 %}已售罄{% else %}马上抢{% endif %}</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					{% else %}
+					<div class="pBox tips">没有找到符合该分类的商品</div>
+					{% endif %}
+					{% endfor %}
+				</div>
+			{% endfor %}
+			</div>
+			<!-- 商品预告 -->
+			<div class="product announce" id="announce">
+				{% for m,n in soon_goods_list %}
+				<div class="pType {% if m != 0 %}hide{% endif %}">
+					{% if n[0] != null %}
+					<div class="announceTitle">
+						<p class="line"></p>
+						<span class="orange fw f24">即将开始</span>
+					</div>
+					{% endif %}
+					<!-- pBox为一个商品 -->
+					{% for k,key in n %}
+					{% if key != null %}
+					<div class="pBox">
+						<div class="pTop cf">
+							<div class="pBrand ctl">
+								<img src="/group/images/default100x60.png" data-original="{{ key['brand_img'] }}" class="ctl lazy" />
+								<span>{{ key['sale_address'] }}</span>
+							</div>
+							<div class="pTime dGrey ctr">{{ date('m月d号',key['start_time']) }}开售</div>
+						</div>
+						<a href="/phone/group/detail/{{ key['id'] }}" onclick="budian({{key['id']}})" class="pA">
+							<div class="pImgBox">
+								<img src="/group/images/default320x100.png" data-original="{{ key['goods_img'] }}" class="pImg lazy" />
+								<div class="pImgShadow"></div>
+							</div>
+							<p class="pTitle f13">{{ key['goods_name'] }}</p>
+							<div class="pInfo">
+								<div class="pInfo1 orange">
+									优居专享：￥<span class="f24 fw">{{ key['exclusive_price'] }}</span><span class="delete grey">￥{{ key['market_price'] }}</span>
+								</div>
+								<div class="pInfo2 grey">
+									共{{ key['stock'] }}件
+								</div>
+								<div class="pBtn">
+									<p class="discount">{{ key['discount'] }}折</p>
+									<p>即将开始</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					{% endif %}
+					{% endfor %}
+				</div>
+				{% endfor %}
+			</div>
+			<!-- 一元抢广告位 -->
+<!-- 			<div class="yyqAD">
+				<div class="adHead">
+					<span class="f13">一元抢</span>
+					<a href="#" class="more">
+						更多!
+					</a>
+				</div>
+				<div class="adMain">
+					<a class="img1">
+						<img src="/group/images/default150x150.png" data-original="/group/images/test2.jpg" class="lazy" />
+					</a>
+					<a class="img2">
+						<img src="/group/images/default150x150.png" data-original="/group/images/test2.jpg" class="lazy" />
+					</a>
+					<a class="img3">
+						<img src="/group/images/default150x150.png" data-original="/group/images/test2.jpg" class="lazy" />
+					</a>
+				</div>
+			</div> -->
+			<!-- 常见问题 -->
+			<!-- <div class="question" id="question">
+				<div class="qTitle f13">
+					常见问题<i class="qIcon"></i>
+				</div>
+				<div class="qMain" show="1">
+					<div class="qBox">
+						<p class="orange f12 ">下单后怎么查看我的订单？</p>
+						<p class="dGrey">店铺页面菜单栏，点击“我的订单”，就可以查看您的订单情况了。</p>
+					</div>
+					<div class="qBox">
+						<p class="orange f12 ">下单后怎么查看我的订单？</p>
+						<p class="dGrey">店铺页面菜单栏，点击“我的订单”，就可以查看您的订单情况了。</p>
+					</div>
+					<div class="qBox">
+						<p class="orange f12 ">下单后怎么查看我的订单？</p>
+						<p class="dGrey">店铺页面菜单栏，点击“我的订单”，就可以查看您的订单情况了。</p>
+					</div>
+				</div>
+			</div> -->
+			<!-- 联系方式 -->
+			<div class="contact">
+			{% if info['phone'] != '' %}
+				<a class="tel style1" href="tel:{{ info['phone'] }}">工作电话：{{ info['phone'] }}<i></i></a>
+			{% endif %}
+			{% if info['email'] != '' %}
+			    <p class="line"></p>
+				<a class="qq style1" href="http://wpa.qq.com/msgrd?v=3&uin={{ info['email'] }}&site=qq&menu=yes">工作 q q：{{ info['email'] }}<i></i></a>
+			{% endif %}
+			{% if info['work_info'] != '' %}
+			    <p class="line"></p>
+				<div class="time style1">工作时间：{{ info['work_info'] }}</div>
+			{% endif %}
+			</div>
+		</div>
+		<!-- 底部版权 -->
+		<div class="copyright">
+			<p>Copyright 2015 版权归深圳前海优品优居网络科技有限公司所有</p>
+			<p>粤ICP备14012338号-3号</p>
+		</div>
+		<!-- 城市选择 -->
+		<div class="cityBox hide" id="cityBox" show=0 >
+			<div class="blackBg"></div>
+			<div class="cityWarp">
+				<div class="city">
+					<p class="grey">热门城市</p>
+				{% for k,key in city_list %}
+					<a href="/phone/group/index/{{key['city_code']}}"><span>{{key['city_name']}}</span></a>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+		<!-- 类别选择 -->
+		<div class="typeBox hide" id="typeBox" >
+			<div class="blackBg"></div>
+			<div class="typeWarp">
+				<div class="type">
+					<span class="hover">全部</span>
+					{% for k,key in class_list %}
+						<span>{{ key['class_name'] }}</span>
+				    {% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<!-- 右下浮动栏 -->
+		<!-- 回到顶部 -->
+		<div class="gototop" id="gototop"></div>
+		<!-- 我的订单 -->
+		<a class="myOrder" href="{{payDomain}}/phone/pay/order/5">
+			<p>我的</p>
+			<p>订购</p>
+		</a>
+		<!-- 底部导航 -->
+        <footer id="footer" class="footer hide">
+            <a class="footIcon footIcon1 f20 c6"><i></i>首页</a>
+            <a href="/phone/group/index" class="footIcon footIcon2 f20 c6 hover"><i></i>优品团</a>
+            <a href="/phone/zhan/list" class="footIcon footIcon3 f20 c6"><i></i>一站购</a>
+            <a href="/phone/yiyuanqiang/list" class="footIcon footIcon4 f20 c6"><i></i>一元抢</a>
+            <a href="http://pay.yoju360.com/phone/pay/order" class="footIcon footIcon5 f20 c6"><i></i>我的</a>
+        </footer>
+	</div>
+
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+<script src="/common/js/jquery.lazyload.js"></script>
+<script src="/index/js/foot.js"></script>
+<script>
+	// 倒计时函数
+	function djs(deadline,dom) {
+		var countdown = new Date(deadline) - new Date();
+		// var restDays = $("#"+id+" .days");
+		var restHours = dom.find(".hours");
+		var restMinutes = dom.find(".minutes");
+		var restSeconds = dom.find(".seconds");
+
+		var timer = setInterval(function() {
+			if(countdown<0){
+				clearInterval(timer);
+				return false;
+			}
+			var days = Math.floor(countdown / 86400000) < 0 ? 0 : Math.floor(countdown / 86400000);
+			var hours = Math.floor((countdown - days * 86400000) / 3600000) < 0 ? 0 : Math.floor((countdown - days * 86400000) / 3600000);
+			var minutes = Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000);
+			var seconds = Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000);			
+			days < 10 ? days = "0" + days : days = days;
+			hours < 10 ? hou000s = "0" + hours : hours = hours;
+			minutes < 10 ? minutes = "0" + minutes : minutes = minutes;
+			seconds < 10 ? seconds = "0" + seconds : seconds = seconds;
+
+			//alert(days+", "+hours+", "+minutes+", "+seconds);
+			// restDays.html(days);
+			hours = days*24+hours;
+			restHours.html(hours);
+			restMinutes.html(minutes);
+			restSeconds.html(seconds);
+			countdown -= 1000;
+		}, 1000);
+	}
+	function showTime(){
+		$("#march .pBox .pDjs").each(function(){
+			var dl = $(this).attr("deadline");
+			djs(dl,$(this));
+		});
+	}
+
+	// 进度条显示
+	function progress(){
+		$("#march .pBox .progress").each(function(){
+			var dom = $(this);
+			var reservation = dom.attr("reservation");
+			var all = dom.attr("all");
+			var pro = (reservation/all)*100;
+			$(this).find("span").width(pro+"%");
+
+		});
+	}
+
+	// 更换类型
+	function typeChange(i){
+		console.log(i);
+		var march = $("#march .pType");
+		var announce = $("#announce .pType");
+		$("#nav .navWarp span").eq(i).addClass("hover").siblings().removeClass("hover");
+		$("#typeBox .type span").eq(i).addClass("hover").siblings().removeClass("hover");
+		
+		march.eq(i).fadeIn().siblings().hide();
+		announce.eq(i).fadeIn().siblings().hide();
+		$("#announce .announceTitle").show();
+		
+		
+	}
+    function budian(id){
+    	$.ajax({
+			async:true,
+			url:"/phone/group/goods_budian",
+			data:{goods_id:id},
+			type: 'post',
+			dataType:'json',
+			success:function(result){
+				alert(result)
+			}
+		});
+    }
+	$(function(){
+		$("#loading").hide();
+
+		// 初始化倒计时
+		// showTime();
+
+		// 初始化进度条
+		progress();
+
+		// 初始化nav宽度
+		var navW = 0;
+		$("#nav .navWarp span").each(function(){
+			navW += $(this).width()+30;
+		});
+		$("#nav .navWarp").width(navW)
+
+		
+		// 城市选择出现
+		$("#citySelect").click(function(){
+			var cityBox = $("#cityBox");
+			var i= cityBox.attr("show");
+			if(i == 0){
+				cityBox.show();
+				cityBox.attr("show",1);
+				$("#menu").hide();
+				$("#menu").attr("show",0);
+			}else{
+				cityBox.hide();
+				cityBox.attr("show",0);
+			}
+		});
+		// 城市选择消失
+		$("#cityBox .blackBg").click(function(){
+			$("#cityBox").hide();
+		});
+
+		// 目录出现 消失
+		$("#menuIcon").click(function(){
+			var menu = $("#menu");
+			var i= menu.attr("show");
+			if(i == 0){
+				menu.show();
+				menu.attr("show",1);
+			}else{
+				menu.hide();
+				menu.attr("show",0);
+			}
+		});
+
+		// 类别选择出现
+		$("#typeMore").click(function(){
+			$("#typeBox").show();
+			$("body").addClass("noScorll");
+
+		});
+		// 类别选择消失
+		$("#typeBox .blackBg").click(function(){
+			$("#typeBox").hide();
+			$("body").removeClass("noScorll");
+		});
+
+		// 常见问题出现 消失
+		$("#question .qTitle").click(function(){
+			var qMain = $("#question .qMain");
+			var i= qMain.attr("show");
+			if(i == 0){
+				qMain.show();
+				qMain.attr("show",1);
+				$("#question .qTitle .qIcon").removeClass("close");
+			}else{
+				qMain.hide();
+				qMain.attr("show",0);
+				$("#question .qTitle .qIcon").addClass("close");
+			}
+		});
+		// 类别选择触发1
+		$("#typeBox .type span").click(function(){
+			var i = $(this).index();
+			typeChange(i);
+			$("#typeBox").hide();
+			$("body").removeClass("noScorll");
+		});
+		// 类别选择触发2
+		$("#nav .navWarp span").click(function(){
+			var i = $(this).index();
+			typeChange(i);
+		});
+		// 延迟加载
+		$("img.lazy").lazyload({ 
+			effect : "fadeIn" 
+		});
+
+		// 回到顶部
+		$("#gototop").click(function(){
+			$('html,body').animate({scrollTop: 0}, 300);
+		});
+		$(window).scroll(function(){
+	        if($(window).scrollTop()>100){
+	            $("#gototop").fadeIn();
+	        }else{
+	            $("#gototop").fadeOut();
+	        }
+	        
+	    });
+	});
+</script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: '<?php echo $signPackage["timestamp"];?>',
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	      signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+            'checkJsApi',
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+		var wxData = {
+			"imgUrl":'{{domain}}/group/images/share.jpg',
+			"link":'{{domain}}/phone/group/index',
+			"desc":"优居-优品团，无猫腻家居建材到店特卖！预定即送豪华大礼！赶快来抢吧！",
+			"title":"优居-优品团，无猫腻家居建材到店特卖！预定即送豪华大礼！赶快来抢吧！"
+		};
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+	});
+</script>
+</body>
+</html>

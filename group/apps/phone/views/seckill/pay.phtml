@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>支付成功</title>
+	<meta name="keywords" content="支付成功" />
+	<meta name="description" content="支付成功" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<script src="/common/js/jquery-2.1.4.min.js"></script>
+	<style>
+
+	/* common*/
+	body {height:100%;  font: 12px  "微软雅黑";background-color: #f5f5f5;}
+	div, html, body, p, ul, ol, li, a, form, img, table, td, h1, h2, h3, h4, h5, h6, blockquote, header, section, footer, aside, nav, article, figure, figcaption, dl, dt, dd {margin:0;padding:0;} 
+	header, section, footer, aside, nav, article, figure, figcaption div {display: block;}
+	table {border-collapse:collapse;}
+	img {border:none;}
+	ul, li {list-style:none;}
+	input:focus, textarea:focus {outline:none;}
+	.clear{height:0px; line-height:0px;clear:both;font-size:1px;}
+
+
+	.cf:before,.cf:after{content:"";display:table;}.cf:after{clear:both;}.cf{zoom:1;}
+
+	.bg4{
+	    width: 100%;
+	    margin: 0 auto;
+	    background-color: #f5f5f5;
+	    border: 0px;
+
+	}
+
+	.head{
+		width:100%;
+		background:#fff;
+		border-bottom: 1px solid #dfdfdf;	
+
+	}
+
+	/*标题栏*/
+	.title{
+		width: 100%;
+		position: relative;
+	}
+
+
+	.title .t-name{
+		width:100%;
+		margin:0;
+		font-size:18px;
+		color:black;
+		text-align: center;
+		padding:9px 0px;
+	}
+
+	.title .b-cls{
+		width:10%;
+		bottom:6%;
+		left:3px;
+		position: absolute;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+
+	.title .b-cls img{
+		width:100%;
+	}
+
+
+	.fin{
+		width:50%;
+		margin:30px auto;
+	}
+
+	.fin img{
+		width: 100%;
+	}
+	.order{
+		width:50%;
+		display:block;
+		font-size:12px;
+		margin:0 auto;
+		color:#a8a8a8;
+		text-align: center;
+	}
+
+	.p-ad{
+		display:block;
+		width: 95%;
+		margin: 0 auto;
+	}
+
+	.p-ad img{
+		width: 100%;
+
+	}
+
+	.nofin{
+		width:100%;
+		margin:30px auto;
+	}
+	
+	.sry{
+		width:30%;
+		margin:0 auto;
+	}
+
+	.sry img{
+		width: 100%;
+	}
+
+	.nofin .warn{
+		text-align:center;
+		font-size:13px;
+	}
+
+	.nofin .hline{
+		text-align:center;
+		font-size:12px;
+		color:#666666;
+		margin-top:5%;
+	}
+
+	.order2{
+		width:50%;
+		display:block;
+		font-size:14px;
+		margin:5% auto -5% auto;
+		text-align: center;
+		color:black;
+	}
+
+
+
+	/*底部信息*/
+
+	.bottom{
+		width: 100%;
+		margin:0 auto;
+		/*padding-top: 71%;
+		padding-bottom: 3%;*/
+		position: fixed;
+		bottom:10px;
+		background: #f5f5f5;
+
+	}
+
+	.brand{
+		width: 100%;
+		font-size:12px;
+		margin:0 auto;
+		text-align: center;
+		color:#333333;
+	}
+
+	.cr{
+		width: 100%;
+		font-size:12px;
+		margin:0 auto;
+		text-align: center;
+		color:#333333;
+	}
+
+	/*活动规则*/
+	.rule-btn{
+		display:block;
+		width:21%;
+		height:7%;
+		top:84%;
+		left:60%;
+		position: absolute;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+
+    .rule{
+		position: fixed;
+		top:0;
+		left:0;
+		width:100%;
+		max-width: 600px;
+		height:100%;
+		z-index: 99;
+		background: rgba(0,0,0,0.8) repeat;
+	}
+
+	.r-box{
+		position: relative;
+	    z-index: 99;
+	    left: 5%;
+	    top: 15%;
+	    width: 84%;
+	    max-width: 500px;
+	    padding: 10px;
+	    color: #000;
+	    text-align: center;
+	    border-top: 40px solid #e4393c;
+	    background: #fff;
+	    border-radius:5px ;
+	}
+	.r-box .r-title{
+		width:21%;
+		font-size: 14px;
+		margin-top:-14%;
+		left:40%;
+		position: absolute;
+		color:#fff;
+	}
+
+	.r-box .cls{
+		width:10%;
+		margin-top:-18%;
+		left:89%;
+		position: absolute;
+		color:#fff;
+		font-size: 26px;
+	}
+	.r-con{
+		width:100%;
+		height:100%;
+	}
+
+	.r-con .txt{
+		display: block;
+		width:92%;
+		font-size: 13px;
+		text-align:left;
+		margin-left:8%;
+		margin-bottom: 4%;
+
+	}
+	.r-con .num{
+		width:14px;
+		height:18px;
+		background: #e4393c;
+		color:#fff;
+		display:inline-block;	
+		margin-right: 10px;
+		text-align: center;
+		position: absolute;
+		left:4%;
+	}
+
+	.hide{display: none;}
+
+
+/*ip6+*/
+@media only screen and (max-width: 414px) {
+
+.bottom{
+	padding-top:58%;
+}
+
+.title .b-cls {
+    bottom: -4%;
+
+}
+
+
+/*ip6*/
+@media only screen and (max-width: 375px) {
+.bottom{
+	padding-top:52%;
+}
+
+.title .b-cls {
+    bottom: 3%;
+}
+
+/*ip5*/
+@media only screen and (max-height: 568px){
+.bottom{
+	padding-top:42%;
+}
+.title .b-cls {
+   bottom: 6%;
+
+}
+
+/*ip4*/
+@media only screen and (max-height: 480px){
+.bottom{
+	padding-top:14%;
+}
+
+
+}
+
+</style>
+</head>
+<body>
+	<div class="bg4">
+	    <div class="head">
+			<div class="title"><p class="t-name">支付成功</p>
+			<a href="javascript:void(0);" class="b-cls"><img src="/seckill/images/back.png" alt=""></a>
+			</div>
+        </div>
+	{% if state == 1 %}
+        <div class="fin">
+	        <img src="/seckill/images/fin.png" alt="">
+	        <a href="{{payDomain}}/phone/pay/order" class="order">查看我的订单</a>
+        </div>
+	{% else %}
+        <div class="nofin">
+	        <div class="sry"><img src="/seckill/images/sry.png" alt=""></div>
+	        <p class="warn">您在付款的时候慢一步，商品已被秒光啦！<br>您的付款金额我们将在24小时内退至您的账户中。</p>
+	        <p class="hline">如有疑问请咨询：020-38080390-2031</p>
+	        <a href="{{payDomain}}/phone/pay/order" class="order2">查看我的订单</a>
+        </div>
+	{% endif %}
+
+        <!-- banner -->
+		<a href="/phone/qixi/index.html&from=seckill002" class="p-ad"><img src="/seckill/images/p-banner.png" alt=""></a>
+
+		<!-- 底部 -->
+		<div class="bottom">
+			<p class="brand">名牌正品&nbsp&nbsp|&nbsp&nbsp全场低价&nbsp&nbsp|&nbsp&nbsp活动规则</p>
+			<p class="cr">@Copyright 2009-2015&nbsp版权所有亚太传媒股份有限公司</p>
+		    <!-- 活动规则 -->
+			<a href="javascript:void(0)" class="rule-btn"></a>
+		</div>
+    </div>
+
+	<script>
+			// 活动规则弹窗
+		   $(function(){
+		   		$('.rule-btn').click(function(){
+		   			$(".rule").show();
+		   			document.body.style.overflow = "hidden";
+		   		});
+
+		   		$('.r-box .cls').click(function(){
+		   			$(".rule").hide();
+		   			document.body.style.overflow = "auto";
+		   		});
+
+		   });
+	</script>
+</body>
+</html>

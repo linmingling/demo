@@ -1,0 +1,60 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">添加信息</h1>
+			</div>
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post">
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">内容:</label>
+							<div class="col-xs-2">
+							     <textarea  rows="5" cols="100" name="content" id="content"></textarea>
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="button" id="add-submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/broadcast/top_list" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$("#add-submit").click(function(){
+		var content = $("#content").val();
+		if(!content){
+			alert('请输入内容');
+		} else {
+    		$.ajax({
+    			type: 'POST',
+    			url: '/admin/broadcast/top_add',
+    			dataType: 'json',
+    			data : {content:content},
+    			async : false,
+    			success : function(result){
+    				alert(result.errmsg);
+    				if(!result.errcode){
+    					location.href = "/admin/broadcast/top_list";
+        			}
+    			},
+    		})
+ 		   }
+	   });
+});
+</script>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>首页</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="/index/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/index/css/list.css" rel="stylesheet" type="text/css">
+    <script>
+		var phoneWidth = parseInt(window.screen.width);
+		var phoneScale = phoneWidth/750;
+		var ua = navigator.userAgent;
+		if (/Android (\d+\.\d+)/.test(ua)){
+			document.write('<meta name="viewport" content="width=750, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+		} else {
+			document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+		}
+    </script>
+</head>
+<body>
+    <!-- loading -->
+    <div class="loadingWarp" id="loading">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+          <div class="text">优居网</div>
+        </div>
+    </div>
+    <div class="warp">
+        <!-- 顶部导航 -->
+    	<header id="header" class="indexHead">
+            <a class="city" id="citySelect">{{ location['city_name'] }}</a>
+            <!-- <a class="search" href="#"></a> -->
+            <p class="title ">优居</p>   
+        </header>
+        <!-- 城市选择 -->
+        <div class="cityBox hide" id="cityBox" show=0 >
+            <div class="blackBg"></div>
+            <div class="cityWarp">
+                <div class="city">
+                    <p class="grey">热门城市</p>
+                    {% for k,key in city_list %}
+					<a href="/phone/index/index/{{key['city_code']}}"><span>{{key['city_name']}}</span></a>
+					{% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- 焦点广告 -->
+        <div id="swiper1" class="swiper focus">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                {% for k in indexData['info'] %}
+                    <div class="swiper-slide">
+                        <a href="{{ k['url'] }}"><img src="{{ k['img'] }}"  /></a>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="pagination"></div>
+        </div>
+
+        <!-- 一元抢 -->
+        <div id="qiang" class="indexBox">
+            <div class="qiangTitle f30">
+                全名砍价，一元抢购
+                <a href="#" class="more c9 f24">查看更多></a>
+            </div>
+            <div class="qiangMain swiper-container" > 
+                <a href="{{ indexData['yyq_url'] }}">
+                    <img src="/index/images/default_750x250.png" data-original="{{ indexData['yyq_img'] }}" class="qiangImg lazy"  />
+                </a>
+                <!-- <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a class="qiangBox" >
+                            <img src="/index/images/default_174x174.png" class="pImg" />
+                            <div class="pInfo f20 orange">
+                                ￥<span class="f40">1</span>
+                                <div class="pSold">
+                                    <p class="c9">已售66.6%</p>
+                                    <p class="progress" reservation="300" all="520"><span></span></p>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="qiangBox" >
+                            <img src="/index/images/default_174x174.png" class="pImg" />
+                            <div class="pInfo f20 orange">
+                                ￥<span class="f40">1</span>
+                                <div class="pSold">
+                                    <p class="c9">已售66.6%</p>
+                                    <p class="progress" reservation="99" all="520"><span></span></p>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="qiangBox" >
+                            <img src="/index/images/default_174x174.png" class="pImg" />
+                            <div class="pInfo f20 orange">
+                                ￥<span class="f40">1</span>
+                                <div class="pSold">
+                                    <p class="c9">已售66.6%</p>
+                                    <p class="progress" reservation="2" all="520"><span></span></p>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="qiangBox" >
+                            <img src="/index/images/default_174x174.png" class="pImg" />
+                            <div class="pInfo f20 orange">
+                                ￥<span class="f40">1</span>
+                                <div class="pSold">
+                                    <p class="c9">已售66.6%</p>
+                                    <p class="progress" reservation="500" all="520"><span></span></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        
+        <!-- 优品团列表 -->
+        <div id="group" class="indexBox groupWarp" >
+            <div class="groupTitle f30">
+                <span class="hover" page=1>人气最高</span>
+                <span page=0>价格最优</span>
+                <span page=0>卖的最多</span>
+                <span page=0>最新上架</span>
+            </div>
+            <div class="groupMain" >
+            <!-- 循环start -->
+            {% for k in goodsList %}
+                <a href="/phone/group/detail/{{ k['id'] }}" class="productBox cf">
+                    <img src="/index/images/default_174x174.png" data-original="{{ k['goods_img'] }}" class="pImg lazy" />
+                    <div class="pInfo">
+                        <p class="pTitle f30 c3">
+                            {{ k['title'] }}
+                            <span class="iconWarp f22">
+<!--                                 <i class="icon icon1">返</i> -->
+<!--                                 <i class="icon icon2">惠</i> -->
+                            </span>
+                        </p>
+                        <p class="pAdress c9">
+                            {{ k['sale_address'] }}
+                            <!-- <span class="distance"><21km</span> -->
+                        </p>
+                        <p class="orange priceBox1">
+                            $<span class="price f36"> {{ k['exclusive_price'] }}</span>
+                            <span class="discount f22 "> {{ k['discount'] }}折</span>
+                        </p>
+                        <p class="c9 priceBox2">
+                            <span class="original ">$ {{ k['market_price'] }}</span>
+                            <span class="sold ">已售 {{ k['sold_num'] + k['real_num'] }}件</span>
+                        </p>
+                    </div>
+                </a>
+                {% endfor %}
+                <!-- 循环end -->
+                
+            </div>
+            <div class="groupMain hide"></div>
+            <div class="groupMain hide"></div>
+            <div class="groupMain hide"></div>
+            <?php if(empty($goodsList)) {?>
+            	<div class="listTips c9">已经拉到最底啦(>_<)</div>
+            <?php }else{?>
+            	<div class="listTips c9">拼命加载中...</div>
+            <?php }?>
+        </div>
+
+        <!-- 底部导航 -->
+        <footer id="footer" class="footer">
+            <a class="footIcon footIcon1 f20 c6 hover">首页</a>
+            <a href="/phone/group/index" class="footIcon footIcon2 f20 c6">优品团</a>
+            <a href="/phone/zhan/list" class="footIcon footIcon3 f20 c6">一站购</a>
+            <a href="/phone/yiyuanqiang/list" class="footIcon footIcon4 f20 c6">一元抢</a>
+            <a href="http://pay.yoju360.com/phone/pay/order" class="footIcon footIcon5 f20 c6">我的</a>
+        </footer>
+    </div>
+
+
+<script src="/common/js/jquery-2.2.0.min.js"></script>
+<script src="/common/js/idangerous.swiper-2.1.min.js"></script>
+<script src="/common/js/jquery.lazyload.js"></script>
+<script src="/index/js/com.js"></script>
+<script src="/index/js/foot.js"></script>
+<script>
+
+var sign = true;
+function getListInfo(){
+    
+    if(!sign)return false;
+    sign = false;  
+    var i = $("#group .groupTitle .hover").index();
+    var groupMain = $("#group .groupMain").eq(i);
+    var type = $("#group .groupTitle .hover").html();
+    var page = parseInt($("#group .groupTitle .hover").attr("page"));
+    // console.log(page++);
+    $("#group .listTips").html("拼命加载中...");
+    // console.log("type:"+type+",page:"+page);
+    //请求数据
+    $.ajax({
+        async:true,
+        url:"/phone/index/scrollView",
+        data:{type:type,page:page},
+        type: 'post',
+        dataType:'json',
+        success:function(result){
+            // console.log(result.msg);
+            if(result.code != 0){
+	            // 如果数据已取完
+	            $("#group .listTips").html("已经拉到最底啦(>_<)");
+            }
+            else{
+ 	            insertList(result.msg,groupMain);
+                page = page+1;
+ 	            $("#group .groupTitle .hover").attr("page",page);
+                // console.log(page)
+            }
+          },
+        error:function(result){
+            $("#group .listTips").html("网络通信失败，请重试！");
+        },
+        complete:function(){
+            sign = true;
+        }
+    });
+    
+}
+function init(){
+    cityShow();
+    swiper("#swiper1");
+    // progress("#qiang");
+    // var qiangW = $("#qiang .qiangMain .swiper-slide .qiangBox").length * 225;
+    // $("#qiang .qiangMain .swiper-slide").width(qiangW);
+    // var mySwiper = new Swiper('#qiang .swiper-container',{
+    //     scrollContainer: true,
+    // });
+    $("img.lazy").lazyload({ 
+        threshold : 200 ,
+        effect : "fadeIn"
+    });
+
+    $("#group .groupTitle span").click(function(){
+        if($(this).hasClass("hover"))return false;
+        $("#group .groupTitle span").removeClass("hover");
+        $(this).addClass("hover");
+        var i = $(this).index();
+        $("#group .groupMain").hide().eq(i).fadeIn();
+        getListInfo();
+
+    });
+    $(window).scroll(function(){
+        var scrollTop =$(window).scrollTop();
+        var documentHeight = $(document).height();
+        var windowHeight = window.screen.height/phoneScale;
+        // console.log(scrollTop,windowHeight,documentHeight)
+        if (scrollTop + windowHeight + 100 > documentHeight) {
+            getListInfo();
+            
+        }
+    });
+    
+
+}
+
+$(function(){
+    setTimeout(init);
+    $("#loading").hide();
+});
+</script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+    //微信分享控制
+    wx.config({
+          debug: false,
+          appId: '<?php echo $signPackage["appId"];?>',
+          timestamp: '<?php echo $signPackage["timestamp"];?>',
+          nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+          signature: '<?php echo $signPackage["signature"];?>',
+          jsApiList: [
+            'checkJsApi',
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo'
+          ]
+      });
+    wx.ready(function () {
+        var wxData = {
+            "imgUrl":'',
+            "link":'',
+            "desc":"",
+            "title":""
+        };
+        wx.onMenuShareAppMessage(wxData);
+        wx.onMenuShareTimeline(wxData);
+    });
+</script>
+</body>
+</html>

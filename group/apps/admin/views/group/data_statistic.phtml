@@ -1,0 +1,175 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+			 <h1 class="m-n font-thin h3"><a href="/admin/group/index">优品团 ></a> 数据统计 </h1>
+			</div>
+			
+			<div class="table-responsive" style="padding:10px 20px 0px 20px;">
+                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+        			<div class="row">
+                        <div class="row">
+                        <div class="col-sm-0"><a class="btn btn-default btn-sm" href="/admin/group/index" role="button" style="margin-right:10px;">返回</a></div>
+                        <form action="/admin/group/data_statistic/{{ type }}" method="post">
+                          <div class="col-sm-7 m-b-xs">
+                            <select class="input-sm form-control w-sm inline v-middle" name="select" id="select">
+                            {% if type == 'goods' OR type == '' %}
+                              <option value="goods_id" {% if select == 'goods_id' %}selected{% endif %}>商品ID</option>
+                              <option value="goods_name" {% if select == 'goods_name' %}selected{% endif %}>商品名称</option>
+                            {% elseif type == 'city' %}
+                              <option value="city_code" {% if select == 'city_code' %}selected{% endif %}>城市ID</option>
+                            {% else %}
+                              <option value="url_source" {% if select == 'url_source' %}selected{% endif %}>渠道名称</option>
+                            {% endif %}
+                            </select>
+                            <input type="text" class="input-sm form-control search" placeholder="请输入搜索条件" name="search" value="{{ search }}">
+                            <span>时间范围：</span>
+                            <div class="form-group form-group-sm search_time">
+        					    <div class="input-group date form_datetime" data-date-format="yyyy-mm-dd" data-link-field="start_time">
+        							<input class="form-control" size="16" type="text" value="{{ start_time }}" readonly>
+        							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        						</div>
+        						<input type="hidden" id="start_time" name="start_time" value="{{ start_time }}" />
+        						<span> -- </span>
+        						<div class="input-group date form_datetime" data-date-format="yyyy-mm-dd" data-link-field="end_time">
+        							<input class="form-control" size="16" type="text" value="{{ end_time }}" readonly>
+        							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        						</div>
+        						<input type="hidden" id="end_time" name="end_time" value="{{ end_time }}" />
+        					</div>
+                            
+                            <button class="btn btn-sm btn-default">搜索</button>
+                          </div>
+                         </form>
+                         <div class="input-group" style="float: right;">
+                            <a class="btn btn-default btn-sm" href="/admin/group/data_statistic/source" role="button" style="float:right;margin-right:2px;">渠道统计</a>
+                            <a class="btn btn-default btn-sm" href="/admin/group/data_statistic/city" role="button" style="float:right;margin-right:2px;">城市统计</a>
+            			    <a class="btn btn-default btn-sm" href="/admin/group/data_statistic/goods" role="button" style="float:right;margin-right:2px;">商品统计</a>
+                        </div>
+                        </div>
+                    </div>
+    			</div>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+					{% if type == 'goods' OR type == '' %}
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>商品ID</th>
+									<th>商品名称</th>
+									<th>商品点击数</th>
+									<th>设置提醒按钮点击数</th>
+									<th>马上预定点击数</th>
+									<th>订单数</th>
+									<th>成功支付数</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['goods_id'] }}</td>
+									<td>{{ k['goods_name'] }}</td>
+									<td>{{ k['num'] }}</td>
+									<td>{{ k['but_click_num'] }}</td>
+									<td>{{ k['buy_num'] }}</td>
+									<td>{{ k['order_num'] }}</td>
+									<td>{{ k['pay_num'] }}</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+						{% elseif type == 'city' %}
+					    <table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>城市ID</th>
+									<th>城市名称</th>
+									<th>商品点击数</th>
+									<th>设置提醒按钮点击数</th>
+									<th>马上预定点击数</th>
+									<th>订单数</th>
+									<th>成功支付数</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['city_code'] }}</td>
+									<td>{{ k['city_name'] }}</td>
+									<td>{{ k['goods_num'] }}</td>
+									<td>{{ k['msg_num'] }}</td>
+									<td>{{ k['buy_num'] }}</td>
+									<td>{{ k['order_num'] }}</td>
+									<td>{{ k['pay_num'] }}</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+						{% else %}
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>渠道名称</th>
+									<th>商品点击数</th>
+									<th>设置提醒按钮点击数</th>
+									<th>马上预定点击数</th>
+									<th>订单数</th>
+									<th>成功支付数</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['url_source'] }}</td>
+									<td>{{ k['goods_num'] }}</td>
+									<td>{{ k['msg_num'] }}</td>
+									<td>{{ k['buy_num'] }}</td>
+									<td>{{ k['order_num'] }}</td>
+									<td>{{ k['pay_num'] }}</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+						{% endif %}
+					</div>
+                    <?php $this->partial("index/page")?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function delaction(m){
+	var r=confirm("你确定要删除吗？");
+	if(r == true){
+		location.href="/admin/group/store_delete/id/"+m;
+	}
+}
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        linkFormat:'yyyy-mm-dd',
+        weekStart: 0,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: true,
+		startView: 2,
+		minView: 3,
+		forceParse: 0,
+        showMeridian: 1,
+    });
+});
+
+</script>
+<?php $this->partial("index/footer")?>

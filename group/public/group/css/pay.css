@@ -1,0 +1,94 @@
+.warp{width:100%;max-width:640px;margin:0 auto;background:#f5f5f5;overflow-y:scroll}
+/*��ҳͨ��*/
+.orderBox{padding:10px;background:#fff;border-top:1px solid #d7d7d7;border-bottom:1px #d7d7d7 solid;margin-top:15px}
+/*��Ʒ��Ϣģ��*/
+.productInfoBox .orderTime{border-bottom:1px solid #f2f2f2;padding-bottom:5px;text-align:right}
+.productInfoBox .productInfo{padding:10px 0}
+.productInfoBox .productInfo img{width:35%}
+.productInfoBox .productInfo .textBox{width:63%;}
+.productInfoBox .productInfo .textBox .title{color:#555;margin-bottom: 15px;}
+.productInfoBox .productInfo .numBox{height:30px;line-height:30px;border:1px #d7d7d7 solid;color:#999;text-align:center;margin-top: 10px;}
+.productInfoBox .productInfo .numBtn{width:30px;background:#f2f2f2;font-size:16px;font-weight:bold;cursor:pointer}
+.productInfoBox .productInfo .numBox .now{padding:0 10px}
+.productInfoBox .productInfo .priceBox {text-align:right}
+.productInfoBox .productInfo .priceBox .old{text-decoration:line-through}
+.productInfoBox .freightBox{border-top:1px solid #f2f2f2;padding-top:10px}
+.productInfoBox .freightBox span{color:#555}
+/*�ջ���ַģ��*/
+.addBox a{width:100%;height:100%;display:block;color:#999;position:relative;height: 38px;}
+.addBox .name{width:60px;display:block;float:left;color:#555;margin-right:20px;text-align:right}
+.addBox .goIcon{position:absolute;top:0;right:0px;width:14px;height:20px;margin:10px 5px 0 10px ;display:block;background:url(../../common/images/phone_sprite.png) no-repeat -20px -204px ;background-size:40px}
+/*�ջ�ʱ��ģ��*/
+.item{width:70px;display:inline-block}
+.getTime select{width:50%;height:30px;border:1px solid #d7d7d7;color:#999}
+/*ʹ���Ż�ȯģ��*/
+.couponType select{width:50%;height:30px;border:1px solid #d7d7d7;color:#999}
+/*֧����ʽģ��*/
+.payType .zfb{line-height:30px;margin-right:15px}
+.payType input{}
+.payType label{}
+/*foot*/
+.flowFoot .total{line-height:20px;margin:5px 0 0 10px}
+.flowFoot .btn{height:32px;line-height:32px;width:150px;border-radius:2px;margin:9px 10px 0 0 ;text-align:center;background:#dd3377;color:#fff}
+.flowFoot .btn .WcolckIcon{background:url(../../common/images/phone_sprite.png) no-repeat 0 -19px;background-size:25px auto;padding-left:18px;margin-left:3px}
+/*֧���ɹ�*/
+.payOkTips{margin:50px 0;padding-top:70px;background:url(../images/payOK.png) no-repeat top center;text-align:center;font-size:14px}
+.couponTips{margin:0 20px;padding:20px 0;font-size:16px ;background:url(../images/coupon/coupon_09.png) no-repeat;background-size:100% 100%;text-align:center}
+.couponTips a{height:36px;line-height:36px;width:130px;margin:20px auto 0 auto;border-radius:3px;font-size:14px;background:#FF6325;color:#fff;display:block}
+
+
+
+.saveBtn{margin-right:10px}
+.addressBox{padding-left:20px;background:#fff;border-top:1px solid #d7d7d7;border-bottom:1px #d7d7d7 solid;margin-top:15px}
+.addressBox p{border-bottom:1px #d7d7d7 solid;line-height:45px}
+.addressBox p:nth-last-child(1){border:none}
+.addressBox .item{width:55px;padding-right:10px;float:left;text-align:right}
+.addressBox1 input{border:none;width:180px;height:30px;line-height:normal;padding:0 5px;vertical-align:middle}
+.addressBox1 select{width:180px;height:30px;line-height:30px;border:1px #f2f2f2 solid;color:#999;background:#fff}
+.addressBox1 select option{color:#555}
+.deleteBox{padding:0;text-align:center;}
+.delete{text-align:center;color:#FF6325;line-height:43px}
+.delete a{color:#FF6325}
+.lastBox{padding:0}
+
+.addressFoot{text-align:center}
+.addressFoot .btn{width:108px;height:32px;line-height:32px;display:block;border-radius:2px;margin:9px auto;text-align:center;background:#FF6325;color:#fff}
+
+
+
+
+/*�ջ���ַģ��*/
+.addressList{padding:10px;background:#fff;border-top:1px solid #d7d7d7;border-bottom:1px #d7d7d7 solid;margin-top:15px;position:relative}
+.addressList a{color:#999}
+.default{border-color:#FF6325}
+.addressList .defaultText{padding:0 10px;background:#FF6325;color:#fff;position:absolute;top:0;right:0;display:block}
+.addressList .addressBox{display:block}
+.addressList .name{color:#555;margin-right:15px}
+.addressList .btnBox{padding-top:10px;margin-top:10px;border-top:1px #d7d7d7 dotted}
+.addressList .btnBox a{width:70px;height:27px;line-height:27px;text-align:center;border:1px solid #d7d7d7;border-radius:2px;color:#999}
+
+.hover .hoverIcon{width:18px;height:22px;display:block;position:absolute;top:35px;right:30px;background:url(../../common/images/phone_sprite.png) no-repeat 0px -194px ;background-size:30px auto}
+.hover{border-color:#FF6325}
+/*foot*/
+.addressFoot a{width:108px;height:32px;line-height:32px;margin:9px auto;border-radius:2px;text-align:center;display:block;background:#FF6325;color:#fff}
+
+
+.userHead{margin:0 0 10px 10px;position:relative;color:#555;font-size:14px}
+.userHead p{max-width:250px;word-break: break-all;line-height: 40px;}
+.userHead .logout{height:30px;line-height:30px;border-left:1px solid #d7d7d7;padding-left:15px; position:absolute;right:15px;top:5px}
+.userList{padding:10px;background:#fff;border-top:1px solid #d7d7d7;border-bottom:1px #d7d7d7 solid;margin-bottom:15px;position:relative}
+.userList .listHead{border-bottom:1px #f2f2f2 solid;padding-bottom:10px;}
+.userList .listHead .old{font-size:10px;text-decoration:line-through}
+.userList .listMain{margin:10px 0}
+.userList .listMain img{width:30%;margin-top:5px}
+.userList .listMain .textBox{width:68%}
+.userList .listMain .textBox .title{color:#555}
+.userList .listFoot{border-top:1px #f2f2f2 solid;padding-top:10px;}
+.userList .listFoot  .icon{width:73px;height:27px;float:right;line-height:27px;text-align:center;border-radius:2px;margin-left:10px}
+.userNoMoreBtn{width:100px;height:27px;display:block;margin:0px auto;line-height:27px;text-align:center;border-radius:2px;color:#fff;background:#FF6325}
+.userNoMoreBtn:hover{color:#fff}
+.userNoMoreText{text-align:center;margin:20px auto;}
+
+
+
+

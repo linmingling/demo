@@ -1,0 +1,41 @@
+<?php 
+use Library\Com\SecurityContext;
+?>	
+    <div class="app-aside hidden-xs bg-light dker b-r">
+		<div class="aside-wrap">
+			<div class="navi-wrap">
+				<nav ui-nav class="navi">
+					<ul class="nav">
+						<li>
+							<a href="/admin/index/index" class="auto">      
+								<i class="glyphicon glyphicon-stats icon text-primary-dker"></i><span class="font-bold">工作面板</span>
+							</a>
+						</li>
+						<li class="line dk"></li>
+						
+						<?php if (SecurityContext::getSystemMenu('SYS_ACT')) :?><!-- 活动报名管理系统 -->
+						
+						<?php foreach (SecurityContext::getSystemMenu('SYS_ACT') as $res) :?>
+						<li>
+							<a href class="auto">
+								<span class="pull-right text-muted"><i class="fa fa-fw fa-angle-right text"></i><i class="fa fa-fw fa-angle-down text-active"></i></span>
+								<?php if ($res['data']['iconClass']) :?>
+								<i class="<?php echo $res['data']['iconClass']?>"></i>
+								<?php else :?>
+								<i class="glyphicon glyphicon-list icon text-info-dker"></i>
+								<?php endif; ?>
+								<span class="font-bold"><?php echo $res['data']['title']?></span>
+							</a>
+							<ul class="nav nav-sub dk">
+							<?php foreach ($res['children'] as $res1) :?>
+								<li><a href="<?php echo $res1['data']['url']?>"><span><?php echo $res1['data']['title']?></span></a></li>
+							<?php endforeach; ?>
+							</ul>
+						</li>
+						<?php endforeach; ?>
+						<?php endif; ?>
+					</ul>
+				</nav>
+			</div>
+		</div>
+    </div>

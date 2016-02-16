@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>我的优居</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="/index/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/index/css/user.css" rel="stylesheet" type="text/css">
+    <script>
+        var phoneWidth = parseInt(window.screen.width);
+        var phoneScale = phoneWidth/750;
+        var ua = navigator.userAgent;
+        if (/Android (\d+\.\d+)/.test(ua)){
+            document.write('<meta name="viewport" content="width=750, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+        } else {
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+</head>
+<body>
+    <!-- loading -->
+    <div class="loadingWarp" id="loading">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+          <div class="text">优居网</div>
+        </div>
+    </div>
+    <div class="warp">
+        <!-- 顶部导航 -->
+        <header id="header" class="header">
+            <a class="return" ></a>
+            <a class="home" href="#"></a>
+            <p class="title f36">我的优居</p>   
+        </header>
+        <!-- 用户头像名称 -->
+        <div class="userInfo cf">
+            <img src="" class="userImg" />
+            <p class="userName">13800138000</p>
+        </div>
+        <!-- 订单信息 -->
+        <div class="orderAct">
+            <a href="#" class="orderIcon orderIcon1 f24">待付款<i class="orderNum">10</i></a>
+            <a href="#" class="orderIcon orderIcon2 f24">待发货<i class="orderNum">10</i></a>
+            <a href="#" class="orderIcon orderIcon3 f24">待收货<i class="orderNum">10</i></a>
+            <a href="#" class="orderIcon orderIcon4 f24">待评价<i class="orderNum">10</i></a>          
+        </div>
+        <!-- 入口 -->
+        <div class="coreEntry">
+            <ul>
+                <li class="myOrder">
+                    <a href="#" class="c3 f30">
+                        我的订单
+                        <span class="c9 f24">查看全部订单</span>
+                    </a>
+                </li>
+                <li class="myAct">
+                    <a href="#" class="c3 f30">
+                        我的活动
+                        <span class="c9 f24">已参加一个商品活动</span>
+                    </a>
+                </li>
+                <li class="address">
+                    <a href="#" class="c3 f30">
+                        地址管理
+                        <span></span>
+                    </a>
+                </li>
+                <li class="security">
+                    <a href="#" class="c3 f30">
+                        安全设置
+                        <span></span>
+                    </a>
+                </li>
+                <li class="Feedback">
+                    <a href="#" class="c3 f30">
+                        意见反馈
+                        <span></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+<script src="/common/js/jquery-2.2.0.min.js"></script>
+<script src="/common/js/idangerous.swiper-2.1.min.js"></script>
+<script src="/index/js/com.js"></script><script>
+function init(){
+   
+
+}
+$(function(){
+    setTimeout(init);
+    $("#loading").hide();
+});
+</script>
+</body>
+</html>

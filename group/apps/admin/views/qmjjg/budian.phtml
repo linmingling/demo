@@ -1,0 +1,47 @@
+﻿<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">全民家居购-布点数据表</h1>
+    </div>
+    <div class="wrapper-md ng-scope">
+     <?php $this->partial("qmjjg/navigation")?>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+                            布点数据表<span class="label bg-info">累计点击报名按钮 <?php echo $page['totalRows']?> 次</span>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light">
+            <thead>
+              <tr>
+                <th>分屏名称</th>
+                <th>城市站</th>
+                <th>来源</th>
+                <th style="width: 20%;">点击时间</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k in btn_list %}
+              <tr>
+                <td>{{ k['name'] }}</td>
+                <td>{{ k['city'] }}</td>
+                <td>{{ k['url_source'] }}</td>
+                <td>{{ date('Y-m-d H:i:s', k['add_time']) }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+        <?php $this->partial("index/page")?>
+        </footer>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+    
+<?php $this->partial("index/footer")?>

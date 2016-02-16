@@ -1,0 +1,87 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">帮砍订单列表</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" href="javascript:$('#orderList').tableExport({type:'excel',fileName:'order',escape:'false'});" role="button" style="margin-right:10px;">导出</a>
+				<a class="btn btn-default btn-sm" href="/admin/markdown/index" role="button" style="margin-right:10px;">返回</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+							<table class="table table-striped m-b-none dataTable no-footer" id="orderList">
+								<thead>
+									<tr>
+										<th class="sorting" rowspan="1" colspan="1"></th>
+										<th class="sorting" rowspan="1" colspan="1">id</th>
+										<th class="sorting" rowspan="1" colspan="1">sn</th>
+										<th class="sorting" rowspan="1" colspan="1">渠道</th>
+										<th class="sorting" rowspan="1" colspan="1" style="width:120px;">购买商品</th>
+										<th class="sorting" rowspan="1" colspan="1">微信名</th>
+										<th class="sorting" rowspan="1" colspan="1">微信ID</th>
+										<th class="sorting" rowspan="1" colspan="1">支付价格</th>
+										<th class="sorting" rowspan="1" colspan="1">商品价格</th>
+										<th class="sorting" rowspan="1" colspan="1">下单时间</th>
+										<th class="sorting" rowspan="1" colspan="1">支付时间</th>
+										<th class="sorting" rowspan="1" colspan="1">状态</th>
+									</tr>
+								</thead>
+								<tbody>
+							{% if num > 0 %}
+							{% for k in data %}
+									<tr class="odd">
+										<td style="padding-top:2px;padding-bottom:2px;"><img src="{{k['headImg']}}" style="width:30px;" /></td>
+										<td>{{k['orderId']}}</td>
+										<td>{{ k['orderSn'] }}</td>
+										<td>{{k['pay_name']}}</td>
+										<td>{{k['goods_name']}}</td>
+										<td>{{k['username']}}</td>
+										<td data-id="{{k['wx_unionid']}}">{{k['wx_openid']}}</td>
+										<td>{% if k['moneyPaid'] > 0 %} {{k['moneyPaid']}} {% else %} {{k['orderAmount']}} {% endif %}</td>
+										<td>{{ k['goodsAmount'] }}</td>
+										<td>{{k['addTime']}}</td>
+										<td>{{k['payTime']}}</td>
+										<td>
+										{% if k['status']['order'] == 2 %}
+											已取消
+										{% else %}
+											{% if k['status']['pay'] == 2 %}
+												<span class="text-success">已付款</span>
+											{% elseif k['status']['pay'] == 0 %}
+												<span class="text-warning">未付款</span>
+											{% endif %}
+										{% endif %}
+										</td>
+									</tr>
+							{% endfor %}
+							{% endif %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delgoods(m,n){
+	var r=confirm("你确定要删除该商品吗？");
+	if(r == true){
+		location.href="/admin/markdown/goods/delete/"+m+"/"+n;
+	}
+}
+
+</script>
+

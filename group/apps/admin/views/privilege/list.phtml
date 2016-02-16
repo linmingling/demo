@@ -1,0 +1,56 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">管理员列表</h1></div>
+
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">	
+				<a class="btn btn-default btn-sm" href="/admin/user/list" role="button">用户列表</a>
+				<a class="btn btn-default btn-sm" href="/admin/privilege/detail" role="button">规则</a>
+				
+				<a class="btn btn-default btn-sm pull-right" href="javascript:void()" role="button">删除权限</a>
+				<a class="btn btn-default btn-sm pull-right" href="/admin/privilege/add" role="button">添加权限</a>
+			</div>			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th class="sorting" rowspan="1" colspan="1">权限ID</th>
+									<th class="sorting" rowspan="1" colspan="1">权限名</th>
+									<th class="sorting" rowspan="1" colspan="1">备注</th>
+									<th class="sorting" rowspan="1" colspan="1">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% if list %}
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ k['name'] }}</td>
+									<td>{{ k['desc'] }}</td>
+									<td><a href="/admin/privilege/modify/{{k['id']}}">修改</a>&nbsp;|&nbsp;<a href="/admin/privilege/delete/{{k['id']}}">删除</a></td>
+								</tr>
+						{% endfor %}
+						{% endif %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>												
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+
+
+</script>
+

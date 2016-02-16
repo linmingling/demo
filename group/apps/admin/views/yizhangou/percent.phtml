@@ -1,0 +1,37 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">百分比</h1></div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table id="userList" data-toggle="table">
+							<tr>
+								<td>图片id</td><td>点击数</td><td>百分比</td>
+							</tr>
+						{% for k,v in data %}
+							<tr>
+								<td>{{k}}</td><td>{{v}}</td><td><?php echo round(($v/$count)*100,2); ?>%</td>
+							</tr>
+						{% endfor %}
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+
+
+
+</script>

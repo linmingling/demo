@@ -1,0 +1,142 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<script type="text/javascript" src="/common/js/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/plugins/code/prettify.js"></script>
+<link rel="stylesheet" href="/common/js/kindeditor/themes/default/default.css"/>
+<script>
+KindEditor.ready(function(K) {
+	var editor = K.editor({
+		allowFileManager : true
+	});
+	K('#upload_image').click(function() {
+		editor.loadPlugin('image', function() {
+			editor.plugin.imageDialog({
+				imageUrl : K('#upload').val(),
+				clickFn : function(url, title, width, height, border, align) {
+					K('#upload').val(url);
+					editor.hideDialog();
+				}
+			});
+		});
+	});
+});
+</script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">
+				<a href="/admin/group/index">优品团 ></a> {% if data['id'] != '' %}编辑{%  else %}添加{% endif %}分站</h1>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group form-group-sm">
+							<label for="active_quantity" class="col-sm-1 control-label">分站名称:</label>
+							<div class="col-xs-2">
+							 	<select name="city_code" class="form-control">
+									<option value="">请选择城市</option>
+									{% for k,key in city_list %}<option value="{{key['city_code']}}" {% if data['city_name'] == key['city_name'] %} selected {% endif %} >{{key['city_name']}}</option> {% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="headimg" class="col-sm-1 control-label">头部广告:</label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" readonly="readonly" id="upload" name="banner_img" value="{{ data['banner_img'] }}"/>
+							</div>
+							<button type="button" class="btn m-b-xs btn-sm btn-default btn-addon" id="upload_image"><i class="fa fa-cloud-upload text"></i><span class="text">Upload</span></button>建议尺寸：640px * 148px
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="headimg" class="col-sm-1 control-label">广告链接:</label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" name="banner_url" value="{{ data['banner_url'] }}"/>
+							</div>必须以http://开头，可为空
+						</div>
+						<div class="form-group form-group-sm" id="goods_class">
+							<label for="discount" class="col-sm-1 control-label">商品分类:</label>
+							<div class="col-xs-2"><button type="button" class="btn btn-default btn-sm add"><i class="glyphicon glyphicon-plus"></i></button>以下排列顺序为页面显示顺序 </div>
+						    <div class="m-t-xs">&nbsp; <a href="/admin/group/class_list" target="_blank" style="color: #428bca;text-decoration: underline;">管理分类</a></div>
+						</div>
+						<div id="SelectBox">
+							{% for x,y in class_id %}
+							<div class="form-group form-group-sm">
+								<label for="discount" class="col-sm-1 control-label"></label>
+								<div class="col-xs-2">
+								    <select name="class_id[]" class="form-control">
+										<option value="0">请选择商品分类</option>
+										{% for k,key in class_list %}<option value="{{key['id']}}" {% if y == key['id'] %} selected {% endif %} >{{key['class_name']}}</option> {% endfor %}
+									</select>
+								</div>
+								<button type="button" class="btn btn-default btn-sm add" onclick="deleteDom($(this))"><i class="fa fa-trash-o"></i></button>
+							</div>
+							{% endfor %}
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="headimg" class="col-sm-1 control-label">联系电话:</label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" name="phone" value="{{ data['phone'] }}"/>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="headimg" class="col-sm-1 control-label">QQ:</label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" name="email" value="{{ data['email'] }}"/>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="headimg" class="col-sm-1 control-label">工作时间:</label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" name="work_info" value="{{ data['work_info'] }}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">是否开启:</label>
+							<div class="col-xs-8">
+								<label class="radio-inline"><input type="radio" name="is_open"  {% if data['is_open'] == 1 %} checked {% endif %} value="1">是</label>
+								<label class="radio-inline"><input type="radio" name="is_open"  {% if data['is_open'] == 0 %} checked {% endif %} value="0">否</label>
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+							    <input type="hidden" name="id" value="{{ data['id'] }}">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/group/index" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function deleteDom(btn){
+		var dom = btn.closest(".form-group");
+		dom.remove(); 	
+	}
+	$(function(){
+		$("#goods_class .add").click(function(){
+			var html = "";
+			html += '<div class="form-group form-group-sm">'+
+						'<label for="discount" class="col-sm-1 control-label"></label>'+
+						'<div class="col-xs-2">'+
+						    '<select name="class_id[]" class="form-control">'+
+								'<option value="">请选择分类信息</option>'+
+								'{% for k,key in class_list %}<option value="{{key['id']}}">{{key['class_name']}}</option> {% endfor %}'+
+							'</select>'+
+						'</div>'+
+						'<button type="button" class="btn btn-default btn-sm add" onclick="deleteDom($(this))"><i class="fa fa-trash-o"></i></button>'+
+					'</div>';
+			var dom = $(html);    
+			$("#SelectBox").append(dom);
+		});
+	});
+</script>
+<?php $this->partial("index/footer")?>

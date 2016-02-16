@@ -1,0 +1,141 @@
+<?php 
+use Library\Com\SecurityContext;
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>优居活动后台</title>
+	<meta name="description" content="app, web app, responsive, responsive layout, admin, admin panel, admin dashboard, flat, flat ui, ui kit, AngularJS, ui route, charts, widgets, components" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<link rel="stylesheet" href="/admin/css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="/admin/css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="/admin/css/font-awesome.min.css" type="text/css" />
+	<link rel="stylesheet" href="/admin/css/simple-line-icons.css" type="text/css" />
+	<link rel="stylesheet" href="/admin/css/font.css" type="text/css" />
+	<link rel="stylesheet" href="/admin/css/app.css" type="text/css" />
+	<!-- jQuery -->
+	<script src="/common/js/jquery-2.1.4.min.js"></script>
+	<script src="/admin/js/bootstrap.js"></script>
+	
+	<link href="/admin/css/bootstrap-table.css" rel="stylesheet">
+	<script src="/admin/js/bootstrap-table.js"></script>
+	<script src="/admin/js/bootstrap-table-zh-CN.js"></script>
+	
+	<script src="/admin/js/tableExport.min.js"></script>
+	
+	<link href="/admin/css/bootstrap-datetimepicker.css" rel="stylesheet">
+	<script src="/admin/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="/admin/js/bootstrap-datetimepicker.zh-CN.js"></script>
+	
+	<link href="/admin/css/bootstrap-tagsinput.css" rel="stylesheet">
+	<script src="/admin/js/bootstrap-tagsinput.min.js"></script>
+</head>
+<body style="position: relative; margin-top: 0px !important;" class="ng-scope">
+<div class="app app-header-fixed" id="app">
+<!-- navbar -->
+    <div class="app-header navbar">
+		<!-- navbar header -->
+		<div class="navbar-header bg-info dker">
+			<button class="pull-right visible-xs dk" data-toggle="class:show" data-target=".navbar-collapse">
+				<i class="glyphicon glyphicon-cog"></i>
+			</button>
+			<button class="pull-right visible-xs" data-toggle="class:off-screen" data-target=".app-aside" ui-scroll="app">
+				<i class="glyphicon glyphicon-align-justify"></i>
+			</button>
+			<!-- brand -->
+			<a href="/admin/index/index" class="navbar-brand text-lt">
+				<i class="fa icon-home"></i>
+				<span class="hidden-folded m-l-xs">优居活动管理</span>
+			</a>
+			<!-- / brand -->
+		</div>
+		<!-- / navbar header -->
+
+		<!-- navbar collapse -->
+		<div class="collapse pos-rlt navbar-collapse box-shadow bg-info dker">
+			<!-- buttons -->
+			<div class="nav navbar-nav hidden-xs">
+				<a href="#" class="btn no-shadow navbar-btn" data-toggle="class:app-aside-folded" data-target=".app">
+					<i class="fa fa-dedent fa-fw text"></i>
+					<i class="fa fa-indent fa-fw text-active"></i>
+				</a>
+			</div>
+			<!-- / buttons -->
+		
+		<?php if(SecurityContext::getCurrentUsername() == 'admin') { // $this->session->get('gadmin_privilege_id') == 1)?>
+			<!-- link and dropdown -->
+			<ul class="nav navbar-nav hidden-sm">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<i class="icon-settings fa-fw"></i>
+					</a>
+					<ul class="dropdown-menu animated fadeInUp" role="menu">
+						<li><a href="/admin/user/list" class="ng-scope">用户权限</a></li>
+						<!-- <li><a href="/admin/pay/list" class="ng-scope">支付</a></li> -->
+					</ul>
+				</li>
+			</ul>
+		<?php } ?>
+			<!-- / link and dropdown -->
+
+			<!-- search form -->
+			<!-- / search form -->
+
+			<!-- nabar right -->
+			<ul class="nav navbar-nav navbar-right">
+			<!-- 
+				<li class="dropdown">
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+						<i class="icon-bell fa-fw"></i>
+						<span class="visible-xs-inline">通知</span>
+						<span class="badge badge-sm up bg-danger pull-right-xs">2</span>
+					</a>
+					<div class="dropdown-menu w-xl animated fadeInUp">
+						<div class="panel bg-white">
+							<div class="panel-heading b-light bg-light"><strong>你有 <span>2</span> 条未读消息</strong></div>
+							<div class="list-group">
+								<a href class="media list-group-item">
+									<span class="pull-left thumb-sm"><img src="/admin/images/index/logo1.png" alt="..." class="img-circle"></span>
+									<span class="media-body block m-b-none">Yuju活动管理平台V1.0正式上线<br><small class="text-muted">10 分钟前</small></span>
+								</a>
+								<a href class="media list-group-item">
+									<span class="media-body block m-b-none">1.0 首次发布<br><small class="text-muted">1 小时前</small></span>
+								</a>
+							</div>
+							<div class="panel-footer text-sm">
+								<a href class="pull-right"><i class="fa fa-cog"></i></a>
+								<a href="#notes" data-toggle="class:show animated fadeInRight">查看所有消息</a>
+							</div>
+						</div>
+					</div>
+				</li> -->
+				<li class="dropdown">
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle clear" data-toggle="dropdown">
+						<span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+							<img src="/admin/images/index/a0.jpg" alt="..."><i class="on md b-white bottom"></i>
+						</span>
+						<span class="hidden-sm hidden-md"><?php echo SecurityContext::getCurrentUsername(); //$this->session->get('admin_username') ?></span><b class="caret"></b>
+					</a>
+					<!-- dropdown -->
+					<ul class="dropdown-menu animated fadeInRight w">
+						<li class="wrapper b-b m-b-sm bg-light m-t-n-xs">
+							<div><p>管理员</p></div>
+							<progressbar value="60" class="progress-xs m-b-none bg-white"></progressbar>
+						</li>
+<!-- 						<li><a href="#"><span class="badge bg-danger pull-right">30%</span><span>个人资料</span></a></li>
+						<li><a ui-sref="app.page.profile">账号设置</a></li>
+						<li><a ui-sref="app.docs"><span class="label bg-info pull-right">new</span>帮助</a></li>
+						<li class="divider"></li> -->
+						<li><a href="/admin/login/logout?logout=" ui-sref="access.signin">退出登录</a></li>
+					</ul>
+					<!-- / dropdown -->
+				</li>
+			</ul>
+			<!-- / navbar right -->
+
+		</div>
+      <!-- / navbar collapse -->
+    </div>
+<!-- / navbar -->
+

@@ -1,0 +1,66 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3"><a href="/admin/yiyuanqiang/index">一元购 ></a> 城市管理</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+			    <a class="btn btn-default btn-sm" href="/admin/yiyuanqiang/index" role="button">返回</a>
+			    <a class="btn btn-default btn-sm" href="/admin/yiyuanqiang/city_add?action_id={{ actionid }}" role="button">添加城市</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>活动ID</th>
+									<th>城市</th>
+									<th>代号</th>
+									<th>城市ID</th>
+									<th>经度</th>
+									<th>纬度</th>
+									<th>添加时间</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ k['action_id'] }}</td>
+									<td>{{ k['city_name'] }}</td>
+									<td>{{ k['city_code'] }}</td>
+									<td>{{ k['city_id'] }}</td>
+									<td>{{ k['lng'] }}</td>
+									<td>{{ k['lat'] }}</td>
+									<td>{{ date('Y-m-d H:i:s',k['add_time']) }}</td>
+									<td>
+										<a href="/admin/yiyuanqiang/city_add/id/{{ k['id'] }}?action_id={{ actionid }}">编辑</a>&nbsp;|&nbsp;
+										<a href="javascript:delaction({{k['id']}})">删除</a>
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+                    <?php $this->partial("index/page")?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function delaction(m){
+	var r=confirm("你确定要删除吗？");
+	if(r == true){
+		location.href="/admin/yiyuanqiang/city_delete/{{ actionid }}/"+m;
+	}
+}
+</script>
+<?php $this->partial("index/footer")?>

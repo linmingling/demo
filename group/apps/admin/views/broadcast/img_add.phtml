@@ -1,0 +1,133 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<style>
+	.ke-button-common{height: 0;line-height: 0;overflow: hidden;opacity: 0}
+</style>
+<link href="/common/js/kindeditor/themes/default/default.css">
+<script src="/common/js/kindeditor/kindeditor-min.js"></script>
+<script>
+	KindEditor.ready(function(K) {
+		var uploadbutton = K.uploadbutton({
+			button : K('#upload_img')[0],
+			fieldName : 'imgFile',
+			url : '/common/js/kindeditor/php/upload_json.php?dir=image',
+			afterUpload : function(data) {
+				if (data.error === 0) {
+					var url = K.formatUrl(data.url, 'absolute');
+					K('#img_url').val(url);
+				} else {
+					alert(data.message);
+				}
+			},
+			afterError : function(str) {
+				alert('错误信息: ' + str);
+			}
+		});
+		uploadbutton.fileBox.change(function(e) {
+			uploadbutton.submit();
+		});
+	});
+</script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">添加图片</h1>
+			</div>
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post">
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">所属城市:</label>
+							<div class="col-xs-2">
+							 <select class="input-sm form-control w-sm inline v-middle" id="city">
+							 {% for k,key in city_list %}
+                                <option value="{{ key }}" {% if data['city'] == key %}selected{% endif %}>{{ key }}</option>
+                             {% endfor %}
+                            </select>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="head_url" class="col-sm-1 control-label">图片地址:</label>
+							<div class="col-xs-5 form-inline upload">
+								<input class="form-control" type="text" id="img_url" style="width:300px;" value="{{ data['img_url'] }}" />
+								<input class="btn btn-default btn-sm" type="button" id="upload_img" value="Upload" /><br/>推荐尺寸：570px * 400px
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">添加到精彩瞬间:</label>
+							<div class="col-xs-2">
+    						     <select class="input-sm form-control w-sm inline v-middle" id="is_good">
+                                     <option value="1" {% if data['is_good'] == 1 %}selected{% endif %}>是</option>
+                                     <option value="0" {% if data['is_good'] == 0 %}selected{% endif %}>否</option>
+                                 </select>
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="button" id="add-submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/broadcast/img_list" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$("#add-submit").click(function(){
+		var id = "{{ data['id'] }}";
+		var city = $("#city").val();
+		var img_url = $("#img_url").val();
+		var is_good = $("#is_good").val();
+		if(!city || !img_url || !is_good){
+			alert('不能为空');
+		} else {
+    		$.ajax({
+    			type: 'POST',
+    			url: '/admin/broadcast/img_add',
+    			dataType: 'json',
+    			data : {id:id,city:city,img_url:img_url,is_good:is_good},
+    			async : false,
+    			success : function(result){
+    				alert(result.errmsg);
+    				if(!result.errcode){
+    					location.href = "/admin/broadcast/img_list";
+        			}
+    			},
+    		})
+ 		   }
+	   });
+});
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        linkFormat:'yyyy-mm-dd hh:ii:ss',
+        weekStart: 0,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: true,
+		startView: 2,
+		minView: 3,
+		forceParse: 0,
+        showMeridian: 1,
+    });
+    setTimeout(function(){
+    	$(".ke-button-common").hide();
+    	$(".ke-upload-file").css("width","64px")
+    },100)
+});
+
+</script>

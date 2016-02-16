@@ -1,0 +1,616 @@
+<?php $this->partial("yoju_public/head")?>
+<link type="text/css" rel="stylesheet" href="/qixi/pc/css/com.css?v=1.1" media="all" />
+<div class="qixiWarp">
+
+	<!-- 焦点图 -->
+	<div class="qixiBox0 qixiBox" id="box0" style="background: url(/qixi/pc/images/box0_bg.jpg) repeat-x center center">
+		<div class="insideBox"></div>
+	</div>
+	<!-- 报名 -->
+	<div class="qixiBox1 qixiBox" id="box1" >
+		<div class="insideBox">
+			<!-- 报名 -->
+			<div class="baoming" id="baoming">
+				<div class="bmWarp">
+					<div class="bmHead">
+						<p class="bmsTitle">已有<span class="_num">{{ count }}</span>位用户报名</p>
+					</div>
+					<div class="bmForm">
+						<div class="inputBox nameBox">
+							<p class="tips">请填写真实姓名</p>
+							<span class="leftTips">真实姓名：</span>
+							<input type="text" name="name" class="name"/>
+						</div>
+						<div class="inputBox telBox">
+							<p class="tips">请填写手机号码</p>
+							<span class="leftTips">手机号码：</span>
+							<span class="getCode">获取验证码</span>
+							<input type="text" name="tel" class="tel" />
+						</div>
+						<div class="inputBox codeBox">
+							<p class="tips">请填写短信验证码</p>
+							<span class="leftTips">短信验证码：</span>
+							<input type="text" name="code" class="code " />
+						</div>
+
+						<p class="bmBtn">立即报名</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- v卡特权 -->
+	<div class="qixiBox2 qixiBox" id="box2">
+		<div class="insideBox">
+			<div class="title">v卡特权</div>
+			<div class="boxMain" style="background:url(/qixi/pc/images/{{ content['city_code'] }}/vk.png) no-repeat">
+			</div>
+		</div>
+	</div>
+
+	<!-- 活动亮点 -->
+	<div class="qixiBox3 qixiBox" id="box3">
+		<div class="insideBox">
+			<div class="title">活动亮点</div>
+			<div class="boxMain">
+			</div>
+		</div>
+	</div>
+
+	<!-- 参展大牌 -->
+	<div class="qixiBox4 qixiBox" id="box4">
+		<div class="insideBox">
+			<div class="title">参展大牌</div>
+			<div class="boxMain">
+			    <p class="logoTitle qyTitle"></p>
+				<div class="logoBox">
+				{% for k,key in brand_list %}
+					<img src="/qixi/pc/images/logo/{{ key }}.jpg"  />
+				{% endfor %}
+				</div>
+				<p class="logoTitle znTitle"></p>
+				<div class="logoBox">
+					<img src="/qixi/pc/images/logo/13.jpg"  />
+					<img src="/qixi/pc/images/logo/41.jpg"  />
+					<img src="/qixi/pc/images/logo/42.jpg"  />
+					<img src="/qixi/pc/images/logo/6.jpg?v=1.0"  />
+					<img src="/qixi/pc/images/logo/23.jpg"  /><!-- 
+					<img src="/qixi/pc/images/logo/30.jpg"  />
+					<img src="/qixi/pc/images/logo/65.jpg"  />
+					<img src="/qixi/pc/images/logo/76.jpg"  />
+					<img src="/qixi/pc/images/logo/25.jpg"  /> -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 服务保障 -->
+	<div class="qixiBox5 qixiBox" id="box5">
+		<div class="insideBox">
+			<div class="title">服务保障</div>
+			<div class="boxMain">
+			</div>
+		</div>
+	</div>
+
+	<!-- 活动流程 -->
+	<div class="qixiBox6 qixiBox" id="box6">
+		<div class="insideBox">
+			<div class="title">活动流程</div>
+			<div class="boxMain">
+			</div>
+		</div>
+	</div>
+	<!-- 上届风采 -->
+	<div class="qixiBox7 qixiBox" id="box7">
+		<div class="insideBox">
+			<div class="title">上届风采</div>
+			<div class="boxMain cf" id="lastYear">
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/1_s.jpg" big-src="/qixi/pc/images/city/1.jpg"  />
+					</div>
+					<p><span>北京站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/2_s.jpg" big-src="/qixi/pc/images/city/2.jpg"  />
+					</div>
+					<p><span>成都站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/3_s.jpg" big-src="/qixi/pc/images/city/3.jpg"  />
+					</div>
+					<p><span>大连站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/4_s.jpg" big-src="/qixi/pc/images/city/4.jpg"  />
+					</div>
+					<p><span>广州站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/5_s.jpg" big-src="/qixi/pc/images/city/5.jpg"  />
+					</div>
+					<p><span>贵阳站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/6_s.jpg" big-src="/qixi/pc/images/city/6.jpg"  />
+					</div>
+					<p><span>哈尔滨站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/7_s.jpg" big-src="/qixi/pc/images/city/7.jpg"  />
+					</div>
+					<p><span>杭州站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/8_s.jpg" big-src="/qixi/pc/images/city/8.jpg"  />
+					</div>
+					<p><span>合肥站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/9_s.jpg" big-src="/qixi/pc/images/city/9.jpg"  />
+					</div>
+					<p><span>济南</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/10_s.jpg" big-src="/qixi/pc/images/city/10.jpg"  />
+					</div>
+					<p><span>昆明站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/11_s.jpg" big-src="/qixi/pc/images/city/11.jpg"  />
+					</div>
+					<p><span>兰州站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/12_s.jpg" big-src="/qixi/pc/images/city/12.jpg"  />
+					</div>
+					<p><span>南昌站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/13_s.jpg" big-src="/qixi/pc/images/city/13.jpg"  />
+					</div>
+					<p><span>南京站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/14_s.jpg" big-src="/qixi/pc/images/city/14.jpg"  />
+					</div>
+					<p><span>南宁站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/15_s.jpg" big-src="/qixi/pc/images/city/15.jpg"  />
+					</div>
+					<p><span>青岛站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/16_s.jpg" big-src="/qixi/pc/images/city/16.jpg"  />
+					</div>
+					<p><span>厦门站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/17_s.jpg" big-src="/qixi/pc/images/city/17.jpg"  />
+					</div>
+					<p><span>上海站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/18_s.jpg" big-src="/qixi/pc/images/city/18.jpg"  />
+					</div>
+					<p><span>深圳站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/19_s.jpg" big-src="/qixi/pc/images/city/19.jpg"  />
+					</div>
+					<p><span>沈阳站</span></p>
+				</div>
+				<!-- <div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/20_s.jpg" big-src="/qixi/pc/images/city/20.jpg"  />
+					</div>
+					<p><span>石家庄站</span></p>
+				</div> -->
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/21_s.jpg" big-src="/qixi/pc/images/city/21.jpg"  />
+					</div>
+					<p><span>太原站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/22_s.jpg" big-src="/qixi/pc/images/city/22.jpg"  />
+					</div>
+					<p><span>天津站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/23_s.jpg" big-src="/qixi/pc/images/city/23.jpg"  />
+					</div>
+					<p><span>无锡站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/24_s.jpg" big-src="/qixi/pc/images/city/24.jpg"  />
+					</div>
+					<p><span>武汉站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/25_s.jpg" big-src="/qixi/pc/images/city/25.jpg"  />
+					</div>
+					<p><span>西安站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/26_s.jpg" big-src="/qixi/pc/images/city/26.jpg"  />
+					</div>
+					<p><span>长春站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/27_s.jpg" big-src="/qixi/pc/images/city/27.jpg"  />
+					</div>
+					<p><span>长沙站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/28_s.jpg" big-src="/qixi/pc/images/city/28.jpg"  />
+					</div>
+					<p><span>郑州站</span></p>
+				</div>
+				<div class="imgBox">
+					<div class="img">
+						<img src="/qixi/pc/images/city/29_s.jpg" big-src="/qixi/pc/images/city/29.jpg"  />
+					</div>
+					<p><span>重庆站</span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 东莞特有 -->
+	<div class="qixiBox_dg qixiBox">
+		<div class="insideBox">
+			<div class="title">名家居家博园</div>
+			<div class="boxMain">
+			</div>
+		</div>
+	</div>
+	<!-- 展会地址 -->
+	<div class="qixiBox8 qixiBox" id="box8">
+		<div class="insideBox">
+			<div class="title">展会地址</div>
+			<div class="boxMain adressBox cf">
+				<div class="map" id="map"></div>
+				<div class="info">
+					<p class="adText">活动场馆：{{ content['address'] }}</p>
+					<p class="adText">活动时间：{{ content['time'] }}</p>
+					<p class="adText">咨询电话：400-812-9527</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 右侧导航 -->
+	<div class="qixinav hide" id="qixinav">
+		<div class="qixilist">
+			<p>V卡特权</p>
+			<p>活动亮点</p>
+			<p>参展大牌</p>
+			<p>服务保障</p>
+			<p>活动流程</p>
+			<p>上届风采</p>
+			<p>展会地址</p>
+			<p>返回顶部</p>
+		</div>
+	</div>
+	
+	<!-- 查看去年图片 -->
+	<div class="bigImg hide" id="bigImg">
+		<div class="bg close"></div>
+		<img src="/qixi/pc/images/city/1.jpg" class="img"  />
+	</div>
+
+	<!-- 跟随报名条 -->
+	<div class="baoming2 hide" id="baoming2">
+		<div class="insideBox">
+			<img src="/qixi/pc/images/bm2.png" class="bm2"  />
+			<div class="bmForm">
+				<div class="inputBox nameBox">
+					<p class="tips">请填写真实姓名</p>
+					<input type="text" name="name" class="name" placeholder="" />
+				</div>
+				<div class="inputBox telBox">
+					<p class="tips">请填写手机号码</p>
+					<span class="getCode">获取验证码</span>
+					<input type="text" name="tel" class="tel" placeholder="" />
+				</div>
+				<div class="inputBox codeBox">
+					<p class="tips">请填写短信验证码</p>
+					<input type="text" name="code" class="code " placeholder="" />
+				</div>
+				<div class="bmBtn">
+					<p>已有【<span class="red _num">{{ count }}</span>】位用户报名</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+	<!-- 报名成功 -->
+	<div class="bmcg hide" id="bmcg">
+		<div class="bmcgWarp">
+			<p class="bmcgTitle">恭喜您，报名成功</p>
+			<p class="bmcgMain">您已成功报名（{{ content['city'] }}）家装节</p>
+			<p class="bmcgMain">您的姓名和手机号将作为您入场的唯一凭证</p>
+			<span class="bmcgBtn">确认</span>
+		</div>
+	</div>
+
+
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=55TvHWH5h9OAPPLtfdqFFBRB"></script>
+<script type="text/javascript">
+	function djs(dom,i){
+        //console.log(i)
+        if(i<1){
+            $(dom+" .getCode").html("获取验证码").removeClass("false");
+        }else{
+            $(dom+" .getCode").html(i+"s重新获取").addClass("false");
+            setTimeout(function(){djs(dom,i-1)},1000);
+        }
+    }
+    function send(tel, j){
+      $.ajax({
+			async:true,
+			url:'/pc/qixi/send',
+			data:{phone:tel, verify:j},
+			type: 'post',
+			dataType:'json',
+			success:function(result){
+			}
+		});
+    }
+	function getCode(dom){
+		if($(dom+" .getCode").hasClass("false"))return false;
+		var tel = $(dom+" .tel").val();
+		var name = $(dom+" .name").val();
+		var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+		if(!name){
+			$(dom+" .nameBox input").val("");
+			$(dom+" .nameBox .tips").html("请输入姓名").addClass("red");
+		} else if(!mob.test(tel)){
+			$(dom+" .telBox input").val("");
+			$(dom+" .telBox .tips").html("请填写正确的电话号码").addClass("red");
+		}else{
+			//发短信
+        	$.ajax({
+    			async:true,
+    			url:'/pc/qixi/getVerify',
+    			data:{name:name, phone:tel},
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+    				if(result.errcode){
+    					alert(result.errmsg);
+    				} else {
+	    			    djs(dom, 60);
+	    			    send(tel, result.verify);
+    				}
+    			}
+    		});
+		}
+	}
+	function bm(dom){
+		var name = $(dom+" .name").val();
+		var tel = $(dom+" .tel").val();
+		var code = $(dom+" .code").val();
+		var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+		var telTips = $(dom+" .telBox .tips");
+        var codeTips = $(dom+" .codeBox .tips");
+        var nameTips = $(dom+" .nameBox .tips");
+		var flag = 1;
+		//console.log(dom)
+		if(name == ""){
+			nameTips.html("请填写真实姓名").addClass("red");
+			flag=0;
+		}
+		if(!mob.test(tel)){
+			telTips.html("请填写正确的电话号码").addClass("red");
+			$(dom+" .tel").val("")
+			flag=0;
+		}
+		if(code == ""){
+			codeTips.html("请填写短信验证码").addClass("red");
+			flag=0;
+		}
+
+		if(flag){
+			//报名 
+			//验证码错误 其他错误使用alert提示
+        	$.ajax({
+    			async:true,
+    			url:'/pc/qixi/submit',
+    			data:{code:code, name:name, phone:tel},
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+    				if(result.errcode == 1001 || result.errcode == 1003 || result.errcode == 1004){
+    					codeTips.html("验证码错误").addClass("red");
+    					$(dom+" .code").val("");
+    				} else if(!result.errcode){
+    					$("#bmcg").fadeIn(300);
+        				$("._num").html(parseInt($("._num").html())+1);
+        				$("#baoming input").val("");
+						$("#baoming2 input").val("");
+						$("#baoming .name").focus();
+        				send(tel, 0);
+        			}else {
+        				alert(result.errmsg);
+    				}
+    			}
+    		});
+		}
+	}
+	function tips(dom){
+		var name = $(dom+" .name").val();
+        var tel = $(dom+" .tel").val();
+        var code = $(dom+" .code").val();
+        var telTips = $(dom+" .telBox .tips");
+        var codeTips = $(dom+" .codeBox .tips");
+        var nameTips = $(dom+" .nameBox .tips");
+
+        (name == "")?nameTips.html("请填写真实姓名"):nameTips.html("");
+        (tel == "")?telTips.html("请填写手机号码"):telTips.html("");
+        (code == "")?codeTips.html("请填写短信验证码"):codeTips.html("");
+        $(dom+" input").prev().removeClass("red");
+	}
+
+	$(function(){
+		//第一个报名
+		$("#baoming input").focus(function(){
+			tips("#baoming")
+		})
+		$("#baoming input").keyup(function(){
+	        tips("#baoming")
+	    });
+
+		$("#baoming .getCode").click(function(){
+			getCode("#baoming");
+		})
+
+		$("#baoming .bmBtn").click(function(){
+			
+			bm("#baoming");
+		})
+		//第二个报名
+		$("#baoming2 input").focus(function(){
+			tips("#baoming2")
+		})
+		$("#baoming2 input").keyup(function(){
+	        tips("#baoming2")
+	    });
+
+		$("#baoming2 .getCode").click(function(){
+			getCode("#baoming2");
+		})
+
+		$("#baoming2 .bmBtn").click(function(){
+			bm("#baoming2");
+		})
+		$("#bmcg .bmcgBtn").click(function(){
+			$("#bmcg").hide();
+		})
+
+		var box1 = $("#box1").offset().top;
+		var box2 = $("#box2").offset().top;
+		var box3 = $("#box3").offset().top;
+		var box4 = $("#box4").offset().top;
+		var box5 = $("#box5").offset().top;
+		var box6 = $("#box6").offset().top;
+		var box7 = $("#box7").offset().top;
+		var box8 = $("#box8").offset().top;
+
+		$(window).scroll(function(){
+			box1 = $("#box1").offset().top;
+			box2 = $("#box2").offset().top;
+			box3 = $("#box3").offset().top;
+			box4 = $("#box4").offset().top;
+			box5 = $("#box5").offset().top;
+			box6 = $("#box6").offset().top;
+			box7 = $("#box7").offset().top;
+			box8 = $("#box8").offset().top;
+			var win_st = $(window).scrollTop();
+			//console.log(box1+" , "+box1+" , "+box3+" , "+box4+" , "+box5+" , "+box6+" , "+box7);
+			//导航条
+			if(win_st>box8-1){
+				$("#qixinav p").removeClass("hover").eq(6).addClass("hover");
+			}else if(win_st>box7-1){
+				$("#qixinav p").removeClass("hover").eq(5).addClass("hover");
+			}else if(win_st>box6-1){
+				$("#qixinav p").removeClass("hover").eq(4).addClass("hover");
+			}else if(win_st>box5-1){
+				$("#qixinav p").removeClass("hover").eq(3).addClass("hover");
+			}else if(win_st>box4-1){
+				$("#qixinav p").removeClass("hover").eq(2).addClass("hover");
+			}else if(win_st>box3-1){
+				$("#qixinav p").removeClass("hover").eq(1).addClass("hover");
+			}else if(win_st>box2-1){
+				$("#qixinav p").removeClass("hover").eq(0).addClass("hover");
+			}else{
+				$("#qixinav p").removeClass("hover");
+			}
+
+			//报名条
+			if(win_st>480){
+				$("#baoming2").fadeIn(500);
+				$("#qixinav").fadeIn(500);
+
+			}else{
+				$("#baoming2").fadeOut(500);
+				$("#qixinav").fadeOut(500);
+			}
+			
+		});
+		$('#qixinav p').click(function(){
+			index = $(this).index();
+			//$(this).addClass('hover').siblings().removeClass('hover');
+			//console.log(index);
+			switch(index){
+				case 0: $("html,body").animate({scrollTop: box2}, 300);break;
+				case 1: $("html,body").animate({scrollTop: box3}, 300);break;
+				case 2: $("html,body").animate({scrollTop: box4}, 300);break;
+				case 3: $("html,body").animate({scrollTop: box5}, 300);break;
+				case 4: $("html,body").animate({scrollTop: box6}, 300);break;
+				case 5: $("html,body").animate({scrollTop: box7}, 300);break;
+				case 6: $("html,body").animate({scrollTop: box8}, 300);break;
+				case 7: $("html,body").animate({scrollTop: 0}, 300);break;
+			}
+		});
+		//点击查看往年大图
+		$("#lastYear .img img").click(function(){
+			var src = $(this).attr("big-src");
+			var w,h;
+			$("#bigImg .img").attr("src",src);
+			$("#bigImg").fadeIn();
+			/*w = $("#bigImg .img").width();
+			$("#bigImg .img").css({"margin-left":-w/2})*/
+			
+		})
+		$("#bigImg .close").click(function(){
+			$("#bigImg").hide();
+		})
+		//地图
+		var map1 = new BMap.Map("map");           // 创建Map实例
+	    var point1 = new BMap.Point({{ content['address_x'] }},{{ content['address_y'] }});  
+	    map1.centerAndZoom(point1,16);               
+	    map1.enableScrollWheelZoom();  
+	    var marker1 = new BMap.Marker(point1);  // 创建标注
+		map1.addOverlay(marker1);               // 将标注添加到地图中
+		marker1.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+		//添加工具
+		var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+		var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+		map1.addControl(top_left_control);        
+		map1.addControl(top_left_navigation);
+	});
+</script>
+
+<?php $this->partial("yoju_public/footer")?>

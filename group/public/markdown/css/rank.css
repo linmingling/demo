@@ -1,0 +1,189 @@
+body{margin:0px;padding:0;border:0px;font: 12px "微软雅黑";}
+
+
+
+/*砍价页*/
+
+.bg3{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #f3f5f7;
+    border: 0px;
+
+}
+
+.head{
+	width:100%;	
+
+}
+
+.title2{
+	width: 100%;
+	font-size: 14px;
+	font-weight: bold;
+	color:black;
+	text-align: center;
+	padding:4% 0 3% 0;
+}
+
+.b-cls{
+	width: 10%;
+	display: block;
+	margin-top:-10%;
+	padding: 1% 0 1% 2%;
+	
+	
+}
+
+.b-cls img{
+	width:60%;
+}
+
+.rk-banner{
+	width: 100%;
+}
+
+.rk-banner img{
+	width: 100%;
+}
+
+.ranker{
+	width:100%;
+    margin:7% auto;
+
+
+}
+
+.rk-u{
+	width: 100%;
+	border-bottom: 1px solid #d7d7d7;
+	margin-top:18px;
+	padding-bottom: 120px;
+	clear: both;
+}
+
+.u-pic{
+	width: 16%;
+	border-radius: 50%;
+	float:left;
+	margin-left:3%;
+	position: relative;
+}
+
+.u-pic img{
+	border-radius: 50%;
+	width:100%;
+}
+
+.rk-u .num{
+	width:36%;
+	top:1%;
+	left:-8%;
+	position: absolute;
+}
+
+.rk-u .mark{
+	position:absolute;
+	top:7%;
+	left:31%;
+	font-size: 12px;
+	color:white;
+}
+
+.rk-u .num img{
+	width:100%;
+}
+
+.u-name{
+	width: 100%;
+	font-size: 12px;
+	top:1%;
+	text-align: center;
+	overflow: hidden;
+}
+
+.pd-info{
+	width:78%;
+	font-size: 12px;
+	float:right;
+	position: relative;
+	left:-1%;
+}
+
+.pd-f{
+	width:100%;
+}
+
+
+.pd-info .word{
+	color:#666666;
+}
+
+.pd-info .word .bk-p{
+	color:#e4393c;
+}
+
+.rk-u .detail{
+	display: block;
+	width:36%;
+	top:1%;
+	left:5%;
+}
+
+.rk-u .detail img{
+	width:100%;
+}
+
+/*top*/
+
+.top{
+	display: block;
+	width: 19%;
+	margin:0 0 0 80%;
+    position: fixed;
+	bottom: 0;
+	z-index: 1;
+}
+
+.top img{
+	width: 100%;
+}
+
+.hide{
+	display: none;
+}
+
+/*底部*/
+
+.bottom{
+	width: 100%;
+	margin:0 auto;
+	margin-top: 99%;
+	padding-bottom: 3%;
+}
+
+.brand{
+	width: 100%;
+	font-size:12px;
+	margin:0 auto;
+	text-align: center;
+	color:black;
+}
+
+.cr{
+	width: 100%;
+	font-size:12px;
+	margin:0 auto;
+	text-align: center;
+	color:black;
+}
+
+
+
+/*ip6+*/
+@media only screen and (max-width: 414px) {
+.rk-u .mark{
+	top:16%;
+	left:33%;
+}
+}

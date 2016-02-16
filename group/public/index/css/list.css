@@ -1,0 +1,69 @@
+/*
+* 首页 一元抢列表 优品团列表 
+* 2016-1-21
+*/
+/* 首页顶部导航 */
+.indexHead{width: 100%;height: 88px;line-height: 88px;background:#ff6325;color: #fff;display: block;}
+.indexHead .city{height:88px;line-height: 88px;text-indent: 20px;color: #fff;float: left;display: block;}
+.indexHead .search{width:88px;height:88px;line-height: 88px;float: right;background: url(../images/sprite.png) no-repeat 22px -54px;}
+.indexHead .title{background: url(../images/sprite.png) no-repeat 315px 22px;color: #ff6325;font-size: 0}
+
+/* 首页焦点图 */
+.focus{width: 100%;height: 250px;position: relative;overflow: hidden;background: url(../images/default_750x250.png) no-repeat 100% 100%;}
+.focus img{width: 100%;height: 250px;}
+.focus .pagination{width:100%;position: absolute;bottom: 10px;z-index: 1;text-align: center;}
+.focus .swiper-pagination-switch{width: 14px; height: 14px;display: inline-block; border-radius: 14px; background: #fff;opacity: 0.5; margin: 0 5px; cursor: pointer;}
+.focus .swiper-active-switch{background: #fff;opacity: 1}
+
+.indexBox{background: #fff;margin-top: 20px;}
+/* 首页一元抢 */
+.qiangTitle{width: 100%;height: 82px;line-height: 82px;position: relative;border-bottom: 1px solid #e5e5e5;background: url(../images/sprite.png) no-repeat 20px -120px;text-indent: 60px}
+.qiangTitle .more{height: 82px;line-height: 82px;position: absolute;right: 20px;top: 0}
+.qiangMain .qiangImg{width: 750px;height: 250px}
+.qiangMain .swiper-slide{width: 900px}
+.qiangMain .qiangBox{display: inline-block;}
+.qiangMain .qiangBox .pImg{width: 174px;height: 174px;margin:20px 0;padding:0 20px;border-right: 1px solid #e5e5e5}
+.qiangMain .qiangBox .pInfo{width: 174px;margin:0 20px 20px 20px;position: relative;}
+.qiangMain .qiangBox .pInfo .pSold{position: absolute;right: 0px;top: 0}
+.qiangMain .qiangBox .pInfo .progress{width:100px;height: 12px;margin:5px 0 0 0;border: 1px solid #ff6325;border-radius: 50px;overflow: hidden;}
+.qiangMain .qiangBox .pInfo .progress span{width:0;height:12px;display: block;background: #ffba9e;-webkit-transition: width 2s;transition: width 2s;}
+
+/* 首页优品团 */
+.groupTitle{width: 100%;height: 82px;line-height: 82px;border-bottom: 1px solid #e5e5e5;}
+.groupTitle span{width: 24%;height: 80px;display: inline-block;text-align: center;border-bottom: 2px solid #fff}
+.groupTitle .hover{color: #ff6325;border-bottom: 2px solid #ff6325}
+
+/*列表页*/
+.list{background: #fff;margin-top: 20px}
+.list .typeTitle{width: 100%;height: 88px;line-height: 88px;text-indent: 20px;border-bottom: 1px solid #e5e5e5;position: relative;}
+.list .typeTitle .typeName{font-weight: bold}
+.list .typeTitle i{width: 25px;height: 88px;position: absolute;right: 20px;top: 0;background: url(../images/sprite.png) no-repeat 0 -324px;transition:all 0.5s;-webkit-transition:all 0.5s;}
+.list .groupMain{height: 0;opacity: 0;overflow: hidden;transition:all 1s;-webkit-transition:all 1s;}
+.list .hover .groupMain{height: auto;opacity: 1}
+.list .hover .typeTitle{border-bottom: 0}
+.list .hover .typeTitle i{transform:rotate(180deg);}
+.listTips{background: #f5f5f5;text-align: center;padding:10px 0;}
+.listTips2{text-align: center;padding:20px 0;}
+/*单个商品*/
+.productBox{height: 220px;padding:20px;overflow: hidden;border-bottom: 1px solid #e5e5e5;display: block;position: relative;}
+.productBox .pImg{width: 220px;height: 220px;border-radius: 5px;float: left;margin-right: 20px}
+.productBox .pInfo{width: 470px;float: left;}
+.productBox .pTitle{height: 80px;overflow: hidden;position: relative;}
+.productBox .pTitle .iconWarp{position: absolute;right: 20px;bottom: 5px;border-radius: 0;background: #fff}
+.productBox .pTitle .icon{color:#fff;font-style: normal;padding:1px 5px;border-radius: 5px;margin-left: 5px}
+.productBox .pTitle .icon1{background: #ff635b}
+.productBox .pTitle .icon2{background: #ffa627}
+.productBox .pAdress{height: 32px;margin:15px 0;overflow: hidden;position: relative;}
+.productBox .pAdress .distance{position: absolute;right: 0;top: 0}
+.productBox .priceBox1{position: relative;}
+.productBox .priceBox1 .price{margin:0 5px;}
+.productBox .priceBox1 .discount{width:80px;height: 32px;color: #fff;text-indent: 20px;display:inline-block;background: url(../images/sprite.png) no-repeat 0 -219px;}
+.productBox .priceBox1 .original{text-decoration: line-through;}
+.productBox .priceBox1 .time{position: absolute;right: 20px;top: 0;text-indent: 35px;background: url(../images/sprite.png) no-repeat 0 -496px;}
+.productBox .priceBox2{position: relative;}
+.productBox .priceBox2 .original{text-decoration: line-through;}
+.productBox .priceBox2 .sold{position: absolute;right: 0;top: 0}
+.productBox .soldBox{position: absolute;bottom: 20px}
+.productBox .soldBox .progress{width:200px;height: 12px;margin:5px 0 0 0;border: 1px solid #ff6325;border-radius: 50px;overflow: hidden;}
+.productBox .soldBox .progress span{width:0;height:12px;display: block;background: #ffba9e;-webkit-transition: width 2s;transition: width 2s;}
+.productBox .btn{width: 160px;height: 64px;line-height: 64px;text-align: center;border-radius: 10px;background: #ff6325;color: #fff;position: absolute;right: 20px;bottom: 20px}

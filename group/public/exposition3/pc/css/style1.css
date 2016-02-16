@@ -1,0 +1,90 @@
+@charset "utf-8";
+body{}
+.warp{background: #ea3031}
+/*焦点图*/
+.light{width: 970px;height: 410px;position: absolute;top: 174px;left: 129px;}
+.light {
+	-webkit-animation:light 0.8s linear infinite alternate;
+    -moz-animation:light 0.8s linear infinite alternate;
+	animation:light 0.8s linear infinite alternate;
+}
+.light1{-webkit-animation-delay:.8s;-moz-animation-delay:.8s;animation-delay:.8s;}
+.light1{-webkit-animation-delay:.4s;-moz-animation-delay:.4s;animation-delay:.4s;}
+@-webkit-keyframes light {
+	0% {opacity:1;}
+	50% {opacity:0;}
+	100% {opacity:1;}
+}
+@-moz-keyframes light {
+	0% {opacity:1;}
+	50% {opacity:0;}
+	100% {opacity:1;}
+}
+@keyframes light {
+	0% {opacity:1;}
+	50% {opacity:0;}
+	100% {opacity:1;}
+}
+/*常规报名*/
+.baoming1{position: absolute;left:120px;top:190px;}
+.baoming1 .bmForm .inputBox{margin-top: 20px;position: relative;}
+.baoming1 .bmForm input{width: 402px;height: 60px;padding:0 10px;line-height: 60px;font-size:20px;border:0;position: relative;z-index: 1;background: none}
+.baoming1 .bmForm select{width: 422px;height: 60px;line-height: 60px;font-size:20px;position: relative;z-index: 1;border:1px solid #d7d7d7;}
+.baoming1 .bmForm .tips{width:400px;height: 60px;padding:0 10px;color: #d2d2d2;font-size: 20px;line-height: 60px;border:1px solid #d7d7d7;background: #fff;position: absolute;top:0;left:0;}
+.baoming1 .bmForm .bmTitle{font-size: 32px;color: #ea3031;font-weight: bold;text-align: center;}
+.baoming1 .bmForm .tips2{color: #f1b002;font-size: 20px}
+.baoming1 .bmForm .bmBtn{width: 235px;height: 56px;line-height: 56px;border-radius: 56px;font-size: 24px;margin:50px auto 0 auto;background: #ea3031;color: #fff;font-weight: bold;text-align: center;cursor: pointer;}
+.baoming1 .bmForm .step3{width: 435px;text-align: center;color: #656565;font-size: 14px}
+.baoming1 .bmForm .step3 .bmTitle{padding-top: 60px;background: url(../images/icon1.png) no-repeat center top;}
+.baoming1 .bmForm .step3 .ewm{width: 212px;height: 212px;margin:20px 0;}
+
+/*底部跟随报名*/
+.baoming3{width: 100%;min-width: 1200px;height:80px;background: url(../images/black_bg_08.png) repeat;position: fixed;bottom:0;left: 0;z-index: 1}
+.baoming3 .insideBox{height: 80px}
+.baoming3 .bm2{width:194px;height: 103px;position: absolute;bottom:0;left: 160px}
+.baoming3 .bmForm{width:990px;position: absolute;top:20px;left:430px;}
+.baoming3 .bmForm .inputBox{float: left;position: relative;margin-right: 15px}
+.baoming3 .bmForm input{width: 130px;height: 40px;padding:0 5px;line-height: 40px;font-size:14px;border:0;position: relative;z-index: 1;background: none}
+.baoming3 .bmForm .tips{width:130px;height: 38px;padding:0 5px;line-height: 38px;color: #a7a7a7;font-size: 14px;background: #fff;border-radius: 2px;position: absolute;top:0;left:0;}
+.baoming3 .bmForm select{width:140px;height: 38px;line-height: 38px;font-size: 14px;background: #fff;border-radius: 2px;}
+.baoming3 .bmForm .bmBtn{width: 110px;height: 38px;line-height: 38px;border-radius: 2px;border:1px solid #bc1e1f;font-size: 18px;margin-right:5px;font-weight: bold;text-align: center;cursor: pointer;;background: #ea3031;color: #fff;float: left;}
+.baoming3 .bmForm .getCode{width: 100px;height: 38px;line-height: 38px;border-radius: 2px;border:1px solid #bc1e1f;font-size: 16px;margin-right:5px;text-align: center;cursor: pointer;;background: #ea3031;color: #fff;float: left;}
+.baoming3 .getCode.false{background: #999!important;border-color:#999!important}
+/*已报名信息*/
+.bmInfo{width:400px;position: absolute;right: 100px;top: 150px}
+.bmInfo .num{font-size: 30px;color: #656565;font-weight: bold;}
+.bmInfo .num span{font-size: 40px;color: #ea3031}
+.bmInfo .time{font-size: 18px;color: #656565;font-weight: bold}
+.bmInfo .time .text{font-size: 30px}
+.bmInfo .time .bg{background: #656565;color: #fff;border-radius: 3px;padding:0 3px;margin:0 3px;}
+.bmInfo .marquee{font-size: 20px;color: #999;margin-top: 20px;width:400px;height:350px; overflow:hidden;}
+.bmInfo .marquee span{margin-right: 20px;float:left;}
+.bmInfo .marquee .name{width: 60px}
+/*右侧导航*/
+.expositionnav{width: 144px;height:480px;position: fixed;right:20px;top:50px;z-index: 1;color:#ba7d07;background: url(../images/rightNav.png) no-repeat center center;}
+
+.expositionnav .expositionlist{width:80px;margin:90px 0 0 32px;font-size: 14px;text-align: center;}
+.expositionnav .expositionlist p{height:37px;line-height: 37px;cursor: pointer;}
+.expositionnav .expositionlist span{border-radius: 20px;padding:2px 10px;}
+.expositionnav .expositionlist .hover span{background: #f5c91a;}
+.expositionnav .gototop{width: 80px;height: 50px;position: absolute;bottom: 15px}
+
+/*每模块背景图*/
+.expositionBox0{height: 941px;background: url(../images/box0_bg.jpg) no-repeat top center}
+.expositionBox1{height:710px;background: url(../images/box1_bg.jpg) no-repeat top center}
+.expositionBox2{height:1050px;background: url(../images/box2_bg.png) no-repeat top center}
+.expositionBox3{height:720px;background: url(../images/box3_bg.png) no-repeat top center}
+.expositionBox4{height:1000px;background: url(../images/box4_bg.png) no-repeat top center}
+.expositionBox5{height:410px;background: url(../images/box5_bg.png) no-repeat top center}
+.expositionBox6{height:700px;background: url(../images/box6_bg.png) no-repeat top center}
+
+.expositionBox1 .insideBox{height:706px;background: url(../images/box1_insideBg.png) no-repeat center center}
+.expositionBox2 .boxMain{height:795px;margin-top: 205px;background: url(../images/box2_insideBg.jpg) no-repeat center center}
+.expositionBox3 .boxMain{margin-top: 140px}
+.expositionBox4 .boxMain{margin-top: 140px}
+.expositionBox5 .boxMain{height:260px;margin-top: 140px;background: url(../images/box5_insideBg.png) no-repeat center center}
+.expositionBox6 .boxMain{height:662px;background: url(../images/box6_insideBg.png) no-repeat center center}
+
+.expositionBox3 .box3_left{width: 289px;height: 548px;}
+
+.expositionBox6 .map, .expositionBox6 .info{top: 160px}

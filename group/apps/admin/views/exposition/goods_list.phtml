@@ -1,0 +1,72 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">第三届优居家博会-商品列表</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" href="/admin/exposition/index" role="button" style="margin-right:10px;">返回</a>
+			    <a class="btn btn-default btn-sm" href="/admin/exposition/goods_add" role="button">添加商品</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th style="width:150px;">商品名称</th>
+									<th>库存</th>
+									<th>预定/抢购数量</th>
+									<th>原价</th>
+									<th>抢购/预定价</th>
+									<th style="width:95px;">类型</th>
+									<th>是否上架</th>
+									<th style="width:90px;">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ k['goods_name'] }}</td>
+									<td>{{ k['stock'] }}</td>
+									<td>{{ k['real_num'] }}</td>
+									<td>{{ k['market_price'] }}</td>
+									<td>{{ k['order_price'] }}</td>
+									<td>
+									{% if k['goods_type'] ==  0 %}一元抢{% else %}产品预定{% endif %}
+									</td>
+									<td>
+									{% if k['is_show'] == 0 %}<span class="label bg-danger">未上架</span>
+                                    {% else %}<span class="label bg-success">已上架</span>
+                                    {% endif %}
+									</td>
+									<td>
+										<a href="/admin/exposition/goods_add/{{ k['id'] }}">编辑</a>&nbsp;|&nbsp;
+										<a href="javascript:delaction({{k['id']}})">删除</a>
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+                    <?php $this->partial("index/page")?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function delaction(m){
+	var r=confirm("你确定要删除吗？");
+	if(r == true){
+		location.href="/admin/exposition/goods_delete/id/"+m;
+	}
+}
+</script>
+<?php $this->partial("index/footer")?>

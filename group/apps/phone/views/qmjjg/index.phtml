@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>全民家居购</title>
+<meta name="keywords" content="全民家居购" />
+<meta name="description" content="全民家居购" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/qmjjg/css/com.css?v=2.1" />
+<script type="text/javascript">
+var payDomain = '{{payDomain}}';
+</script>
+</head>
+<body>
+	<div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+<div class="wraper">
+    <div class="swiper-container swiper-pages" id="swiper-container1">
+        <div class="swiper-wrapper" id="wrapper">
+				<!-- 首页 -->
+              <div class="swiper-slide ">
+				 <div class="container comPs1">
+					<div class="am bg">
+						{% if content['city_code'] != 'shenzhen' and content['city_code'] != 'cangzhou' and content['city_code'] != 'haerbin' %}
+						<img src="/qmjjg/images/p1_bg.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/p1_bg.png?v=1.0"  />
+						{% endif %}
+					</div>
+					<!-- 首页地址时间 开始 -->
+					<div class="am am2">
+						<img src="/qmjjg/images/p1_2.png?v=1.0"  />
+						<div class="info1">
+							<p class="time"><span>{{ content['time'] }}</span></p>
+							<p class="adress">{{ content['address'] }}</p>
+						</div>
+					</div>
+					<!-- 首页地址时间 结束 -->
+					<div class="am am1">
+						<img src="/qmjjg/images/p1_1.png?v=1.0"  />
+					</div>
+				 	<div class="am logo">
+				 		{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+					{% endif %}
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="1" id="{{ content['city_code'] }}_page_1">
+				 			{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 			{% else %}
+				 			<p class="p3">0元领票</p>
+				 			{% endif %}
+				 		</div>
+				 		{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+              {% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+				<!-- 让你省出精装修 -->
+              <div class="swiper-slide">
+				 <div class="container comPs2">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/line.png"  />
+					</div>
+					<div class="am am1">
+						{% if content['city_code'] != 'shenzhen' and content['city_code'] != 'nanjing' and content['city_code'] != 'baoding' and content['city_code'] != 'handan' and content['city_code'] != 'qinhuangdao' and content['city_code'] != 'tianjin' and content['city_code'] != 'jinan' and content['city_code'] != 'liaocheng' and content['city_code'] != 'shijiazhuang' and content['city_code'] != 'chengdu' and content['city_code'] != 'heze' and content['city_code'] != 'chengde' and content['city_code'] != 'wuxi' and content['city_code'] != 'zhangjiakou' and content['city_code'] != 'haerbin' and content['city_code'] != 'tianjin' and content['city_code'] != 'cangzhou' and content['city_code'] != 'dongying' %}
+						<img src="/qmjjg/images/p2_1.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/p2_1.png?v=1.0"  />
+						{% endif %}
+					</div>
+
+				 	<div class="am logo">
+				 		{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="2" id="{{ content['city_code'] }}_page_2">
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+				{% endif %}
+              <!-- 5折大促 -->
+              <div class="swiper-slide">
+				 <div class="container comPs3">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/line.png"  />
+					</div>
+					<div class="am am1">
+						{% if content['city_code'] != 'shenzhen' %}
+						<img data-src="/qmjjg/images/p3_1.png"  />
+						{% else %}
+						<img data-src="/qmjjg/images/{{ content['city_code'] }}/p3_1.png"  />
+						{% endif %}
+					</div>
+					{% if content['city_code'] == 'shenzhen' %}
+					<div class="am am2">
+						<div id="swiper4" class="swiper swiperStyle4">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<img src="/qmjjg/images/default_0yuan.png" data-src="/qmjjg/images/{{ content['city_code'] }}/p3/1.jpg"  />
+									</div>
+                         			<div class="swiper-slide">
+										<img src="/qmjjg/images/default_0yuan.png" data-src="/qmjjg/images/{{ content['city_code'] }}/p3/2.jpg"  />
+									</div>
+								</div>
+							</div>
+							<div class="pagination"></div>
+						</div>
+					</div>
+					
+					{% endif %}
+
+				 	<div class="am logo">
+						{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+					{% endif %}
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="3" id="{{ content['city_code'] }}_page_3">
+				 			{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 			{% else %}
+				 			<p class="p3">0元领票</p>
+				 			{% endif %}
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+				{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+              <!-- 1元抢 -->
+              <div class="swiper-slide">
+				 <div class="container comPs4">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/line.png"  />
+					</div>
+					<div class="am am1">
+						{% if content['city_code'] != 'shenzhen' %}
+						<img data-src="/qmjjg/images/p4_1.png"  />
+						{% else %}
+						<img data-src="/qmjjg/images/{{ content['city_code'] }}/p4_1.png"  />
+						{% endif %}
+					</div>
+					<!-- 一元抢 产品展示 开始 -->
+					<div class="am am2 ">
+						<div id="swiper2" class="swiper swiperStyle2">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									{% if content['city_code'] != 'shenzhen' %}
+									<div class="swiper-slide">
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/1.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/2.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/3.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/4.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/5.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/6.jpg?v=1.0"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="textBox">
+											具体产品以活动页面为准
+										</div>
+									
+									</div>
+									<div class="swiper-slide">
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/7.jpg?v=1.0"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/8.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/9.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/10.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/11.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/12.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="textBox">
+											具体产品以活动页面为准
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/13.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/14.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/15.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/16.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/17.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/18.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="textBox">
+											具体产品以活动页面为准
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/19.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/20.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/21.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/22.jpg?v=1.0"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/23.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/24.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="textBox">
+											具体产品以活动页面为准
+										</div>
+									</div>
+									<div class="swiper-slide">
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/25.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/26.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/27.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/28.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/29.jpg?v=1.0"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/yiyuanqiang/30.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="textBox">
+											具体产品以活动页面为准
+										</div>
+									</div>
+									{% else %}
+									<div class="swiper-slide">
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/1.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/2.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/3.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/4.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/5.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/6.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="textBox">
+											具体产品以活动页面为准
+										</div>
+										
+									</div>
+									<div class="swiper-slide">
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/7.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/8.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/9.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/10.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/11.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/12.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="textBox">
+											具体产品以活动页面为准
+										</div>
+										
+									</div>
+									<div class="swiper-slide">
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/13.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/14.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/15.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/16.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/17.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="imgBox">
+											<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/yiyuanqiang/18.jpg"  />
+											<div class="price">￥<span>1</span></div>
+										</div>
+										<div class="textBox">
+											具体产品以活动页面为准
+										</div>
+										
+									</div>
+									{% endif %}
+								</div>
+							</div>
+
+							<div class="pagination"></div>
+						</div>
+					</div>	
+
+					<!-- 一元抢 产品展示 结束 -->
+
+				 	<div class="am logo">
+						{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="4" id="{{ content['city_code'] }}_page_4">
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+              {% endif %}
+				{% if content['city_code'] != 'handan' and content['city_code'] != 'dongying' and content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+              <!-- 2000抵用券 -->
+              <div class="swiper-slide">
+				 <div class="container comPs5">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/line.png"  />
+					</div>
+					<div class="am am1">
+						{% if content['city_code'] != 'shenzhen' and content['city_code'] != 'nanjing' and content['city_code'] != 'baoding' and content['city_code'] != 'tianjin' and content['city_code'] != 'tangshan' and content['city_code'] != 'shijiazhuang' and content['city_code'] != 'chengdu' and content['city_code'] != 'heze' and content['city_code'] != 'tianjin' and content['city_code'] != 'haerbin' and content['city_code'] != 'cangzhou' %}
+						<img data-src="/qmjjg/images/p5_1.png"  />
+						{% else %}
+						<img data-src="/qmjjg/images/{{ content['city_code'] }}/p5_1.png"  />
+						{% endif %}
+					</div>
+
+				 	<div class="am logo">
+						{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="5" id="{{ content['city_code'] }}_page_5">
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+				{% endif %}
+              
+				{% if content['city_code'] != 'cangzhou' and content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+				<!-- 免单 -->
+              <div class="swiper-slide">
+				 <div class="container comPs6">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/line.png"  />
+					</div>
+					<div class="am am1">
+						{% if content['city_code'] != 'shenzhen' and content['city_code'] != 'qinhuangdao'  %}
+						<img data-src="/qmjjg/images/p6_1.png"  />
+						{% else %}
+						<img data-src="/qmjjg/images/{{ content['city_code'] }}/p6_1.png"  />
+						{% endif %}
+					</div>
+
+				 	<div class="am logo">
+						{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="6" id="{{ content['city_code'] }}_page_6">
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+              {% endif %}
+
+
+              {% if content['city_code'] != 'heze' and content['city_code'] != 'nanjin' and content['city_code'] != 'qinhuangdao' and content['city_code'] != 'shanghai' and content['city_code'] != 'shenzhen' and content['city_code'] != 'shijiazhuang' and content['city_code'] != 'suihua' and content['city_code'] != 'taiyuan' and content['city_code'] != 'weifang' and content['city_code'] != 'baoding' and content['city_code'] != 'dongying' and content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian'  %}
+              <!-- 新增特有普通页1 -->
+              <div class="swiper-slide">
+				 <div class="container newPs1">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/line.png"  />
+					</div>
+					<div class="am am1">
+						<img data-src="/qmjjg/images/{{ content['city_code'] }}/newPage1.png?v=1.0"  />
+					</div>
+
+				 	<div class="am logo">
+						{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="12" id="{{ content['city_code'] }}_newPage_1">
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+				{% endif %}
+
+				
+				{% if content['city_code'] == 'taiyuan' %}
+				<!-- 新增 产品展示页 -->
+              <div class="swiper-slide">
+				 <div class="container newPs2">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/line.png"  />
+					</div>
+					<div class="am am1">
+						<img data-src="/qmjjg/images/{{ content['city_code'] }}/newPage2.png"  />
+					</div>
+					<!--  产品展示 开始 -->
+					<div class="am am2 ">
+						<div id="swiper5" class="swiper swiperStyle5">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/chanpin/1.jpg"  />
+									</div>
+									<div class="swiper-slide">
+										<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/chanpin/2.jpg"  />
+									</div>
+									<div class="swiper-slide">
+										<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/chanpin/3.jpg"  />
+									</div>
+									<div class="swiper-slide">
+										<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/chanpin/4.jpg"  />
+									</div>
+									<div class="swiper-slide">
+										<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/chanpin/5.jpg"  />
+									</div>
+									<div class="swiper-slide">
+										<img src="/qmjjg/images/default_yiyuanqiang.png" data-src="/qmjjg/images/{{ content['city_code'] }}/chanpin/6.jpg"  />
+									</div>
+									
+								</div>
+							</div>
+
+							<div class="pagination"></div>
+						</div>
+					</div>	
+					<!-- 产品展示 结束 -->
+
+				 	<div class="am logo">
+						{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="13" id="{{ content['city_code'] }}_newPage_2">
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+         	{% endif %}
+              <!-- 一站购 -->
+              <div class="swiper-slide">
+				 <div class="container comPs7">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/line.png"  />
+					</div>
+					<div class="am am1">
+						{% if content['city_code'] != 'shenzhen' and content['city_code'] != 'cangzhou' and content['city_code'] != 'haerbin' %}
+						<img data-src="/qmjjg/images/p7_1.png"  />
+						{% else %}
+						<img data-src="/qmjjg/images/{{ content['city_code'] }}/p7_1.png"  />
+						{% endif %}
+					</div>
+
+				 	<div class="am logo">
+						{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+					{% endif %}
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="7" id="{{ content['city_code'] }}_page_7">
+				 			{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 			{% else %}
+				 			<p class="p3">0元领票</p>
+				 			{% endif %}
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+
+              <!-- 品牌 -->
+              <div class="swiper-slide">
+				 <div class="container comPs8">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/line.png"  />
+					</div>
+					<div class="am am1">
+						{% if content['city_code'] != 'shenzhen' %}
+						<img data-src="/qmjjg/images/p8_1.png"  />
+						{% else %}
+						<img data-src="/qmjjg/images/{{ content['city_code'] }}/p8_1.png"  />
+						{% endif %}
+					</div>
+					<!-- logo模块 开始 -->
+					<div class="am am2">
+						<div id="swiper3" class="swiper swiperStyle3">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+								{% for k,key in brand_arr %}
+									<div class="swiper-slide">
+										<div class="logoImgBox">
+										    {% for k_vo,key_vo in key %}
+											<img src="/qmjjg/images/default_logo.png" data-src="/qmjjg/images/logo/{{ key_vo }}.jpg?v=1.0"  />
+											{% endfor %}
+										</div>
+									</div>
+                                {% endfor %}
+								</div>
+							</div>
+							<div class="pagination"></div>
+						</div>
+					</div>
+					<!-- logo模块 结束 -->
+				 	<div class="am logo">
+						{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+					{% endif %}
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="8" id="{{ content['city_code'] }}_page_8">
+				 			{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 			{% else %}
+				 			<p class="p3">0元领票</p>
+				 			{% endif %}
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+
+              <!-- 媒体 -->
+              {% if content['city_code'] != 'shenzhen' %}
+              <div class="swiper-slide">
+				 <div class="container comPs9">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/line.png"  />
+					</div>
+					<div class="am am1">
+						<img data-src="/qmjjg/images/p9_1.png?v=1.2"  />
+					</div>
+
+				 	<div class="am logo">
+						{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+					{% endif %}
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="9" id="{{ content['city_code'] }}_page_9">
+				 			{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 			{% else %}
+				 			<p class="p3">0元领票</p>
+				 			{% endif %}
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+			{% endif %}
+
+              <!-- 服务 -->
+              <div class="swiper-slide">
+				 <div class="container comPs10">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/line.png"  />
+					</div>
+					<div class="am am1">
+						{% if content['city_code'] != 'shenzhen' and content['city_code'] != 'cangzhou' %}
+						<img data-src="/qmjjg/images/p10_1.png"  />
+						{% else %}
+						<img data-src="/qmjjg/images/{{ content['city_code'] }}/p10_1.png"  />
+						{% endif %}
+					</div>
+
+				 	<div class="am logo">
+						{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+					{% endif %}
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="10" id="{{ content['city_code'] }}_page_10">
+				 			{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 			{% else %}
+				 			<p class="p3">0元领票</p>
+				 			{% endif %}
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+
+              <!-- 地址 -->
+              <div class="swiper-slide">
+				 <div class="container comPs11">
+					<div class="am bg">
+						<img data-src="/qmjjg/images/p11_bg.png"  />
+					</div>
+					<div class="am am2">
+						<img data-src="/qmjjg/images/p11_1.png"  />
+						<div class="info2">
+							<p class="title">活动日期</p>
+							<p class="contant">{{ content['time'] }}</p>
+							<p class="title">地址</p>
+							<p class="contant">{{ content['address'] }}</p>
+						</div>
+						<p class="infoTips">备注：由于落地城市较多，具体政策、产品请以现场或相关页面为主</p>
+					</div>
+
+				 	<div class="am logo">
+						{% if is_souhu == 1 %}
+				 		<img src="/qmjjg/images/logo3.png"  />
+						{% elseif content['city_code'] != 'beijing' %}
+						<img src="/qmjjg/images/logo.png"  />
+						{% else %}
+						<img src="/qmjjg/images/{{ content['city_code'] }}/logo.png"  />
+						{% endif %}
+					</div>
+					{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+					<div class="am cityOpen">
+						<span><?php echo $content['city']?>站</span>
+					</div>
+					{% endif %}
+				 	<div class="am bmOpen">
+				 		<div class="click_btn" data-id="11" id="{{ content['city_code'] }}_page_11">
+				 			{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+				 			<p class="p1">0元领票</p>
+				 			<p class="p2">领票就送100元抵扣券</p>
+				 			{% else %}
+				 			<p class="p3">0元领票</p>
+				 			{% endif %}
+				 		</div>
+						{% if is_souhu == 1 %}
+				 		<p >主办方：华耐家居集团 优居网 </p>
+				 		{% else %}
+						<p >主办方：腾讯网亚太家居 华耐家居集团 优居网 </p>
+						{% endif %}
+					</div>
+				 </div>
+              </div>
+       </div>
+		<div class="pagination" id="pagination1"></div>
+    </div>
+    <!-- 下滑提示 -->
+    <div class="cn-slidetips next">
+  	    <div class="slidetips">
+  	        <a href="javascript:void(0);" title="NEXT" id="next">
+  	            <img src="/qmjjg/images/next.png" />
+  	        </a>
+  	    </div>
+  	</div>    
+	
+	<!-- 城市选择 -->
+	
+	<div class="citySelect hide" id="citySelect">
+		<div class="black_bg"></div>
+		<div class="cityWarp">
+			<div class="cityHead">
+				<!-- <img src="/qmjjg/images/logo2.png" class="logo" /> -->
+				<p class="cityClose"><span><?php echo $content['city']?>站</span></p>
+			</div>
+			<div class="cityBody">
+				<p class="ip">我们猜您在：<span><?php echo $content['location_city']?></span></p>
+				{% if is_city <> '' %}
+				<p class="grey">您当前选择的城市站为：<span style="font-weight: bold;color:#e70000"><?php echo $content['city']?>站</span></p>
+				{% else %}
+				<p class="grey">我们为您推荐最近城市站：<span style="font-weight: bold;color:#e70000"><?php echo $content['city']?>站</span>，您也可以选择：</p>
+				{% endif %}
+				<div class="city cf">
+				{% for k,key in city_list %}
+					{% if key['city_code']!='shexian' and key['city_code']!='yongnianxian' %}
+					<a href="?city={{ key['city_code'] }}" {% if (k+1)%5 == 0 %}class="mr0"{% endif %}>{{ key['city'] }}</a>
+					{% endif %}
+			    {% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 报名页 -->
+	<div class="baoming hide" id="baoming">
+		<div class="bmWarp">
+			<div class="bmHead">
+				<p class="lph">全民家居购0元领票</p>
+			</div>
+			<span class="bmClose">×</span>
+			<!-- 领票 -->
+			<div class="lpForm">
+				<div class="bmmsg">
+					<p>限量抵扣券领取中！已有<span class="bmnum">{{ count }}</span>人领取</p>
+				</div>
+				<p><input type="text" name="name" class="name" placeholder="请填写姓名" /></p>
+				<p><input type="number" name="tel" class="tel" placeholder="请填写手机号码" /></p>
+				<p class="tips">手机号仅用于本次报名</p>
+				<p class="codeInput hide"><input type="number" name="code" class="code" placeholder="请输入验证码" /><span class="getCode" id="{{ content['city_code'] }}_getCode">获取验证码</span>
+				</p>
+				<p class="lpBtn false" id="{{ content['city_code'] }}_lpBtn_1">0元领票</p>	
+				<p class="lpBtn2 false" id="{{ content['city_code'] }}_lpBtn_2">0元领票</p>	
+			</div>
+			<!-- 提交验证 -->
+			<div class="bmForm hide">
+				<div class="bmmsg">
+					<p>请完善您的收件地址</p>
+					<p>我们会免费为您寄送门票</p>
+				</div>
+				<p>
+					<select id="area" class="area"></select>
+				</p>
+				<p>
+					<input type="text" id="address" name="address" class="address" placeholder="请填写详细地址" />
+				</p>
+				
+				<input type="hidden" id="send_phone" value=""/>
+				<input type="hidden" id="btn_id" value=""/>
+				<input type="hidden" id="verify" value=""/>
+				<p class="tips"></p>				
+				<p class="bmBtn false" id="{{ content['city_code'] }}_bmBtn">提交</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- 报名成功页 -->
+	<div class="succeed" id="succeed">
+		<div class="logo2">
+			<img src="/qmjjg/images/logo.png"   />
+		</div>
+		{% if content['city_code'] != 'shexian' and content['city_code'] != 'yongnianxian' %}
+		<p class="text"><span>恭喜您领票成功，获得抵扣券一个</span></p>
+		<div class="hb">
+			<img src="/qmjjg/images/default_logo.png" data-src="/qmjjg/images/hb.png" />
+			<p>100元</p>
+		</div>
+		<p><img src="/qmjjg/images/succeedTips.png"  /></p>
+		<div class="ad ad1" id="baoming01">
+			<div class="adTitle">
+				<p class="line"></p>
+				<span>全民砍价全民家居购专场</span>
+			</div>
+			<div class="adMain">
+				<img src="/qmjjg/images/default_ad.png" data-src="/qmjjg/images/succeed1.jpg"  />
+				
+				<!-- <p>关注优居公众号参与一元购</p> -->
+			</div>
+		</div>
+		<a class="ad ad2" href="/phone/group/index" id="baoming02" >
+			<div class="adTitle">
+				<p class="line"></p>
+				<span>优品团到店特卖</span>
+			</div>
+			<img src="/qmjjg/images/default_ad.png" data-src="/qmjjg/images/succeed2.png" />
+
+		</a>
+		<p class="copyright">Copyright 2015  版权归深圳亚太传媒科技开发有公司所有</p>
+		{% else %}
+		<p class="text" style="margin-top:100px">
+			<span style="padding-left: 0;padding-top: 45px; background-position-x: center;background-size:40px">
+				恭喜您领票成功
+			</span>
+		</p>
+		<p class="copyright" style="width:100%;position:fixed;bottom:10px">Copyright 2015  版权归深圳亚太传媒科技开发有公司所有</p>
+		{% endif %}
+
+		<!-- 提示扫描二维码关注 -->
+		<div class="ewmTips hide" id="ewmTips">
+			<div class="ewmWarp">
+				<div class="ewmHead">
+					长按识别二维码，关注优居公众号！
+				</div>
+				<div class="ewmMain">
+					<img data-src="/qmjjg/images/ewm.png" class="ewmImg" />
+					<p class="f22">或</p>
+					<p>在微信中搜索【<span class="orange">优居优品</span>】关注我们的公众号~</p>
+				</div>
+				<div class="close">
+					×
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 通用提示 -->
+	<div class="comTips hide" id="comTips">
+		<div class="tipsWarp">
+			<div class="tipsBody">
+				tips
+			</div>
+			<div class="tipsClose">
+				确认
+			</div>
+		</div>
+	</div>
+	<!-- loading 2.0 -->
+	<div class="cn-spinner loading2 hide" id="loading2">
+		<div class="spinner-warp">
+	        <div class="spinner">
+	            <div class="spinner-container container1">
+	                <div class="circle1"></div>
+	                <div class="circle2"></div>
+	                <div class="circle3"></div>
+	                <div class="circle4"></div>
+	            </div>
+	            <div class="spinner-container container2">
+	                <div class="circle1"></div>
+	                <div class="circle2"></div>
+	                <div class="circle3"></div>
+	                <div class="circle4"></div>
+	            </div>
+	            <div class="spinner-container container3">
+	                <div class="circle1"></div>
+	                <div class="circle2"></div>
+	                <div class="circle3"></div>
+	                <div class="circle4"></div>
+	            </div>
+	        </div>
+	    </div>
+    </div>
+</div>
+<script src="/common/js/zepto.min.js"></script>
+<script src="/common/js/idangerous.swiper-2.1.min.js"></script>
+
+<script src="/qmjjg/js/my.js?v=2.0"></script>
+
+<!-- 访客代码 转化代码 2015-12-8 -->
+<script type="text/javascript">
+var _py = _py || [];
+_py.push(['a', 'NLs..PpePWihYBhJlAab9sYwYJ0']);
+_py.push(['domain','stats.ipinyou.com']);
+_py.push(['e','']);
+-function(d) {
+	var s = d.createElement('script'),
+	e = d.body.getElementsByTagName('script')[0]; e.parentNode.insertBefore(s, e),
+	f = 'https:' == location.protocol;
+	s.src = (f ? 'https' : 'http') + '://'+(f?'fm.ipinyou.com':'fm.p0y.cn')+'/j/adv.js';
+}(document);
+</script>
+<noscript><img src="//stats.ipinyou.com/adv.gif?a=NLs..PpePWihYBhJlAab9sYwYJ0&e=" style="display:none;"/></noscript>
+<!-- 访客代码 转化代码 2015-12-8 end -->
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+	var code = {{ content['code'] }};
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: '<?php echo $signPackage["timestamp"];?>',
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	      signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+            'checkJsApi',
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+		var wxData = {
+			{% if content['city_code'] != 'shexian' AND content['city_code'] != 'yongnianxian' %}
+			"imgUrl":'{{domain}}/qmjjg/images/share.jpg',
+			"link":'{{domain}}/phone/qmjjg/index',
+			"desc":"送100元抵扣券-快抢全民家居购免费门票，领票就送100元抵扣券。",
+			"title":"送100元抵扣券-快抢全民家居购免费门票，领票就送100元抵扣券。"
+			{% else %}
+			"imgUrl":'{{domain}}/qmjjg/images/share.jpg',
+			"link":'{{domain}}/phone/qmjjg/index?city={{ content['city_code'] }}',
+			"desc":"限时免费-快抢全民家居购免费门票，家居建材五折促销，不容错过！",
+			"title":"限时免费-快抢全民家居购免费门票，家居建材五折促销，不容错过！"
+			{% endif %}
+		};
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+	});
+</script>
+</body>
+</html>

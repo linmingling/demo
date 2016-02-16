@@ -1,0 +1,72 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">分享列表</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<input type="text" class="form-control input-sm" id="wxId" placeholder="微信ID">
+				<input type="text" class="form-control input-sm" id="gId" placeholder="商品ID" style="width:60px;">
+				<input type="text" class="form-control input-sm" id="userId" placeholder="用户ID" style="width:60px;">
+				<a class="btn btn-default btn-sm" href="javascript:searchGoods()" role="button">查找</a>
+				<a class="btn btn-default btn-sm pull-right" href="/admin/markdown/index" role="button">返回</a>
+				<a class="btn btn-default btn-sm pull-right" href="javascript:$('#userList').tableExport({type:'excel',fileName:'markdown-user',escape:'false'});" role="button">导出</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table id="userList" data-toggle="table"></table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+var table = $("#userList").bootstrapTable({
+	method: 'get',
+	url: '/admin/markdown/share/{{actionId}}/1',
+	classes:"table table-hover table-condensed m-b-none",
+	striped: false,
+	sidePagination:'server',
+	pagination: true,
+	pageSize: 10,
+	pageList: [5, 10, 20],
+	showColumns:false,
+	//clickToSelect: true,
+	columns: [
+		{ field: 'id',title: 'ID',align: 'center',valign: 'middle',sortable: true },
+		{ field:'gid', title:'商品id', align:'center', valign:'middle' },
+		{ field:'goods_name', title:'商品名称', align:'center', valign:'middle' },
+		{ field:'wx_id', title:'微信id', align:'center', valign:'middle' },
+		{ field:'user_id', title:'用户id', align:'center', valign:'middle' },
+		{ field:'wx_name', title:'用户名', align:'center', valign:'middle' },
+		{ field:'time', title:'分享时间', align:'center', valign:'middle' },
+	],
+	queryParams: function(params){
+		var wxId = $("#wxId").val();
+		var gId = $("#gId").val();
+		var userId = $("#userId").val();
+		return {gId:gId, wxId:wxId, userId:userId, sort:params.sort, order:params.order, limit:params.limit, offset:params.offset};
+	}
+});
+
+
+function searchGoods(){
+	var wxId = $("#wxId").val();
+	var gId = $("#gId").val();
+	var userId = $("#userId").val();
+	table.bootstrapTable('refresh', {query:{wxId:wxId, gId:gId, userId:userId}});
+}
+
+
+
+</script>

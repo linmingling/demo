@@ -1,0 +1,127 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<script type="text/javascript" src="/common/js/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/plugins/code/prettify.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/plugins/autoheight/autoheight.js"></script>
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+<link rel="stylesheet" href="/common/js/kindeditor/themes/default/default.css"/>
+<script>
+KindEditor.ready(function(K) {
+	var editor = K.editor({
+		allowFileManager : true
+	});
+	K('.upload_image').click(function() {
+		editor.loadPlugin('image', function() {
+			editor.plugin.imageDialog({
+				imageUrl : K('#goods_img').val(),
+				clickFn : function(url, title, width, height, border, align) {
+					K('#goods_img').val(url);
+					editor.hideDialog();
+				}
+			});
+		});
+	});
+	K('.code_image').click(function() {
+		editor.loadPlugin('image', function() {
+			editor.plugin.imageDialog({
+				imageUrl : K('#code_img').val(),
+				clickFn : function(url, title, width, height, border, align) {
+					K('#code_img').val(url);
+					editor.hideDialog();
+				}
+			});
+		});
+	});
+});
+</script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">第三届优居家博会-{% if data['id'] != '' %}编辑{%  else %}添加{% endif %}商品</h1>
+			</div>
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" href="/admin/exposition/index" role="button" style="margin-right:10px;">返回首页</a>
+			    <a class="btn btn-default btn-sm" href="/admin/exposition/goods_list" role="button">商品列表</a>
+			</div>
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group form-group-sm">
+							<label for="goods_category" class="col-sm-1 control-label">商品名称:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="goods_name" value="{{ data['goods_name'] }}" ></div>
+						</div>
+						
+						<div class="form-group form-group-sm">
+							<label for="discount" class="col-sm-1 control-label">商品图片:</label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control upload" readonly="readonly" id="goods_img" name="goods_img" value="{{ data['goods_img'] }}"/>
+							</div>
+						    <button type="button" class="btn m-b-xs btn-sm btn-default btn-addon upload_image"><i class="fa fa-cloud-upload text"></i><span class="text">Upload</span></button>
+						</div>
+						
+						<div class="form-group form-group-sm">
+							<label for="active_quantity" class="col-sm-1 control-label">库存:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="stock" value="{{ data['stock'] }}" ></div>
+						</div>
+						
+						<div class="form-group form-group-sm">
+							<label for="goods_quantity" class="col-sm-1 control-label">原价:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="market_price" value="{{ data['market_price'] }}" ></div>
+						</div>
+						
+						<div class="form-group form-group-sm">
+							<label for="discount" class="col-sm-1 control-label">抢购价/预定价:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="order_price" value="{{ data['order_price'] }}" ></div>
+						</div>
+						
+						
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">产品简介:</label>
+							<div class="col-xs-7"><textarea class="form-control"  name="goods_info">{{ data['goods_info'] }}</textarea></div>
+						</div>
+						
+						<div class="form-group form-group-sm">
+							<label for="discount" class="col-sm-1 control-label">一元抢二维码:</label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control upload" readonly="readonly" id="code_img" name="code_img" value="{{ data['code_img'] }}"/>
+							</div>
+						    <button type="button" class="btn m-b-xs btn-sm btn-default btn-addon code_image"><i class="fa fa-cloud-upload text"></i><span class="text">Upload</span></button>
+						      预定商品应留空
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-1 control-label">是否上架:</label>
+							<div class="col-xs-8">
+								<label class="radio-inline"><input type="radio" name="is_show"  {% if data['is_show'] == 1 %} checked {% endif %} value="1">是</label>
+								<label class="radio-inline"><input type="radio" name="is_show"  {% if data['is_show'] == 0 %} checked {% endif %} value="0">否</label>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-1 control-label">产品类型:</label>
+							<div class="col-xs-8">
+								<label class="radio-inline"><input type="radio" name="goods_type"  {% if data['goods_type'] == 0 %} checked {% endif %} value="0">一元抢</label>
+								<label class="radio-inline"><input type="radio" name="goods_type"  {% if data['goods_type'] == 1 %} checked {% endif %} value="1">产品预定</label>
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+							    <input type="hidden" name="id" value="{{ data['id'] }}">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/exposition/goods_list" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php $this->partial("index/footer")?>

@@ -1,0 +1,71 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">提货地址列表</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" href="/admin/seckill/shipping/add/{{actionId}}" role="button">添加地址</a>
+				<a class="btn btn-default btn-sm pull-right" href="/admin/seckill/index/{{ actionId }}" role="button" style="margin-right:10px;">返回</a>
+			</div>			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+							<table class="table table-striped m-b-none dataTable no-footer" id="DataTables_Table_0">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>省</th>
+										<th>市</th>
+										<th>区</th>
+										<th>地址</th>
+										<th>联系人</th>
+										<th>电话</th>
+										<th>提货时间</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody>
+						{% if list %}
+							{% for k in list %}
+									<tr class="odd">
+										<td>{{ k['shipping_id'] }}</td>
+										<td>{% if k['province'] %} {{regions['list'][k['province']]}} {% endif %}</td>
+										<td>{% if k['city'] %} {{regions['list'][k['city']]}} {% endif %}</td>
+										<td>{% if k['district'] %} {{regions['list'][k['district']]}} {% endif %}</td>
+										<td>{{ k['address'] }}</td>
+										<td>{{ k['linkman'] }}</td>
+										<td>{{ k['tel'] }}</td>
+										<td>{{ k['best_time'] }}</td>
+										<td>
+											<a href="/admin/seckill/shipping/modify/{{actionId}}/{{k['shipping_id']}}">修改</a>
+										</td>
+									</tr>
+							{% endfor %}
+						{% endif %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delaction(m){
+	var r=confirm("你确定要删除该活动吗？");
+	if(r == true){
+		location.href="/admin/seckill/index/delete/"+m;
+	}
+}
+
+</script>

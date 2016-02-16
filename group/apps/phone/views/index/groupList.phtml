@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>优居网</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="/index/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/index/css/list.css" rel="stylesheet" type="text/css">
+    <script>
+        var phoneWidth = parseInt(window.screen.width);
+        var phoneScale = phoneWidth/750;
+        var ua = navigator.userAgent;
+        if (/Android (\d+\.\d+)/.test(ua)){
+            document.write('<meta name="viewport" content="width=750, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');
+        } else {
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+</head>
+<body>
+    <!-- loading -->
+    <div class="loadingWarp" id="loading">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+          <div class="text">优居网</div>
+        </div>
+    </div>
+    <div class="warp">
+        <!-- 顶部导航 -->
+        <header id="header" class="header">
+            <a class="return" ></a>
+            <a class="search" href="#"></a>
+            <p class="title f36">优品团</p>   
+        </header>
+        
+        <!-- 广告图 -->
+        <img src="/index/images/default_750x250.png" class="adImg" />
+
+        <!-- 商品列表 -->
+        <div class="list" id="list">
+            <div class="typeBox hover">
+                <div class="typeTitle f30">
+                    <span class="typeName f30">基础建材</span>
+                    <span class="c9 f24">（0件）</span><i></i>
+                </div>
+                <div class="groupMain typeMain">
+                    <p class="c9 listTips2">努力加载中...</p>
+                </div>
+            </div>
+            <div class="typeBox">
+                <div class="typeTitle f30">
+                    <span class="typeName f30">厨卫主材</span>
+                    <span class="c9 f24">（0件）</span><i></i>
+                </div>
+                <div class="groupMain typeMain">
+                    <p class="c9 listTips2">努力加载中...</p>
+                </div>
+            </div>
+            <div class="typeBox">
+                <div class="typeTitle f30">
+                    <span class="typeName f30">客卧主材</span>
+                    <span class="c9 f24">（0件）</span><i></i>
+                </div>
+                <div class="groupMain typeMain">
+                    <p class="c9 listTips2">努力加载中...</p>
+                </div>
+            </div>
+            <div class="typeBox">
+                <div class="typeTitle f30">
+                    <span class="typeName f30">住宅家具</span>
+                    <span class="c9 f24">（0件）</span><i></i>
+                </div>
+                <div class="groupMain typeMain">
+                    <p class="c9 listTips2">努力加载中...</p>
+                </div>
+            </div>
+            <div class="typeBox">
+                <div class="typeTitle f30">
+                    <span class="typeName f30">家用电器</span>
+                    <span class="c9 f24">（0件）</span><i></i>
+                </div>
+                <div class="groupMain typeMain">
+                    <p class="c9 listTips2">努力加载中...</p>
+                </div>
+            </div>
+            <div class="typeBox">
+                <div class="typeTitle f30">
+                    <span class="typeName f30">灯饰照明</span>
+                    <span class="c9 f24">（0件）</span><i></i>
+                </div>
+                <div class="groupMain typeMain">
+                    <p class="c9 listTips2">努力加载中...</p>
+                </div>
+            </div>
+            <div class="typeBox">
+                <div class="typeTitle f30">
+                    <span class="typeName f30">卫浴洁具</span>
+                    <span class="c9 f24">（0件）</span><i></i>
+                </div>
+                <div class="groupMain typeMain">
+                    <p class="c9 listTips2">努力加载中...</p>
+                </div>
+            </div>
+            <div class="typeBox">
+                <div class="typeTitle f30">
+                    <span class="typeName f30">休闲家居</span>
+                    <span class="c9 f24">（0件）</span><i></i>
+                </div>
+                <div class="groupMain typeMain">
+                    <p class="c9 listTips2">努力加载中...</p>
+                </div>
+            </div>
+            <div class="typeBox">
+                <div class="typeTitle f30">
+                    <span class="typeName f30">客卧软装</span>
+                    <span class="c9 f24">（0件）</span><i></i>
+                </div>
+                <div class="groupMain typeMain">
+                    <p class="c9 listTips2">努力加载中...</p>
+                </div>
+            </div>
+
+        </div>
+
+        
+
+        <!-- 底部导航 -->
+        <footer id="footer" class="footer">
+            <a href="#" class="footIcon footIcon1 f20 c6">首页</a>
+            <a href="#" class="footIcon footIcon2 f20 c6 hover">优品团</a>
+            <a href="#" class="footIcon footIcon3 f20 c6">一站购</a>
+            <a href="#" class="footIcon footIcon4 f20 c6">一元抢</a>
+            <a href="#" class="footIcon footIcon5 f20 c6">我的</a>
+        </footer>
+
+        <!-- 搜索 -->
+        <div id="searchBox" class="searchBox ">
+            <!-- 伪头部 -->
+            <div class="searchHead header">
+                <span class="return" ></span>
+                <a class="home" href="#"></a>
+                <p class="title f36">分类搜索</p>
+            </div>
+            <!-- 搜索分类 -->
+            <div class="searchMain">
+                <div class="typeBtn typeBtn1">基础建材</div>
+                <div class="typeBtn typeBtn2">厨卫主材</div>
+                <div class="typeBtn typeBtn3">客卧主材</div>
+                <div class="typeBtn typeBtn4">住宅家具</div>
+                <div class="typeBtn typeBtn5">家用电器</div>
+                <div class="typeBtn typeBtn6">灯饰照明</div>
+                <div class="typeBtn typeBtn7">卫浴洁具</div>
+                <div class="typeBtn typeBtn8">休闲家居</div>
+                <div class="typeBtn typeBtn9">客卧软装</div>
+            </div>
+        </div>
+
+    </div>
+
+
+<script src="/common/js/jquery-2.2.0.min.js"></script>
+<script src="/common/js/idangerous.swiper-2.1.min.js"></script>
+<script src="/index/js/com.js"></script>
+<script>
+
+function init(){
+    // 分类搜索
+    search();
+
+    // 展开收缩种类列表
+    $("#list .typeTitle").click(function(){       
+        var box = $(this).closest(".typeBox");
+        if(box.hasClass("hover")){
+            $("#list .typeBox").removeClass("hover");
+        }else{
+            
+            if(!box.hasClass("load")){
+                // 请求这个种类的产品
+                // $.ajax({
+                //     async:true,
+                //     url:"/phone/index/scrollView",
+                //     data:{type:"人气最高",page:1},
+                //     type: 'post',
+                //     dataType:'json',
+                //     success:function(result){
+                //         console.log(result)
+                //     },
+                //     error:function(result){
+      
+                //     },
+                //     complete:function(){
+   
+                //     }
+                // });
+                // 模拟返回数据
+                var result = {"code":0,"msg":[{"id":"4","action_id":"4","goods_name":"111","goods_img":"\/uploads\/image\/20150924\/5603ba3b94a21.png,\/uploads\/image\/20150925\/5604fc5d494c7.png","thumb_img":"","class_id":"2","brand_id":"1","sale_address":"1,2","stock":"1111","sold_num":"111","real_num":"0","order_num":"1","view_num":"0","market_price":"111.00","exclusive_price":"11.00","order_price":"1.00","limit_number":"0","service":"0","sort":"0","start_time":"1444721917","end_time":"1477706244","specification":"","discount_id":"2,3","store_id":"1,2","is_site":"0","add_time":"0","is_show":"1","discount":1,"title":"\u3010wqw111\u3011111"},{"id":"6","action_id":"4","goods_name":"7777","goods_img":"\/uploads\/image\/20151126\/5656a097d2f45.jpg,\/uploads\/image\/20151126\/5656a097d2f45.jpg","thumb_img":"","class_id":"0","brand_id":"1","sale_address":"1","stock":"77777","sold_num":"77","real_num":"0","order_num":"0","view_num":"0","market_price":"777.00","exclusive_price":"77.00","order_price":"7.00","limit_number":"1","service":"1","sort":"0","start_time":"1448508825","end_time":"1475205780","specification":"","discount_id":"2","store_id":"1","is_site":"0","add_time":"0","is_show":"1","discount":1,"title":"\u3010wqw111\u30117777"},{"id":"3","action_id":"4","goods_name":"\u5927\u81ea\u7136\u6728\u95e8\u82b1\u610f\u7af9\u60c5MP240009","goods_img":"\/uploads\/image\/20150928\/5608b039856f8.jpg","thumb_img":"","class_id":"2","brand_id":"3","sale_address":"\u5168\u56fd\u7269\u6d41\u914d\u9001\uff0c\u914d\u9001\u70b9\u81ea\u63d0","stock":"77777","sold_num":"77","real_num":"0","order_num":"0","view_num":"2","market_price":"122.00","exclusive_price":"22.00","order_price":"1.00","limit_number":"0","service":"0","sort":"0","start_time":"1448606419","end_time":"1477722308","specification":"","discount_id":"2,3","store_id":"1,2","is_site":"0","add_time":"0","is_show":"1","discount":1.8,"title":"\u3010\u5927\u81ea\u7136\u6728\u95e8\u3011\u5927\u81ea\u7136\u6728\u95e8\u82b1\u610f\u7af9\u60c5MP2..."},{"id":"5","action_id":"4","goods_name":"333","goods_img":"\/uploads\/image\/20150925\/5604fc5d494c7.png","thumb_img":"","class_id":"4","brand_id":"0","sale_address":"1,2","stock":"33333","sold_num":"33","real_num":"0","order_num":"0","view_num":"1","market_price":"33.00","exclusive_price":"31.00","order_price":"11.00","limit_number":"1","service":"0","sort":"0","start_time":"1444355650","end_time":"1476150847","specification":"","discount_id":"2","store_id":"1,2","is_site":"0","add_time":"0","is_show":"1","discount":9.4,"title":"\u3010\u3011333"}]};
+                box.find(".groupMain").empty();
+                insertList(result.msg,box.find(".groupMain"));
+            }
+            $("#list .typeBox").removeClass("hover");
+            box.addClass("hover load");
+        }
+        box1 = $(this).offset().top;
+        $("html,body").animate({scrollTop: box1}, 300);
+        
+    });
+   
+
+
+
+    
+
+}
+$(function(){
+    setTimeout(init);
+    $("#loading").hide();
+});
+</script>
+</body>
+</html>

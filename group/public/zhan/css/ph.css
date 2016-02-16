@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+/**********************************************************************************************************************
+ 内页样式开始
+**********************************************************************************************************************/
+
+.inviteWraper{height: auto;margin-bottom: 60px}
+.inviteDetail img{width: 100%}
+.swiperPage{position: relative;}
+.swiperPage .swiperModule{width:100%;position: absolute;}
+/* 3x3 */
+.swiperModule1{bottom: 20px}
+/* 2x3 */
+.swiperModule2{bottom: 20px}
+/* 2x2 */
+.swiperModule3{bottom: 20px}
+/* 1x2 */
+.swiperModule4{bottom: 20px}
+
+.inviteWraper .swiper-pagination-switch {display: inline-block;width: 10px;height: 10px;border-radius: 10px;background: rgba(0,0,0,0.3);margin: 3px;}
+.inviteWraper .swiper-active-switch {background: #222;}
+
+/* 底部打开报名按钮 */
+.bottom{width:100%;max-width: 720px;color: #fff;text-align: center;position: fixed;bottom: 0%;z-index: 1;}
+.bottom img{width: 100%;}
+
+/*copyright*/
+.copyright{text-align: center;color: #646464;margin: 10px 0}
+
+/*gototop*/
+.top{width: 20%;position: fixed;bottom: 10%;right: 10px;z-index: 1;}
+.top img{width: 100%;}
+
+/*报名成功*/
+.TcClose{width: 25px;height: 25px;line-height: 25px;position: absolute;top:10px;right: 10px;font-size: 26px;border-radius: 100px;text-align: center;color: #fdd208;border: 2px solid #fdd208;}
+.succeed{width: 100%;height: 100%;color: #fff;background:url(../images/bg.jpg) 100% 100%;position: fixed;top:0;left: 0;z-index: 2;background-size: 100% 100%;overflow: scroll;}
+.succeed img{width: 100%}
+.succeed .succeedText1{font-size: 30px;color: #fdd208;font-weight: bold;text-align: center;padding-top: 50px;margin-top: 30px;background: url(../images/icon.png) no-repeat top center;background-size: 50px}
+.succeed .succeedText2{font-size: 14px;color: #fff;text-align: center}
+.succeed .succeedText3{font-size: 18px;color: #fdd208;font-weight: bold;text-align: center;padding-top: 50px;margin-top: 20px;background: url(../images/icon2.png) no-repeat top center;background-size: 50px}
+.succeed .succeedAd{width: 90%;margin:20px 5%;display: block;}
+
+
+
+/**********************************************************************************************************************
+ 内页样式结束
+**********************************************************************************************************************/
+
+
+
+

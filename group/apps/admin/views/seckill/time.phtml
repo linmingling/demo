@@ -1,0 +1,159 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope" style="margin-bottom:20px;">
+				<h1 class="m-n font-thin h3">秒杀时间段</h1>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:0px 20px;">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="add-adv form-inline">
+							<div class="input-group">
+								<input type="text" name="day" class="day form-control input-sm" style="width:150px;" placeholder="日期" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" />
+								<input type="text" name="starttime" class="starttime form-control input-sm" style="width:150px;" placeholder="开始时间" onFocus="WdatePicker({dateFmt:'HH:mm:ss',alwaysUseStartDate:true})" />
+								<input type="text" name="endtime" class="endtime form-control input-sm" style="width:150px;" placeholder="结束时间" onFocus="WdatePicker({dateFmt:'HH:mm:ss',alwaysUseStartDate:true})" />
+								<a class="btn btn-default btn-sm add-submit" style="cursor:pointer;">添加</a>
+							</div>
+							{% if list %}
+							<div class="table-responsive" style="margin-top:10px;width:800px;">
+								<table class="table table-hover table-condensed m-b-none">
+									<tbody>
+									{% for k in list %}
+										<tr>
+											<td>{{k['id']}}</td><td>{{k['day']}}</td><td>{{k['starttime']}}</td><td>{{k['endtime']}}</td>
+											<td>
+												<i class="glyphicon glyphicon-cog" onclick="advMod(this)" style="cursor:pointer;" data-id="{{k['id']}}"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<i class="glyphicon glyphicon-remove" onclick="advDel(this)" style="cursor:pointer;" data-id="{{k['id']}}"></i>
+											</td>
+										</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function advCancel(m){
+	var obj = $(m).parent().parent();
+	var id = obj.find("td:eq(0)").html();
+	var day = obj.find("td:eq(1)").attr('data-time');
+	var starttime = obj.find("td:eq(2)").attr('data-time');
+	var endtime = obj.find("td:eq(3)").attr('data-time');
+	
+	var str = "<td>"+id+"</td><td>"+day+"</td><td>"+starttime+"</td><td>"+endtime+"</td><td><i class='glyphicon glyphicon-cog' onclick='advMod(this)' style='cursor:pointer;'></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+	str = str + "<i class='glyphicon glyphicon-remove' onclick='advCancel(this)' style='cursor:pointer;'></i></td>";
+	obj.html(str);
+}
+
+function advMod(m){
+	var obj = $(m).parent().parent();
+	var id = obj.find("td:eq(0)").html();
+	var day = obj.find("td:eq(1)").html();
+	var starttime = obj.find("td:eq(2)").html();
+	var endtime = obj.find("td:eq(3)").html();
+	
+	var str = "<td>"+id+"</td>";
+	str = str + "<td data-time="+day+"><input type='text' name='day' class='day form-control input-sm' style='width:150px;' value='"+day+"' onFocus=\"WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})\" /></td>";
+	str = str + "<td data-time="+starttime+"><input type='text' name='starttime' class='starttime form-control input-sm' style='width:150px;' value='"+starttime+"' onFocus=\"WdatePicker({dateFmt:'HH:mm:ss',alwaysUseStartDate:true})\" /></td>";
+	str = str + "<td data-time="+endtime+"><input type='text' name='endtime' class='endtime form-control input-sm' style='width:150px;' value='"+endtime+"' onFocus=\"WdatePicker({dateFmt:'HH:mm:ss',alwaysUseStartDate:true})\" /></td>";
+	str = str + "<td><button type='button' class='btn btn-success btn-sm' onclick='advSubmit(this)'>修改</button>&nbsp;&nbsp;&nbsp;&nbsp;";
+	str = str + "<button type='button' class='btn btn-warning btn-sm' onclick='advCancel(this)'>取消</button></td>";
+	obj.html(str);
+}
+
+function advSubmit(m){
+	var obj = $(m).parent().parent();
+	var id = obj.find("td:eq(0)").html();
+	var day = obj.find("td:eq(1) input[name='day']").val();
+	var starttime = obj.find("td:eq(2) input[name='starttime']").val();
+	var endtime = obj.find("td:eq(3) input[name='endtime']").val();
+	
+	if(day != '' && starttime != '' && endtime != ''){
+		$.ajax({
+			type: 'POST',
+			url: "/admin/seckill/time/modify/{{actionId}}",
+			contentType: "application/json",
+			dataType: 'json',
+			data : JSON.stringify({id:id,day:day,starttime:starttime,endtime:endtime}),
+			timeout: 300,
+			async : false,
+			success : function(msg){
+				if(msg.state == 1){
+					var str = "<td>"+id+"</td><td>"+day+"</td><td>"+starttime+"</td><td>"+endtime+"</td><td><i class='glyphicon glyphicon-cog' onclick='advMod(this)' style='cursor:pointer;' data-id=''></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					str = str + "<i class='glyphicon glyphicon-remove' onclick='advCancel(this)' style='cursor:pointer;' data-id=''></i></td>";
+					obj.html(str);
+				}else{
+					alert(msg.msg);
+				}
+			},
+		})
+
+	}else{
+		alert('不能为空');
+	}
+}
+
+function advDel(m){
+	var obj = $(m).parent().parent();
+	var id = $(m).attr('data-id');
+	$.ajax({
+		type: 'GET',
+		url: "/admin/seckill/time/del/{{actionId}}/"+id,
+		dataType: 'json',
+		async : false,
+		success : function(msg){
+			if(msg.state == 1){
+				location.href = "/admin/seckill/time/list/{{actionId}}";
+			}else{
+				alert(msg.msg);
+			}
+		},
+	})
+}
+
+$(document).ready(function() {
+
+	$(".add-submit").click(function(){
+		var day = $(this).parent().children(".day").val();
+		var starttime = $(this).parent().children(".starttime").val();
+		var endtime = $(this).parent().children(".endtime").val();
+		
+		var data = {action_id:{{actionId}},day:day,starttime:starttime,endtime:endtime};
+		
+		$.ajax({
+			type: 'POST',
+			url: "/admin/seckill/time/add",
+			contentType: "application/json",
+			dataType: 'json',
+			data : JSON.stringify(data),
+			timeout: 300,
+			async : false,
+			success : function(msg){
+				if(msg.state == 1){
+					location.href = "/admin/seckill/time/list/{{actionId}}";
+				}else{
+					alert(msg.msg);
+				}
+			},
+		})
+	});
+	
+});
+
+</script>

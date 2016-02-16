@@ -1,0 +1,95 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+  
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">七夕总结专题</h1>
+    </div>
+    <div class="wrapper-md ng-scope">
+      <div class="panel panel-default">
+        <div class="panel-heading"><a href="">点击进入活动</a></div>
+        <div class="table-responsive">
+          <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+          <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                  <th style="width: 200px;" class="sorting_asc" rowspan="1" colspan="1">模块</th>
+                  <th style="width: 250px;" class="sorting" rowspan="1" colspan="1">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+                <!-- <tr class="odd">
+                    <td>顶部购买信息（轮播）</td>
+                    <td><a href="/admin/broadcast/top_list">进入</a></td>
+                </tr> -->
+                <tr class="odd">
+                    <td>活动直播</td>
+                    <td><a href="/admin/broadcast/live_list">进入</a></td>
+                </tr>
+                <tr class="odd">
+                    <td>最新快讯</td>
+                    <td><a href="/admin/broadcast/news_list">进入</a></td>
+                </tr>
+                <tr class="odd">
+                    <td>精彩瞬间/精彩图集</td>
+                    <td><a href="/admin/broadcast/img_list">进入</a></td>
+                </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+$("#select").click(function(){
+	var type = $(this).val();
+	if(type == 'time'){
+		$(".search").hide();
+		$(".search_time").show();
+	}
+})
+})
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        linkFormat:'yyyy-mm-dd',
+        weekStart: 0,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: true,
+		startView: 2,
+		minView: 3,
+		forceParse: 0,
+        showMeridian: 1,
+    });
+	
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var sHTML = $('#desc').code();
+	
+});
+
+</script>
+<?php $this->partial("index/footer")?>

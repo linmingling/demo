@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* common*/
+html {font-size: 75%;/*10 ÷ 16 × 100% = 62.5%*/}
+body {height:100%;font-size: :1.2rem; font-family: \5FAE\8F6F\96C5\9ED1;background: #eee;}
+div, html, body, p, ul, ol, li, a, form, img, table, td, h1, h2, h3, h4, h5, h6, blockquote, header, section, footer, aside, nav, article, figure, figcaption, dl, dt, dd {margin:0;padding:0;} 
+header, section, footer, aside, nav, article, figure, figcaption {display: block;}
+table {border-collapse:collapse;}
+img {border:none;}
+ul, li {list-style:none;}
+input:focus, textarea:focus {outline:none;}
+.cf:before,.cf:after{content:"";display:table;}.cf:after{clear:both;}.cf{zoom:1;}
+body,a,a:link{color:#222;}
+a,a:link{text-decoration:none;}
+a:hover{color:#ff6000;text-decoration:none;}
+
+.wraper{max-width:720px;margin:0 auto;position: relative;}
+.hide{display: none}
+.ctl{float:left;}
+.ctr{float:right;}
+.f30{font-size: 3rem}
+.f24{font-size: 2.4rem}
+.f18{font-size: 1.8rem}
+.f16{font-size: 1.3rem}
+.f14{font-size: 1.1rem}
+.f12{font-size: 1.2rem}
+.grey{color: #737373}
+.orange{color: #ff6000}
+.red{color: #e50000}
+.yellow{color:#fff600;} 
+
+
+
+/* 头部 */
+.head{width:100%;height: 38px;background: #fff;position: relative;}
+.head .menuIcon{width: 40px ;height: 38px;display: block;background: url(../images/sprite.png) no-repeat;background-size: 45px;background-position: 8px 11px;position: relative;z-index: 1}
+.head .userIcon{width: 40px ;height: 38px;display: block;background: url(../images/sprite.png) no-repeat;background-size: 45px;background-position: 11px -21px;position: relative;z-index: 1}
+.head .menuIcon1{width: 40px ;height: 38px;display: block;}
+.head .userIcon1{width: 40px ;height: 38px;display: block;}
+.head .homeIcon{width: 40px ;height: 40px;display: block;background: url(../images/sprite1.png) no-repeat;background-size: 47px;background-position: -2px -149px;position: relative;z-index: 1}
+.head .returnIcon{width: 40px ;height: 38px;line-height: 38px;text-indent: 14px;display: block;background: url(../images/sprite1.png) no-repeat;background-size: 47px;background-position: -5px 3px;position: relative;z-index: 1}
+.head .title{line-height: 38px;text-align: center;position: relative;}
+.head .title .titleText{width: 75%;overflow: hidden;display: block;height:38px;color: #222222;font-weight: bold;}
+.head .title .citySelect{min-width:44px;position: absolute;top:2px;left: 50%;margin-left: 40px;}
+.head .title .citySelect i{width: 20px;height: 38px;display: block;background: url(../images/sprite.png) no-repeat;background-size: 45px;background-position: 4px -53px}
+.head .menu{z-index:10;width:30%;position:absolute;top:35px;left:10px;background:#222222;padding:0 10px;box-shadow: 0px 0px 10px 1px #222222;-webkit-transition:all .3s ease-out;-moz-transition:all .3s ease-out;transition:all .3s ease-out;}
+.head .menu p{height: 40px;line-height: 40px;}
+.head .menu .line{height: 1px;width: 100%;background: #464646}
+.head .menu a{color: #fff}
+
+
+
+
+/* 底部版权 */
+.copyright{text-align: center;color: #646464;margin: 10px 0}
+
+/**********************************************************************************************************************
+ 报名成功样式开始
+**********************************************************************************************************************/
+.successBox{background: #fff;padding:20px 0;margin:20px 0;}
+.successBox .sTitle{text-align: center;}
+.successBox .sTitle i{width:35px;height: 35px;display: block;margin:0 auto;background: url(../images/sprite.png) no-repeat ;background-size: 45px; }
+.successBox .sTitle .icon1{background-position: 0 0px}
+.successBox .sText{width: 90%;margin: 0 5%;text-align: center;}
+.successBox .sImg{width: 90%;margin:10px 5% 0 5%;font-size: 0;display: block;}
+.successBox .sImg img{width: 100%}
+
+.detailInputBox{background: #fff;padding:0;margin:20px 0;}
+.detailInputBox .sTitle{height:60px;line-height:60px;text-align: center;}
+.detailInputBox .sImg{width: 100%;font-size: 0}
+.detailInputBox .sImg img{width: 100%}
+.detailInputBox .addressInfo{width: 90%;padding:10px 5%; text-align: left;position: relative;}
+.detailInputBox .addressInfo.open{border-bottom:1px solid #c8c8c8;}
+.detailInputBox .addressInfo .lastAddr{width: 80%;min-height: 20px;color: #646464}
+.detailInputBox .addressInfo .addModify{text-decoration: underline;display: inline-block;position: absolute;top: 28px;right: 5%;padding-left: 15px;background: url(../images/sprite.png) no-repeat ;background-size: 47px;background-position: 0 -590px}
+.detailInputBox .addressForm{width: 100%;margin:0;padding-bottom: 20px}
+.detailInputBox .addressForm .addItem{margin:0;}
+.detailInputBox .addressForm input{width:100%;height: 40px;line-height: 40px;padding:0;background:#fff;border:0;border-bottom:1px solid #c8c8c8;text-indent: 14px;}
+.detailInputBox .addressForm select{width:100%;height: 40px;line-height: 40px;border:0;border-bottom:1px solid #c8c8c8;text-indent: 10px;}
+/* .detailInputBox .addressForm .city{width: 50%;border-right: 1px solid #c8c8c8;}
+.detailInputBox .addressForm .qu{width: 50%} */
+.detailInputBox .addressForm .addBtn{width: 90%;height: 40px;line-height: 40px;background: #ff7200;color: #fff;border-radius: 3px;text-align: center;margin: 10px 5% 0 5%}
+.detailInputBox .addressInfo .okBtn{width: 100%;height: 40px;line-height: 40px;background: #ff7200;color: #fff;border-radius: 3px;text-align: center;margin: 10px 0 0 0}
+.detailInputBox .addressForm .false{background: #999;}
+
+.successMain select{background: url(../images/sprite.png) no-repeat #fff;background-size: 45px;background-position-x:right;background-position-y: -480px  }
+
+.tips{width: 100%;height: 100%;position: fixed;top: 0;left: 0}
+.tips .tipsWarp{width:40%;height: 50px;line-height: 50px;color: #fff;background: #646464;border-radius: 5px;position: absolute;top:45%;left: 30%;text-align: center;}
+input,select{appearance:none;-moz-appearance:none; /* Firefox */-webkit-appearance:none;}
+
+@media only screen and (min-width:375px) {
+
+}
+@media only screen and (min-width:414px) {
+
+}
+
+/**********************************************************************************************************************
+ 报名成功样式结束
+**********************************************************************************************************************/
+
+

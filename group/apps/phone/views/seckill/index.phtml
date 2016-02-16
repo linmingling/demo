@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一元秒杀</title>
+	<meta name="keywords" content="一元秒杀" />
+	<meta name="description" content="一元秒杀" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<link rel="stylesheet" type="text/css"  href="/seckill/css/main.css?v=2.1" />
+	<link rel="stylesheet" type="text/css" href="/seckill/css/swiper.min.css">
+	<script src="/common/js/jquery-2.1.4.min.js"></script>
+	<script src="/seckill/js/my.js?v=2.1"></script>
+	<script src="/seckill/js/swiper3.1.0.min.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+</head>
+<body>
+<div class="bg">
+<!-- 标题栏 -->
+		<div class="title">
+		 <p class="t-name">一元秒杀</p>
+			 <div class="menu"><img src="/seckill/images/more.png" alt=""></div>
+			{% if hasOrder %}
+		 <div class="title-row m-box hide">	 	
+			<a href="/phone/seckill/remind/{{info['id']}}/{{toUser}}{% if isGM %}?from={{wxfrom}}{% endif %}" id="remind"><p class="remind">我的提醒</p></a>
+		 	<a href="{{payDomain}}/phone/pay/order" id="order"><p class="order">我的订单</p></a>
+		 </div>
+		 {% else %}
+		 <div class="title-row m-box1 hide">	 	
+			<a href="/phone/seckill/remind/{{info['id']}}/{{toUser}}{% if isGM %}?from={{wxfrom}}{% endif %}" id="remind"><p class="remind1">我的提醒</p></a>
+		 </div>
+		{% endif %}
+		</div>
+
+<!-- banner栏 -->
+	<div class="banner"><img src="/uploads/seckill/{{info['head_img']}}" alt=""></div>
+		
+<!-- 时间轴 -->
+<div id="turn">
+	    <div class="swiper-container">
+	        <div class="swiper-wrapper">
+	        	<div class="swiper-slide"></div>
+	        	<div class="swiper-slide"></div>
+			{% for k,v in list %}
+	            <div class="swiper-slide pick">
+					<div class="time">
+						<p class="week"><?php echo date('n',strtotime($k))."月".date('j',strtotime($k))."日"; ?></p>
+					{% if v[0]['starttime'] < nowTime and v[0]['endtime'] > nowTime %}
+						<p class="state">正在进行</p>
+					{% elseif v[0]['starttime'] > nowTime %}
+						<p class="state">即将开始</p>
+					{% elseif v[0]['endtime'] < nowTime %}
+						<p class="state">已结束</p>
+					{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+	            <div class="swiper-slide"></div>
+	        	<div class="swiper-slide"></div>
+	        </div>
+	    </div>
+</div>
+
+	<!-- 消息栏 -->
+	<?php $count = 0; ?>
+	{% for k,v in list %}
+		{% if v[0]['starttime'] < nowTime and v[0]['endtime'] > nowTime %}
+			<!-- 正在开始 -->
+			<div id="note<?php echo $count; ?>" class="note0 hide"><p class="news">正在疯抢-每天21:00准时进行</p></div>
+		{% elseif v[0]['starttime'] > nowTime %}
+			<!-- 即将开始 -->
+			<div id="note<?php echo $count; ?>" class="note0 hide"><p class="news">即将开始-提前精彩产品不容错过</p></div>
+		{% elseif v[0]['endtime'] < nowTime %}
+			<!-- 已结束 -->
+			<div id="note<?php echo $count; ?>" class="note0 hide"><p class="news">已结束-下次请提前进来抢购</p></div>
+		{% endif %}
+		<?php $count = $count + 1; ?>
+	{% endfor %}
+			
+	<!-- product -->
+	<div id="pd">
+
+	<?php $count = 1; ?>
+	{% for k,v in list %}
+		<!-- {{k}} -->
+		<div id="pd<?php echo $count; ?>" class="turn hide">
+		<?php $count = $count + 1; ?>
+		{% for m in v %}
+			<div class="p1" id="row{{m['goods_id']}}">
+				<div class="p-main">
+					<div class="pbox">
+					<a href="{{pcHome}}/mobile/goods.php?id={{m['goods_id']}}&goback={{goback}}&paynewprice={{m['seckill_price']}}&paybtnshow=0&discountshow=0&timeshow=0&goodsnumbershow=0" class="goods"><img class="goodsImg" data-src="{{ m['img'] }}" alt="{{m['name']}}" /></a>
+					<div class="pname"><span class="p-title">{{m['name']}}</span></div></div>
+				{% if m['starttime'] < nowTime and m['endtime'] > nowTime %}
+					{% if m['goods_num'] > 0 %}
+					<!-- 正在疯抢 -->
+					<div class="p-price">
+						<div class="price">
+							<span class="m-mark">¥</span><span class="m-num">{{m['seckill_price']}}</span><span class="d-num">¥&nbsp;{{m['market_price']}}</span> 
+							<span class="k-price">还剩<span class="k-num">{% if m['goods_num'] < 0 %} 0 {% else %} {{ m['goods_num'] }} {% endif %}</span>件</span>
+						</div>
+						{% if platform == 'wx' %}
+							{% if isGM == 1 %}
+						<a class="rest" data-id="{{m['goods_id']}}" data-price="{{m['seckill_price']}}" data-state='0'>
+							<img src="/seckill/images/k1.png" alt="">
+							<span class="p-num">立即秒杀</span>
+							<span class="j-num">已秒 {{m['seckill_num']}} 件</span>
+							{% else %}
+						<a class="rest" data-id="{{m['goods_id']}}" data-price="{{m['seckill_price']}}" data-state='0'>
+							<img src="/seckill/images/k1.png" alt="">
+							<span class="p-num">分享参与</span>
+							<span class="j-num">21 : 00开抢</span>
+							{% endif %}
+						{% else %}
+						<a class="rest" data-id="{{m['goods_id']}}" data-price="{{m['seckill_price']}}" data-state='0'>
+							<img src="/seckill/images/k1.png" alt="">
+							<span class="p-num">分享参与</span>
+							<span class="j-num">21 : 00开抢</span>
+						{% endif %}
+						</a>
+					</div>
+					{% else %}
+					<!-- 正在疯抢-已秒光 -->
+					<div class="p-price">
+						<div class="price">
+							<span class="m-mark">¥</span><span class="m-num">{{m['seckill_price']}}</span><span class="d-num">¥&nbsp;{{m['market_price']}}</span> 
+							<span class="k-price">还剩<span class="k-num">{% if m['goods_num'] < 0 %} 0 {% else %} {{ m['goods_num'] }} {% endif %}</span>件</span>
+						</div>
+						<a class="rest1" data-start="{{m['starttime']}}" data-id="{{m['goods_id']}}" data-price="{{m['seckill_price']}}">
+							<img src="/seckill/images/k3.png" alt="">
+							<span class="p-num">已秒光</span>
+							<span class="j-num">已秒{{m['seckill_num']}} 件</a>
+						</a>
+						<!-- 秒光信息弹层 -->
+						<div id="out-msg{{m['goods_id']}}" class="out-msg hide"><p class="con">宝贝已秒光<br>请关注其他宝贝!</p></div>
+					</div>
+					{% endif %}
+				{% elseif m['starttime'] > nowTime %}
+					{% if nowDay == k %}
+						<div class="p-price">
+							<div class="price">
+								<span class="m-mark">¥</span><span class="m-num">{{m['seckill_price']}}</span><span class="d-num">¥&nbsp;{{m['market_price']}}</span> 
+								<span class="k-price">还剩<span class="k-num">{% if m['goods_num'] < 0 %} 0 {% else %} {{ m['goods_num'] }} {% endif %}</span>件</span>
+							</div>
+							{% if platform == 'wx' %}
+								{% if isGM == 1 %}
+							<a class="rest" data-id="{{m['goods_id']}}" data-price="{{m['seckill_price']}}" data-state='0'>
+								<img src="/seckill/images/k1.png" alt="">
+								<span class="p-num">即将开始</span>
+								<span class="j-num">21 : 00 开抢</span>
+								{% else %}
+							<a class="rest" data-id="{{m['goods_id']}}" data-price="{{m['seckill_price']}}" data-state='0'>
+								<img src="/seckill/images/k1.png" alt="">
+								<span class="p-num">分享参与</span>
+								<span class="j-num">21 : 00开抢</span>
+								{% endif %}
+							{% else %}
+							<a class="rest" data-id="{{m['goods_id']}}" data-price="{{m['seckill_price']}}" data-state='0'>
+								<img src="/seckill/images/k1.png" alt="">
+								<span class="p-num">分享参与</span>
+								<span class="j-num">21 : 00开抢</span>
+							{% endif %}
+							</a>
+						</div>
+					{% else %}
+						<!-- 即将开始  提醒我 -->
+						<div class="p-price">
+							<div class="price">
+								<span class="m-mark">¥</span><span class="m-num">{{m['seckill_price']}}</span><span class="d-num">¥&nbsp;{{m['market_price']}}</span> 
+								<span class="k-price">还剩<span class="k-num">{% if m['goods_num'] < 0 %} 0 {% else %} {{ m['goods_num'] }} {% endif %}</span>件</span>
+							</div>
+							<a href="javascript:void(0)" class="rest2" data-id="{{m['goods_id']}}" data-price="{{m['seckill_price']}}">
+								<img src="/seckill/images/k2.png" alt="">
+								<span class="p-num2">提醒我</span>
+							</a>
+						<!--
+						    <a href="javascript:void(0)" class="rest2 hide" data-id="{{m['goods_id']}}" data-price="{{m['seckill_price']}}">
+								<img src="/seckill/images/k3.png" alt="">
+								<span class="p-num">即将开始</span>
+								<span class="j-num">21 : 00开抢</span>
+							</a>
+							-->
+							<div id="remind-msg{{m['goods_id']}}" class="remind-msg hide"><p class="con">已成功设置提前10分钟短信提醒<br>您可点击页面右上角“我的提醒”查看</p></div>
+						</div>
+					{% endif %}
+				{% elseif m['endtime'] < nowTime %}
+					<!-- 活动结束 已结束 -->
+					<div class="p-price">
+						<div class="price">
+							<span class="m-mark" style="color:#a3a3a3;">¥</span><span class="m-num" style="color:#a3a3a3;">{{m['seckill_price']}}</span><span class="d-num">¥&nbsp;{{m['market_price']}}</span> 
+						</div>
+						<a href="javascript:void(0)" class="rest3" data-id="{{m['goods_id']}}" data-price="{{m['seckill_price']}}">
+							<img src="/seckill/images/k3.png" alt="">
+							<span class="p-num2">已结束</span>
+						</a>
+					</div>
+				{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+	{% endfor %}
+	</div>
+
+	<!-- 秒杀需知 -->
+	<p class="s-info"><span class="title">秒杀须知：</span><br>1、此活动需分享才可参与<br>2、本场活动21：00准时开始，持续一小时，22：00准时结束。<br>3、库存有限，先付款先得，后付款者表示宝贝未抢到，您的付款金额我们将会在24小时内退至您的帐户中。</p>
+
+	<div class="ad cf">
+
+	{% if info['adv1_img'] %}<a href="{{info['adv1_url']}}" class="ad1"><img src="/uploads/seckill/{{info['adv1_img']}}" alt=""></a>{% endif %}
+	{% if info['adv2_img'] %}<a href="{{info['adv2_url']}}" class="ad2"><img src="/uploads/seckill/{{info['adv2_img']}}" alt=""></a>{% endif %}
+	{% if info['adv3_img'] %}<a href="{{info['adv3_url']}}" class="ad3"><img src="/uploads/seckill/{{info['adv3_img']}}" alt=""></a>{% endif %}
+	<!-- {% if info['adv4_img'] %}<a href="{{info['adv4_url']}}" class="ad4"><img src="/uploads/seckill/{{info['adv4_img']}}" alt=""></a>{% endif %} -->
+	</div>
+
+	<div class="bottom">
+		<p class="brand">名牌正品&nbsp;&nbsp;|&nbsp;&nbsp;全场低价&nbsp;&nbsp;|&nbsp;&nbsp;活动规则</p>
+		<p class="cr">@Copyright 2009-2015&nbsp;版权所有亚太传媒股份有限公司</p>
+				<!-- 活动规则 -->
+		<a href="javascript:void(0)" class="rule-btn"></a>
+	</div>
+
+
+	<!-- gototop -->
+    <a href="javascript:void(0)" class="top hide"><img src="/seckill/images/top.png" alt=""></a>
+
+	<!-- 活动规则 -->
+	<div class="rule hide">
+		<div class="r-box">
+			<p class="r-title">活动规则</p>
+			<span class="cls">×</span>
+			<div class="r-con">{{info['desc']}}</div>
+		</div>
+	</div>
+
+
+	<!-- 手机提醒 -->
+	<div class="tel-bg hide">
+		<div class="tel-box">
+			<p class="t-title">请填写手机号码<span class="t-cls">×</span></p>
+
+			<div class="t-con">
+				<p class="tips">我们将在活动前10分钟提醒您！</p>
+				<p><input type="tel" name="number" class="t-box" placeholder="请输入11位手机号码"></p>
+				<p class="t-btn" data-id="0">设&nbsp置</p>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 不是从朋友圈进来的弹层 -->
+
+	<!-- 提醒分享 -->
+	<div class="notice hide">
+		<div class="n-box">
+			<p class="title">请从秒杀分享链接进入参与!</p>
+			<p class="word"></p>
+			<p class="n-btn">我要分享</p>
+		</div>
+	</div>
+
+	<!-- 朋友圈 -->
+
+	<div id="shareWind" class="share hide" data-id="0">
+		<img src="/seckill/images/share.png" alt="">
+	</div>
+
+
+    <!-- 公共弹窗样式 -->
+	<div class="popup hide" id="other-wd">
+		<div class="popup-box">
+			<p class="title" id="title"></p>
+			<p class="word" id="desc"></p>
+			<p class="popup-btn">确定</p>
+		</div>
+	</div>
+
+	<!-- 活动未开始 -->
+	<div class="popup hide" id="n-star">
+		<div class="popup-box">
+			<p class="title">活动尚未开始</p>
+			<p class="word">21:00 准时开抢！</p>
+			<p class="popup-btn" id="nostar">确定</p>
+		</div>
+	</div>
+
+	<!-- 秒中提醒 -->
+	<div class="popup hide" id="topay">
+		<div class="popup-box">
+			<p class="title"></p>
+			<p class="word">恭喜您秒中此商品，请在15分钟内完成支付！</p>
+			<p class="popup-btn" id="payin">马上付款</p>
+		</div>
+	</div>
+
+</div>
+</body>
+</html>
+<script>
+
+// 公共弹窗
+function comT(title,desc){
+	$('#title').html(title);
+	$('#desc').html(desc);
+	$('#other-wd').show();
+}
+
+
+function cut(i){
+	$('.turn').hide();
+	$('#pd .turn').eq(i).show();
+	$(".note0").hide();
+	$(".note0").eq(i).show();
+	$('#pd .turn').eq(i).find("img").each(function(){
+		if($(this).attr("data-src")){
+			$(this).attr("src",$(this).attr("data-src"));
+		}
+		
+			
+	});
+}
+// 滑动菜单控制
+$(function(){
+	var wxData = {
+		imgUrl:"{{fenx['img']}}",
+		link:"{{domain}}/phone/seckill/index/{{info['id']}}/{{uid}}",
+		desc:"{{fenx['name']}}",
+		title:"一元秒杀",
+		success: function () {
+			$.ajax({
+				type: 'POST',
+				url: "/phone/seckill/share/{{ info['id'] }}",
+				dataType: 'json',
+				data : '',
+				async:false,
+				success:function(res){
+					if(res.state == 1){
+						$(".share").hide();
+						$('body').css('overflow','auto');
+					}
+				}
+			})
+		}
+	};
+	
+	var swiper = new Swiper('.swiper-container', {
+		slidesPerView : 5,
+		onSlideChangeEnd:function(argument){
+			cut(swiper.activeIndex)
+		}
+	});
+	
+	$(".popup-btn").click(function(){
+		$('.popup').hide();
+	});
+	
+	// 活动开始页面
+		swiper.slideTo({{show}}, 1000, false);
+		$('#pd .turn').eq({{show}}).show();
+		$("#note{{show}}").show();
+		$('#pd .turn').eq({{show}}).find("img").each(function(){
+			if($(this).attr("data-src")){
+				$(this).attr("src",$(this).attr("data-src"));
+			}	
+		});
+		
+		$(".pick").click(function (argument) {
+			var i = $(this).index()-2;
+			swiper.slideTo(i, 500, false);
+			cut(i)
+		})
+
+		$('.rest1').click(function(){
+			//var gid = $(this).attr('data-id');
+			//$("#out-msg"+gid).show().delay(5000).hide(0);
+			comT('',"宝贝已秒光,请关注其他宝贝！");
+		});
+		
+	//打开手机号输入窗
+{% if platform == 'wx' %}
+	$('.rest2').click(function(){
+		var gid = $(this).attr('data-id');
+		$(".tel-box .t-btn").attr('data-id',gid);
+		$(".tel-bg").show();
+   	    $('.tel-bg').bind("touchmove",function(e){  
+          e.preventDefault();  
+    }); 
+	});
+{% else %}
+	$('.rest2').click(function(){
+		comT('此活动须在微信参与',"请复制活动链接发送微信好友，点击参与秒杀！{{domain}}/phone/seckill/index/{{info['id']}}");
+	});
+{% endif %}
+		
+	//关闭手机号输入窗
+	$('.tel-box .t-cls').click(function(){
+		$(".tel-bg").hide();
+		$('body').css('overflow','auto');
+		$(".tel-box .t-box").val('');
+		$(".tel-box .t-btn").attr('data-id',0);
+
+	});
+
+	//提交手机号后弹出5秒提醒
+	$('.tel-box .t-btn').click(function(){
+		var gid = $(this).attr('data-id');
+		var phone = $(".tel-box .t-box").val();
+		var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+		var telp = /^0\d{2,3}-?\d{7,8}$/;
+		if(!telp.test(phone) && !mob.test(phone)){
+			alert("请输入正确的电话！");
+		}else{
+			if(gid != 'undefined' && phone != 'undefined' && gid != '' && phone != ''){
+				$.ajax({
+					type: 'POST',
+					url: "/phone/seckill/tixing/{{info['id']}}",
+					dataType: 'json',
+					data : "goodsId="+gid+"&phone="+phone,
+					async:false,
+					success:function(res){
+						if(res.state == 1){
+							$(".tel-box .t-btn").attr('data-id',0);
+							$(".tel-box .t-box").val('');
+							$(".tel-bg").hide();
+							$("#remind-msg"+gid).show().delay(3000).hide(0);
+						}else{
+							alert(res.msg);
+						}
+					}
+				});
+			}
+		}
+	});
+
+{% if platform == 'wx' %}
+	{% if isGM == 1 %} //只能从朋友圈分享链接点击进来
+		$(".rest").click(function(){
+			var obj = $(this);
+			var id = obj.attr('data-id');
+			var price = obj.attr('data-price');
+			var state = obj.attr('data-state');
+			
+			if(parseInt(state) == 0){
+				obj.attr('data-state','1');
+				$.ajax({
+					type: 'POST',
+					url: "/phone/seckill/miao/{{info['id']}}",
+					dataType: 'json',
+					data : 'goodsId='+id+'&toUser={{toUser}}',
+					async:false,
+					success:function(res){
+						if(res.state == 1){
+							location.href = "{{pcHome}}/mobile/goods.php?id="+id+"&paybtnurl={{paybtnurl}}"+id+"&paynewprice="+price+"&discountshow=0&timeshow=0&goodsnumbershow=0&goback={{goback}}";
+						}else if(res.state == 6 || res.state == 9){
+							$(".share").show();
+						}else if(res.state == 8){
+							;
+						}else{
+							//alert(res.msg);
+							comT('',res.msg);
+						}
+					},
+					complete:function(){
+						obj.attr('data-state','0');
+					}
+				})
+			}
+		});
+	{% else %}
+		$(".rest").click(function(){
+			$(".share").show();
+		});
+	{% endif %}
+{% else %}
+	$('.rest').click(function(){
+		//alert('请在微信中参与此活动');
+		comT('此活动须在微信参与',"请复制活动链接发送微信好友，点击参与秒杀！{{domain}}/phone/seckill/index/{{info['id']}}");
+	});
+{% endif %}
+
+
+ 	wx.config({
+		  debug: false,
+		  appId: "{{ signPackage['appId'] }}",
+		  timestamp: "{{ signPackage['timestamp'] }}",
+		  nonceStr: "{{ signPackage['nonceStr'] }}",
+		  signature: "{{ signPackage['signature'] }}",
+		  jsApiList: [
+			'checkJsApi',
+			'onMenuShareTimeline',
+			'onMenuShareAppMessage',
+			'onMenuShareQQ',
+			'onMenuShareWeibo'
+		  ]
+	});
+
+	wx.ready(function () {
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline({imgUrl:wxData.imgUrl,link:wxData.link,desc:wxData.desc,title:wxData.title + " " + wxData.desc,success: wxData.success});
+	});
+
+});
+
+</script>

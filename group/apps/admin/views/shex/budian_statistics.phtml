@@ -1,0 +1,125 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">上海家博会-报名数据统计</h1>
+    </div>
+    
+    <div class="wrapper-md ng-scope">
+    <div class="m-b-sm">
+    <div class="btn-group" ng-init="radioModel = 'Male'">
+      <a href="/admin/shex/index"><label class="btn btn-sm btn-info ng-untouched ng-valid ng-dirty"><i class="fa fa-check text-active"></i>报名数据表</label></a>
+      <a href="/admin/shex/budian_statistics"><label class="btn btn-sm btn-danger ng-untouched ng-valid ng-dirty"><i class="fa fa-check text-active"></i>布点数据统计</label></a>
+      <a href="/admin/shex/reserve"><label class="btn btn-sm btn-success ng-untouched ng-valid ng-dirty"><i class="fa fa-check text-active"></i>预约数据表</label></a>
+    </div>
+    </div>
+           <!-- tips -->
+        <div class="alert ng-isolate-scope alert-info alert-dismissable">
+        <div ng-transclude=""><span class="ng-binding ng-scope">报名转化率 = ”报名按钮“的报名数 / ”报名按钮“的点击数</span></div>
+        </div>
+        <!--/ tips -->
+        <div class="panel panel-default">
+        <div class="table-responsive">
+          <div class="panel panel-default">
+            <div class="panel-heading">统计<span class="label bg-info">（数据从 2015-09-15 15:30:00 开始统计）</span></div>
+            <table class="table table-striped m-b-none">
+              <tbody>
+                <tr>                    
+                  <td>“报名按钮”总点击数</td>
+                  <td class="text-danger" style="width:70px;">
+                    <i class="fa"></i> {{ click_num }}
+                  </td>
+                </tr>
+                <tr>                    
+                  <td>总报名数</td>
+                  <td class="text-danger" style="width:70px;">
+                    <i class="fa"></i> {{ bm_count }}
+                  </td>
+                </tr>
+                <tr>                    
+                  <td>总转化率</td>
+                  <td class="text-danger" style="width:70px;">
+                    <i class="fa"></i> {{ total_zhl }}%
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+                            报名成功后产品图的布点统计<span class="label bg-info">数据从 2015-09-17 12:00:00 开始统计</span>
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light">
+            <thead>
+              <tr>
+                <th>产品图的位置</th>
+                <th>点击人数</th>
+                <th>点击次数</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k,key in click_list %}
+              <tr>
+                <td>{{ key['btn_id'] }}</td>
+                <td>{{ key['num'] }}</td>
+                <td>{{ key['click_num'] }}</td>
+              </tr>
+             {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+        </footer>
+      </div>
+    </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+                            每天报名转化率情况<span class="label bg-info">数据从 2015-09-15 15:30:00 开始统计，活动已进行 <?php echo $for_num?> 天，只显示最近前5天的数据</span>
+        <div class="table-responsive">
+          <table class="table table-striped b-t b-light">
+            <thead>
+              <tr>
+                <th>时间</th>
+                <th>首屏</th>
+                <th>家居建材全场5折</th>
+                <th>折上再优惠1200元</th>
+                <th>1元抢建材</th>
+                <th>4999免单任性送</th>
+                <th>下单还能返现</th>
+                <th>60天无理由退换货</th>
+                <th>参加一次全部买满</th>
+                <th>一线品牌</th>
+                <th>五大特权</th>
+                <th>尾页</th>
+                <th>来就送礼（09-23新增页）</th>
+                <th>当天总转化率</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k,key in arr %}
+              <tr>
+                <td>{{ k }}</td>
+                {% for part,vo in key %}
+                <td>{{ vo['bm_num'] }}/{{ vo['click_num'] }}  = {{ vo['zhl'] }} %</td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <footer class="panel-footer">
+        </footer>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+<?php $this->partial("index/footer")?>

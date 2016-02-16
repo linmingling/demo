@@ -1,0 +1,45 @@
+@charset "utf-8";
+.warp{background: #ad0000}
+/*常规报名*/
+.baoming1{width:270px;height:320px;padding:20px 30px;position: absolute;right:5px;top:80px;background: #9d0f0e}
+.baoming1 .bmForm .inputBox{margin-top: 20px;position: relative;}
+.baoming1 .bmForm input{width: 250px;height: 40px;padding:0 10px;line-height: 40px;font-size:16px;border:0;position: relative;z-index: 1;background: none}
+.baoming1 .bmForm select{width: 270px;height: 40px;line-height: 40px;font-size:16px;position: relative;z-index: 1;border:0;border-radius: 3px}
+.baoming1 .bmForm .tips{width:250px;height: 40px;padding:0 10px;color: #d2d2d2;font-size: 16px;line-height: 40px;border-radius:3px;background: #fff;position: absolute;top:0;left:0;}
+.baoming1 .bmForm .bmTitle{font-size: 24px;color: #fff;font-weight: bold;text-align: center;}
+.baoming1 .bmForm .tips2{color: #fff;font-size: 14px}
+.baoming1 .bmForm .bmBtn{width: 160px;height: 40px;line-height: 40px;border-radius: 40px;font-size: 18px;margin:50px auto 0 auto;background: #d11c1d;color: #fff;font-weight: bold;text-align: center;cursor: pointer;}
+.baoming1 .bmForm .step3{width: 270px;text-align: center;color: #fff;font-size: 14px}
+.baoming1 .bmForm .step3 .bmTitle{padding-top: 60px;background: url(../images/icon2.png) no-repeat center top;}
+.baoming1 .bmForm .step3 .ewm{width: 130px;height: 130px;margin:20px 0;}
+/*底部跟随报名*/
+.baoming3{width: 100%;min-width: 1200px;height:60px;background: url(../images/style2/bottom_bg.png) no-repeat center center #fe9d03;position: fixed;bottom:0;left: 0;z-index: 1}
+.baoming3 .insideBox{height: 60px}
+.baoming3 .bm2{width:155px;height: 80px;position: absolute;bottom:0;left: 5px}
+.baoming3 .btn{width: 135px;height: 40px;line-height: 40px;border:2px solid #bc1e1f;border-radius: 5px;text-align: center;font-size: 18px;color: #feea33;font-weight: bold;background: #ea3031;position: absolute;right: 10px;top: 8px;cursor: pointer;}
+/*右侧导航*/
+.expositionnav{width: 144px;height:480px;position: fixed;right:20px;top:50px;z-index: 1;color:#bb5400;background: url(../images/style2/rightNav.png) no-repeat center center;}
+.expositionnav .expositionlist{width:80px;margin:75px 0 0 32px;font-size: 14px;text-align: center;}
+.expositionnav .expositionlist p{height:43px;line-height: 52px;cursor: pointer;}
+.expositionnav .expositionlist span{border-radius: 20px;padding:2px 10px;}
+.expositionnav .expositionlist .hover span{color: #fff}
+.expositionnav .gototop{width: 120px;height: 50px;position: absolute;bottom: 0px;left: 13px}
+
+/*每模块背景图*/
+.expositionBox0{height: 600px;background: url(../images/style2/box0_bg.jpg) no-repeat top center}
+.expositionBox2{height:980px;background: url(../images/style2/box2_bg.png) no-repeat top center}
+.expositionBox3{height:700px;background: url(../images/style2/box3_bg.png) no-repeat top center}
+.expositionBox4{height:1000px;background: url(../images/style2/box4_bg.png) no-repeat top center}
+.expositionBox5{height:410px;background: url(../images/style2/box5_bg.png) no-repeat top center}
+.expositionBox6{height:700px;background: url(../images/style2/box6_bg.png) no-repeat top center}
+
+.expositionBox1 .insideBox{height:706px;background: url(../images/style2/box1_insideBg.png) no-repeat center center}
+.expositionBox2 .boxMain{height:795px;margin-top: 140px;background: url(../images/style2/box2_insideBg.jpg) no-repeat center center}
+.expositionBox3 .boxMain{margin-top: 120px}
+.expositionBox4 .boxMain{margin-top: 120px}
+.expositionBox5 .boxMain{height:260px;margin-top: 140px;background: url(../images/style2/box5_insideBg.png) no-repeat center center}
+.expositionBox6 .boxMain{height:662px;background: url(../images/box6_insideBg.png) no-repeat center center}
+
+.expositionBox3 .box3_left{width: 289px;height: 530px;}
+
+.expositionBox6 .map, .expositionBox6 .info{top: 105px}

@@ -1,0 +1,166 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/chosen.css" rel="stylesheet">
+<script src="/admin/js/chosen.jquery.min.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope" style="margin-bottom:20px;">
+				<h1 class="m-n font-thin h3">广告管理</h1>-<span>{% for k in regions %} {{k}} {% endfor %}</span>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:0px 20px;">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="add-adv form-inline">
+							<div class="input-group">
+								<select name="province" class="province input-group-addon input-sm">
+									<option>请选择省</option>
+									{% for k,v in province %} <option value="{{k}}"  >{{v}}</option> {% endfor %}
+								</select>
+								<select name="city" class="city input-group-addon input-sm"><option value='0'>请选择市</option></select>
+								<input type="text" name="adv_url" class="adv_url form-control input-sm" style="width:400px;" placeholder="http://" />
+								<span class="input-group-addon add-submit" data-type='0' style="cursor:pointer;">pc首页广告</span>
+							</div>
+							{% if list %}
+							<div class="table-responsive" style="margin-top:10px;width:650px;">
+								<table class="table table-hover table-condensed m-b-none">
+									<tbody>
+									{% for k in list %}
+										{% if k['type'] == 0 %}
+											<tr>
+												<td>{{regions[k['region']]}}</td>
+												<td style="width:500px;"><a href="{{k['url']}}" target="_bank">{{k['url']}}</a></td>
+												<td><i class="glyphicon glyphicon-remove del-adv" style="cursor:pointer;" data-id="{{k['id']}}"></i></td>
+											</tr>
+										{% endif %}
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:0px 20px;">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="add-adv form-inline">
+							<div class="input-group">
+								<select name="province" class="province input-group-addon input-sm">
+									<option>请选择省</option>
+									{% for k,v in province %} <option value="{{k}}"  >{{v}}</option> {% endfor %}
+								</select>
+								<select name="city" class="city input-group-addon input-sm"><option value='0'>请选择市</option></select>
+								<input type="text" name="adv_url" class="adv_url form-control input-sm" style="width:400px;" placeholder="http://" />
+								<span class="input-group-addon add-submit" data-type='1' style="cursor:pointer;">公众号左一按钮</span>
+							</div>
+							{% if list %}
+							<div class="table-responsive" style="margin-top:10px;width:650px;">
+								<table class="table table-hover table-condensed m-b-none">
+									<tbody>
+									{% for k in list %}
+										{% if k['type'] == 1 %}
+											<tr>
+												<td>{{regions[k['region']]}}</td>
+												<td style="width:500px;"><a href="{{k['url']}}" target="_bank">{{k['url']}}</a></td>
+												<td><i class="glyphicon glyphicon-remove del-adv" style="cursor:pointer;" data-id="{{k['id']}}"></i></td>
+											</tr>
+										{% endif %}
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$(".province").on("change",function(){
+		var pid = $(this).val();
+		$.ajax({
+			type: 'GET',
+			url: '/admin/index/regions?pid='+pid,
+			dataType: 'json',
+			timeout: 300,
+			async : false,
+			context:this,
+			beforeSend : function(){
+				$("#city").html("");
+			},
+			success : function(msg){
+				if(msg.state ==  1){
+					var data = msg.data.list; var str = "<option value='0'>请选择市</option>";
+					for(var m in data){
+						str = str + "<option value=" + m + ">" + data[m] + "</option>";
+					}
+					$(this).parent().children(".city").html(str);
+				}
+			},
+		})
+	});
+	
+	$(".add-submit").click(function(){
+		var type = parseInt($(this).attr('data-type'));
+		var province = parseInt($(this).parent().children(".province").val());
+		var city = parseInt($(this).parent().children(".city").val());
+		var url = $(this).parent().children(".adv_url").val();
+		
+		var data = {type:type,region:province,url:url};
+		if(city) data.region = city;
+		
+		$.ajax({
+			type: 'POST',
+			url: "/admin/station/advert",
+			contentType: "application/json",
+			dataType: 'json',
+			data : JSON.stringify(data),
+			timeout: 300,
+			async : false,
+			success : function(msg){
+				if(msg.state == 1){
+					location.href = "/admin/station/advert";
+				}else{
+					alert(msg.msg);
+				}
+			},
+		})
+	});
+	
+	$(".del-adv").click(function(){
+		var id = $(this).attr('data-id');
+		$.ajax({
+			type: 'GET',
+			url: "/admin/station/advertdel/"+id,
+			dataType: 'json',
+			async : false,
+			success : function(msg){
+				if(msg.state == 1){
+					location.href = "/admin/station/advert";
+				}else{
+					alert(msg.msg);
+				}
+			},
+		})
+	});
+	
+
+});
+
+</script>

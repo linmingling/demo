@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+/*底部通用导航*/
+.footer{width: 100%;height: 50px;background: #fff;border-top: 1px solid #d7d7d7;position: fixed;bottom: 0;left: 0;z-index: 1}
+.footer .footIcon{width: 19%;color: #666;display: inline-block;text-align: center;}
+.footer .footIcon i{width:50px;height: 30px;margin:0 auto;display: block;background: url(../images/bottomIcon.png) no-repeat;background-size: 100px auto}
+.footer .footIcon1 i{background-position: 0px -10px }
+.footer .footIcon2 i{background-position: 0px -60px }
+.footer .footIcon3 i{background-position: 0px -110px }
+.footer .footIcon4 i{background-position: 0px -160px }
+.footer .footIcon5 i{background-position: 0px -210px }
+.footer .hover{color: #ff6235;}
+.footer .hover i{background-position-x: -50px}
+
+.pb60{padding-bottom: 60px}

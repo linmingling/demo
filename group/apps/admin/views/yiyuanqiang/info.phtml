@@ -1,0 +1,177 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">一元购数据统计</h1></div>
+	
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				
+				<a class="btn btn-default btn-sm" href="/admin/yiyuanqiang/index" role="button" style="margin-right:10px;">返回</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<table id="goodsList" data-toggle="table"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+var formatfun = {
+	market : function(m){
+		if(typeof(m) != 'undefined') return m.market
+	},
+	promote : function(m){
+		if(typeof(m) != 'undefined') return m.promote
+	},
+};
+
+var goodsList = $("#goodsList").bootstrapTable({
+	method: 'get',
+	url: '/admin/yiyuanqiang/info/list/{{actionId}}/1',
+	classes:"table table-hover table-condensed m-b-none",
+	striped: false,
+	sidePagination:'server',
+	pagination: true,
+	pageSize: 10,
+	pageList: [5, 10, 20],
+	showColumns:false,
+	columns: [
+		{ field: 'id',title: 'id',align: 'center',valign: 'middle',sortable: true },
+		{ field:'goods_name', title:'商品', align:'center', valign:'middle' },
+		{ field:'cutcount', title:'参与人数', align:'center', valign:'middle' },
+		{ field:'countnum', title:'发起人数', align:'center', valign:'middle' },
+		{ field:'cutrate', title:'发起率', align:'center', valign:'middle' },
+		{ field:'share_sum', title:'被分享数', align:'center', valign:'middle' },
+		{ field:'lowestcut', title:'最低砍到价', align:'center', valign:'middle' },
+		{ field:'lowestpay', title:'最低成交价', align:'center', valign:'middle' },
+		{ field:'order_sum', title:'下单数', align:'center', valign:'middle' },
+		{ field:'sales_sum', title:'成交数', align:'center', valign:'middle' },
+		{ field:'orderrate', title:'下单率', align:'center', valign:'middle'},
+		{ field:'salserate', title:'成交率', align:'center', valign:'middle' },
+		{ field:'remind_sum', title:'提醒人数', align:'center', valign:'middle' },
+	],
+});
+
+var table = $("#gridSystemModal table").bootstrapTable({
+	method: 'get',
+	url: '',
+	striped: false,
+	sidePagination:'server',
+	pagination: true,
+	pageSize: 10,
+	pageList: [5, 10, 20],
+	toolbar:"#custom-toolbar",
+	toolbarAlign:'left',
+	showColumns:true,
+	clickToSelect: true,
+	columns: [
+		{ field: 'state',checkbox: true },
+		{ field: 'id',title: 'ID',align: 'center',valign: 'middle',sortable: true },
+		{ field:'name', title:'名称', align:'center', valign:'middle' },
+		{ field:'sn', title:'唯一码', align:'center', valign:'middle' },
+		{ field:'price', title:'市场价', align:'center', valign:'middle', formatter:formatfun.market },
+		{ field:'price', title:'促销价', align:'center', valign:'middle', formatter:formatfun.promote },
+		{ field:'addTime', title:'上架时间', align:'center', valign:'middle' },
+	]
+});
+
+table.on('load-success.bs.table',function(){
+	$("#gridSystemModal table").attr('data-exist','1');
+});
+
+
+
+function ModalSelectGoods(){
+	var obj = $("#gridSystemModal table").bootstrapTable('getSelections');
+	for(var k in obj){
+		var data = {
+			id:'', 
+			goods_name:obj[k]['name'],
+			active_quantity:"<input type='text' name='active_quantity' value='0' />", 
+			goods_quantity:"<input type='text' name='goods_quantity' value='0' />", 
+			join_sum:0, 
+			sales_sum:0, 
+			range_min:"<input type='text' name='range_min' value='0' />",  
+			range_max:"<input type='text' name='range_max' value='0' />", 
+			lowest_price:"<input type='text' name='lowest_price' value='0' />", 
+			price:{promote:obj[k]['price']['promote'],market:obj[k]['price']['market']},
+			sort:"<input type='text' name='sort' value='0' />", 
+			shipping:0, 
+			is_remove:0
+		};
+		goodsList.bootstrapTable('append',data);
+		var str = "<button type='button' class='btn btn-primary btn-xs' data-id="+obj[k]['id']+" onclick='addRow(this)'>添加</button>&nbsp;<button type='button' class='btn btn-danger btn-xs' onclick='delRow(this)'>取消</button>";
+		$("#goodsList tr:last td:last").html(str);
+	}
+	$('#gridSystemModal').modal('hide');
+}
+
+function delRow(obj){
+	$(obj).parent().parent().remove();
+}
+
+function addRow(obj){
+	var tr = $(obj).parent().parent();
+	var data = {
+		goods_id:$(obj).attr('data-id'),
+		goods_name:tr.find("td:eq(1)").html(),
+		active_quantity:tr.find("td input[name='active_quantity']").val(),
+		goods_quantity:tr.find("td input[name='goods_quantity']").val(),
+		range_min:tr.find("td input[name='range_min']").val(),
+		range_max:tr.find("td input[name='range_max']").val(),
+		lowest_price:tr.find("td input[name='lowest_price']").val(),
+		promote:tr.find("td:eq(9)").html(),
+		market:tr.find("td:eq(10)").html(),
+		sort:tr.find("td input[name='sort']").val(),
+	};
+	$.post("/admin/yiyuanqiang/goods/add/{{actionId}}",data,function(result){
+		if(result.state == 1){
+			var str = "";
+			str = str + "<td style='text-align:center;'><input type='checkbox' value='"+result.msg.id+"'>&nbsp;"+result.msg.id+"</td>";
+			str = str + "<td style='text-align:center;'>"+result.msg.goods_name+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.active_quantity+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.goods_quantity+"</td>";
+			str = str + "<td style='text-align:center;'>0</td><td style='text-align:center;'>0</td>";
+			str = str + "<td style='text-align:center;'>"+data.range_min+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.range_max+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.lowest_price+"</td>";
+			str = str + "<td style='text-align:center;'>"+result.msg.promote+"</td>";
+			str = str + "<td style='text-align:center;'>"+result.msg.market+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.sort+"</td>";
+			str = str + "<td></td><td></td>";
+			str = str + "<td style='text-align:center;'><a href='/admin/yiyuanqiang/goods/modify/{{actionId}}/"+result.msg.id+"'>编辑</a>&nbsp;|&nbsp;";
+			str = str + "<a href='javascript:delGoods({{actionId}},"+result.msg.id+")'>删除</a></td>";
+			tr.html(str);
+		}else{
+			alert(result.msg);
+		}
+	});
+}
+
+function searchGoods(){
+	var name = $("#goodsName").val();
+	var id = $("#goodsId").val();
+	var category = $("#category").val();
+	var real = 0;
+	
+	if($("#isReal").is(':checked')) real = 1;
+	table.bootstrapTable('refreshOptions',{url: '/admin/index/goods'});
+	table.bootstrapTable('refresh', {query:{catId:category, keyWords:name, goodsId:id}});
+}
+
+$('#gridSystemModal').on('shown.bs.modal', function (e) {
+	table.bootstrapTable('refreshOptions',{url: '/admin/index/goods'});
+	if($("#gridSystemModal table").attr('data-exist') == 0) table.bootstrapTable('refresh');
+})
+
+</script>
+

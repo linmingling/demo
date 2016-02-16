@@ -1,0 +1,259 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope">
+  <div class="app-content-body fade-in-up ng-scope" >
+  
+   <div class="ng-scope">
+    <div class="bg-light lter b-b wrapper-md ng-scope">
+        <h1 class="m-n font-thin h3">七夕家装节-返现红包数据表</h1>
+    </div>
+    <div class="wrapper-md ng-scope">
+      <div class="m-b-sm">
+        <div class="btn-group" ng-init="radioModel = 'Male'">
+          <a href="/admin/hongbao/index"><label class="btn btn-sm btn-info ng-untouched ng-valid ng-dirty" ng-model="radioModel" btn-radio="'Male'"><i class="fa fa-check text-active"></i>发放/领取</label></a>
+          <a href="/admin/hongbao/record"><label class="btn btn-sm btn-success ng-untouched ng-valid ng-dirty" ng-model="radioModel" btn-radio="'Female'"><i class="fa fa-check text-active"></i>详情</label></a>
+          <a href="/admin/hongbao/use"><label class="btn btn-sm btn-primary ng-untouched ng-valid ng-dirty active ng-valid-parse" ng-model="radioModel" btn-radio="'N/A'"><i class="fa fa-check text-active"></i>红包使用情况</label></a>
+          <a href="/admin/hongbao/budian"><label class="btn btn-sm btn-danger ng-untouched ng-valid ng-dirty" ng-model="radioModel" btn-radio="'N/A'"><i class="fa fa-check text-active"></i>数据布点</label></a>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">七夕家装节返现红包数据表
+        <span class="label bg-info"></span>
+        </div>
+        <div class="table-responsive">
+          <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+          <div class="row">
+                <div class="row wrapper">
+                  <div class="col-sm-4">
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button class="btn btn-sm btn-default" type="button"><a href="use_bmtable_xls">导出全部数据</a></button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+          </div>
+          <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                  <th style="width: 100px;" class="sorting_asc" rowspan="1" colspan="1">微信openid</th>
+                  <th style="width: 120px;" class="sorting" rowspan="1" colspan="1">手机号码</th>
+                  <th style="width: 80px;" class="sorting" rowspan="1" colspan="1">金额</th>
+                  <th style="width: 80px;" class="sorting" rowspan="1" colspan="1">券号</th>
+                  <th style="width: 150px;" class="sorting" rowspan="1" colspan="1">领取时间</th>
+                  <th style="width: 150px;" class="sorting" rowspan="1" colspan="1">验证时间</th>
+                  <th style="width: 80px;" class="sorting" rowspan="1" colspan="1">状态</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for k in list %}
+                <tr class="odd">
+                    <td class="sorting_1">{{ k['openid'] }}</td>
+                    <td>{{ k['phone'] }}
+                    {% if k['is_bm'] == 1%}
+                    <span class="label bg-success">已报名</span>
+                    {% else %}
+                    <span class="label bg-danger">未报名</span>
+                    {% endif %}
+                    </td>
+                    <td>{{ k['total'] }}</td>
+                    <td>{{ k['sn'] }}</td>
+                    <td>
+                    {% if k['add_time'] != 0 %}
+                    {{ date('Y-m-d H:i:s',k['add_time']) }}
+                    {% endif %}
+                    </td>
+                    <td>
+                    {% if k['verify_time'] != 0 %}
+                    {{ date('Y-m-d H:i:s',k['verify_time']) }}
+                    {% endif %}
+                    </td>
+                    <td>
+                    {% if k['state'] == 1 %}<span class="label bg-danger">未验证</span>
+                    {% elseif k['state'] == 2 %}<span class="label bg-warning">正在验证</span>
+                    {% elseif k['state'] == 3 %}<span class="label bg-success">验证通过</span>
+                    {% else %}<span class="label bg-danger">验证失败</span>
+                    {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          {% if page <> '' %}
+          <?php $this->partial("index/page")?>
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<!-- Large modal -->
+{% for k,key in list %}
+<div class="modal fade-{{ key['phone'] }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{ key['phone'] }} 提交的图片验证信息</h4>
+      </div>
+      <div class="modal-body"><img src="../../{{ key['img_link'] }}"></div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+{% for k,key in list %}
+<div class="modal up-fade-{{ key['phone'] }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel2">当前正在对用户 {{ key['phone'] }} 进行验证处理</h4>
+      </div>
+    <div class="panel panel-default">
+    <div class="panel-body">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">验证类型</label>
+          <div class="col-sm-10">
+            <select name="account" class="form-control m-b">
+              <option value="4">验证失败</option>
+              <option value="3">验证通过</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group has-error">
+          <label class="col-sm-2 control-label">消息内容</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control err_content" value="为了确保您尽快领取红包，请提供您本人购买产品相关信息">
+          </div>
+        </div>
+        <div class="form-group has-warning tips-success" style="display: none">
+          <label class="col-sm-2 control-label">内容示例</label>
+          <div class="col-sm-10">
+                                    尊敬的用户， 您的七夕家装节返现红包验证成功<br/>
+                                    凭证类型：七夕家装节返现红包<br/>
+                                    凭证属性：金额30元<br/>
+                                    验证时间：2015-07-27 19:25<br/>
+                                   红包对应金额已充值到您的微信中，请注意查收。<br/>如有疑问，请拨打服务电话xxxx
+          </div>
+        </div>
+        <div class="form-group has-warning tips-error">
+          <label class="col-sm-2 control-label">内容示例</label>
+          <div class="col-sm-10">
+                                    尊敬的用户， 您的七夕家装节返现红包验证未通过<br/>
+                                    凭证类型：七夕家装节返现红包<br/>
+                                    凭证属性：金额30元<br/>
+                                    验证时间：2015-07-27 19:25<br/>
+                                  为了确保您尽快领取红包，请提供您本人购买产品相关信息。<br/>如有疑问，请拨打服务电话xxxx
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+        <div class="form-group">
+          <div class="col-sm-4 col-sm-offset-2">
+            <input type="hidden" class="openid" value="{{ key['openid'] }}">
+            <input type="hidden" class="total" value="{{ key['total'] }}">
+            <input type="hidden" class="send_id" value="{{ key['id'] }}">
+            <button type="submit" class="btn btn-primary ajax">确定</button>
+          </div>
+        </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<div class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body tips"></div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+//$('#myModal').modal('toggle');
+$("#select").click(function(){
+	var type = $(this).val();
+	if(type == 'time'){
+		$(".search").hide();
+		$(".err_success").show();
+	}
+})
+$(".m-b").click(function(){
+	var type = $(this).val();
+	if(type == 4){
+		$(".has-error").show();
+		$(".tips-success").hide();
+		$(".tips-error").show();
+	} else {
+		$(".has-error").hide();
+		$(".tips-success").show();
+		$(".tips-error").hide();
+	}
+})
+})
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        linkFormat:'yyyy-mm-dd',
+        weekStart: 0,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: true,
+		startView: 2,
+		minView: 3,
+		forceParse: 0,
+        showMeridian: 1,
+    });
+	
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var sHTML = $('#desc').code();
+	
+});
+$(function(){
+	$('.ajax').click(function(){
+		var account = $(this).closest('.panel-body').find('.m-b').val();
+		var openid = $(this).closest('.panel-body').find('.openid').val();
+		var total = $(this).closest('.panel-body').find('.total').val();
+		var send_id = $(this).closest('.panel-body').find('.send_id').val();
+		var err_content = $(this).closest('.panel-body').find('.err_content').val();
+    	$.ajax({
+			async:true,
+			url:'/admin/hongbao/operation',
+			data:{account:account, openid:openid, total:total, send_id:send_id, err_content:err_content},
+			type: 'post',
+			dataType:'json',
+			success:function(result){
+				$(".modal").hide();
+			    $(".tips").html(result.errmsg);
+				$('#myModal').modal("show");
+				history.go(0);
+			}
+		});
+	})
+})
+</script>
+<?php $this->partial("index/footer")?>

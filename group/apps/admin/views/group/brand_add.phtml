@@ -1,0 +1,64 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<script type="text/javascript" src="/common/js/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/plugins/code/prettify.js"></script>
+<link rel="stylesheet" href="/common/js/kindeditor/themes/default/default.css"/>
+<script>
+KindEditor.ready(function(K) {
+	var editor = K.editor({
+		allowFileManager : true
+	});
+	K('#upload_image').click(function() {
+		editor.loadPlugin('image', function() {
+			editor.plugin.imageDialog({
+				imageUrl : K('#upload').val(),
+				clickFn : function(url, title, width, height, border, align) {
+					K('#upload').val(url);
+					editor.hideDialog();
+				}
+			});
+		});
+	});
+});
+</script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">
+				<a href="/admin/group/index">优品团 ></a> <a href="/admin/group/brand_list">品牌管理 ></a> {% if data['id'] !='' %}编辑{% else %}添加{% endif %}品牌</h1>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group form-group-sm">
+							<label for="active_quantity" class="col-sm-1 control-label">品牌名称:</label>
+							<div class="col-xs-2"><input class="form-control" type="text"  name="name" value="{{ data['name'] }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label class="col-sm-1 control-label">品牌LOGO:</label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control" readonly="readonly" id="upload" name="img_url" value="{{ data['img_url'] }}"/>
+							</div>
+							<button type="button" class="btn m-b-xs btn-sm btn-default btn-addon" id="upload_image"><i class="fa fa-cloud-upload text"></i><span class="text">Upload</span></button>建议尺寸：50px * 30px
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+							    <input type="hidden" name="id" value="{{ data['id'] }}">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/group/brand_list" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php $this->partial("index/footer")?>

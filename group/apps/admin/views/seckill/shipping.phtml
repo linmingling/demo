@@ -1,0 +1,118 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{% if type == 'add' %}添加提货地址{% else %} 修改提货地址 {% endif %}</h1>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post">
+						<div class="form-group form-group-sm form-inline">
+							<label for="address" class="col-sm-1 control-label">省/市/区:</label>
+							<div class="col-xs-7">
+								<select id="province" name="province" class="form-control">
+									<option>请选择省</option>
+									{% for k,v in province %} <option value="{{k}}" {% if type=='modify' and info['province'] == k %} selected {% endif %} >{{v}}</option> {% endfor %}
+								</select>
+							{% if type == 'add' %}
+								<select id="city" name="city" class="form-control"><option value='0'>请选择市</option></select>
+								<select id="district" name="district" class="form-control"><option value='0'>请选择区</option></select>
+							{% else %}
+								<select id="city" name="city" class="form-control">
+									<option value='0'>请选择市</option>{% for k,v in city %}<option value='{{k}}' {% if info['city'] == k %} selected {% endif %} >{{v}}</option>{% endfor %}
+								</select>
+								<select id="district" name="district" class="form-control">
+									<option value='0'>请选择区</option>{% for k,v in district %}<option value='{{k}}' {% if info['district'] == k %} selected {% endif %} >{{v}}</option>{% endfor %}
+								</select>
+							{% endif %}
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="address" class="col-sm-1 control-label">地址:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="address" name="address" value="{{ type == 'modify' ? info['address'] : '' }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="linkman" class="col-sm-1 control-label">联系人:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="linkman" name="linkman" value="{{ type == 'modify' ? info['linkman'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="tel" class="col-sm-1 control-label">联系电话:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="tel" name="tel" value="{{ type == 'modify' ? info['tel'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="best_time" class="col-sm-1 control-label">提货时间:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="best_time" name="best_time" value="{{ type == 'modify' ? info['best_time'] : '' }}" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" /></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/seckill/shipping/list/{{ actionId }}" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+	$("#province").on("change",function(){
+		var pid = $("#province").val();
+		$.ajax({
+			type: 'GET',
+			url: '/admin/index/regions?pid='+pid,
+			dataType: 'json',
+			timeout: 300,
+			async : false,
+			beforeSend : function(){
+				$("#city").html("");
+			},
+			success : function(msg){
+				if(msg.state ==  1){
+					var data = msg.data.list; var str = "<option value='0'>请选择市</option>";
+					for(var m in data){
+						str = str + "<option value=" + m + ">" + data[m] + "</option>";
+					}
+					$("#city").html(str);
+				}
+			},
+		})
+	});
+	
+	$("#city").on("change",function(){
+		var pid = $("#city").val();
+		$.ajax({
+			type: 'GET',
+			url: '/admin/index/regions?pid='+pid,
+			dataType: 'json',
+			timeout: 300,
+			async : false,
+			beforeSend : function(){
+				$("#district").html("");
+			},
+			success : function(msg){
+				if(msg.state ==  1){
+					var data = msg.data.list; var str = "<option value='0'>请选择区</option>";
+					for(var m in data){
+						str = str + "<option value=" + m + ">" + data[m] + "</option>";
+					}
+					$("#district").html(str);
+				}
+			},
+		})
+	});
+
+</script>

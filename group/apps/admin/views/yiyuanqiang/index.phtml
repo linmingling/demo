@@ -1,0 +1,73 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">一元购</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" href="/admin/yiyuanqiang/index/add" role="button">添加模块</a>
+			</div>			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>模块</th>
+									<th class="text-center">一站购ID</th>
+									<th>创建人</th>
+									<th>添加时间</th>
+									<th>活动状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in data %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ k['module'] }}</td>
+									<td class="text-center">{{ k['yizhangou_id'] }}</td>
+									<td>{{k['creater']}}</td>
+									<td>{{ k['createtime'] }}</td>
+									<td>
+									{% if k['is_close'] == 1 %}<span class="label bg-danger">已关闭</span>
+                    {% else %}<span class="label bg-success">进行中</span>
+                    {% endif %}</td>
+									<td>
+										<a href="/admin/yiyuanqiang/goods/list/{{ k['id'] }}">商品</a>&nbsp;|&nbsp;
+										<a href="/admin/yiyuanqiang/order/{{ k['id'] }}">订单</a>&nbsp;|&nbsp;
+										<a href="/admin/yiyuanqiang/user/{{ k['id'] }}">用户</a>&nbsp;|&nbsp;
+										<a href="/admin/yiyuanqiang/shipping/list/{{ k['id'] }}">提货</a>&nbsp;|&nbsp;
+										<a href="/admin/yiyuanqiang/index/modify/{{ k['id'] }}">编辑</a>&nbsp;|&nbsp;
+										<a href="javascript:delaction({{k['id']}})">删除</a>&nbsp;|&nbsp;
+										<a href="/admin/yiyuanqiang/info/list/{{ k['id'] }}">数据统计</a>&nbsp;|&nbsp;
+										<a href="/admin/yiyuanqiang/city/list/{{ k['id'] }}">城市管理</a>
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delaction(m){
+	var r=confirm("你确定要删除该模块吗？");
+	if(r == true){
+		location.href="/admin/yiyuanqiang/index/delete/"+m;
+	}
+}
+
+</script>

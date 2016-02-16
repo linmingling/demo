@@ -1,0 +1,75 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">添加活动</h1>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group form-group-sm">
+							<label for="zhan_name" class="col-sm-1 control-label">活动名称:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="zhan_name" maxlength="16"/></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="starttime" class="col-sm-1 control-label">开始时间:</label>
+							<div class="col-xs-2">
+								<input class="form-control" type="text" name="starttime" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="endtime" class="col-sm-1 control-label">结束时间:</label>
+							<div class="col-xs-2">
+								<input class="form-control" type="text" name="endtime" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd',alwaysUseStartDate:true})" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="show" class="col-sm-1 control-label">活动类型:</label>
+							<div class="col-xs-2 form-inline">
+								<select class="input-sm form-control w-sm inline v-middle" name="act_type" id="act_type">
+			                      <option value="综合建材" >综合建材</option>
+			                      <option value="单品牌" >单品牌</option>
+			                    </select>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="zhan_name" class="col-sm-1 control-label">排序:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="sort" maxlength="16"/></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="show" class="col-sm-1 control-label">是否显示:</label>
+							<div class="col-xs-2 form-inline">
+								<input type="checkbox" name="show" value='1' />
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/zhan/action/list" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	
+});
+
+</script>

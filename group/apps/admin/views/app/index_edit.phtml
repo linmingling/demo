@@ -1,0 +1,143 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<script type="text/javascript" src="/common/js/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/plugins/code/prettify.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/plugins/autoheight/autoheight.js"></script>
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+<link rel="stylesheet" href="/common/js/kindeditor/themes/default/default.css"/>
+<script>
+KindEditor.ready(function(K) {
+	$(document).on("click",".upload_image",function(){
+		var dom = $(this).closest(".form-group").find(".upload");
+	 	editor.loadPlugin('image', function() {
+			editor.plugin.imageDialog({
+				imageUrl : dom.val(),
+				clickFn : function(url, title, width, height, border, align) {
+					dom.val(url);
+					editor.hideDialog();
+				}
+			});
+		});
+	});
+});
+</script>
+<script>
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('.desc', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+allowFileManager : true,
+autoHeightMode : true,
+afterBlur: function(){this.sync();},
+items : [
+'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+'superscript', 'clearhtml', 'quickformat', 'selectall','formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+'anchor', 'link', 'unlink', 'fullscreen']
+});
+});
+</script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">APP首页管理</h1>
+			</div>
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						
+						<div class="form-group form-group-sm" id="goods_img">
+							<label for="discount" class="col-sm-1 control-label">轮播广告图:</label>
+							<div class="col-sm-8">
+							     <button type="button" class="btn btn-default btn-sm add"><i class="glyphicon glyphicon-plus"></i></button> 以下排列顺序为页面显示顺序，其中第一张图为首页显示图，建议尺寸：750px * 250px
+							</div>
+						</div>
+						<div id="imgSelectBox">
+						{% if tag %}
+						  {% for k in indexData['info'] %}
+						  <div class="form-group form-group-sm">
+						  <label for="headimg" class="col-sm-1 control-label"></label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control upload" readonly="readonly" name="index_img[]" value="{{ k['img'] }}"/>
+							</div>
+							<div class="col-xs-2">
+								<input type="text" class="form-control "  name="index_url[]" value="{{ k['url'] }}"/>
+							</div>
+						  <button type="button" class="btn m-b-xs btn-sm btn-default btn-addon upload_image"><i class="fa fa-cloud-upload text"></i><span class="text">Upload</span></button>
+						  <button type="button" class="btn m-b-xs btn-sm btn-default add" onclick="deleteDom($(this))"><i class="fa fa-trash-o"></i></button>
+						  </div>
+						  {% endfor %}
+						 {% endif %}
+						</div>
+						
+						
+						<div class="form-group form-group-sm">
+						  <label for="headimg" class="col-sm-1 control-label">一元抢入口图片</label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control upload" readonly="readonly" name="yyq_img" value="{{ indexData['yyq_img'] }}"/>
+							</div>
+							<div class="col-xs-2">
+								<input type="text" class="form-control "  name="yyq_url" value="{% if indexData['yyq_url'] == '' %}http://{% else%}{{ indexData['yyq_url'] }}{% endif %}"/>
+							</div>
+						  <button type="button" class="btn m-b-xs btn-sm btn-default btn-addon upload_image"><i class="fa fa-cloud-upload text"></i><span class="text">Upload</span></button>
+						  &nbsp;建议尺寸：750px * 250px
+						  </div>
+						
+						<div class="form-group form-group-sm hide">
+							
+							<div class="col-xs-7">
+							<textarea class="form-control desc"  >
+							
+                            </textarea>
+                            </div>
+						</div>
+						
+						
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function deleteDom(btn){
+		var dom = btn.closest(".form-group");
+		dom.remove(); 	
+	}
+	$(function(){
+		$("#goods_img .add").click(function(){
+			var html = "";
+			html += '<div class="form-group form-group-sm">'+
+						'<label for="headimg" class="col-sm-1 control-label"></label>'+
+						'<div class="col-xs-2">'+
+						    '<input type="text" class="form-control upload" readonly="readonly" name="index_img[]" value=""/>'+
+						'</div>'+
+						'<div class="col-xs-2">'+
+							'<input type="text" class="form-control"  name="index_url[]" value="http://"/>'+
+						'</div>'+
+						'<button type="button" class="btn m-b-xs btn-sm btn-default btn-addon upload_image" ><i class="fa fa-cloud-upload text"></i><span class="text">Upload</span></button> '+
+						'<button type="button" class="btn m-b-xs btn-sm btn-default add" onclick="deleteDom($(this))"><i class="fa fa-trash-o"></i></button>'+
+					'</div>';
+			var dom = $(html);    
+			$("#imgSelectBox").append(dom);
+		});
+		
+	});
+</script>
+<?php $this->partial("index/footer")?>

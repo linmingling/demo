@@ -1,0 +1,764 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link rel="stylesheet" type="text/css" href="/admin/css/webuploader.css">
+
+<style type="text/css">
+	
+	.item-row{}
+	.item-row .img-bg{}
+	.item-row .img-list{margin-left:10px;}
+	.item-row .addimgbtn{float:left;display:block;margin-left:10px;margin-top:10px;border:1px solid #cfdadd;padding:0px;cursor:pointer;}
+	.item-row .addimgbtn .webuploader-pick{padding:5px;margin:0px;border-radius:0px;}
+	.item-row .addokbtn{float:left;display:block;margin-left:10px;margin-top:10px;border:1px solid #cfdadd;padding:5px;cursor:pointer;}
+	
+	.item-row .img-row{position:relative;float:left;margin-right:10px;margin-top:10px;}
+	.item-row .img-row:last-child{margin-right:0px;}
+	.item-row .img-row .inimg{display:inherit;border:1px solid #cfdadd;}
+	.item-row .img-row .inimg.msg{position:absolute;top:0px;left:0px;display:none;background:rgba(0, 0, 0, 0.2);text-align:center;}
+	.item-row .img-row .inimg.msg.error{display:block;color:red;}
+	.item-row .img-row .inimg.msg.success{display:block;color:white;}
+	.item-row .img-row .inimg.msg.loading{
+		display:block;border:none;background:url(/admin/images/loading-50.gif) no-repeat;background-size:40px 40px;width:40px;height:40px;margin:30px 0px 0px 60px;
+	}
+	.item-row .img-row img.inimg{width:160px;height:100px;background-color:#fff;border:none;}
+	.item-row .img-row .inimg.img-btn{position:absolute;opacity:0;z-index:100;top:0px;left:0px;width:160px;height:100px;cursor:pointer;}
+    .item-row .img-row .inimg.addimg{position:absolute;z-index:100;top:0px;left:0px;border:0px;}
+    .item-row .img-row .inimg.addimg .webuploader-pick{opacity:0 !important;width:160px;height:100px;padding:0px;margin:0px;border:0px;}
+	.item-row .img-row .inimg.img-url{width:160px;}
+	.item-row .img-row .inimg.img-sort{width:160px;text-align:center;}
+	.item-row .img-row .inimg.img-type{display:block;border:1px solid #cfdadd;width:160px;text-align:center;background-color:#fff;}
+	.item-row .img-row .inimg.isshow{width:160px;background-color:#fff;height:20px;line-height:20px;}
+	.item-row .img-row .inimg.img-close{
+		display:block;width:15px;height:15px;left:-5px;top:-5px;cursor:pointer;z-index:200;
+		position:absolute;border:none;background:url(/admin/images/close.jpg) no-repeat;
+	}
+	
+	#inputTable .img-list{display:inline-flex;}
+	#inputTable .img-list .img-row{margin-right:10px;}
+	#inputTable .img-list .img-row:last-child{margin-right:0px;}
+	
+	#inputTable .img-row{position:relative;}
+	#inputTable .img-row .inimg{display:inherit;border:1px solid #cfdadd;}
+	#inputTable .img-row img.inimg{width:195px;height:100px;background-color:#fff;border:none;}
+	#inputTable .img-row .inimg.img-btn{position:absolute;opacity:0;z-index:100;top:0px;left:0px;width:195px;height:100px;cursor:pointer;}
+	#inputTable .img-row .inimg.img-url{width:195px;}
+	#inputTable .img-row .inimg.img-url{width:195px;}
+	#inputTable .img-row .inimg.isshow{width:195px;}
+	#inputTable .img-row .inimg.img-close{
+		display:block;width:15px;height:15px;left:-5px;top:-5px;cursor:pointer;z-index:200;
+		position:absolute;border:none;background:url(/admin/images/close.jpg) no-repeat;
+	}
+	
+	#itemTable td a.os{display:inline-block;width:30px;text-align:center;clear:both;}
+	
+</style>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">一站购 - {{info['zhan_name']}} - {{cityBox[info['city_id']]['region_name']}}平滑</h1></div>
+		
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a id="add-item" class="btn btn-default btn-sm" role="button">添加自定义栏目</a>
+				<a id="add-sys-item" class="btn btn-default btn-sm" role="button">添加系统默认栏目</a>
+				<a class="btn btn-default btn-sm" href="/admin/zhan/city/list/{{info['zhan_id']}}" role="button" style="margin-right:10px;">返回</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table id="itemTable" class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>栏目类型</th>
+									<th>栏目名称</th>
+									<th>行</th>
+									<th>列</th>
+									<th>排序</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+							{% for k in item %}
+								<tr class="item-title" data-id="{{k['item_id']}}" data-type="{% if k['sys_default'] == 0 %}2{% else %}1{% endif %}">
+									<td>{{k['item_id']}}</td>
+									<td>{% if k['sys_default'] == 0 %} 自定义栏目 {% else %} 系统默认栏目 {% endif %}</td>
+									<td data-item="{{k['item_name']}}" data-sys="{{k['sys_default']}}">{% if k['sys_default'] == 0 %} {{k['item_name']}} {% else %} {{k['sys_name']}} {% endif %}</td>
+									<td data-value="{{k['row']}}">{{k['row']}}</td>
+									<td data-value="{{k['column']}}">{{k['column']}}</td>
+									<td data-value="{{k['item_sort']}}">{{k['item_sort']}}</td>
+									<td><a class="os item-data">内容</a>&nbsp;|&nbsp;<a class="os item-edit">编辑</a>&nbsp;|&nbsp;<a class="os item-del">删除</a></td>
+								</tr>
+								<tr class="item-row hide" style="background-color:#EFE6E5;">
+									<td colspan="8">
+										<div class="img-bg">
+											<div class="img-row b" data-old="0" style="margin-right:10px;">
+												<span class='inimg img-close'></span>
+												<div class="inimg msg"></div>
+												<img src="" class="inimg" />
+												<div class="inimg addimg"></div>
+												<span class="inimg img-type">背景图</span>
+												<div class="inimg isshow">
+													<input type="checkbox" name="click_bmopen" value='1' />
+													<span>点击弹出报名框</span>
+												</div>
+											</div>
+										</div>
+										<div class="img-list"></div>
+										<div data-id="{{k['item_id']}}" class="addimgbtn">添加图片</div>
+										<div data-id="{{k['item_id']}}" class="addokbtn">确定</div>
+									</td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<pre>
+				1. 自定义栏目-产品图片要求：3*2列：尺寸要求：180*120（px），2*3列：尺寸要求：260*115（px），图片大小不超过15KB
+  				2. 系统默认栏目-报名按钮：尺寸（600*100px），图片大小不超过10KB</pre>
+  				
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form id="inputTable" class="panel-body form-horizontal" role="form" action="/admin/zhan/phpage/edit/{{info['c_id']}}" method="post" enctype="multipart/form-data">
+					<!--
+						<div class="form-group form-group-sm">
+							<label for="ph_register" class="col-sm-1 control-label">是否快速注册:</label>
+							<div class="col-xs-2 form-inline">
+								<input type="checkbox" name="ph_register" {% if info['ph_register'] == 2 %}checked{% endif %} value='1' />
+							</div>
+						</div>
+					-->
+						<div class="form-group form-group-sm">
+							<label for="tobm_txt" class="col-sm-1 control-label">引导报名文案:</label>
+							<div class="col-xs-2"><textarea class="form-control" style="width:200px" name="tobm_txt" maxlength="20">{% if info['tobm_txt_1'] %}{{info['tobm_txt_1']}}{% else %}已有[[num]]人报名成功！{%endif%}</textarea><font color="red">*最长16个字</font></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="bmwnd_txt" class="col-sm-1 control-label">报名弹窗标题:</label>
+							<div class="col-xs-2"><textarea class="form-control" style="width:200px" name="bmwnd_txt">{% if info['bmwnd_txt_1'] %}{{info['bmwnd_txt_1']}}{%endif%}</textarea><font color="red"></font></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="tobm_txt" class="col-sm-1 control-label">领票按钮文案:</label>
+							<div class="col-xs-2"><textarea class="form-control" style="width:200px" name="submit_btn_txt" maxlength="8">{% if info['submit_btn_txt_1'] %}{{info['submit_btn_txt_1']}}{% else %}0元领票{%endif%}</textarea><font color="red">*最长8个字</font></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="bmhx_txt" class="col-sm-1 control-label">报名成功贺喜文案:</label>
+							<div class="col-xs-2"><textarea class="form-control" style="width:300px" name="bmhx_txt">{% if info['bmhx_txt_1'] %}{{info['bmhx_txt_1']}}{% else %}恭喜您报名成功！{%endif%}</textarea></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="bmsuccess_txt" class="col-sm-1 control-label">报名成功提示文案:</label>
+							<div class="col-xs-2"><textarea class="form-control" style="min-width:500px;min-height:50px;" name="bmsuccess_txt">{% if info['bmsuccess_txt_1'] %}{{info['bmsuccess_txt_1']}}{% else %}恭喜您报名成功！{%endif%}</textarea></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="sms_bm" class="col-sm-1 control-label">报名成功短信:</label>
+							<div class="col-xs-2"><textarea class="form-control" style="height:123px;min-width:500px;" name="sms_bm">{% if info['sms_bm_1'] %}{{info['sms_bm_1']}}{% else %}【腾讯优居】恭喜您成功领取11月21日雅兰集团工厂直供团购会门票，床垫、床品、床架全场1.8折起、新品5折封顶、劲爆低价就在深圳湾体育中心春茧体育馆！工作人员会于24小时内与您电话联系，确认名额和地址并邮寄门票，注意接听哟！祝生活愉快~{% endif %}</textarea></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="wx_share" class="col-sm-1 control-label">微信分享文案:</label>
+							<div class="col-xs-2"><textarea class="form-control" style="height:50px;min-width:500px;" name="wx_share">{% if info['wx_share_1'] %}{{info['wx_share_1']}}{% else %}11月21日雅兰集团—工厂直供团购会，大家都知道0元领票戳这里！{%endif%}</textarea></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="wx_img" class="col-sm-1 control-label">微信分享小图:</label>
+							<div class="col-xs-2">
+								<div class="img-row">
+									<img {% if wxShareImg %}src="/uploads/zhan/{{wxShareImg['img_name']}}"{% endif %} class="inimg" />
+									<input type="file" name="wx_img" class="inimg img-btn" />
+								</div>
+								<font color="red">*分享小图尺寸要求：146*146（px）</font>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="dikou" class="col-sm-1 control-label">抵扣卷:</label>
+							<div class="col-xs-2">
+								<div class="img-row">
+									<span class='inimg img-close'></span>
+									<img {% if dikou %}src="/uploads/zhan/{{dikou['img_name']}}"{% endif %} class="inimg" />
+									{% if dikou %}<input type="hidden" name="dikou_id" value="{{dikou['img_id']}}" />{% endif %}
+									<input type="file" name='dikou' class="inimg img-btn" />
+									<input type='text' name="dikou_url" class='inimg img-url' placeholder='http://' />
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="success_adv" class="col-sm-1 control-label">报名成功页面广告图:</label>
+							<div class="col-xs-2 img-list">
+								<div class="img-row" data-sort="1">
+									<span class='inimg img-close'></span>
+									<img {% if successAdv[0] %}src="/uploads/zhan/{{successAdv[0]['img_name']}}"{% endif %} class="inimg" />
+									{% if successAdv[0] %}<input type="hidden" name="success_adv1_id" value="{{successAdv[0]['img_id']}}" />{% endif %}
+									<input type="file" name='success_adv1' class="inimg img-btn" />
+									<input type='text' name="success_adv_url1" class='inimg img-url' placeholder='http://' />
+								</div>
+								<div class="img-row" data-sort="2">
+									<span class='inimg img-close'></span>
+									<img {% if successAdv[1] %}src="/uploads/zhan/{{successAdv[1]['img_name']}}"{% endif %} class="inimg" />
+									{% if successAdv[1] %}<input type="hidden" name="success_adv2_id" value="{{successAdv[1]['img_id']}}" />{% endif %}
+									<input type="file" name='success_adv2' class="inimg img-btn" />
+									<input type='text' name="success_adv_url2" class='inimg img-url' placeholder='http://' />
+								</div>
+								<div class="img-row" data-sort="3">
+									<span class='inimg img-close'></span>
+									<img {% if successAdv[2] %}src="/uploads/zhan/{{successAdv[2]['img_name']}}"{% endif %} class="inimg" />
+									{% if successAdv[2] %}<input type="hidden" name="success_adv3_id" value="{{successAdv[2]['img_id']}}" />{% endif %}
+									<input type="file" name='success_adv3' class="inimg img-btn" />
+									<input type='text' name="success_adv_url3" class='inimg img-url' placeholder='http://' />
+								</div>
+								<font color="red">*建议尺寸：600*230（px），宽为600px</font>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="success_adv" class="col-sm-1 control-label">报名成功页面背景图:</label>
+							<div class="col-xs-2 img-list">
+								<div class="img-row" data-sort="bg">
+									<span class='inimg img-close'></span>
+									<img {% if successBg[0] %}src="/uploads/zhan/{{successBg[0]['img_name']}}"{% endif %} class="inimg" />
+									{% if successBg[0] %}<input type="hidden" name="success_bg_id" value="{{successBg[0]['img_id']}}" />{% endif %}
+									<input type="file" name='success_bg' class="inimg img-btn" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="after_phone_img" class="col-sm-1 control-label">关闭手机号输入框时弹出广告:</label>
+							<div class="col-xs-2 img-list">
+								<div class="img-row" data-sort="bg">
+									<span class='inimg img-close'></span>
+									<img {% if afterPhoneImg %}src="/uploads/zhan/{{afterPhoneImg['img_name']}}"{% endif %} class="inimg" />
+									{% if afterPhoneImg %}<input type="hidden" name="after_phone_imgId" value="{{afterPhoneImg['img_id']}}" />{% endif %}
+									<input type="file" name='after_phone_img' class="inimg img-btn" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="after_yzm_img" class="col-sm-1 control-label">关闭验证码输入框时弹出广告:</label>
+							<div class="col-xs-2 img-list">
+								<div class="img-row" data-sort="bg">
+									<span class='inimg img-close'></span>
+									<img {% if afterYzmImg %}src="/uploads/zhan/{{afterYzmImg['img_name']}}"{% endif %} class="inimg" />
+									{% if afterYzmImg %}<input type="hidden" name="after_yzm_imgId" value="{{afterYzmImg['img_id']}}" />{% endif %}
+									<input type="file" name='after_yzm_img' class="inimg img-btn" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/zhan/city/list/{{info['zhan_id']}}" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript" src="/admin/js/webuploader.min.js"></script>
+<script type="text/javascript">
+
+function itemImageShow(obj){
+	var itemId = obj.attr("data-id");
+	if(parseInt(itemId) > 0){
+		$.ajax({
+			async:false,
+			url:"/admin/zhan/item/imgshow/"+itemId+"?r="+Math.random(),
+			type:"get",
+			dataType:"json",
+			success:function(result){
+				if(result.code == 1){
+					var data = result.msg;
+					if(data.length > 0){
+						var str = "";
+						var bg_imgId = 0;
+						var bg_imgName = '';
+						var checked = "";
+						if(data[0]['img_type'] == 1){
+							bg_imgId = data[0]['img_id'];
+							bg_imgName = '/uploads/zhan/'+data[0]['img_name'];
+							if(data[0]['click_bmWnd'] == 1) checked = "checked";
+						}
+						str += "<div class='img-bg'>";
+						str += "<div class='img-row b' data-old='"+bg_imgId+"' style='margin-right:10px;'>";
+						str += "<span class='inimg img-close'></span>";
+						str += "<div class='inimg msg'></div>";
+						str += "<img src='"+bg_imgName+"' class='inimg' />";
+						str += "<div class='inimg addimg'></div>";
+						str += "<span class='inimg img-type'>背景图</span>";
+						str += "<div class='inimg isshow'><input type='checkbox' name='click_bmopen' "+checked+" value='1' /><span>点击弹出报名框</span></div>";
+						str += "</div>";
+						str += "</div>";
+						str += "<div class='img-list'>";
+						for(var i in data){
+							if(data[i]['img_type'] == 2){
+								str += "<div class='img-row f' data-old='"+data[i]['img_id']+"'>";
+								str += "<span class='inimg img-close'></span>";
+								str += "<div class='inimg msg'></div>";
+								str += "<img src='/uploads/zhan/"+data[i]['img_name']+"' class='inimg' />";
+								str += "<input type='text' class='inimg img-url' value='"+data[i]['img_url']+"' placeholder='http://' />";
+								str += "<input type='text' class='inimg img-sort' value='"+data[i]['img_sort']+"' placeholder='排序' />";
+								str += "</div>";
+							}
+						}
+						str += "</div>";
+						str += "<span data-id='"+itemId+"' class='addimgbtn'>添加图片</span>";
+						str += "<span data-id='"+itemId+"' class='addokbtn'>确定</span>";
+						obj.next().find("td:eq(0)").html(str);
+					}
+				}else{
+					alert(result.msg);
+				}
+			}
+		});
+	}
+}
+
+$(document).on("change",".img-row .img-btn",function(){
+	var url = "";
+	if (window.createObjectURL != undefined) {
+		url = window.createObjectURL(this.files[0])
+	} else if (window.URL != undefined) {  // IE
+		url = window.URL.createObjectURL(this.files[0])
+	} else if (window.webkitURL != undefined) {
+		url = window.webkitURL.createObjectURL(this.files[0])
+	}
+	$(this).parent().find("img.inimg").attr('src',url);
+});
+
+//取消添加栏目
+$(document).on("click","#itemTable .btncancel",function(){
+	var obj = $(this).parent().parent();
+	obj.remove();
+});
+
+//添加栏目
+$(document).on("click","#itemTable .btnok",function(){
+	var obj = $(this).parent().parent();
+	var cId = "{{info['c_id']}}";
+	var dataType = parseInt(obj.attr('data-type'));
+	var itemRow = obj.find("input[name='item-row']").val();
+	var itemColumn = obj.find("input[name='item-column']").val();
+	var itemSort = obj.find("input[name='item-sort']").val();
+	var itemName = '';
+	
+	if(dataType == 1){
+		itemName = parseInt(obj.find("select[name='item-name']").val());
+	}else if(dataType == 2){
+		itemName = obj.find("input[name='item-name']").val();
+	}
+	
+	if(itemName == '' || itemName == 0){
+		alert('栏目名称不能为空'); return;
+	}
+	
+	if(itemSort == ''){
+		alert('请填写排序'); return;
+	}
+		
+	$.ajax({
+		async:true,
+		url:"/admin/zhan/item/add",
+		type:"post",
+		data:'cId='+cId+'&dataType='+dataType+'&itemType=1&itemName='+itemName+'&itemRow='+itemRow+'&itemColumn='+itemColumn+'&itemSort='+itemSort,
+		dataType:"json",
+		success:function(result){
+			if(result.code == 1){
+				window.location.reload();
+			}else{
+				alert(result.msg);
+			}
+		}
+	});
+});
+
+//编辑栏目
+$(document).on("click","#itemTable .item-edit",function(){
+	var obj = $(this).parent().parent();
+	var type = parseInt(obj.attr('data-type'));
+	var itemId = parseInt(obj.attr('data-id'));
+	if($(this).hasClass("on")){
+		if(itemId){
+			var itemName = "";
+			if(type ==  1){  //系统默认栏目
+				itemName = obj.find("td:eq(2) select").val();
+			}else{
+				itemName = obj.find("td:eq(2) input").val();
+			}
+			var itemRow = obj.find("td:eq(3) input").val();
+			var itemColumn = obj.find("td:eq(4) input").val();
+			var itemSort = obj.find("td:eq(5) input").val();
+			if(itemName){
+				$.ajax({
+					async:true,
+					url:"/admin/zhan/item/edit",
+					type:"post",
+					data:'itemId='+itemId+'&dataType='+type+'&itemName='+itemName+'&itemRow='+itemRow+'&itemColumn='+itemColumn+'&itemSort='+itemSort,
+					dataType:"json",
+					success:function(result){
+						if(result.code == 1){
+							if(type ==  1){
+								obj.find("td:eq(2)").html(obj.find("td:eq(2) select option:selected").text());
+								obj.find("td:eq(2)").attr('data-sys',itemName);
+							}else{
+								obj.find("td:eq(2)").html(itemName);
+								obj.find("td:eq(2)").attr('data-item',itemName);
+							}
+							obj.find("td:eq(3)").html(itemRow);
+							obj.find("td:eq(3)").attr('data-value',itemRow);
+							obj.find("td:eq(4)").html(itemColumn);
+							obj.find("td:eq(4)").attr('data-value',itemColumn);
+							obj.find("td:eq(5)").html(itemSort);
+							obj.find("td:eq(5)").attr('data-value',itemSort);
+							obj.find("td:eq(6)").html("<a class='os item-data'>内容</a>&nbsp;|&nbsp;<a class='os item-edit'>编辑</a>&nbsp;|&nbsp;<a class='os item-del'>删除</a>");
+						}else{
+							alert(result.msg);
+						}
+					}
+				});
+			}
+		}
+	}else{
+		var itemName = obj.find("td:eq(2)").attr('data-item');
+		var itemSys = obj.find("td:eq(2)").attr('data-sys');
+		var itemRow = obj.find("td:eq(3)").attr('data-value');
+		var itemColumn = obj.find("td:eq(4)").attr('data-value');
+		var itemSort = obj.find("td:eq(5)").attr('data-value');
+		if(type ==  1){  //系统默认栏目
+			$.ajax({
+				async:true,
+				url:"/admin/zhan/systemitem/1",
+				type:"get",
+				dataType:"json",
+				success:function(result){
+					if(result.code == 1){
+						var data = result.msg; 
+						var dataName = '';
+						var sel = "<select name='item-name' data-name=''><option value='0'>请选择系统默认栏目</option>";
+						for(var i in data){
+							var selected = "";
+							if(itemSys == data[i]['id']){
+								selected = "selected";
+								dataName = data[i]['item_name'];
+							}
+							sel += "<option value='"+data[i]['id']+"' "+selected+">"+data[i]['item_name']+"</option>";
+						}
+						sel += "</select>";
+						obj.find("td:eq(2)").html(sel);
+						obj.find("td:eq(2) select").attr('data-name',dataName);
+					}
+				}
+			});
+		}else if(type == 2){  //自定义栏目
+			obj.find("td:eq(2)").html("<input type='text' name='item-name' value='"+itemName+"' />");
+		}
+		obj.find("td:eq(3)").html("<input type='text' name='item-row' value='"+itemRow+"' />");
+		obj.find("td:eq(4)").html("<input type='text' name='item-column' value='"+itemColumn+"' />");
+		obj.find("td:eq(5)").html("<input type='text' name='item-sort' value='"+itemSort+"' />");
+		obj.find("td:eq(6)").html("<a class='os item-edit on'>确定</a>&nbsp;|&nbsp;<a class='os item-del on'>取消</a>");
+	}
+});
+
+//删除栏目
+$(document).on("click","#itemTable .item-del",function(){
+	var obj = $(this).parent().parent();
+	var type = parseInt(obj.attr('data-type'));
+	var itemId = obj.attr('data-id');
+	if($(this).hasClass("on")){
+		var itemSys = parseInt(obj.find("td:eq(2)").attr('data-sys'));
+		var itemRow = obj.find("td:eq(3)").attr('data-value');
+		var itemColumn = obj.find("td:eq(4)").attr('data-value');
+		var itemSort = obj.find("td:eq(5)").attr('data-value');
+		if(type ==  1 && itemSys > 0){  //系统默认栏目
+			obj.find("td:eq(2)").html(obj.find("td:eq(2) select").attr('data-name'));
+		}else {
+			obj.find("td:eq(2)").html(obj.find("td:eq(2)").attr('data-item'));
+		}
+		obj.find("td:eq(3)").html(itemRow);
+		obj.find("td:eq(4)").html(itemColumn);
+		obj.find("td:eq(5)").html(itemSort);
+		obj.find("td:eq(6)").html("<a class='os item-data'>内容</a>&nbsp;|&nbsp;<a class='os item-edit'>编辑</a>&nbsp;|&nbsp;<a class='os item-del'>删除</a>");
+	}else{
+		if(itemId){
+			$.ajax({
+				async:true,
+				url:"/admin/zhan/item/del/"+itemId,
+				type:"get",
+				dataType:"json",
+				success:function(result){
+					if(result.code == 1){
+						obj.remove();
+					}else{
+						alert(result.msg);
+					}
+				}
+			});
+		}
+	}
+});
+
+//展开栏目图片
+$(document).on("click","#itemTable .item-data",function(){
+	var menu = $(this).parent().parent();
+	if($(this).hasClass("on")){
+		menu.next().addClass("hide");
+		$("#itemTable .item-title").removeClass("open");
+		$(this).removeClass("on");
+
+		if(typeof(uploaderBG) != 'undefined') uploaderBG.destory();
+		if(typeof(uploaderPD) != 'undefined') uploaderPD.destory();
+	}else{
+		itemImageShow(menu);
+		$("#itemTable .item-row").addClass("hide");
+		menu.next().removeClass("hide");
+		$(this).addClass("on");
+		$("#itemTable .item-title").removeClass("open");
+		menu.addClass("open");
+
+		var itemId = menu.attr("data-id");
+		if(typeof(itemId) == 'undefined'){
+			alert('参数获取失败'); return;
+		}	
+		var obj = menu.next();
+
+	/*  =========  栏目背景图 =============== */
+		var uploaderBG = WebUploader.create({
+			pick : {id:obj.find(".addimg"),innerHTML:""},
+			fileNumLimit:1,
+			server : '/admin/zhan/item/imgupload',accept:{title:'Images',extensions:'gif,jpg,jpeg,png',mimeTypes:'image/*'}
+		});
+
+		uploaderBG.on('fileQueued', function(file){
+			uploaderBG.makeThumb(file, function(error, src) {
+				if(error){
+					obj.find('.img-bg img.inimg').replaceWith('<span>不能预览</span>'); return;
+				}
+				obj.find('.img-bg img.inimg').attr('src',src);
+			}, 160, 100);
+		});
+		
+		uploaderBG.on('uploadStart', function(file){
+			obj.find(".img-bg .img-row .inimg.msg").addClass("loading");
+			var bm = obj.find(".inimg.isshow input[name='click_bmopen']:checked").val();
+			var s = 0;
+			if(typeof(bm) != "undefined" && parseInt(bm) == 1) s = 1;
+			uploaderBG.option('formData',{'imgtype':'bg','itemId':itemId,'imgBmOpen':s});
+		});
+
+		uploaderBG.on('uploadSuccess', function(file,res) {
+			obj.find(".img-bg .img-row .inimg.msg").removeClass("loading").addClass("success").html(res.msg);
+		    obj.find('.img-bg .img-row').attr('data-old',res.resId);
+		});
+
+		uploaderBG.on('uploadError', function(file,res) {
+			obj.find(".img-bg .img-row .inimg.msg").removeClass("loading").addClass("error").html('上传出错');
+		});
+
+
+	/*  =========  栏目产品图 =============== */
+		var uploaderPD = WebUploader.create({
+			pick : {id:obj.find(".addimgbtn"),innerHTML:"选择图片"},
+			server :'/admin/zhan/item/imgupload',accept:{title:'Images',extensions:'gif,jpg,jpeg,png',mimeTypes:'image/*'}
+		});
+
+		uploaderPD.on('fileQueued', function(file){
+			var HTML = "";
+			HTML += "<div id='"+file.id+"' class='img-row f' data-old='0'>";
+			HTML += "<span class='inimg img-close'></span>";
+			HTML += "<div class='inimg msg'></div>";
+			HTML += "<img src='' class='inimg' />";
+			HTML += "<input type='text' class='inimg img-url' placeholder='http://' />";
+			HTML += "<input type='text' class='inimg img-sort' placeholder='排序' />";
+			HTML += "</div>";
+			var li = $(HTML);
+
+			obj.find(".img-list").append(li);
+			uploaderPD.makeThumb(file, function(error, src) {
+				if(error){
+					li.find('img.inimg').replaceWith('<span>不能预览</span>'); return;
+				}
+				li.find('img.inimg').attr('src',src);
+			}, 160, 100);
+		});
+
+		uploaderPD.on('startUpload',function(){
+			obj.find(".img-list .img-row[data-old=0] .inimg.msg").addClass("loading");
+		});
+		
+		uploaderPD.on('uploadStart', function(file){
+			var t = $("#"+file.id);
+			uploaderPD.option('formData',{'imgtype':'fg','itemId':itemId,'imgUrl':t.find("input.img-url").val(),'imgSort':t.find("input.img-sort").val()});
+		});
+
+		uploaderPD.on('uploadSuccess', function(file,res) {
+		    var t = $('#'+file.id);
+		    t.find(".inimg.msg").removeClass("loading").addClass("success").html(res.msg); t.attr("data-old",res.resId);
+		});
+
+		uploaderPD.on('uploadError', function(file,res) {
+		    var t = $('#'+file.id);
+		    t.find(".inimg.msg").removeClass("loading").addClass("error").html('上传出错');
+		});
+		
+		//确定
+		obj.find(".addokbtn").click(function(){
+			uploaderBG.upload(); uploaderPD.upload();
+			var step = false;
+			obj.find(".img-row").each(function(){
+				var dataId = $(this).attr('data-old');
+				if(parseInt(dataId) > 0){
+					var postdata = "itemId="+itemId+"&oldId="+dataId;
+					if($(this).hasClass("b")){
+						var bm = $(this).find(".inimg.isshow input[name='click_bmopen']:checked").val(); var s = 0;
+						if(typeof(bm) != "undefined" && parseInt(bm) == 1) s = 1;
+						postdata += "&imgtype=bg&imgBmOpen="+s;
+					}else{
+						var imgurl = $(this).find("input.img-url").val();
+						var imgsort = $(this).find("input.img-sort").val();
+						postdata += "&imgtype=fg&imgUrl="+imgurl+"&imgSort="+imgsort;
+					}
+					$.ajax({
+						rsync:false,
+						url:"/admin/zhan/item/imgupload",
+						type:"post",
+						data:postdata,
+						dataType:"json",
+						success:function(result){
+							if(!step && result.code == 1) step = true;
+						}
+					});
+				}
+			});
+			if(step) alert("修改成功");
+		});
+	
+		//删除
+		$(document).on("click","#itemTable .inimg.img-close",function(){
+			var tag = $(this).parent();
+			var imgId = tag.attr("data-old");
+			if(tag.hasClass("b")){
+				if(typeof(imgId) != 'undefined' && parseInt(imgId) > 0){
+					$.ajax({
+						rsync:false,
+						url:"/admin/zhan/item/imgdel/"+imgId,
+						type:"get",
+						dataType:"json",
+						success:function(result){
+							if(result.code != 1) alert(result.msg);
+						}
+					});	
+				}
+				uploaderBG.reset();
+				tag.find("img.inimg").attr("src","");
+			}else if(tag.hasClass("f")){
+				if(typeof(imgId) != 'undefined' && parseInt(imgId) == 0){
+					uploaderPD.removeFile(tag.attr("id"),true);
+					tag.remove();
+				}else if(typeof(imgId) != 'undefined' && parseInt(imgId) > 0){
+					$.ajax({
+						rsync:false,
+						url:"/admin/zhan/item/imgdel/"+imgId,
+						type:"get",
+						dataType:"json",
+						success:function(result){
+							if(result.code == 1){
+								tag.remove();
+							}else{
+								alert(result.msg);
+							}
+						}
+					});	
+				}
+			}
+		});
+	}
+});
+
+$(document).ready(function() {
+	
+	//添加系统栏目
+	$("#add-sys-item").click(function(){
+		$.ajax({
+			async:true,
+			url:"/admin/zhan/systemitem/1",
+			type:"get",
+			dataType:"json",
+			success:function(result){
+				if(result.code == 1){
+					var data = result.msg; 
+					var sel = "<select name='item-name'><option value='0'>请选择系统默认栏目</option>";
+					for(var i in data){
+						sel += "<option value='"+data[i]['id']+"'>"+data[i]['item_name']+"</option>";
+					}
+					sel += "</select>";
+					var str = "<tr data-type='1'>";
+					str += "<td></td>";
+					str += "<td>系统默认栏目</td>";
+					str += "<td>"+sel+"</td>";
+					str += "<td><input type='text' name='item-row' /></td>";
+					str += "<td><input type='text' name='item-column' /></td>";
+					str += "<td><input type='text' name='item-sort' /></td>";
+					str += "<td><button type='button' class='btn btn-primary btn-xs btnok'>确定</button>&nbsp;<button type='button' class='btn btn-danger btn-xs btncancel'>取消</button></td>";
+					str += "</tr>";
+					$("#itemTable tbody").prepend(str);
+				}
+			}
+		});
+	});
+	
+	//添加自定义栏目
+	$("#add-item").click(function(){
+		var str = "<tr data-type='2'>";
+		str += "<td></td>";
+		str += "<td>自定义</td>";
+		str += "<td><input type='text' name='item-name' /></td>";
+		str += "<td><input type='text' name='item-row' /></td>";
+		str += "<td><input type='text' name='item-column' /></td>";
+		str += "<td><input type='text' name='item-sort' /></td>";
+		str += "<td><button type='button' class='btn btn-primary btn-xs btnok'>确定</button>&nbsp;<button type='button' class='btn btn-danger btn-xs btncancel'>取消</button></td>";
+		str += "</tr>";
+		$("#itemTable tbody").prepend(str);
+	});
+	
+	$("#inputTable .img-row .img-close").click(function(){
+		var obj = $(this).parent();
+		var oldId = obj.find("input[type='hidden']").val();
+		var sort = obj.attr('data-sort');
+		if(typeof(oldId) != 'undefined'){
+			$.ajax({
+				async:true,
+				url:"/admin/zhan/phpage/imgdel/"+oldId,
+				type:"get",
+				dataType:"json",
+				success:function(result){
+					console.log(result);
+					if(result.code == 1){
+						obj.find("img.inimg").attr("src","");
+						obj.find("input.img-url").val("");
+						obj.find("input.img-btn").remove();
+						obj.find("input[type='hidden']").remove();
+						if(sort == 'bg')
+						{
+							obj.find("img").after("<input type='file' name='success_bg' class='inimg img-btn' />");
+						}
+						else
+						{
+							obj.find("input.img-url").before("<input type='file' name='success_adv" + sort + "' class='inimg img-btn' />");
+						}
+					}else{
+						alert(result.msg);
+					}
+				}
+			});
+		}
+	});
+	
+});
+
+</script>

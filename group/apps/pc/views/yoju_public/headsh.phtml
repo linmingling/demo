@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="front-end technicist" content="jinger" />
+	<title>优居家博会（上海）</title>
+	<meta name="keywords" content="上海家博会" />
+	<meta name="description" content="上海家博会" />
+	<script src="/common/js/jquery-1.8.3.min.js"></script>
+	<script src="/common/js/yoju_head.js"></script>
+	<script src="/common/js/tongji.js"></script>
+</head>
+<body>
+	<!-- 通用header，建议抽出为一个文件，再每页引入 -->
+	<link type="text/css" rel="stylesheet" href="{{pcHome}}/group/templates/css/com.css" media="all">
+	<!-- header end -->
+	<div class='header'>
+		<div class='top_nav'>
+			<div class='top'>
+			<div class='topWrap'>
+				<div class='l' >
+					<span >
+					<a href='http://www.jia360.com' target='_blank' style='color: #999;'>腾讯网.亚太家居</a>
+					</span>
+				</div>
+				<div class="r_nav">
+				<?php if($this->session->get('user_id')){  ?>
+					<font style="color:#FF6325;font-weight: bold;"><?php echo $this->session->get('user_name'); ?></font>&nbsp;&nbsp;<a href="{{pcHome}}/user.php?act=order_list">我的优居</a><span class="pipe">|</span><a href="{{pcHome}}/user.php?act=logout">退出</a>
+				<?php }else{ ?>
+					<a rel="nofollow" href="{{pcHome}}/user.php">登录</a><span class="pipe">|</span><a href="{{pcHome}}/user.php?act=register" rel="nofollow">注册</a>
+				<?php } ?>
+				</div>
+			</div>
+			</div>
+			<div class='mid'>
+				<div class='l_l'>
+					<span><img src='/common/images/logo.jpg' /></span>
+				</div>
+				<div class='l_r'>
+					<span class='c_city'></span>
+					<div class='limit_area'>
+						<span class='limitcity'>上海<em></em>站</span>			
+						<span class='allcity'>
+							<p class="cur-loca">你当前所在的地区是: <span class="cur-city">上海站</span></p>
+							<ul class='cf'>
+							<!-- 
+								<li><a href="../../qixi/index?city=hangzhou">杭州</a></li>
+            					<li><a href="../../qixi/index?city=tianjin">天津</a></li>
+            					<li><a href="../../qixi/index?city=wuhan">武汉</a></li>
+            					<li><a href="../../qixi/index?city=nanjing">南京</a></li>
+            					<li><a href="../../qixi/index?city=xiamen">厦门</a></li>
+            					<li><a href="../../qixi/index?city=nanchang">南昌</a></li>
+            					<li><a href="../../qixi/index?city=kunming">昆明</a></li>
+            					<li><a href="../../qixi/index?city=xian">西安</a></li> -->
+            					<!-- <li><a href="?city=shijiazhuang">石家庄</a></li> -->
+            					<!-- 
+            					<li><a href="../../qixi/index?city=changsha">长沙</a></li>
+            					<li><a href="../../qixi/index?city=jinan">济南</a></li>
+            					<li><a href="../../qixi/index?city=haerbin">哈尔滨</a></li>
+            					<li><a href="../../qixi/index?city=guiyang">贵阳</a></li>
+            					<li><a href="../../qixi/index?city=taiyuan">太原</a></li>
+            					<li><a href="../../qixi/index?city=qingdao">青岛</a></li>
+            					<li><a href="../../qixi/index?city=beijing" >北京</a></li>
+            					<li><a href="../../qixi/index?city=zhengzhou" >郑州</a></li>
+            					<li><a href="../../qixi/index?city=dongguan" >东莞</a></li> -->
+            					<li><a href="http://sh.yoju360.com" >上海</a></li>
+            					<li><a href="http://group.yoju360.com/heb/index" >哈尔滨</a></li>
+							</ul>
+							<p style='text-align:center'></p>
+						</span>
+					</div>
+				</div>
+				<div class='r_l'>
+					<div class='navMain'>
+						<ul class='clear'>
+							<li><a href='{{pcHome}}/'>首页</a></li>
+							<li><a href='/shex/index' class="hover">现场团购</a></li>
+							<li><a href='{{zxHome}}/'>案例资讯</a></li>
+							<li><span class='hoverSpan'></span></li>
+						</ul>
+					</div>
+				</div>
+				
+				<div class='r_r'>
+					<a href='{{pcHome}}/article.php?htmlTips=5#bz4' target='_blank' class='s_icon1 s_icon r' rel='nofollow'></a>
+					<a href='{{pcHome}}/article.php?htmlTips=5#bz3' target='_blank' class='s_icon2 s_icon r' rel='nofollow'></a>
+					<a href='{{pcHome}}/article.php?htmlTips=5#bz2' target='_blank' class='s_icon3 s_icon r' rel='nofollow'></a>
+					<a href='{{pcHome}}/article.php?htmlTips=5#bz1' target='_blank' class='s_icon4 s_icon r m-r' rel='nofollow'></a>
+				</div>
+			</div>
+		</div>
+	</div>

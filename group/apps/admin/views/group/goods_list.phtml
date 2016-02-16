@@ -1,0 +1,90 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3"><a href="/admin/group/index">优品团 ></a>【{{ city }}】商品列表</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" href="/admin/group/index" role="button" style="margin-right:10px;">返回</a>
+			    <a class="btn btn-default btn-sm" href="/admin/group/goods_add/{{ act_id }}/{{ city }}" role="button">添加商品</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th style="width:150px;">商品名称</th>
+									<th>分类</th>
+									<th>品牌</th>
+									<th>库存</th>
+									<th>初始销量</th>
+									<th>真实销量</th>
+									<th>总下单量</th>
+									<th>原价</th>
+									<th>专享价</th>
+									<th>预购价</th>
+									<th style="width:100px;">开始时间</th>
+									<th style="width:100px;">结束时间</th>
+									<th style="width:95px;">状态</th>
+									<th>是否上架</th>
+									<th style="width:90px;">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ k['goods_name'] }}</td>
+									<td>{{ class_list_arr[k['class_id']] }}</td>
+									<td>{{ brand_list_arr[k['brand_id']] }}</td>
+									<td>{{ k['stock'] }}</td>
+									<td>{{ k['sold_num'] }}</td>
+									<td>{{ k['real_num'] }}</td>
+									<td>{{ k['order_num'] }}</td>
+									<td>{{ k['market_price'] }}</td>
+									<td>{{ k['exclusive_price'] }}</td>
+									<td>{{ k['order_price'] }}</td>
+									<td>{{ date('Y-m-d H:i:s', k['start_time']) }}</td>
+									<td>{{ date('Y-m-d H:i:s', k['end_time']) }}</td>
+									<td>
+									{% if k['end_time'] < time() %}<span class="label bg-danger">已结束</span>
+                                    {% elseif k['start_time'] > time() %}<span class="label bg-info">即将开始</span>
+                                    {% elseif k['is_show'] == 0 %}<span class="label bg-light dk">正在进行</span>
+                                    {% else %}<span class="label bg-success">正在进行</span>
+                                    {% endif %}
+									</td>
+									<td>
+									{% if k['is_show'] == 0 %}<span class="label bg-danger">未上架</span>
+                                    {% else %}<span class="label bg-success">已上架</span>
+                                    {% endif %}
+									</td>
+									<td>
+										<a href="/admin/group/goods_add/{{ act_id }}/{{ city }}/{{ k['id'] }}">编辑</a>&nbsp;|&nbsp;
+										<a href="javascript:delaction({{k['id']}},'{{ city }}',{{ act_id }})">删除</a>
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+                    <?php $this->partial("index/page")?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function delaction(m,x,y){
+	var r=confirm("你确定要删除吗？");
+	if(r == true){
+		location.href="/admin/group/goods_delete/id/"+m+"/"+x+"/"+y;
+	}
+}
+</script>
+<?php $this->partial("index/footer")?>

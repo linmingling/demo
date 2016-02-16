@@ -1,0 +1,347 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<script type="text/javascript" src="/common/js/kindeditor/kindeditor.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/plugins/code/prettify.js"></script>
+<script type="text/javascript" src="/common/js/kindeditor/plugins/autoheight/autoheight.js"></script>
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+<link rel="stylesheet" href="/common/js/kindeditor/themes/default/default.css"/>
+<script>
+KindEditor.ready(function(K) {
+	$(document).on("click",".upload_image",function(){
+		var dom = $(this).closest(".form-group").find(".upload");
+	 	editor.loadPlugin('image', function() {
+			editor.plugin.imageDialog({
+				imageUrl : dom.val(),
+				clickFn : function(url, title, width, height, border, align) {
+					dom.val(url);
+					editor.hideDialog();
+				}
+			});
+		});
+	});
+});
+</script>
+<script>
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('.desc', {
+resizeType : 1,
+allowPreviewEmoticons : false,
+allowImageUpload : true,
+allowFileManager : true,
+autoHeightMode : true,
+afterBlur: function(){this.sync();},
+items : [
+'source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+'superscript', 'clearhtml', 'quickformat', 'selectall','formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image', 'multiimage',
+'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+'anchor', 'link', 'unlink', 'fullscreen']
+});
+});
+</script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3"><a href="/admin/group/index">优品团 ></a><a href="/admin/group/goods_list/{{ act_id }}/{{ city }}">【{{ city }}】商品列表 > </a>{% if data['id'] != '' %}编辑{%  else %}添加{% endif %}商品</h1>
+			</div>
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group form-group-sm">
+							<label for="goods_category" class="col-sm-1 control-label">商品名称:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="goods_name" value="{{ data['goods_name'] }}" ></div>
+						</div>
+						<div class="form-group form-group-sm" id="goods_img">
+							<label for="discount" class="col-sm-1 control-label">商品图片:</label>
+							<div class="col-sm-8">
+							     <button type="button" class="btn btn-default btn-sm add"><i class="glyphicon glyphicon-plus"></i></button> 以下排列顺序为页面显示顺序，其中第一张图为首页显示图，建议尺寸：640px * 360px
+							</div>
+						</div>
+						<div id="imgSelectBox">
+						  {% for x,y in goods_img %}
+						  <div class="form-group form-group-sm">
+						  <label for="headimg" class="col-sm-1 control-label"></label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control upload" readonly="readonly" name="goods_img[]" value="{{ y }}"/>
+							</div>
+						  <button type="button" class="btn m-b-xs btn-sm btn-default btn-addon upload_image"><i class="fa fa-cloud-upload text"></i><span class="text">Upload</span></button>
+						  <button type="button" class="btn m-b-xs btn-sm btn-default add" onclick="deleteDom($(this))"><i class="fa fa-trash-o"></i></button>
+						  </div>
+						  {% endfor %}
+						</div>
+						
+						<div class="form-group form-group-sm">
+						  <label for="headimg" class="col-sm-1 control-label">APP首页商品缩略图</label>
+							<div class="col-xs-2">
+								<input type="text" class="form-control upload" readonly="readonly" name="thumb_img" value="{{ data['thumb_img'] }}"/>
+							</div>
+						  <button type="button" class="btn m-b-xs btn-sm btn-default btn-addon upload_image"><i class="fa fa-cloud-upload text"></i><span class="text">Upload</span></button>
+						  &nbsp;用于APP首页商品显示，建议尺寸：174px * 174px
+						  </div>
+						
+						<div class="form-group form-group-sm">
+							<label for="goods_item" class="col-sm-1 control-label">商品类型:</label>
+							<div class="col-xs-2">
+							 	<select name="class_id" class="form-control">
+									<option value="0">请选择商品类型</option>
+									{% for k,key in class_list %}<option value="{{key['id']}}" {% if data['class_id'] == key['id'] %} selected {% endif %} >{{key['class_name']}}</option> {% endfor %}
+								</select>
+							</div>
+							<div class="m-t-xs"><a href="/admin/group/add/id/{{ act_id }}" target="_blank" style="color: #428bca;text-decoration: underline;">添加分类</a></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_category" class="col-sm-1 control-label">商品品牌:</label>
+							<div class="col-xs-2">
+							 	<select name="brand_id" class="form-control">
+									<option value="0">请选择商品品牌</option>
+									{% for k,key in brand_list %}<option value="{{key['id']}}" {% if data['brand_id'] == key['id'] %} selected {% endif %} >{{key['name']}}</option> {% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_category" class="col-sm-1 control-label">销售地址（门店）:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="sale_address" value="{{ data['sale_address'] }}" ></div>
+						    <div class="m-t-xs"><font color="red">不得超过 10 个汉字</font></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="active_quantity" class="col-sm-1 control-label">库存:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="stock" value="{{ data['stock'] }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="init_join" class="col-sm-1 control-label">初始已售件数:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="sold_num" value="{{ data['sold_num'] }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_quantity" class="col-sm-1 control-label">原价:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="market_price" value="{{ data['market_price'] }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="discount" class="col-sm-1 control-label">专享价:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="exclusive_price" value="{{ data['exclusive_price'] }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="discount" class="col-sm-1 control-label">预购价:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" name="order_price" value="{{ data['order_price'] }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="discount" class="col-sm-1 control-label">限购数量:</label>
+							<div class="col-xs-2">
+							     <input class="form-control" type="text" name="limit_number" value="{% if data['limit_number'] != '' %}{{ data['limit_number'] }}{% else %}1{% endif %}" >
+							</div>
+							<div class="m-t-xs"><font color="red">0 或 空 表示不限制购买数量，默认每人限购 1 件</font></div>
+						</div>
+						<div class="form-group form-group-sm" id="discount">
+							<label for="discount" class="col-sm-1 control-label">优惠信息:</label>
+							<div class="col-xs-2"><button type="button" class="btn btn-default btn-sm add"><i class="glyphicon glyphicon-plus"></i></button> 以下排列顺序为页面显示顺序</div>
+						</div>
+						<div id="discountSelectBox">
+							{% for x,y in discount %}
+							<div class="form-group form-group-sm">
+								<label for="discount" class="col-sm-1 control-label"></label>
+								<div class="col-xs-2">
+								    <select name="discount[]" class="form-control">
+										<option value="0">请选择优惠信息</option>
+										{% for k,key in discount_list %}<option value="{{key['id']}}" {% if y == key['id'] %} selected {% endif %} >{{key['info']}}</option> {% endfor %}
+									</select>
+								</div>
+								<button type="button" class="btn btn-default btn-sm add" onclick="deleteDom($(this))"><i class="fa fa-trash-o"></i></button>
+							</div>
+							{% endfor %}
+						</div>
+						<div class="form-group form-group-sm" id="store">
+							<label for="discount" class="col-sm-1 control-label">适用商户:</label>
+							<div class="col-xs-2"><button type="button" class="btn btn-default btn-sm add"><i class="glyphicon glyphicon-plus"></i></button> 以下排列顺序为页面显示顺序</div>
+						</div>
+						<div id="storeSelectBox">
+							{% for x,y in store %}
+							<div class="form-group form-group-sm">
+								<label for="discount" class="col-sm-1 control-label"></label>
+								<div class="col-xs-2">
+								    <select name="store[]" class="form-control">
+										<option value="0">请选择门店</option>
+										{% for k,key in store_list %}<option value="{{key['id']}}" {% if y == key['id'] %} selected {% endif %} >{{key['name']}}</option> {% endfor %}
+									</select>
+								</div>
+								<button type="button" class="btn btn-default btn-sm add" onclick="deleteDom($(this))"><i class="fa fa-trash-o"></i></button>
+							</div>
+							{% endfor %}
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">开始时间:</label>
+							<div class="col-xs-2">
+							     <input class="form-control" type="text" name="start_time" value="{% if data['start_time'] != '' %}{{ date('Y-m-d H:i:s',data['start_time']) }}{% endif %}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">结束时间:</label>
+							<div class="col-xs-2">
+							     <input class="form-control" type="text" name="end_time" value="{% if data['end_time'] != '' %}{{ date('Y-m-d H:i:s',data['end_time']) }}{% endif %}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"/>
+							</div>
+						</div>
+					    <div class="form-group">
+							<label class="col-sm-1 control-label">服务类型:</label>
+							<div class="col-xs-2">
+								<label class="radio-inline"><input type="radio" name="service"  {% if data['service'] == 0 %} checked {% endif %} value="0">线下自提</label>
+								<label class="radio-inline"><input type="radio" name="service"  {% if data['service'] == 1 %} checked {% endif %} value="1">物流配送</label>
+							</div>
+							<div class="m-t-xs">线下自提：下单时不需要填写收货地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;物流配送：下单时需要填写收货地址</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">是否置顶显示:</label>
+							<div class="col-xs-2">
+								<label class="radio-inline"><input type="radio" name="sort"  {% if data['sort'] == 1 %} checked {% endif %} value="1">是</label>
+								<label class="radio-inline"><input type="radio" name="sort"  {% if data['sort'] == 0 %} checked {% endif %} value="0">否</label>
+							</div>
+							<div class="m-t-xs">如果设置多个置顶商品，则按商品的结束时间先后排列</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">购买须知:</label>
+							<div class="col-xs-7">
+							<textarea class="form-control desc"  name="notice">{% if data['notice'] !='' %}{{ data['notice'] }}{% else %}
+                                <div class="pnBox" style="margin:5px 10px;padding:0px;color:#333333;font-family:微软雅黑;background-color:#FFFFFF;">
+                                	<p class="pnsTitle" style="color:#8A8A8A;">
+                                		有效期
+                                	</p>
+                                	<ul>
+                                		<li style="color:#8A8A8A;">
+                                			<p style="color:#292929;">
+                                				2015-10-14至2015-11-06
+                                			</p>
+                                		</li>
+                                	</ul>
+                                </div>
+                                <div class="pnBox" style="margin:5px 10px;padding:0px;color:#333333;font-family:微软雅黑;background-color:#FFFFFF;">
+                                	<p class="pnsTitle" style="color:#8A8A8A;">
+                                		规则提醒
+                                	</p>
+                                	<ul>
+                                		<li style="color:#8A8A8A;">
+                                			<p style="color:#292929;">
+                                				需到活动现场提货
+                                			</p>
+                                		</li>
+                                		<li style="color:#8A8A8A;">
+                                			<p style="color:#292929;">
+                                				线上支付10元预定，现场付余款
+                                			</p>
+                                		</li>
+                                		<li style="color:#8A8A8A;">
+                                			<p style="color:#292929;">
+                                				最终解释权归深圳优品优居网络科技有限公司所有
+                                			</p>
+                                		</li>
+                                	</ul>
+                                </div>
+                                {% endif %}
+                            </textarea>
+                            </div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">规格参数:</label>
+							<div class="col-xs-7">
+							<textarea class="form-control desc"  name="specification">
+							{% if data['specification'] !='' %}{{ data['specification'] }}{% else %}
+                               
+                            {% endif %}
+                            </textarea>
+                            </div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">购买保证:</label>
+							<div class="col-xs-7"><textarea class="form-control desc"  name="guarantee">{{ data['guarantee'] }}</textarea></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">产品简介:</label>
+							<div class="col-xs-7"><textarea class="form-control desc"  name="desc">{{ data['goods_desc'] }}</textarea></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">是否上架:</label>
+							<div class="col-xs-8">
+								<label class="radio-inline"><input type="radio" name="is_show"  {% if data['is_show'] == 1 %} checked {% endif %} value="1">是</label>
+								<label class="radio-inline"><input type="radio" name="is_show"  {% if data['is_show'] == 0 %} checked {% endif %} value="0">否</label>
+							</div>
+						</div>
+						
+                        <div class="form-group">
+							<label class="col-sm-1 control-label">是否上架到全站:</label>
+							<div class="col-xs-8">
+								<label class="radio-inline"><input type="radio" name="is_site"  {% if data['is_site'] == 1 %} checked {% endif %} value="1">是</label>
+								<label class="radio-inline"><input type="radio" name="is_site"  {% if data['is_site'] == 0 %} checked {% endif %} value="0">否</label>
+							</div>
+						</div>
+						
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+							    <input type="hidden" name="id" value="{{ data['id'] }}">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/group/goods_list/{{ act_id }}/{{ city }}" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function deleteDom(btn){
+		var dom = btn.closest(".form-group");
+		dom.remove(); 	
+	}
+	$(function(){
+		$("#goods_img .add").click(function(){
+			var html = "";
+			html += '<div class="form-group form-group-sm">'+
+						'<label for="headimg" class="col-sm-1 control-label"></label>'+
+						'<div class="col-xs-2">'+
+						    '<input type="text" class="form-control upload" readonly="readonly" name="goods_img[]" value=""/>'+
+						'</div>'+
+						'<button type="button" class="btn m-b-xs btn-sm btn-default btn-addon upload_image" ><i class="fa fa-cloud-upload text"></i><span class="text">Upload</span></button> '+
+						'<button type="button" class="btn m-b-xs btn-sm btn-default add" onclick="deleteDom($(this))"><i class="fa fa-trash-o"></i></button>'+
+					'</div>';
+			var dom = $(html);    
+			$("#imgSelectBox").append(dom);
+		});
+		$("#discount .add").click(function(){
+			var html = "";
+			html += '<div class="form-group form-group-sm">'+
+						'<label for="discount" class="col-sm-1 control-label"></label>'+
+						'<div class="col-xs-2">'+
+						    '<select name="discount[]" class="form-control">'+
+								'<option value="">请选择优惠信息</option>'+
+								'{% for k,key in discount_list %}<option value="{{key['id']}}">{{key['info']}}</option> {% endfor %}'+
+							'</select>'+
+						'</div>'+
+						'<button type="button" class="btn btn-default btn-sm add" onclick="deleteDom($(this))"><i class="fa fa-trash-o"></i></button>'+
+					'</div>';
+			var dom = $(html);    
+			$("#discountSelectBox").append(dom);
+		});
+		
+		$("#store .add").click(function(){
+			var html = "";
+			html += '<div class="form-group form-group-sm">'+
+							'<label for="discount" class="col-sm-1 control-label"></label>'+
+							'<div class="col-xs-2">'+
+							   ' <select name="store[]" class="form-control">'+
+									'<option value="0">请选择门店</option>'+
+									"{% for k,key in store_list %}<option value='{{key['id']}}'>{{key['name']}}</option> {% endfor %}"+
+								'</select>'+
+							'</div>'+
+							'<button type="button" class="btn btn-default btn-sm add" onclick="deleteDom($(this))"><i class="fa fa-trash-o"></i></button>'+
+						'</div>';
+			var dom = $(html);    
+			$("#storeSelectBox").append(dom);
+		});
+	});
+</script>
+<?php $this->partial("index/footer")?>

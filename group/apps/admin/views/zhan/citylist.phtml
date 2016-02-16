@@ -1,0 +1,77 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<?php use Library\Com\SecurityContext?>
+<style type="text/css">
+
+</style>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">一站购城市列表- {{zhanName}}</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<?php if (SecurityContext::hasPermission('SYS_ACT_ADD_CITY')):?>
+				<a class="btn btn-default btn-sm" href="/admin/zhan/city/add/{{zhanId}}" role="button" style="margin-right:10px;">添加</a>
+				<?php endif?>
+				<a class="btn btn-default btn-sm" href="/admin/zhan/action/list" role="button" style="margin-right:10px;">返回</a>
+			</div>			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table id="citylist" class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>城市名称</th>
+									<th>添加时间</th>
+									<th>开始时间</th>
+									<th>结束时间</th>
+									<th>翻页</th>
+									<th>平滑</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in data %}
+								<tr class="odd">
+									<td>{{ k['c_id'] }}</td>
+									<td><a href="/phone/zhan/phinvite/{{zhanId}}?city={{k['region_pinyin']}}" target="_black">{{k['region_name']}}</a></td>
+									<td>{{ k['addtime'] }}</td>
+									<td>{% if k['starttime'] %} {{ date('Y-m-d', strtotime(k['starttime'])) }} {% endif %}</td>
+									<td>{% if k['endtime'] %} {{ date('Y-m-d', strtotime(k['endtime'])) }} {% endif %}</td>
+									<td>{% if k['fy_show'] == 1 %} <span style='color:green'>显示</span> {% else %} <span style='color:red'>隐藏</span> {% endif %}</td>
+									<td>{% if k['ph_show'] == 1 %} <span style='color:green'>显示</span> {% else %} <span style='color:red'>隐藏</span> {% endif %}</td>
+									<td>
+										<a href="/admin/zhan/cityUserInfo/{{k['c_id']}}">活动数据统计</a>&nbsp;|&nbsp;
+										<a href="/admin/zhan/phpage/show/{{k['c_id']}}">平滑</a>&nbsp;|&nbsp;
+										<a href="/admin/zhan/fypage/show/{{k['c_id']}}">翻页</a>&nbsp;|&nbsp;
+										<a href="/admin/zhan/city/modify/{{k['c_id']}}">编辑</a>&nbsp;|&nbsp;
+										<a href="javascript:delcity({{k['c_id']}})">删除</a>
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delcity(m){
+	var r=confirm("你确定要删除该城市吗？");
+	if(r == true){
+		location.href="/admin/zhan/city/delete/"+m;
+	}
+}
+
+</script>

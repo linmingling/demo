@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优居网-大牌新品尝鲜 全民砍价1元购</title>
+	<meta name="keywords" content="优居网-大牌新品尝鲜 全民砍价1元购">
+	<meta name="description" content="优居网-大牌新品尝鲜 全民砍价1元购">
+	<meta name="front-end technicist" content="jinger">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<link type="text/css" rel="stylesheet" href="/yiyuanqiang/css/myprd.css?vid=1.2" media="all" /> 
+</head>
+<body>
+    <!-- loading -->
+    <div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+    	<div class="title">
+    		<div class="title-ly">
+    		<div class="title-1"><a onclick="history.go(-1);"><img src="/yiyuanqiang/images/icon-fan.png" height="100%"></a></div>
+    		<div class="title-2">
+    			<!-- <img src="/yiyuanqiang/images/icon-title.png" width="30%"> -->
+    			<p>商品详情</p>
+    		</div>
+    		<div class="title-3"><a href="/phone/yiyuanqiang/index/{{ actionid }}"><img src="/yiyuanqiang/images/icon-index.png" height="100%"></a></div></div>
+    	</div>
+        <div class="content">
+            
+        {% if goodslist %}
+        <input type="hidden" value="yes" id="pd">
+        {% for k in goodslist%}
+        	<div class="prd">
+        		<div class="prd-img">
+                    <a href="/phone/yiyuanqiang/detail/{{ actionid }}/{{ k['id'] }}/{{ k['from_id'] }}">
+            			<img src="{{  k['img'] }}">
+                    </a>
+        			<div class="prd-img-alt"><p>{{ k['goods_name'] }}</p></div>
+                    <div class="prd-img-time">
+                        <!-- <img src="images/icon-clock.png" > -->
+                        <i class="icon-clock"></i>
+                        <span>{{ k['countdown_str'] }}</span>
+                    </div>
+        		</div>
+        		<div class="prd-con">
+        			<div class="prd-con-1">￥<span class="f24">{{ k['lowest_price'] }}</span><s class="prd-con-2">￥{{ k['market_price'] }}</s></div>
+        			
+        			
+        			<a href="/phone/yiyuanqiang/detail/{{ actionid }}/{{ k['id'] }}/{{ k['from_id'] }}">
+        			<div class="prd-con-4">
+        				<p class="f14">仅剩{{ k['active_quantity']<0?0:k['active_quantity'] }}件</p>
+        				<p class="yellow lh">{{ k['join_sum'] }}人参与</p>
+        			</div>
+        			</a>
+        			
+                    <!-- a href="/phone/yiyuanqiang/detail/{{ actionid }}/{{ k['id'] }}/{{ k['from_id'] }}">
+        			<div class="prd-con-4">
+        				<p class="f14">{{ k['discount'] }}折购买</p>
+        				<p class="yellow lh">仅剩{{ k['goods_quantity'] }}件</p>
+        			</div>
+                    </a-->
+        			
+        		</div>
+        		
+                <div>
+                    <hr style="border-top:1px dotted #d7d7d7;width:97%;border-bottom: none;" align="right">
+                </div>
+        		<div class="prd-tip">
+        			<img src="/yiyuanqiang/images/icon-bk.png" ><span>已砍至{{ k['currcut'] }}元，已有{{ k['countnum'] }}人帮砍</span>
+        		</div>
+        		
+                <!-- div>
+                    <hr style="border-top:1px dotted #d7d7d7;width:97%;border-bottom: none;" align="right">
+                </div>
+        		<div class="prd-tip">
+        			<img src="/yiyuanqiang/images/icon-zk.png" ><span>该宝贝已经被抢光啦，但您还可以{{ k['discount'] }}折购买</span>
+        		</div-->
+        		
+        	</div>
+        {% endfor %}
+
+        {% else %}
+        	<div class="noprd">
+                <input type="hidden" value="no" id="pd">
+                <div class="noprd-1"><img src="/yiyuanqiang/images/mynoprd.png" ></div>
+                <div class="noprd-2"><p>您目前还未订购任何商品哦0_0</p></div>
+                <div class="noprd-3"><p>赶快去逛逛吧</p></div>
+                <a href="/phone/yiyuanqiang/index/{{ actionid }}"><div class="noprd-4">去逛逛</div></a>
+            </div>
+        {% endif %}
+        
+        	
+        	
+        </div>
+        
+        <!-- <div class="bottom">
+        	<p>商城主页  |  会员中心 |  关注我们</p>
+        	<p>@ Copyrigth 2015，版权归深圳前海优品优居网络科技有限公司所有</p>
+        </div> -->
+
+        <div class="bottom hide">
+            <p>商城主页  |  会员中心 |  关注我们</p>
+            <p>@ Copyrigth 2015，版权归深圳前海优品优居网络科技有限公司所有</p>
+        </div>
+
+        <!-- <div class="top hide">
+        	<div>
+        		<img src="/yiyuanqiang/images/icon-top.png" width="100%">
+        	</div>
+        </div> -->
+    </div>
+    
+   <div class="bottom hide" style="position: absolute;bottom: 0;">
+        <p>商城主页  |  会员中心 |  关注我们</p>
+        <p>@ Copyrigth 2015，版权归深圳前海优品优居网络科技有限公司所有</p>
+    </div>
+        
+
+        
+        
+
+        
+    <script type="text/javascript" src="/yiyuanqiang/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        $("#loading").hide();
+        if($("#pd").val()=='yes'){
+            $('.bottom').eq(0).removeClass('hide');
+        }
+        else{
+            $('.bottom').eq(1).removeClass('hide');
+        }
+    })
+    //回到顶部
+    // $('.top').bind('click',function(){
+    // 	$('html,body').animate({scrollTop: 0}, 300);
+    // })
+    // // top
+    // $(window).scroll(function(){
+    //     if($(window).scrollTop()>4){
+    //         //$(".top").show();
+    //     }else{
+    //         //$(".top").hide();
+    //     }
+    // });
+    </script>
+    
+    
+</body>
+    
+</html>

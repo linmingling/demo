@@ -1,0 +1,106 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">
+				<a href="/admin/yiyuanqiang/index">一元购></a> <a href="/admin/yiyuanqiang/city/list/{{ actionid }}">城市管理 ></a> {% if data['id'] !='' %}编辑{% else %}添加{% endif %}城市</h1>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group form-group-sm">
+						<input class="form-control" type="hidden"  name="action_id"  value="{{ actionid }}"  id="action_id">
+						{% if data['id'] !='' %}
+						<div class="form-group form-group-sm">
+							<label for="discount" class="col-sm-1 control-label">已选城市</label>
+							<div class="col-xs-2"><p class="form-control-static">{{ data['city_name'] }}</p></div>
+						</div>
+						{% endif %}
+						<div class="form-group form-group-sm">
+						<label for="discount" class="col-sm-1 control-label">选择省</label>
+							<div class="col-xs-2">
+								<select id="province" name="province" class="form-control">
+									<option>请选择省</option>
+									{% for k,v in province %} <option value="{{k}}" {% if type=='modify' and info['province'] == k %} selected {% endif %} >{{v}}</option> {% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+						<label for="discount" class="col-sm-1 control-label">选择市</label>
+							<div class="col-xs-2">
+								<select id="city" name="city" class="form-control">
+									<option value='0'>请选择市</option>
+								</select>
+								</div>
+								<input class="form-control" type="hidden"  name="city_name"  value="{{ data['city_name'] }}"  id="city_name">
+								<input class="form-control" type="hidden"  name="city_id"  value="{{ data['city_id'] }}"  id="city_id">
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_quantity" class="col-sm-1 control-label">城市代号:</label>
+							<div class="col-xs-2"><input class="form-control" type="text"  name="city_code" value="{{ data['city_code'] }}"  placeholder="如哈尔滨即填haerbin"></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="discount" class="col-sm-1 control-label">经度（x）:</label>
+							<div class="col-xs-2"><input class="form-control" type="text"  name="lng" value="{{ data['lng'] }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="range_min" class="col-sm-1 control-label">纬度（y）:</label>
+							<div class="col-xs-2"><input class="form-control" type="text"  name="lat" value="{{ data['lat'] }}" /></div>
+						</div>
+
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+							    <input type="hidden" name="id" value="{{ data['id'] }}">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/yiyuanqiang/city" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+$(document).ready(function() {
+	
+	$("#province").on("change",function(){
+		var pid = parseInt($("#province").val());
+		if(pid > 0){
+			$.ajax({
+				type: 'GET',
+				url: '/admin/index/regions?pid='+pid,
+				dataType: 'json',
+				timeout: 300,
+				async : false,
+				beforeSend : function(){
+					$("#city").html("");
+				},
+				success : function(msg){
+					if(msg.state ==  1){
+						var data = msg.data.list; var str = "<option value='0'>请选择市</option>";
+						for(var m in data){
+							str = str + "<option value=" + m + ">" + data[m] + "</option>";
+						}
+						$("#city").html(str);
+					}
+				},
+			})
+		}
+	});
+
+	$("#city").on("change",function(){
+		$("#city_name").val($("#city").find("option:selected").text()=='请选择市'?'':$("#city").find("option:selected").text()); 
+		$("#city_id").val($("#city").val());
+	});
+	
+});
+</script>
+<?php $this->partial("index/footer")?>

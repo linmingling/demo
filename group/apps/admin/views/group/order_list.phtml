@@ -1,0 +1,208 @@
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+			     <h1 class="m-n font-thin h3"><a href="/admin/group/index">优品团 ></a> 订单管理</h1>
+			</div>
+			<div class="table-responsive">
+            <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+			<div class="row">
+                <div class="row wrapper">
+                
+                <div class="col-sm-0">
+				<a class="btn btn-default btn-sm" href="/admin/group/index" role="button" style="margin-right:10px;">返回</a>
+			    </div>
+			    
+                <form action="/admin/group/order_list_search" method="post">
+                  <div class="col-sm-5 m-b-xs">
+                    <select class="input-sm form-control w-sm inline v-middle" name="select" id="select">
+                      <option value="user_id" {% if select == 'user_id' %}selected{% endif %}>用户ID</option>
+                      <option value="phone" {% if select == 'phone' %}selected{% endif %}>手机号码</option>
+                      <option value="transaction_id" {% if select == 'transaction_id' %}selected{% endif %}>支付单号</option>
+                      <option value="order_sn" {% if select == 'order_sn' %}selected{% endif %}>订单号</option>
+                      <option value="add_time" {% if select == 'add_time' %}selected{% endif %}>下单时间</option>
+                    </select>
+                    {% if select != 'add_time' %}
+                    <input type="text" class="input-sm form-control search" placeholder="请输入搜索条件" name="search" value="{{ search }}">
+					{% endif %}
+					<div class="form-group form-group-sm search_time" style="{% if select != 'add_time' %}display: none{% endif %}">
+					    <div class="input-group date form_datetime" data-date-format="yyyy-mm-dd" data-link-field="starttime">
+							<input class="form-control" size="16" type="text" value="{{ search }}" readonly>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+						</div>
+						<input type="hidden" id="starttime" name="time" value="{{ search }}" />
+						<span> -- </span>
+						<div class="input-group date form_datetime" data-date-format="yyyy-mm-dd" data-link-field="end_time">
+							<input class="form-control" size="16" type="text" value="{{ end_search }}" readonly>
+							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+						</div>
+						<input type="hidden" id="end_time" name="end_time" value="{{ end_search }}" />
+					</div>
+                    <button class="btn btn-sm btn-default">搜索</button>                
+                  </div>
+                 </form>
+                <div class="input-group" style="float: right;">
+                  <span class="input-group-btn">
+                  {% if select == ''%}
+                      <a href="order_list_xls/all"><button class="btn btn-sm btn-default" type="button">导出全部数据</button></a>
+                  {% else %}
+                      <a href="order_list_xls"><button class="btn btn-sm btn-default" type="button" style="margin-right:10px;">导出当前搜索数据</button></a>
+                      <a href="order_list_xls/all"><button class="btn btn-sm btn-default" type="button">导出全部数据</button></a>
+                  {% endif %}
+                  </span>
+                </div>
+                </div>
+            </div>
+			</div>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:0px 15px 0px 15px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>订单ID</th>
+									<th>支付单号</th>
+									<th>订单号</th>
+									<th>分站</th>
+									<th style="width:120px;">商品名称</th>
+									<th>商品价格<br/>（专享价）</th>
+									<th>订单价格<br/>（若付款则为0）</th>
+									<th>已付金额</th>
+									<th>支付方式</th>
+									<th>服务类型</th>
+									<th>下单时间</th>
+									<th>支付时间</th>
+									<th style="width:80px;">订单详情</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['order_id'] }}</td>
+									<td>{{ k['transaction_id'] }}</td>
+									<td>{{ k['order_sn'] }}</td>
+									<td>{{ k['city_name'] }}</td>
+									<td>{{ k['goods_name'] }}</td>
+									<td>{{ k['goods_amount'] }}</td>
+									<td>{{ k['order_amount'] }}</td>
+									<td>{{ k['money_paid'] }}</td>
+									<td>{{ k['pay_name'] }}</td>
+									<td>{% if k['province'] != ''%}上门安装{% else %}线下提货{% endif %}</td>
+									<td>{{ date('Y-m-d', k['add_time']) }}<br/>{{ date('H:i:s', k['add_time']) }}</td>
+									<td>
+									{% if k['pay_time'] == 0 %}<span class="label bg-danger">未支付</span>
+									{% else %}{{ date('Y-m-d', k['pay_time']) }}<br/>{{ date('H:i:s', k['pay_time']) }}
+                                    {% endif %}
+									</td>
+									<td>
+									<a href="javascript:void(0)" data-toggle="modal" data-target=".fade-{{ k['order_id'] }}">查看</a>
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+                    <?php $this->partial("index/page")?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Large modal -->
+{% for k,key in list %}
+<div class="modal fade-{{ key['order_id'] }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">订单号：【{{ key['order_sn'] }}】</h4>
+      </div>
+      <div class="modal-body">
+           <span>用户ID：{{key['user_id']}}</span><br/>
+           <span>账户注册（登录）手机号码：{{key['phone']}}</span><br/>
+           <br/>
+          {% if k['is_separate'] !=0 %}
+           <table class="table table-striped m-b-none dataTable no-footer">
+            <thead>
+              <tr>
+                <th>客户状态</th>
+                <th>销售门店</th>
+                <th>验证时间</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr class="odd">
+                <td>
+                    {% if key['is_separate'] == 1 %}<span class="label bg-success">已付余额</span>
+                    {% elseif key['is_separate'] == 2%}<span class="label bg-danger">交易失败</span>
+                    {% endif %}
+				</td>
+				<td>{{ key['referer'] }}</td>
+				<td>{% if key['shipping_time'] !=0 %}{{ date('Y-m-d H:i:s', key['shipping_time']) }}{% endif %}</td>
+                </tr>
+            </tbody>
+          </table>
+          {% endif %}
+          
+          {% if key['province'] != '' %}
+           <span>收货人：{{key['consignee']}}</span><br/>
+           <span>收货地址：{{key['province']}}{{key['city']}}{{key['district']}}{{key['address']}}</span><br/>
+           <span>联系方式：{{key['mobile']}}</span>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<script type="text/javascript">
+function delaction(m){
+/* 	var r=confirm("你确定要删除订单吗？");
+	if(r == true){
+		location.href="/admin/group/order_delete/id/"+m;
+	} */
+	var r=confirm("暂不支持订单操作！");
+}
+</script>
+<script type="text/javascript">
+$(function(){
+$("#select").click(function(){
+	var type = $(this).val();
+	if(type == 'add_time'){
+		$(".search").hide();
+		$(".search_time").show();
+	}else {
+		$(".search").show();
+		$(".search_time").hide();
+	}
+})
+})
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        linkFormat:'yyyy-mm-dd',
+        weekStart: 0,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: true,
+		startView: 2,
+		minView: 3,
+		forceParse: 0,
+        showMeridian: 1,
+    });
+});
+
+</script>
+<?php $this->partial("index/footer")?>

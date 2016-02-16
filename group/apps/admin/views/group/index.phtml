@@ -1,0 +1,106 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">优品团</h1></div>
+			<div class="table-responsive" style="padding:10px 20px 0px 20px;">
+                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+        			<div class="row">
+                        <div class="row">
+                        <div class="col-sm-0"><a class="btn btn-default btn-sm" href="/admin/group/add" role="button">添加分站</a></div>
+                        <form action="/admin/group/search" method="post">
+                          <div class="col-sm-5 m-b-xs">
+                            <select class="input-sm form-control w-sm inline v-middle" name="select" id="select">
+                              <option value="city_name" {% if select == 'city_name' %}selected{% endif %}>分站名称</option>
+                            </select>
+                            <input type="text" class="input-sm form-control search" placeholder="请输入搜索条件" name="search" value="{{ search }}">
+                            <button class="btn btn-sm btn-default">搜索</button>                
+                          </div>
+                         </form>
+                        <div class="input-group" style="float: right;">
+                            <a class="btn btn-default btn-sm" href="/admin/group/data_statistic/goods" role="button" style="float:right;margin-right:2px;">数据统计</a>
+                            <a class="btn btn-default btn-sm" href="/admin/group/message_list" role="button" style="float:right;margin-right:2px;">短信提醒管理</a>
+            			    <a class="btn btn-default btn-sm" href="/admin/group/city_index" role="button" style="float:right;margin-right:2px;">城市管理</a>
+            			    <a class="btn btn-default btn-sm" href="/admin/group/store_list" role="button" style="float:right;margin-right:2px;">门店管理</a>
+            			    <a class="btn btn-default btn-sm" href="/admin/group/discount_list" role="button" style="float:right;margin-right:2px;">优惠信息管理</a>
+            			    <a class="btn btn-default btn-sm" href="/admin/group/brand_list" role="button" style="float:right;margin-right:2px;">品牌管理</a>
+            			    <a class="btn btn-default btn-sm" href="/admin/group/class_list" role="button" style="float:right;margin-right:2px;">商品分类管理</a>
+            			    <a class="btn btn-default btn-sm" href="/admin/group/order_list" role="button" style="float:right;margin-right:2px;">订单管理</a>
+                        </div>
+                        </div>
+                    </div>
+    			</div>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>分站名称</th>
+									<th>即将开始（商品数）</th>
+									<th>正在进行（商品数）</th>
+									<th>已结束（商品数）</th>
+									<th>已下架（商品数）</th>
+									<th>添加时间</th>
+									<th>是否开启</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ k['city_name'] }}</td>
+									<td>{{ k['soon_num'] }}</td>
+									<td>{{ k['start_num'] }}</td>
+									<td>{{ k['end_num'] }}</td>
+									<td>{{ k['show_num'] }}</td>
+									<td>{{ date('Y-m-d H:i:s',k['add_time']) }}</td>
+									<td>
+									{% if k['is_open'] == 0 %}<span class="label bg-danger">未开启</span>
+                                    {% else %}<span class="label bg-success">已开启</span>
+                                    {% endif %}
+									</td>
+									<td>
+										<a href="/admin/group/goods_list/{{ k['id'] }}/{{ k['city_name'] }}">商品列表</a>&nbsp;|&nbsp;
+										<a href="/admin/group/add/id/{{ k['id'] }}">编辑</a>&nbsp;|&nbsp;
+										<a href="javascript:delaction({{k['id']}})">删除</a>
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+					{% if select == ''%}
+					<div class="row">
+					   <div class="col-sm-4"><small class="text-muted inline m-t-sm m-b-sm">共 {{ num }} 个分站，已开启 {{ start_num }} 个</small></div>
+					</div>
+					{% endif %}
+					{% if page <> '' %}
+                    <?php $this->partial("index/page")?>
+                    {% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delaction(m){
+	var r=confirm("你确定要删除该分站吗？");
+	if(r == true){
+		location.href="/admin/group/delete/id/"+m;
+	}
+}
+
+</script>

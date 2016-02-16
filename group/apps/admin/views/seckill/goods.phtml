@@ -1,0 +1,198 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">帮砍秒杀列表</h1></div>
+			
+			<div id="gridSystemModal" class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header" style="margin-bottom:5px;">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title">请选择一个商品</h4>
+						</div>
+						<div id="custom-toolbar" class="form-inline">
+							<select id="category" class="form-control chosen-select input-sm" style="width:175px;">
+								<option value='0'>所有</option>
+								{% for k in catStr %}
+								<option value="{{k['id']}}">{{k['name']}}</option>
+								{% endfor %}
+							</select>
+							<div class="form-control checkbox input-sm"><label><input type="checkbox" id="isReal" value="1">实物</label></div>
+							<input type="text" class="form-control input-sm" id="goodsName" placeholder="商品名称">
+							<input type="text" class="form-control input-sm" id="goodsId" placeholder="商品ID" style="width:60px;">
+							<a class="btn btn-default btn-sm" href="javascript:searchGoods()" role="button">查找</a>
+						</div>
+						<table data-exist='0'></table>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							<button type="button" class="btn btn-primary" onclick="ModalSelectGoods()">确定</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" data-toggle="modal" data-target="#gridSystemModal" role="button">添加商品</a>
+				<a class="btn btn-default btn-sm" href="javascript:void()" role="button">删除商品</a>
+				<a class="btn btn-default btn-sm" href="/admin/seckill/index" role="button" style="margin-right:10px;">返回</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<table id="goodsList" data-toggle="table"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+var formatfun = {
+	market : function(m){
+		if(typeof(m) != 'undefined') return m.market
+	},
+	promote : function(m){
+		if(typeof(m) != 'undefined') return m.promote
+	},
+};
+
+var goodsList = $("#goodsList").bootstrapTable({
+	method: 'get',
+	url: '/admin/seckill/goods/list/{{actionId}}/1',
+	classes:"table table-hover table-condensed m-b-none",
+	striped: false,
+	sidePagination:'server',
+	pagination: true,
+	pageSize: 10,
+	pageList: [5, 10, 20],
+	showColumns:false,
+	columns: [
+		{ field: 'id',title: 'id',align: 'center',valign: 'middle',sortable: true, formatter:function(m){ return "<input type='checkbox' value='"+m+"'>&nbsp;"+m;} },
+		{ field:'goods_name', title:'商品', align:'center', valign:'middle' },
+		{ field:'goods_number', title:'库存', align:'center', valign:'middle' },
+		{ field:'join_sum', title:'参与人数', align:'center', valign:'middle' },
+		{ field:'sales_sum', title:'销售数量', align:'center', valign:'middle' },
+		{ field:'seckill_price', title:'秒杀价', align:'center', valign:'middle' },
+		{ field:'price', title:'促销售价', align:'center', valign:'middle', formatter:formatfun.promote },
+		{ field:'price', title:'市场售价', align:'center', valign:'middle', formatter:formatfun.market },
+		{ field:'time', title:'时间', align:'center', valign:'middle' },
+		{ field:'shipping', title:'线下提货', align:'center', valign:'middle', formatter:function(m){ if(m != 0){ return "是"; }else{ return ""; } } },
+		{ field:'is_remove', title:'禁用', align:'center', valign:'middle', formatter:function(m){ if(m == 1){ return "是"; }else{ return ""; } } },
+		{ field:'os', title:'操作', align:'center', valign:'middle', formatter: function(m,n,i){ return "<a href='/admin/seckill/goods/modify/{{actionId}}/"+n.goods_id+"'>编辑</a>&nbsp;|&nbsp;<a href='javascript:delGoods({{actionId}},"+n.id+")'>删除</a>" } },
+	],
+});
+
+var table = $("#gridSystemModal table").bootstrapTable({
+	method: 'get',
+	url: '',
+	striped: false,
+	sidePagination:'server',
+	pagination: true,
+	pageSize: 10,
+	pageList: [5, 10, 20],
+	toolbar:"#custom-toolbar",
+	toolbarAlign:'left',
+	showColumns:true,
+	clickToSelect: true,
+	columns: [
+		{ field: 'state',checkbox: true },
+		{ field: 'id',title: 'ID',align: 'center',valign: 'middle',sortable: true },
+		{ field:'name', title:'名称', align:'center', valign:'middle' },
+		{ field:'sn', title:'唯一码', align:'center', valign:'middle' },
+		{ field:'price', title:'市场价', align:'center', valign:'middle', formatter:formatfun.market },
+		{ field:'price', title:'促销价', align:'center', valign:'middle', formatter:formatfun.promote },
+		{ field:'addTime', title:'上架时间', align:'center', valign:'middle' },
+	]
+});
+
+table.on('load-success.bs.table',function(){
+	$("#gridSystemModal table").attr('data-exist','1');
+});
+
+function delGoods(m,n){
+	var r=confirm("你确定要删除该商品吗？");
+	if(r == true){
+		location.href="/admin/seckill/goods/delete/"+m+"/"+n;
+	}
+}
+
+function ModalSelectGoods(){
+	var obj = $("#gridSystemModal table").bootstrapTable('getSelections');
+	for(var k in obj){
+		var data = {
+			id:'', 
+			goods_name:obj[k]['name'],
+			goods_number:"<input type='text' name='num' value='0' />", 
+			join_sum:0, 
+			sales_sum:0,  
+			seckill_price:"<input type='text' name='seckill_price' value='0' />", 
+			price : {promote:obj[k]['price']['promote'],market:obj[k]['price']['market']}, 
+			shipping:0, 
+			is_remove:0,
+		};
+		goodsList.bootstrapTable('append',data);
+		var str = "<button type='button' class='btn btn-primary btn-xs' data-id="+obj[k]['id']+" onclick='addRow(this)'>添加</button>&nbsp;<button type='button' class='btn btn-danger btn-xs' onclick='delRow(this)'>取消</button>";
+		$("#goodsList tr:last td:last").html(str);
+	}
+	$('#gridSystemModal').modal('hide');
+}
+
+function delRow(obj){
+	$(obj).parent().parent().remove();
+}
+
+function addRow(obj){
+	var tr = $(obj).parent().parent();
+	var data = {
+		goods_id:$(obj).attr('data-id'),
+		goods_name:tr.find("td:eq(1)").html(),
+		goods_number:tr.find("td input[name='num']").val(),
+		seckill_price:tr.find("td input[name='seckill_price']").val(),
+		promote:tr.find("td:eq(6)").html(),
+		market:tr.find("td:eq(7)").html()
+	};
+	$.post("/admin/seckill/goods/add/{{actionId}}",data,function(result){
+		if(result.state == 1){
+			var str = "";
+			str = str + "<td style='text-align:center;'><input type='checkbox' value='"+result.msg.id+"'>&nbsp;"+result.msg.id+"</td>";
+			str = str + "<td style='text-align:center;'>"+result.msg.goods_name+"</td>";
+			str = str + "<td style='text-align:center;'>"+data.goods_number+"</td>";
+			str = str + "<td style='text-align:center;'>0</td><td style='text-align:center;'>0</td>";
+			str = str + "<td style='text-align:center;'>"+data.seckill_price+"</td>";
+			str = str + "<td style='text-align:center;'>"+result.msg.promote+"</td>";
+			str = str + "<td style='text-align:center;'>"+result.msg.market+"</td>";
+			str = str + "<td></td><td></td><td></td>";
+			str = str + "<td style='text-align:center;'><a href='/admin/seckill/goods/modify/{{actionId}}/"+data.goods_id+"'>编辑</a>&nbsp;|&nbsp;";
+			str = str + "<a href='javascript:delGoods({{actionId}},"+result.msg.id+")'>删除</a></td>";
+			tr.html(str);
+		}else{
+			alert(result.msg);
+		}
+	});
+}
+
+function searchGoods(){
+	var name = $("#goodsName").val();
+	var id = $("#goodsId").val();
+	var category = $("#category").val();
+	var real = 0;
+	
+	if($("#isReal").is(':checked')) real = 1;
+	table.bootstrapTable('refreshOptions',{url: '/admin/index/goods'});
+	table.bootstrapTable('refresh', {query:{catId:category, keyWords:name, goodsId:id}});
+}
+
+$('#gridSystemModal').on('shown.bs.modal', function (e) {
+	table.bootstrapTable('refreshOptions',{url: '/admin/index/goods'});
+	if($("#gridSystemModal table").attr('data-exist') == 0) table.bootstrapTable('refresh');
+})
+
+</script>
+

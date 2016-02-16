@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优居网-一站购</title>
+<meta name="keywords" content="优居网 一站购" />
+<meta name="description" content="优居网 一站购" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/zhan/css/com.css" />
+<link rel="stylesheet" type="text/css"  href="/zhan/css/phsuccess.css" />
+</head>
+<body>
+	<!-- loading -->
+	<div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+	<div class="wraper successWraper">
+		<!-- 头部 -->
+		<header class="head">
+			<!-- <span class="menuIcon ctl" id="menuIcon"></span> -->
+			<span class="menuIcon1 ctl"></span>
+			<!--<a class="userIcon ctr" href="http://group.yoju360.com/phone/pay/order"></a>-->
+			<p class="title grey">
+				<span class="titleText f16">优居网</span>
+			</p>
+			<div class="menu hide" id="menu" show=0 >
+				<p class="f14"><a href="/phone/zhan/index">一站购</a></p>
+				<p class="line"></p>
+				<p class="f14"><a href="#">一元抢</a></p>
+			</div>
+		</header>
+		<!-- 主要内容 -->
+		<div class="main successMain">
+			<!-- 填写地址 -->
+			<div class="detailInputBox" id="detailInputBox">
+				<div class="sTitle orange f16"><p>亲，离成功还差一小步喔！</p></div>
+				<div class="sImg"><img src="/zhan/images/test4.jpg" /></div>
+				<!-- 已填写过地址 -->
+				<div class="addressInfo" id="addressInfo">
+					<p class="f14">收货地址：</p>
+					<p id="lastAddr" class="lastAddr f14">{{cityBox[info['addr_city']]['region_name']}}  {{info['address']}}</p>
+					<span class="addModify orange" id="addModify">修改</span>
+					<p class="okBtn f16" id="okBtn">确认</p>
+				</div>
+				<!-- 地址填写 -->
+				<div class="addressForm hide" id="addressForm">
+					<p class="addItem">
+						<select class="city">
+							<option value="0">请选择市</option>
+							{% for k in cityBox %}
+								{% if k['parent_id'] == location['province'] %}<option value="{{k['region_id']}}">{{k['region_name']}}</option>{% endif %}
+							{% endfor %}
+						</select>
+					</p>
+					<p class="addItem">
+						<select class="qu"><option value="0">请选择区</option></select>
+					</p>
+					<p class="addItem">
+						<input type="text" class="address" placeholder="请填写具体地址" value="{{info['address']}}" />
+					</p>
+					
+					<!-- 已登录用户隐藏需求及月份的选项 -->
+					{% if info['buy_type'] is empty %}
+					<p class="addItem buyItem">
+						<select class="buy">
+							<option value="">您的购买需求有？</option>
+							<option value="建材">建材</option>
+							<option value="家居">家居</option>
+							<option value="家饰">家饰</option>
+						</select>
+					</p>
+					{% endif %}
+					{% if info['zx_month'] == 0 %}
+					<p class="addItem monthItem">
+						<select class="month">
+							<option value="0">您的装修月份？</option>
+							<option value="1">1月</option>
+							<option value="2">2月</option>
+							<option value="3">3月</option>
+							<option value="4">4月</option>
+							<option value="5">5月</option>
+							<option value="6">6月</option>
+							<option value="7">7月</option>
+							<option value="8">8月</option>
+							<option value="9">9月</option>
+							<option value="10">10月</option>
+							<option value="11">11月</option>
+							<option value="12">12月</option>
+						</select>
+					</p>
+					{% endif %}
+					<p class="addBtn f16" id="addBtn">提交</p>
+				</div>
+			</div>
+			
+			<!-- 底部版权 -->
+			<div class="copyright">Copyright 2015  版权归深圳前海优品优居网络科技有限公司所有</div>
+			
+			<!-- 提交成功 -->
+			<div class="tips hide" id="tips" >
+				<div class="bg"></div>
+				<div class="tipsWarp f16">提交成功</div>
+			</div>
+
+		</div>
+	</div>
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+<script>
+
+// 表单验证
+function check(idModify){
+	//alert(dom.val());
+	var flag = true;
+	var form = $("#addressForm");
+	
+	// 检测详细地址是否为空
+	if($("#addressForm .address").val() == ""){
+		flag = false;
+	}
+	// 检测省是否为空
+	if($("#addressForm .city").val() == 0){
+		flag = false;
+	}
+	// 检测市是否为空
+	if($("#addressForm .qu").val() == 0){
+		flag = false;
+	}
+
+	if(!idModify){
+		// 检测购买项是否为空
+		if($("#addressForm .buy").val() == 0){
+			flag = false;
+		}
+		// 检测月份是否为空
+		if($("#addressForm .month").val() == 0){
+			flag = false;
+		}
+	}
+	
+	if(flag){
+	//	$("#addBtn").removeClass("false");
+	}else{
+	//	$("#addBtn").addClass("false");
+	}
+}
+
+$(function(){
+	$("#loading").hide();
+	
+	{% if info['addr_city'] == 0 or info['address'] == '' %}
+		$("#addressInfo").addClass("hide");
+		$("#addressForm").removeClass("hide");
+	{% endif %}
+	
+	//请求区
+	$("#addressForm .city").change(function(){
+		var cityId = $("#addressForm .city").val();
+		if(cityId != 0){
+			$.ajax({
+				async:false,
+				type:'get',
+				url : '/phone/zhan/districtbycityid/'+cityId,
+				dataType : 'json',
+				success  : function(result) {	
+					if(result.code ==  1){
+						var option = "<option value='0'>请选择区</option>";
+						var list = result.msg;
+						for(var i in list){
+							option = option + '<option value="'+list[i]['city_id']+'">'+list[i]['city_name']+'</option>';
+						}
+						$("#addressForm .qu").html(option);
+					}
+				}
+			});
+		}else{
+			$("#addressForm .qu").html("<option value='0'>请选择区</option>");
+		}
+	});
+	
+	// 提交信息
+	$("#addBtn").click(function(){
+		var shi = $("#addressForm .city").val();
+		var qu = $("#addressForm .qu").val();
+		var address = $("#addressForm .address").val();
+		var buy = $("#addressForm .buy").val();
+		var month = $("#addressForm .month").val();
+		if(typeof(buy) == 'undefined'){
+			buy = '';
+		}
+		
+		$.ajax({
+			async:false,
+			url:"/phone/zhan/bmpost/{{info['reg_id']}}",
+			data:"city="+shi+"&district="+qu+"&address="+address+"&buy="+buy+"&month="+month,
+			type: 'post',
+			dataType:'json',
+			success:function(result){
+				if(result.code == 1){
+					window.location.href = "/phone/zhan/success/{{info['reg_id']}}";
+				}else{
+					alert(result.msg);
+				}
+				
+			}
+		});
+
+	});
+	
+	// 直接按确认
+	$("#okBtn").click(function(){
+		var shi = $("#addressForm .city").val();
+		var qu = $("#addressForm .qu").val();
+		var address = $("#addressForm .address").val();
+		
+		$.ajax({
+			async:true,
+			url:"/phone/zhan/success/modify/{{id}}",
+			data:"type="+type+"&city="+shi+"&district="+qu+"&address="+address,
+			type: 'post',
+			dataType:'json',
+			success:function(result){
+				if(result.code == 1){
+					window.location.href = "/phone/zhan/success/{{info['reg_id']}}";
+				}else{
+					alert(result.msg);
+				}
+				
+			}
+		});
+	});
+	
+	// 触发表单验证
+	$("#addressForm input").keyup(function(){
+		check(idModify);
+	});
+	$("#addressForm select").change(function(){
+		check(idModify);
+	});
+	
+	// 打开地址修改
+	$("#addModify").click(function(){
+		$("#addressForm .buyItem, #addressForm .monthItem, #okBtn, #addModify").hide();
+		$("#addressForm").removeClass("hide");
+		$(".addressInfo").addClass("hide");
+		$("#addBtn").html("修改");
+	});
+	
+	// 目录出现
+	$("#menuIcon").click(function(){
+		var menu = $("#menu");
+		var i= menu.attr("show");
+		if(i == 0){
+			menu.show();
+			menu.attr("show",1);
+		}else{
+			menu.hide();
+			menu.attr("show",0);
+		}
+	});
+});
+
+</script>
+</body>
+</html>

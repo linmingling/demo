@@ -1,0 +1,58 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">管理员列表</h1></div>
+
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">	
+				<a class="btn btn-default btn-sm" href="/admin/privilege/list" role="button">权限列表</a>
+				
+				<a class="btn btn-default btn-sm pull-right" href="javascript:void()" role="button">删除</a>
+				<a class="btn btn-default btn-sm pull-right" href="/admin/privilege/detailadd" role="button">添加</a>
+			</div>			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+							<table class="table table-striped m-b-none dataTable no-footer" id="DataTables_Table_0">
+								<thead>
+									<tr><th>规则ID</th><th>分组名</th><th>规则名</th><th>值</th><th>备注</th><th>操作</th></tr>
+								</thead>
+								<tbody>
+							{% if data %}
+							{% for m,n in data %}
+									<tr class="odd"><td colspan='6'>{{m}}</td></tr>
+								{% for k in n %}
+									<tr class="odd">
+										<td>{{ k['id'] }}</td>
+										<td>{{ k['parent'] }}</td>
+										<td>{{ k['name'] }}</td>
+										<td>0x{{ k['value16'] }}</td>
+										<td>{{ k['desc'] }}</td>
+										<td><a href="/admin/privilege/detailmodify/{{k['id']}}">修改</a>&nbsp;|&nbsp;<a href="/admin/privilege/detaildel/{{k['id']}}">删除</a></td>
+									</tr>
+								{% endfor %}
+							{% endfor %}
+							{% endif %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>								
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+
+
+</script>

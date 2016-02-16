@@ -1,0 +1,62 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">v卡管理</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;font-size:20px;font-weight:bold;">全民家居购总激活数:{{ sum }}人</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>地区</th>
+									<th>创建人</th>
+									<th>添加时间</th>
+									<th>结束时间</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in data %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ city[k['region']] }}</td>
+									<td></td>
+									<td>{{ k['addtime'] }}</td>
+									<td>{{ k['endtime'] }}</td>
+									<td>
+										<a href="/admin/vcard/action/list/{{ k['id'] }}">活动列表</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+										<a href="/admin/vcard/statcity/{{ k['id'] }}">数据统计</a>
+										
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delaction(m){
+	var r=confirm("你确定要删除该活动吗？");
+	if(r == true){
+		location.href="/admin/vcard/index/delete/"+m;
+	}
+}
+
+</script>

@@ -1,0 +1,437 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<style type="text/css">
+
+	#sub-addr{}
+	#sub-addr .sub-row{display:table;width:600px;margin-bottom:2px;}
+	#sub-addr .sub-row .sub-name{float:left;margin-right:2px;width:120px;}
+	#sub-addr .sub-row .sub-address{float:left;margin-right:2px;width:280px;}
+	#sub-addr .sub-row .sub-sort{float:left;margin-right:2px;width:130px;}
+	#sub-addr .sub-row .os{display:block;float:left;width:20px;height:22px;text-align:center;cursor:pointer;font-size:20px;padding:0px;margin:0px;}
+
+	#sub-box{}
+	#sub-box .sub-row{display:table;width:300px;margin-bottom:2px;}
+	#sub-box .sub-row .sub-name{float:left;margin-right:2px;width:140px;}
+	#sub-box .sub-row .sub-sort{float:left;margin-right:2px;width:50px;}
+	#sub-box .sub-row .os{display:block;float:left;width:30px;height:22px;text-align:center;cursor:pointer;font-size:20px;padding:0px;margin:0px;}
+
+	.imgbox{position:relative;padding:0px;margin-right:2px;}
+	.imgbox img{width:160px;height:100px;}
+	.imgbox .imginput{position:absolute;top:0px;left:0px;width:100px;height:100px;opacity:0;}
+	.imgbox .close{position:absolute;top:0px;right:0px;width:10px;height:10px;color:red;}
+	.imgbox .desc{}
+	.imgbox .desc .url{width:160px;}
+	.imgbox .desc .item{width:160px;}
+	.imgbox .desc .sort{width:160px;}
+	
+</style>
+
+<link href="/admin/css/fileinput.css" rel="stylesheet">
+<script src="/admin/js/fileinput.min.js"></script>
+<script src="/admin/js/fileinput_locale_zh.js"></script>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{% if type == 'add' %}添加一站购活动{% else %} 修改一站购活动{% endif %}</h1>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group form-group-sm">
+							<label for="listtitle" class="col-sm-1 control-label">列表页标题:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="listtitle" name="listtitle" value="{{ type == 'modify' ? info['listtitle'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="listimg" class="col-sm-1 control-label">列表页图片:</label>
+							<div class="col-xs-2 form-inline">
+								<div class='col-md-3 imgbox'>
+									<img src="/uploads/yizhangou/{{info['listimg']}}" />
+									<input type="file" id="listimg" class="imginput" name="listimg" value="" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="name" class="col-sm-1 control-label">活动名称:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="name" name="name" value="{{ type == 'modify' ? info['name'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="starttime" class="col-sm-1 control-label">开始时间:</label>
+							<div class="col-xs-2">
+								<input class="form-control" type="text" id="starttime" name="starttime" value="{{ type == 'modify' ? info['starttime'] : '' }}" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="endtime" class="col-sm-1 control-label">结束时间:</label>
+							<div class="col-xs-2">
+								<input class="form-control" type="text" id="endtime" name="endtime" value="{{ type == 'modify' ? info['endtime'] : '' }}" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="sort" class="col-sm-1 control-label">列表页排序:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="sort" name="sort" value="{{ type == 'modify' ? info['sort'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="zhe" class="col-sm-1 control-label">折:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="zhe" name="zhe" value="{{ type == 'modify' ? info['zhe'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="zeng" class="col-sm-1 control-label">赠:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="zeng" name="zeng" value="{{ type == 'modify' ? info['zeng'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="zhuan" class="col-sm-1 control-label">专:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="zhuan" name="zhuan" value="{{ type == 'modify' ? info['zhuan'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="logdesc" class="col-sm-1 control-label">品牌专场:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="logdesc" name="logdesc" value="{{ type == 'modify' ? info['logdesc'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="address" class="col-sm-1 control-label">活动地址:</label>
+							<div class="col-xs-2" id="sub-addr">
+							{% if info['address'] %}
+							{% for k in info['address'] %}
+								<div class="sub-row">
+									<input type="text" class="sub-name" name="shopname[]" placeholder="店名" value="<?php echo base64_decode($k['name']); ?>" />
+									<input type="text" class="sub-address" name="address[]" placeholder="地址" value="<?php echo base64_decode($k['address']); ?>" />
+									<input type="text" class="sub-sort" name="latitude[]" placeholder="经度,纬度" value="{{k['latitude']}}" />
+									<span class="os del">-</span>
+								</div>
+							{% endfor %}
+							{% else %}
+								<div class="sub-row">
+									<input type="text" class="sub-name" name="shopname[]" placeholder="店名" />
+									<input type="text" class="sub-address" name="address[]" placeholder="地址" />
+									<input type="text" class="sub-sort" name="latitude[]" placeholder="经度,纬度" />
+								</div>
+							{% endif %}
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="tag" class="col-sm-1 control-label">类型:</label>
+							<div class="col-xs-2">
+								<select class="form-control" name="tag">
+									<option value="0"></option>
+								{% for k in tag %}
+									<option {% if k['id'] == info['tag'] %} selected {% endif %} value="{{k['id']}}" >{{k['tag']}}</option>
+								{% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="subjectimg" class="col-sm-1 control-label">主题图片:</label>
+							<div class="col-xs-2 form-inline">
+								<div class='col-md-3 imgbox'>
+									<img src="/uploads/yizhangou/{{info['subjectimg'][0]['name']}}" />
+									<input type="file" id="subjectimg" class="imginput" name="subjectimg[]" value="" />
+									<div class='desc'>
+										<input type='text' name='subjectimg-url[]' class='url' value="{{info['subjectimg'][0]['url']}}" placeholder="http://" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="bottomimg" class="col-sm-1 control-label">底部图片:</label>
+							<div class="col-xs-2 form-inline">
+								<div class='col-md-3 imgbox'>
+									<img src="/uploads/yizhangou/{{info['bottomimg'][0]['name']}}" />
+									<input type="file" id="bottomimg" class="imginput" name="bottomimg[]" value="" />
+									<div class='desc'>
+										<input type='text' name='bottomimg-url[]' class='url' value="{{info['bottomimg'][0]['url']}}" placeholder="http://" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="successimg" class="col-sm-1 control-label">报名成功广告:</label>
+							<div class="col-xs-2 form-inline">
+								<div class='col-md-3 imgbox'>
+									<img src="/uploads/yizhangou/{{info['successimg'][0]['name']}}" />
+									<input type="file" id="successimg" class="imginput" name="successimg[]" value="" />
+									<div class='desc'>
+										<input type='text' name='successimg-url[]' class='url' value="{{info['successimg'][0]['url']}}" placeholder="http://" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="dikouimg" class="col-sm-1 control-label">报名成功页抵扣卷:</label>
+							<div class="col-xs-2 form-inline">
+								<div class='col-md-3 imgbox'>
+									<img src="/uploads/yizhangou/{{info['dikouimg'][0]['name']}}" />
+									<input type="file" id="dikouimg" class="imginput" name="dikouimg[]" value="" />
+									<div class='desc'>
+										<input type='text' name='dikouimg-url[]' class='url' value="{{info['dikouimg'][0]['url']}}" placeholder="http://" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="address" class="col-sm-1 control-label">栏目:</label>
+							<div class="col-xs-2" id="sub-box">
+								<div class="sub-row">
+									<input type="text" class="sub-name" name="logo_name" disabled="disabled" value="品牌表" />
+									<input type="text" class="sub-sort" name="logo_sort" placeholder="排序" value="{{logo_sort}}" />
+								</div>
+								<div class="sub-row">
+									<input type="text" class="sub-name" name="logo_name2" disabled="disabled" value="品牌表2" />
+									<input type="text" class="sub-sort" name="logo_sort2" placeholder="排序" value="{{logo_sort2}}" />
+								</div>
+								<div class="sub-row">
+									<input type="text" class="sub-name" name="logo_name3" disabled="disabled" value="品牌表3" />
+									<input type="text" class="sub-sort" name="logo_sort3" placeholder="排序" value="{{logo_sort3}}" />
+								</div>
+								<div class="sub-row">
+									<input type="text" class="sub-name" name="map_name" disabled="disabled" value="地图" />
+									<input type="text" class="sub-sort" name="map_sort" placeholder="排序" value="{{map_sort}}" />
+								</div>
+							{% for k in info['item'] %}
+								{% if k['name'] != 'logo' and k['name'] != 'map' %}
+									<div class="sub-row">
+										<input type="text" class="sub-name" name="sub_name[]"  placeholder="栏目名称" value="<?php echo base64_decode($k['name']); ?>" />
+										<input type="text" class="sub-sort" name="sub_sort[]" placeholder="排序" value="{{k['sort']}}" />
+										<span class="os del">-</span>
+									</div>
+								{% endif %}
+							{% endfor %}
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="logolist" class="col-sm-1 control-label">品牌图片:</label>
+							<div class="col-xs-6 form-inline">
+								<a class="btn btn-default btn-xs" role="button" data-toggle="collapse" href="#logolist" aria-expanded="false" aria-controls="logolist" >品牌操作<span class="caret"></span></a>
+								<div class="collapse" id="logolist">
+									<div class="row">
+									{% for k in info['logofile'] %}
+										<div class='col-md-3 imgbox'>
+											<img src="/uploads/yizhangou/{{k['name']}}" />
+											<span class="close">x</span>
+											<input type='hidden' name='logofile2[]' value='<?php echo json_encode($k); ?>' />
+										</div>
+									{% endfor %}
+										<div class="col-md-3 addlogo">添加</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="logo2list" class="col-sm-1 control-label">品牌2图片:</label>
+							<div class="col-xs-6 form-inline">
+								<a class="btn btn-default btn-xs" role="button" data-toggle="collapse" href="#logo2list" aria-expanded="false" aria-controls="logo2list" >品牌2操作<span class="caret"></span></a>
+								<div class="collapse" id="logo2list">
+									<div class="row">
+									{% for k in info['logo2file'] %}
+										<div class='col-md-3 imgbox'>
+											<img src="/uploads/yizhangou/{{k['name']}}" />
+											<span class="close">x</span>
+											<input type='hidden' name='logo2file2[]' value='<?php echo json_encode($k); ?>' />
+										</div>
+									{% endfor %}
+										<div class="col-md-3 addlogo">添加</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="logo3list" class="col-sm-1 control-label">品牌3图片:</label>
+							<div class="col-xs-6 form-inline">
+								<a class="btn btn-default btn-xs" role="button" data-toggle="collapse" href="#logo3list" aria-expanded="false" aria-controls="logo3list" >品牌3操作<span class="caret"></span></a>
+								<div class="collapse" id="logo3list">
+									<div class="row">
+									{% for k in info['logo3file'] %}
+										<div class='col-md-3 imgbox'>
+											<img src="/uploads/yizhangou/{{k['name']}}" />
+											<span class="close">x</span>
+											<input type='hidden' name='logo3file2[]' value='<?php echo json_encode($k); ?>' />
+										</div>
+									{% endfor %}
+										<div class="col-md-3 addlogo">添加</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="liangimg" class="col-sm-1 control-label">栏目图片:</label>
+							<div class="col-xs-6 form-inline">
+								<a class="btn btn-default btn-xs" role="button" data-toggle="collapse" href="#liangimg" aria-expanded="false" aria-controls="liangimg" >栏目操作<span class="caret"></span></a>
+								<div class="collapse" id="liangimg">
+									<div class="row">
+									{% for k in info['liangfiel'] %}
+										<div class='col-md-3 imgbox liang-row'>
+											<img src="/uploads/yizhangou/{{k['name']}}" />
+											<span class="close">x</span>
+											<input type='hidden' name='liangfiel2[]' value='<?php echo json_encode($k); ?>' />
+											<div class='desc'>
+												<input type='text' name='liangfiel2-item[]' class='item' value="<?php echo base64_decode($k['item']); ?>" placeholder='栏目' />
+												<input type='text' name='liangfiel2-url[]' class='url' value="{{k['url']}}" placeholder='http://' />
+												<input type='text' name='liangfiel2-sort[]' class='sort' value="{{k['sort']}}" placeholder='排序' />
+											</div>
+										</div>
+									{% endfor %}
+										<div class="col-md-3 addliang">添加</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="buy" class="col-sm-1 control-label">需求:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="buy" name="buy" value="{{ type == 'modify' ? info['buy'] : '' }}" placeholder="格式 以 | 分隔 如 需求a|需求b|需求c" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="hide" class="col-sm-1 control-label">是否显示:</label>
+							<div class="col-xs-2 form-inline">
+								<input type="checkbox" id="hide" name="hide" value='1' {% if info['hide'] == 1 %} checked {% endif %} />
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/yizhangou/action/list/{{groupId}}" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$("#sub-addr .sub-row:last").append("<span class='os add'>+</span>");
+	
+	$(document).on("click","#sub-addr .sub-row .os.add",function(){
+		var str = "<div class='sub-row'><input type='text' class='sub-name' name='shopname[]'  placeholder='店名' /><input type='text' class='sub-address' name='address[]'  placeholder='地址' />";
+		str = str + "<input type='text' class='sub-sort' name='latitude[]' placeholder='经度,纬度' /><span class='os'>+</span></div>";
+		$("#sub-addr").append(str);
+		
+		if($(this).parent().find(".os").has("del")){
+			$(this).parent().find(".os.del").remove();
+		}
+		$(this).removeClass("add");
+		$(this).addClass("del");
+		$(this).html("-");
+			
+
+		$("#sub-addr .sub-row:last .os").addClass("add");
+		$("#sub-addr .sub-row:last .os").removeClass("del");
+		$("#sub-addr .sub-row:last .os").html("+");
+	});
+	
+	$(document).on("click","#sub-addr .sub-row .os.del",function(){
+		$(this).parent().remove();
+		if(!$("#sub-addr .sub-row:last os").has("add")){
+			$("#sub-addr .sub-row:last").append("<span class='os add'>+</span>");
+		}
+	});
+	
+	$("#sub-box .sub-row:last").append("<span class='os add'>+</span>");
+	
+	$(document).on("click","#sub-box .sub-row .os.add",function(){
+		var str = "<div class='sub-row'><input type='text' class='sub-name' name='sub_name[]'  placeholder='栏目名次' />";
+		str = str + "<input type='text' class='sub-sort' name='sub_sort[]' placeholder='排序' /><span class='os'>+</span></div>";
+		$("#sub-box").append(str);
+		
+		if($(this).parent().find(".sub-name").attr('name') != 'map_name'){
+			if($(this).parent().find(".os").has("del")){
+				$(this).parent().find(".os.del").remove();
+			}
+			$(this).removeClass("add");
+			$(this).addClass("del");
+			$(this).html("-");
+			
+		}else{
+			$(this).parent().find(".os").remove();
+		}
+		$("#sub-box .sub-row:last .os").addClass("add");
+		$("#sub-box .sub-row:last .os").removeClass("del");
+		$("#sub-box .sub-row:last .os").html("+");
+	});
+	
+	$(document).on("click","#sub-box .sub-row .os.del",function(){
+		$(this).parent().remove();
+		if(!$("#sub-box .sub-row:last os").has("add")){
+			$("#sub-box .sub-row:last").append("<span class='os add'>+</span>");
+		}
+	});
+	
+	$(document).on("change",".imgbox input",function(){
+		var url = "";
+		if (window.createObjectURL != undefined) {
+			url = window.createObjectURL(this.files[0])
+		} else if (window.URL != undefined) {  // IE
+			url = window.URL.createObjectURL(this.files[0])
+		} else if (window.webkitURL != undefined) {
+			url = window.webkitURL.createObjectURL(this.files[0])
+		}
+		$(this).parent().children("img").attr('src',url);
+	});
+	
+	$(".imgbox .close").click(function(){
+		$(this).parent().remove();
+	});
+	
+	$("#logolist .addlogo").click(function(){
+		var str = "<div class='col-md-3 imgbox' >";
+			str = str +	"<img src='' />";
+			str = str + "<input type='file' name='logofile[]' class='imginput'  />";
+			str = str + "</div>";
+		$(this).parent().prepend(str);
+	});
+	
+	$("#logo2list .addlogo").click(function(){
+		var str = "<div class='col-md-3 imgbox' >";
+			str = str +	"<img src='' />";
+			str = str + "<input type='file' name='logo2file[]' class='imginput'  />";
+			str = str + "</div>";
+		$(this).parent().prepend(str);
+	});
+	
+	$("#logo3list .addlogo").click(function(){
+		var str = "<div class='col-md-3 imgbox' >";
+			str = str +	"<img src='' />";
+			str = str + "<input type='file' name='logo3file[]' class='imginput'  />";
+			str = str + "</div>";
+		$(this).parent().prepend(str);
+	});
+	
+	$("#liangimg .addliang").click(function(){
+		var option = "<option value='品牌表'>品牌表</option><option value='地图'>地图</option>";
+		{% for k in info['item'] %}
+		option = option + "<option value='<?php echo base64_decode($k['name']); ?>'><?php echo base64_decode($k['name']); ?></option>";
+		{% endfor %}
+		
+		var str = "<div class='col-md-3 imgbox liang-row' >";
+		str = str +	"<img src='' />";
+		str = str + "<input type='file' name='liangfiel[]' class='imginput' />";
+		str = str + "<div class='desc'>";
+		str = str + "<select class='item' name='liangfiel-item[]'><option>"+option+"</option></select>";
+		str = str + "<input type='text' name='liangfiel-url[]' class='url' placeholder='http://' />";
+		str = str + "<input type='text' name='liangfiel-sort[]' class='sort' placeholder='排序' />";
+		str = str + "</div>";
+		str = str + "</div>";
+		
+		$(this).parent().prepend(str);
+	});
+	
+});
+
+</script>
+

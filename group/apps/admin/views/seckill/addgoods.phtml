@@ -1,0 +1,164 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{% if type == 'add' %}添加秒杀商品{% else %} 修改秒杀商品 {% endif %}</h1>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post">
+						<div class="form-group">
+							<label class="col-sm-1 control-label">商品名称:</label>
+							<div class="col-sm-10"><p class="form-control-static">{{ info['name'] }}</p></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">商品图片:</label>
+							<div class="col-sm-10"><img class="form-control-static" id="goodsImg" style="max-width:200px;" src="http://www.yoju360.com/{{ info['image']['img'] }}" /></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">促销价格:</label>
+							<div class="col-sm-10"><p class="form-control-static">{{ info['price']['promote'] }}</p></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="goods_number" class="col-sm-1 control-label">秒杀库存:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="goods_number" name="goods_number" value="{{ type == 'modify' ? data['goods_number'] : '' }}" ></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="seckill_price" class="col-sm-1 control-label">秒杀价:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="seckill_price" name="seckill_price" value="{{ type == 'modify' ? data['seckill_price'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="value" class="col-sm-1 control-label">时间段:</label>
+							<div class="col-xs-8">
+								<a class="btn btn-default btn-xs" role="button" data-toggle="collapse" href="#ruleList" aria-expanded="false" aria-controls="privList">
+									展开<span class="caret"></span>
+								</a>
+								<div class="collapse" id="ruleList">
+							{% if time %}
+									<div class="list-group" style="margin-bottom:0px;">
+								{% for m in time %}
+									<div class="list-group-item">
+										<div class="radio">
+											<label><input type="radio"  {%if data['time'] == m['id'] %} checked  {% endif %} name="time" value="{{m['id']}}">{{m['day']}}&nbsp;{{m['starttime']}}--{{m['endtime']}}</label>
+										</div>
+									</div>
+								{% endfor %}
+									</div>
+							{% endif %}
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">说明:</label>
+							<div class="col-xs-7"><textarea class="form-control" id="desc" name="desc">{{ type == 'modify' ? data['desc'] : '' }}</textarea></div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">配送方式:</label>
+							<div class="col-xs-8">
+								<div>
+									<label class="radio-inline"><input type="radio" name="shiptype" id="shipping1" {% if type=='add' %} checked {% endif %} value="0">线上配送</label>
+									<label class="radio-inline"><input type="radio" name="shiptype" id="shipping2" value="-1">线下自动匹配</label>
+									<label class="radio-inline"><input type="radio" name="shiptype" id="shipping3" value="1">选择地址</label>
+								</div>
+								<div>
+									<a class="btn btn-primary btn-xs" id="chooseaddr" disabled data-toggle="modal" data-target=".bs-example-modal-lg" role="button">选择线下地址</a>
+									<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+										{% if addrlist %}
+											{% for k in addrlist %}
+												<div class="addr_row row{{k['shipping_id']}}" data-id="{{k['shipping_id']}}">{{k['linkman']}}&nbsp;{{k['tel']}}&nbsp;&nbsp;{{k['province']}}&nbsp;{{k['city']}}&nbsp;{{k['district']}}&nbsp;{{k['address']}} </div>
+											{% endfor %}
+										{% else %}
+											<span>您还没有提交线下提货地址</span>
+										{% endif %}
+											</div>
+										</div>
+									</div>
+									<div id="theAddr"></div>
+									<input type="hidden" name="shipping" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-1 control-label">是否禁用:</label>
+							<div class="col-xs-8">
+								<label class="radio-inline"><input type="radio" name="isRemove" id="isRemove1" {% if type == 'modify' and data['is_remove'] == 1 %} checked {% endif %} value="1">是</label>
+								<label class="radio-inline"><input type="radio" name="isRemove" id="isRemove2" {% if type == 'modify' and data['is_remove'] == 0 %} checked {% endif %} value="0">否</label>
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/seckill/goods/list/{{ actionId }}" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(':radio[name="shiptype"]').click(function(){
+		var v = $(this).val();
+		if(v == 0){
+			$("#chooseaddr").attr("disabled",true);
+			$("#theAddr").html('');
+			$(':input[name="shipping"]').val(0);
+		}else if(v == -1){
+			$("#chooseaddr").attr("disabled",true);
+			$("#theAddr").html('');
+			$(':input[name="shipping"]').val(-1);
+		}else{
+			$("#chooseaddr").removeAttr("disabled");
+		}
+	});
+
+	$(".addr_row").click(function(){
+		var shipId = $(this).attr('data-id');
+		$(':input[name="shipping"]').val(shipId);
+		$("#theAddr").html($(this).html());
+		$(".modal").modal("hide");
+	});
+
+	$(".addr_row").click(function(){
+		var shipId = $(this).attr('data-id');
+		$(':input[name="shipping"]').val(shipId);
+		$("#theAddr").html($(this).html());
+		$(".modal").modal("hide");
+	});
+
+	var bar = [ 
+		['style', ['bold', 'italic', 'underline', 'clear'] ],
+		['font', ['strikethrough'] ],
+		['fontsize', ['fontsize'] ],
+		['color', ['color'] ],
+		['para', ['ul', 'ol', 'paragraph'] ],
+		['height', ['height']]
+	]	
+	
+	$('#desc').summernote({toolbar:bar,height:200,width:600,lang:'zh-CN'});
+	var desc = $('#desc').code();
+	
+});
+
+</script>
+

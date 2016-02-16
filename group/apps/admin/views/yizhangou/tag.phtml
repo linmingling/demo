@@ -1,0 +1,113 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<style type="text/css">
+	.listTag{padding:10px;}
+	.listTag div{width:100px;height:30px;border:1px solid #dee5e7;border-style:dashed !important;background-color:whitesmoke;}
+	.listTag div span{float:left;}
+	.listTag div a{float:right;}
+</style>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">活动分类</h1>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="input-group addtag" style="width:200px;">
+						<input type="text" name="tag" class="tag form-control input-sm" />
+						<span class="input-group-addon" style="cursor:pointer;">添加</span>
+					</div>
+					<div class="listTag"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$.ajax({
+		type: 'POST',
+		url: '/admin/yizhangou/tag/list/{{groupId}}',
+		data: "",
+		dataType: 'json',
+		timeout: 300,
+		async:false,
+		success : function(msg){
+			if(msg.num > 0){
+				var data = msg.list;
+				for(var k in data){
+					var str = "<div><span>"+data[k]['tag']+"</span><a data-id='"+data[k]['id']+"'>x</a></div>";
+					$(".listTag").append(str);				
+				}
+			}
+		},
+	})
+	
+	$(".addtag .input-group-addon").click(function(){
+		var tag = $(".addtag .tag").val();
+		$.ajax({
+			type: 'POST',
+			url: '/admin/yizhangou/tag/add/{{groupId}}',
+			data: "tag="+tag,
+			dataType: 'json',
+			timeout: 300,
+			async:false,
+			success : function(msg){
+				if(msg.state == 1){
+					$(".listTag").append("<div><span>"+tag+"</span><a data-id='"+msg.msg+"'>x</a></div>");
+					$(".listTag div:last a").on('click',function(){
+						var tagId = $(this).attr('data-id');
+						$.ajax({
+							type: 'POST',
+							url: '/admin/yizhangou/tag/delete/{{groupId}}',
+							data: "tagId="+tagId,
+							dataType: 'json',
+							context: this,
+							timeout: 300,
+							async:false,
+							success : function(msg){
+								if(msg.state = 1){
+									$(this).parent().remove();
+								}
+							},
+						})
+					});
+				}else{
+					alert(msg.msg);
+				}
+			},
+		})
+	});
+	
+	$(".listTag div a").click(function(){
+		var tagId = $(this).attr('data-id');
+		$.ajax({
+			type: 'POST',
+			url: '/admin/yizhangou/tag/delete/{{groupId}}',
+			data: "tagId="+tagId,
+			dataType: 'json',
+			context: this,
+			timeout: 300,
+			async:false,
+			success : function(msg){
+				if(msg.state = 1){
+					$(this).parent().remove();
+				}
+			},
+		})
+	});
+	
+});
+
+</script>

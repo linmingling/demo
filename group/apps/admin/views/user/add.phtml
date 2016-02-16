@@ -1,0 +1,229 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{% if ActionName == 'add' %}添加用户权限{% else %} 修改用户权限 {% endif %}</h1>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post">
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">用户名:</label>
+							<div class="col-xs-2">
+								<input class="form-control" type="text" id="username" placeholder="对应单点登录用户名" name="username" value="{{ ActionName == 'modify' ? data['username'] : '' }}" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="username" class="col-sm-1 control-label">说明:</label>
+							<div class="col-xs-2">
+								<input class="form-control" type="text" id="desc" name="desc" value="{{ ActionName == 'modify' ? data['desc'] : '' }}" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="privilege" class="col-sm-1 control-label">活动权限:</label>
+							<div class="col-xs-4 form-inline">
+								<div id="">
+									{% if allPrivs %}
+									{% for k in allPrivs %}
+										{% if k['group_name'] == 'admin_actions' %}
+											<div class="checkbox-inline">
+												<label><input type="checkbox" name="optionsCheck[]" value='{{k["id"]}}' <?php if($ActionName == 'modify' && $data['privs'] && in_array($k['id'], $data['privs'])) echo "checked"; ?>>{{k['desc']}}</label>
+											</div>
+										{% endif %}
+									{% endfor %}
+									{% endif %}
+									<button class="btn btn-default btn-sm"  id="add-action" onclick ="return false;" style="margin-left:10px;"> [ + ]</button>
+									<button class="btn btn-default btn-sm"  id="del-action" onclick ="return false;" style="margin-left:10px;"> [ x ]</button>
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="privilege" class="col-sm-1 control-label">城市权限:</label>
+							<div class="col-xs-4 form-inline">
+								<div id="">
+									{% if allPrivs %}
+									{% for k in allPrivs %}
+										{% if k['group_name'] == 'admin_cities' %}
+											<div class="checkbox-inline">
+												<label><input type="checkbox" name="optionsCheck[]" value='{{k["id"]}}' <?php if($ActionName == 'modify' && $data['privs'] && in_array($k['id'], $data['privs'])) echo "checked"; ?>>{{k['desc']}}</label>
+											</div>
+										{% endif %}
+									{% endfor %}
+									{% endif %}
+									<button class="btn btn-default btn-sm"  id="add-cities" onclick ="return false;" style="margin-left:10px;"> [ + ]</button>
+									<button class="btn btn-default btn-sm"  id="del-cities" onclick ="return false;" style="margin-left:10px;"> [ x ]</button>
+								</div>
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" id="add-submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/user/list" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+					<!-- 添加模态框 -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"   aria-labelledby="myModalLabel" aria-hidden="true" >
+					   <div class="modal-dialog">
+					      <div class="modal-content"  style="width: 500px;">
+					         <div class="modal-header">
+					            <button type="button" class="close" data-dismiss="modal" 
+					               aria-hidden="true">×
+					            </button>
+					            <h4 class="modal-title" id="myModalLabel">
+					               添加权限
+					            </h4>
+					         </div>
+					         <div class="modal-body"  style="padding: 0 0 110px 0;">
+					         	<div class="sceneWarp">
+						            <div class="form-group form-group-sm">
+										<label for="flow" class="col-sm-5 control-label">权限名:</label>
+										<div class="col-xs-5">
+											<input class="form-control" type="text" name="name"  id="priv_name" maxlength="10"  />
+										</div>
+									</div>
+						            <div class="form-group form-group-sm">
+										<label for="flow" class="col-sm-5 control-label">权限值:</label>
+										<div class="col-xs-5">
+											<input class="form-control" type="text" name="value"  id="priv_value"  maxlength="10"  />
+										</div>
+									</div>
+						            <div class="form-group form-group-sm">
+										<label for="flow" class="col-sm-5 control-label">描述:</label>
+										<div class="col-xs-5">
+											<input class="form-control" type="text" name="desc" id="priv_desc"   maxlength="100"  />
+										</div>
+									</div>
+								</div>
+					         </div>
+					         <div class="modal-footer">
+					            <button type="button" class="btn btn-default" 
+					               data-dismiss="modal">取消
+					            </button>
+					            <button type="button" class="btn btn-primary" id="submit-priv">
+					               添加
+					            </button>
+					         </div>
+					      </div><!-- /.modal-content -->
+					   </div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->
+					
+					<!-- 删除模态框 -->
+					<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"   aria-labelledby="myModalLabel" aria-hidden="true" >
+					   <div class="modal-dialog">
+					      <div class="modal-content"  style="width: 500px;">
+					         <div class="modal-header">
+					            <button type="button" class="close" data-dismiss="modal" 
+					               aria-hidden="true">×
+					            </button>
+					            <h4 class="modal-title" id="myModalLabel">
+					               删除权限
+					            </h4>
+					         </div>
+					         <form class="panel-body form-horizontal" role="form" method="post" action="/admin/user/delPriv/{{ uid }}"">
+						         <div class="modal-body"  style="padding: 0 0 110px 0;" id="option-box">
+						         	<div class="form-group form-group-sm">
+										<label for="privilege" class="col-sm-2 control-label">活动权限:</label>
+										<div class="col-xs-4 form-inline">
+											<div id="privList">
+												
+											</div>
+										</div>
+									</div>
+						         </div>
+						         <div class="modal-footer">
+						            <button type="button" class="btn btn-default" 
+						               data-dismiss="modal">取消
+						            </button>
+						            <button  class="btn btn-primary"  type="submit">
+						               提交
+						            </button>
+						         </div>
+					         </form>
+					      </div><!-- /.modal-content -->
+					   </div><!-- /.modal-dialog -->
+				 </div><!-- /.modal -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+var group_name = '';
+$(document).on("click","#add-action",function(){
+	group_name = "admin_actions";
+	$('#myModal').modal('show');
+});
+
+$(document).on("click","#add-cities",function(){
+	group_name = "admin_cities";
+	$('#myModal').modal('show');
+});
+
+$(document).on("click","#submit-priv",function(){
+	var name = $("#priv_name").val();
+	var value = $("#priv_value").val();
+	var desc = $("#priv_desc").val();
+	$.ajax({
+        type: "POST",
+        url:"/admin/user/addPriv/{{ uid }}" ,
+        data:{name:name,value:value,desc:desc,group_name:group_name},
+        async: false,
+        dataType:'json',
+        success:function(result){
+        	if(result.errcode != 0){
+                alert(result.errmsg);
+            }else{
+            	window.location.href="/admin/user/modify/{{ uid }}";
+            }
+        }
+    });
+});
+
+
+var privList = $("#privList");
+$(document).on("click","#del-action",function(){
+	var del_options = '';
+	privList.empty();
+	{% if allPrivs %}
+	{% for k in allPrivs %}
+		{% if k['group_name'] == 'admin_actions' %}
+		del_options += "<div class=\"checkbox-inline\">";
+		del_options += "<label><input type=\"checkbox\" name=\"optionsCheck[]\" value='{{k['id']}}' >{{k['desc']}}</label>";
+		del_options += "</div>";
+		{% endif %}
+	{% endfor %}
+	{% endif %}
+	privList.append(del_options);
+	$('#myModal2').modal('show');
+});
+
+$(document).on("click","#del-cities",function(){
+	var del_options = '';
+	privList.empty();
+	{% if allPrivs %}
+	{% for k in allPrivs %}
+		{% if k['group_name'] == 'admin_cities' %}
+		del_options += "<div class=\"checkbox-inline\">";
+		del_options += "<label><input type=\"checkbox\" name=\"optionsCheck[]\" value='{{k['id']}}' >{{k['desc']}}</label>";
+		del_options += "</div>";
+		{% endif %}
+	{% endfor %}
+	{% endif %}
+	privList.append(del_options);
+	$('#myModal2').modal('show');
+});
+
+</script>

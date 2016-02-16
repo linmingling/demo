@@ -1,0 +1,639 @@
+<?php $this->
+partial("yoju_public/head_qmjjg")?>
+<link rel="stylesheet" type="text/css" href="/qmjjg/pc/css/main.css" media="all" />
+<script type="text/javascript">
+var payDomain = '{{payDomain}}';
+</script>
+<div class="hnWarp">
+    <div class="hnbox1 hnBox" id="box1"></div>
+
+    <div class="hnbox2 hnBox" id="box2">
+        <div class="inbox">
+            <!-- 报名 -->
+            <div class="baoming" id="baoming">
+                <div class="bmWarp">
+                    <div class="bmHead">
+                        <p class="bmTitle">0元领票立送百元红包</p>
+                    </div>
+                    <div class="bmForm">
+                        <div class="inputBox telBox">
+                            <p class="tips">请填写手机号码</p>
+                            <input type="text" name="tel" class="tel" placeholder="" />
+                        </div>
+                        <p class="tips2">*手机号码将用来接收报名短信，请务必填写</p>
+
+                        <div class="inputBox codeBox">
+                            <p class="tips">请填写手机收到的验证码</p>
+                            <span class="getCode">获取验证码</span>
+
+                            <input type="text" name="code" class="code " placeholder="" class="code" />
+                        </div>
+
+                        <p class="tips2">*为确保您的手机号码唯一性，请务必填写</p>
+                        <p class="bmBtn">0元领票</p>
+                    </div>
+                </div>
+            </div>
+            <div class="baoming hide" id="baoming2">
+                <div class="bmWarp">
+                    <div class="bmHead">
+                        <p class="bmTitle">0元领票立送百元红包</p>
+                    </div>
+                </div>
+                <div class="bmForm">
+                    <div class="inputBox nameBox">
+                        <p class="tips">怎么称呼您</p>
+                        <input type="text" name="name" class="name" placeholder="" />
+                    </div>
+                    <div class="inputBox areaBox">
+                        <select name="area" class="area" id="area">
+                            <option value="常州区">常州区</option>
+                        </select>
+                    </div>
+                    <div class="inputBox addressBox">
+                        <p class="tips">请填写详细地址</p>
+                        <input type="text" id="address" name="address" class="address" placeholder="" />
+                    </div>
+
+                    <p class="tips2">*百元红包，V卡只差一步到手，请务必填写地址</p>
+                    <p class="bmBtn2">0元领票</p>
+                </div>
+                <input type="hidden" id="send_phone" value=""/>
+                <input type="hidden" id="btn_id" value=""/>
+                <input type="hidden" id="verify" value=""/>
+            </div>
+            <div class="bmnum">
+                <div class="numHead">
+                    <p class="bmTitle">
+                        已有
+                        <span class="_num">{{ count }}</span>
+                        人成功领取百元红包
+                    </p>
+                </div>
+                <!-- 报名列表 -->
+                <marquee direction="up"  scrolldelay="300" class="sign-user">
+                    <div class="w-list" id='showWinner'>
+                        {% for k,key in list %}
+                        <p class="wl">
+                            <span class="w-name">{{ key['name'] }}</span>
+                            <span class="w-num">{{ key['phone'] }}</span>
+                            <span class="price">已成功领取百元红包</span>
+                        </p>
+                        {% endfor %}
+                    </div>
+                </marquee>
+            </div>
+        </div>
+    </div>
+    <div class="hnbox3 hnBox" id="box3">
+        <div class="inbox">
+            <div class="al">
+                <ul>
+                    <li class="d1">
+                        <div class="tn1"><img src="/qmjjg/pc/images/tn1.png" alt=""></div>
+                        <div class="imgTop">
+                            <img src="/qmjjg/pc/images/ad5.png" alt=""></div>
+                    </li>
+                    <li class="d2">
+                        <div class="tn2"><img src="/qmjjg/pc/images/tn2.png" alt=""></div>
+                        <div class="imgTop">
+                            <img src="/qmjjg/pc/images/ad4.png" alt=""></div>
+                    </li>
+                    <li class="d3">
+                        <div class="tn3"><img src="/qmjjg/pc/images/tn3.png" alt=""></div>
+                        <div class="imgTop">
+                            <img src="/qmjjg/pc/images/ad2.png" alt=""></div>
+                    </li>
+                    <li class="d4">
+                        <div class="tn4"><img src="/qmjjg/pc/images/tn4.png" alt=""></div>
+                        <div class="imgTop">
+                            <img src="/qmjjg/pc/images/ad3.png" alt=""></div>
+                    </li>
+                    <li class="d5">
+                        <div class="tn5"><img src="/qmjjg/pc/images/tn5.png" alt=""></div>
+                        <div class="imgTop">
+                            <img src="/qmjjg/pc/images/ad1.png" alt=""></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="hnbox4 hnBox" id="box4">
+        <div class="inbox">
+            <div class="text4"></div>
+            <div class="text5"></div>
+        </div>
+    </div>
+
+    <div class="hnbox5 hnBox" id="box5">
+        <div class="inbox"></div>
+    </div>
+
+    <div class="hnbox6 hnBox" id="box6">
+        <div class="inbox">
+            <div class="location">
+                <div class="map" id="map"></div>
+                <div class="loca-info">
+                    <img src="/qmjjg/pc/images/hd.jpg" alt="">
+                    <p>2015年11月07日</p>
+                    <img src="/qmjjg/pc/images/dz.jpg" alt="">
+                    <p>常州市天宁区飞龙路68号飞龙红星美凯龙</p>
+                    <img src="/qmjjg/pc/images/gj.jpg" alt="">
+                    <p>
+                        乘坐 209路 ,255路 ,10路 ,315路 ,常州216路 ,232路 ,254路 ,29路 ,316
+                        <br>路 ,60路 ,1211路 ,11路等到红星美凯龙公交站</p>
+                    <img src="/qmjjg/pc/images/jc.jpg" alt="">
+                    <p>
+                        1.（从人民公园—红星美凯龙商场）：人民公园—局前街—和平北路—
+                        <br>红梅路—小东门路—竹林南路—飞龙东路—红星美凯龙商场</p>
+                    <p>
+                        2.（从市政府行政中心—红星美凯龙商场）：市政府行政中心—广场大
+                        <br>道—晋陵北路—晋陵中路—飞龙东路—红星美凯龙商场</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 右侧导航 -->
+<div class="hnnav hide" id="hnnav">
+    <div class="hnlist">
+        <p>0元领票</p>
+        <p>活动亮点</p>
+        <p>一线品牌</p>
+        <p>实力背景</p>
+        <p>服务保障</p>
+        <p>活动地址</p>
+        <p class="topi">
+            TOP <i></i>
+        </p>
+
+        <div class="code2">
+            <img src="/qmjjg/pc/images/code.png" alt="">
+            <p>关注优居优品</p>
+            <p>领取全民家居购</p>
+            <p>100元红包</p>
+        </div>
+    </div>
+</div>
+
+<!-- 报名成功弹出框 -->
+<div class="bmcg hide" id="bmcg">
+    <div class="bmcgWarp">
+        <img src="/qmjjg/pc/images/succeed.png" alt="">
+        <span class="bmClose">×</span>
+    </div>
+</div>
+
+<!-- 通用提示 -->
+<div class="comTips hide" id="comTips">
+    <div class="tipsWarp">
+        <div class="tipsBody">tips</div>
+        <div class="tipsClose">确认</div>
+    </div>
+</div>
+
+<!-- 底部报名 -->
+<div class="bmbg hide">
+    <div class="inbox">
+        <div class="lg">
+            <img src="/qmjjg/pc/images/bmbg.png" alt=""></div>
+        <div class="dbbm" id="dbbm">
+            <div class="inputBox nameBox">
+                <p class="tips">怎么称呼您</p>
+                <input type="text" name="name" class="name" placeholder="" />
+            </div>
+            <div class="inputBox telBox">
+                <p class="tips">请填写手机号码</p>
+                <input type="text" name="tel"  class="tel"  placeholder="" />
+            </div>
+            <div class="inputBox">
+                <span class="getCode">获取验证码</span>
+            </div>
+            <div class="inputBox codeBox">
+                <p class="tips">请填写短信验证码</p>
+                <input type="text" name="code" class="code" placeholder=""  />
+            </div>
+            <div class="inputBox areaBox">
+                <select name="area" class="area" id="area2">
+                    <option value="常州区">常州区</option>
+                </select>
+            </div>
+            <div class="inputBox addressBox">
+                <p class="tips">请填写详细地址</p>
+                <input type="text" id="address2" name="address" class="address" placeholder="" />
+            </div>
+            <div class="inputBox">
+                <span class="bmBtn">0元领票</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=55TvHWH5h9OAPPLtfdqFFBRB"></script>
+<script>
+    //个城市 区选项
+    $.ajax({
+        async:false,
+        type:'get',
+        url : '{{payDomain}}/phone/Ext/region/223',
+        dataType : 'jsonp',
+        jsonp:"callback",
+        success  : function(data) {
+            if(data.state ==  1){
+                var option = "";
+                var list = data.data;
+                for(var i in list){
+                    option = option + '<option value="'+list[i]+'">'+list[i]+'</option>';
+                }
+                $(".area").html(option);
+            }
+        },
+        error : function() {
+            alert("服务器忙，请重试！")
+        }
+    });
+    // 广告手风琴
+    var _index=0;
+
+    $(".al ul li").mouseover(function(){
+        _index=$(this).index();
+        $(this).stop().css({"z-index":1}).animate({width:952},500).siblings("li").stop().animate({"width":60,"z-index":0},500);
+        // $('.d5').stop().css({"z-index":1}).stop().animate({"width":60,"z-index":0},500).css({"background-color":"#ffaa07"});
+    });
+
+    $(".al ul li").mouseout(function(){
+        $(this).stop().animate({width:60},500);
+        $('.d5').stop().animate({width:952},500);
+
+    });
+
+    // 短信码
+    function djs(i){
+        if(i<1){
+            $(".getCode").html("获取验证码").removeClass("false");
+        }else{
+            $(".getCode").html(i+"s重新获取").addClass("false");
+            setTimeout(function(){djs(i-1)},1000);
+        }
+    }
+    //发送短信
+    function send(tel, j){
+         $.ajax({
+            async:true,
+            url:'/pc/qmjjg/send',
+            data:{phone:tel, verify:j},
+            type: 'post',
+            dataType:'json',
+            success:function(result){
+            }
+        });
+    }
+
+    // 获取验证码
+    $('#baoming .getCode').click(function(){
+        if($("#baoming .getCode").hasClass("false"))return false;
+        var tel = $("#baoming .tel").val();
+        var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+        if(!mob.test(tel)){
+            $(".telBox input").val("");
+            $(".telBox .tips").html("请填写正确的电话号码").addClass("red");
+        }else{
+            //发短信
+            $.ajax({
+                async:true,
+                url:'/pc/qmjjg/getVerify',
+                data:{phone:tel},
+                type: 'post',
+                dataType:'json',
+                success:function(result){
+                    if(result.errcode && result.errcode != 1002){
+                        alert(result.errmsg);
+                    } else {
+                        djs(60);
+                        send(tel, result.verify);
+                    }
+                }
+            });
+        }
+    });
+
+    // 底部报名获取验证码
+    $('#dbbm .getCode').click(function(){
+        if($("#dbbm .getCode").hasClass("false"))return false;
+        var tel = $("#dbbm .tel").val();
+        var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+        if(!mob.test(tel)){
+            $("#dbbm .telBox input").val("");
+            $("#dbbm .telBox .tips").html("请填写正确的电话号码").addClass("red");
+        }else{
+            //发短信
+            $.ajax({
+                async:true,
+                url:'/pc/qmjjg/getVerify',
+                data:{phone:tel},
+                type: 'post',
+                dataType:'json',
+                success:function(result){
+                    if(result.errcode && result.errcode != 1002){
+                        alert(result.errmsg);
+                    } else {
+                        djs(60);
+                        send(tel, result.verify);
+                    }
+
+                }
+            });
+        }
+    });
+
+    function tips(dom){
+        var tel = $("#baoming .tel").val();
+        var code = $(dom+" .code").val();
+        var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+        var codeTips = $(dom+" .codeBox .tips");
+        var telTips = $(dom+" .telBox .tips");
+
+        (tel == "")?telTips.html("请填写手机号码"):telTips.html("");
+        (code == "")?codeTips.html("请填写短信验证码"):codeTips.html("");
+        $(dom+" input").prev().removeClass("red");
+/*
+        if(tel =="" || !mob.test(tel)){
+            $("#baoming .getCode").addClass("false");
+            return false;
+        }else{
+            $("#baoming .getCode").removeClass("false");
+        } */
+        /* if(code !=""){
+            $("#baoming .getCode").addClass("false");
+        } */
+    }
+
+    function tips1(dom){
+        var name = $(dom+" .name").val();
+        var address =$("#address").val();
+        var nameTips = $(dom+" .nameBox .tips");
+        var addressTips = $(dom+" .addressBox .tips");
+
+        (name == "")?nameTips.html("请填写真实姓名"):nameTips.html("");
+        (address == "")?addressTips.html("请填写详细地址"):addressTips.html("");
+        $(dom+" input").prev().removeClass("red");
+    }
+
+
+    function tips2(dom){
+        var tel = $("#dbbm .tel").val();
+        var code = $("#dbbm .code").val();
+        var name = $("#dbbm .name").val();
+        var address =$("#dbbm .address").val();
+        var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+        var codeTips = $(dom+"#dbbm .codeBox .tips");
+        var telTips = $(dom+"#dbbm .telBox .tips");
+        var nameTips = $(dom+"#dbbm .nameBox .tips");
+        var addressTips = $(dom+"#dbbm .addressBox .tips");
+
+        (tel == "")?telTips.html("请填写手机号码"):telTips.html("");
+        (code == "")?codeTips.html("请填写短信验证码"):codeTips.html("");
+        (name == "")?nameTips.html("请填写真实姓名"):nameTips.html("");
+        (address == "")?addressTips.html("请填写详细地址"):addressTips.html("");
+        $(dom+" input").prev().removeClass("red");
+
+
+       /*  if(tel =="" || !mob.test(tel)){
+            $("#dbbm .bmBtn ,#dbbm .getCode").addClass("false");
+            return false;
+        }else{
+            $("#dbbm .getCode").removeClass("flase");
+        } */
+
+/*         if(code !=""){
+            $("#dbbm .getCode").addClass("false");
+        } */
+    }
+
+
+    //0元领票
+    $("#baoming .bmBtn").click(function(){
+        var tel = $("#baoming .tel").val();
+        var code = $("#baoming .code").val();
+        var codeTips = $("#baoming .codeBox .tips");
+        var telTips = $("#baoming .telBox .tips");
+        var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+        if(!mob.test(tel)){
+            telTips.html("请填写正确的电话号码").addClass("red");
+            $("#baoming .tel").val("")
+            return;
+        }
+        if(code == ""){
+            codeTips.html("请填写手机收到的验证码").addClass("red");
+            return;
+        }
+        $.ajax({
+            async:true,
+            url:'/pc/qmjjg/submit_code',
+            data:{phone:tel, code:code},
+            type: 'post',
+            dataType:'json',
+            success:function(result){
+                if(result.errcode == 1002){
+                    $('#bmcg').show();
+                    $("#baoming").show();
+                    $("#baoming2").hide();
+                } else if(!result.errcode){
+                    $("#baoming2").show();
+                    $("#baoming").hide();
+                    send(tel, 0);
+                } else {
+                    alert(result.errmsg);
+                }
+            }
+        });
+    })
+
+
+    //确认报名信息
+    $("#baoming2 .bmBtn2").click(function(){
+        var tel = $("#baoming .tel").val();
+        var name = $("#baoming2 .name").val();
+        var address = $("#address").val();
+        var area = $("#area").val();
+        var nameTips = $("#baoming2 .nameBox .tips");
+        var addressTips = $("#baoming2 .addressBox .tips");
+        if(name == ""){
+            nameTips.html("请填写真实姓名").addClass("red");
+            return;
+        }
+        if(address == ""){
+            addressTips.html("请填详细地址").addClass("red");
+            return;
+        }
+        $.ajax({
+            async:true,
+            url:'/pc/qmjjg/submit',
+            data:{phone:tel, name:name, area:area, address:address},
+            type: 'post',
+            dataType:'json',
+            success:function(result){
+                if(result.errcode){
+                    alert(result.errmsg);
+                } else {
+                   $('#bmcg').show();
+                   $("#baoming").show();
+                   $(".baoming input").val("");
+                   $("#baoming2").hide();
+                }
+            }
+        });
+    })
+
+    // 底部报名
+    $("#dbbm .bmBtn").click(function(){
+    	if($("#dbbm .bmBtn").hasClass("false"))return false;
+        var tel = $("#dbbm .tel").val();
+        var code = $("#dbbm .code").val();
+        var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+        var name = $("#dbbm .name").val();
+        var address = $("#dbbm .address").val();
+        var area = $("#area2").val();
+        var codeTips = $("#dbbm .codeBox .tips");
+        var telTips = $("#dbbm .telBox .tips");
+        var nameTips = $("#dbbm .nameBox .tips");
+        var addressTips = $("#dbbm .addressBox .tips");
+        if(name == ""){
+            nameTips.html("请填写真实姓名").addClass("red");
+            return;
+        }
+        if(address == ""){
+            addressTips.html("请填详细地址").addClass("red");
+            return;
+        }
+        if(!mob.test(tel)){
+            telTips.html("请填写正确的电话号码").addClass("red");
+            $("#baoming .tel").val("")
+            return;
+        }
+        if(code == ""){
+            codeTips.html("请填写手机收到的验证码").addClass("red");
+            return;
+        }
+        $.ajax({
+            async:true,
+            url:'/pc/qmjjg/submit_dbbm',
+            data:{phone:tel, code:code, name:name, area:area, address:address},
+            type: 'post',
+            dataType:'json',
+            success:function(result){
+                if(result.errcode == 1002){
+                    $('#bmcg').show();
+                    $("#baoming").show();
+                    $("#baoming2").hide();
+                } else if(result.errcode){
+                    alert(result.errmsg);
+                } else {
+                   $('#bmcg').show();
+                   $("#dbbm input").val("");
+                   send(tel, 0);
+                }
+            }
+        });
+    })
+
+    $(function(){
+
+        //第一个报名
+        $("#baoming input").focus(function(){
+            tips("#baoming")
+        })
+        $("#baoming input").keyup(function(){
+            tips("#baoming")
+        });
+
+        // 确认报名
+        $("#baoming2 input").focus(function(){
+            tips1("#baoming2")
+        })
+        $("#baoming2 input").keyup(function(){
+            tips1("#baoming2")
+        });
+
+        // 报名成功
+        $("#bmcg .bmClose").click(function(){
+            $("#bmcg").hide();
+        })
+
+        // 底部报名
+        $("#dbbm input").focus(function(){
+            tips2("#dbbm")
+        })
+        $("#dbbm input").keyup(function(){
+            tips2("#dbbm")
+        });
+    });
+
+
+
+        var box1 = $("#box1").offset().top;
+        var box2 = $("#box2").offset().top;
+        var box3 = $("#box3").offset().top;
+        var box4 = $("#box4").offset().top;
+        var box5 = $("#box5").offset().top;
+        var box6 = $("#box6").offset().top;
+
+
+    $(window).scroll(function(){
+
+       var ata = $(window).scrollTop();
+        box1 = $("#box1").offset().top;
+        box2 = $("#box2").offset().top;
+        box3 = $("#box3").offset().top;
+        box4 = $("#box4").offset().top;
+        box5 = $("#box5").offset().top;
+        box6 = $("#box6").offset().top;
+        if(ata>480){
+            $("#hnnav").fadeIn(500);
+            $(".bmbg").fadeIn(500);
+        }else{
+            $("#hnnav").fadeOut(500);
+            $(".bmbg").fadeOut(500);
+        }
+
+    });
+
+    $('#hnnav p').click(function(){
+        index = $(this).index();
+        //$(this).addClass('hover').siblings().removeClass('hover');
+        //console.log(index);
+        switch(index){
+            case 0: $("html,body").animate({scrollTop: box2}, 300);break;
+            case 1: $("html,body").animate({scrollTop: box3}, 300);break;
+            case 2: $("html,body").animate({scrollTop: box4}, 300);break;
+            case 3: $("html,body").animate({scrollTop: box5}, 300);break;
+            case 4: $("html,body").animate({scrollTop: box6-400}, 300);break;
+            case 5: $("html,body").animate({scrollTop: box6}, 300);break;
+            case 6: $("html,body").animate({scrollTop: 0}, 300);break;
+        }
+    });
+
+        //地图
+        var map1 = new BMap.Map("map");           // 创建Map实例
+        var point1 = new BMap.Point(119.9896,31.791877);
+        map1.centerAndZoom(point1,16);
+        map1.enableScrollWheelZoom();
+        var marker1 = new BMap.Marker(point1);  // 创建标注
+        map1.addOverlay(marker1);               // 将标注添加到地图中
+        marker1.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+        //添加工具
+        var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+        var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+        map1.addControl(top_left_control);
+        map1.addControl(top_left_navigation);
+</script>
+<div style="display: none">
+<script>
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0ade9f144274d90bf98a25ed70333e57' type='text/javascript'%3E%3C/script%3E"))
+</script>
+</div>
+<?php $this->partial("yoju_public/footer")?>

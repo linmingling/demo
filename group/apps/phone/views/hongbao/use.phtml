@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>七夕家装节-我的红包</title>
+<meta name="keywords" content="七夕家装节" />
+<meta name="description" content="七夕家装节" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/hongbao/css/com.css?v=1.2"  />
+
+</head>
+<body>
+<div class="hbWarp">
+	<!-- 使用红包 -->
+	<div class="hbMain3">
+		<!-- 返现券使用 -->
+		<div class="useWarp">
+			<div class="use f14">
+				<div class="quan cf">
+					<div class="money">
+						<span>￥{{ result['total'] }}</span>
+					</div>
+					<div class="tips">
+						<p class="time">2015.08.30到期</p>
+						<p class="limit">元返现券</p>
+					</div>
+				</div>
+				<p class="mrt5 cf">
+					<span class="fl">券号：</span>
+					<span id="use_id">{{ result['sn'] }}</span>
+				</p>
+				<div class="mrt5 cf">
+					<span class="fl">品牌：</span>
+					<div class="cf brand " id="brand">
+					{% for k,key in brand_list %}
+						<span>{{ key['name'] }}</span>
+					{% endfor %}
+					</div>
+				</div>
+				<p class="purple " id="jjc"></p>
+				<p class="mrt5">
+					<span class="fl">订单号：</span>
+					<input type="text" name="q_order" class="q_order" />
+				</p>
+				<p class="mrt5">
+					<span class="fl">订单额：</span>
+					<input type="text" name="q_num" class="q_num" />
+				</p>
+				<div class="cf mrt5">
+					<span class="fl">上传图片：</span>
+					<div class="uploadImg1 fl">
+						<img src="/hongbao/images/uploadImg1.png" />
+					</div>
+					<div class="uploadImg2 fl">
+						<img src="/hongbao/images/uploadImg2.png" />
+						<p>示例</p>
+						<p>点击放大图片</p>
+					</div>
+					<input type="file" name="file" class="file"  />
+				</div>
+				
+				<p class="err f12 red"></p>
+				<p class="btn bt_style2 " id="btn">提交验证</p>
+				<div class="ruleS2">
+					<p>使用说明：</p>
+					<p>·以上返现券在xxxx年xx月xx日零时开始使用</p>
+					<p>·以上返现券在xxxx年xx月xx日零时开始使用</p>
+					<p>·以上返现券在xxxx年xx月xx日零时开始使用</p>
+					<p>·以上返现券在xxxx年xx月xx日零时开始使用</p>
+					<p>·以上返现券在xxxx年xx月xx日零时开始使用</p>
+					<p>·以上返现券在xxxx年xx月xx日零时开始使用</p>
+					<p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- 通用弹窗 -->
+	<div class="tc comTc hide" id="comTc" >
+		<div class="comTcWarp f14">
+			<span class="close f30">×</span>
+			<p class="f14 text"></p>
+		</div>
+	</div>
+	<!-- 成功弹窗 -->
+	<div class="tc comTc successTc hide" id="successTc" >
+		<div class="comTcWarp f14">
+			<p class="f14 text">
+				提交成功，工作人员正在拼命验证中...<br/>请稍后留意公众号消息!
+			</p>
+			<p class="f14 text">
+				<a href="javascript:void(0)" class="bt_style2" id="successTc_close">确认</a>
+			</p>
+		</div>
+	</div>
+	<!--示例图片-->
+	<div class="sampleImg hide" id="sampleImg" >
+		<div class="sampleImgWarp">
+			<img src="/hongbao/images/uploadImg2.png" />
+		</div>
+	</div>
+	<!-- loading -->
+	<div class="tc loading hide" id="loading" >
+		<div class="loadingWarp ">
+			<img src="/hongbao/images/loading.png" class="loadingImg"/>
+			<p>正在提交验证资料...</p>
+			<p class="loadingBar"><span></span></p>
+		</div>
+	</div>
+
+</div>
+
+<script src="/common/js/jquery-1.8.3.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+	function init_h(){
+		$(".hbMain3").height("auto")
+		win_h = $(window).height();
+		main_h = $(".hbWarp").height();
+		if(main_h<win_h){
+			//console.log(main_h+" , "+win_h)
+			$(".hbMain3").height(win_h)
+		}
+	}
+	function comTcOpen(text){
+		$("#comTc .text").html(text);
+		$("#comTc").show();
+	}
+	$(function(){
+		init_h();
+		var q_id = "{{ result['sn'] }}";
+		var q_deno = "{{ result['total'] }}";
+		var q_order = "";//订单号
+		var q_num = "";//订单额
+		var file = "";//图片
+
+
+		$("#comTc .close").click(function(){
+			$("#comTc").hide();
+		});
+		$("#successTc_close").click(function(){
+			$("#successTc").hide();
+		});
+		$(".uploadImg2").click(function(){
+			$("#sampleImg").show();
+		});
+		$("#sampleImg").click(function(){
+			$("#sampleImg").hide();
+		});
+		$("#brand span").click(function(){
+			q_brand = $(this).html();
+			$("#brand span").removeClass("hover");
+			$(this).addClass("hover");
+			$.ajax({ 
+				type: 'POST',
+				url: '/phone/hongbao/brand_list',
+				data:{name:q_brand},
+				dataType: 'json',
+				async : false,
+				success : function(result){
+					$("#jjc").html("该品牌奖金池￥"+result.total);
+				}
+			});
+		});
+		$(".uploadImg1").click(function(){
+			$(".file").click();
+		});
+	    $(".file").on("change", function(){
+	    	$(".err").html("");
+		    // Get a reference to the fileList
+		    var files = !!this.files ? this.files : [];
+		  
+		    // If no files were selected, or no FileReader support, return
+		    if (!files.length || !window.FileReader) return;
+		  
+		    // Only proceed if the selected file is an image
+		    if (/^image/.test( files[0].type)){
+		  
+		        // Create a new instance of the FileReader
+		        var reader = new FileReader();
+		  
+		        // Read the local file as a DataURL
+		        reader.readAsDataURL(files[0]);
+		  
+		        // When loaded, set image data as background of div
+		        reader.onloadend = function(){
+		   		
+			   		console.log(this.result)
+			       	$(".uploadImg1 img").attr("src", this.result);
+			       	file = this.result;
+		        }
+		    }else{
+		    	$(".err").html("请上传图片");
+		    }
+		  
+		});
+
+	    $("#btn").click(function(){
+			q_order = $(".q_order").val();
+			q_num = $(".q_num").val();
+			q_brand = $("#brand .hover").html();
+			if(typeof(q_brand) == "undefined"){
+				$(".err").html("请选择品牌");
+				return false;
+			}else if(q_order == ""){
+				$(".err").html("请填写订单号");
+				return false;
+			}else if(q_num == ""){
+				$(".err").html("请填写订单额");
+				return false;
+			}else if(file == ""){
+				$(".err").html("请上传图片");
+				return false;
+			}
+			$("#loading").show();
+			var formData = new FormData();
+			formData.append('file', $('input[name=file]')[0].files[0]);
+			formData.append('q_id', q_id);
+			formData.append('q_brand', q_brand);
+			formData.append('q_order', q_order);
+			formData.append('q_num', q_num);
+			$.ajax({
+				type: 'POST',
+				url: '/phone/hongbao/sn_verify',
+				data: formData,
+				contentType : false,
+				dataType: 'json',
+				processData: false,
+				async : false,
+				success : function(result){
+					$("#loading").hide();
+					if(result.errcode){
+						comTcOpen(result.errmsg);
+					} else {
+						$("#successTc").show();
+					}
+				}
+			})
+		});
+	});
+
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: '<?php echo $signPackage["timestamp"];?>',
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	      signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+            'checkJsApi',
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+		var wxData = {
+			"imgUrl":'{{domain}}/qixi/images/share.jpg',
+			"link":'{{ share_link }}',
+			"desc":"家居建材采购狂欢节！15个一线品牌，20个一线城市同时落地，年中5折大促！",
+			"title":"七夕家装节发红包啦，数量有限，抢完即止！",
+		};
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+		wx.hideOptionMenu();
+	});
+	</script>
+</body>
+</html>

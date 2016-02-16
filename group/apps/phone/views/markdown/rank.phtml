@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>优居-家博会，家装建材1元购！</title>
+	<meta name="keywords" content="优居-家博会，家装建材1元购！" />
+	<meta name="description" content="优居-家博会，家装建材1元购！" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<link rel="stylesheet" type="text/css"  href="/markdown/css/rank.css?v=2.0" />
+	<script src="/common/js/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+	<div class="bg3">
+	    <div class="head">
+			<div class="title2">优居砍价王</div>
+			<a href="/phone/markdown/index/{{ actionId }}" class="b-cls"><img src="/markdown/images/back.png" alt=""></a>
+        </div>
+
+        <div class="rk-banner">
+        	<img src="/markdown/images/rank/rk-banner.png" alt="">
+        </div>
+
+        <div class="ranker">
+		{% for k,v in data %}
+            <div class="rk-u">
+	            <div class="u-pic">
+	            <div class="num"><span class="mark">{{k + 1}}</span><img src="/markdown/images/rank/red.png" alt=""></div>
+	            <img src="{{v['headImg']}}" alt="">
+	            <div class="u-name">{{v['username']}}</div>
+	            </div>
+	        	
+	        	<div class="pd-info">
+	        	<p class="pd-f">
+					<span class="pd-title">{{v['goodsName']}}】</span>
+					<span class="word">已被我砍至<span class="bk-p">¥{{v['moneyPaid']}}</span>成交 ，不服来战！</span>
+				</p>
+	        		<a href="/phone/markdown/invite/{{ actionId }}/{{ v['goodsId'] }}" class="detail"><img src="{{pcHome}}/{{v['goodsImg']}}" alt=""></a>
+	        	</div>
+			</div>
+		{% endfor %}
+		</div>
+
+		<!-- top -->
+
+		<a href="javascript:void(0)" class="top hide"><img src="/markdown/images/top.png" alt=""></a>
+		<!-- 底部 -->
+
+		  <div class="bottom">
+		      <p class="brand">名牌正品&nbsp|&nbsp全场低价&nbsp|&nbsp媒体权威</p>
+		      <p class="cr">@Copyright 2009-2015&nbsp版权所有亚太传媒股份有限公司</p>
+	      </div>
+        </div>
+    
+    	<script>
+	// top
+    $(window).scroll(function(){
+        if($(window).scrollTop()>4){
+            $(".top").show();
+        }else{
+            $(".top").hide();
+        }
+    });
+    $(".top").click(function(){
+        if(scroll=="off") return;
+        $("html,body").animate({scrollTop: 0}, 100);
+    });
+	</script>
+</body>
+</html>

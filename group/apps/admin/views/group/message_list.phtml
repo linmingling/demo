@@ -1,0 +1,63 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3"><a href="/admin/group/index">优品团 ></a>短信提醒管理</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<a class="btn btn-default btn-sm" href="/admin/group/index" role="button" style="margin-right:10px;">返回</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>分站</th>
+									<th>商品名称</th>
+									<th>手机号码</th>
+									<th>商品开售时间</th>
+									<th>提醒时间（开售前5分钟）</th>
+									<th>添加时间</th>
+									<!-- <th>操作</th> -->
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in list %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{{ k['city_name'] }}</td>
+									<td>{{ k['goods_name'] }}</td>
+									<td>{{ k['phone'] }}</td>
+									<td>{{ date('Y-m-d H:i:s', k['remind_time']) }}</td>
+									<td>{{ date('Y-m-d H:i:s', k['remind_time']-5*60) }}</td>
+									<td>{{ date('Y-m-d H:i:s', k['add_time']) }}</td>
+									<td>
+										<!-- <a href="/admin/group/goods_add/{{ act_id }}/{{ city }}/{{ k['id'] }}">编辑</a>&nbsp;|&nbsp;
+										<a href="javascript:delaction({{k['id']}},'{{ city }}',{{ act_id }})">删除</a> -->
+									</td>
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+                    <?php $this->partial("index/page")?>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function delaction(m,x,y){
+	var r=confirm("你确定要删除吗？");
+	if(r == true){
+		location.href="/admin/group/goods_delete/id/"+m+"/"+x+"/"+y;
+	}
+}
+</script>
+<?php $this->partial("index/footer")?>

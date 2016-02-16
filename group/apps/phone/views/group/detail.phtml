@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优居网-优品团</title>
+<meta name="keywords" content="优居网 优品团" />
+<meta name="description" content="优居网 优品团" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/group/css/com.css?v=1.5" />
+
+</head>
+<body>
+	<!-- loading -->
+	<div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+	<div class="wraper detailWraper">
+		<!-- 头部 -->
+		<header class="head">
+			<a class="returnIcon ctl" href="{{ history }}">返回</a>
+			<a class="homeIcon ctr" href="{{ history }}"></a>
+			<p class="title grey">
+				<span class="titleText f14">商品详情</span>
+			</p>
+		</header>
+		<!-- 主要内容 -->
+		<div class="main detailMain detailOn">
+			<div class="dImg">
+				<!-- 图片轮播 -->
+				<div id="swiper1" class="swiper">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+						{% for k,key in info['goods_img'] %}
+							<div class="swiper-slide">
+								<img src="{{ key }}" />
+							</div>
+						{% endfor %}
+						</div>
+					</div>
+				</div>
+				<div class="imgTitle">
+				{% if info['start_time'] < time() AND info['end_time'] > time()%}
+					<span>距结束 {{ info['countdown'] }}</span>
+				{% else %}
+				    <span>{% if info['end_time'] < time() %}活动已结束{% else %}{{ date('m月d号 H:i',info['start_time']) }}开售{% endif %}</span>
+				{% endif %}
+				</div>
+				<div class="pagination">
+					<span class="now">1</span>/<span class="all">2</span>
+				</div>
+			</div>
+			
+			<!-- 基本信息 -->
+			<div class="dInfo borderBottom">
+				<div class="buyBox">
+					<div class="buyScroll" id="buyScroll">
+					<!-- 已开团 -->
+					{% if info['start_time'] < time() AND info['end_time'] > time()%}
+					<a href="{% if info['stock'] <= 0 %}javascript:void(0){% elseif info['service'] == 1 %}{{domain}}/phone/group/buy/{{ info['id'] }}{% else %}{{domain}}/phone/group/pay/{{ info['id'] }}{% endif %}" class="dInfoA" onclick="buy_budian({{info['id']}})">
+						<p class="p1 orange">
+							<span class="discount">{{ info['discount'] }}折</span>
+							优居专享：￥<span class="fw f22">{{ info['exclusive_price'] }}</span>
+						</p>
+						<p class="p2 grey">
+							<span class="delete">￥{{ info['market_price'] }}</span>
+							还剩下{{ info['stock'] }}件
+						</p>
+						<div class="dInfoRight dInfoRight1 {% if info['stock'] <= 0 %}false{% endif %}">
+						{% if info['service'] == 0%}
+							<p class="dir1">定金价：￥{{ info['order_price'] }}</p>
+					    {% else %}
+					        <p class="dir1">专享价：￥{{ info['exclusive_price'] }}</p>
+						{% endif %}
+							<p class="dir2 f16">{% if info['stock'] <= 0 %}已售罄{% else %}马上预订{% endif %}</p>
+							<i></i>
+						</div>
+					</a>
+					{% else %}
+					<!-- 未开团 -->
+					<div class="dInfoA">
+						<p class="p1 orange">
+							<span class="discount">{{ info['discount'] }}折</span>
+							优居专享：￥<span class="fw f22">{{ info['exclusive_price'] }}</span>
+						</p>
+						<p class="p2 grey">
+							<span class="delete">￥{{ info['market_price'] }}</span>
+							还剩下{{ info['stock'] }}件
+						</p>
+						<!-- <div class="dInfoRight dInfoRight2">
+							<p class="dir1">定金价：￥{{ info['order_price'] }}</p>
+							<p class="dir2">预购100抵1000</p>
+						</div> -->
+						<div class="dInfoRight dInfoRight1 false">
+						{% if info['service'] == 0%}
+							<p class="dir1">定金价：￥{{ info['order_price'] }}</p>
+						{% endif %}
+							<p class="dir2 f16">{% if info['end_time'] < time() %}活动已结束{% else %}马上预订{% endif %}</p>
+							<i></i>
+						</div>
+					</div>
+					{% endif %}
+					</div>
+				</div>
+				<!-- 未开团时提醒设置 -->
+				{% if info['start_time']-5*60 > time() AND info['stock'] > 0 %}
+                <div class="promptBox cf" id="promptBox">
+					<input type="text" class="phone ctl" placeholder="输入手机号码设置开售提醒！" />
+					<input type="hidden" class="phone action_id" value="{{ info['action_id'] }}" />
+					<input type="hidden" class="phone goods_id" value="{{ info['id'] }}" />
+					<input type="hidden" class="phone remind_time" value="{{ info['start_time'] }}" />
+					<span class="promptBtn f15 ctr false">设开售提醒</span>
+				</div>
+				{% endif %}
+					
+				<p class="dTitle f14">{{ info['goods_name'] }}</p>
+				<!-- 保证及已售信息 -->
+				<p class="dPromise">
+					<span class="promise">随时退</span>
+					<span class="promise">过期退</span>
+					<span class="promise">免预约</span>
+					<span class="dSold grey ctr">已售{{ info['sold_num']+info['real_num'] }}</span>
+				</p>
+			</div>
+			
+			<!-- 优惠信息 -->
+			{% if info['discount_list'] != ''%}
+			<div class="dDiscount">
+			{% for k,key in info['discount_list'] %}
+			    {% if key['details'] != '' %}
+                 <p class="discP openDD" pid="{{ key['id'] }}"><span>{{ key['keyword'] }}</span>{{ key['info'] }}<i></i></p>
+                {% else %}
+                 <p class="discP"><span>{{ key['keyword'] }}</span>{{ key['info'] }}</p>
+                {% endif %}
+            {% endfor %}
+			</div>
+			{% endif %}
+
+			<!-- 步骤流程 -->
+			<div class="pProcess detailBox">
+				<p class="dsTitle">步骤流程</p>
+				<div class="pnMain">
+					<div class="processWarp cf">
+						<div class="ctl process1 process">
+							<div class="processBg"></div>
+							<p class="orange f12 p1">1</p>
+							<p>线上支付</p>
+							{% if info['service'] == 0%}
+							<p>订金{{ info['order_price'] }}元</p>
+							{% else %}
+							<p>全款{{ info['exclusive_price'] }}元</p>
+							{% endif %}
+						</div>
+						<div class="ctl arrow"></div>
+						<div class="ctl process2 process">
+							<div class="processBg"></div>
+							<p class="orange f12 p1">2</p>
+							{% if info['service'] == 0%}
+							<p>到门店支付</p>
+							<p>余款{{ info['exclusive_price'] - info['order_price']}}元</p>
+							{% else %}
+							<p>物流配送</p>
+							{% endif %}
+						</div>
+						<div class="ctl arrow"></div>
+						<div class="ctl process3 process">
+							<div class="processBg"></div>
+							<p class="orange f12 p1">3</p>
+							<p>交易完成</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 适用商户 -->
+			{% if info['store_list'] != ''%}
+			<div class="dStore detailBox" id="dStore">
+				<p class="dsTitle">适用商户（{{ info['store_num'] }}）</p>
+				<div class="dsMain">
+					<div class="link">
+						<span class="adText f14"><i></i>{{ info['store_list'][0]['name'] }}</span>
+						<!-- <span class=""><100m</span> -->
+					</div>
+					<a class="dsQQ" href="http://wpa.qq.com/msgrd?v=3&uin={{ info['store_list'][0]['qq'] }}&site=qq&menu=yes"></a>
+					<a class="dsPhone" href="tel:{{ info['store_list'][0]['phone'] }}"></a>
+					<!-- 地址弹出 -->
+					<div class="moreAdress hide">
+						<div class="blackBg"></div>
+						<i></i>
+						<div class="select">
+							<!-- adress qq phone link 为该店具体地址、QQ号、电话号码、百度地图对应地址  -->
+							{% for k,key in info['store_list'] %}
+    							{% if k == 0 %}
+    							<p class="hover" adress="{{ key['address'] }}" qq="{{ key['qq'] }}" phone="{{ key['phone'] }}" link="{{ key['map_url'] }}">{{ key['name'] }}</p>
+    							{% else %}
+    							<p adress="{{ key['address'] }}" qq="{{ key['qq'] }}" phone="{{ key['phone'] }}" link="{{ key['map_url'] }}">{{ key['name'] }}</p>
+    							{% endif %}
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+				<a class="dsAdress" href="{{ info['store_list'][0]['map_url'] }}">{{ info['store_list'][0]['address'] }}<i></i></a>
+			</div>
+            {% endif %}
+            
+			<!-- 购买须知 -->
+			{% if info['notice'] != ''%}
+			<div class="pNotice detailBox">
+				<p class="dsTitle">购买须知</p>
+				<div class="pnMain">
+					{{ info['notice'] }}
+				</div>
+			</div>
+            {% endif %}
+            
+			<!-- 购买保证 -->
+			{% if info['guarantee'] != ''%}
+			<!--<div class="dPromiseDetail detailBox">
+				<p class="dsTitle">购买保证</p>
+				<div class="pImgMain">
+					{{ info['guarantee'] }}
+				</div>
+			</div>-->
+			{% endif %}
+			
+			<!-- 展示详情提示 -->
+			{% if info['goods_desc'] != '' %}
+		<!-- 	<div class="openDetail" id="openDetail">
+				<p class="line"></p>
+				<span>下拉查看图文详情</span>
+			</div> -->
+            {% endif %}
+            
+			<!-- 详情 -->
+			<!-- <div class="dPromiseDetail detailBox hide" id="dPromiseDetail">
+				<p class="dsTitle">商品详情</p>
+				<div class="pImgMain">
+					{{ info['goods_desc'] }}
+				</div>
+			</div> -->
+			<!-- 商品信息 -->
+			<div class="tab detailBox" id="tab">
+				<div class="tabNav">
+					<span class="hover">商品详情</span>
+					<span>规格参数</span>
+					<span>购买保障</span>
+				</div>
+				<div class="tabMain">
+					<div class="tm">{{ info['goods_desc'] }}</div>
+					<div class="tm hide">{{ info['specification'] }}</div>
+					<div class="tm hide">{{ info['guarantee'] }}</div>
+				</div>
+			</div>
+			<!-- 猜你喜欢 -->
+			<div class="openDetail">
+				<p class="line"></p>
+				<span>猜你喜欢</span>
+			</div>
+			<div class="product youlike" id="youlike">
+			{% for key,k in goods_list %}
+				<div class="pBox">
+					<div class="pTop cf">
+						<div class="pBrand ctl">
+							<img src="/group/images/default100x60.png" data-original="{% if k['brand_img'] != '' %}{{ k['brand_img'] }}{% else %}/group/images/default60x60.png{% endif %}" class="ctl lazy" />
+							<span>{{ k['sale_address'] }}</span>
+						</div>
+						<!-- <div class="pDjs dGrey ctr" deadline="{{ date('m d,Y H:i:s',k['end_time']) }}">
+							距结束 <span class="hours">--</span>:<span class="minutes">--</span>:<span class="seconds">--</span> 
+						</div> -->
+						<div class="pDjs dGrey ctr">
+							距结束 {{ k['countdown'] }}
+					    </div>
+					</div>
+					<a href="/phone/group/detail/{{ k['id'] }}" onclick="budian({{k['id']}})" class="pA">
+						<div class="pImgBox">
+							<img src="/group/images/default320x100.png" data-original="{{ k['goods_img'] }}" class="pImg lazy" />
+						</div>
+						<p class="pTitle f13">{{ k['goods_name'] }}</p>
+						<div class="pInfo">
+							<div class="pInfo1 orange">
+								<span class="border">
+									<span class="discount">{{ k['discount'] }}折</span>
+									<span class="delete grey">￥{{ k['market_price'] }}</span>
+								</span>
+							</div>
+							<div class="pInfo2 orange">
+								优居专享：￥<span class="f16 fw">{{ k['exclusive_price'] }}</span>
+							</div>
+							<div class="pInfo3 grey">
+								还剩下{{ k['stock'] }}件
+							</div>
+							<div class="pBtn">
+								<p class="book">
+									<span class="progress2" reservation="{{ k['sold_num'] + k['real_num']}}" all="{{ k['stock'] + k['sold_num'] +  k['real_num']}}"></span>
+									<span class="proText">已预订{{ k['sold_num'] + k['real_num']}}件</span>
+								</p>
+								<p>马上抢</p>
+							</div>
+						</div>
+					</a>
+				</div>
+				{% endfor %}
+			</div>
+            
+		</div>
+		<!-- 底部版权 -->
+		<div class="copyright">
+			<p>Copyright 2015 版权归深圳前海优品优居网络科技有限公司所有</p>
+			<p>粤ICP备14012338号-3号</p>
+		</div>
+		
+		<!-- 弹出优惠商品 -->
+<!-- 		<div class="discountDetail hide" pid="1">
+			<div class="blackBg"></div>
+			<div class="ddBox">
+				<div class="ddHead f14">
+					预购特惠商品
+					<span class="close f18">×</span>
+				</div>
+				<div class="ddImg">
+					<img src="/group/images/test2.jpg" />
+				</div>
+				<div class="ddInfo">
+					<p class="p1 orange">
+						<span class="discount">5.5折</span>
+						优居专享：￥<span class="fw f22">11782</span>
+					</p>
+					<p class="p2 grey">
+						<span class="delete">￥9999</span>
+						还剩下569件
+					</p>
+					<a href="#" class="ddBtn f14">购买</a>
+				</div>
+				<div class="ddTitle f13">商品名称</div>
+				<div class="ddTips orange">注：请您尽快到店成交该商品以领取资格！</div>
+				<a href="#" class="ddLink">查看图文详情>></a>
+			</div>
+		</div> -->
+		<!-- 弹出优惠商品 -->
+		{% for k,key in info['discount_list'] %}
+		{% if key['details'] != '' %}
+		<div class="discountDetail hide" pid="{{ key['id'] }}">
+			<div class="blackBg"></div>
+			<div class="ddBox">
+				{{ key['details'] }}
+			</div>
+		</div>
+		{% endif %}
+		{% endfor %}
+		<!-- 右下浮动栏 -->
+		<!-- 回到顶部 -->
+		<div class="gototop gototop2" id="gototop"></div>
+		
+	</div>
+
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+<script src="/common/js/idangerous.swiper-2.1.min.js"></script>
+<script src="/common/js/jquery.lazyload.js"></script>
+<script>
+	// 倒计时函数
+	function djs(deadline,dom) {
+		var countdown = new Date(deadline) - new Date();
+		// var restDays = $("#"+id+" .days");
+		var restHours = dom.find(".hours");
+		var restMinutes = dom.find(".minutes");
+		var restSeconds = dom.find(".seconds");
+
+		var timer = setInterval(function() {
+			if(countdown<0){
+				clearInterval(timer);
+				return false;
+			}
+			var days = Math.floor(countdown / 86400000) < 0 ? 0 : Math.floor(countdown / 86400000);
+			var hours = Math.floor((countdown - days * 86400000) / 3600000) < 0 ? 0 : Math.floor((countdown - days * 86400000) / 3600000);
+			var minutes = Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000);
+			var seconds = Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000);			
+			days < 10 ? days = "0" + days : days = days;
+			hours < 10 ? hou000s = "0" + hours : hours = hours;
+			minutes < 10 ? minutes = "0" + minutes : minutes = minutes;
+			seconds < 10 ? seconds = "0" + seconds : seconds = seconds;
+
+			//alert(days+", "+hours+", "+minutes+", "+seconds);
+			// restDays.html(days);
+			hours = days*24+hours;
+			restHours.html(hours);
+			restMinutes.html(minutes);
+			restSeconds.html(seconds);
+			countdown -= 1000;
+		}, 1000);
+	}
+	// 延迟加载商品详情
+	function lazyDetail(){
+		$("#tab .tabMain img").each(function(){
+			var src = $(this).attr("src");
+			$(this).attr("data-original",src).attr("src","/group/images/default320x100.png").addClass("lazy");
+		});
+	}
+	// 进度条显示
+	function progress(){
+		$("#youlike .pBox .progress2").each(function(){
+			var dom = $(this);
+			var reservation = dom.attr("reservation");
+			var all = dom.attr("all");
+			var pro = (reservation/all)*100;
+			$(this).width(pro+"%");
+
+		});
+	}
+	function budian(id){
+    	$.ajax({
+			async:true,
+			url:"/phone/group/goods_budian",
+			data:{type:'goods', goods_id:id},
+			type: 'post',
+			dataType:'json',
+			success:function(result){
+			}
+		});
+    }
+	function buy_budian(id){
+		_hmt.push(['_trackEvent', '优品团' , '点击购买按钮']);
+    	$.ajax({
+			async:true,
+			url:"/phone/group/buy_budian",
+			data:{goods_id:id},
+			type: 'post',
+			dataType:'json',
+			success:function(result){
+			}
+		});
+    }
+	$(function(){
+		$("#loading").hide();
+		
+		// 焦点图
+		var dImg_length = $("#swiper1 .swiper-container .swiper-slide").length;
+		$(".dImg .pagination .all").html(dImg_length);
+		var mySwiper1 = $("#swiper1 .swiper-container").swiper({
+            mode: 'horizontal',
+            loop:false,
+            onSlideChangeEnd: onSlideChangeEnd
+        });
+        function onSlideChangeEnd(){
+			var index = mySwiper1.activeIndex +1;
+			$(".dImg .pagination .now").html(index);
+		}
+
+		// 初始化进度条
+		progress();
+
+		// 初始化延迟加载商品详情
+		lazyDetail();
+
+		// 延迟加载
+		$("img.lazy").lazyload({ 
+			effect : "fadeIn" 
+		});
+
+		// 初始化倒计时
+		// $("#youlike .pDjs").each(function(){
+		// 	djs($(this).attr("deadline"),$(this));
+		// })
+
+
+		// 开售提醒
+		$("#promptBox .phone").keyup(function(){
+			var phone = $("#promptBox .phone").val();
+			var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+			if(mob.test(phone)){
+				$("#promptBox .promptBtn").removeClass("false");
+			}else{
+				$("#promptBox .promptBtn").addClass("false");
+			}
+		});
+		// 开售提醒提交
+		$("#promptBox .promptBtn").click(function(){
+			if($("#promptBox .promptBtn").hasClass("false")){
+				return false;
+			}else{
+				var phone = $("#promptBox .phone").val();
+				var action_id = $("#promptBox .action_id").val();
+				var goods_id = $("#promptBox .goods_id").val();
+				var remind_time = $("#promptBox .remind_time").val();
+				// 数据提交
+				$.ajax({
+					async:true,
+					url:"/phone/group/message",
+					data:{phone:phone, action_id:action_id, goods_id:goods_id, remind_time:remind_time},
+					type: 'post',
+					dataType:'json',
+					success:function(result){
+						$("#promptBox .phone").val("");
+						$("#promptBox .promptBtn").addClass("false");
+						alert(result.errmsg);
+					}
+				});
+			}
+		});
+
+		// 适用商家
+		$("#dStore .link .adText").click(function(){
+			var dsT = $("#dStore").offset().top ;
+			$("#dStore .link i").addClass("open");
+			$("#dStore .moreAdress").fadeIn();
+			$('html,body').animate({scrollTop: dsT}, 300);
+		});
+		$("#dStore .moreAdress .blackBg").click(function(){
+			$("#dStore .link i").removeClass("open");
+			$("#dStore .moreAdress").hide();
+		});
+		$("#dStore .moreAdress .select p").click(function(){
+			$(this).addClass("hover").siblings().removeClass("hover");
+			$("#dStore .adText ").html("<i></i>"+$(this).html());
+			$("#dStore .dsAdress ").html($(this).attr("adress")+"<i></i>");
+			$("#dStore .dsAdress ").attr("href",$(this).attr("link"));
+			$("#dStore .dsQQ").attr("href",$(this).attr("qq"));
+			$("#dStore .dsPhone").attr("href",$(this).attr("phone"));
+			
+			$("#dStore .moreAdress").hide();
+		});
+
+		// tab切换
+		$("#tab .tabNav span").click(function(){
+			var i = $(this).index();
+			$("#tab .tabMain .tm").eq(i).fadeIn().siblings().hide();
+			$("#tab .tabNav span").eq(i).addClass("hover").siblings().removeClass("hover");
+			var tabTop = $("#tab").offset().top;
+			$('html,body').animate({scrollTop: tabTop}, 300);
+		});
+
+		// 显示更多
+		$("#openDetail").click(function(){
+			$(this).hide();
+			$("#dPromiseDetail").fadeIn();
+		});
+
+		// 弹出特惠商品
+		$(".discountDetail .blackBg, .discountDetail .close").click(function(){
+			$(".discountDetail").hide();
+		});
+		$(".openDD").click(function(){
+			var id = $(this).attr("pid");
+			$(".discountDetail").each(function(){
+				var pid = $(this).attr("pid");
+				if(pid == id){
+					$(this).fadeIn();
+				}
+			})
+		})
+
+		// 回到顶部
+		$("#gototop").click(function(){
+			$('html,body').animate({scrollTop: 0}, 300);
+		});
+		$(window).scroll(function(){
+	        if($(window).scrollTop()>100){
+	            $("#gototop").fadeIn();
+	        }else{
+	            $("#gototop").fadeOut();
+	        }
+	        var scrollTop = $(this).scrollTop();
+	        var scrollHeight = $(document).height();
+	        var windowHeight = $(this).height();
+	        if (scrollTop + windowHeight == scrollHeight) {
+		
+				$("#openDetail").hide();
+				$("#dPromiseDetail").fadeIn();
+
+	        }
+	        // tab
+	        var tab = $("#tab");
+	        var tabTop = tab.offset().top;
+	        var youlikeTop = $("#youlike").offset().top;
+	        // console.log(tabTop+","+scrollTop)
+	        if(scrollTop>youlikeTop-90){
+	        	tab.removeClass("fixTab");
+	        }else if(scrollTop>tabTop){
+	        	tab.addClass("fixTab");
+	        }else{
+	        	tab.removeClass("fixTab");
+	        }
+	    
+	    });
+	});
+</script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: '<?php echo $signPackage["timestamp"];?>',
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	      signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+            'checkJsApi',
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+		var wxData = {
+			"imgUrl":'{{domain}}/group/images/share.jpg',
+			"link":'{{domain}}/phone/group/detail/{{ info['id'] }}',
+			"desc":"价值¥{{ info['market_price'] }}的{{ info['goods_name'] }}低至{{ info['discount'] }}折，￥{{ info['exclusive_price'] }}吐血价特卖啦！预定即送豪华大礼！赶快来抢吧！",
+			"title":"价值¥{{ info['market_price'] }}的{{ info['goods_name'] }}低至{{ info['discount'] }}折，￥{{ info['exclusive_price'] }}吐血价特卖啦！预定即送豪华大礼！赶快来抢吧！"
+		};
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+	});
+</script>
+</body>
+</html>

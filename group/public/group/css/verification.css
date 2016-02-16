@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* common*/
+html {font-size: 75%;/*10 ÷ 16 × 100% = 62.5%*/}
+body {height:100%;font-size: :1.2rem; font-family: \5FAE\8F6F\96C5\9ED1;background: #ebebeb;}
+div, html, body, p, ul, ol, li, a, form, img, table, td, h1, h2, h3, h4, h5, h6, blockquote, header, section, footer, aside, nav, article, figure, figcaption, dl, dt, dd {margin:0;padding:0;} 
+header, section, footer, aside, nav, article, figure, figcaption {display: block;}
+table {border-collapse:collapse;}
+img {border:none;}
+input:focus, textarea:focus {outline:none;}
+.cf:before,.cf:after{content:"";display:table;}.cf:after{clear:both;}.cf{zoom:1;}
+body,a,a:link{color:#333333;}
+a,a:link{text-decoration:none;}
+a:hover{text-decoration:none;}
+
+.noScorll{overflow: hidden}
+.wraper{max-width:720px;margin:0 auto;position: relative;}
+.hide{display: none}
+.ctl{float:left;}
+.ctr{float:right;}
+.f30{font-size: 3rem}
+.f24{font-size: 2.4rem}
+.f22{font-size: 2.2rem}
+.f18{font-size: 1.8rem}
+.f16{font-size: 1.6rem}
+.f15{font-size: 1.5rem}
+.f14{font-size: 1.4rem}
+.f13{font-size: 1.3rem}
+.f12{font-size: 1.2rem}
+.grey{color: #bababa}
+.dGrey{color: #666666}
+.orange{color: #ff6000}
+.red{color: #e50000}
+.yellow{color:#fff600;} 
+.fw{font-weight: bold;}
+
+.ver .verBtn{width: 90%;height: 40px;line-height: 40px;text-align: center;background: #ff6000;color: #fff;border-radius: 3px;margin:20px 5%;}
+.ver .verBtn.false{background: #838383}
+/* 第一部分 */
+.ver1{}
+.ver1 .verTitle{text-align: center;line-height: 4rem}
+.ver1 .verInput{width: 100%;height: 35px;background: #fff;border-top: 1px solid #e2e2e2;border-bottom: 1px solid #e2e2e2}
+.ver1 .verInput input{width: 90%;height: 35px;border:0;padding:0;margin-left: 5%}
+.ver1 .errTips{color: #eb0000;text-align: center;margin:10px 5%;}
+
+/* 第二部分 */
+.ver2{}
+.ver2 .verTitle{text-align: center;line-height: 4rem}
+.ver2 .info{min-height:72px;padding:10px;background: url(../images/verificationBg.png) no-repeat ;background-size: 100% 100%;border-top: 1px solid #e2e2e2;border-bottom: 1px solid #e2e2e2}
+.ver2 .info p{margin:2px 0;}
+.ver2 .info .pImg{width: 60px;height: 60px;margin-right: 10px;padding:5px;border:1px solid #e2e2e2;}
+.ver2 .info .pName{height: 16px;overflow: hidden;}
+.ver2 .info .discount{background: #ff6000;color: #fff;border-radius: 3px;padding:0 10px;}
+.ver2 .info .priceBox{position: relative;}
+.ver2 .info .price{font-size: 1.8rem;line-height: 1rem;}
+.ver2 .info .original{text-decoration: line-through;color:#bababa;position: absolute;top: 0;right: 0}
+.ver2 .formTitle{text-align: center;margin: 20px 0 5px 0}
+.ver2 .status{border-bottom: 1px solid #e2e2e2}
+.ver2 .status p{padding:0 10px;height: 40px;line-height: 40px;color:#626262;background:url(../images/verSprite.png) no-repeat #fff;background-size: 40px;background-position-x:right;background-position-y: -39px ;border-top: 1px solid #e2e2e2;}
+.ver2 .status p.hover{background-position-y: 9px }
+.ver2 .verInput{width: 100%;height: 40px;background: #fff;border-top: 1px solid #e2e2e2;border-bottom: 1px solid #e2e2e2}
+.ver2 .verInput input{width: 90%;height: 40px;border:0;padding:0;margin-left: 10px}

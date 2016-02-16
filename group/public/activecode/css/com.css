@@ -1,0 +1,156 @@
+@CHARSET "UTF-8";
+/* common*/
+body {height:100%;  font: 12px/1.75  \5FAE\8F6F\96C5\9ED1;}
+div, html, body, p, ul, ol, li, a, form, img, table, td, h1, h2, h3, h4, h5, h6, blockquote, header, section, footer, aside, nav, article, figure, figcaption, dl, dt, dd {margin:0;padding:0;} 
+header, section, footer, aside, nav, article, figure, figcaption {display: block;}
+table {border-collapse:collapse;}
+img {border:none;}
+ul, li {list-style:none;}
+input:focus, textarea:focus {outline:none;}
+.cf:before,.cf:after{content:"";display:table;}.cf:after{clear:both;}.cf{zoom:1;}
+.clear{height:0px; line-height:0px;clear:both;font-size:1px;}
+body,a,a:link{color:#666;}
+a,a:link{text-decoration:none;}
+a:hover{color:red;text-decoration:underline;}
+.wraper {width:720px;margin:auto;}
+.red {color: red;}
+.ctl{float:left;}
+.ctr{float:right;}
+.hide{display: none}
+
+/*表单页*/
+.form-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(254,243,227);
+}
+.form-box img{
+	width: 100%;
+}
+.text-box {
+    width: 90%;
+    margin: 0 auto;
+    top: 10%;
+    position: relative;
+}
+.ftext{
+	width: auto;
+	height: auto;
+	line-height: 14px;
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #b82424;
+	border-left: 1px solid #b82424;
+	border-right: 1px solid #b82424;
+    background-color: #fff;
+	padding-left: 45px;
+}
+.line{
+	font-size: 20px;
+	position: absolute;
+	top: 1px;
+}
+.fname i {
+    background: url('../images/name-icon.png') no-repeat;
+    background-size: 80%;
+    width: 50px;
+    height: 50px;
+    top: 4%;
+    position: absolute;
+    left: 2%;
+}
+.fphone i {
+    background: url('../images/phone-icon.png') no-repeat;
+    background-size: 80%;
+    width: 50px;
+    height: 50px;
+    top: 29%;
+    position: absolute;
+    left: 3%;
+}
+.fcard i {
+    background: url('../images/card-icon.png') no-repeat;
+    background-size: 80%;
+    width: 50px;
+    height: 50px;
+    top: 54%;
+    position: absolute;
+    left: 2%;
+}
+.fcaptcha i {
+    background: url('../images/captcha-icon.png') no-repeat;
+    background-size: 80%;
+    width: 50px;
+    height: 50px;
+    top: 79%;
+    position: absolute;
+    left: 2%;
+}
+.ftext input {
+    border: 0;
+    width: 90%;
+    height: 50px;
+    text-indent: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+.form-submit {
+    width: 90%;
+    position: relative;
+    top: 13%;
+    left: 5%;
+}
+.form-title {
+    width: 48%;
+    position: relative;
+    top: 8%;
+    left: 26%;
+}
+.copyright {
+    width: 60%;
+    position: relative;
+    left: 20%;
+    top: 28%;
+}
+
+/*领取红包页*/
+.money-page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../images/money-bg.jpg') no-repeat center center;
+    background-size: 100% 100%;
+    z-index: 5;
+}
+.money-page img{
+	width: 100%;
+}
+.money-title {
+    position: relative;
+    width: 80%;
+    left: 10%;
+    top: 3%;
+}
+.money-bag {
+    position: relative;
+    width: 70%;
+    left: 15%;
+    top: 3%;
+}
+.money-btn {
+    position: absolute;
+    width: 70%;
+    left: 15%;
+    top: 63%;
+    z-index: 5;
+}
+.money-page .copyright {
+    width: 60%;
+    position: absolute;
+    left: 20%;
+    top: 90%;
+}
+

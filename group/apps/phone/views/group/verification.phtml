@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>【优品团】订单验证</title>
+<meta name="keywords" content="优居网 优品团" />
+<meta name="description" content="优居网 优品团" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/group/css/verification.css" />
+
+</head>
+<body>
+	<div class="wraper">
+		<!-- 主要内容 -->
+		<div class="main verificationMain">
+			<!-- 订单验证第一步 -->
+			<div class="ver1 ver" id="ver1">
+				<p class="verTitle f14">请输入要验证的订单号</p>
+				<p class="verInput">
+					<input type="text" placeholder="输入订单号" class="orderNum" />
+				</p>
+				<p class="errTips hide">该订单已经被使用过了!</p>
+				<p class="verBtn f14">验证</p>
+			</div>
+			<!-- 订单验证第二步 -->
+			<div class="ver2 ver hide" id="ver2">
+				<p class="verTitle f16 orange">恭喜验证成功！</p>
+				<div class="info">
+					<img src="/group/images/default60x60.png" class="pImg ctl" />
+					<p class="pName">商品名称商品名称商品名称商品名称名称</p>
+					<p><span class="discount">5.5折</span></p>
+					<p class="orange priceBox">优居专享：￥<span class="price">159.00</span><span class="original">￥290</span></p>
+					<p class="red">定金价：￥100</p>
+				</div>
+				<p class="formTitle f14">请选择客户状态</p>
+				<div class="status">
+					<p class="hover" status="1" >客户已支付</p>
+					<p status="2">客户已放弃</p>
+				</div>
+				<p class="formTitle f14">请输入门店名称</p>
+				<p class="verInput">
+					<input type="text" placeholder="输入名称" class="store" />
+				</p>
+				<p class="verBtn false f14">确认</p>
+			</div>
+		</div>
+	</div>
+
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+<script>
+	
+	$(function(){
+		// 第一部分
+		$("#ver1 .verBtn").click(function(){
+			if($(this).hasClass("false"))return false;
+			$("#ver1 .errTips").hide();
+			
+			var orderNum = $("#ver1 .orderNum").val();
+			if(orderNum == ""){
+				$("#ver1 .errTips").html("请输入要验证的订单号！");
+				$("#ver1 .errTips").fadeIn();
+			}else{
+				$("#ver1 .verBtn").addClass("false").html("验证中...");
+				$.ajax({
+					async:true,
+					url:"/phone/group/verification",
+					data:{orderNum:orderNum},
+					type: 'post',
+					dataType:'json',
+					success:function(result){
+						$("#ver1 .verBtn").removeClass("false").html("验证");
+						if(!result.errcode){
+							// 成功 返回此单信息
+							var order = new Array(result.info['goods_img'],result.info['goods_name'],result.info['discount'],result.info['exclusive_price'],result.info['market_price'],result.info['order_price']);
+							var html =  '<img src="'+order[0]+'" class="pImg ctl" />'+
+										'<p class="pName">'+order[1]+'</p>'+
+										'<p><span class="discount">'+order[2]+'折</span></p>'+
+										'<p class="orange priceBox">优居专享：￥<span class="price">'+order[3]+'</span><span class="original">￥'+order[4]+'</span></p>'+
+										'<p class="red">定金价：￥'+order[5]+'</p>'				
+							$("#ver2 .info").html(html);								
+							$("#ver1").hide();
+							$("#ver2").fadeIn();
+						} else {
+							$("#ver1 .errTips").html(result.errmsg);
+							$("#ver1 .errTips").fadeIn(); 
+						}
+					},
+					error:function(result){
+						$("#ver1 .verBtn").removeClass("false").html("验证");
+						$("#ver1 .errTips").html("网络通信失败，请重试！").fadeIn();
+					}
+				});
+			}
+		});
+
+		// 第二部分
+		$("#ver2 .status p").click(function(){
+			$("#ver2 .status p").removeClass("hover");
+			$(this).addClass("hover");
+		});
+
+		$("#ver2 .store").keyup(function(){
+			var store = $("#ver2 .store").val();
+			if(store == ""){
+				$("#ver2 .verBtn").addClass("false");
+			}else{
+				$("#ver2 .verBtn").removeClass("false");
+			}
+
+		});
+		$("#ver2 .verBtn").click(function(){
+			if($(this).hasClass("false"))return false;
+			var orderNum = $("#ver1 .orderNum").val();
+			var status = $("#ver2 .status .hover").attr("status");
+			var store = $("#ver2 .store").val();
+			$("#ver2 .verBtn").addClass("false").html("正在提交...");
+			$.ajax({
+				async:true,
+				url:"/phone/group/check",
+				data:{orderNum:orderNum, status:status, store:store},
+				type: 'post',
+				dataType:'json',
+				success:function(result){
+					$("#ver2 .verBtn").removeClass("false").html("确认");
+					alert(result.errmsg);
+					if(!result.errcode){
+						location.href="{{domain}}/phone/group/verification";
+					}
+				},
+				error:function(result){
+					$("#ver2 .verBtn").removeClass("false").html("确认");
+					alert("网络通信失败，请重试！");
+				}
+			});
+		});
+	});
+</script>
+</body>
+</html>

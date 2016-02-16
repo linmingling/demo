@@ -1,0 +1,64 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+<?php use Library\Com\SecurityContext?>
+<style type="text/css">
+
+</style>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">AB配置</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				
+				<a class="btn btn-default btn-sm" href="/admin/zhan/ABtest/add/{{zhanid}}" role="button" style="margin-right:10px;">编辑</a>
+				
+				<a class="btn btn-default btn-sm" href="/admin/zhan/action/list" role="button" style="margin-right:10px;">返回</a>
+			</div>			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table id="citylist" class="table table-hover table-condensed m-b-none">
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>场景</th>
+									<th>创建时间</th>
+									<th>流量分配</th>
+								</tr>
+							</thead>
+							<tbody>
+						{% for k in data %}
+								<tr class="odd">
+									<td>{{ k['id'] }}</td>
+									<td>{% if k['scene'] == '1' %}黄色{% else %}红白{% endif %}</td>
+									<td>{{ k['addtime'] }}</td>
+									<td>{{ k['flow'] }}</td>
+									
+								</tr>
+						{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+function delcity(m){
+	var r=confirm("你确定要删除该城市吗？");
+	if(r == true){
+		location.href="/admin/zhan/city/delete/"+m;
+	}
+}
+
+</script>

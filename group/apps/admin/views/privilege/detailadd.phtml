@@ -1,0 +1,58 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{% if ActionName == 'detailadd' %}添加规则{% else %} 修改规则 {% endif %}</h1>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post">
+						<div class="form-group form-group-sm">
+							<label for="name" class="col-sm-1 control-label">规则名:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="name" name="name" value="{{ ActionName == 'detailmodify' ? data['name'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="parent" class="col-sm-1 control-label">分组:</label>
+							<div class="col-xs-2">
+								<select class="form-control" id="parent" name="parent">
+									<option value="">请选择一个分组</option>
+									{% for k,v in group %}<option value="{{k}}" {% if ActionName == 'detailmodify' and k == data['parent'] %} selected {% endif %} >{{v}}</option>{% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="value" class="col-sm-1 control-label">值:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="value" name="value" value="{{ ActionName == 'detailmodify' ? data['value'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">备注:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="desc" name="desc" /></div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/privilege/detail" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+
+
+</script>

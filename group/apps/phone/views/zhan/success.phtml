@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优居网-一站购</title>
+<meta name="keywords" content="优居网 一站购" />
+<meta name="description" content="优居网 一站购" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/zhan/css/com.css" />
+<link rel="stylesheet" type="text/css"  href="/zhan/css/phsuccess.css" />
+</head>
+<body>
+	<!-- loading -->
+	<div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+	<div class="wraper successWraper">
+		
+		<!-- 头部 -->
+		<header class="head">
+			<!-- <span class="menuIcon ctl" id="menuIcon"></span> -->
+			<span class="menuIcon1 ctl"></span>
+			<!--<a class="userIcon ctr" href="/phone/pay/order"></a>-->
+			<p class="title grey">
+				<span class="titleText f16">优居网</span>
+			</p>
+			<div class="menu hide" id="menu" show=0 >
+				<p class="f14"><a href="/phone/zhan/index">一站购</a></p>
+				<p class="line"></p>
+				<p class="f14"><a href="#">一元抢</a></p>
+			</div>
+		</header>
+		
+		<!-- 主要内容 -->
+		<div class="main successMain">
+			<!-- 报名成功提示 -->
+ 			<div class="succeed successBox" id="successBox">
+				<div class="sTitle orange f24">
+					<i class="icon1"></i>
+					<p>恭喜您报名成功！</p>
+				</div>
+				<p class="sText">报名成功文案</p>
+				<!-- 抵扣券 -->
+				<div class="sImg">
+					<img src="/zhan/images/test4.jpg" />
+				</div>
+				<!-- 广告 -->
+				<a class="sImg" href="#">
+					<img src="/zhan/images/test4.jpg" />
+				</a>
+				<a class="sImg" href="#">
+					<img src="/zhan/images/test4.jpg" />
+				</a>
+			</div>
+		</div>
+		
+		<!-- 底部版权 -->
+		<div class="copyright">Copyright 2015  版权归深圳前海优品优居网络科技有限公司所有</div>
+	</div>
+
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+<script>
+
+$(function(){
+	$("#loading").hide();
+	
+	// 目录出现
+	$("#menuIcon").click(function(){
+		var menu = $("#menu");
+		var i= menu.attr("show");
+		if(i == 0){
+			menu.show();
+			menu.attr("show",1);
+		}else{
+			menu.hide();
+			menu.attr("show",0);
+		}
+	});
+});
+
+</script>
+</body>
+</html>

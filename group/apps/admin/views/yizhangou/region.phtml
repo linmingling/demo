@@ -1,0 +1,108 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<link href="/admin/css/fileinput.css" rel="stylesheet">
+<script src="/admin/js/fileinput.min.js"></script>
+<script src="/admin/js/fileinput_locale_zh.js"></script>
+
+<link href="/admin/css/summernote.css" rel="stylesheet">
+<script src="/admin/js/summernote.min.js"></script>
+<script src="/admin/js/summernote-zh-CN.js"></script>
+
+<script type="text/javascript" src="/common/js/My97DatePicker/WdatePicker.js"></script>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{% if type == 'add' %}添加一站购{% else %} 修改一站购 {% endif %}</h1>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post" enctype="multipart/form-data">
+						<div class="form-group form-group-sm form-inline">
+							<label for="name" class="col-sm-1 control-label">城市:</label>
+							<div class="col-xs-7">
+							{% if type == 'add' %}
+								<select id="province" name="province" class="form-control">
+									<option>请选择省</option>
+									{% for k,v in province %} <option value="{{k}}" {% if type=='modify' and info['province'] == k %} selected {% endif %} >{{v}}</option> {% endfor %}
+								</select>
+								<select id="city" name="city" class="form-control">
+									<option value='0'>请选择市</option>
+								</select>
+							{% else %}
+								{{ city[info['region']] }}
+							{% endif %}
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="endtime" class="col-sm-1 control-label">结束时间:</label>
+							<div class="col-xs-2">
+								<input class="form-control" type="text" id="endtime" name="endtime" value="{{ type == 'modify' ? info['endtime'] : '' }}" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',alwaysUseStartDate:true})" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="headimg" class="col-sm-1 control-label">头部广告:</label>
+							<div class="col-xs-2 form-inline">
+								<input type="file" id="headimg" class="headimg" name="headimg" value="" />
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="hide" class="col-sm-1 control-label">是否显示:</label>
+							<div class="col-xs-2 form-inline">
+								<input type="checkbox" id="hide" name="hide" value='1' {% if info['hide'] == 1 %} checked {% endif %} />
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/yizhangou/index" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$("#province").on("change",function(){
+		var pid = parseInt($("#province").val());
+		if(pid > 0){
+			$.ajax({
+				type: 'GET',
+				url: '/admin/index/regions?pid='+pid,
+				dataType: 'json',
+				timeout: 300,
+				async : false,
+				beforeSend : function(){
+					$("#city").html("");
+				},
+				success : function(msg){
+					if(msg.state ==  1){
+						var data = msg.data.list; var str = "<option value='0'>请选择市</option>";
+						for(var m in data){
+							str = str + "<option value=" + m + ">" + data[m] + "</option>";
+						}
+						$("#city").html(str);
+					}
+				},
+			})
+		}
+	});
+	
+});
+
+</script>
+

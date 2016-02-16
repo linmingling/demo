@@ -1,0 +1,15 @@
+/*
+* 2016-1-22
+*/
+/* 用户中心首页 */
+
+.userInfo{width: 750px;background:#fff;margin-top: 20px;border-bottom: 1px solid #e5e5e5}
+.userInfo .userImg{width: 138px;height: 138px;border-radius: 138px;border: 2px solid #e5e5e5;float: left;margin:20px;}
+.userInfo .userName{height: 138px;line-height: 138px;margin:20px;overflow: hidden;word-break: break-all;}
+.orderAct{width: 750px;height: 126px;background: #fff;font-size: 0;border-bottom: 1px solid #e5e5e5}
+.orderAct .orderIcon{width: 187px;height: 60px;padding-top: 66px;display: inline-block;text-align: center;}
+
+.coreEntry{margin-top: 20px;background: #fff;border-top: 1px solid #e5e5e5;border-bottom: 1px solid #e5e5e5}
+.coreEntry ul{}
+.coreEntry ul li{height: 88px;line-height: 88px}
+.coreEntry ul li a{margin-left: 80px;border-bottom: 1px solid #e5e5e5;display: block;}

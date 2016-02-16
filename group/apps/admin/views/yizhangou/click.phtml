@@ -1,0 +1,66 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope"><h1 class="m-n font-thin h3">点击数据</h1></div>
+			
+			<div class="wrapper-md ng-scope form-inline" style="padding:10px 20px 0px 20px;">
+				<input type="text" class="form-control input-sm" id="phone" placeholder="手机号">
+				<input type="text" class="form-control input-sm" id="tn" placeholder="查看点" style="width:60px;">
+				<a class="btn btn-default btn-sm" href="javascript:searchGoods()" role="button">查找</a>
+				<a class="btn btn-default btn-sm pull-right" href="/admin/yizhangou/action/list/{{groupId}}" role="button">返回</a>
+				<a class="btn btn-default btn-sm pull-right" href="javascript:$('#userList').tableExport({type:'excel',fileName:'markdown-user',escape:'false'});" role="button">导出</a>
+			</div>
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<div class="table-responsive">
+						<table id="userList" data-toggle="table"></table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+var table = $("#userList").bootstrapTable({
+	method: 'get',
+	url: '/admin/yizhangou/click/{{actionId}}/1',
+	classes:"table table-hover table-condensed m-b-none",
+	striped: false,
+	sidePagination:'server',
+	pagination: true,
+	pageSize: 10,
+	pageList: [5, 10, 20],
+	showColumns:false,
+	//clickToSelect: true,
+	columns: [
+		{ field: 'id',title: 'ID',align: 'center',valign: 'middle',sortable: true },
+		{ field:'phone', title:'手机号', align:'center', valign:'middle' },
+		{ field:'tn', title:'查看点', align:'center', valign:'middle' },
+		{ field:'time', title:'点击时间', align:'center', valign:'middle' },
+	],
+	queryParams: function(params){
+		var phone = $("#phone").val();
+		var tn = $("#tn").val();
+		return {phone:phone, tn:tn, sort:params.sort, order:params.order, limit:params.limit, offset:params.offset};
+	}
+});
+
+
+function searchGoods(){
+	var phone = $("#phone").val();
+	var tn = $("#tn").val();
+	table.bootstrapTable('refresh', {query:{phone:phone, tn:tn}});
+}
+
+
+
+</script>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>优居网-一站购</title>
+<meta name="keywords" content="优居网 一站购" />
+<meta name="description" content="优居网 一站购" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="/yizhangou/css/com.css?v=0.3" />
+
+</head>
+<body>
+	<!-- loading -->
+	<div class="cn-spinner loading" id="loading">
+        <div class="spinner">
+
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+    </div>
+	<div class="wraper successWraper">
+		<!-- 头部 -->
+		<header class="head">
+			<!-- <span class="menuIcon ctl" id="menuIcon"></span> -->
+			<span class="menuIcon1 ctl"></span>
+			<!--<a class="userIcon ctr" href="/phone/pay/order"></a>-->
+			<p class="title grey">
+				<!--
+				<span class="titleText f18">优居网</span>
+				<span id="citySelect" class="citySelect">{{city[id]['cityname']}}<i class="ctr"></i></span>
+				-->
+				<span class="titleText f16">{{name}}</span>
+			</p>
+			<div class="menu hide" id="menu" show=0 >
+				<p class="f14"><a href="/phone/yizhangou/index">一站购</a></p>
+				<p class="line"></p>
+				<p class="f14"><a href="#">一元抢</a></p>
+			</div>
+		</header>	
+		<!-- 主要内容 -->
+		<div class="main successMain">
+			<!-- 报名成功提示 -->
+		{% if info['name'] == '全民家居购' %}
+			<div class="succeed hide" id="succeed">
+			{% if dikouimg[0]['name'] %}
+				<p class="text">恭喜您报名成功，获得抵扣券一张</p>
+				<div class="hb">
+					<img src="/uploads/yizhangou/{{dikouimg[0]['name']}}" />
+					<p>100元</p>
+				</div>
+				<p class='tigp'><img src="/yizhangou/images/succeedTips.png"  /></p>
+			{% else %}
+				<p class="text">亲，您已成功报名啦，请勿重复报名！</p>
+			{% endif %}
+				<div class="ad ad1" id="openEwm">
+					<div class="adTitle">
+						<p class="line"></p>
+						<span>一元购全民家居购专场</span>
+					</div>
+					<div class="adMain">
+						<img src="/yizhangou/images/succeed1.jpg"  />
+						<!-- <p>关注优居公众号参与一元购</p> -->
+					</div>
+				</div>
+				<a class="ad ad2" href="/phone/group/index" >
+					<div class="adTitle">
+						<p class="line"></p>
+						<span>优品团到店特卖</span>
+					</div>
+					<img src="/yizhangou/images/succeed2.png" />
+				</a>
+				<!-- <p class="copyright">Copyright 2015  版权归深圳亚太传媒科技开发有公司所有</p> -->
+
+				<!-- 提示扫描二维码关注 -->
+				<div class="ewmTips hide" id="ewmTips">
+					<div class="ewmWarp">
+						<div class="ewmHead">
+							长按识别二维码，关注优居公众号！
+						</div>
+						<div class="ewmMain">
+							<img src="/yizhangou/images/ewm.png" class="ewmImg" />
+							<p class="f22">或</p>
+							<p>在微信中搜索【<span class="orange">优居优品</span>】关注我们的公众号~</p>
+						</div>
+						<div class="close">
+							×
+						</div>
+					</div>
+				</div>
+			</div>
+		{% else %}
+ 			<div class="succeed successBox hide" id="successBox">
+				<div class="sTitle orange f24">
+					<i class="icon1"></i>
+					<p>恭喜您报名成功！</p>
+				</div>
+				
+				<a class="sImg" href="{{successimg[0]['url']}}">
+					<img src="/uploads/yizhangou/{{successimg[0]['name']}}" />
+				</a>
+
+			</div>
+		{% endif %}
+			<!-- 填写地址 -->
+			<div class="detailInputBox" id="detailInputBox">
+				<div class="sTitle orange f16">
+					<p>亲，离成功还差一小步喔！</p>
+				</div>
+				<!-- <div class="sImg"><a href="{{successimg['url']}}"><img src="/uploads/yizhangou/{{successimg[0]['name']}}" /></a></div> -->
+				<div class="sImg"><img src="/yizhangou/images/successImg.jpg" /></div>
+				<!-- 已填写过地址 -->
+				<div class="addressInfo" {% if type == 'modify' %} style="display:none;" {% endif %}>
+					<p class="f14">收货地址：</p>
+					<p id="lastAddr" class="lastAddr f14">{{regions[data['city']]}} {{regions[data['district']]}} {{data['address']}}</p>
+					<span class="addModify orange" id="addModify">修改</span>
+					<p class="okBtn f16" id="okBtn">确认</p>
+				</div>
+				<!-- 地址填写 -->
+				<div class="addressForm hide" id="addressForm" {% if type == 'modify' %} style="display:block;" {% endif %}>
+					<p class="addItem">
+						<select class="city"><option value="0">请选择市</option></select>
+					</p>
+					<p class="addItem">
+						<select class="qu"><option value="0">请选择区</option></select>
+					</p>
+					
+					<p class="addItem">
+						<input type="text" class="address" placeholder="请填写具体地址" value="{{data['address']}}" />
+					</p>
+					<!-- 已登录用户隐藏需求及月份的选项 -->
+					<p class="addItem buyItem">
+						<select class="buy">
+							<option value="0">您的购买需求有？</option>
+						{% for k in buy %}
+							<option value="{{k}}">{{k}}</option>
+						{% endfor %}
+						</select>
+					</p>
+					<p class="addItem monthItem">
+						<select class="month">
+							<option value="0">您的装修月份？</option>
+							<option value="1">1月</option>
+							<option value="2">2月</option>
+							<option value="3">3月</option>
+							<option value="4">4月</option>
+							<option value="5">5月</option>
+							<option value="6">6月</option>
+							<option value="7">7月</option>
+							<option value="8">8月</option>
+							<option value="9">9月</option>
+							<option value="10">10月</option>
+							<option value="11">11月</option>
+							<option value="12">12月</option>
+						</select>
+					</p>
+					<p class="addBtn f16" id="addBtn">提交</p>
+				</div>
+			</div>
+			<!-- 一元购 -->
+			<!-- 整个模块都不确定，先放个图片占个位置 -->
+			<!--<div class="yygBox">
+				<img src="/yizhangou/images/test3.jpg" />
+			</div>-->
+			
+		</div>
+		<!-- 底部版权 -->
+		<div class="copyright">
+			Copyright 2015  版权归深圳前海优品优居网络科技有限公司所有
+		</div>
+		<!-- 提交成功 -->
+		<div class="tips hide" id="tips" >
+			<div class="bg"></div>
+			<div class="tipsWarp f16">
+				提交成功
+			</div>
+		</div>
+
+	</div>
+
+<script src="/common/js/jquery-2.1.4.min.js"></script>
+<script>
+	// 报名成功二维码弹窗
+    $("#openEwm").click(function(){
+        $("#ewmTips").show();
+    })
+    $("#ewmTips .close").click(function(){
+        $("#ewmTips").hide();
+    })
+
+	// 表单验证
+	function check(idModify){
+		//alert(dom.val());
+		var flag = true;
+		var form = $("#addressForm");
+		
+		// 检测详细地址是否为空
+		if($("#addressForm .address").val() == ""){
+			flag = false;
+		}
+		// 检测省是否为空
+		if($("#addressForm .city").val() == 0){
+			flag = false;
+		}
+		// 检测市是否为空
+		if($("#addressForm .qu").val() == 0){
+			flag = false;
+		}
+
+		if(!idModify){
+			// 检测购买项是否为空
+			if($("#addressForm .buy").val() == 0){
+				flag = false;
+			}
+			// 检测月份是否为空
+			if($("#addressForm .month").val() == 0){
+				flag = false;
+			}
+		}
+		
+		
+
+		if(flag){
+		//	$("#addBtn").removeClass("false");
+		}else{
+		//	$("#addBtn").addClass("false");
+		}
+	}
+
+	$(function(){
+		$("#loading").hide();
+		var idModify = false;
+		
+		var province = {{province}};
+		
+		if(province > 0){
+			//请求市
+			$.ajax({
+				async:false,
+				type:'get',
+				url : '{{payDomain}}/phone/Ext/region/{{province}}',  //对应省的地址
+				dataType : 'jsonp',
+				jsonp:"callback",
+				success  : function(data) {
+					if(data.state ==  1){
+						var option = "<option value='0'>请选择市</option>";
+						var list = data.data;
+						for(var i in list){
+							option = option + '<option value="'+i+'">'+list[i]+'</option>';
+						}
+						$("#addressForm .city").html(option);
+					}
+				},
+				error : function() {
+					alert("服务器忙，请刷新！")
+				}
+			});
+		}
+
+		//请求区
+		$("#addressForm .city").change(function(){
+			if($("#addressForm .city").val() != 0){
+				$.ajax({
+					async:false,
+					type:'get',
+					url : '{{payDomain}}/phone/Ext/region/'+$("#addressForm .city").val(),
+					dataType : 'jsonp',
+					jsonp:"callback",
+					success  : function(data) {	
+						if(data.state ==  1){
+							var option = "<option value='0'>请选择区</option>";
+							var list = data.data;
+							for(var i in list){
+								option = option + '<option value="'+i+'">'+list[i]+'</option>';
+							}
+							$("#addressForm .qu").html(option);
+						}
+					},
+					error : function() {
+						alert("服务器忙，请重试！")
+					}
+				});
+			}else{
+				$("#addressForm .qu").html("<option value='0'>请选择区</option>");
+			}
+		});
+
+		// 触发表单验证
+		$("#addressForm input").keyup(function(){
+			check(idModify);
+		});
+		$("#addressForm select").change(function(){
+			check(idModify);
+		});
+
+		// 已有地址则打开
+	/*	var nowCity = {{regions[data['city']]}} ;
+		var nowDistrict = {{regions[data['district']]}};
+		setTimeout(function(){
+			$("#addressForm .city option").each(function(){
+				if($(this).html() == nowCity){
+					$("#addressForm .city").val($(this).attr("value"));
+					$("#addressForm .city").change();
+				}
+			});
+		},1000);
+		setTimeout(function(){
+			$("#addressForm .qu option").each(function(){	
+				if($(this).html() == nowDistrict){
+					$("#addressForm .qu").val($(this).attr("value"));
+					$("#addressForm .qu").change();
+				}
+			});
+		},2000);
+		*/
+		
+
+		// 提交信息
+		$("#addBtn").click(function(){
+			//if($(this).hasClass("false")) return false;
+			//$(this).addClass("false");
+
+			var shi = $("#addressForm .city").val();
+			var qu = $("#addressForm .qu").val();
+			var address = $("#addressForm .address").val();
+			var buy = $("#addressForm .buy").val();
+			var month = $("#addressForm .month").val();
+
+			var type = 0;
+			if(idModify == true) type = 1;
+
+			$.ajax({
+    			async:false,
+    			url:"/phone/yizhangou/success/modify/{{id}}",
+    			data:"type="+type+"&city="+shi+"&district="+qu+"&address="+address+"&buy="+buy+"&month="+month,
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+					if(result.state == 1){
+						//提交成功
+						$(".succeed .text").html("恭喜您报名成功，获得抵扣券一张");
+						$("#tips").fadeIn();
+						setTimeout(function(){
+							$("#tips, #detailInputBox").hide();
+							$("#succeed").fadeIn();
+						},1000);
+					}else if(result.state == 2){
+						$(".succeed .text").html("亲，您已成功报名啦，请勿重复报名！");
+						$(".succeed .hb").addClass("hide");
+						$(".succeed .tigp").addClass("hide");
+						$("#tips").fadeIn();
+						setTimeout(function(){
+							$("#tips, #detailInputBox").hide();
+							$("#succeed").fadeIn();
+						},1000);
+					}else{
+						//提交失败提示
+	    				//alert("服务器忙，请重试")
+	    				//$("#addBtn").removeClass("false");
+					}
+    				
+    			}
+    		});
+
+		});
+		
+		// 直接按确认
+		$("#okBtn").click(function(){
+			//if($(this).hasClass("false")) return false;
+			//$(this).addClass("false");
+			var shi = $("#addressForm .city").val();
+			var qu = $("#addressForm .qu").val();
+			var address = $("#addressForm .address").val();
+			
+			var type = 0;
+			if(idModify == true) type = 1;
+			
+			$.ajax({
+    			async:true,
+    			url:"/phone/yizhangou/success/modify/{{id}}",
+    			data:"type="+type+"&city="+shi+"&district="+qu+"&address="+address,
+    			type: 'post',
+    			dataType:'json',
+    			success:function(result){
+					if(result.state == 1){
+						//提交成功
+						$(".succeed .text").html("恭喜您报名成功，获得抵扣券一张");
+						$("#tips").fadeIn();
+						setTimeout(function(){
+							$("#tips, #detailInputBox").hide();
+							$("#succeed").fadeIn();
+						},1000);
+					}else if(result.state == 2){
+						$(".succeed .text").html("亲，您已成功报名啦，请勿重复报名！");
+						$(".succeed .hb").addClass("hide");
+						$(".succeed .tigp").addClass("hide");
+						$("#tips").fadeIn();
+						setTimeout(function(){
+							$("#tips, #detailInputBox").hide();
+							$("#succeed").fadeIn();
+						},1000);
+					}else{
+						//提交失败提示
+	    				alert("服务器忙，请重试")
+	    				//$("#okBtn").removeClass("false");
+					}
+    				
+    			}
+    		});
+		});
+
+		// 打开地址修改
+		$("#addModify").click(function(){
+			idModify = true;
+			$("#addressForm .buyItem, #addressForm .monthItem, #okBtn, #addModify").hide();
+			$("#addressForm").fadeIn();
+			$(".addressInfo").addClass("open");
+			$("#addBtn").html("修改");
+		});
+		
+		// 目录出现
+		$("#menuIcon").click(function(){
+			var menu = $("#menu");
+			var i= menu.attr("show");
+			if(i == 0){
+				menu.show();
+				menu.attr("show",1);
+			}else{
+				menu.hide();
+				menu.attr("show",0);
+			}
+		});
+
+		$("#openEwm").click(function(){
+			$("#ewmTips").removeClass("hide");
+		});
+		
+	});
+</script>
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: '<?php echo $signPackage["timestamp"];?>',
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	      signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+            'checkJsApi',
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+		var wxData = {
+			"imgUrl":'{{domain}}/yizhangou/images/share1.jpg',
+			"link":'{{domain}}/phone/yizhangou/index',
+			"desc":"优居网-一站购",
+			"title":"优居网-一站购"
+		};
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+	});
+</script>
+</body>
+</html>

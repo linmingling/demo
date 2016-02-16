@@ -1,0 +1,109 @@
+
+<?php $this->partial("index/head")?>
+<?php $this->partial("index/menu")?>
+
+<div class="app-content ng-scope" style="font-size:12px;">
+	<div class="app-content-body fade-in-up ng-scope" ui-view="">
+		<div ui-view="" class="ng-scope">
+			<div class="bg-light lter b-b wrapper-md ng-scope">
+				<h1 class="m-n font-thin h3">{% if ActionName == 'add' %}添加权限{% else %} 修改权限 {% endif %}</h1>
+			</div>
+			
+			
+			<div class="wrapper-md ng-scope" style="padding:10px 20px 10px 20px;">
+				<div class="panel panel-default">
+					<form class="panel-body form-horizontal" role="form" method="post">
+						<div class="form-group form-group-sm">
+							<label for="name" class="col-sm-1 control-label">权限名:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="name" name="name" value="{{ ActionName == 'modify' ? data['name'] : '' }}" /></div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="value" class="col-sm-1 control-label">值:</label>
+							<div class="col-xs-8">
+								<a class="btn btn-default btn-xs" role="button" data-toggle="collapse" href="#ruleList" aria-expanded="false" aria-controls="privList">
+									所有规则<span class="caret"></span>
+								</a>
+								<div class="collapse" id="ruleList">
+							{% if rule %}
+									<div class="list-group" style="margin-bottom:0px;">
+								{% for m,n in rule %}
+									<div class="list-group-item">
+										<div class="checkbox">
+											<label><input type="checkbox" value="option1">{{group[m]}}</label>
+										</div>
+									{% for k in n %}
+										<div class="checkbox-inline">
+											<label><input <?php if($ActionName == 'modify' && $data['value'][$m]&$k['value']) echo "checked"; ?> type="checkbox" name="optionsCheck" id="optionsCheck1" data-group="{{m}}" value="{{k['value']}}">{{k['desc']}}</label>
+										</div>
+									{% endfor %}
+									</div>
+								{% endfor %}
+									</div>
+							{% endif %}
+								</div>
+							</div>
+						</div>
+						<div class="form-group form-group-sm">
+							<label for="desc" class="col-sm-1 control-label">备注:</label>
+							<div class="col-xs-2"><input class="form-control" type="text" id="desc" name="desc" /></div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<label class="col-sm-1 control-label"></label>
+							<div class="col-xs-8">
+								<button type="button" id="add-submit" class="btn btn-primary btn-sm">确定</button>
+								<a class="btn btn-default btn-sm" style="margin-left:10px;" href="/admin/privilege/list" role="button">返回</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<?php $this->partial("index/footer")?>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$("#add-submit").click(function(){
+		var list = new Array();  var priv = {}; var name = $("#name").val(); var desc = $("#desc").val();
+		
+		$("#ruleList input[name='optionsCheck']:checkbox").each(function(){
+			var bool = $(this).is(':checked'); var group = $(this).attr("data-group"); var value = parseInt($(this).val());
+			if(typeof(list[group]) == 'undefined') list[group] = new Array();
+			if(bool) list[group].push(value);
+		});
+		
+		for(var m in list){
+			priv[m] = 0;
+			for(var n in list[m]){
+				priv[m] = priv[m] | list[m][n];
+			}
+		}
+	{% if ActionName == 'modify' %}
+		var ajax_url = "/admin/privilege/modify/{{data['id']}}";
+	{% else %}
+		var ajax_url = '/admin/privilege/add';
+	{% endif %}	
+		$.ajax({
+			type: 'POST',
+			url: ajax_url,
+			contentType: "application/json",
+			dataType: 'json',
+			data : JSON.stringify({name:name,desc:desc,value:priv}),
+			timeout: 300,
+			async : false,
+			success : function(msg){
+				if(msg.state == 1){
+					location.href = "/admin/privilege/list";
+				}
+			},
+		})
+	});
+	
+});
+
+</script>

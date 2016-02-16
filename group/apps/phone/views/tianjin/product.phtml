@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>天津建材家居3折起</title>
+<meta name="keywords" content="天津建材家居3折起" />
+<meta name="description" content="天津建材家居3折起" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<style>
+	body{margin:0;padding:0;background: #f5f5f5}
+	.warp{max-width: 720px;margin:0 auto;}
+	.ad{width: 100%;}
+	.product{display: block;margin:8px 10px;}
+	.product img{width:100%;}
+</style>
+</head>
+<body>
+	<div class="warp">
+		<img src="/tianjin/mobile/images/product/ad.jpg?v=1.1" alt="国庆大促销" class="ad" />
+		<a class="product" data-id="1" data-url="http://wap.koudaitong.com/v2/goods/2x902tnk4j1c9">
+			<img src="/tianjin/mobile/images/product/1.png?v=1.0" alt="法恩莎 静音马桶FB1698" />
+		</a>
+		<a class="product" data-id="2" data-url="http://wap.koudaitong.com/v2/goods/2fu174jpk7otl">
+			<img src="/tianjin/mobile/images/product/2.png?v=1.0" alt="今顶复古吊顶 单品" />
+		</a>
+		<a class="product" data-id="3" data-url="http://wap.koudaitong.com/v2/goods/26wjcjrei4fh5">
+			<img src="/tianjin/mobile/images/product/3.png?v=1.0" alt="开开木门H-02" />
+		</a>
+		<a class="product" data-id="4" data-url="http://wap.koudaitong.com/v2/goods/2fstjuhfk09vd">
+			<img src="/tianjin/mobile/images/product/4.png?v=1.0" alt="顶上明珠新鸟巢-长灯具" />
+		</a>
+		<a class="product" data-id="5" data-url="http://wap.koudaitong.com/v2/goods/2xdxg4jhofax5">
+			<img src="/tianjin/mobile/images/product/5.png?v=1.0" alt="顶上明珠吊灯" />
+		</a>
+		<a class="product" data-id="6" data-url="http://wap.koudaitong.com/v2/goods/3f09p7op3oacp">
+			<img src="/tianjin/mobile/images/product/6.png?v=1.0" alt="法恩莎PVC浴室柜FPG4661A" />
+		</a>
+		<a class="product" data-id="7" data-url="http://wap.koudaitong.com/v2/goods/278vnqa02raqh">
+			<img src="/tianjin/mobile/images/product/7.png?v=1.0" alt="法恩莎智能座便FB16165" />
+		</a>
+		<a class="product" data-id="8" data-url="http://wap.koudaitong.com/v2/goods/3nsv16gnfdzs9">
+			<img src="/tianjin/mobile/images/product/8.png?v=1.0" alt="法恩莎实木浴室柜FPGM3612B" />
+		</a>
+		<a class="product" data-id="9" data-url="http://wap.koudaitong.com/v2/goods/3esxj5pqbiltl">
+			<img src="/tianjin/mobile/images/product/9.png?v=1.0" alt="苏泊尔燃气灶JZT-QS502" />
+		</a>
+		<a class="product" data-id="10" data-url="http://wap.koudaitong.com/v2/goods/271g7k41766k9">
+			<img src="/tianjin/mobile/images/product/10.png?v=1.0" alt="开开木门实木复合烤漆QX03" />
+		</a>
+		<a class="product" data-id="11" data-url="http://wap.koudaitong.com/v2/goods/2omkgc1dsmhbd">
+			<img src="/tianjin/mobile/images/product/11.png?v=1.0" alt="优丽雅特窗帘1405A-5" />
+		</a>
+		<a class="product" data-id="12" data-url="http://wap.koudaitong.com/v2/goods/3nnycrrx0wzux">
+			<img src="/tianjin/mobile/images/product/12.png?v=1.0" alt="优丽雅特窗帘XH202" />
+		</a>
+		<a class="product" data-id="13" data-url="http://wap.koudaitong.com/v2/goods/2xgf68b3gkecp">
+			<img src="/tianjin/mobile/images/product/13.png?v=1.0" alt="奥斯哥纳 吊灯MD55177-6" />
+		</a>
+		<a class="product" data-id="14" data-url="http://wap.koudaitong.com/v2/goods/2fmmydxnxgskp">
+			<img src="/tianjin/mobile/images/product/14.png?v=1.0" alt="开开木门实木复合烤漆QX09" />
+		</a>
+		<a class="product" data-id="15" data-url="http://wap.koudaitong.com/v2/goods/2op3edpna2yix">
+			<img src="/tianjin/mobile/images/product/15.png?v=1.0" alt="美国约克墙纸 彩蝶花坊" />
+		</a>
+	</div>
+
+<script src="/common/js/zepto.min.js"></script>
+<script src="/common/js/tongji.js"></script>
+<script src="/common/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+//页面布点
+$('.product').click(function(){
+	var btn_id = $(this).attr('data-id');
+	var btn_url = $(this).attr('data-url');
+	$.ajax({
+		async:true,
+		url:'/phone/tianjin/product_click',
+		data:{btn_id:btn_id},
+		type: 'post',
+		dataType:'json',
+		success:function(result){
+			location.href = btn_url;
+		}
+	});
+});
+</script>
+<script>
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: '<?php echo $signPackage["timestamp"];?>',
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	      signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+            'checkJsApi',
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+		var wxData = {
+			"imgUrl":'{{domain}}/tianjin/mobile/images/share.jpg',
+			"link":'{{domain}}/phone/tianjin/product',
+			"desc":"天津建材家居3折起！",
+			"title":"天津建材家居3折起！"
+		};
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+	});
+</script>
+</body>
+</html>
