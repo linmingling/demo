@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="front-end technicist" content="jinger" />
+	<title>关于呼博士 - 呼博士五一净化宣言:请给我一小时我能净化你的家</title>
+	<meta name="keywords" content="呼博士 五一净化宣言 请给我一小时我能净化你的家">
+	<meta name="description" content="呼博士 五一净化宣言 请给我一小时我能净化你的家">
+	<meta name="front-end technicist" content="jinger">
+	<link type="text/css" rel="stylesheet" href="css/about.css?v=1.3" media="all" />
+</head>
+
+<body>
+	<h1 class="hide">呼博士 五一净化宣言 请给我一小时我能净化你的家</h1>
+	<div class="mainWrap">
+		<!--1 -->
+		<div class="box1 mainBox">
+			<div class="insideBox">
+				<img src="images/logo.png" class="logoImg"/>
+				
+				<img data-original="images/about/box1_1.png" class="box1_1" />
+		
+			</div>
+
+			<a href="http://www.briair.com.cn/" class="logo" target="_blank"></a>
+
+		</div>
+		<!--2 -->
+		<div class="box2 mainBox">
+			<div class="insideBox">
+				<div class="nav">
+					<img class="lazy box2_1" data-original="images/box2_1.png" />
+					<a href="http://zt.jia360.com/bri/" class="nav1"></a>
+					<a href="http://zt.jia360.com/bri/about.html" target="_blank" class="nav2"></a>
+					<a href="http://zt.jia360.com/bri/travel.html" target="_blank" class="nav3"></a>
+					<a href="http://mall.jd.com/index-123759.html" target="_blank" class="nav4"></a>
+				</div>
+				<img  class="lazy box2_2"  data-original="images/about/box2_2.png" />
+				<img  class="lazy box2_3"  data-original="images/about/box2_3.png" />
+				<img  class="lazy box2_4"  data-original="images/about/box2_4.png" />
+			</div>
+		</div>
+		<!--3 -->
+		<div class="box3 mainBox">
+			<div class="insideBox">
+				<img  class="lazy box3_1" data-original="images/about/box3_1.png" />
+				
+			</div>
+		</div>
+		<!--4 -->
+		<div class="box4 mainBox">
+			<div class="insideBox">
+				<img  class="lazy box4_1" data-original="images/about/box4_1.png" />
+			</div>
+		</div>
+		<!--5 -->
+		<div class="box5 mainBox">
+			<div class="insideBox">
+				<img  class="lazy" data-original="images/about/box5_1.png?v=1.1" />
+			</div>
+		</div>
+		<!--6 -->
+		<div class="box6 mainBox" id="box6">
+			<div class="insideBox">
+				<img  class="lazy box6_1" data-original="images/about/box6_1.png?v=1.1" />
+			</div>
+		</div>
+		
+		<!--7 -->
+		<div class="box7 mainBox">
+			<div class="insideBox">
+				<div class="new">
+					<img  class="lazy box7_1" data-original="images/about/box7_1.png" />
+					<img  class="lazy box7_2" data-original="images/about/box7_2.png" />
+					<img  class="lazy box7_3" data-original="images/about/box7_3.png" />
+					<img  class="lazy box7_4" data-original="images/about/box7_4.png" />
+
+				</div>
+			</div>
+		</div>
+		<!--8 -->
+		<div class="box8 mainBox">
+			<div class="insideBox">
+				<img  class="lazy box8_1" data-original="images/about/box8_1.png" />
+			</div>
+		</div>
+		
+	</div>
+	<!--返回顶部-->
+	<div class="goToTop hide" id="goToTop"></div>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script>
+	$(function(){
+		$("img.lazy").lazyload({
+			effect: "fadeIn",
+			threshold :180
+		});
+		//goToTop
+		$(window).scroll(function(){
+			if($(window).scrollTop()>1000){
+				$("#goToTop").show(100);
+			}else{
+				$("#goToTop").hide(100);
+			}
+		});
+		$("#goToTop").click(function(){
+			if(scroll=="off") return;
+			$("html,body").animate({scrollTop: 0}, 300);
+		});
+		setTimeout(function(){
+			$(".box1").css("background-image","url(images/box1_bg.jpg)");
+			$(".box1 .box1_1").attr("src",$(".box1 .box1_1").attr("data-original"));
+		},1000);
+		
+	});
+</script>
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

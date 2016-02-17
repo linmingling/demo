@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>壁高墙纸-美的空调 6.13万人疯抢活动</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+
+	var pro_top = $("#pro").offset().top;
+	var news_top = $("#news").offset().top;
+	var ser_top = $("#ser").offset().top;
+	var con_top = $("#con").offset().top;
+	//alert(tops);
+	$(window).scroll(function(){
+		var scroH = $(this).scrollTop();
+		if(scroH>=con_top){
+			
+			set_cur(".con");
+		}else if(scroH>=ser_top){
+			set_cur(".ser");
+		}else if(scroH>=news_top){
+			set_cur(".news");
+		}else if(scroH>=pro_top){
+			set_cur(".pro");
+		}
+	});
+	
+	$(".nav li a,.links li a").click(function() {
+		var el = $(this).attr('class');
+     	$('html, body').animate({
+         	scrollTop: $("#"+el).offset().top
+     	}, 300);
+		$(this).addClass("cur").parent().siblings().find("a").removeClass("cur");	
+ 	});
+	
+});
+
+function set_cur(n){
+	if($(".nav a").hasClass("cur")){
+		$(".nav a").removeClass("cur");
+	}
+	$(".nav a"+n).addClass("cur");
+}
+
+</script>
+
+
+
+</head>
+
+<body>
+ 
+
+<div class="heads" id="pro">
+   <div class="banner01"></div>
+   <div class="banner02"></div>
+</div><!--end heads-->
+<div class="showbg"></div>
+<ul class="nav">
+	<li><a class="pro"> </a></li>
+	<li><a class="news" style=" line-height:18px;">613健康<br />升级不加价</a></li>
+	<li><a class="ser">613爆款疯抢</a></li>
+	<li><a class="con" style=" line-height:18px;">613随心<br />套餐自由搭 </a></li>
+
+   
+</ul>
+<div class="rights"><img src="images/rights.png"  /></div>
+
+<div class="con1"></div>
+<div class="con2"></div>
+<div class="con3"></div>
+<div class="con4"></div>
+<div class="con5" id="news"></div>
+<div class="con6" id="ser"></div>
+<div class="con7" id="con"></div>
+<div class="con8"></div>
+<div class="con9"></div>
+<div class="con10"></div>
+<div class="con11"></div>
+<div class="con12"></div>
+<div class="con13"></div>
+<div class="con14"></div>
+<div class="con15"></div>
+<div class="con16"></div>
+<div class="con17"></div>
+<script src="js/my.js"></script>
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

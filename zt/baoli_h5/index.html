@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="640">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=640,target-densitydpi=device-dpi,maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript">
+        function setWidth(a) {
+            if (/Andriod/i.test(navigator.userAgent)) {
+                var c, b = window.innerWidth;
+                (b != a) && (c = b / a), document.addEventListener("DOMContentLoaded", function () {
+                    var d = document.getElementsByTagName("body")[0];
+                    d.style.webkitTransformOrigin = "left top";
+                    d.style.webkitTransform = "scale(" + c + ")";
+                }, !1)
+            }
+        }
+        setWidth(640);
+    </script>
+    <title>保利走进爱康</title>
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <div class="backdrop1">
+                <div class="nav">
+                    <div class="logo"></div>
+                </div>
+                <div class="content">
+                    <div class="biaoti"></div>
+                    <a href="javascript:void(0);" id="btn1">
+                        <div class="btn" style="bottom:150px;">
+                            <span style="line-height:60px;">走进爱康</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="backdrop2">
+                <div class="nav">
+                    <div class="logo"></div>
+                </div>
+                <div class="content">
+                    <a href="javascript:void(0);" onclick="pop(this)" id="b2">
+                        <div class="btn">
+                            <span style="line-height:60px;">点击查看</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="backdrop3">
+                <div class="nav">
+                    <div class="logo"></div>
+                </div>
+                <div class="content">
+                    <a href="javascript:void(0);" onclick="pop(this)" id="b3">
+                        <div class="btn">
+                            <span style="line-height:60px;">点击查看</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="backdrop4">
+                <div class="nav">
+                    <div class="logo"></div>
+                </div>
+                <div class="content">
+                    <div class="sub_sel" style="float: left">
+                        <a href="javascript:void(0)" onclick="pop2(this)" id="a1">
+                            <div style="width: 166px;float: left;"><img src="images/4-1.png"><span
+                                    style="margin-left:12px;">保利PPR铜管</span></div>
+                        </a>
+                        <a href="javascript:void(0)" onclick="pop2(this)" id="a2">
+                            <div style="width: 166px;float: left;"><img src="images/4-2.png"><span
+                                    style="margin-left:5px">保利PPR抗菌管</span>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0)" onclick="pop2(this)" id="a3">
+                            <div style="width: 167px;float: left;"><img src="images/4-3.png"><span>保利PP-R冷热水管</span>
+                            </div>
+                        </a>
+                    </div>
+                    <a href="javascript:void(0);" onclick="pop(this)" id="b4">
+                        <div class="btn" style="bottom: 135px">
+                            <span style="line-height:60px;">点击查看</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="backdrop5">
+                <div class="nav">
+                    <div class="logo"></div>
+                </div>
+                <div class="content">
+                    <a href="javascript:void(0);" onclick="pop(this)" id="b5">
+                        <div class="btn">
+                            <span style="line-height:60px;">点击查看</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="backdrop6">
+                <div class="nav">
+                    <div class="logo"></div>
+                </div>
+                <div class="content">
+                    <div class="qrcode"><img src="images/qrcode.png" style="padding-top: 110px;"></div>
+                    <div style="margin-top: 750px;"><a href="javascript:void(0)" onclick="ued()"><img src="images/ued.png"></a>    <div class="ued">
+                        <img src="images/jia360qrcode.png">
+                    </div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="pop_con">
+        <div class="pop_title">
+            <div id="pt_con"></div>
+        </div>
+        <div class="pop_txt">
+            <div id="pt_txt"></div>
+        </div>
+        <div class="note"><span>按空白位置返回</span></div>
+    </div>
+    <div class="pop_con_1">
+        <div class="pop_txt" style="margin-top: 120px;width:420px;">
+            保利PPR铜管，集铜管和PPR管优势于一身，耐温耐压耐腐蚀性能更好。保利PPR铜管采用多功能触水设计进口原料和纯度为99.99%以上的紫铜，杀菌抑菌，卫生性能好。导热系数更低，具有优良的保温性能。膨胀系数更小，明装更美观。水流噪音小，隔音效果好。适用于高档住宅和明装。
+        </div>
+        <div class="note" style="margin-top: 100px;"><span>按空白位置返回</span></div>
+    </div>
+    <div class="pop_con_2">
+        <div class="pop_txt" style="margin-top: 120px;width:420px;">
+            保利PPR抗菌管采用PP-R层和抗菌层两层结构，通过配方形式添加一定比例抗菌母粒，在管壁内层形成银抗菌层，从而达到抗菌效果。卫生级别高，适用于追求健康环保的家庭和医院的给水设施连接。同时，保利制定严格的生产标准，保障产品质量，产品永不渗漏，使用寿命50年。
+        </div>
+        <div class="note" style="margin-top: 100px;"><span>按空白位置返回</span></div>
+    </div>
+    <div class="pop_con_3">
+        <div class="pop_txt" style="margin-top: 120px;width:420px;">
+            保利PP-R冷热水管用热熔技术连接，无毒、质轻、耐压、耐腐蚀，具有不结垢、不生锈、不渗漏等优势。适用于生活冷、热水管道和纯饮用水管道。保利独有的三道防水槽加收缩缝，嵌件性能更好，是普通家庭给水管道系统的首选。
+        </div>
+        <div class="note" style="margin-top: 100px;"><span>按空白位置返回</span></div>
+    </div>
+    <div class="opa_bg"></div>
+</div>
+<div class="next"></div>
+</div>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        direction: 'vertical'
+    });
+    var str = ["<b>保利管道</b>源自美国内达华州，是专业致力于塑料管道的研发、生产和销售的全球知名塑料管道品牌。<br><br>许多消费者可能一头雾水：我们不是在说爱康吗，怎么扯到了保利？其实，这一点都不“扯淡”，就像飘柔、伊卡璐、沙宣、海飞丝等这些大家以为的“竞争对手”都属于保洁公司一样，保利和爱康人家其实是一家人来着。<br><br>早在2005年，爱康集团就成功收购美国管道品牌“POLYGON”，保利正式成为爱康集团旗下品牌之一，并由“POLYGON”正式音译成为中文“保利”。<br><br>在此之后爱康率先斥巨资引进国际上最先进的德国技术和管材全电脑控制生产线，致力于技术创新，现已发展成为集给排水、暖通、地源热泵、同层排水、虹吸雨水、市政工程等领域的管道专家，实现了自己在中国的华丽转身。", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>爱康</b>一直是“实干派”，爱康人信奉的一直是“说的再多不如做得多”“说到不如做到”。<br><br>焦点访谈曾揭露了曝光了江苏吴江七都镇一些塑管生产企业用废料制造劣质给水管道的发指行为。七都镇有上百家管道生产企业，节目组随机走访了其中十几家。除了一家以外，其他家都在公开用回料生产自来水管。追溯回料的来源，镜头下展现的事实更令人震撼，除了废塑管，还包括废旧电缆、装载过化工原料的塑料桶、甚至医疗垃圾。<br><br>而每个爱康人都可以拍着胸脯保证，这样的事从未在爱康发生保利对待产品品质一直有“豹子”般专注而坚定的精神，无论市场情况如何，初心不变。<br><br>爱康用心承诺，保利管道从原料的选用、产品的加工、储存和安装等每一环节都充分关注有关卫生性能方面的因素，经上海市预防医学研究究检测，其所用的原料管材/管件产品均达GB/T17219：《生活饮用水输配水设备及防护材料的安全性评价标准》的要求。", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从一个人做的事看透这个人，一个企业做的产可以透析这个企业。保利的产品一切从消费者的生活出发，从消费者的需求出发。<br><br>中国各地气候不同，管道面对的压力、温度、腐蚀因素也不同。而且随着中国环境问题也来越严重，很多地区都成了“饮用水”困难户，不是没有水，而是水质堪忧。这对这些状况，爱康推出了保利PP-R管。<br><br>PP-R管给水管道系统可以广泛应用于各种家庭，具有无毒、质轻、耐压、耐腐蚀等特性，不仅适用于生活冷、热水管道，也适用于纯饮用水管道，被称为永不结垢、永不生锈、永不渗漏的绿色给水管道。", "<img src='images/w01.png'>真正的绿色建材，保利PPR管道拥有永不腐蚀、不结垢、不滋生细菌的健康品质。<br><img src='images/w02.png'>牢固的新型管材，满足永不渗漏完善追求。<br><img src='images/w03.png'>无毒无害，完全符合国家饮用水卫生指标要求。国际上最先进的热熔连接技术的充分应用，使您在施工安装时，更方便、更快捷、更安全。<br><img src='images/w04.png'>良好的保温性能，能使保利PPR管道在用于热水系统时，无需额外保温材料。并且作为节能产品，因为工程造价低而更受消费者青睐。<br><img src='images/w05.png'>光滑的内壁，保证水流畅通快速通过，从而降低水流阻力。 <br><img src='images/w06.png'>管道选用具备环保功能的热塑性材料制成，绝无环境污染之忧，且在其生产与使用过程中，能加以回收利用，又最大限度地控制了资源浪费，成为新一代环保节能产品的首选。"];
+    $('#btn1').click(function () {
+        swiper.slideNext();
+    });
+    function pop(obj) {
+        $('#pt_con').css("background", "url(images/title_" + obj.id + ".png) no-repeat");
+        if (obj.id == "b2") {
+            $('#pt_con').css("margin-left", "60px");
+            $('#pt_con').css("margin-top", "35px");
+            $('#pt_con').css("width", "410px");
+            $('#pt_con').css("height", "40px");
+            $('#pt_txt').html(str[0]);
+        } else if (obj.id == "b3") {
+            $('#pt_con').css("margin-left", "65px");
+            $('#pt_con').css("margin-top", "35px");
+            $('#pt_con').css("width", "410px");
+            $('#pt_con').css("height", "40px");
+            $('#pt_txt').html(str[1]);
+        } else if (obj.id == "b4") {
+            $('#pt_con').css("margin-left", "15px");
+            $('#pt_con').css("margin-top", "35px");
+            $('#pt_con').css("width", "500px");
+            $('#pt_con').css("height", "40px");
+            $('#pt_txt').html(str[2]);
+        } else if (obj.id == "b5") {
+            $('#pt_con').css("margin-left", "40px");
+            $('#pt_con').css("margin-top", "35px");
+            $('#pt_con').css("width", "450px");
+            $('#pt_con').css("height", "40px");
+            $('#pt_txt').html(str[3]);
+        }
+        $(".opa_bg").fadeIn();
+        $(".pop_con").fadeIn();
+    }
+    $(".opa_bg").bind("click", function () {
+        $(".opa_bg").fadeOut();
+        $(".pop_con").fadeOut();
+        $(".pop_con_1").fadeOut();
+        $(".pop_con_2").fadeOut();
+        $(".pop_con_3").fadeOut();
+    });
+    $(".note").bind("click", function () {
+        $(".opa_bg").fadeOut();
+        $(".pop_con").fadeOut();
+        $(".pop_con_1").fadeOut();
+        $(".pop_con_2").fadeOut();
+        $(".pop_con_3").fadeOut();
+    });
+    function pop2(obj) {
+        console.log("aaaa");
+        if (obj.id == "a1") {
+            $(".pop_con_1").fadeIn();
+            $(".opa_bg").fadeIn();
+        } else if (obj.id == "a2") {
+            $(".pop_con_2").fadeIn();
+            $(".opa_bg").fadeIn();
+        } else if (obj.id == "a3") {
+            $(".pop_con_3").fadeIn();
+            $(".opa_bg").fadeIn();
+        }
+    }
+    function ued(){
+        $(".ued").toggle();
+    }
+    $.preloadImages=function(){
+        for(var i= 0;i<arguments.length;i++){
+            $('<img>').attr('src',arguments[i]);
+        }
+    };
+    $.preloadImages('images/title_b2.png','images/title_b3.png','images/title_b4.png','images/title_b5.png','images/w01.png','images/w02.png','images/w03.png','images/w04.png','images/w05.png','images/w06.png');
+</script>
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

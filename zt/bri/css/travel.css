@@ -1,0 +1,115 @@
+/********************* reset Start *********************/
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 12px/1.7 "Microsoft YaHei";color:#fff;background-color:#d8f0f6;}
+a{color:#fff;text-decoration:none;outline: none;}
+a:hover{text-decoration:none;color:#3494d7;-webkit-transition:color .3s ease-out;-moz-transition:color .3s ease-out;transition:color .3s ease-out;}
+a img,img{border:0;vertical-align: top;}
+ul,li,input{list-style:none;padding:0;margin:0;vertical-align:middle;}
+input{outline: none;}
+i, em {font-style: normal; }
+table {border-collapse: collapse;border-spacing:0;}
+.hide{display: none;}
+.hideFont{text-indent: -100%;overflow: hidden;display: block;}
+.fix{*zoom:1;}
+.fix:after{content: ".";width: 0;height: 0;font-size: 0;visibility: hidden;overflow: hidden;clear: both;display: block;}
+.clear:after{clear: both;content:'.';display: block;visibility:hidden;height:0;}
+.clear{zoom:1; clear: both;}
+.l{float: left;}
+.r{float: right;  margin-left: 50px;}
+/*box*/
+.mainWrap{min-width:1000px;max-width:100%;background:#d8f0f6;overflow:hidden}
+.mainBox{width: 100%;overflow: hidden;background-repeat:no-repeat;background-position:top center}
+.insideBox{width:1000px;margin:0 auto;position: relative;}
+.box1{height:483px;position:relative;background-image:url(../images/sign/bg-4.jpg)}
+.box1 .insideBox{position:relative}
+.box1 .logoImg{width:191px;height:100px;display:block;position:absolute;left:0px;top:36px}
+.box1 .swf{position:absolute;top:0;left:50%;margin-left:-960px}
+.box1 .logo{width:191px;height:100px;display:block;position:absolute;left:50%;top:36px;margin-left:-500px}
+.box2{height:775px;background-image:url(../images/travel/bg-1.jpg)}
+.box2 .box2_2{margin-top:70px}
+.box2 .nav{position:relative}
+.box2 .nav .box2_1{position:absolute;left:0;top:0}
+.box2 .content{position: relative;  left: -100px;}
+.box2 .content .box2_2{position: relative;}
+.box2 .nav a{width:25%;height:90px;float:left;position:relative;z-index:1}
+.box2 .box2-c{height: 801px;position: absolute;top: 430px;right: -91px;}
+.box2 .box2-c .c_l{width: 368px;height: 100%;}
+.box2 .box2-c em{color: #333;font-size: 20px;}
+.box2 .box2-c .c_l  p{line-height: 30px;color: #309A66;font-size: 16px;text-align: left;font-weight: bold;}
+.box2 .box2-c .c_l .p1{margin-bottom: 10px;}
+.box2 .box2-c .c_l .p1 span{color: #008645;  font-weight: bold;}
+
+/*box5*/
+.box5{height:547px;background-image:url(../images/travel/bg-2.jpg)}
+
+/*box3*/
+.box3{height:1045px;background-image:url(../images/travel/bg-3.jpg);position: relative;}
+.box3 .new{position:relative}
+.box3 .box3_1{position:absolute;top:0;}
+.box3 .des{position: absolute;top: 150px;left: 100px}
+.box3 .des p{line-height: 35px;font-size: 16px}
+.box3 .des .p1{color: #008645;font-weight: bold;}
+.box3 .des .p2{color: #008645;}
+
+/*box4*/
+.box4{height:683px;background-image:url(../images/travel/bg-4.jpg)}
+.box4 .new{position:relative}
+.box4 .box4_1{position:absolute;top:0;left: -60px;}
+.box4 .swiper{width: 860px;overflow: hidden;position: absolute;top: 100px;left: 60px;}
+.box4 .swiper-container{height: 250px;width: 860px;overflow: visible;}
+.box4 .swiper-slide{width:860px;height:250px;float:left;margin-right:0px;}
+.box4 .s-m-r{}
+.box4 .swiper-slide .img_box {width:100%;height:100%}
+.box4 .swiper-slide img{width:100%;height:100%}
+.box4 .arrow{background:url(../images/travel/arrow.png) no-repeat;position: absolute;width: 25px;height: 50px;cursor: pointer;}
+.box4 .swiper-button-next{background-position:-20px 6px;right:31px}
+.box4 .swiper-button-prev{background-position:4px 6px;left:13px}
+.box4 .swiper-button-next,.box4 .swiper-button-prev{top: 233px;;}
+
+/*box6*/
+.box6{height:829px;background-image:url(../images/travel/bg-5.jpg)}
+.box6 .new{position:relative}
+.box6 .new .box4_1{position: absolute;left: -105px;}
+.box6 .new .special .tab{position: absolute;top: 40px;right: 0}
+.box6 .new .special .tab span{margin-right: 35px;position: relative;display: inline-block;cursor: pointer;} 
+.box6 .new .special .tab .m-r-0{margin-right: 0}
+.box6 .new .special .tab .hover em,.box6 .new .special span:hover em{width: 0;height: 0;position: absolute;right: 50px;top: 102%;margin-top: -3px;border-left: 10px solid transparent;border-top: 10px solid transparent; border-bottom: 10px solid #B5B5B5;border-right: 10px solid transparent;}
+.box6 .tab-content{  position: absolute;top: 200px;left: 82px;}
+.box6 .tab-content p{line-height: 30px;color:#008645;font-size: 16px }
+.box6 .tab-content .content{height: 340px;width:875px;background: #F7F7F7;overflow: scroll;padding: 20px;border: 1px solid #dadada;}
+
+/* 滚动条*/
+::-webkit-scrollbar/*整体部分*/
+{
+width: 5px;
+height:0px;
+}
+
+::-webkit-scrollbar-track/*滑动轨道*/
+{
+border-radius: 0px;
+background: #D7D7D7;
+}
+
+::-webkit-scrollbar-thumb/*滑块*/
+{
+background: #A9A9A9;
+}
+
+.goToTop {position: fixed;bottom: 1%;right: 0%;z-index: 10;width: 48px;height: 48px;border: 1px solid #d2d2d2;  background: url(../images/goToTop.png) no-repeat 0 0;margin-top: 10px;cursor: pointer;}
+.goToTop:hover{background-position:0px -48px;-webkit-transition:background-position .3s ease-out;-moz-transition:background-position .3s ease-out;transition:background-position .3s ease-out;}
+
+@-webkit-keyframes sldearrow{
+    100%{margin-top:60px;opacity:1;}
+    0%{margin-top:70px;opacity:0.6;}
+} 
+@-moz-keyframes sldearrow{
+    100%{margin-top:60px;opacity:1;}
+    0%{margin-top:70px;opacity:0.6;}
+}
+@keyframes sldearrow{
+    100%{margin-top:60px;opacity:1;}
+    0%{margin-top:70px;opacity:0.6;}
+}
+/********************* reset End *********************/
+

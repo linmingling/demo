@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<!--
+本游戏版权归天津九章科技有限公司所有，请遵守规则，欢迎转发。
+1.你可以收集、分享、转发本游戏。
+2.你可以在自己的服务器上存储本游戏。
+3.你可以修改游戏涉及的所有js代码。
+4.你可以修改更多游戏APP_LIST_URL的指向。
+5.你可以修改本html文件，但需保留本声明。
+6.你不可以修改游戏加载屏的内容。
+7.你不可以修改羊驼关注页面的指向。
+8.你不可以在游戏外遮盖游戏加载屏，和求关注的羊驼图标。
+9.本公司保留本游戏所有权利。如果你有其他要求，请联系QQ 1563344353。
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>我是钱多多</title>
+<script type="text/javascript">
+var GID = "shuqian";
+var SCORE_LIMIT = 6000;
+var shijian = 6;
+var APP_LIST_URL = '';
+</script>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/createjs-2013.12.12.min.js"></script>
+<script type="text/javascript" src="js/qipa_app.js"></script>
+<script type="text/javascript" src="js/qipa_stage.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<style type="text/css">
+html,body,canvas {margin: 0px;padding: 0px;border:none;text-align: center;background-color:#ed2f34;}
+.tc{width:100%;height:100%;position:fixed;top:0;left:0;background:url(img/black_bg.png) repeat;display:none}
+.tc .close{width:20px;height:20px;line-height:18px;margin:0;text-align:center;font-weight:bold;background:#c3200b;border-radius:10px;color:#fff;position:absolute;right:10px;top:10px;z-index:2;cursor:pointer}
+
+.porket{width:100%;height:95%;position:absolute;bottom:0;left:0;background:url(img/porketBG.png) top center no-repeat;background-size:100%;}
+.porket .hbtips{width:56%;color:#ed2f34;margin:0 0 0 22%;font-size:12px;text-align:left}
+.porket .money{width:56%;color:#ed2f34;margin:18% 0 0 22%;font-size:12px;text-align:left}
+.porket .money span{color:#8f3418}
+.porket .btnBox{width:46%;margin-left:27%;margin-top:65%}
+.porket .btnBox img{width:100%;margin-bottom:8px}
+
+.formWarp .btn{width:100px;height:30px;line-height:30px;background:#c3200b;border-radius:10px;color:#fff;display:block;position:absolute;left:50%;margin-left:-50px;top:80%}
+.form{width:80%;position:fixed;top:12%;left:10%;z-index:1;background:url(img/formBG.png) no-repeat center center;background-size:100% }
+.form .title{font-size:18px;font-weight:bold;text-align:center}
+.form .formBG{width:100%}
+.form .formBox{width:80%;position:absolute;left:10%;top:13%;font-size:12px;text-align:left}
+.form .formBox p{margin:5px 0 0 0}
+.form .formBox input{height:18px;width:65%;background:#fff;box-shadow:inside #c67767;border-radius:10px}
+.form .formBox .small{width:15%}
+.form .formBox .detail{margin-left:36px}
+
+.tips{width:100%;height:100%;color:#fff;position:fixed;top:0;left:0;background:url(img/black_bg.png) repeat;}
+.tips p{padding:10px 0;}
+</style>
+
+</head>
+<body>
+<canvas id="stage">
+您的浏览器不支持html5, 请换用支持html5的浏览器。
+</canvas>
+<div class="myPorket tc" id="myPorket">
+	<p class="close">x</p>
+	<div class="porket">
+		<p class="money">我的代金券：<span>0</span></p>
+		<p class="hbtips">红包金额以最高纪录为准,最高不超过10元</p>
+		<div class="btnBox">
+			<img src="img/porketBtn1.png" class="porketBtn1"/>
+			<a href="http://mp.weixin.qq.com/bizmall/mallshelf?id=&t=mall/list&biz=MzA4NTc5MTkxNw==&shelf_id=2&showwxpaytitle=1#wechat_redirect"><img src="img/porketBtn2.png" class="porketBtn2"/></a>
+		</div>
+	</div>
+</div>
+<div class="formWarp tc" id="formWarp">
+	<p class="close">x</p>
+	<div class="form">
+		<img src="img/formBG.png" class="formBG"/>
+		<div class="formBox">
+			<p class="title">填写个人信息</p>
+			<p><span>姓名：</span><input type="text" name="name" class="name"/></p>
+			<p><span>电话：</span><input type="text" name="tel" class="tel"/></p>
+			<p>
+				<span>地址：</span><input type="text" name="sheng" class="sheng small"/><span>省 </span>
+				<input type="text" name="shi" class="shi small"/><span>市 </span>
+				<input type="text" name="qu" class="qu small"/><span>区 </span>
+			</p>
+			<p>
+				<input type="text" name="detail" class="detail"/>
+			</p>
+		</div>
+	</div>
+	<span class="btn">确定</span>
+</div>
+<div id="tips" class="tips">
+	<p>游戏次数已用光</P>
+	<p>分享给好友可以再获得1次游戏机会</P>
+</div>
+<script language=javascript>
+	function cishu(){
+		
+		return 1;
+	}
+	var money = 0;
+	var open = true;
+	function showPorket(){
+		//这里应该取我的代金券信息
+		$("#myPorket .money span").html(100);
+		$("#myPorket").show();
+	}
+	
+
+	function goHome(){}
+	function clickMore(){}
+	function dp_share(){}
+	function dp_Ranking(){}
+	function showAd(){}
+	function hideAd(){}
+	function dp_submitScore(score){
+		if(!open){
+			//这里存数据，并判断是否弹出信息收集窗
+			$("#formWarp").show();
+			
+		}else{
+			open = false;
+		}
+		
+	}
+	$(function(){
+		if(1){
+			$("#tips").hide();
+		}
+		$(".tc .close").click(function(){
+			$(".tc").hide();
+		});
+		$("#myPorket .porketBtn1").click(function(){
+			if(confirm("马上使用我的代金券？")){
+				//告诉后台清空掉他的代金券
+				$("#myPorket .money span").html(0);
+				alert("使用成功！");
+			}
+		});
+		$("#formWarp .btn").click(function(){
+			var name = $("#formWarp .name").val();
+			var tel = $("#formWarp .tel").val();
+			var sheng = $("#formWarp .sheng").val();
+			var shi = $("#formWarp .shi").val();
+			var qu = $("#formWarp .qu").val();
+			var detail = $("#formWarp .detail").val();
+			var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|18[0-9])[0-9]{8}$/;
+			if(name=="" || tel=="" || sheng=="" || shi=="" || qu=="" ){
+				alert("请填写有效信息！");
+			}else if(!mob.test(tel)){
+				alert("请填入正确的手机号码！");
+			}else{
+				//存数据
+				$.ajax({
+					async:true,
+					url:'',
+					data:'',
+					type: 'post',
+					dataType:'json',
+					success:function(result){
+						$("#formWarp").hide();
+						alert("填写成功！");
+					}
+				});
+			}
+			
+		});
+	});
+</script>
+
+</body>
+</html>

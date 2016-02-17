@@ -1,0 +1,95 @@
+/********************* reset Start *********************/
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 12px/1.7 "Microsoft YaHei";color:#fff;background-color:#d8f0f6;}
+a{color:#fff;text-decoration:none;outline: none;}
+a:hover{text-decoration:none;color:#3494d7;-webkit-transition:color .3s ease-out;-moz-transition:color .3s ease-out;transition:color .3s ease-out;}
+a img,img{border:0;vertical-align: top;}
+ul,li,input{list-style:none;padding:0;margin:0;vertical-align:middle;}
+input{outline: none;}
+i, em {font-style: normal; }
+table {border-collapse: collapse;border-spacing:0;}
+.hide{display: none;}
+.hideFont{text-indent: -100%;overflow: hidden;display: block;}
+.fix{*zoom:1;}
+.fix:after{content: ".";width: 0;height: 0;font-size: 0;visibility: hidden;overflow: hidden;clear: both;display: block;}
+.clear:after{clear: both;content:'.';display: block;visibility:hidden;height:0;}
+.clear{zoom:1; clear: both;}
+
+/*box*/
+.mainWrap{min-width:1000px;max-width:1920px;background:#d8f0f6;overflow:hidden}
+.mainBox{background-repeat:no-repeat;background-position:top center}
+.insideBox{width:1000px;margin:0 auto;position: relative;}
+.box1{height:630px;position:relative}
+.box1 .insideBox{position:relative}
+.box1 .logoImg{width:191px;height:100px;display:block;position:absolute;left:0px;top:36px}
+.box1 .swf{position:absolute;top:0;left:50%;margin-left:-960px}
+.box1 .logo{width:191px;height:100px;display:block;position:absolute;left:50%;top:36px;margin-left:-500px}
+.box2{height:840px;background-image:url(../images/box2_bg.jpg)}
+.box2 .box2_2{margin-left:-95px;margin-top:80px}
+.box2 .nav{position:relative}
+.box2 .nav .box2_1{position:absolute;left:0;top:0}
+.box2 .nav a{width:25%;height:90px;float:left;position:relative;z-index:1}
+.box3{height:736px;background-image:url(../images/box3_bg.jpg)}
+.box3 .box3_1{margin-left:-15px}
+.box3 .inside{position:relative}
+.box3 .box3_tips{width:300px;height:300px;position:absolute;top:15px;right:130px;cursor:pointer}
+.box3 .btn{width: 231px;top: 3%;right: 50%;text-align: center;position: absolute;font-size: 24px;color: #008644;border-radius: 44px;background: #fff;line-height: 40px;height: 40px;cursor: pointer;}
+/*适用名单*/
+.box3 .am7 .p3{font-size: 14px;color: #333;font-weight: bold;text-align: center;margin:20px 20px;}
+.box3 .am7 .p4{font-size: 20px;color: #333;font-weight: bold;text-align: center;margin: 15px 0;}
+.box3 .am7 .rank_main{width:80%;margin-left:10%;text-align: center;font-size: 16px}
+.box3 .am7 .rclear .rtitle{color: #333}
+.box3 .am7 .rank_main .rList1{width:33%;float:left}
+.box3 .am7 .rank_main .rList2{width:33%;float:left}
+.box3 .am7 .rank_main .rList3{width:33%;float:left}
+.box3 .am7 .rank_main p{color:#A2A2A2;margin:3px 0 0 0}
+.box3 .am7 .rank_main .r3{color: #46A777}
+.box3 .condition{height:470px;}
+
+
+.box4{height:878px;background-image:url(../images/box4_bg.jpg)}
+.box4 .box4_1{margin-left:-84px;}
+.box4 .inside{position:relative}
+.box4 .box4_tips{width:400px;height:110px;position:absolute;bottom:180px;right:90px;cursor:pointer}
+/*试用名单*/
+.box4 .am6{width: 231px;top: 13%;right: 26%;text-align: center;position: absolute;}
+.box4 .am6 p{font-size: 24px;color: #008644;border-radius: 44px;background: #fff;line-height: 40px;height: 40px;cursor: pointer;}
+/*适用名单*/
+.box4 .am7 .p3{margin-top: 15px}
+.box4 .am7 .p4{margin-bottom: 15px;}
+.box4 .am7 .p3,.box4 .am7 .p4{line-height: 30px;height: 30px;font-size: 20px;color: #333;font-weight: bold;text-align: center;}
+.box4 .am7 .rank_main{width:80%;margin-left:10%;text-align: center;font-size: 16px;}
+.box4 .am7 .rclear .rtitle{color: #333}
+.box4 .am7 .rank_main .rList1{width:33%;float:left}
+.box4 .am7 .rank_main .rList2{width:33%;float:left}
+.box4 .am7 .rank_main .rList3{width:33%;float:left}
+.box4 .am7 .rank_main p{color:#A2A2A2;margin:3px 0 0 0}
+.box4 .am7 .rank_main .r3{color: #46A777}
+.box4 .condition{height:517px;overflow-y:scroll;}
+/*云朵样式*/
+.s-ct-a .back{border-top: 1px solid #636363;border-bottom: 1px solid #636363;width: 15%;margin-left: 45%;text-align: center;color: #636363;letter-spacing:4px;font-size: 18px;padding: 2px 5px 2px 10px;position: relative;  top: 15px;}
+.s-ct{background-color: #fff;border-radius: 5px;width:70%;font-size: 14px;color: #5A5A5A;z-index: 20;position: absolute;left: 15%;}
+.s-ct .cloud{  position: absolute;top: -79px;left: 32%;width: 32%;height: 96px;background: url(../images/3-7.png) no-repeat center top; background-size: 100%;z-index: 20;}
+.s-ct-6 {height: 87%;top: 0%;}
+.s-ct-6 .back{top: 20px;cursor: pointer;}
+
+.box5{height:123px;background:#008644}
+
+.box6{height:774px;background-image:url(../images/box6_bg.jpg)}
+.box6 .box6_1{margin-left:-60px;}
+
+.box7{height:760px;background-image:url(../images/box7_bg.jpg)}
+.box7 .new{position:relative}
+.box7 .box7_1{position:absolute;top:0;left:-190px}
+.box7 ul{padding:228px 64px 0 75px;position:relative;z-index:1;color:#008644}
+.box7 ul li{list-style:inside disc;height:50px;line-height: 50px;overflow:hidden}
+.box7 ul a{color:#008644}
+.box7 ul a:hover{text-decoration:underline}
+.box7 .long{font-size:22px}
+.box7 .short{width:45%;float:left;margin-right:5%;font-size:18px}
+
+.goToTop {position: fixed;bottom: 1%;right: 15%;z-index: 10;width: 48px;height: 48px;border: 1px solid #d2d2d2;  background: url(../images/goToTop.png) no-repeat 0 0;margin-top: 10px;cursor: pointer;}
+.goToTop:hover{background-position:0px -48px;-webkit-transition:background-position .3s ease-out;-moz-transition:background-position .3s ease-out;transition:background-position .3s ease-out;}
+
+/********************* reset End *********************/
+

@@ -1,0 +1,100 @@
+/********************* reset Start *********************/
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 12px/1.7 "Microsoft YaHei";color:#fff;background-color:#d8f0f6;}
+a{color:#fff;text-decoration:none;outline: none;}
+a:hover{text-decoration:none;color:#3494d7;-webkit-transition:color .3s ease-out;-moz-transition:color .3s ease-out;transition:color .3s ease-out;}
+a img,img{border:0;vertical-align: top;}
+ul,li,input{list-style:none;padding:0;margin:0;vertical-align:middle;}
+input{outline: none;}
+i, em {font-style: normal; }
+table {border-collapse: collapse;border-spacing:0;}
+.hide{display: none;}
+.hideFont{text-indent: -100%;overflow: hidden;display: block;}
+.fix{*zoom:1;}
+.fix:after{content: ".";width: 0;height: 0;font-size: 0;visibility: hidden;overflow: hidden;clear: both;display: block;}
+.clear:after{clear: both;content:'.';display: block;visibility:hidden;height:0;}
+.clear{zoom:1; clear: both;}
+.l{float: left;}
+.r{float: left;  margin-left: 50px;}
+/*box*/
+.mainWrap{min-width:1000px;max-width:100%;background:#d8f0f6;overflow:hidden}
+.mainBox{width: 100%;overflow: hidden;background-repeat:no-repeat;background-position:top center}
+.insideBox{width:1000px;margin:0 auto;position: relative;}
+.box1{height:483px;position:relative;background-image:url(../images/sign/bg-4.jpg)}
+.box1 .insideBox{position:relative}
+.box1 .logoImg{width:191px;height:100px;display:block;position:absolute;left:0px;top:36px}
+.box1 .swf{position:absolute;top:0;left:50%;margin-left:-960px}
+.box1 .logo{width:191px;height:100px;display:block;position:absolute;left:50%;top:36px;margin-left:-500px}
+.box2{height:1202px;background-image:url(../images/sign/bg-1.jpg)}
+.box2 .box2_2{margin-top:130px}
+.box2 .nav{position:relative}
+.box2 .nav .box2_1{position:absolute;left:0;top:0}
+.box2 .nav a{width:25%;height:90px;float:left;position:relative;z-index:1}
+.box2 .box2-c{height: 801px;  margin-top: 15px;}
+.box2 .box2-c .c_l{width: 452px;height: 100%;  margin-left: 50px;}
+.box2 .box2-c em{color: #333;font-size: 20px;}
+.box2 .box2-c .c_l .p1{line-height: 25px;color: #333;font-size: 18px;font-weight: bold;text-align: left;margin-bottom: 10px;}
+.box2 .box2-c .c_l .p2{line-height: 20px;color: #717171;font-size: 16px;text-align:left;}
+.box2 .box2-c .c_l .p-b{margin-bottom: 10px}
+.box2 .box2-c .c_r .top{margin-top: 30px}
+.box2 .box2-c .c_r .bottom{margin-top: 60px;cursor: pointer;}
+.box2 .c_r .bottom:hover{opacity: 1}
+.box2 .c_r .bottom{
+    -webkit-animation:0.5s 0.5s ease infinite alternate;
+    -webkit-animation-name:sldearrow;
+    -moz-animation:0.5s 0.5s ease infinite alternate;
+    -moz-animation-name:sldearrow;
+	animation:0.5s 0.5s ease infinite alternate;
+    animation-name:sldearrow;
+}
+
+.box3{height:856px;background-image:url(../images/sign/bg-2.jpg)}
+.box3 .new{position:relative}
+.box3 .box3_1{position:absolute;top:0;left:-190px}
+.box3 .request{padding: 202px 53px 0 84px;position:absolute;z-index:1;color:#008644}
+#request  p{width: 100%;position: relative;margin-top: 10px;text-align: left;font-size: 18px;}
+#request  input{border: 0;border-bottom: 1px solid #008644;text-align: left;  color: #008644;font-size: 16px;  height: 20px;line-height: 20px;text-indent: 10px;}
+#request  .p-s{margin-top: 26px;text-align: left;}
+#request  .p1{line-height: 25px;height: 25px;color:#008340;font-size:20px;font-weight: bold;margin-top: 0px;text-align: left;display: inline-block;}
+#request  .p2{margin-bottom: 10px;font-weight: normal;}
+#request  .p3 #name1{width: 105px;margin-right: 5px;}
+#request  .p3 #city1,#request  .p3  #phone1{width: 168px;}
+#request  .p3  #phone1{margin-right: 5px}
+#request  .p4 #x1{width: 84.7%;margin-left: 5px;}
+#request  .p5 input{width: 58%;}
+#request  .p6{text-align: center;position: relative;width: 100%; top: 25px;}
+#request  .p6 .sub-1{width: 50%;background: #008645;padding: 5px 44px 7px 44px;vertical-align: middle;color: #fff; text-align: center;border-radius: 19px;font-size: 22px;letter-spacing: 2px;cursor: pointer;font-weight: bold}
+#request  .p6 .sub-1:hover{background: #217B08}
+#request  .p7{font-size: 14px;text-align: left;line-height: 14px;margin-top: 11px;}
+#request  .chk{margin-right: 38px;width: 16px;height: 16px;}
+#request  .m-r{margin-right: 12px;}
+#request  .p-l{width: 50%;display: inline-block;}
+#request  .p-r{width: 50%}
+
+.box4{height:1000px;background-image:url(../images/sign/bg-3.jpg)}
+.box4 .new{position:relative}
+.box4 .box4_1{position:absolute;top:0;left:-150px}
+.box4 .rule{position: absolute;top: 128px;left: 56px;}
+.box4 .rule .p1{line-height: 32px;height: 32px;color: #008644;font-size: 18px;font-weight: bold;text-align: left;}
+.box4 .rule .p2{line-height: 32px;color: #008644;font-size: 16px;text-align:left;}
+.box4 .rule .p3{line-height: 30px;height: 30px;font-size:24px;color: #008644;font-weight: bold;text-align: center;  margin-bottom: 20px;letter-spacing: 2px;}
+.box4 .rule .p-b{margin-bottom: 40px}
+.box4 .rule em{color:#008644;font-size: 20px;}
+
+.goToTop {position: fixed;bottom: 1%;right: 0%;z-index: 10;width: 48px;height: 48px;border: 1px solid #d2d2d2;  background: url(../images/goToTop.png) no-repeat 0 0;margin-top: 10px;cursor: pointer;}
+.goToTop:hover{background-position:0px -48px;-webkit-transition:background-position .3s ease-out;-moz-transition:background-position .3s ease-out;transition:background-position .3s ease-out;}
+
+@-webkit-keyframes sldearrow{
+    100%{margin-top:60px;opacity:1;}
+    0%{margin-top:70px;opacity:0.6;}
+} 
+@-moz-keyframes sldearrow{
+    100%{margin-top:60px;opacity:1;}
+    0%{margin-top:70px;opacity:0.6;}
+}
+@keyframes sldearrow{
+    100%{margin-top:60px;opacity:1;}
+    0%{margin-top:70px;opacity:0.6;}
+}
+/********************* reset End *********************/
+

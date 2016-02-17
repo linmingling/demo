@@ -1,0 +1,297 @@
+@charset "utf-8";
+/**
+* @author chenxingbin (croow|somelittle) @ 20131105
+*/ 
+/*Reset CSS*/
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}
+body{
+	background:#fff;
+	line-height:24px;
+	font-family: "微软雅黑";
+	font-size: 12px;
+}
+a{color:#333333;text-decoration:none}
+a:hover{color:#07a2d5;}
+em{font-style:normal}
+ul,li{list-style:none}
+img{border:0;vertical-align:middle}
+table{border-collapse:collapse;border-spacing:0}
+p{word-wrap:break-word;}
+.dis{display:block}
+.undis{display:none}
+.ytArea:after,.box-are:after{content:"";display:table;clear:both}
+.ytArea{*zoom:1}
+.fl,.ytArea .fl{float:left;display:inline}
+.fr,.ytArea .fr{float:right;display:inline}
+.hr10,.hr20{clear:both;margin:0;padding:0;font-size:0;overflow:hidden;}
+.hr20{height:20px;}
+.hr10{height:10px;}
+.banner,.minTopin,.headerIn,.mtcon{width:960px;margin:0 auto;}
+.ytArea{width:100%;background:#fff}
+area{outline:none;}
+
+/*add by qingqing*/
+.mainWrap{min-width:1000px;max-width:100%;background:#d8f0f6;overflow:hidden}
+.mainBox{background-repeat:no-repeat;background-position:top center}
+.insideBox{width:1000px;margin:0 auto;position: relative;}
+.box1{height:483px;position:relative;background-image:url(../images/sign/bg-4.jpg)}
+.box1 .insideBox{position:relative}
+.box1 .logoImg{width:191px;height:100px;display:block;position:absolute;left:0px;top:36px}
+.box1 .swf{position:absolute;top:0;left:50%;margin-left:-960px}
+.box1 .logo{width:191px;height:100px;display:block;position:absolute;left:50%;top:36px;margin-left:-500px}
+/*报名*/
+#sign{width: 84%;bottom: 12%;left: 8%}
+#sign .sign{width: 100%;color: #46A777;font-size: 18px;  position: relative;z-index: 10}
+#sign .sign .ct{line-height: 36px;height: 36px;}
+#sign .sign .ct .des{width: 25%;float: left;}
+#sign .sign .ct .gap{margin:0 14px;display: inline}
+#sign .sign .ct input{width: 70%;border:0;border-bottom: 1px solid #46A777;line-height: 27px;height: 27px;background-color:transparent;}
+#sign .sign .ct select{width: 35%;line-height: 27px;height: 27px;font-size: 16px;border-radius: 16px;border:#46A777 1px solid;color: #46A777;text-align: left;position: relative;top: 3px;-webkit-appearance: none;}
+#sign .sign .ct .arrow{width: 15px;height: 24px;display: inline-block;position: relative;left: -30px; top: 7px;border-left: 1px solid #46A777;}
+#sign .sign .ct .arrow em{background: url(../images/registration/icon.png) no-repeat center center;background-size: 10px;background-position: 0 0px;width: 100%;height: 8px;display: inline-block;position: absolute;top: 7px;left: 3px;}
+#sign .sign .ct .chk{border:#46A777 1px solid;width: 14px;height: 14px;margin-left: 3px;position: relative;top: 1px;display: inline-block}
+#sign .sign .ct .checked{background: url(../images/registration/icon.png) no-repeat center center;background-size: 10px;background-position:2px -6px;}
+#sign .sign .sub{width: 59%;height: 100%;margin: 10px auto;cursor: pointer;/*background:#008644;padding: 2px 10px;color: #fff;text-align: center;  border-radius: 17px;font-size: 16px;letter-spacing: 2px;*/}
+.goToTop {position: fixed;bottom: 1%;right: 0%;z-index: 10;width: 48px;height: 48px;border: 1px solid #d2d2d2;  background: url(../images/goToTop.png) no-repeat 0 0;margin-top: 10px;cursor: pointer;}
+.goToTop:hover{background-position:0px -48px;-webkit-transition:background-position .3s ease-out;-moz-transition:background-position .3s ease-out;transition:background-position .3s ease-out;}
+.link_jd{width: 434px;height: 92px;display: block;position: absolute;right: 23%;top: 200px;}
+/*end*/
+.topnav{
+padding:0 0px;height:36px;background:#000;background:rgba(0,0,0,0.85);
+position:fixed;_position:absolute;top:0;left:0;z-index:9999;width:100%;
+box-shadow:0px 3px 8px rgba(0,0,0,0.3); 
+}
+.topnav .logo{display:block;position:absolute;left:0;top:5px;width:181px;height:26px;background:url(../images/registration/logo.png) no-repeat;_background:transparent;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/registration/logo.png',sizingMethod='scale');overflow:hidden;text-indent:-9999px;}
+.mininav{width:1000px;height:30px;margin:0 auto;position:relative;z-index:999999}
+.mininav,.mininav a,.mininav a:link ,.mininav .hychannel p.up,.mininav .hychannel ul a,.mininav .hychannel ul a:link{color:#ccc}
+.mininav a:hover ,.mininav .hychannel ul a:hover{color:#fff;transition: all 0.5s;-moz-transition: all 0.5s;-webkit-transition: all 0.5s;-o-transition: all 0.5s;}
+.mininav  a:hover{text-decoration:underline;}
+.mininav .yt{display:inline-block;float:left;height:30px;border-left:1px solid #ebebeb;border-right:1px solid #ebebeb;line-height:30px;padding:0 10px;}
+.mininav .mr{margin-left:185px;font-family:"΢���ź�";}
+.mininav .l{float:right;line-height:36px;}
+.mininav .nt{float:right;padding:0 5px;line-height:36px;position:relative;z-index:99999}
+.mininav .cm{float:right;width:66px;height:36px;position:relative}
+.mininav .cm p{width:66px;height:36px;line-height:36px;text-indent:6px;background:url(../images/registration/yt_ico_c.png) 40px 6px no-repeat;color:#fff;cursor:pointer;position:absolute;z-index:99999;left:0;top:0;}
+.mininav .cmhover p{background:url(../images/registration/yt_ico_c.png) 40px -28px no-repeat;}
+.tabcity{display:none;width:410px;padding:0 20px;color:#9b763b;position:absolute;right:0;top:34px;z-index:999999;overflow:hidden}
+.tabcity .ht{width:400px;height:30px;line-height:30px;font-weight:bold;position:relative;z-index:9999}
+.tabcity .ht .l{display:block;width:332px;height:10px;overflow:hidden;border-bottom:1px solid #9b763b;position:absolute;right:0;top:6px}
+.tabcity .ht a,.tabcity .ht b{line-height:30px;font-weight:normal}
+.tabcity .ht span b{margin-right:5px;}
+.tabcity .cityall{height:120px;}
+.tabcity .citylist{float:left;width:68px;position:relative;z-index:9999}
+.tabcity .citylist li{line-height:20px;color:#999}
+.tabcity .citylist li a{color:#333}
+.tabcity .citylist li b{color:#af874b}
+.tabcity .citylist li span{padding-right:8px;font-size:14px;font-weight:bold;}
+.tabcity .citylist li span.n{font-size:12px;font-weight:normal;}
+.tabcity .tcmask{width:450px;height:260px;background:#f5f0e8;opacity:0.9;filter:alpha(opacity=90);position:absolute;left:0;top:2px;z-index:999}
+.mininav .hychannel{float:right;width:78px;height:36px;position:relative;z-index:999999}
+.mininav .hychannel p{width:78px;height:36px;line-height:36px;text-indent:8px;background:url(../images/registration/tico.png) 60px 9px no-repeat;cursor:pointer;position:absolute;z-index:99999;left:0;top:0;}
+.mininav .hychannel p{height:36px;transition: all 0.5s;-moz-transition: all 0.5s;-webkit-transition: all 0.5s;-o-transition: all 0.5s;}
+.mininav .hychannel p.up{background:url(../images/registration/tico.png) 60px -18px no-repeat;}
+.mininav .hychannel ul.tg{-webkit-transform: scale(1);-moz-transform: scale(1);-ms-transform: scale(1);opacity: 1;display: block;}
+.mininav .hychannel ul{display:none\9;width:310px;padding:5px 10px;background: rgba(0,0,0,.6);background:#333\9;position:absolute;z-index:999;right:-3px;top:35px;border: 1px solid #000;border-top:none;opacity: 0;-webkit-transform: scale(0);-webkit-transition: all 0.3s cubic-bezier(.4,.83,.32,1.33);-webkit-transform-origin: right top;-moz-transform: scale(0);-moz-transition: all 0.3s cubic-bezier(.4,.83,.32,1.33);-moz-transform-origin: right top;-ms-transform: scale(0);-ms-transition: all 0.3s cubic-bezier(.4,.83,.32,1.33);-ms-transform-origin: right top;box-shadow: 0 1px 5px rgba(0,0,0,.2);}
+.mininav .hychannel ul.whz{width:140px;}
+.mininav .hychannel ul a{display:inline-block;height:22px;line-height:22px;padding:0 7px;}
+
+/*�帡��*/
+.clearfix:after{content:"";display:block;clear:both;}
+.clearfix{zoom:1;}
+
+
+/* ----����ؼ�CSS��ʼ---- �� */
+.WellForm *{margin:0;padding:0;}
+.WellForm{font-size:12px;line-height:21px;}
+.WellForm pre{float:left;margin-right:10px;}
+/*background*/
+.WellForm .TextL, .WellForm .TextR, .WellForm .WellText, .WellForm .SelectL, .WellForm .SelectR, .WellForm .WellSelect, .WellForm .WellTextArea .T, .WellForm .WellTextArea .T .TL, .WellForm .WellTextArea .T .TM, .WellForm .WellTextArea .B, .WellForm .WellTextArea .B .BL, .WellForm .WellTextArea .B .BM, .WellForm .WellRadio, .WellForm .WellCheckBox, .WellForm .ButtonL, .WellForm .ButtonR, .WellForm .WellButton{background:url(../WellForm/WellForm.gif) no-repeat;}
+/*WellText*/
+.WellForm .TextL, .WellForm .TextR, .WellForm .WellText{float:left;width:5px;height:21px;}
+.WellForm .TextL{background-position:0 0;}
+.WellForm .TextR{background-position:right 0;}
+.WellForm .TextLH{background-position:0 -21px;}
+.WellForm .TextRH{background-position:right -21px;}
+.WellForm .WellText{border:0;width:auto;height:17px;padding:2px 0;padding:3px 0 1px\9;*padding:3px 0 1px;font-family:"΢���ź�" ;background-repeat:repeat-x;background-position:0 -42px;}
+.WellForm .WellTextH{background-position:0 -63px;}
+/*WellSelect*/
+.WellForm .SelectL, .WellForm .SelectR, .WellForm .WellSelect{float:left;height:21px;}
+.WellForm .SelectL{width:3px;background-position:0 -84px;}
+.WellForm .SelectR{width:16px;cursor:pointer;background-position:right -84px;margin-right:5px;}
+.WellForm .WellSelect{position:relative;cursor:pointer;background-repeat:repeat-x;background-position:0 -105px;}
+.WellForm .WellSelect select{display:none;}
+.WellForm .WellSelect em{position:absolute;top:0;left:3px;color:#fff;height:21px;display:block;line-height:21px;font-style:normal;}
+.WellForm .WellSelect ul{list-style-type:none;position:absolute;top:18px;left:0;z-index:1000;display:none;background:#6C6D70;}
+.WellForm .WellSelect ul li{color:#fff;height:20px;cursor:pointer;line-height:20px;padding-left:3px;}
+.WellForm .WellSelect ul li.hover{background:#333;}
+/*WellTextArea*/
+.WellForm .WellTextArea{float:left;}
+.WellForm .WellTextArea .T, .WellForm .WellTextArea .T .TL, .WellForm .WellTextArea .T .TM, .WellForm .WellTextArea .B, .WellForm .WellTextArea .B .BL, .WellForm .WellTextArea .B .BM{height:5px;overflow:hidden;}
+.WellForm .WellTextArea .T{float:left;width:100%;background-position:right -126px;}
+.WellForm .WellTextArea .TH{float:left;width:100%;}
+.WellForm .WellTextArea .T .TL{background-position:0 -126px;}
+.WellForm .WellTextArea .TH .TL{background-position:0 -131px;}
+.WellForm .WellTextArea .T .TM{margin:0 5px;background-repeat:repeat-x;background-position:0 -136px;}
+.WellForm .WellTextArea .TH .TM{margin:0 5px;background-repeat:repeat-x;background-position:0 -141px;}
+.WellForm .WellTextArea .B{float:left;width:100%;background-position:right -146px;}
+.WellForm .WellTextArea .BH{float:left;width:100%;background-position:right -151px;}
+.WellForm .WellTextArea .B .BL{background-position:0 -146px;}
+.WellForm .WellTextArea .BH .BL{background-position:0 -151px;}
+.WellForm .WellTextArea .B .BM{margin:0 5px;background-repeat:repeat-x;background-position:0 -156px;}
+.WellForm .WellTextArea .BH .BM{margin:0 5px;background-repeat:repeat-x;background-position:0 -161px;}
+.WellForm .WellTextArea .M, .WellForm .WellTextArea .M .MR{float:left;background:url(../WellForm/TextArea-1.gif) repeat-y;}
+.WellForm .WellTextArea .M{background-position:0 0;}
+.WellForm .WellTextArea .M .MR{background-position:right 0;}
+.WellForm .WellTextArea .MH, .WellForm .WellTextArea .MH .MR{float:left;background:url(../WellForm/TextArea-2.gif) repeat-y;}
+.WellForm .WellTextArea .MH{background-position:0 0;}
+.WellForm .WellTextArea .MH .MR{background-position:right 0;}
+.WellForm .WellTextArea textarea{float:left;border:0;margin:0 5px;overflow:auto;background:url(../WellForm/TextArea.gif);font-family: ;font-size:12px;resize:none;}
+/*WellRadio*/
+.WellForm .WellRadio{float:left;width:13px;height:13px;cursor:pointer;overflow:hidden;margin:4px 5px 0 0;background-position:-15px -270px;}
+.WellForm .WellRadioH{background-position:-15px -284px;}
+.WellForm .WellRadio input{margin-top:13px;display:none;}
+/*WellCheckBox*/
+.WellForm .WellCheckBox{float:left;width:12px;height:12px;cursor:pointer;overflow:hidden;margin:4px 5px 0 0;background-position:0 -270px;}
+.WellForm .WellCheckBoxH{background-position:0 -283px;}
+.WellForm .WellCheckBox input{margin-top:12px;display:none;}
+/*WellButton*/
+
+
+.WellForm .WellButton{cursor:pointer;border:0;width:auto;font-size:12px;color:#fff!important;height:62px;padding:0 10px 3px;*padding-bottom:0;padding-bottom:0\9;font-family: ;background-image: url(../images/registration/bnt.png);
+	background-repeat: no-repeat;
+	height: 62px;
+	width: 267px;}
+/* ----����ؼ�CSS����---- �� */
+
+/* form */
+form{
+	float:left;
+	margin:20px 0 0 0px;
+	width:380px;
+	font-size: 18px;
+	font-family: "΢���ź�";
+}
+form .item{float:left;clear:both;width:100%;margin-bottom:10px;}
+.WellForm label{float:left;width:90px;height:21px;text-align:right; font-size:18px; color:#008644;}
+
+
+/*β��*/
+.foots {
+	background-color: #000;
+	height: 110px;
+	width: 100%;
+
+
+}
+
+.foots .box {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow: hidden;
+	color: #333333;
+	font-size: 12px;
+	line-height: 28px;
+	margin-top: 10px;
+}
+.foots .box .left {
+	text-align: center;
+}
+.foots .box .right {
+	text-align: center;
+	  color: #fff;
+}
+.foots .box .left a {
+	font-size: 12px;
+	line-height: 26px;
+	color: #333333;
+	text-decoration: none;
+	color: #fff;
+}
+.foots .ued {
+	background-color: #dcdcdc;
+	font-size: 14px;
+	line-height: 40px;
+	text-align: center;
+	color: #666;
+}
+.wx {
+	background-image: url(../images/registration/wx.jpg);
+	background-repeat: no-repeat;
+	height: 110px;
+	width: 110px;
+	position: absolute;
+	bottom: 5%;
+	right: 8%;
+	z-index: 9999999;
+	margin-left: 320px;
+}
+.container #da-slider .logos {
+	position: fixed;
+	z-index:999999;
+	height: 120px;
+	width: 520px;
+	left: 50%;
+	top: 0px;
+	margin-left: -800px;
+}
+.container #da-slider .logos a {
+	display: block;
+	height: 120px;
+}
+
+
+
+.top {
+	background-image: url(../images/registration/mfsy_01.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 484px;
+}
+.nav {
+	background-image: url(../images/registration/mfsy_02.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 68px;
+}
+.main1 {background-image: url(../images/registration/mfsy_03.jpg);background-repeat: no-repeat;background-position: center top;height: 488px;overflow: hidden;}
+.main2 {background-image: url(../images/registration/mfsy_04.jpg);background-repeat: no-repeat;background-position: center top;height: 381px;overflow: hidden;}
+.main3 {background-image: url(../images/registration/mfsy_05.jpg);background-repeat: no-repeat;background-position: center top;height: 655px;overflow: hidden;}
+.main4 {background-image: url(../images/registration/mfsy_06.jpg);background-repeat: no-repeat;background-position: center top;height: 600px;overflow: hidden;position: relative;}
+.main5 {background-image: url(../images/registration/mfsy_07.jpg);background-repeat: no-repeat;background-position: center top;height: 430px;overflow: hidden;}
+.main6 {background-image: url(../images/registration/mfsy_08.jpg);background-repeat: no-repeat;background-position: center top;height: 665px;overflow: hidden;}
+.main7 {background-image: url(../images/registration/mfsy_09.jpg);background-repeat: no-repeat;background-position: center top;height: 606px;overflow: hidden;}
+.main8 {background-image: url(../images/registration/mfsy_10.jpg);background-repeat: no-repeat;background-position: center top;height: 390px;overflow: hidden;}
+.nav .navbox {
+	height: 68px;
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+.main2 .main2box {
+	height: 382px;
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	overflow: hidden;
+}
+.main2 .main2box .bd {
+	height: 220px;
+	width: 485px;
+	padding-left: 510px;
+	padding-top: 12px;
+	overflow: hidden;
+}
+.main2 .main2box .bd form .item .bnts {
+	background-image: url(../images/registration/bnt.png);
+	background-repeat: no-repeat;
+	height: 62px;
+	width: 267px;
+}
+.main3 .main3box {
+	height: 48px;
+	width: 345px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 460px;
+}

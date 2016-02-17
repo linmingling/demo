@@ -1,0 +1,52 @@
+/********************* reset Start *********************/
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 12px/1.7 "Microsoft YaHei";color:#fff;background-color:#d8f0f6;}
+a{color:#fff;text-decoration:none;outline: none;}
+a:hover{text-decoration:none;color:#3494d7;-webkit-transition:color .3s ease-out;-moz-transition:color .3s ease-out;transition:color .3s ease-out;}
+a img,img{border:0;vertical-align: top;}
+ul,li,input{list-style:none;padding:0;margin:0;vertical-align:middle;}
+input{outline: none;}
+i, em {font-style: normal; }
+table {border-collapse: collapse;border-spacing:0;}
+.hide{display: none;}
+.hideFont{text-indent: -100%;overflow: hidden;display: block;}
+.fix{*zoom:1;}
+.fix:after{content: ".";width: 0;height: 0;font-size: 0;visibility: hidden;overflow: hidden;clear: both;display: block;}
+.clear:after{clear: both;content:'.';display: block;visibility:hidden;height:0;}
+.clear{zoom:1; clear: both;}
+
+/*box*/
+.mainWrap{min-width:1000px;max-width:1920px;background:#d8f0f6;overflow:hidden}
+.mainBox{background-repeat:no-repeat;background-position:top center}
+.insideBox{width:1000px;margin:0 auto;position: relative;}
+.box1{height:630px;position:relative}
+.box1 .insideBox{position:relative}
+.box1 .logoImg{width:191px;height:100px;display:block;position:absolute;left:0px;top:36px}
+.box1 .swf{position:absolute;top:0;left:50%;margin-left:-960px}
+.box1 .logo{width:191px;height:100px;display:block;position:absolute;left:50%;top:36px;margin-left:-500px}
+
+.box2{height:1760px;background-image:url(../images/about/box2_bg.jpg)}
+.box2 .box2_2{margin-top:132px}
+.box2 .nav{position:relative}
+.box2 .nav .box2_1{position:absolute;left:0;top:0}
+.box2 .nav a{width:25%;height:90px;float:left;position:relative;z-index:1}
+
+.box3{height:705px;background-image:url(../images/about/box3_bg.jpg)}
+.box3 .box3_1{margin-top:100px}
+
+.box4{height:363px;background-image:url(../images/about/box4_bg.jpg)}
+
+.box5{height:328px;background-image:url(../images/about/box5_bg.jpg)}
+
+.box6{height:305px;background-image:url(../images/about/box6_bg.jpg)}
+
+.box7{height:2227px;background-image:url(../images/about/box7_bg.jpg)}
+
+.box8{height:611px;background-image:url(../images/about/box8_bg.jpg)}
+.box8 .box8_1{margin-top:100px}
+
+.goToTop {position: fixed;bottom: 1%;right: 15%;z-index: 10;width: 48px;height: 48px;border: 1px solid #d2d2d2;  background: url(../images/goToTop.png) no-repeat 0 0;margin-top: 10px;cursor: pointer;}
+.goToTop:hover{background-position:0px -48px;-webkit-transition:background-position .3s ease-out;-moz-transition:background-position .3s ease-out;transition:background-position .3s ease-out;}
+
+/********************* reset End *********************/
+
