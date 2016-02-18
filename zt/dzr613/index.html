@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>大自然家居 6.13万人疯抢活动</title>
+<link rel="stylesheet" type="text/css" href="css/main.css?v=1.1">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/awardRotate.js"></script>
+<!--倒计时-->
+<script type="text/javascript">
+
+function showTime(deadline,dom) {
+    var countdown = new Date(deadline) - new Date();
+    
+    var restDays = dom.find(".days");
+    var restHours = dom.find(".hours");
+    var restMinutes = dom.find(".minutes");
+    var restSeconds = dom.find(".seconds");
+
+    var timer = setInterval(function() {
+        if(countdown<0){
+            clearInterval(timer);
+            return false;
+        }
+        var days = Math.floor(countdown / 86400000) < 0 ? 0 : Math.floor(countdown / 86400000);
+        var hours = Math.floor((countdown - days * 86400000) / 3600000) < 0 ? 0 : Math.floor((countdown - days * 86400000) / 3600000);
+        var minutes = Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000);
+        var seconds = Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000);          
+        days < 10 ? days = "0" + days : days = days;
+        hours < 10 ? hou000s = "0" + hours : hours = hours;
+        minutes < 10 ? minutes = "0" + minutes : minutes = minutes;
+        seconds < 10 ? seconds = "0" + seconds : seconds = seconds;
+
+        //alert(days+", "+hours+", "+minutes+", "+seconds);
+        restDays.html(days);
+        restHours.html(hours);
+        restMinutes.html(minutes);
+        restSeconds.html(seconds);
+        countdown -= 1000;
+    }, 1000)
+    
+}
+
+$(function(){
+	$(".p_djs").each(function(){
+        showTime($(this).attr("djs"),$(this));
+    });
+});	
+</script><!--time-->
+<script type="text/javascript">
+$(function(){
+
+	var pro_top = $("#pro").offset().top;
+	var news_top = $("#news").offset().top;
+	var ser_top = $("#ser").offset().top;
+	var con_top = $("#con").offset().top;
+	var ddd_top = $("#ddd").offset().top;
+	var nnn_top = $("#nnn").offset().top;
+	//alert(tops);
+	$(window).scroll(function(){
+		var scroH = $(this).scrollTop();
+		if(scroH>=nnn_top){
+			set_cur(".nnn");
+		}else if(scroH>=ddd_top){
+			set_cur(".ddd");
+		}else if(scroH>=con_top){
+			set_cur(".con");
+		}else if(scroH>=ser_top){
+			set_cur(".ser");
+		}else if(scroH>=news_top){
+			set_cur(".news");
+		}else if(scroH>=pro_top){
+			set_cur(".pro");
+		}
+	});
+	
+	$(".nav li a,.links li a").click(function() {
+		var el = $(this).attr('class');
+     	$('html, body').animate({
+         	scrollTop: $("#"+el).offset().top
+     	}, 300);
+		$(this).addClass("cur").parent().siblings().find("a").removeClass("cur");	
+ 	});
+	
+});
+
+function set_cur(n){
+	if($(".nav a").hasClass("cur")){
+		$(".nav a").removeClass("cur");
+	}
+	$(".nav a"+n).addClass("cur");
+}
+
+</script>
+<!--转盘-->
+<script type="text/javascript">
+var isFX = false;
+var bRotate = false;
+$(function (){
+	$.ajax({
+    	async:false,
+        url: 'server.php',
+        data:{act:'list'},
+        type: "post",
+        dataType:'json',
+        success:function(result){
+			for(var i=0;i<result.length;i++){
+				$("#hj ul").append("<li>"+result[i]['phone']+"抽到了"+result[i]['prize']+"</li>")
+			}
+        }
+    });
+	var item = 2;
+	var rotateTimeOut = function (){
+		$('#pointerImg').rotate({
+			angle:0,
+			animateTo:2280,
+			duration:8000,
+			callback:function (){
+				alert('网络超时，请检查您的网络设置！');
+			}
+		});
+	};
+	var rotateFn = function (awards, angles, txt){
+		bRotate = !bRotate;
+		$('#pointerImg').stopRotate();
+		$('#pointerImg').rotate({
+			angle:0,
+			animateTo:angles+1800,
+			duration:8000,
+			callback:function (){
+				
+				if(awards == 2){
+					alert("谢谢参与！");
+				}else{
+					$("#form .jp").html(txt);
+					$("#form").show();
+					$("#black_bg").show();
+				}
+				bRotate = !bRotate;
+			}
+		});
+		
+		isFX = false;
+	};
+
+	$('#pointer').click(function (){
+		alert("活动已结束~");
+		return;
+		/*if(!isFX){
+			$("#share").show();
+			$("#black_bg").show();
+		}else if(bRotate){
+			return;
+		}else{
+			rotateTimeOut();
+			$.ajax({
+            	async:false,
+                url: 'server.php',
+                data:{act:'start'},
+                type: "post",
+                dataType:'json',
+                success:function(result){
+                	if(!result.errcode){
+						if($.browser.msie){
+							if(result.prize == 2){
+								alert("谢谢参与！");
+							}else{
+								$("#form .jp").html(txt);
+								$("#form").show();
+								$("#black_bg").show();
+							}
+						}else{
+							switch (result.prize) {
+								case 0:
+									rotateFn(0, 0, '50元话费');
+									break;
+								case 1:
+									rotateFn(1, 60, '手机贴');
+									break;
+								case 2:
+									rotateFn(2, 120, '谢谢参与');
+									break;
+								case 3:
+									rotateFn(3, 180, '自拍神器');
+									break;
+								case 4:
+									rotateFn(4, 240, '20元话费');
+									break;
+								case 5:
+									rotateFn(5, 300, '精美筷子');
+									break;
+							}
+						}
+                	}
+                }
+            });
+		//console.log(item);
+		}*/
+	});
+	$("#share .close").click(function(){
+		$("#share").hide();
+		$("#black_bg").hide();
+	});
+	$("#form .close").click(function(){
+		$("#form").hide();
+		$("#black_bg").hide();
+	});
+	$("#form .btn").click(function(){
+		var name = $("#form .name").val();
+		var tel = $("#form .tel").val();
+		var sheng = $("#form .sheng").val();
+		var shi = $("#form .shi").val();
+		var qu = $("#form .qu").val();
+		var detail = $("#form .detail").val();
+		var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|18[0-9])[0-9]{8}$/;
+		if(name=="" || tel=="" || sheng=="" || shi=="" || qu=="" ||detail==""){
+			alert("请填写有效信息！");
+		}else if(!mob.test(tel)){
+			alert("请填入正确的手机号码！");
+		}else{
+			//存数据
+			$.ajax({
+				async:true,
+				url:'server.php',
+				data:{act:'submit', name:name, phone:tel, sheng:sheng, shi:shi, qu:qu, detail:detail},
+				type: 'post',
+				dataType:'json',
+				success:function(result){
+					if(!result.errcode){
+						$("#form").hide();
+						$("#black_bg").hide();
+						$("#form input").val("");
+						alert("填写成功！");
+					}
+					if(result.errcode){
+						alert(result.errmsg);return;
+					}
+				}
+			});
+		}
+		
+	});
+	setInterval('autoScroll("#hj")',2000);
+
+});
+
+
+<!--jiathis-->
+function getservice(evt) {
+    //alert('用户将当前网页分享到了：'+evt.data.service);
+	if(evt.data.service){
+		isFX = true;
+		$("#share").hide();
+		$("#black_bg").hide();
+	}
+}
+var jiathis_config = {
+    url:"http://zt.jia360.com/dzy613/",
+    title:"#大自然家居6.13万人疯抢#",
+    summary:"6.13大自然万人疯抢：1、大转盘抽奖，精美礼品等着你；2、寻找老客户，10万个大礼包任性送；3、买得越多，价格越低30万平米放血特供！6月13日，等你来，一起狂欢！",
+    pic:"http://zt.jia360.com/dzr613/images/share/share1.png||http://zt.jia360.com/dzr613/images/share/share2.png||http://zt.jia360.com/dzr613/images/share/share3.png||http://zt.jia360.com/dzr613/images/share/share4.png||http://zt.jia360.com/dzr613/images/share/share5.png",
+    evt:{
+        "share":"getservice" 
+    }
+}
+function autoScroll(obj){  
+	$(obj).find("ul").animate({  
+		marginTop : "-30px"  
+	},500,function(){  
+		$(this).css({marginTop : "0px"}).find("li:first").appendTo(this);  
+	})  
+}  
+</script>
+
+
+
+</head>
+
+<body>
+ 
+
+<div class="heads" id="pro">
+   <div class="banner01"></div>
+   <div class="banner02"></div>
+</div><!--end heads-->
+<div class="showbg" id="news">
+   <div class="showbox">
+   
+      <div class="zhuanpan">
+         <div class="zhizhen" id="pointerImg"></div>
+         <div class="pointer" id="pointer"></div>
+      </div>
+      
+      <div class="time">
+         <div class="time-item p_djs" djs="June 13,2015,00:00">
+    	<strong id="day_show" class="days">00</strong>
+    	   <strong id="hour_show" class="hours">00</strong>
+     	   <strong id="minute_show" class="minutes">00</strong>
+           <strong id="second_show" class="seconds">00</strong>
+         </div><!--倒计时模块-->
+      </div>
+		<div class="hj" id="hj">
+			<ul></ul> 
+		</div>
+
+   </div>
+</div>
+<ul class="nav">
+	<li><a class="pro">首页</a></li>
+	<li><a class="news">大转盘抽奖</a></li>
+	<li><a class="ser">微信抢红包</a></li>
+	<li><a class="con" style=" line-height:18px;">寻找老客户<br />礼包任性送 </a></li>
+	<li><a class="ddd" style=" line-height:18px;">30万平方<br />放血特供</a></li>
+    <li><a class="nnn" style=" line-height:18px;">巨鳄质造<br />口碑心选</a></li>
+   
+</ul>
+<div class="rights"><img src="images/rights.png" width="202" height="597" border="0" usemap="#Map" />
+  <map name="Map" id="Map">
+    <area shape="rect" coords="29,455,173,479" href="http://wpa.qq.com/msgrd?V=3&uin=1029507075&Site=613预约客服小勇&Menu=yes" target="_blank" />
+    <area shape="rect" coords="29,480,172,504" href="http://wpa.qq.com/msgrd?V=3&uin=912445803&Site=613预约客服小强&Menu=yes" target="_blank" />
+    <area shape="rect" coords="30,502,173,527" href="http://wpa.qq.com/msgrd?V=3&uin=2439183144&Site=613预约客服小南&Menu=yes" target="_blank" />
+    <area shape="rect" coords="30,527,174,550" href="http://wpa.qq.com/msgrd?V=3&uin=3102594232&Site=613预约客服小叶&Menu=yes" target="_blank" />
+    <area shape="rect" coords="28,550,175,575" href="http://wpa.qq.com/msgrd?V=3&uin=317732000&Site=613预约客服小叶&Menu=yes" target="_blank" />
+  </map>
+</div>
+
+<div class="con1"></div>
+<div class="con2" id="ser"></div>
+<div class="con3" id="con"></div>
+<div class="con4" id="ddd"></div>
+<div class="con5"></div>
+<div class="con6" id="nnn"></div>
+<div class="con7"></div>
+<div class="con8"></div>
+<div class="con9"></div>
+<div class="con10"></div>
+<div class="con11"></div>
+<div class="con12"></div>
+<div class="con13"></div>
+<div class="con14"></div>
+<div class="con15"></div>
+<div class="con16"></div>
+<div class="con17"></div>
+<div class="form" id="form">
+	<p class="close">×</p>
+	<p class="title">恭喜您获得 "<span class="jp"></span>"!</p>
+	<div class="formBox">
+		<p><span>姓名：</span><input type="text" name="name" class="name"/></p>
+		<p><span>电话：</span><input type="text" name="tel" class="tel"/></p>
+		<p>
+			<span>地址：</span><input type="text" name="sheng" class="sheng small"/><span>省 </span>
+			<input type="text" name="shi" class="shi small"/><span>市 </span>
+			<input type="text" name="qu" class="qu small"/><span>区 </span>
+		</p>
+		<p>
+			<input type="text" name="detail" class="detail"/>
+		</p>
+
+	</div>
+	<span class="btn"></span>
+</div>
+<div class="share" id="share">
+	<p>立即分享并抽奖：</p>
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style_32x32">
+		<a class="jiathis_button_qzone"></a>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_tqq"></a>
+		<a class="jiathis_button_renren"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<p class="close">×</p>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+<div class="black_bg" id="black_bg"></div>
+<script src="js/my.js"></script>
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

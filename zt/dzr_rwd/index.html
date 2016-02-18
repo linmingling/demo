@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>大自然木门瑞士RWD专题</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery.tabs.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	$("img[original]").lazyload({ placeholder:"images/color3.gif" });
+	
+	$('.demo1').Tabs();
+	$('.demo2').Tabs({
+		event:'click'
+	});
+	$('.demo3').Tabs({
+		timeout:300
+	});
+	$('.demo4').Tabs({
+		auto:3000
+	});
+	$('.demo5').Tabs({
+		event:'click',
+		callback:lazyloadForPart
+	});
+	//部分区域图片延迟加载
+	function lazyloadForPart(container) {
+		container.find('img').each(function () {
+			var original = $(this).attr("original");
+			if (original) {
+				$(this).attr('src', original).removeAttr('original');
+			}
+		});
+	}
+});	
+</script>
+
+
+</head>
+
+<body>
+ 
+
+<div class="heads">
+   <div class="banner01"></div>
+   <div class="banner02"></div>
+</div><!--end heads-->
+
+<div class="main1"></div>
+<div class="main2"></div>
+<div class="main3"></div>
+<div class="main4"></div>
+<div class="main5"></div>
+
+<div class="main8"></div>
+<div class="main9"></div>
+<div class="main10">
+   <div class="boxs demo4">
+			<ul class="tab_menu">
+				<li class="current">百变魔方系列</li>
+				<li>时尚混搭系列</li>
+				<li>瑞士经典系列</li>
+
+			</ul>
+			<div class="tab_box">
+				<div><img src="images/pic1.jpg" /></div>
+				<div class="hide">
+					<img src="images/pic2.jpg" />
+				</div>
+				<div class="hide">
+					<img src="images/pic3.jpg" />
+				</div>
+			</div>
+		</div>
+</div>
+<div class="main11"></div>
+<div class="main12"></div>
+
+
+        <!--#include virtual="/public/head.html"-->
+        <!--#include virtual="/public/tongji.html"-->
+        <!--#include virtual="/public/footer.html"-->
+</body>
+</html>

@@ -1,0 +1,966 @@
+﻿<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>鼎美视界</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/wy-mod-banner.css" media="screen">
+    <script src="js/jquery-1.7.2.min.js"></script>
+    
+    <script type="text/javascript" src="js/my.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<link href="css/main_new.css" rel="stylesheet"> 
+    <script type="text/javascript">
+        function switchPage(pageIndex) {
+            $('.carousel').carousel(pageIndex);
+        }
+
+        function playAnimation(tag) {
+            var ani1 = $("#page_" + tag + " .ani_step_1");
+            var ani2 = $("#page_" + tag + " .ani_step_2");
+            var ani3 = $("#page_" + tag + " .ani_step_3");
+            var pre_start = ((tag == "home") ? 0 : 300);
+            if (ani1 != null) {
+                ani1.css("opacity", 0);
+                setTimeout(function () {
+                    ani1.animate({ opacity: 1 }, 1000);
+                }, 10 + pre_start);
+            }
+            if (ani2 != null) {
+                ani2.css("opacity", 0);
+                setTimeout(function () {
+                    ani2.animate({ opacity: 1 }, 1000);
+                }, 1500 + pre_start);
+            }
+            if (ani3 != null) {
+                ani3.css("opacity", 0);
+                setTimeout(function () {
+                    $("#page_" + tag + " .ani_step_3").animate({ opacity: 1 }, 1000);
+                }, 3000 + pre_start);
+            }
+        }
+
+
+        $(function () {
+
+        var bindAms = function () {
+
+            $('.carousel').carousel(
+            {
+                "pause": "false",
+                "interval": 200000
+            });
+
+            $('.carousel').on('slide.bs.carousel', function (event) {
+                var tag = $(event.relatedTarget).attr("tag");
+                var progress = $(event.relatedTarget).attr("progress");
+
+                $('#img_home').attr("src", "images/home.png");
+                $('#img_intro').attr("src", "images/intro.png");
+                $('#img_gift').attr("src", "images/gift.png");
+                $('#img_feedback').attr("src", "images/feedback.png");
+                $('#img_related').attr("src", "images/related.png");
+
+                $('#img_' + tag).attr("src", "images/" + tag + "_selected.png");
+
+                //$("#progress").width(progress + "px");
+                //$("#progress").css('left', (progress / 2) - 400 + "px");
+                $("#progress").animate({ width: progress, left: (progress / 2) - 400 }, 500);
+                playAnimation(tag);
+            });
+
+            $("body,html").animate({
+                scrollTop: ($("#page_home .splash-container").offset().top)
+            }, 10);
+
+            playAnimation("home");
+
+        };
+
+        var banner1 = function () {
+            var $banner = $('#bannerx');
+            var $banner_ul = $('.banner-img', $banner);
+            var $btn = $('.banner-btn', $banner);
+            var $bcircle = $('.banner-circle', $banner);
+            var $btn_a = $btn.find('a')
+            var v_width = $banner.width();
+
+            var page = 1;
+
+            var timer = null;
+            var btnClass = null;
+
+            var page_count = $banner_ul.find('li').length;//把这个值赋给小圆点的个数
+
+            var banner_cir = "<li class='selected' href='#'><a></a></li>";
+            for (var i = 1; i < page_count; i++) {
+                //动态添加小圆点
+                banner_cir += "<li><a href='#'></a></li>";
+            }
+            $('.banner-circle', $banner).append(banner_cir);
+
+            var cirLeft = $bcircle.width() * (-0.5);
+            $bcircle.css({ 'marginLeft': cirLeft });
+
+            $banner_ul.width(page_count * v_width);
+
+            function move(obj, classname) {
+                //手动及自动播放
+                if (!$banner_ul.is(':animated')) {
+                    if (classname == 'prevBtn') {
+                        if (page == 1) {
+                            $banner_ul.animate({ left: -v_width * (page_count - 1) });
+                            page = page_count;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '+=' + v_width }, "slow");
+                            page--;
+                            cirMove();
+                        }
+                    }
+                    else {
+                        if (page == page_count) {
+                            $banner_ul.animate({ left: 0 });
+                            page = 1;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '-=' + v_width }, "slow");
+                            page++;
+                            cirMove();
+                        }
+                    }
+                }
+            }
+
+            function cirMove() {
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner-circle li').eq(page - 1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+            }
+
+            $banner.mouseover(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+            }).mouseout(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+            }).trigger("mouseout");//激活自动播放
+
+            $btn_a.mouseover(function () {
+                //实现透明渐变，阻止冒泡
+                $(this).animate({ opacity: 0.6 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).mouseleave(function () {
+                $(this).animate({ opacity: 0.3 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).click(function () {
+                //手动点击清除计时器
+                btnClass = this.className;
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+                move($(this), this.className);
+            });
+
+            $('.banner-circle li').live('click', function () {
+                var index = $('.banner-circle li').index(this);
+                $banner_ul.animate({ left: -v_width * index }, 'slow');
+                page = index + 1;
+                cirMove();
+            });
+        };
+
+        var banner2 = function () {
+            var $banner = $('.banner2');
+            var $banner_ul = $('.banner2-img');
+            var $btn = $('.banner2-btn');
+            var $btn_a = $btn.find('a')
+            var v_width = $banner.width();
+
+            var page = 1;
+
+            var timer = null;
+            var btnClass = null;
+
+            var page_count = $banner_ul.find('li').length;//把这个值赋给小圆点的个数
+
+            var banner_cir = "<li class='selected' href='#'><a></a></li>";
+            for (var i = 1; i < page_count; i++) {
+                //动态添加小圆点
+                banner_cir += "<li><a href='#'></a></li>";
+            }
+            $('.banner2-circle').append(banner_cir);
+
+            var cirLeft = $('.banner2-circle').width() * (-0.5);
+            $('.banner2-circle').css({ 'marginLeft': cirLeft });
+
+            $banner_ul.width(page_count * v_width);
+
+            function move(obj, classname) {
+                //手动及自动播放
+                if (!$banner_ul.is(':animated')) {
+                    if (classname == 'prevBtn') {
+                        if (page == 1) {
+                            $banner_ul.animate({ left: -v_width * (page_count - 1) });
+                            page = page_count;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '+=' + v_width }, "slow");
+                            page--;
+                            cirMove();
+                        }
+                    }
+                    else {
+                        if (page == page_count) {
+                            $banner_ul.animate({ left: 0 });
+                            page = 1;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '-=' + v_width }, "slow");
+                            page++;
+                            cirMove();
+                        }
+                    }
+                }
+            }
+
+            function cirMove() {
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner2-circle li').eq(page - 1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+            }
+
+            $banner.mouseover(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+            }).mouseout(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+            }).trigger("mouseout");//激活自动播放
+
+            $btn_a.mouseover(function () {
+                //实现透明渐变，阻止冒泡
+                $(this).animate({ opacity: 0.6 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).mouseleave(function () {
+                $(this).animate({ opacity: 0.3 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).click(function () {
+                //手动点击清除计时器
+                btnClass = this.className;
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+                move($(this), this.className);
+            });
+        };
+		
+		
+		var banner3 = function () {
+            var $banner = $('.banner3');
+            var $banner_ul = $('.banner3-img');
+            var $btn = $('.banner3-btn');
+            var $btn_a = $btn.find('a')
+            var v_width = $banner.width();
+
+            var page = 1;
+
+            var timer = null;
+            var btnClass = null;
+
+            var page_count = $banner_ul.find('li').length;//把这个值赋给小圆点的个数
+
+           
+
+            $banner_ul.width(page_count * v_width);
+
+            function move(obj, classname) {
+                //手动及自动播放
+                if (!$banner_ul.is(':animated')) {
+                    if (classname == 'prevBtn') {
+                        if (page == 1) {
+                            $banner_ul.animate({ left: -v_width * (page_count - 1) });
+                            page = page_count;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '+=' + v_width }, "slow");
+                            page--;
+                            cirMove();
+                        }
+                    }
+                    else {
+                        if (page == page_count) {
+                            $banner_ul.animate({ left: 0 });
+                            page = 1;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '-=' + v_width }, "slow");
+                            page++;
+                            cirMove();
+                        }
+                    }
+                }
+            }
+
+           
+
+            $banner.mouseover(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+            }).mouseout(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+            }).trigger("mouseout");//激活自动播放
+
+            $btn_a.mouseover(function () {
+                //实现透明渐变，阻止冒泡
+                $(this).animate({ opacity: 0.6 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).mouseleave(function () {
+                $(this).animate({ opacity: 0.3 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).click(function () {
+                //手动点击清除计时器
+                btnClass = this.className;
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+                move($(this), this.className);
+            });
+        };
+		
+		
+
+        //init
+        banner1();
+        banner2();
+		banner3();
+        bindAms();
+    
+        });
+
+    </script>
+
+
+<script src="js/MyCxcPlug.js?v=1.1" type="text/javascript"></script><!--end 点击弹出层-->
+
+
+<script type="text/javascript">
+$(function(){
+
+	$('.food_img ul li').hover(function(){
+		$(this).children('.box2').stop(true,true).delay(100).animate({'top':0,opacity:0.8},300);
+	},function(){
+		$(this).children('.box2').stop(true,true).animate({'top':-200,opacity:0},200);
+	})
+	
+})
+</script>
+</head>
+<body>
+
+    
+
+<div id="ad"></div>
+<div id="carousel_container" class="carousel slide full_height">
+  <div class="carousel-inner full_height">
+    <div id="page_home" class="page item active" tag="home" progress="150">
+      <div id="main">
+        <div id="splash">
+          
+ 
+          <div class="container splash-container">
+             <div class="mainimg">
+                <img src="images/page1.png" border="0" usemap="#Map">
+                <map name="Map">
+                  <area shape="rect" coords="701,278,952,336" href="javascript:switchPage(1)">
+                  <area shape="rect" coords="701,362,952,418" href="javascript:switchPage(2)">
+                  <area shape="rect" coords="701,444,952,499" href="javascript:switchPage(3)">
+                </map>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page_intro" class="page item" tag="intro" progress="300">
+      <div id="main">
+        <div id="splash" class="ani_step_1">
+          <div class="container splash-container">
+            <div class="zhons">
+              <div class="left">
+                <div class="box1 tmbg">
+                  <div class="wzbt">鼎美居室吊顶陈国光：互联网+智能化 任重而道远</div>
+                  <div class="bleft"><img src="images/pp1.jpg" width="150" height="166"></div>
+                  <div class="bright">第十七届广州建博会火爆开幕，各家居企业均携带新品强势亮相，致力于打响2015年下半年家居行业第一场硬战，在“互联网+”势头汹涌来袭的大背景下，企业究竟为互联网+家居做了什么？腾讯网·亚太家居邀请到鼎美居室吊顶市场部部长陈国光先生对此发表精彩言论...<a href="http://www.jia360.com/2015/0713/1436773654606.html" target="_blank">详 细</a></div>
+                </div>
+                <div class="box1 tmbg">
+                  <div class="wzbt">大时代【鼎美居室吊顶】领航“家装4.0”</div>
+                  <div class="br">
+                     <p><b>【引领】鼎美居室吊顶：引领整装大蓝海时代</b></p>
+                     <p>　　作为吊顶领导品牌之一的鼎美从2009年开始就致力于居室吊顶的研发。历时5年的反复论证，鼎美居室吊顶终于应运而生，开启了居室吊顶的"艺术模块"时代。从而改变了传统居室装修裸顶盛行的现状，实现了顶墙和谐，吹响了整装时代的第一声号角！</p>
+                     <p>　　鼎美居室吊顶作为历届展会的行业风向标之一，2015第十七届中国（广州）国际建筑装饰博览会鼎美推出的全新... <a href="http://www.jia360.com/diaoding/20150722/1437532616321.html" target="_blank">详 细</a></p>
+                 </div>
+                </div>
+                
+              </div><!--end left-->
+              <div class="rightbox tmbg">
+                 <div id="preview">
+	
+		<div id="spec-n1">
+			<div class="o-img">
+				<img alt="" src="images/s720x540_XtDL7D3SY6QJGHzc.JPG" onerror="this.src='images/none_347.gif'"  />
+			</div>
+			<div class="switch">
+				<a id="foward">&nbsp;</a>
+				<a id="next">&nbsp;</a>
+			</div>													
+		</div><!--spec-n1 end-->
+		
+		<div id="spec-n5">
+			<div id="spec-top" class="control disabled"></div>
+			<div id="spec-bottom" class="control"></div>
+			<div id="spec-list">
+				<ul>
+					<li class="curr"><img width="105" height="80" name="images/s128x96_XtDL7D3SY6QJGHzc.JPG" alt=""  title="" src="images/s128x96_XtDL7D3SY6QJGHzc.JPG"/></li>
+					
+					<li><img width="105" height="80" name="images/s128x96_DV33SrtGF0EkrA3F.JPG" alt=""  title="" src="images/s128x96_DV33SrtGF0EkrA3F.JPG"/></li>
+					
+					<li><img width="105" height="80" name="images/s128x96_boiCqhjGmojNGguS.JPG" alt=""  title="" src="images/s128x96_boiCqhjGmojNGguS.JPG"/></li>
+					
+					<li><img width="105" height="80" name="images/s128x96_Gpsv0Kx15IEcJi7E.JPG" alt=""  title="" src="images/s128x96_Gpsv0Kx15IEcJi7E.JPG"/></li>
+					
+					<li><img width="105" height="80" name="images/s128x96_Jku0EImlopNsh65J.JPG" alt=""  title="" src="images/s128x96_Jku0EImlopNsh65J.JPG"/></li>		
+                    <li><img width="105" height="80" name="images/s128x96_Jku0EImlopNsh651.JPG" alt=""  title="" src="images/s128x96_Jku0EImlopNsh651.JPG"/></li>	
+                    <li><img width="105" height="80" name="images/s128x96_Jku0EImlopNsh652.JPG" alt=""  title="" src="images/s128x96_Jku0EImlopNsh652.JPG"/></li>	
+                    <li><img width="105" height="80" name="images/s128x96_Jku0EImlopNsh653.JPG" alt=""  title="" src="images/s128x96_Jku0EImlopNsh653.JPG"/></li>														
+				</ul>
+			</div>
+		</div><!--spec-n5 end-->
+		
+		<!--<div id="intro">文字</div>-->
+		
+	</div>
+              </div><!--end right-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page_gift" class="page item" tag="gift" progress="450">
+      <div id="main">
+        <div id="splash">
+          <div class="container splash-container ani_step_1">
+            <div class="hdcp">
+             <div id="Monver"><span id="close"><img src="images/ImgClose.png" /></span>
+                       <!--内弹出层-->
+                <div id="Monver_01"><span id="close_01"><img src="images/gb.png" /></span>
+                         <img src="images/tc_jo_3.jpg" />
+                       </div><!--end #Monver_01-->
+                       <div id="Monver_02"><span id="close_02"><img src="images/gb.png" /></span>
+                         <img src="images/tc_jo_2.jpg" />
+                       </div><!--end #Monver_02-->
+                       <div id="Monver_03"><span id="close_03"><img src="images/gb.png" /></span>
+                         <img src="images/tc_jo_1.jpg" />
+                       </div><!--end #Monver_03-->
+                       <!--end内弹出层-->
+                   <div class="hobox">
+                     <ul>
+                       <li style="width:300px; height:300px;left: 0px;top: 0px;" class="Monv_01"></li>
+                       <li style="width:300px; height:150px;left: 300px;top: 0px;" class="Monv_02"></li>
+                       <li style="width:300px; height:300px;left: 300px;top: 150px;" class="Monv_03"></li>
+                     </ul>
+                   </div>
+                  </div><!--end #Monver-->
+                  
+                  <div id="Monver2"><span id="close2"><img src="images/ImgClose.png" /></span>
+                     <!--内弹出层-->
+                       <div id="Monver_04"><span id="close_04"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xdjj_1.jpg" />
+                       </div><!--end #Monver_04-->
+                       <div id="Monver_05"><span id="close_05"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xdjj_2.jpg" />
+                       </div><!--end #Monver_05-->
+                       <div id="Monver_06"><span id="close_06"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xdjj_3.jpg" />
+                       </div><!--end #Monver_06-->
+                       <div id="Monver_07"><span id="close_07"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xdjj_4.jpg" />
+                       </div><!--end #Monver_07-->
+                       <div id="Monver_08"><span id="close_08"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xdjj_5.jpg" />
+                       </div><!--end #Monver_08-->
+                       <div id="Monver_09"><span id="close_09"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xdjj_6.jpg" />
+                       </div><!--end #Monver_09-->
+                       <div id="Monver_10"><span id="close_10"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xdjj_7.jpg" />
+                       </div><!--end #Monver_10-->
+                       
+                       <!--end内弹出层-->
+                    <div class="hobox">
+                     <ul>
+                       <li style="width:300px; height:300px;left: 0px;top: 0px;" class="Monv_04"></li>
+                       <li style="width:150px; height:150px;left: 300px;top: 0px;" class="Monv_05"></li>
+                       <li style="width:150px; height:150px;left: 450px;top: 0px;" class="Monv_06"></li>
+                       <li style="width:300px; height:150px;left: 300px;top: 150px;" class="Monv_07"></li>
+                       <li style="width:300px; height:150px;left: 0px;top: 300px;" class="Monv_08"></li>
+                       <li style="width:150px; height:150px;left: 300px;top: 300px;" class="Monv_09"></li>
+                       <li style="width:150px; height:150px;left: 450px;top: 300px;" class="Monv_10"></li>
+                     </ul>
+                   </div>
+                  </div><!--end #Monver2-->
+                  
+                  <div id="Monver3"><span id="close3"><img src="images/ImgClose.png" /></span>
+                    <!--内弹出层-->
+                       <div id="Monver_11"><span id="close_11"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xzs_5.jpg" />
+                       </div><!--end #Monver_11-->
+                       <div id="Monver_12"><span id="close_12"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xzs_4.jpg" />
+                       </div><!--end #Monver_12-->
+                       <div id="Monver_13"><span id="close_13"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xzs_3.jpg" />
+                       </div><!--end #Monver_13-->
+                       <div id="Monver_14"><span id="close_14"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xzs_2.jpg" />
+                       </div><!--end #Monver_14-->
+                       <div id="Monver_15"><span id="close_15"><img src="images/gb.png" /></span>
+                         <img src="images/tc_xzs_1.jpg" />
+                       </div><!--end #Monver_15-->
+                
+                       
+                       <!--end内弹出层-->
+                    <div class="hobox">
+                     <ul>
+                       <li style="width:300px; height:300px;left: 0px;top: 0px;" class="Monv_11"></li>
+                       <li style="width:300px; height:150px;left: 300px;top: 0px;" class="Monv_12"></li>
+                       <li style="width:150px; height:150px;left: 0px;top: 300px;" class="Monv_13"></li>
+                       <li style="width:150px; height:150px;left: 150px;top: 300px;" class="Monv_14"></li>
+                       <li style="width:300px; height:300px;left: 300px;top: 150px;" class="Monv_15"></li>
+
+                     </ul>
+                   </div>
+                  </div><!--end #Monver3-->
+                  <script type="text/javascript">
+			$(document).ready(function(){
+				$(".Monv").click(function(){
+					Popuplayer({
+						LayerId:"Monver",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv2").click(function(){
+					Popuplayer({
+						LayerId:"Monver2",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close2",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv3").click(function(){
+					Popuplayer({
+						LayerId:"Monver3",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close3",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_01").click(function(){
+					Popuplayer({
+						LayerId:"Monver_01",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_01",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_02").click(function(){
+					Popuplayer({
+						LayerId:"Monver_02",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_02",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_03,").click(function(){
+					Popuplayer({
+						LayerId:"Monver_03",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_03",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_04").click(function(){
+					Popuplayer({
+						LayerId:"Monver_04",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_04",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_05").click(function(){
+					Popuplayer({
+						LayerId:"Monver_05",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_05",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_06").click(function(){
+					Popuplayer({
+						LayerId:"Monver_06",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_06",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_07").click(function(){
+					Popuplayer({
+						LayerId:"Monver_07",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_07",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_08").click(function(){
+					Popuplayer({
+						LayerId:"Monver_08",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_08",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_09").click(function(){
+					Popuplayer({
+						LayerId:"Monver_09",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_09",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_10").click(function(){
+					Popuplayer({
+						LayerId:"Monver_10",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_10",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_11").click(function(){
+					Popuplayer({
+						LayerId:"Monver_11",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_11",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_12").click(function(){
+					Popuplayer({
+						LayerId:"Monver_12",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_12",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_13").click(function(){
+					Popuplayer({
+						LayerId:"Monver_13",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_13",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_14").click(function(){
+					Popuplayer({
+						LayerId:"Monver_14",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_14",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv_15").click(function(){
+					Popuplayer({
+						LayerId:"Monver_15",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close_15",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+			});
+			</script>
+               <div class="adbox">
+                 <div class="Monv"></div>
+                  <div class="Monv2"></div>
+                  <div class="Monv3"></div>
+              </div><!--end adbox-->
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="page_related" class="page item" tag="related" progress="750">
+      <div id="main">
+        <div id="splash" class="ani_step_1">
+          <div class="container splash-container">
+            <div class="qyjs">
+            
+             <img src="images/page4s.png">
+ 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+function closebox(){
+	$(".thickdiv,.thickbox").hide();
+}
+$(".thickclose").bind("click",function(){
+	$(".thickdiv,.thickbox").hide();
+});
+
+(function(a){a.fn.jdMarquee=function(h,b){if(typeof h=="function"){b=h;h={};}var j=a.extend({deriction:"up",speed:10,auto:false,width:null,height:null,step:1,control:false,_front:null,_back:null,_stop:null,_continue:null,wrapstyle:"",stay:5000,delay:20,dom:"div>ul>li".split(">"),mainTimer:null,subTimer:null,tag:false,convert:false,btn:null,disabled:"disabled",pos:{ojbect:null,clone:null}},h||{});var u=this.find(j.dom[1]);var e=this.find(j.dom[2]);var r;if(j.deriction=="up"||j.deriction=="down"){var l=u.eq(0).outerHeight();var c=j.step*e.eq(0).outerHeight();u.css({width:j.width+"px",overflow:"hidden"});}if(j.deriction=="left"||j.deriction=="right"){var n=e.length*e.eq(0).outerWidth();u.css({width:n+"px",overflow:"hidden"});var c=j.step*e.eq(0).outerWidth();}var o=function(){var s="<div style='position:relative;overflow:hidden;z-index:1;width:"+j.width+"px;height:"+j.height+"px;"+j.wrapstyle+"'></div>";u.css({position:"absolute",left:0,top:0}).wrap(s);j.pos.object=0;r=u.clone();u.after(r);switch(j.deriction){default:case"up":u.css({marginLeft:0,marginTop:0});r.css({marginLeft:0,marginTop:l+"px"});j.pos.clone=l;break;case"down":u.css({marginLeft:0,marginTop:0});r.css({marginLeft:0,marginTop:-l+"px"});j.pos.clone=-l;break;case"left":u.css({marginTop:0,marginLeft:0});r.css({marginTop:0,marginLeft:n+"px"});j.pos.clone=n;break;case"right":u.css({marginTop:0,marginLeft:0});r.css({marginTop:0,marginLeft:-n+"px"});j.pos.clone=-n;break;}if(j.auto){k();u.hover(function(){m(j.mainTimer);},function(){k();});r.hover(function(){m(j.mainTimer);},function(){k();});}if(b){b();}if(j.control){g();}};var k=function(s){m(j.mainTimer);j.stay=s?s:j.stay;j.mainTimer=setInterval(function(){t();},j.stay);};var t=function(){m(j.subTimer);j.subTimer=setInterval(function(){q();},j.delay);};var m=function(s){if(s!=null){clearInterval(s);}};var p=function(s){if(s){a(j._front).unbind("click");a(j._back).unbind("click");a(j._stop).unbind("click");a(j._continue).unbind("click");}else{g();}};var g=function(){if(j._front!=null){a(j._front).click(function(){a(j._front).addClass(j.disabled);p(true);m(j.mainTimer);j.convert=true;j.btn="front";t();if(!j.auto){j.tag=true;}f();});}if(j._back!=null){a(j._back).click(function(){a(j._back).addClass(j.disabled);p(true);m(j.mainTimer);j.convert=true;j.btn="back";t();if(!j.auto){j.tag=true;}f();});}if(j._stop!=null){a(j._stop).click(function(){m(j.mainTimer);});}if(j._continue!=null){a(j._continue).click(function(){k();});}};var f=function(){if(j.tag&&j.convert){j.convert=false;if(j.btn=="front"){if(j.deriction=="down"){j.deriction="up";}if(j.deriction=="right"){j.deriction="left";}}if(j.btn=="back"){if(j.deriction=="up"){j.deriction="down";}if(j.deriction=="left"){j.deriction="right";}}if(j.auto){k();}else{k(4*j.delay);}}};var d=function(w,v,s){if(s){m(j.subTimer);j.pos.object=w;j.pos.clone=v;j.tag=true;}else{j.tag=false;}if(j.tag){if(j.convert){f();}else{if(!j.auto){m(j.mainTimer);}}}if(j.deriction=="up"||j.deriction=="down"){u.css({marginTop:w+"px"});r.css({marginTop:v+"px"});}if(j.deriction=="left"||j.deriction=="right"){u.css({marginLeft:w+"px"});r.css({marginLeft:v+"px"});}};var q=function(){var v=(j.deriction=="up"||j.deriction=="down")?parseInt(u.get(0).style.marginTop):parseInt(u.get(0).style.marginLeft);var w=(j.deriction=="up"||j.deriction=="down")?parseInt(r.get(0).style.marginTop):parseInt(r.get(0).style.marginLeft);var x=Math.max(Math.abs(v-j.pos.object),Math.abs(w-j.pos.clone));var s=Math.ceil((c-x)/j.speed);switch(j.deriction){case"up":if(x==c){d(v,w,true);a(j._front).removeClass(j.disabled);p(false);}else{if(v<=-l){v=w+l;j.pos.object=v;}if(w<=-l){w=v+l;j.pos.clone=w;}d((v-s),(w-s));}break;case"down":if(x==c){d(v,w,true);a(j._back).removeClass(j.disabled);p(false);}else{if(v>=l){v=w-l;j.pos.object=v;}if(w>=l){w=v-l;j.pos.clone=w;}d((v+s),(w+s));}break;case"left":if(x==c){d(v,w,true);a(j._front).removeClass(j.disabled);p(false);}else{if(v<=-n){v=w+n;j.pos.object=v;}if(w<=-n){w=v+n;j.pos.clone=w;}d((v-s),(w-s));}break;case"right":if(x==c){d(v,w,true);a(j._back).removeClass(j.disabled);p(false);}else{if(v>=n){v=w-n;j.pos.object=v;}if(w>=n){w=v-n;j.pos.clone=w;}d((v+s),(w+s));}break;}};if(j.deriction=="up"||j.deriction=="down"){if(l>=j.height&&l>=j.step){o();}}if(j.deriction=="left"||j.deriction=="right"){if(n>=j.width&&n>=j.step){o();}}};})(jQuery);
+
+(function(){
+
+	var a={ 
+		obj:$("#spec-list"),
+		subobj:$("#spec-n1 img"),
+		width:720,
+		height:490,
+		subheight:540,
+		posi:function(){ 
+			var h=a.subobj.attr("height");
+			if(h<a.subheight&&h>0){
+				a.subobj.css({ "margin-top":(a.subheight-h)/2})
+			}else{
+				a.subobj.css({ "margin-top":0 });
+			}
+		},
+		
+		images:function(){ 
+			a.obj.find("img").bind("click",function(){ 
+				var src=$(this).attr("src");
+				var cont = $(this).attr("title");
+				$("#intro").html(cont);
+				$("#spec-n1 img").attr("src",src.replace("s128x96","s720x540"));
+				a.posi();
+				
+				if($("#spec-list li").hasClass("curr")){
+					$("#spec-list .curr").removeClass("curr")
+					};
+					$(this).parent().addClass("curr");
+					var m=a.calculate.swith();   
+					  
+					if(m[1]==0){ 
+						$("#foward").addClass("disabled");
+					}else{ 
+						if(m[1]+1==m[0]){ 
+						$("#next").addClass("disabled");
+					}else{
+						$("#foward").removeClass("disabled");	
+						$("#next").removeClass("disabled");
+					}
+				}
+			})
+		},
+		
+		alpha:function(){ 
+			var img=new Image();
+			img=$("#spec-n1").find("img").eq(0).get(0);
+			var appname = navigator.appName.toLowerCase();
+			if(appname.indexOf("netscape") == -1){ 
+				if(img.readyState == "complete"){ 
+					a.posi();
+				}
+			}else{ 
+				img.onload = function (){ 
+					if(img.complete == true){ 
+						a.posi();
+					}
+				}	
+			}
+		},
+	
+		calculate:{ 	
+			swith:function(){ 
+				var p=a.obj.find("li");
+				var m=[];
+				m[0]=p.length;
+				m[1]=p.index($(".curr"));
+				return m;	
+			},
+			roll:function(){ 
+				var p=a.obj.find("ul");
+				var m=[];
+				m[0]=parseInt(p.css("margin-top"));
+				m[1]=p.height();
+				return m;
+			}
+		},
+		
+		swith:function(){ 
+			$("#foward").bind("click",function(){ 
+				var m=a.calculate.swith();
+				var s=a.calculate.roll();
+				if(m[1]>0){ 
+					$("#next").removeClass("disabled");
+					$("#spec-list .curr").removeClass("curr");
+					var ob = a.obj.find("li").eq(m[1]-1).find("img");
+					var src=ob.attr("name"); 
+					var cont = ob.attr("title");
+					$("#intro").html(cont);
+					$("#spec-n1").find("img").attr("src",src.replace("s128x96","s720x540"));
+					a.posi();
+					a.obj.find("li").eq(m[1]-1).addClass("curr");
+				};
+				if(m[1]==1){ 
+					$("#foward").addClass("disabled");
+				};
+				if(m[1]==0){ 
+					$(".thickdiv,.thickbox").show();
+					setTimeout(function(){ closebox();},1200)
+				}
+				if(m[1]>2&&s[0]<0){ 
+					a.roll.next(1);
+				}
+			});
+			
+			$("#next").bind("click",function(){ 
+				var m=a.calculate.swith();
+				var s=a.calculate.roll();
+				if(m[1]<m[0]-1){ 
+					$("#foward").removeClass("disabled");
+					$("#spec-list .curr").removeClass("curr");
+					var ob = a.obj.find("li").eq(m[1]+1).find("img");
+					var src= ob.attr("name"); 
+					var cont = ob.attr("title");
+					$("#intro").html(cont);
+					$("#spec-n1").find("img").attr("src",src.replace("s128x96","s720x540"));
+					a.posi();
+					a.obj.find("li").eq(m[1]+1).addClass("curr");
+				};
+				if(m[1]+2==m[0]){ 
+					$("#next").addClass("disabled")
+				};
+				if(m[1]+1==m[0]){ 
+					$(".thickdiv,.thickbox").show();
+					setTimeout(function(){ closebox();},1200)
+				};
+				if(m[1]>=2&&s[1]+s[0]>490){ 
+					a.roll.foward(1);
+				}
+			})
+		},
+		
+		list:function(){ 
+			$("#spec-top").bind("click",function(){ 
+				var m=a.calculate.roll();
+				if(m[0]<0){ 
+					a.roll.next(2);	
+				}
+			});
+			
+			$("#spec-bottom").bind("click",function(){ 
+				var m=a.calculate.roll();
+				if(m[1]+m[0]>490){ 
+					a.roll.foward(2);	
+				}
+			});
+		},
+		
+		roll:{ 
+			foward:function(step){ 
+				var m=a.calculate.roll();
+				a.obj.find("ul").animate({ "marginTop":m[0]-125*step},100);
+			},
+			next:function(step){ 
+				var m=a.calculate.roll();
+				a.obj.find("ul").animate({ "marginTop":m[0]+125*step},100)		
+			}	
+		},
+		
+		init:function(){ 
+			a.obj.jdMarquee({
+				deriction:"up",
+				width:134,
+				height:490,
+				step:1,
+				speed:4,
+				delay:10,
+				control:false
+			});
+		
+			a.obj.find("ul").eq(1).remove();
+			var h=a.obj.find("li").length;
+			a.obj.find("ul").css({ "height":h*125});
+			a.images();
+			a.swith();
+			a.list();
+			a.alpha();
+		}
+	}; 
+	
+	a.init();
+	
+})(jQuery)
+</script>
+    
+
+<div class="footer" >
+    <div id="navbar">
+        <div class="logobnt"><a href="" target="_blank"></a></div>
+		<div id="navbtns" class="container" >
+			<div class="navbtn">
+				<a href="javascript:switchPage(0)">
+					<img id="img_home" src="images/home_selected.png" alt="首页">
+				</a>
+			</div>
+			<div class="navbtn">
+				<a href="javascript:switchPage(1)">
+					<img id="img_intro" src="images/intro.png" alt="">
+				</a>
+			</div>
+			<div class="navbtn">
+				<a href="javascript:switchPage(2)">
+					<img id="img_gift" src="images/gift.png" alt="">
+				</a>
+			</div>
+			<div class="navbtn" id="navbtnX">
+				<a href="javascript:switchPage(3)">
+					<img id="img_related" src="images/related.png" alt="">
+				</a>
+			</div>
+			
+		</div>
+    </div>
+</div>
+</div>
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

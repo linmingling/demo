@@ -1,0 +1,368 @@
+body{ background-color: #F06060; color: #fff; font: 12px/1.5 '寰蒋闆呴粦';
+}
+body>a{ display: none; }
+
+.page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.hide{display: none;}
+#loading{
+    display: block;
+    font-size: 30px;
+    line-height: 500px;
+    text-align: center;
+    color: #fff;
+}
+#index{background:url(../images/bg2.png) no-repeat center bottom #f05f62;background-size:100% auto}
+#index .bg{height:100%;position:relative;background:url(../images/bg1.png) no-repeat center top;background-size:100% auto }
+#index .logo{width:30%;margin-left:8%}
+#index .title{width:100%;margin:5px 0}
+#index .btns{text-align: center; width: 100%;position:relative;z-index:1}
+#index .btns .btn{font-size:0;width:123px;height:46px;background-size:123px}
+#index .btns .help-btn{background-position:0 -60px}
+#index .p1{width:60%;position:absolute;bottom:0;right:5px}
+#room{background:url(../images/bg4.png) no-repeat center bottom #f05f62;background-size:100% auto}
+#room .bg{height:100%;position:relative;background:url(../images/bg3.png) no-repeat center 50px;background-size:100% auto }
+#room header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 26px;
+    color: #FFA1A1;
+}
+#room header .lv{
+	color:#000;
+	background:url(../images/sprite.png) no-repeat;background-position:0 -153px;background-size:123px;
+    position: absolute;
+    width: 90px;
+    height: 50px;
+    left: 10px;
+    top: 0;
+}
+#room header .lv em{
+	margin-left:35px;
+    font-style: normal;
+}
+#room header .btn-pause{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    height: 40px;
+    width: 60px;
+    padding: 0;
+    color: #fff;
+	font-size:0;
+	background-position: 0 -118px;
+	background-size: 123px;
+}
+#room header .time{
+	display:block;
+	width: 80px;
+    height: 50px;
+	margin:0 auto;
+	color:#000;
+	background:url(../images/sprite.png) no-repeat;background-position:0 -188px;background-size:123px;
+	text-align:right
+	}
+#room header .time.danger{
+    font-weight:bold
+}
+
+#help{
+    height: 30px;
+    font-size: 22px;
+    color: #FFA1A1;
+    text-align: center;
+}
+
+#logo{
+    margin: 15px auto;
+    padding: 0;
+    /*background: url(../img/share.png) top right no-repeat #A74343;*/
+    width: 208px;
+    height: 82px;
+}
+
+#box{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    background-color: #ddd;
+    border-radius: 10px;
+    padding: 10px;
+}
+#box span{
+    float: left;
+    border-radius: 10px;
+    display: block;
+    cursor: pointer;
+    border: 5px solid #ddd;
+    background-size: cover;
+
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#box.lv2 span{
+    width: 50%;
+    height: 50%;
+}
+#box.lv3 span{
+    width: 33.33%;
+    height: 33.33%;
+}
+#box.lv4 span{
+    width: 25%;
+    height: 25%;
+}
+#box.lv5 span{
+    width: 20%;
+    height: 20%;
+    border-width: 3px;
+}
+#box.lv6 span{
+    width: 16.666%;
+    height: 16.666%;
+    border-width: 3px;
+}
+#box.lv7 span{
+    width: 14.28%;
+    height: 14.28%;
+    border-width: 3px;
+}
+#box.lv8 span{
+    width: 12.5%;
+    height: 12.5%;
+    border-width: 3px;
+}
+#box.lv9 span{
+    width: 11.111%;
+    height: 11.111%;
+    border-width: 3px;
+}
+#box span img{
+    width: 100%;
+}
+
+#dialog{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	background:url(../images/bg6.png) no-repeat center bottom #63e5db;
+	background-size:100% auto
+}
+#dialog .inner{
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+    font-size: 20px;
+	background:url(../images/bg5.png) no-repeat center top;
+	background-size:100% auto
+}
+#dialog .logo{width:25%;margin-left:8%;}
+#dialog .inner .pause{padding-top: 20px;}
+#dialog .inner .text{width:100%}
+#dialog .inner h3{
+    line-height: 30px;
+    font-size: 20px;
+    margin: 0;
+    color: #321;
+}
+#dialog .inner .btn{
+    margin: 15px auto;
+	width: 96px;
+	height: 40px;
+	font-size:0;
+}
+#dialog .inner .btn-restart{
+	background-size: 123px;
+	background-position: 0 -238px;
+}
+#dialog .inner .btn-rank{
+	background-size: 123px;
+	background-position: 0 -282px;
+}
+
+#dialog .inner p{ margin: 0;}
+#dialog .gameover, #dialog .pause{text-align: center;}
+#dialog .gameover{position:relative}
+#dialog .gameover .form-wrap{
+	position:absolute;
+	width:84%;
+	top:0;
+	left:8%;
+}
+#dialog .gameover .formBg{
+	width:100%;
+	margin:0 auto;
+}
+#dialog .gameover .btn-close{
+	position:absolute;
+	top:5px;
+	right:10px;
+	width:30px;
+	height:30px;
+	background-size:160px;
+	background-position:0 -498px;
+	margin:0
+}
+#dialog .gameover .form{
+	width:80%;
+	position:absolute;
+	top:40%;
+	left:10%;
+}
+#dialog .gameover .form .nameP{background:url(../images/form1.png) no-repeat center bottom;background-size:100%}
+#dialog .gameover .form .telP{background:url(../images/form2.png) no-repeat center bottom;background-size:100%}
+#dialog .gameover .form .addP{background:url(../images/form3.png) no-repeat center bottom;background-size:100%}
+#dialog .gameover .form p{text-align:right;height:32px}
+#dialog .gameover .form input{
+	width:60%;
+	height:23px;
+	border:0;
+	background:none
+}
+#dialog .gameover .form .btn-ok{
+	background-size:120px;
+	background-position:0 -327px;
+	margin:0 auto;
+	width:74px;
+	height:40px
+}
+#lotteryContainer{width:190px;height:93px;margin:5px auto 0 auto;position:relative}
+#lotteryContainer p{position:absolute;width:100%;bottom:1px;font-size:14px;text-align:center}
+#dialog .inner .btn-resume{
+	width:123px;
+	height:45px;
+	background-size:123px;
+	font-size:0;
+}
+.btn {
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    position: relative;
+    /*line-height: 70px;*/
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+	background-image:url(../images/sprite.png);
+	background-repeat:no-repeat;
+}
+
+.btn.btn-bottom{
+    position: absolute;
+    width: 300px;
+    padding: 0;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -150px;
+}
+
+.btn-wrap .boyaa-logo{
+    display:block;
+    height: 50px;
+    width: 100px;
+    margin: 0 auto;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.btn-wrap .boyaa-logo img{
+    max-width: 100%;
+}
+.helpBox{position:absolute;width:100%;height:100%;top:0;left:0;z-index:1;background:url(../images/bg8.png) no-repeat top center #f05f62;background-size:100%}
+.helpBox .bg{width:100%;height:100%;background:url(../images/bg4.png) no-repeat bottom center;background-size:100%}
+.helpBox p{margin:0}
+.helpBox .helpBlock{margin:10px 0}
+.helpBox .btn-close{
+	position:absolute;
+	top:10px;
+	right:10px;
+	width:25px;
+	height:25px;
+	background-size:160px;
+	background-position:0 -501px;
+	margin:0
+}
+.helpBox .helpMain{width:90%;height:70%;overflow:scroll;margin:0 5%;font-size:16px}
+.helpBox .helpTitle{font-size:20px;font-weight:bold;text-align:center;padding-top: 30px;}
+.helpBox .helpSTitle{font-size:20px;font-weight:bold;text-align:center}
+.helpBox img{width:100%}
+.rankBox{position:absolute;width:70%;top:0;left:15%;}
+.rankBox .bg{width:100%;margin:0 auto;}
+.rankBox .rankList{position:absolute;height:80%;top:13%;left:5%;width:90%;overflow-y:scroll;color:#d46e00;text-align:center}
+.rankBox .rankList p{height:30px;overflow:hidden;font-size:16px}
+.rankBox .rankList span{height:20px;display:inline-block;overflow:hidden;word-break: break-all;text-align:left;margin-left: 10px;}
+.rankBox .rankList .name{width:50%;}
+.rankBox .rankList .name img{width:15px;height:15px;border-radius:10px;margin-right:4px}
+@media all and (orientation:landscape) {
+    #room header{
+        height: 100%;
+        width: 80px;
+    }
+    #room header .lv{
+        left: 0;
+    }
+
+    #room header .time{
+        display: inline-block;
+        height: 50px;
+        width: 100%;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin-top: -25px;
+    }
+    #room header .btn-pause{
+        top: auto;
+        bottom: 15px;
+    }
+
+    #box{
+        top: 0;
+        left: 80px;
+    }
+
+    #dialog{
+        padding-top: 0;
+        padding-left: 80px;
+    }
+    #dialog .inner .content{
+        padding-top: 100px;
+    }
+}
+
+@media all and (max-width: 361px){
+
+    #box.lv1 span,#box.lv2 span,#box.lv3 span,#box.lv4 span{
+        border-width: 2px;
+        border-radius: 5px;
+    }
+
+    #box.lv5 span,#box.lv6 span,#box.lv7 span,#box.lv8 span,#box.lv9 span{
+        border-width: 1px;
+        border-radius: 3px;
+    }
+}
+
+.btn-boyaa{ 
+    padding-top: 10px;
+    text-decoration: none;
+
+}
+.btn-boyaa img{height: 30px; width: 30px; vertical-align: middle; margin-left: 10px;}
+/*  |xGv00|36198f24dd2ebb3d4e948fe323a120cf */

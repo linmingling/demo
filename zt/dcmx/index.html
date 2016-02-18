@@ -1,0 +1,265 @@
+
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,minimal-ui">
+			<meta http-equiv="pragma" content="no-cache">
+			<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+			<meta http-equiv="expires" content="-1">
+			<title>多彩梦想 手绘创纪录</title>
+			<link rel="stylesheet" type="text/css" href="css/m.min.css">
+		</script><script src="js/gamedudulu.js"></script>
+</head>
+<body>
+    
+    <!-- 游戏页面 -->
+    <div class="game">
+        <div class="gameWarp">
+            <div id="container"></div>
+        </div>
+    </div>
+	
+
+    <!-- 开始页面 -->
+    <div id="start" class="start">
+        <img src="images/logo.png" class="logo" />
+        <div class="btnBox">
+            <img src="images/start.png" class="ruleBtn" id="ruleBtn" />
+            <img src="images/rank.png" class="rankBtn" id="rankBtn" />
+        </div>
+    </div>
+    <!-- 游戏规则 -->
+    <div id="rule" class="rule hide">
+        <div class="ruleWarp">
+            <img src="images/rule_title.png" class="ruleTitle" />
+            <div class="ruleMain">
+                <div>1.在规定时间内找不同颜色的“手”越多，分数越高，每一期奖励排名前20的用户。首次参与必须转发至朋友圈才能获取分数哦！</div>
+                <div>
+                    2.活动时间：<br/>
+                    第一期：<br/>
+                    2015年8月15日0:00-18日24:00<br/>
+                    第二期：<br/>
+                    2015年8月19日0:00-22日24:<br/>
+                    第三期：<br/>
+                    2.活动时间：<br/>
+                    第一期：<br/>
+                    2015年8月15日0:00-18日24:00<br/>
+                    第二期：<br/>
+                    2015年8月19日0:00-22日24:<br/>
+                    第三期：<br/>
+                </div>
+            </div>
+            <img src="images/start.png" class="startBtn play-btn" />
+        </div>
+    </div>
+    <!-- 排行榜 -->
+    <div id="rank" class="rank hide">
+        <div class="rankWarp">
+            <div class="rankHead">
+                <span class="hover">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </div>
+            <div class="rankMain">
+                <p class="cf"><span class="r1">名次</span><span class="r2">名称</span><span class="r3">分数</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明王小明王小明王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">10</span><span class="r2">王小明</span><span class="r3">9999</span></p>
+            </div>
+            <img src="images/return.png" class="returnBtn" />
+        </div>
+    </div>
+    <!-- 分享提示 -->
+    <div id="shareTips" class="shareTips hide">
+        <img src="images/shareTips.png"/>
+    </div>
+
+	<script language="javascript">
+        var gamedudulu = new Gamedudulu("qmxzbjc");
+        gamedudulu.shareData.title = "";
+        gamedudulu.shareData.content = "";
+
+		function goHome(){
+			
+		}
+		function clickMore(){
+			
+		}
+		function dp_share(){
+		}
+		function dp_Ranking(){
+		}
+
+		function showAd(){
+		}
+		function hideAd(){
+		}
+		function dp_submitScore(score){
+		
+			
+		}
+	</script>
+
+ 
+
+<script id="tpl" type="text/html">
+<div class="grid">
+        <div class="page hide" id="loading">
+            <div class="loading-txt"><%=loading%></div>
+        </div>
+        <div class="page hide" id="index">
+            <h1><%=title%></h1>
+
+            <div id="help"><%=help_txt%></div>
+            <div class="btns">
+                <button data-type="color" class="btn play-btn">
+                    <%=btn_start%>
+                </button>
+			
+            </div>
+        </div>
+        <div class="page hide" id="room">
+            <header>
+                <span class="lv">
+                    <%=score%>
+                    <em>
+                        1
+                    </em>
+                </span>
+                <%=time%>
+                <span class="time">
+
+                </span>
+                <!--
+                <span class="btn btn-pause">
+                    <%=btn_pause%>
+                </span>
+                -->
+                <img src="images/pause.png" class="btn-pause" />
+				
+            </header>
+            <div id="box" class="lv1">
+            </div>
+        </div>
+        <div class="page hide" id="dialog">
+        <div class="inner">
+                <div class="content gameover">
+                    <div class="inner-content">
+                        <!--
+                        <h3></h3>
+                        <div class="btn-wrap">
+                            <button class="btn btn-restart">
+                                <%=btn_reTry%>
+                            </button>
+							
+                        </div>
+						-->
+                        <div class="resultBox">
+                            <img src="images/resultBg.png" class="resultBg" />
+                            <div class="resultMain">
+                                <p>恭喜你获得</p>
+                                <p><span class="score">9999</span>分</p>
+                                <div class="resultTips">
+                                    <p>据说目前最高纪录挑战到</p>
+                                    <p><span id="hscore">9999</span>分哦，要继续挑战吗？</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btnBox">
+                            <img src="images/again.png" class="btn-restart" />
+                            <img src="images/shareBtn.png" class="shareBtn" id="shareBtn" />
+                        </div>
+						
+                    </div>
+                </div>
+                <div class="content pause">
+                    <div class="inner-content">
+                        <img src="images/resume.png" class="btn-resume" />
+                     
+                    </div>
+                </div>
+            </div>
+    </ins>
+        </div>
+    </div>		
+	</script>
+
+<script src="js/libs.min.js"></script>
+<script src="js/main.min3.js"></script>
+
+<script>
+/*开始游戏*/
+    function hje_score(text){
+        console.log(text);
+
+        $(".score").html(text);
+        $("#hscore").html(999);
+    }
+    function hje_sratr(){
+        $("#rule").hide();
+        $("#start").hide();
+    }
+    function rank(qi){
+        var list = $("#rank .rankMain");
+            list.html('<p class="cf"><span class="r1">名次</span><span class="r2">名称</span><span class="r3">分数</span></p>');
+            var rank = new Array(
+                new Array("1","名字","99"),
+                new Array("2","名字","99"),
+                new Array("3","名字","99"),
+                new Array("4","名字","99"),
+                new Array("5","名字","99"),
+                new Array("6","名字","99"),
+                new Array("7","名字","99"),
+                new Array("8","名字","99"),
+                new Array("9","名字","99"),
+                new Array("10","名字","99")
+                );
+            for(i=0;i<rank.length;i++){
+                list.append('<p class="cf">'+
+                    '<span class="r1">'+rank[i][0]+'</span>'+
+                    '<span class="r2">'+rank[i][1]+'</span>'+
+                    '<span class="r3">'+rank[i][2]+'</span>'+
+                    '</p>');
+            };
+            $("#rank .rankHead span").removeClass("hover");
+            $("#rank .rankHead span").eq(qi-1).addClass("hover");
+            $("#rank").show();
+    }
+    $(function(){
+        /*打开规则*/
+        $("#ruleBtn").click(function(){
+            $("#rule").show();
+            $("#start").hide();
+        });
+        
+        $("#shareBtn").click(function(){
+            $("#shareTips").show();
+        });
+        $("#shareTips").click(function(){
+            $("#shareTips").hide();
+        });
+
+        /*打开排行榜*/
+        $("#rankBtn").click(function(){
+            rank(0);
+        });
+        $("#rank .rankHead span").click(function(){
+            var qi = parseInt($(this).index())+1;
+            rank(qi);
+        });
+        /*关闭排行榜*/
+        $("#rank .returnBtn").click(function(){
+            $("#rank").hide();
+        });
+    })
+</script>
+</body>
+</html>

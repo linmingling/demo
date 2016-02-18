@@ -1,0 +1,409 @@
+@charset "utf-8";
+body {
+    background-color: #c41a1a;
+}
+img {
+    -webkit-transform: translate3D(0, 0, 0);
+}
+
+.swiper-slide {
+    overflow: hidden;
+}
+
+.Txt {
+    text-align: center;
+    font-family: FZSJKK, "Microsoft YaHei", "Microsoft JhengHei", STHeiti, MingLiu;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.Txt_logo {
+    position: absolute;
+    width: 100%;
+    bottom: 120px;
+}
+
+#SlidePage1 {
+    background: url("../images/Mc_bg.jpg");
+    background-size: cover;
+}
+
+.Mc_logo {
+    margin-bottom: 30px;
+}
+
+.Txt_p1 {
+    margin-bottom: 54px;
+}
+
+#Mc_hand1 {
+    position: absolute;
+    margin-top: -350px;
+    margin-left: 326px;
+    z-index: 50;
+}
+
+#Mc_arrow {
+    position: fixed;
+    bottom: 38px;
+    left: 50%;
+    margin-left: -42px;
+    z-index: 100;
+    -webkit-animation: arrow 1s ease-in-out infinite;
+    -o-animation: arrow 1s ease-in-out infinite;
+    animation: arrow 1s ease-in-out infinite;
+}
+
+.ShowBg {
+    background: url("../images/Mc_bg2.jpg");
+    background-size: cover;
+}
+
+.ShowBox {
+    position: relative;
+}
+
+.ShowLogo {
+    margin-bottom: 18px;
+
+}
+
+.ShowName {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.Mc_hot {
+    position: absolute;
+    left: 35px;
+    top: 17px;
+}
+
+.Mc_name {
+    position: absolute;
+    left: 29px;
+    top: 51px;
+}
+
+.Mc_price {
+    position: absolute;
+    right: 29px;
+    top: 34px;
+}
+
+.ShowTip {
+    position: absolute;
+    right: 31px;
+    top: 14px;
+}
+
+.ShowTransForm {
+    -webkit-transform: translate3D(0, 0, 0);
+}
+
+#SwiperModule {
+    /*display: none;*/
+}
+
+#PlayModule {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+}
+
+#Mc_hand3 {
+    margin-bottom: 100px;
+}
+
+.HandAni {
+    transform-origin: right bottom;
+    -webkit-transform-origin: right bottom;
+    animation: 3s waggle infinite;
+    animation-delay: 1.5s;
+    -webkit-animation: 3s waggle infinite;
+    -webkit-animation-delay: 1.5s;
+}
+
+@keyframes waggle {
+    0%, 7% {
+        transform: rotateZ(0deg);
+    }
+    15% {
+        transform: rotateZ(-15deg);
+    }
+    20% {
+        transform: rotateZ(10deg);
+    }
+    25% {
+        transform: rotateZ(-10deg);
+    }
+    30% {
+        transform: rotateZ(6deg);
+    }
+    35% {
+        transform: rotateZ(-4deg);
+    }
+    40%, 100% {
+        transform: rotateZ(0deg);
+    }
+}
+
+@-webkit-keyframes waggle {
+    0%, 7% {
+        -webkit-transform: rotateZ(0deg);
+    }
+    15% {
+        -webkit-transform: rotateZ(-15deg);
+    }
+    20% {
+        -webkit-transform: rotateZ(10deg);
+    }
+    25% {
+        -webkit-transform: rotateZ(-10deg);
+    }
+    30% {
+        -webkit-transform: rotateZ(6deg);
+    }
+    35% {
+        -webkit-transform: rotateZ(-4deg);
+    }
+    40%, 100% {
+        -webkit-transform: rotateZ(0deg);
+    }
+}
+
+#OverModule {
+    background: url("../images/Mc_bg.jpg");
+    background-size: cover;
+    display: none;
+}
+
+#OverModule #Mc_txt_p8 {
+    margin-top: -95px;
+    margin-bottom: 90px;
+}
+
+#OverModule .ResultBox {
+    margin-top: -224px;
+}
+
+#OverModule .ResultBox p {
+    position: relative;
+    left: 330px;
+    bottom: 157px;
+    text-align: left;
+    font-family: FZSJKK, "Microsoft YaHei", "Microsoft JhengHei", STHeiti, MingLiu;
+    font-size: 30px;
+    color: #ffe034;
+}
+
+#bag1 {
+    position: absolute;
+    z-index: 100;
+    left: 90px;
+    top: 50px;
+}
+
+#bag2 {
+    position: absolute;
+    z-index: 100;
+    right: 45px;
+    top: 98px;
+    transform: scale(0.5, 0.5);
+}
+
+#bag3 {
+    position: absolute;
+    z-index: 100;
+    left: 26px;
+    bottom: 238px;
+    transform: scale(0.5, 0.5);
+}
+
+#bag4 {
+    position: absolute;
+    z-index: 100;
+    right: 29px;
+    bottom: 200px;
+}
+
+#InfoModule {
+    background: url("../images/Mc_bg.jpg");
+    background-size: cover;
+    display: none;
+}
+
+#InfoBox {
+    position: relative;
+}
+
+#InfoBox input {
+    width: 408px;
+    height: 68px;
+    margin: 10px 0px 10px 0px;
+    font-family: FZSJKK, "Microsoft YaHei", "Microsoft JhengHei", STHeiti, MingLiu;
+    font-size: 30px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    -webkit-appearance: none;
+}
+
+#InfoBox #Txt_name {
+    position: absolute;
+    z-index: 100;
+    top: 85px;
+    left: 76px;
+}
+
+#InfoBox #Txt_phone {
+    position: absolute;
+    z-index: 100;
+    top: 163px;
+    left: 76px;
+}
+
+#Btn_post {
+    position: absolute;
+    z-index: 100;
+    left: 73px;
+    bottom: 33px;
+}
+
+#PopModule {
+    background: url("../images/Mc_bg.jpg");
+    background-size: cover;
+    display: none;
+}
+
+#PopModule #Btn_share {
+    position: relative;
+    bottom: 100px;
+}
+
+#ShareModule {
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 999;
+    display: none;
+}
+
+#CodeModule {
+    background: url("../images/Mc_bg.jpg");
+    background-size: cover;
+}
+
+#CodeModule p {
+    text-align: center;
+    font-family: FZSJKK, "Microsoft YaHei", "Microsoft JhengHei", STHeiti, MingLiu;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+#Mc_code {
+    margin-bottom: 65px;
+}
+
+#Mc_line1 {
+    position: absolute;
+    left: 0px;
+    bottom: 520px;
+}
+
+#Mc_line2 {
+    position: absolute;
+    right: 0px;
+    bottom: 190px;
+}
+
+@-webkit-keyframes arrow {
+    0%, 100% {
+        -webkit-transform: translate3d(0, 8px, 0)
+    }
+    50% {
+        -webkit-transform: translate3d(0, -8px, 0)
+    }
+}
+
+@keyframes arrow {
+    0%, 100% {
+        -webkit-transform: translate3d(0, 8px, 0)
+    }
+    50% {
+        -webkit-transform: translate3d(0, -8px, 0)
+    }
+}
+
+.HandAni2{
+    -webkit-animation: hand 1s ease-in-out infinite;
+    -o-animation: hand 1s ease-in-out infinite;
+    animation: hand 1s ease-in-out infinite;
+}
+
+@-webkit-keyframes hand {
+    0%, 100% {
+        opacity: 1
+    }
+    50%{
+        opacity: 0.5;
+    }
+}
+
+@keyframes hand {
+    0%, 100% {
+        opacity: 1
+    }
+    50%{
+        opacity: 0.5;
+    }
+}
+
+
+#loading {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 999;
+    background-color: #c41a1a;
+}
+
+.spinner {
+    width: 100px;
+    height: 100px;
+    background-color: #ffffff;
+    border-radius: 100%;
+    -webkit-animation: scaleout 1.0s infinite ease-in-out;
+    animation: scaleout 1.0s infinite ease-in-out;
+}
+
+@-webkit-keyframes scaleout {
+    0% {
+        -webkit-transform: scale(0.0)
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+@keyframes scaleout {
+    0% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    100% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+        opacity: 0;
+    }
+}

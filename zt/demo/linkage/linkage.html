@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>省市区三级联动</title>
+<style>
+	.warp{width: 600px;padding:30px;margin:50px auto;text-align: center;border: 3px dashed #B0E2FF;border-radius: 20px}
+	select{height: 35px;line-height: 35px;width: 160px}
+
+</style>
+</head>
+<body>
+	<div class="warp">
+		<p class="tips">这个联动是向我们自己的后台请求数据的，如果省市区有缺漏可以找续兴添加</p>
+		<select class="province" id="province"><option value="0">请选择省</option></select>
+		<select class="city" id="city"><option value="0">请选择市</option></select>
+		<select class="district" id="district"><option value="0">请选择区</option></select>
+
+	</div>
+	
+	<script src="jquery-1.8.3.min.js"></script>
+	<script>
+		$(function () {
+
+
+			//请求省
+			$.ajax({
+				async:false,
+				type:'get',
+				url : 'http://pay.yoju360.com/phone/Ext/region/1',  //对应省的地址
+				dataType : 'jsonp',
+				jsonp:"callback",
+				success  : function(data) {
+					if(data.state ==  1){
+						var option = "<option value='0'>请选择省</option>";
+						var list = data.data;
+						for(var i in list){
+							option = option + '<option value="'+i+'">'+list[i]+'</option>';
+						}
+						$("#province").html(option);
+					}
+				},
+				error : function() {
+					alert("服务器忙，请刷新！")
+				}
+			});
+
+			//请求市
+			$("#province").change(function(){
+				if($("#province").val() != 0){
+					$.ajax({
+						async:false,
+						type:'get',
+						url : 'http://pay.yoju360.com/phone/Ext/region/'+$("#province").val(),
+						dataType : 'jsonp',
+						jsonp:"callback",
+						success  : function(data) {	
+							if(data.state ==  1){
+								var option = "<option value='0'>请选择市</option>";
+								var list = data.data;
+								for(var i in list){
+									option = option + '<option value="'+i+'">'+list[i]+'</option>';
+								}
+								$("#city").html(option);
+							}
+						},
+						error : function() {
+							alert("服务器忙，请重试！")
+						}
+					});
+				}else{
+					$("#addressForm .qu").html("<option value='0'>请选择区</option>");
+				}
+			});
+
+			//请求区
+			$("#city").change(function(){
+				if($("#city").val() != 0){
+					$.ajax({
+						async:false,
+						type:'get',
+						url : 'http://pay.yoju360.com/phone/Ext/region/'+$("#city").val(),
+						dataType : 'jsonp',
+						jsonp:"callback",
+						success  : function(data) {	
+							if(data.state ==  1){
+								var option = "<option value='0'>请选择区</option>";
+								var list = data.data;
+								for(var i in list){
+									option = option + '<option value="'+i+'">'+list[i]+'</option>';
+								}
+								$("#district").html(option);
+							}
+						},
+						error : function() {
+							alert("服务器忙，请重试！")
+						}
+					});
+				}else{
+					$("#addressForm .qu").html("<option value='0'>请选择区</option>");
+				}
+			});
+
+		})
+	</script>
+</body>	
+</html>

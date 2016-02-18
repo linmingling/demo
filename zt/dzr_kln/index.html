@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>大自然·柯拉尼建博会</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/owl.carousel.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('#owl-demo').owlCarousel({
+		items: 1,
+		navigation: true,
+		navigationText: ["上一个","下一个"],
+		autoPlay: true,
+		stopOnHover: true,
+		afterInit: function(){
+			var $t = $('.owl-pagination span');
+			$t.each(function(i){
+				$(this).before('<img src="img/t' + (i+1) + '.jpg">');
+			})
+		}
+	});
+});
+</script>
+
+<script src="js/jquery.tabs.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	$("img[original]").lazyload({ placeholder:"images/color3.gif" });
+	
+	$('.demo1').Tabs();
+	$('.demo2').Tabs({
+		event:'click'
+	});
+	$('.demo3').Tabs({
+		timeout:300
+	});
+	$('.demo4').Tabs({
+		auto:3000
+	});
+	$('.demo5').Tabs({
+		event:'click',
+		callback:lazyloadForPart
+	});
+	//部分区域图片延迟加载
+	function lazyloadForPart(container) {
+		container.find('img').each(function () {
+			var original = $(this).attr("original");
+			if (original) {
+				$(this).attr('src', original).removeAttr('original');
+			}
+		});
+	}
+});	
+</script>
+
+<!--滚动条-->
+<script type="text/javascript" src="js/jquery.sly.js"></script>
+<script type="text/javascript" src="js/jquery.easing-1.3.min.js"></script>
+<script type="text/javascript">
+$(function($){
+
+
+  
+
+	// 占位符项目来填充列表的功能
+	function populate(container, count, offset){
+		var output = '';
+		offset = isNaN(offset) ? 0 : offset;
+		for(var i = 0; i<count; i++ ){
+			output += '<li>'+(offset+i)+'</li>';
+		}
+		return $(output).appendTo(container);
+	}
+
+	// 填充列表项
+	$('ul[data-items]').each(function(i,e){
+		var items = parseInt($(e).data('items'), 10);
+		populate(e, items);
+	});
+
+	var isBindScroll = false;
+	var bindScroll = function (id) {
+	    if (isBindScroll) { return false; }
+	    isBindSroll = true;
+	    id=id || "vertical";
+	    var $section = $("#" +id);
+	  
+	    var $frame = $section.find('.frame'),
+			$ul = $frame.find('ul').eq(0),
+			$scrollbar = $section.find('.scrollbar'),
+			$buttons = $section.find('.controlbar [data-action]');
+			
+
+	    populate($ul, 10);
+
+	    // 控制
+	    $buttons.on('click', function (e) {
+	        var action = $(this).data('action');
+	        switch (action) {
+	            case 'reset':
+	                $frame.sly('toStart');
+	                setTimeout(function () {
+	                    $ul.find('li').slice(10).remove();
+	                    $frame.sly('reload');
+	                }, 200);
+	                break;
+	            default:
+	                $frame.sly(action);
+	        }
+	    });
+
+	    $section.find(".slyWrap").each(function(i,e){
+			var cont = $(this),
+				frame = cont.find(".sly"),
+				slidee = frame.find("ul"),
+				scrollbar = cont.find(".scrollbar"),
+				pagesbar = cont.find(".pages"),
+				options = frame.data("options"),
+				controls = cont.find(".controls"),
+				prevButton = controls.find(".prev"),
+				nextButton = controls.find(".next"),
+				prevPageButton = controls.find(".prevPage"),
+				nextPageButton = controls.find(".nextPage");
+
+			options = $.extend({},options,{
+				scrollBar: scrollbar,
+				pagesBar: pagesbar,
+				prev: prevButton,
+				next: nextButton,
+				prevPage: prevPageButton,
+				nextPage: nextPageButton,
+				disabledClass: 'btn-disabled'
+			});
+
+	        frame.sly(options);
+
+	        cont.find("button").click(function () {
+	            var action = $(this).data('action'),
+				arg = $(this).data('arg');
+	            switch (action) {
+	                case 'add':
+	                    slidee.append(slidee.children().slice(-1).clone().removeClass().text(function (i, text) {
+	                        return text / 1 + 1;
+	                    }));
+	                    frame.sly('reload');
+	                    break;
+	                case 'remove':
+	                    slidee.find("li").slice(-1).remove();
+	                    frame.sly('reload');
+	                    break;
+	                default:
+	                    frame.sly(action, arg);
+	            }
+	        });
+
+	    });
+	};
+
+    $("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical");
+	    }, 200);
+	});
+
+    $("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical3");
+	    }, 200);
+	});
+	
+    $("#m2").on("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical12");
+	    }, 200);
+	});
+	$("#m3").on("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical13");
+	    }, 200);
+	});
+	$("#m4").on("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical14");
+	    }, 200);
+	});
+	
+	$("#menu2x").on("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical15");	    
+		}, 200);
+	});
+	// 主要调用部分
+	$(document).on('activated',function(event){
+		
+	}).trigger('activated');
+	
+
+});
+</script><!--end滚动条-->
+
+
+</head>
+
+<body>
+ 
+
+<div class="heads" id="pro">
+   <div class="banner01">
+      <div class="box01">
+         <ul>
+            <li><a href="#a1">走进大自然柯拉尼</a></li>
+            <li><a href="#a2">加盟攻略</a></li>
+            <li><a href="#a3">产品系列</a></li>
+         </ul>
+      </div>
+  </div>
+   <div class="banner02">
+     <div class="box02">
+         <!-- Demo -->
+<div id="owl-demo" class="owl-carousel">
+	<div class="itme">
+		<img src="images/t1.jpg" width="992" height="338" /></div>
+	<div class="itme">
+		<img src="images/t2.jpg" width="992" height="338" />
+	</div>
+	<div class="itme">
+		<img src="images/t3.jpg" width="992" height="338" />
+	</div>
+	
+</div>
+<!-- Demo end -->
+     </div><!--end box02-->
+  </div>
+</div><!--end heads-->
+
+<div class="main1" id="a1">
+   <div class="con">
+     <div class="box1">2015年7月8-11日，被誉为“亚洲建材第一展”的第十七届中国(广州)国际建筑装饰博览会将于广交会展馆盛大开幕，中国德式橱柜行业领军品牌大自然·柯拉尼将与您相约集成家居馆13.2-12 展馆。</div>
+     <div class="box2">
+        <h3>大自然·柯拉尼健康智能厨房最强音</h3>
+        <p>大自然·柯拉尼将以“智领健康生活”为主题盛装参展，展会将首发大自然·柯拉尼新品“智能健康厨房”，展示我们对未来智能厨房的想象与描绘。高科技厨房能为我们带来的，将是传统烹饪方式的改革，原本繁琐的厨房家务，在智能厨房的帮助下变得更智慧、更全面、更轻松 ......</p>
+        <p><a href="http://www.jia360.com/chufang/20150624/1435129883170.html" target="_blank">【查看详情】</a></p>
+     </div>
+   </div>
+</div>
+<div class="main2"></div>
+<div class="main3"></div>
+<div class="main4" id="a2">
+  <div class="box demo2">
+			<ul class="tab_menu">
+				<li class="current"><span></span>加盟优势</li>
+				<li id="menu2x"><span></span>加盟支持</li>
+				<li><span></span>加盟模式</li>
+				<li><span></span>加盟流程</li>
+			</ul>
+			<div class="tab_box">
+				<div>
+					<div class="bts"><img src="images/xbt01.jpg" width="999" height="168" /></div>
+                    <div class="bts2"><img src="images/x1.png" width="580" height="240" /></div>
+                    <div class="txts">
+                        <div id="vertical" class="scrollbox clearfix">
+                 <div class="slyWrap example1" style="width:1000px;">
+                   <div class="scrollbar" style="border-top:none;">
+                     <div class="handle"></div>
+                   </div>
+                   <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }'style="width:960px;">
+                   <div style=" padding-left:25px;">
+                       <div class="linbox">
+                          <h3>1、开业支持：</h3>
+                          <p>全国统一的大自然•柯拉尼品牌标识及VI形象，全国统一店面装修、统一培训、统一企划；协助进行店面选址及实地考察，根据店面位置、面积提供设计方案，并指导样品设计与下单；指导店面装修施工；指导首次样品安装；由设计师协助设计与营造展厅软装环境；</p>
+                          <h3>2、培训支持：</h3>
+                          <p> 1）开业前到公司培训基地进行全方位、多层次的系统培训，迅速提升专业知识、沟通技巧、管理能力与人员素质；</p>
+                          <p> 2）对导购人员的产品知识、产品计价、合同签订和客户沟通与服务等方面开展销售培训；</p>
+                          <p> 3）对设计人员的产品规格、测量、设计制图等方面开展系统培训；</p>
+                          <p> 4）对推广人员的小区推广、家装公司设计师的开发与维护、工程渠道如何开展等方面开展推广培训；</p>
+                          <p> 5）对安装人员的安装技能、识图、维修等进行培训，并组织参与安装的实战训练；</p>
+                          <p> 6）对店面管理、订单管理、客户服务等开展专项培训；</p>
+                          <p> 7）每年不定期在大自然•柯拉尼培训基地集中组织综合或专项培训，提升业务、营销、管理能力。根据加盟伙伴的申请，公司亦可派遣专业人员到当地组织定向业务能力培训。</p>
+                          <h3>3、推广支持：</h3>
+                          <p>大自然·柯拉尼将定期对市场进行调研，不断总结出更多行之有效的推广方案并结合节点制定推广方案；</p>
+                          <h3>4、活动支持：</h3>
+                          <p>提供万人疯抢会、店庆、315、五一、十一、元旦等节假日重点市场推广活动方面的策划与执行指导；</p>
+                          <h3>5、管理支持：</h3>
+                          <p> 1）对加盟伙伴人员组织架构、岗位职责、工作流程、薪资体系、考核及奖惩体系的筹建与制定提供意见，进行管理制度的输出；</p>
+                          <p> 2）推行标准化店面的管理模式，提供日常规范运营所需的各类表单和文本等；</p>
+                          <p> 3）汇编和共享系统内加盟伙伴成员的营销案例；</p>
+                          <p> 4）提供国内最专业的全套销售培训资料，为加盟伙伴提供专业的指导和必需的培训支持；营销专家不定期拜访交流，帮助加盟伙伴解决制约发展的各种症结。</p>
+                          <h3>6、品牌支持：</h3>
+                          <p>公司每年联合国内外家居媒体（新浪、搜狐、网易、凤凰、搜房网等）举办时尚发布会及设计师活动，并且联手央视及全国三十多个卫视进行品牌传播和其他深度推广，如事件推广、公益推广等。</p>
+                          <h3>7、服务支持：</h3>
+                          <p>设立有专业的客服部团队负责售后服务的需求及投诉，我们将在24小时给出让您满意的解决方案。</p>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+      </div>
+                    </div>
+				</div>
+				<div class="hide">
+					<div class="bts"><img src="images/xbt02.jpg" width="999" height="168" /></div>
+                    <div class="txts" style="margin-top:100px;">
+                        <div id="vertical15" class="scrollbox clearfix">
+                 <div class="slyWrap example1" style="width:1000px;">
+                   <div class="scrollbar" style="border-top:none;">
+                     <div class="handle"></div>
+                   </div>
+                   <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }'style="width:960px;">
+                   <div style=" padding-left:25px;">
+                       <div class="linbox">
+                          <h3>“大自然”的馈赠，畅享德式生活品质</h3>
+                          <p>大自然•柯拉尼 ，由全球领先的地板与家居产品解决方案供应商——大自然家居，携手纯德式专业橱衣柜品牌“柯拉尼”联合组建而成。产品整合全球资源，传承了德国工业文明的精髓，精工精致，只为品质生活。</p>
+                          <p>大自然•柯拉尼，汇聚了橱柜、衣柜等风格材质各异的定制家居产品，产品线拥有4大系列——尊7，恒5，简3、悦＋。始终坚持“精工精致纯德式”作为品牌的核心DNA，产品追求“精、美、工、巧”，为客户提供健康的产品、专业的服务和人性化的设计。</p>
+                          <p>如今，大自然•柯拉尼产品有中山、东莞两大生产基地支撑，配套年产100000套各型高端定制家居产品的生产线，产品包括橱柜、衣柜等家具产品，可满足消费者各种个性化的家具产品需求。 </p>
+                          <h3>大自然·柯拉尼的故事，家居里的传奇</h3>
+                          <p>作为“世界优秀自然保护支持者”的家居龙头企业，大自然家居积极推动健康环保产品的研发与生产，逐步构建可持续的绿色产业链，在原材料采购、产品的制造、配送、销售、售后等各个环节都力求减少碳的排放，主动承担节能减排的社会责任。秉承“担社会责任、普健康生活”的发展理念，大自然家居把企业发展和生态和谐紧密联系在一起，积极推进“中国绿色版图工程”，相继开展了“我为黄河种棵树”、“我为长江种棵树”、“我为消费者种棵树”、“我为零碳种棵树”等植树活动，截止2013年5月，已在山西、广东、山东、北京、湖北、上海、江苏等地建立了14个生态林；通过微博种树、网络种树等途径，吸引了近5亿人次关注和支持环保事业。</p>
+                          <p>未来，大自然家居将转变发展方式，推动战略转型，深化产业链、价值链、管理链、经营链的优化组合，构建品牌全球化体系，成为具有全球竞争力的绿色家居企业。。</p>
+                          <h3>浑然天成，精工细琢的品质</h3>
+                          <p>大自然·柯拉尼以经典德式设计理念和工艺著称，致力于为人们带去简约、美观、实用的家居生活。产品将德国的设计理念与中国的居家文化完美结合，衍生了德式生活方式的理念，拥有自主设计的外观和首发产品，为您提供独具优势的德国工艺及品质标准。</p>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+      </div>
+                    </div>
+				</div>
+				<div class="hide">
+					<div class="bts"><img src="images/xbt03.jpg" width="999" height="168" /></div>
+                    <div class="jmms">
+                       <h4>1、创业保证计：</h4>
+                       <p>1）创业保障计划特点：投资少，人数要求低，，适合有梦想经验少新创业的加盟商。</p>
+                       <p>2)、加盟要求:  </p>
+                       <p class="ss">（1）加盟商有一定的品牌经营管理经验、运作能力、持续发展的能力； </p>
+                       <p class="ss">（2）具备一定的资金实力，有良好的资金信用；</p>
+                       <p class="ss">（3）熟悉当地市场，有较好的社会资源和行业资源；</p>
+                       <h4>2、投资保障计：</h4>
+                       <p>投资保障计划特点：灵活的加盟方式，可以单品牌或双品牌加盟，可以单做橱柜或者衣柜，客户主观感受强容易激发购买欲，公司给予的各项支持完善</p>
+                    </div>
+				</div>
+				<div class="hide">
+					<div class="bts"><img src="images/xbt04.jpg" width="999" height="168" /></div>
+                    <div class="x4"><img src="images/x4.png" width="1000" height="550" /></div>
+				</div>
+			</div>
+		</div><!--demo2 end-->
+</div>
+<div class="main5" id="a3">
+   <div class="show">
+                  <div id="home_banner3">
+
+	<a id="big_a3"><div id="big_img3"></div></a>
+	
+	<div class="relative">
+		<div id="small_img3">
+			<div class="maxwidth3">
+				<a id="small_pre3"><img src="images/left.png" /></a>
+				<div id="small_imgs3">
+					<a href="javascript:;" class="item"><div class="img" b="images/z01.jpg" l="" theid="69"> <img src="images/z01.jpg"/></div></a>
+					<a href="javascript:;" class="item"><div class="img" b="images/z02.jpg" l="" theid="69"> <img src="images/z02.jpg"/></div></a>
+					<a href="javascript:;" class="item"><div class="img" b="images/z03.jpg" l="" theid="69"> <img src="images/z03.jpg"/></div></a>
+					<a href="javascript:;" class="item"><div class="img" b="images/z04.jpg" l="" theid="69"> <img src="images/z04.jpg"/></div></a>
+                    <a href="javascript:;" class="item"><div class="img" b="images/z05.jpg" l="" theid="69"> <img src="images/z05.jpg"/></div></a>
+                    <a href="javascript:;" class="item"><div class="img" b="images/z06.jpg" l="" theid="69"> <img src="images/z06.jpg"/></div></a>
+                    <a href="javascript:;" class="item"><div class="img" b="images/z07.jpg" l="" theid="69"> <img src="images/z07.jpg"/></div></a>
+                    <a href="javascript:;" class="item"><div class="img" b="images/z08.jpg" l="" theid="69"> <img src="images/z08.jpg"/></div></a>
+                    <a href="javascript:;" class="item"><div class="img" b="images/z09.jpg" l="" theid="69"> <img src="images/z09.jpg"/></div></a>
+                    <a href="javascript:;" class="item"><div class="img" b="images/z10.jpg" l="" theid="69"> <img src="images/z10.jpg"/></div></a>
+                    <a href="javascript:;" class="item"><div class="img" b="images/z11.jpg" l="" theid="69"> <img src="images/z11.jpg"/></div></a>
+                    <a href="javascript:;" class="item"><div class="img" b="images/z12.jpg" l="" theid="69"> <img src="images/z12.jpg"/></div></a>
+                    <a href="javascript:;" class="item"><div class="img" b="images/z13.jpg" l="" theid="69"> <img src="images/z13.jpg"/></div></a>
+				</div>
+				<a id="small_next3"><img src="images/right.png" /></a>
+			</div>
+		</div>
+	</div>
+</div>
+               </div><!--en show-->
+</div>
+<div class="main6"></div>
+<script type="text/javascript" src="js/script.js"></script>
+<script src="js/my.js"></script>
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

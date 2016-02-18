@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>腾讯网·亚太家居</title>
+<meta name="keywords" content="腾讯网 亚太家居" />
+<meta name="description" content="腾讯网 亚太家居" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="css/com.css?v=1.0"  />
+
+</head>
+<body>
+	<div class="warp-1">
+		<div class="page page1 ">
+			<img src="images/p1_1.png" class="p1" />
+			<img src="images/p1_2.png" class="p2" />
+			<input onchange="previewImage(this)" type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" class="hide sign_file"/>
+			<p><span class="btn" id="b1">人脸识别签到</span></p>
+			
+		</div>
+		<div class="page page2">
+			<div class="photoBox">
+				<div id="preview">
+					<img src="" id="imghead" class="p2" />
+				</div>
+				<img src="images/p2_1.gif" class="p1" />
+			</div>
+			<p class="t1">人脸识别开始扫描 3 秒</p>
+		</div>
+		<div class="page page3 hide">
+			<img src="images/p3.png" class="p1" />
+			<p><span class="btn" id="b2">返回</span></p>
+		</div>
+	</div>
+  <!--#include virtual="/public/Copyright.html"-->    
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/photobooth_min.js"></script>
+<script type="text/javascript">
+//图片上传预览    IE是用了滤镜。
+        function previewImage(file)
+        {
+          var MAXWIDTH  = 260; 
+          var MAXHEIGHT = 180;
+          var div = document.getElementById('preview');
+          if (file.files && file.files[0])
+          {
+              div.innerHTML ='<img id=imghead>';
+              var img = document.getElementById('imghead');
+              img.onload = function(){
+                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                img.width  =  rect.width;
+                img.height =  rect.height;
+//                 img.style.marginLeft = rect.left+'px';
+                img.style.marginTop = rect.top+'px';
+              }
+              var reader = new FileReader();
+              reader.onload = function(evt){img.src = evt.target.result;}
+              reader.readAsDataURL(file.files[0]);
+          }
+          else //兼容IE
+          {
+            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+            file.select();
+            var src = document.selection.createRange().text;
+            div.innerHTML = '<img id=imghead>';
+            var img = document.getElementById('imghead');
+            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+            div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+          }
+		  
+		    $(".page2").css({"z-index":"1"}).fadeIn(500);
+			$(".page2 .p1").attr("src","images/p2_1.gif");
+			setTimeout(function(){
+				$(".page1").fadeOut(500);
+				$(".page2").fadeOut(500);
+				//$( '#photobooth' ).data( "photobooth" ).destroy();
+				$(".page3").fadeIn(500);
+			},3000);
+			setTimeout(function(){
+				$(".page2 .p1").attr("src","");
+			},3500);
+        }
+        function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+            var param = {top:0, left:0, width:width, height:height};
+            if( width>maxWidth || height>maxHeight )
+            {
+                rateWidth = width / maxWidth;
+                rateHeight = height / maxHeight;
+                
+                if( rateWidth > rateHeight )
+                {
+                    param.width =  maxWidth;
+                    param.height = Math.round(height / rateWidth);
+                }else
+                {
+                    param.width = Math.round(width / rateHeight);
+                    param.height = maxHeight;
+                }
+            }
+            
+            param.left = Math.round((maxWidth - param.width) / 2);
+            param.top = Math.round((maxHeight - param.height) / 2);
+            return param;
+        }
+$(function(){
+	//初始化
+	$(".warp-1").height($(window).height());
+	//拍照
+	
+	
+	$("#b1").click(function(){
+		$("#cameraInput").click();
+	});
+	
+	$("#b2").click(function(){
+		$(".page3").fadeOut(500);
+		$(".page1").fadeIn(500);
+	});
+	$(".page3 .p1").click(function(){
+		$(".page3").fadeOut(500);
+		$(".page1").fadeIn(500);
+	});
+});
+</script>
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

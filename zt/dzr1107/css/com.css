@@ -1,0 +1,200 @@
+
+body {
+    
+    position:relative;
+    margin:0;
+    padding:0 0 0 0;
+}
+*{margin:0; padding:0; list-style-type:none}
+a,img{border:0; text-decoration: none;}
+a{ color:#000000;}
+a:hover{ 
+	color:#FF0000;
+}
+body {
+    background:url(../images/0.jpg) no-repeat scroll center top rgba(0, 0, 0, 0);
+}
+.hide{display: none}
+.goToTop {position: fixed;bottom: 1%;right: 15%;z-index: 10;width: 48px;height: 48px;border: 1px solid #d2d2d2;  background: url(../images/goToTop.png) no-repeat 0 0;margin-top: 10px;cursor: pointer;}
+.goToTop:hover{background-position:0px -48px;-webkit-transition:background-position .3s ease-out;-moz-transition:background-position .3s ease-out;transition:background-position .3s ease-out;}
+
+#topt_1{
+    width:1280px;
+    height:924px;
+    clear:both;
+    clear:both;
+    background-image: url(../images/1.jpg);
+    text-align:left;
+}
+
+#topt_2{
+    width:1280px;
+    height:1222px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/2.jpg);
+    text-align:left;
+}
+
+#topt_3{
+    width:1280px;
+    height:1201px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/3.jpg);
+    text-align:left;
+}
+
+#topt_4{
+    width:1280px;
+    height:581px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/4.jpg);
+    text-align:left;
+}
+
+#topt_5{
+    width:1280px;
+    height:594px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/5.jpg);
+    text-align:left;
+}
+
+#topt_6{
+    width:1280px;
+    height:593px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/6.jpg);
+    text-align:left;
+}
+
+#topt_7{
+    width:1280px;
+    height:921px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/7.jpg);
+    text-align:left;
+}
+
+#topt_8{
+    width:1280px;
+    height:1188px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/8.jpg);
+    text-align:left;
+}
+
+#topt_9{
+    width:1280px;
+    height:942px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/9.jpg);
+    text-align:left;
+}
+
+#topt_10{
+    width:1280px;
+    height:750px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/10.jpg);
+    text-align:left;
+}
+
+#topt_11{
+    width:1280px;
+    height:908px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/11.jpg);
+    text-align:left;
+}
+
+#topt_12{
+    width:1280px;
+    height:618px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/12.jpg);
+    text-align:left;
+}
+
+#topt_13{
+    width:1280px;
+    height:774px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/13.jpg);
+    text-align:left;
+}
+
+#topt_14{
+    width:1280px;
+    height:647px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/14.jpg);
+    text-align:left;
+}
+
+#topt_15{
+    width:1280px;
+    height:559px;
+    clear:both;
+    margin-top:0px;
+    clear:both;
+    background-image: url(../images/15.jpg);
+    text-align:left;
+}
+
+/*¿Í·þ*/
+.qqserver p img{display:inline;margin:-5px 5px 0 0;vertical-align:middle;}
+.scrollsidebar{position:absolute;z-index:999;top:220px;}
+.side_content{width:167px;height:auto;overflow:hidden;float:left;}
+.side_content .side_list{width:167px;overflow:hidden;}
+.show_btn{width:0;height:144px;overflow:hidden;margin-top:50px;float:left;cursor:pointer;}
+.show_btn span{display:none;}
+.close_btn{width:24px;height:24px;cursor:pointer;}
+.side_title,.side_bottom,.close_btn,.show_btn{background:url(http://src.house.sina.com.cn/imp/imp/deal/13/b2/1/7e86f96d80fdcb69efb87f57425_p24_mk24.png) no-repeat;_background:url(../images/sidebar_bg.gif) no-repeat;}
+.side_title{height:46px;}
+.side_title{height:46px;}
+.side_bottom{height:8px;}
+.side_center{font-family:Verdana, Geneva, sans-serif;padding:10px 12px 5px 12px;font-size:12px;}
+.close_btn{float:right;display:block;width:19px;height:19px;margin:16px 7px 0 0;_margin:16px 3px 0 0;}
+.close_btn span{display:none;}
+.side_center .qqserver p{text-align:left;padding:6px 0;margin:0;vertical-align:middle;}
+.phoneserver {font-size:14px;text-align:center;}
+.phoneserver p{padding:2px 0;_height:16px;margin:0;color:#666666;}
+.msgserver{border-top:1px dotted #ccc;text-align:center;margin-top:6px;padding:10px 0 3px 0;}
+.msgserver a{background:url(../images/sidebar_bg.gif) no-repeat -119px -154px;padding:3px 0 3px 23px;}
+.side_content hr{border-bottom:1px solid #E6E6E6;height:1px;margin:10px 0;clear:both;}
+
+/* green skin  */
+.side_green .side_title{background-position:-505px 0;}
+.side_green .side_center{background:url(http://src.house.sina.com.cn/imp/imp/deal/9b/19/0/dfd33f38bcdaf7add7dc3a1f1d5_p24_mk24.gif) repeat-y center;}
+.side_green .side_bottom{background-position:-505px -60px;}
+.side_green .close_btn{background-position:-44px -45px;}
+.side_green .close_btn:hover{background-position:-65px -45px;}
+.side_green .show_btn{background-position:-187px 0;}
+.side_green .msgserver a{color:#68c40b;}
+.side_green hr{border-bottom:1px solid #edf2e5;}

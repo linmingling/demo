@@ -1,0 +1,552 @@
+/*css reset*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre, 
+form,fieldset,input,textarea,p,blockquote,th,td { 
+    padding: 0; 
+    margin: 0; 
+} 
+table { 
+    border-collapse: collapse; 
+    border-spacing: 0; 
+} 
+fieldset,img { 
+    border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+    font-weight: normal; 
+    font-style: normal; 
+} 
+ol,ul { 
+    list-style: none; 
+} 
+caption,th { 
+    text-align: left; 
+} 
+h1,h2,h3,h4,h5,h6 { 
+    font-weight: normal; 
+    font-size: 100%; 
+} 
+q:before,q:after { 
+    content:”; 
+} 
+abbr,acronym { 
+    border: 0; 
+}
+
+
+/*头部动画*/
+
+
+/*main*/
+.inside{width: 1000px;height: 100%;margin:0 auto;position: relative;border:1px solid transparent;}
+.bg1{
+    min-width: 1000px;
+    width:100%;
+    height:831px;
+    background: url(../images/bg1.jpg) no-repeat center center;
+}
+
+#icon{
+    width:672px;
+    height:557px;
+    margin:204px 162px;
+    position: absolute;
+   -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-animation-duration: .5s;
+    -webkit-animation-delay: .1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: both;
+
+    -moz-animation-duration: .5s;
+    -moz-animation-delay: .1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-fill-mode: both;
+
+    -ms-animation-duration: .5s;
+    -ms-animation-delay: .1s;
+    -ms-animation-timing-function: linear;
+    -ms-animation-fill-mode: both;
+
+    animation-duration: .5s;
+    animation-delay: .1s;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+}
+
+#sun{
+    width:304px;
+    height:258px;
+    margin:225px -116px;
+    position: absolute;
+   -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-animation-duration: 10s;
+    -webkit-animation-delay: .1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-duration: 1s;
+    -moz-animation-delay: .1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-fill-mode: both;
+    -moz-animation-iteration-count: infinite;
+
+    -ms-animation-duration: s;
+    -ms-animation-delay: .1s;
+    -ms-animation-timing-function: linear;
+    -ms-animation-fill-mode: both;
+    -ms-animation-iteration-count: infinite;
+
+    animation-duration: 5s;
+    animation-delay: .5s;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite alternate;
+}
+
+
+#sun.bounceIn {
+    -webkit-animation-name: bounceIn ;
+    -moz-animation-name: bounceIn ;
+    -ms-animation-name: bounceIn ;
+    animation-name: bounceIn ;
+}
+
+#sun.rotateIn {
+    -webkit-animation-name: rotateIn ;
+    -moz-animation-name: rotateIn ;
+    -ms-animation-name: rotateIn ;
+    animation-name: rotateIn ;
+}
+
+
+.icon2{
+    width:279px;
+    height:155px;
+    margin:143px 746px;
+    position: absolute;
+   -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: .2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: both;
+
+    -moz-animation-duration: 1s;
+    -moz-animation-delay: .2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-fill-mode: both;
+
+    -ms-animation-duration: 1s;
+    -ms-animation-delay: .2s;
+    -ms-animation-timing-function: linear;
+    -ms-animation-fill-mode: both;
+
+    animation-duration: 1s;
+    animation-delay: .2s;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+}
+
+.icon2-1{
+    width:279px;
+    height:155px;
+    margin:143px 746px;
+    position: absolute;
+   -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-animation-duration: 6s;
+    -webkit-animation-delay: 5s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-fill-mode: both;
+
+    -moz-animation-duration: 6s;
+    -moz-animation-delay: 5s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-fill-mode: both;
+
+    -ms-animation-duration: 6s;
+    -ms-animation-delay: 5s;
+    -ms-animation-timing-function: linear;
+    -ms-animation-fill-mode: both;
+
+    animation-duration: 6s;
+    animation-delay: 5s;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+}
+
+.menu{
+    width:203px;
+    height:482px;
+    margin:291px 955px;
+    background: url(../images/nav.png) no-repeat;
+    position: fixed;
+}
+
+.menu ul{
+    margin:203px 21px;
+    position: absolute;
+}
+.menu li{
+    width: 161px;
+    height: 54px;
+    cursor: pointer;
+}
+
+.menu li a{
+    width: 161px;
+    height: 54px;
+    display: block
+}
+
+
+.bg2{
+    min-width: 1000px;
+    width:100%;
+    height:831px;
+    background: url(../images/bg2.jpg) no-repeat center center;
+}
+.bg3{
+    min-width: 1000px;
+    width:100%;
+    height:831px;
+    background: url(../images/bg3.jpg) no-repeat center center;
+}
+/*报名*/
+#sign{
+   width:863px;
+   height:300px;
+   margin: 501px 0px;
+   position: relative;
+}
+
+#sign .sign{
+    width:425px;
+    margin:48px 42px;
+    height:228px;
+    position: absolute;
+
+}
+#sign .sign .ct{
+    width: 339px;
+    height:23px;
+    margin:15px 0px 0px 39px;
+    color:#0098d8;
+    font-size: 21px;
+    font-family: 微软雅黑;
+    
+}
+
+#sign .sign .ct input{
+    width:279px;
+    border:1px solid #0098d8;
+    height:27px;
+    float: right;
+
+    
+}
+/*确定栏*/
+#sign .sign .sub{
+    width: 407px;
+    height:64px;
+    margin:9px 0px 0px 10px;
+    cursor: pointer;
+    z-index: 100;
+    position: relative;
+}
+
+
+/*报名栏*/
+.sign-data{
+    width: 361px;
+    height: 38px;
+    margin:-243px 0px 0px 466px;
+    position: relative;
+}
+
+/*已报人数*/
+.sign-data .snum{
+    color: #0098d8;
+    font-size: 31px;
+    font-weight: bold;
+    font-family: arial;
+    margin:0px 132px;
+    position: absolute;
+
+
+}
+/*剩余人数*/
+.sign-data .lnum{
+    color: #0098d8;
+    font-size: 31px;
+    font-weight: bold;
+    font-family: arial;
+    margin:0px 275px;
+     position: absolute;
+}
+
+/*预定客户*/
+.tab-content{
+    width: 288px;
+    height: 142px;
+    margin:80px 0px 0px 477px;
+}
+
+.tab-content .link{
+    font-size: 16px;
+    line-height: 31px;
+}
+
+
+.bg4{
+    min-width: 1000px;
+    width:100%;
+    height:1244px;
+    background: url(../images/bg4.jpg) no-repeat center center;
+}
+
+.turn{
+    width: 940px;
+    height: 653px;
+    margin: 548px auto;
+}
+
+
+.tab_menu{height:60px;margin:-1px -3px;width: 944px;}
+.tab_menu li{width: 236px;height:59px;float:left;cursor:pointer;}
+.tab_menu li a { display:block; width: 237px; height: 58px;}
+.tab_menu .current .a1{ background: url(../images/tab1.jpg) no-repeat;  display:block;margin:3px 3px;}
+.tab_menu .current .a2{ background: url(../images/tab2.jpg) no-repeat;  display:block;margin:2px 1px;width: 240px;height:59px;-webkit-background-size: 237px 59px;
+background-size: 240px 59px;}
+.tab_menu .current .a3{ background: url(../images/tab3.jpg) no-repeat;  display:block;margin:3px 2px;}
+.tab_menu .current .a4{ background: url(../images/tab4.jpg) no-repeat;  display:block;margin:2px -2px;-webkit-background-size: 232px 59px;
+background-size: 237px 59px;}
+.tab_box{width: 1000px;height: 568px;margin:28px -31px;position: absolute;}
+.tab_box .hide{display:none;}
+
+.square{
+    width: 939px;
+    height: 568px;
+    border: 1px solid #333333;
+    position: absolute;
+    margin:86px -2px;
+
+    
+}
+
+.swiper-slide img{
+    width:939px;
+    height: 566px;
+    margin:0px 30px;
+}
+
+
+
+.popup1{
+    width:167px;
+    height:50px;
+    margin:457px 504px;
+    text-decoration: none;
+    display: block;
+    position: absolute;
+    cursor:pointer;
+}
+
+
+.popup2{
+    width:167px;
+    height:50px;
+    margin:477px 680px;
+    text-decoration: none;
+    display: block;
+    position: absolute;
+    cursor:pointer;
+}
+
+
+.popup3{
+    width:167px;
+    height:50px;
+    margin:397px 590px;
+    text-decoration: none;
+    display: block;
+    position: absolute;
+    cursor:pointer;
+}
+
+
+.pop-box{
+      width: 525px;
+      height: 313px;
+      background: url(../images/pop-box.png) no-repeat;
+      position:absolute;
+      margin:772px 246px;
+      z-index:100;
+}
+
+.pop-box.hide{
+    display: none;
+}
+
+.pop-box .name{
+    width: 267px;
+    height: 24px;
+    margin:71px 0px 0px 157px;
+    position: absolute;
+}
+
+.pop-box .phone{
+    width: 267px;
+    height: 25px;
+    margin:119px 0px 0px 157px;
+    position: absolute;
+}
+
+.pop-box .address2{
+    width: 341px;
+    height: 25px;
+    position: absolute;
+    margin:204px 0px 0px 87px;
+    font-size: 22px;
+    color:#0098d8;
+    font-family: 微软雅黑;
+    font-weight: normal;
+}
+
+.pop-box #address2{
+     width: 267px;
+    height: 25px;
+    float:right;
+}
+
+.pop-box .sure{
+    width: 166px;
+    height: 42px;
+    position: absolute;
+    margin:237px 0px 0px 185px;
+    cursor: pointer;
+}
+
+.pop-box .close{
+    width: 21px;
+    height: 18px;
+    margin:29px 433px;
+    position: absolute;
+    cursor: pointer;
+}
+
+
+
+.mbg{
+    width: 100%;height:100%;left: 0%;top: 0%;position: absolute;
+}
+
+
+.pop-box .pick{
+    width: 284px;
+    height:32px;
+    line-height: 35px;
+    margin:163px 0px 0px 157px;
+    z-index: 1000;
+    position: absolute;
+    
+}
+
+
+.bg10{
+    min-width: 1000px;
+    width:100%;
+    height:9000px;
+    background: #000;
+    position: absolute;
+    margin:-9000px 0px;
+    opacity: 0.5;
+    z-index:99;
+}
+
+.bg10.hide{
+    display: none;
+}
+
+.swiper-slide .site1{
+    width:167px;
+    height:50px;
+    margin:460px 327px;
+    text-decoration: none;
+    display: block;
+    position: absolute;
+    cursor:pointer;
+}
+
+.swiper-slide .site2{
+    width:167px;
+    height:50px;
+    margin:402px 391px;
+    text-decoration: none;
+    display: block;
+    position: absolute;
+    cursor:pointer;
+}
+
+.swiper-slide .site3{
+    width:167px;
+    height:50px;
+    margin:460px 327px;
+    text-decoration: none;
+    display: block;
+    position: absolute;
+    cursor:pointer;
+}
+
+.bg5{
+    min-width: 1000px;
+    width:100%;
+    height:994px;
+    background: url(../images/bg5.jpg) no-repeat center center;
+}
+
+
+.bg5 img{
+    margin:433px 419px;
+    position: absolute;
+}
+.bg6{
+    min-width: 1000px;
+    width:100%;
+    height:900px;
+    background: url(../images/bg6.jpg) no-repeat center center;
+}
+.bg7{
+    min-width: 1000px;
+    width:100%;
+    height:1260px;
+    background: url(../images/bg7.jpg) no-repeat center center;
+}
+.bg8{
+    min-width: 1000px;
+    width:100%;
+    height:1084px;
+    background: url(../images/bg8.jpg) no-repeat center center;
+}
+
+.bg9{
+    min-width: 1000px;
+    width:100%;
+    height:830px;
+    background: url(../images/bg9.jpg) no-repeat center center;
+}
