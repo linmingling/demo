@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>中装协厨卫委-首发厨卫消费趋势互联网大数据报告</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/lof-slider.js"></script>
+    <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
+    <script type="text/javascript">
+        var timeer = 0;
+
+        window.setInterval(Showfeed, 3000);
+
+
+        function Showfeed() {
+
+            //this.clickFunc();
+
+            $(".next").click();
+
+            timeer++;
+            var i = timeer % 3;
+            $("#feednav" + i).addClass('current').siblings().removeClass('current');
+
+            var divfeed = $(".feed");
+            for (var t = 0; t < divfeed.length; t++) {
+                if (t == i) {
+                    divfeed[t].style.display = "";
+                }
+                else {
+                    divfeed[t].style.display = "none";
+                }
+            }
+
+            $("#feednav2" + i).addClass('current2').siblings().removeClass('current2');
+
+            var divfeed2 = $(".feed2");
+            for (var t = 0; t < divfeed2.length; t++) {
+                if (t == i) {
+                    divfeed2[t].style.display = "";
+                }
+                else {
+                    divfeed2[t].style.display = "none";
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div class="banner">
+    </div>
+    <div class="pagenavwrap">
+        <div class="pagenav">
+            <ul>
+                <li class="w1"><a href="#bg"></a></li>
+                <li class="w2"><a href="#hz"></a></li>
+                <li class="w3"><a href="#xf"></a></li>
+                <li class="w4"><a href="#zy"></a></li>
+		<li class="w5"><a href="#fb"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="bg">
+    </div>
+    <div class="DivContent">
+        <div class="divContentBody">
+            <div class="c1">
+                <div class="content">
+                    <img src="images/bgnr.jpg" />
+                </div>
+            </div>
+            <div class="c5" id="hz">
+                <div class="content">
+                    <div class="title">
+                        <img src="images/hzzy.jpg" alt="精彩花絮" title="精彩花絮" /></div>
+                    <div class="clear">
+                    </div>
+                    <script type="text/javascript">
+                        $(document).ready(function ($) {
+
+                            var buttons = {
+                                previous: $('#home-slider .button-previous'),
+                                next: $('#home-slider .button-next')
+                            };
+
+                            $('#home-slider').lofJSidernews({
+                                interval: 4000,
+                                direction: 'opacitys',
+                                easing: 'easeInOutExpo',
+                                duration: 1200,
+                                auto: true,
+                                maxItemDisplay: 6,
+                                navPosition: 'horizontal', // horizontal
+                                navigatorHeight: 72,
+                                navigatorWidth: 72,
+                                mainWidth: 827,
+                                buttons: buttons
+                            });
+
+                            $(".sliders-wrapper li,.navigator-content").hover(function () {
+                                $(this).addClass("hover");
+                            }, function () {
+                                $(this).removeClass("hover");
+                            });
+
+                        });
+                    </script>
+                    <div class="focus">
+                        <div id="home-slider" class="lof-slidecontent">
+                            <div class="preload">
+                                <div>
+                                </div>
+                            </div>
+                            <ul class="sliders-wrap-inner">
+                                <li>
+                                    <img src="images/hzzy-xyr.jpg" />
+                                    <h1>
+                                        乐华集团董事长 谢岳荣<br />
+                                        .....................................</h1>
+                                    <p>
+                                        互联网时代下首部针对中国厨卫消费行为趋势的研究报告，以详实的数据分析，深度洞察受众人群的消费特征 ，解密最真实的用户行为，让市场更加清晰，让用户更加明确，让规划一步到位。</p>
+                                </li>
+                                <li>
+                                    <img src="images/hzzy-jf.jpg" />
+                                    <h1>
+                                        华耐家居集团总裁 贾锋<br />
+                                        .....................................</h1>
+                                    <p>
+                                        在互联网大数据时代，只有先真实准确的了解用户需求，才知道下一步该怎么走，但从何了解？怎么了解？本报告由专业人士为厨卫行业量身定制，挖掘互联网大数据背后的巨大蓝海，对企业营销战略的制定极具指导意义。</p>
+                                </li>
+                                <li>
+                                    <img src="images/hzzy-cm.jpg" />
+                                    <h1>
+                                        博洛尼家居用品（北京）股份有限公司董事长 蔡明<br />
+                                        .....................................</h1>
+                                    <p>
+                                        互联网正在深刻影响中国社会的变革，一个全新的时代即将来临。这本报告从消费行为的角度对企业的未来发展进行了深度剖析，详解厨卫企业在互联网时代下如何面对消费需求，提升用户体验，如何生存，如何崛起。</p>
+                                </li>
+                                <li>
+                                    <img src="images/hzzy-wyq.jpg" />
+                                    <h1>
+                                        惠达卫浴股份有限公司总裁 王彦庆<br />
+                                        .....................................</h1>
+                                    <p>
+                                        随着经济发展进入新常态，企业越来越重视对市场和消费者的研究。但以企业自身的力量开展用户调研和数据搜集，往往心有余而力不足。这本报告顺应企业需求，全面解析用户的消费行为，它的出版，对于中国厨卫行业来说，具有划时代的意义。</p>
+                                </li>
+                                <li>
+                                    <img src="images/hzzy-szy.jpg" />
+                                    <h1>
+                                        志邦厨柜股份有限公司董事长 孙志勇<br />
+                                        .....................................</h1>
+                                    <p>
+                                        我们的顾客在哪里？他们在想什么？这份调研报告通过对消费者严谨的调查和大数据分析，给我们厨卫行业展现了一幅清晰的客户心理地图，很有价值。</p>
+                                </li>
+                            </ul>
+                            <div class="navigator-content">
+                                <div class="navigator-wrapper">
+                                    <ul class="navigator-wrap-inner">
+                                        <li>
+                                            <img src="images/hzzy-01.jpg" />
+                                        </li>
+                                        <li>
+                                            <img src="images/hzzy-02.jpg" />
+                                        </li>
+                                        <li>
+                                            <img src="images/hzzy-03.jpg" />
+                                        </li>
+                                        <li>
+                                            <img src="images/hzzy-04.jpg" />
+                                        </li>
+                                        <li>
+                                            <img src="images/hzzy-04-43.jpg" />
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="button-next">
+                                    下一张</div>
+                                <div class="button-previous">
+                                    上一张</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="c2">
+                <div class="content">
+                    <div class="title">
+                        <img src="images/xfqs.jpg" alt="消费趋势" title="消费趋势" id="xf" /></div>
+                    <div class="guest">
+                        <div class="guestlist">
+                            <ul>
+                                <li>
+                                    <img src="images/xfqs01.jpg" />
+                                    <h1>
+                                        <span>1</span> 直击厨卫消费者决策的关键因素</h1>
+                                    <div class="guestlidiv">
+                                        <p>
+                                            随着社会的互联网趋势化，人们获得信息的渠道也逐渐多元化，各种信息纷来沓至，导致越来越多的因素影响着消费者在购买家装产品的决策过程。其中，包括挑选潜在品牌所必须满足的基础因素，以及面对几款合适的产品时最终直击消费者决策驱动的关键因素。<a
+                                                href="http://www.chuwei.org.cn/news/detail?id=370" target="_blank">[详细]</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <img src="images/xfqs02.jpg" />
+                                    <h1>
+                                        <span>2</span> 调查发现，家装产品购买渠道的选择上，42%的消费者使用过线上渠道</h1>
+                                    <div class="guestlidiv">
+                                        <p>
+                                            互联网的快速发展给厨卫市场带来了巨大的商机。研究显示，2013年厨卫产品在电商渠道的增长速度达到185.7%，是线下渠道的20倍以上。未来的厨卫产品将趋向更加智能化、个性化、系统化等趋势。<a
+                                                href="http://www.chuwei.org.cn/news/detail?id=372" target="_blank">[详细]</a></p>
+                                    </div>
+                                </li>
+<li>
+                                    <img src="images/xfqs003.jpg" />
+                                    <h1>
+                                        <span>3</span> 谁的装修预算高？一线城市中年人“不差钱”，二三线城市年轻人“舍得花”</h1>
+                                    <div class="guestlidiv">
+                                        <p>
+                                            装修预算是消费者在装修前最关注的问题；其次，整体搭配、装修风格的信息关注人群比例也在60%以上。其中，大龄成熟的一线城市消费者偏好装修风格，一二线城市34岁以下的消费者较为关注品牌档次。<a
+                                                href="http://www.chuwei.org.cn/news/detail?id=373" target="_blank">[详细]</a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="javascript:;" class="next btn"></a><a href="javascript:;" class="prev btn">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="c3">
+                <div class="content">
+                    <div class="title">
+                        <img src="images/bgzy.jpg" alt="报告摘要" title="报告摘要" id="zy" />
+                    </div>
+                    <img src="images/bgzy-01.jpg" alt="" title="" />
+                    <img src="images/bgzy-ybfb.jpg" alt="" title="" />
+                    <img src="images/bgzy-ybfb-01.jpg" alt="" title="" />
+                    <img src="images/bgzy-ybfb-02.jpg" alt="" title="" />
+                    <img src="images/bgzy-ybfb-03.jpg" alt="" title="" />
+                </div>
+            </div>
+            <div class="c4">
+                <div class="content">
+                    <div class="title">
+                        <img src="images/jlzy.jpg" alt="报告摘要" title="报告摘要" /></div>
+                    <div class="clear">
+                    </div>
+                    <div class="feednav">
+                        <ul>
+                            <li class="current" id="feednav0">
+                                <div class="feedname">
+                                    <h1>
+                                        需求<br />
+                                        确认</h1>
+                                </div>
+                                <i></i></li>
+                            <li id="feednav1">
+                                <div class="feedname">
+                                    <h1>
+                                        信息<br />
+                                        收集</h1>
+                                </div>
+                                <i></i></li>
+                            <li id="feednav2">
+                                <div class="feedname">
+                                    <h1>
+                                        消费<br />
+                                        决策</h1>
+                                </div>
+                                <i></i></li>
+                        </ul>
+                    </div>
+                    <div class="clear">
+                    </div>
+                    <div class="feedwrap">
+                        <div class="feed" style="display: block;" id="feed0">
+                            <img src="images/jlzy-01.jpg" />
+                        </div>
+                        <div class="feed" id="feed1" style="display: none;">
+                            <img src="images/jlzy-02.jpg" />
+                        </div>
+                        <div class="feed" id="feed2" style="display: none;">
+                            <img src="images/jlzy-03.jpg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="c42">
+                <div class="content2">
+                    <div class="title2">
+                        <img src="images/jlzy.jpg" alt="报告摘要" title="报告摘要" /></div>
+                    <div class="clear">
+                    </div>
+                    <div class="feednav2">
+                        <ul>
+                            <li class="current2" id="feednav20">
+                                <div class="feedname2">
+                                    <h1>
+                                        购买渠<br />
+                                        道决策</h1>
+                                </div>
+                                <i></i></li>
+                            <li id="feednav21">
+                                <div class="feedname2">
+                                    <h1>
+                                        评价<br />
+                                        反馈</h1>
+                                </div>
+                                <i></i></li>
+                            <li id="feednav22">
+                                <div class="feedname2">
+                                    <h1>
+                                        人群<br />
+                                        扫描</h1>
+                                </div>
+                                <i></i></li>
+                        </ul>
+                    </div>
+                    <div class="clear">
+                    </div>
+                    <div class="feedwrap2">
+                        <div class="feed2" id="feed20">
+                            <img src="images/jlzy-04.jpg" />
+                        </div>
+                        <div class="feed2" style="display: none;" id="feed21">
+                            <img src="images/jlzy-05.jpg" />
+                        </div>
+                        <div class="feed2" style="display: none;" id="feed22">
+                            <img src="images/jlzy-06.jpg" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+  <div class="c42">
+                <div class="content2">
+                    <div class="title2">
+                        <img src="images/bgfbh.jpg" alt="报告摘要" title="报告摘要" id="fb"/></div>
+ <img src="images/bgfbh-yqh.jpg" alt="报告摘要" title="报告摘要" /></div>
+</div>
+</div>
+
+            <div class="clear">
+            </div>
+            
+            <div class="footwrap">
+                <img src="images/bottom-bg.jpg" />
+            </div>
+            <div class="clear">
+            </div>
+            <div class="buttom">
+                <img src="images/buttom.jpg" />
+            </div>
+        </div>
+    </div>
+    
+		<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>
