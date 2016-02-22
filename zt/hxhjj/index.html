@@ -1,0 +1,227 @@
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="yes" name="apple-touch-fullscreen">
+<title>测试</title>
+<script type="text/javascript">
+    var d0 = new Date();
+</script>
+<style type="text/css">
+*{padding:0; margin:0;}
+html,body{height: 100%;}
+body{background:url("images/bg.jpg?v=2") #F7F6FC no-repeat;background-size:100% 100%;}
+.hide{display: none}
+.wrap{width: 320px;height:100%;margin: 0 auto;}
+.gameWrap{margin: 0 auto;position:relative; width: 320px;overflow: hidden;}
+.container{height: auto;  position: relative;}
+
+
+/*---进度条 ---*/
+.progress-bar{background:url(images/djsBg.png) left center;background-size: 100% 100%;text-align: center;font-size: 30px;margin-top: 25px;color: #f6e9e1}
+/*---loading---*/
+.loadingWrapParent{position:absolute;width: 100%;height: 100%;background:rgba(17,17,17,0.9) no-repeat;top: 0;z-index: 80;  }
+.loadingWrap{position:absolute;width: 100%;height: 100%; margin:0 auto;background:url("images/guide.jpg") rgba(17,17,17,0.9) top center no-repeat;top: 0;background-size: 100% 100%;}
+.loading{position: absolute;left: 50%;bottom: 60%;width: 80px;height: 80px;border-radius:40px;margin-left: -40px;margin-top: -40px;background: rgba(255,255,255,0.0);}
+.loading .img{height: 100%;border-radius:40px;background:-webkit-linear-gradient(rgba(255,255,255,0) 50%,#C1A609);background:linear-gradient(rgba(255,255,255,0) 50%,#C1A609);-webkit-animation: rotate 2.0s infinite linear;animation: rotate 2.0s infinite linear;}
+.loading .text{position: absolute;left: 5px;top: 5px;width: 70px;border-radius:40px;background: #202020;;text-align: center;line-height: 70px;color: #FFC000;font-size: 30px;font-family: Courier New}
+.logo-foot{position: absolute;bottom: 20px;left: 50%;margin-left: -30px;}
+@-webkit-keyframes rotate {100% {-webkit-transform: rotate(360deg)}}
+@keyframes rotate {100% { transform: rotate(360deg)}}
+.during{background: url("images/guide.jpg") top center;position: absolute;width: 100%;height:100%;background-size:320px 426px;background-color:#F0EFF3;background-repeat:no-repeat;top: 0px; z-index: 50; margin:0 auto;
+    -webkit-animation:fadeOut 5s 1 ;-webkit-animation-timing-function: ease; -webkit-animation-fill-mode: both;}
+@-webkit-keyframes fadeOut {
+    0% { opacity: 1;}
+    30% { opacity: 1;}
+    100% { opacity: 0;}
+}
+    .toTga{display: block;width: 139px;height: 43px;background:url("images/gameoverBt.png");position: absolute;color: #ffffff;text-decoration: none;font-size: 12px;position: absolute;z-index: 100;left: 50%;margin-left: -69px;display: none}
+
+.hide{display: none}
+.loadingWrap .btn{width:50%;position: absolute;left: 25%}
+.loadingWrap .starBtn{bottom: 20%}
+.loadingWrap .rankBtn{bottom: 11%}
+
+.rule{width:100%;height: 100%;background: url(images/tcBg.jpg);background-size: 100% 100%;z-index: 1;position: absolute;}
+.rule .img{width:100%;height: 100%}
+.rule .ruleBtn{width:30%;position: absolute;bottom:9%;}
+.rule .rule1 .next{left:35%;}
+.rule .rule2 .prev{left:18%;}
+.rule .rule2 .next{right:18%;}
+.rule .rule3 .know{right:18%;}
+.rule .rule3 .prev{left:18%;}
+
+.gameover{position:absolute;width: 100%;height: 100%; margin:0 auto;background:url("images/bg.jpg") rgba(17,17,17,0.9) top center no-repeat;top: 0;background-size: 100% 100%;text-align: center;}
+.gameover .shareTips{width: 100%;}
+.gameover .btn{width:50%;margin:5px 25%;}
+.gameover .bigRed{font-size: 28px;color: #c11010;font-weight: bold;margin:10px 0;}
+.scoreBoxWarp{width:100%;height: 50px;position: absolute;top:30%;left: 0;overflow: hidden;}
+.scoreBox{width:100%;position: absolute;bottom:0;left: 0;color:#c11010;text-align: center;font-size: 20px}
+.scoreBox p{-webkit-animation:fadeOut 3s 1 ;-webkit-animation-timing-function: ease; -webkit-animation-fill-mode: both;}
+
+.rank{width:100%;height: 100%;background: url(images/tcBg.jpg);background-size: 100% 100%;z-index: 1;position: absolute;top: 0;left: 0}
+.rank .rankBg{width:100%;height: 100%;}
+.rank .nav{width:80%;position: absolute;top:21%;left:20%;}
+.rank .nav span{background: url("images/nav2.png");background-size: 100% 100%;padding: 2px 7px ;color: #fff}
+.rank .nav .hover{background: url("images/nav1.png");background-size: 100% 100%}
+.rank .rankMain{width:70%;position: absolute;top:35%;left:14%;}
+.rank .rankMain p:nth-child(1){color:#c11010;}
+.rank .rankMain p:nth-child(2){color:#c11010;}
+.rank .rankMain p:nth-child(3){color:#c11010;}
+.rank .rankMain span{width: 33%;height:18px;display: block;float: left;text-align: center;overflow: hidden;margin-bottom: 2px}
+.rank .return{width:40%;position: absolute;bottom:10%;left: 30%}
+
+</style>
+</head>
+<body class="body" style="position:relative;height:100%;width:100%; margin:0;">
+<div class="wrap">
+    <div class="bgFoot hide" id="bgFoot">
+        <ul>
+            <li></li><li></li><li></li><li></li><li></li>
+        </ul>
+    </div>
+    <div class="gameWrap">
+        <div class="progress-bar">
+            <span id="djs">倒计时：30s</span>
+        </div>
+        <div id="container" class='container'></div>
+        <div class="scoreBoxWarp">
+          <div class="scoreBox" id="scoreBox">
+
+          </div>        
+        </div> 
+    </div>
+
+
+    </div>
+    <div class="during" id="during"> </div>
+
+    <!--开始-->
+    <div class="loadingWrap" id="loadingWrap">
+       <img src="images/starBtn.png" class="starBtn btn" id="ruleBtn"/>
+       <img src="images/rankBtn.png" class="rankBtn btn"/>
+       <div class="rule hide" id="rule">
+            <div class="rule1">
+               <img src="images/rule1.png" class="img"/>
+               <img src="images/next.png" class="next ruleBtn"/>
+            </div>
+            <div class="rule2 hide">
+               <img src="images/rule2.png" class="img"/>
+               <img src="images/prev.png" class="prev ruleBtn"/>
+               <img src="images/next.png" class="next ruleBtn"/>
+            </div>
+            <div class="rule3 hide">
+               <img src="images/rule3.png" class="img"/>
+               <img src="images/prev.png" class="prev ruleBtn"/>
+               <img src="images/know.png" class="know ruleBtn" id="starBtn"/>
+            </div>
+       </div>
+    </div>
+    <!--结束-->
+    <div class="gameover hide" id="gameover">
+       <img src="images/shareTips.png" class="shareTips"/>
+       <div class="bigRed">
+           <p>恭喜你！幸运得分</p>
+           <p id="allScorll">--分</p>
+       </div>
+       <img src="images/restartBt.png" class="restartBt btn" id="again"/>
+       <img src="images/rankBtn.png" class="rankBtn btn"/>
+       <p>腾讯家居UED出品</p>
+    </div>
+    <!--排名-->
+    <div class="rank hide" id="rank">
+       <img src="images/rank.png" class="rankBg"/>
+       <div class="nav">
+         期数：
+         <span class="hover">1</span>
+         <span>2</span>
+         <span>3</span>
+       </div>
+       <div class="rankMain"></div>
+       <img src="images/return.png" class="return"/>
+    </div>
+
+</div>
+
+
+<a id="toTga"  class="toTga"></a>
+<img id="headIdle" src="images/sp.png" style="display: none"/>
+<img id="icons" src="images/starBtn.png" style="display: none"/>
+<img id="sp" src="images/sp.png" style="display: none"/>
+<img id="boom" src="images/starBtn.png" style="display: none"/>
+<img id="win" src="images/starBtn.png" style="display: none"/>
+<img id="timeOut" src="images/starBtn.png" style="display: none"/>
+<div id="fps" style="position:absolute;left:0;top:0;"></div>
+
+<script src="js/quark.base-1.0.0.js"></script>
+<script src="js/game.js"></script>
+<script src="js/Button.js"></script>
+<script src="js/ball.js"></script>
+<script src="js/squirrel.js"></script>
+<script src="js/ping_tcss_ied.js"></script>
+
+<script type="text/javascript">
+    document.getElementById('toTga').href += window.location.search;
+    setTimeout(function(){ Q.getDOM("during").style.display="none";},0)
+   
+
+    if(typeof(pgvMain) == 'function')
+        pgvMain();
+
+    
+</script>
+
+<script src="js/zepto.min.js"></script>
+<script type="text/javascript">
+    function gameover_hje(s){
+      $("#allScorll").html(s+"分");
+      $("#gameover").show();
+      //存分 s
+
+    }
+
+    function showScore(s){
+      $("#scoreBox").append("<p>+"+s+"</p>");
+    }
+    function rankList(i){
+  
+      $("#rank .rankMain").empty();
+      for(var i=0;i<10;i++){
+          $("#rank .rankMain").append("<p><span>"+10+"</span><span>"+"矮冬瓜"+"</span><span>"+"10分"+"</span></p>");
+      }
+      $("#rank .nav span").removeClass("hover");
+      $("#rank .nav span").eq(1).addClass("hover");
+    }
+    $("#ruleBtn").click(function() {
+      $("#rule").show();
+    });
+    $("#rule .next").click(function() {
+      $(this).parent().hide();    
+      $(this).parent().next().show();
+    });
+    $("#rule .prev").click(function() {
+      $(this).parent().hide();
+      $(this).parent().prev().show();
+    });
+    $("#again").click(function() {
+      $("#gameover").hide();
+      $("#djs").html("倒计时：30s");
+    });
+    $("#rank .return").click(function() {
+      $("#rank").hide();
+    });
+    $("#rank .nav span").click(function() {
+      //获取排行榜数据
+      rankList($(this).index());
+      
+    });
+    $(".rankBtn").click(function() {
+      //获取排行榜数据
+      rankList();
+
+      $("#rank").show();
+    });
+</script>
+
+</body></html><!--[if !IE]>|xGv00|b4e8e6340a864abef7593c903be9e3dd<![endif]-->

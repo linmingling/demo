@@ -1,0 +1,3 @@
+#selectver_mdu{overflow: hidden;display: none;}
+#selectver_mdu .swiper-container{overflow: hidden;height:100%;}
+.bottom{position: absolute;left: 50%;-webkit-transform: translateX(-50%);bottom:40px;}

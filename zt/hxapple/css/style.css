@@ -1,0 +1,169 @@
+/*css reset*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre, 
+form,fieldset,input,textarea,p,blockquote,th,td { 
+    padding: 0; 
+    margin: 0; 
+} 
+table { 
+    border-collapse: collapse; 
+    border-spacing: 0; 
+} 
+fieldset,img { 
+    border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+    font-weight: normal; 
+    font-style: normal; 
+} 
+ol,ul { 
+    list-style: none; 
+} 
+caption,th { 
+    text-align: left; 
+} 
+h1,h2,h3,h4,h5,h6 { 
+    font-weight: normal; 
+    font-size: 100%; 
+} 
+q:before,q:after { 
+    content:”; 
+} 
+abbr,acronym { 
+    border: 0; 
+}
+
+
+/*main*/
+.inside{width: 1000px;height: 100%;margin:0 auto;position: relative;}
+
+.inside img{margin:70px 573px;}
+.bg1{
+    min-width: 1000px;
+    width:100%;
+    height:793px;
+    background: url(../images/bg1.jpg) no-repeat center center;
+}
+
+.bg2{
+    min-width: 1000px;
+    width:100%;
+    height:793px;
+    background: url(../images/bg2.jpg) no-repeat center center;
+}
+.bg3{
+    min-width: 1000px;
+    width:100%;
+    height:793px;
+    margin-top:-1px; 
+    background: url(../images/bg3.jpg) no-repeat center center;
+}
+.bg4{
+    min-width: 1000px;
+    width:100%;
+    height:793px;
+    margin-top:-1px;
+    background: url(../images/bg4.jpg) no-repeat center center;
+}
+.bg5{
+    min-width: 1000px;
+    width:100%;
+    height:793px;
+    background: url(../images/bg5.jpg) no-repeat center center;
+}
+.bg6{
+    min-width: 1000px;
+    width:100%;
+    height:793px;
+    background: url(../images/bg6.jpg) no-repeat center center;
+}
+.bg7{
+    min-width: 1000px;
+    width:100%;
+    height:793px;
+    background: url(../images/bg7.jpg) no-repeat center center;
+}
+.bg8{
+
+    min-width: 1000px;
+    width:100%;
+    height:793px;
+    margin-top:-1px; 
+
+    background: url(../images/bg8.jpg) no-repeat center center;
+    
+}
+
+.t-box{
+    width: 1002px;
+    height: 340px;
+    margin:451px -5px;
+    position: absolute; 
+}
+
+.content{
+    width:874px;
+    height:340px;
+    margin:-374px 64px;
+    position: relative;
+}
+
+.parta{
+    width:800px;
+    height: 45px;
+
+    position: absolute;
+    margin:113px 88px;
+}
+
+.parta li{
+    width:169px;
+    height: 64px;
+    float:left;
+    font-family: 微软雅黑;
+    font-size: 19px;
+    color:white;
+    line-height:22px;
+    margin:0px 10px;
+}
+
+.partb{
+    width:1000px;
+    height: 45px;
+   
+    position: absolute;
+    margin:232px -9px;
+}
+
+.partb li{
+    width:169px;
+    height: 64px;
+    float:left;
+    font-family: 微软雅黑;
+    font-size: 19px;
+    color:white;
+    line-height:22px;
+    margin:0px 10px;
+}
+
+.swiper-slide {
+    height:340px!important
+}
+.swiper-slide img{
+    margin:-4px 65px;
+}
+.bg9{
+    min-width: 1000px;
+    width:100%;
+    height:793px;
+    margin-top:-1px;
+   background: url(../images/bg9.jpg) no-repeat center center;
+}
+.bg10{
+    min-width: 1000px;
+    width:100%;
+    height:793px;
+    margin-top:-1px; 
+
+    background: url(../images/bg10.jpg) no-repeat center center;
+}

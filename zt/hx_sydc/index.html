@@ -1,0 +1,857 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>红星美凯龙  嗨购十一  全民嗨购夜</title>
+    <meta name="keywords" content="红星美凯龙  嗨购十一  全民嗨购夜" />
+    <meta name="description" content="红星美凯龙  嗨购十一  全民嗨购夜" />
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=3.0" />
+    <link href="js/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.css" rel="stylesheet" />
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <!--弹出层-->
+<script type="text/javascript" src="js/manhuaDialog.1.0.js"></script>
+<script type="text/javascript">
+$(function (){
+	$("#test").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "　",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 1000,									//弹出层的宽度
+		height : 650,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+	$("#test2").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "　",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail2",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width :1000,									//弹出层的宽度
+		height : 650,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+	$("#test3").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "　",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail3",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 1000,									//弹出层的宽度
+		height : 650,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+	$("#test4").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "　",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail4",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 1000,									//弹出层的宽度
+		height : 650,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+	
+});
+</script>
+
+<script src="js/jquery.tabs.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	$("img[original]").lazyload({ placeholder:"images/color3.gif" });
+	
+	$('.demo1').Tabs();
+	$('.demo2').Tabs({
+		event:'click'
+	});
+	$('.demo3').Tabs({
+		timeout:300
+	});
+	$('.demo4').Tabs({
+		auto:3000
+	});
+	$('.demo5').Tabs({
+		event:'click',
+		callback:lazyloadForPart
+	});
+	//部分区域图片延迟加载
+	function lazyloadForPart(container) {
+		container.find('img').each(function () {
+			var original = $(this).attr("original");
+			if (original) {
+				$(this).attr('src', original).removeAttr('original');
+			}
+		});
+	}
+});	
+</script>
+
+<script type="text/javascript" src="js/koala.min.1.5.js"></script>
+</head>
+<body>
+     <!--<div class="cn-wxs" id="wxs">
+        <div class="wx wx1" style="height:158px">
+<img src="images/wx1.jpg" title="扫一扫，关注"/>
+        </div>
+          <div class="wx wx2"  style="height:152px">
+<img src="images/wx2.jpg" title="扫一扫，免费设计" />
+        </div>
+    </div>-->
+    <div class="rfx"><img src="images/rfx.png" border="0" usemap="#Map" />
+      <map name="Map" id="Map">
+        <area shape="poly" coords="3,53,4,90,188,42,186,6" href="#cn2" />
+        <area shape="poly" coords="4,130,5,93,187,45,188,82" href="#cn3" />
+        <area shape="poly" coords="3,131,3,165,185,118,186,84" href="http://www.wenjuan.com/s/YbYrM3/" target="_blank" />
+        <area shape="poly" coords="5,205,4,167,186,118,187,156" href="#cn5" />
+        <area shape="poly" coords="5,243,4,205,187,159,188,197" href="#cn1" />
+      </map>
+    </div>
+
+
+<div class="content">
+        <div class="cn cn1" id="cn1">
+            <div class="wraper">
+                <div class="cn-nav cf" id="cnNav">
+                    <div class="cn-logo">
+                        <a href="" title=" " target="_blank">
+                               
+                        </a>
+                    </div>
+                    <div class="cn-menu" id="cnMenu">
+                        <a href="javascript:void(0);" title="" data-id="cn2" style="width:150px;">
+                             　
+                        </a>
+                        <a href="javascript:void(0);"  title=""  data-id="cn3" style="width:100px;">
+                            　
+                        </a>
+                        <a href="http://www.wenjuan.com/s/YbYrM3/" title=""  data-id="cn4" style="width:100px;" target="_blank">
+                           　
+                        </a>
+                        <a  href="javascript:void(0);"  title=""  data-id="cn5" style="width:100px;">
+                           　
+                        </a>
+    
+                    </div>
+                    </div>
+
+                    <div class="am" id="c1m1">
+                        <img src="images/top1.png" />
+                    </div>
+                    <div class="am" id="c1m2">
+                        <img src="images/top2.png" />
+                    </div>
+                    <div class="am" id="c1m3">
+                        <img src="images/rw.png" />
+                    </div>
+                    <div class="am" id="c1m4">
+                        <img src="images/ewm.png" />
+                    </div>
+                    <div class="am" id="c1m5">
+                        <a class="s-xguide-down trans" href="#cn4s" hidefocus="" ></a>
+                        <a class="s-xguide-down arrow-1 trans" href="#cn4s"  hidefocus="" ></a>
+                    </div>
+
+</div>
+
+          
+            <div class="cn-bg">
+                <img src="images/bg/cn1.jpg" border="0" usemap="#Map2" style="display: block;" />
+                <map name="Map2" id="Map2">
+                  <area shape="poly" coords="295,-5" href="#" />
+                </map>
+            </div>
+        </div>
+
+        <div class="cn cn2" id="cn2">
+            <div class="wraper">
+               <div class="qmh">
+                  <div class="left" id="cnMenu">
+                     <a  href="javascript:void(0);"  title=""  data-id="cn3"></a><a  href="javascript:void(0);"  title=""  data-id="cn5"></a><a  href="javascript:void(0);"  title=""  data-id="cn5"></a><a  href="javascript:void(0);"  title=""  data-id="cn5"></a><a  href="javascript:void(0);"  title=""  data-id="cn5"></a>
+                  </div>
+                  <div class="right"><iframe frameborder="0" width="511" height="338" src="http://v.qq.com/iframe/player.html?vid=v0165lbcm0d&tiny=0&auto=0" allowfullscreen></iframe></div>
+               </div>
+      </div>
+
+
+            <div class="cn-bg">
+                <img class="lz" src="images/grey.gif" data-original="images/bg/cn2.jpg" style="display: block;" />
+            </div>
+        </div>
+
+        <div class="cn cn3" id="cn3">
+            <div class="wraper">
+
+<div class="zstxt">
+   <p><b>9月26日至12月31日</b>，由“腾讯家居” 网站主办，联合红星美凯龙、家倍得及一些建材、家具、软装品牌等，打造“免费装修 助力圆梦”活动，围绕消费者家庭背景、家的故事、居住烦恼和对梦想中家的憧憬展开互动征集。此次活动将为5种户型的消费者提供“免费设计”、“免费监理”、“免费主材”、”免费装饰”，全国5名，在媒体公开发布。</p>
+   <p>　　活动期间，“腾讯家居”网站为此次活动进行全程媒体支持报道，以VCR及内容报道等形式，记录装修全过程，包括户主故事及需求、设计师设计过程、施工、验收等进行全方位的报道。家倍得为消费者提供资深设计师，为每一条套房型量身定制设计及全程施工监理。红星美凯龙联合工厂品牌提供“免费主材”、“免费装饰”。</p>
+   <div class="linkc">
+      <a href="javascript:void(0)" id="test"></a>
+      <a href="javascript:void(0)" id="test2"></a>
+<div id="detail" style="display:none;">
+   <div class="xxc">
+      <h3>评选规则</h3>
+      <div class="txb">
+         <div class="txb_box">
+            <p>1.最终入选的5名消费者，10月10日前必须在“腾讯家居”网站进行真实有效的问卷填写，“腾讯家居”网站审核通过，进行1周公告，公告无异议，将由红星美凯龙、家倍得及材料提供品牌共同为最终入选的5名消费者提供免费设计、免费监理、免费装饰、免费主材等。</p>
+            <p>2.房型类型：<br />
+1)＜40㎡（一居室）<br />
+2)40㎡-60㎡（一居室）<br />
+3)60㎡-90㎡（二居室）<br />
+4)90㎡-120㎡（三居室）<br />
+5)120㎡-150㎡（四居室/复室）</p>
+            <p>3.施工费、辅材费用、相关材料运输及安装等费用，消费者自行承担</p>
+         </div>
+      </div>
+   </div><img src="images/tc1.png" >
+</div>
+<div id="detail2" style="display:none;">
+   <div class="xxc">
+      <h3>参与方式</h3>
+      <div class="txb">
+         <div class="txb_box">
+            <p>1. 9月26日-10月7日，全国消费者可在“腾讯亚太家居”网站——“嗨购十一，全民嗨购夜”专题进行“免费装修、助力圆梦”活动报名，填写问卷调查及说出自己的故事，将有机会入围免费装修资格。</p>
+            <p>2. 9月26日-10月7日，全国红星美凯龙商场，参与“嗨购十一“活动的消费者，下单满1000元可参加”免费装修活动”的报名，每个商场选取一个资格，直接入围免费装修资格候选，并登录“腾讯亚太家居”网站填写问卷调查，由主办方腾讯亚太家居网联合红星美凯龙统一评选。</p>
+            <p>3. 10月15日，由腾讯亚太家居网站联合红星美凯龙，在入围装修资格中，选取最终5名免费装修家庭。</p>
+         </div>
+      </div>
+   </div><img src="images/tc1.png" >
+</div>
+   </div>
+</div><!--end zstxt-->
+<div class="zs2" id="cn4">
+   <div class="left" id="cn4s"><iframe frameborder="0" width="470" height="295" src="http://v.qq.com/iframe/player.html?vid=n0165fedwna&tiny=0&auto=0" allowfullscreen></iframe></div>
+   <div class="right">
+      <a class="wjuan" href="http://www.wenjuan.com/s/YbYrM3/" target="_blank"></a>
+      <div class="mid">
+        <p style="font-size: 40px;  text-align: center;  height: 135px;  line-height: 135px;">敬请期待</p>
+         <!-- <table width="100%" border="0" cellspacing="0" cellpadding="0">
+           <tr class="tr1">
+             <td align="center">区域</td>
+             <td align="center">姓名</td>
+             <td align="center">联系方式</td>
+           </tr>
+           <tr>
+             <td align="center">上海</td>
+             <td align="center">陶小姐</td>
+             <td align="center">139****8801</td>
+           </tr>
+           <tr>
+             <td align="center">苏州</td>
+             <td align="center">安小姐</td>
+             <td align="center">138****5590</td>
+           </tr>
+           <tr>
+             <td align="center">天津</td>
+             <td align="center">肖小姐</td>
+             <td align="center">135****1618</td>
+           </tr>
+           <tr>
+             <td align="center">邢台</td>
+             <td align="center">崔先生</td>
+             <td align="center">158********</td>
+           </tr>
+           <tr>
+             <td align="center">沈阳</td>
+             <td align="center">朱先生</td>
+             <td align="center">159****7706</td>
+           </tr>
+           <tr class="tr2">
+             <td colspan="3">后续的梦想装修基金的领取细节及事宜，将会有腾讯亚太家居、红星美凯龙、家倍得工作人员与您联系。</td>
+             </tr>
+         </table> -->
+
+      </div>
+   </div>
+</div><!--end zs2-->
+
+          </div>
+
+            <div class="cn-bg">
+                <img class="lz" src="images/grey.gif" data-original="images/bg/cn3.jpg" style="display: block;" />
+            </div>
+        </div>
+
+        <div class="cn cn4" >
+            <div class="wraper">
+                <div class="desbox">
+                   <div class="box demo1">
+			<ul class="tab_menu">
+			  <li class="current d1"></li>
+			  <li class="d2"></li>
+                <li class="d3"></li>
+                <li class="d4"></li>
+			</ul>
+			<div class="tab_box">
+				<div>
+					<div class="r1">
+                       <div class="wzjs" style=" width:370px; height:265px;overflow:auto; ">
+                         <p>文强，男，1981年出生，大学文化，现任家倍得首席设计师。<br />
+                           从事设计行业10年,设计过各种商业空间,办公空间,娱乐会所,家居,别墅等，经典案例：御景别墅区，海逸长洲，第六田园，玫瑰庄园别墅，海河大道，壹街区，格调艺术领地，万科别墅区，保利上河雅颂，河北工大教师公寓，等。曾获“北京2007年优秀青年设计师”奖。<br />
+                           接受过正规的美术教育，具有较好的美术功底及艺术素养。设计风格上从来不遵循固定的设计风格，善于挖掘顾客的喜好与内在性格，真正做到人与室内家居空间相交融的个性空间。在工作中，吃苦耐劳，无怨无悔，以高度的责任心、荣誉感与高度的政治觉悟性，无论是与常年服务的客户还是和新客户，在相处的时候我都能做到自然，因为我从内心深处觉得，给客户的提案都能站在客户的角度思考，这样，就会达到像和朋友的感觉，更能让人信服。在工作之余非常注意收集国内国际精装设计资料及相关文件，并努力学习和钻研设计类的相关知识，以便不断的提高自己的工作效率和能力。以敏锐的眼光、独特设计思路、经典的设计方案，立足于设计界。</p>
+                         <p>主要获奖情况<br />
+                           北京2007年优秀青年设计师<br />
+                           经典案例<br />
+                           御景别墅区，海逸长洲，第六田园，玫瑰庄园别墅，海河大道，壹街区，格调艺术领地，万科别墅区，保利上河雅颂，河北工大教师公寓，等等</p>
+                       </div>
+                    </div>				
+				</div>
+				<div class="hide">
+					<div class="r2">
+                       <div class="wzjs" style=" width:370px; height:265px;overflow:auto; ">
+                         <p>获奖情况：<br />
+                            连续四次取得homedepot:homer奖</p>
+                          <p>&nbsp;</p>
+                          <p>&nbsp;</p>
+                          <p>搜房网红星美凯龙杯设计大赛：优秀色彩设计奖<br />
+                          </p>
+                          <p>&nbsp;</p>
+                          <p>个人爱好：文玩，旅游<br />
+                            擅长项目：效果图渲染与教授<br />
+                            参与设计过：<br />
+                            天津电台节目主持人戴维维装修方案。工程地点：海逸长洲<br />
+                            天津钢管集团副总的装修方案。 工程地点：霞光道5号<br />
+                            设计理念：把有限的空间赋予无限的遐想，让功能性和艺术性完美的结合，从生活中汲取灵感赋予生活新的定义，不让以人为本成为一句空话。</p>
+                       </div>
+                    </div>	
+				</div>	
+                <div class="hide">
+					<div class="r3">
+                      <div class="wzjs" style=" width:370px; height:265px;overflow:auto; ">
+                         <p>工作经历：<br />
+                          2015/6- 至今    红星美凯龙家倍得装饰公司   设计总监<br />
+                          2012/10 -2015/3    星杰国际设计    主任设计师<br />
+                          2009/7—2012/10   上海百安居装饰中心  首席设计师<br />
+                          2008/7—2009/7   上海美颂建材销售有限公司      首席设计师 <br />
+                          2006/7—2008/6   上海百安居装饰中心   高级设计师<br />
+                          2002/10--2005/03   深圳中深国际装饰设计有限公司   主任设计师<br />
+                          2000/10--2002/10   上海百安居装饰中心  主持设计师<br />
+                          1999/12--2000/10  上海申瑞装潢公司     设计师<br />
+                          1998/05--1999/11   上海元和置业有限公司     策划设计及平面设计<br />
+                          1996/04--1998/05：   上海朝阳动画公司              构图设计<br />
+                         </p>
+                         <p>曾获荣誉：<br />
+                         2006年中国上海第五届建筑设计大赛建筑公寓住宅类二等奖<br />
+                         2007年中国上海第六届建筑设计大赛建筑公寓住宅类一等奖<br />
+                         2009年中国上海第八届建筑设计大赛建筑复式别墅类三等奖<br />
+                         2009年上海市优秀室内设计师称号<br />
+                       2011年中国上海第十届建筑设计大赛建筑公寓住宅类二等奖</p>
+                         <p>作品案例：<br />
+                           华侨城、森林溪谷、紫都、万源城、深圳蔚蓝海岸、波托菲诺天鹅堡 、佘山3号、太阳湖大花园、皇都花园、西郊宝城、绿地梧桐园、森林溪谷等<br />
+                           设计理念<br />
+                           充分表达居住者的信息，以人为本从他们的兴趣，喜好，性格，品味，身份，年龄各种信息里激发出创作的灵感。擅长各种风格，纯熟运用并创新思路，经常达到意想不到的效果。<br />
+                         </p>
+                      </div>
+                    </div>	
+				</div>	
+                <div class="hide">
+					<div class="r4">
+                       <div class="wzjs" style=" width:370px; height:265px;overflow:auto; ">
+                         姓名：沈啸宇                   <br />
+                          出生日期：1983年2月14日 <br />
+                          专业：工业与民用建筑<br />
+                          设计工作：9年<br />
+                          毕业学校：河北工学院<br />
+                          设计理念：斯是陋室，惟吾德馨！<br />
+                          个人荣誉：<br />
+                          中国建筑装饰协会注册高级室内建筑师<br />
+                          2009年新京报房屋改造专题设计师<br />
+                          2013年筑巢奖入围优秀作品<br />
+                          2014年星程杯酒店方案50强<br />
+                          2015年筑巢奖评选中<br />
+                          代表作：<br />
+                       中间建筑、远洋傲北、汤泉逸墅、诸子阶、园墅、庐师山庄、水色时光、观山悦、燕西台、西山一号院等以及呼和浩特东岸国际项目室内设计开发工作</div>
+                    
+                    </div>	
+				</div>	
+			</div>
+		</div><!--demo1 end-->
+                </div>
+                
+           
+           <div class="mfsjt">
+              <a href="javascript:void(0)" id="test3"></a>
+              <div id="detail3" style="display:none;">
+   <div class="xxc">
+      <h3>免费事项</h3>
+      <div class="txb">
+         <div class="txb_box" style=" width:830px; height:265px;overflow:auto; ">
+            <p><img src="images/mf.jpg" ></p>
+         </div>
+      </div>
+   </div><img src="images/tc1.png" >
+</div>
+           </div>
+           
+                
+      </div>
+
+
+
+            <div class="cn-bg">
+                <img class="lz" src="images/grey.gif" data-original="images/bg/cn4.jpg" style="display: block;" />
+            </div>
+        </div>
+
+        <div class="cn cn5" id="cn5">
+            <div class="wraper">
+
+                <div class="hxk">
+                   <div class="box demo2">
+			<ul class="tab_menu">
+			  <li class="current" style="margin-left:0px;"><span>活动 1</span><span class="ssb">抢百款嗨价爆品</span></li>
+				<li><span>活动 2</span><span class="ssb">送十倍现金抵用券</span></li>
+				<li><span>活动 3</span><span class="ssb">赢千份健康豪礼</span></li>
+			  <li style="width:247px;"><span>活动 4</span><span class="ssb">砸千个千元金蛋</span></li>
+			</ul>
+			<div class="tab_box">
+				<div>
+			       <div class="x1bg">
+                      <div id="fsD1" class="focus" style="display:;">
+
+	<div id="D1pic1" class="fPic">
+		<div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a1.png" /></div>
+               <div class="txs">
+                  <b>艾仕壁纸</b>
+                  <p>型号：Esprit10</p>
+                  <p>活动价格：388元</p>
+               </div>
+            </div><!--end nrs-->
+		</div>
+		<div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a2.png" /></div>
+               <div class="txs">
+                  <b>艾仕壁纸</b>
+                  <p>型号：Djooz</p>
+                  <p>活动价格：188元</p>
+               </div>
+            </div><!--end nrs-->
+		</div>
+		<div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a3.jpg" /></div>
+               <div class="txs">
+                  <b>老板电器</b>
+                  <p>型号：CXW-200-8228</p>
+                  <p>活动价格：以各地经销商价格为准</p>
+               </div>
+            </div><!--end nrs-->
+		</div>
+		<div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a4.jpg" /></div>
+               <div class="txs">
+                  <b>美的厨电</b>
+                  <p>型号：TT9030</p>
+                  <p>活动价格：3599元</p>
+               </div>
+            </div><!--end nrs-->
+		</div>
+        
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a5.jpg" /></div>
+               <div class="txs">
+                  <b>美的厨电</b>
+                  <p>型号：TT9033</p>
+                  <p>活动价格：4599元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a6.jpg" /></div>
+               <div class="txs">
+                  <b>博洛尼</b>
+                  <p>型号：周年纪念款厨柜勃艮第</p>
+                  <p>活动价格：12800元/套</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a7.jpg" /></div>
+               <div class="txs">
+                  <b>东鹏瓷砖</b>
+                  <p>型号：芙蓉玉</p>
+                  <p>活动价格：78元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a8.jpg" /></div>
+               <div class="txs">
+                  <b>东鹏瓷砖</b>
+                  <p>型号：凯悦石</p>
+                  <p>活动价格：78元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a9.jpg" /></div>
+               <div class="txs">
+                  <b>法恩莎卫浴</b>
+                  <p>型号：马桶</p>
+                  <p>活动价格：以各地经销商价格为准</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a10.jpg" /></div>
+               <div class="txs">
+                  <b>法恩莎卫浴</b>
+                  <p>型号：单把挂墙式明杆二功能淋浴龙头</p>
+                  <p>活动价格：以各地经销商价格为准</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a11.jpg" /></div>
+               <div class="txs">
+                  <b>好莱客</b>
+                  <p>型号：卡普里衣柜</p>
+                  <p>活动价格：2999元/套</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a12.jpg" /></div>
+               <div class="txs">
+                  <b>好莱客</b>
+                  <p>型号：榻榻米</p>
+                  <p>活动价格：2962元/套</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a13.jpg" /></div>
+               <div class="txs">
+                  <b>箭牌卫浴</b>
+                  <p>型号：AMG13S815轻舟系列</p>
+                  <p>活动价格：799元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a14.jpg" /></div>
+               <div class="txs">
+                  <b>箭牌卫浴</b>
+                  <p>型号：智能座便器AKB1130</p>
+                  <p>活动价格：5899元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a15.jpg" /></div>
+               <div class="txs">
+                  <b>朗斯卫浴</b>
+                  <p>型号：诺曼诺曼</p>
+                  <p>活动价格：898元/平米</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a16.jpg" /></div>
+               <div class="txs">
+                  <b>朗斯卫浴</b>
+                  <p>型号：珍妮</p>
+                  <p>活动价格：1098元/平米</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a17.jpg" /></div>
+               <div class="txs">
+                  <b>玫瑰岛</b>
+                  <p>型号：子弹头转轴门淋浴房</p>
+                  <p>活动价格：2999元/套</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a18.jpg" /></div>
+               <div class="txs">
+                  <b>玫瑰岛</b>
+                  <p>型号：经典双移门</p>
+                  <p>活动价格：799元/平米</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a19.jpg" /></div>
+               <div class="txs">
+                  <b>天地壁纸</b>
+                  <p>型号：INTERIOR 2(Z9163)</p>
+                  <p>活动价格：198元/卷</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a19s.jpg" /></div>
+               <div class="txs">
+                  <b>天地壁纸</b>
+                  <p>型号：INTERIOR 2(Z9164)</p>
+                  <p>活动价格：198元/卷</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a20.jpg" /></div>
+               <div class="txs">
+                  <b>红苹果家具</b>
+                  <p>型号：卧室3件套1.5米床</p>
+                  <p>活动价格：5980元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a21.jpg" /></div>
+               <div class="txs">
+                  <b>红苹果家具</b>
+                  <p>型号：卧室3件套1.8米床</p>
+                  <p>活动价格：6880元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a22.jpg" /></div>
+               <div class="txs">
+                  <b>红苹果家具</b>
+                  <p>型号：沙发AP6108</p>
+                  <p>活动价格：9880元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a23.jpg" /></div>
+               <div class="txs">
+                  <b>舒达</b>
+                  <p>型号：Serta完美系列 - 维也纳Ⅱ床垫+SP004床架</p>
+                  <p>活动价格：9,999元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a24.jpg" /></div>
+               <div class="txs">
+                  <b>舒达</b>
+                  <p>型号：Serta进口系列：原装进口凯撒床垫（单品）</p>
+                  <p>活动价格：9,999元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a25.jpg" /></div>
+               <div class="txs">
+                  <b>舒达</b>
+                  <p>型号：Serta青少年系列：Dennis（B3）+Eep（伊）套床</p>
+                  <p>活动价格：1.2*1.9/2.0 售7688元</p>
+                  <p>活动价格：1.35*1.9/2.0 售8088元</p>
+                  <p>活动价格：1.5*1.9/2.0 售8698元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a26.png" /></div>
+               <div class="txs">
+                  <b>莫霞</b>
+                  <p>型号：兰卡威-8号床（1.8米）</p>
+                  <p>活动价格：4980元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a27.png" /></div>
+               <div class="txs">
+                  <b>莫霞</b>
+                  <p>型号：墨 客-823号床（1.8米）</p>
+                  <p>活动价格：4980元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a28.png" /></div>
+               <div class="txs">
+                  <b>莫霞</b>
+                  <p>型号：悦 木（榆木）-108号床（1.8米）</p>
+                  <p>活动价格：3960元</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a29.jpg" /></div>
+               <div class="txs">
+                  <b>尊典摩高</b>
+                  <p>型号：蔻斯图卧房爆款6件套</p>
+                  <p>活动价格：5888元/套</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a30.jpg" /></div>
+               <div class="txs">
+                  <b>尊典摩高</b>
+                  <p>型号：蔻斯图餐厅爆款5件套</p>
+                  <p>活动价格：3688元/套</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a31.jpg" /></div>
+               <div class="txs">
+                  <b>尊典摩高</b>
+                  <p>型号：思伽图卧房爆款四大件</p>
+                  <p>活动价格：6888元/套</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        <div class="fcon">
+			<div class="nrs">
+               <div class="pics"><img src="images/pic/a32.jpg" /></div>
+               <div class="txs">
+                  <b>尊典摩高</b>
+                  <p>型号：思伽图餐厅爆款5件套</p>
+                  <p>活动价格：3280元/套</p>
+               </div>
+            </div><!--end nrs-->
+		</div><!--end fcon-->
+        
+	</div>
+	
+	<div class="fbg">
+		<div class="D1fBt" id="D1fBt" style="display:none;">
+			<a href="javascript:void(0)" class="current"><i>1</i></a>
+			<a href="javascript:void(0)"><i>2</i></a>
+			<a href="javascript:void(0)"><i>3</i></a>
+			<a href="javascript:void(0)"><i>4</i></a>
+		</div>
+	</div>
+	
+	<span class="prev"></span>
+	<span class="next"></span>
+	
+</div>
+                   </div><!--end x1bg-->
+                </div>
+				<div class="hide">
+					<img src="images/x2.jpg" width="1000" height="531" />
+				</div>
+				<div class="hide">
+					<img src="images/x3.jpg" width="1000" height="531" />
+				</div>
+				<div class="hide">
+					<img src="images/x4.jpg" width="1000" height="531" />
+				</div>
+			</div>
+		</div>	
+        
+<script type="text/javascript">
+Qfast.add('widgets', { path: "js/terminator2.2.min.js", type: "js", requires: ['fx'] });  
+Qfast(false, 'widgets', function () {
+	K.tabs({
+		id: 'fsD1',   //焦点图包裹id  
+		conId: "D1pic1",  //** 大图域包裹id  
+		tabId:"D1fBt",  
+		tabTn:"a",
+		conCn: '.fcon', //** 大图域配置class       
+		auto: 1,   //自动播放 1或0
+		effect: 'fade',   //效果配置
+		eType: 'click', //** 鼠标事件
+		pageBt:true,//是否有按钮切换页码
+		bns: ['.prev', '.next'],//** 前后按钮配置class                          
+		interval: 3000  //** 停顿时间  
+	}) 
+})  
+</script>
+                </div><!--end hxk-->
+
+                
+      </div>
+            <div class="cn-bg">
+                <img class="lz" src="images/grey.gif" data-original="images/bg/cn5.jpg" style="display: block;" />
+            </div>
+        </div>
+
+    
+    </div>
+
+
+
+<!--  <div id="runNav" class="runNav">
+        <a href="javascript:void(0);" title=""  data-id="cn1" class="active"></a>
+        <a href="javascript:void(0);" title=""  data-id="cn2"></a>
+        <a href="javascript:void(0);" title=""  data-id="cn3"></a>
+        <a href="javascript:void(0);" title=""  data-id="cn4"></a>
+        <a href="javascript:void(0);" title=""  data-id="cn5"></a>
+    </div>-->
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/jquery.fancybox-1.3.4/fancybox/jquery.easing-1.3.pack.js" type="text/javascript"></script>
+    <script src="js/jquery.fancybox-1.3.4/fancybox/jquery.mousewheel-3.0.4.pack.js" type="text/javascript"></script>
+    <script src="js/jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.js" type="text/javascript"></script>
+    <script src="js/jquery.lazyload.min.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/my.js"></script>
+
+   
+
+    
+        <div style="display:none;">
+            <script src="http://exp.jiankongbao.com/loadtrace.php?host_id=770&amp;style=1&amp;type=0" type="text/javascript"></script>
+            <script type="text/javascript">
+                var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+                document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F2ab3201bee62fa474ed923dba01a8720' type='text/javascript'%3E%3C/script%3E"));
+            </script>
+            <script src=" http://hm.baidu.com/h.js?2ab3201bee62fa474ed923dba01a8720" type="text/javascript"></script>
+            <a href="http://tongji.baidu.com/hm-web/welcome/ico?s=2ab3201bee62fa474ed923dba01a8720" target="_blank"></a>
+
+        </div>
+
+
+        <!--#include virtual="/public/head.html"-->
+        <!--#include virtual="/public/tongji.html"-->
+        <!--#include virtual="/public/footer.html"-->
+</body>
+</html>

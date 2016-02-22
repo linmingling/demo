@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jquery弹出层插件</title>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+</style>
+
+<link rel="stylesheet" type="text/css" href="css/manhuaDialog.1.0.css">
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/manhuaDialog.1.0.js"></script>
+<script type="text/javascript">
+$(function (){
+	$("#test").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "标题设置",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 500,									//弹出层的宽度
+		height : 300,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+});
+</script>
+
+</head>
+<body>
+
+
+<center style="font-size:24px;margin:100px 0 0 0;">
+<a href="javascript:void(0)" id="test">点击弹出层测试</a>
+</center>
+
+
+<div id="detail" style="display:none;">
+	欢迎各位网友使用漫画弹出层插件
+</div>
+
+
+</body>
+</html>

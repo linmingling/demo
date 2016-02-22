@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="640">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=640,target-densitydpi=device-dpi,maximum-scale=1.0, user-scalable=no">
+    <title>雷锋历险记</title>
+    <link rel="stylesheet" type="text/css" href="css/global.css"/>
+    <style>
+        body{
+            background-color: #16b0ef;
+        }
+        #LoadModule {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+        }
+
+        #LoadModule p {
+            font-size: 60px;
+            color: #ffffff;
+        }
+
+        #TipsModule {
+            background-color: #000;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        #TipsModule div {
+            top: 50%;
+            position: absolute;;
+            z-index: 100;
+            width: 100%;
+        }
+
+        #TipsModule p {
+            color: #ffffff;
+            text-align: center;
+            width: 100%;
+            font-size: 30px;
+            font-family: '黑体';
+        }
+
+        .ModuleBox {
+            background-color: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            z-index: 100;
+            display: none;
+        }
+
+        .ContentBox {
+            position: relative;
+        }
+
+        #Mc_rule_content {
+            position: absolute;
+            left: 45px;
+            top: 123px;
+            width: 400px;
+            height: 625px;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+
+        #Btn_close {
+            position: absolute;
+            right: 48px;
+            top: 47px;
+        }
+
+        #Btn_rank2 {
+            position: absolute;
+            right: 25px;
+            bottom: 231px;
+        }
+
+        #Btn_go {
+            position: absolute;
+            right: 25px;
+            bottom: 78px;
+        }
+
+        #Btn_close2 {
+            position: absolute;
+            right: 48px;
+            top: 47px;
+        }
+
+        #Btn_first {
+            position: absolute;
+            right: 7px;
+            bottom: 217px;
+        }
+
+        #Btn_second {
+            position: absolute;
+            right: 7px;
+            bottom: 95px;
+        }
+
+        #Mc_rank_content {
+            position: absolute;
+            left: 45px;
+            top: 123px;
+            width: 400px;
+            height: 625px;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+
+        #Mc_rank_content ul {
+            font-size: 30px;
+            color: #795949;
+            list-style: none;
+            font-family: FZSJKK, "Microsoft YaHei", "Microsoft JhengHei", STHeiti, MingLiu;
+            width: 100%;
+        }
+
+        #Mc_rank_content ul div img {
+            width: 100%;
+        }
+
+        #Mc_rank_content ul li:nth-child(1) {
+            width: 50px;
+            text-align: left;
+        }
+
+        #Mc_rank_content ul li:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            margin: 0px 5px 0px 5px;
+        }
+
+        #Mc_rank_content ul li:nth-child(3) {
+            width: 150px;
+            margin: 0px 5px 0px 5px;
+        }
+
+        #Mc_rank_content ul li:nth-child(4) {
+            width: 150px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+<div id="LoadModule" class="ver">
+    <img src="images/loading.png"/>
+
+    <p id="Txt_load"></p>
+</div>
+<div id="RuleModule" class="ModuleBox">
+    <div class="n_wrapper ver">
+        <div class="ContentBox">
+            <img src="images/Mc_bg_rule.png"/>
+            <img src="images/Btn_close.png" id="Btn_close"/>
+            <img src="images/Btn_rank2.png" id="Btn_rank2"/>
+            <img src="images/Btn_go.png" id="Btn_go"/>
+
+            <div id="Mc_rule_content">
+                <img src="images/Mc_rule.png" alt=""/>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="RankModule" class="ModuleBox">
+    <div class="n_wrapper ver">
+        <div class="ContentBox">
+            <img src="images/Mc_bg_rank.png" alt=""/>
+            <img src="images/Btn_close.png" id="Btn_close2"/>
+            <img src="images/Btn_first.png" id="Btn_first"/>
+            <img src="images/Btn_second.png" id="Btn_second"/>
+
+            <div id="Mc_rank_content">
+                <ul>
+                    <div class="hor">
+                        <li>1</li>
+                        <li>
+                            <div>
+                                <img src="images/pic.png" alt=""/>
+                            </div>
+                        </li>
+                        <li>小夜曲</li>
+                        <li>999999分</li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="GameModule"></div>
+<div id="TipsModule">
+    <div><p>为了更好的体验游戏，请选择竖屏模式进行游戏</p></div>
+</div>
+<!--<audio src="sound/Sound_bg.mp3" id="Sound_bg" preload="auto" loop="true"></audio>-->
+<script type='text/javascript' charset="UTF-8" src='./libs/jquery-2.1.js'></script>
+<script type='text/javascript' charset="UTF-8" src='./libs/lufylegend-1.9.11.simple.min.js'></script>
+<script type='text/javascript' charset="UTF-8" src='./libs/Hegll_mario.min.js'></script>
+
+<!--<script type='text/javascript' charset="UTF-8" src='./js/module/Plugin.js'></script>-->
+<!--<script type='text/javascript' charset="UTF-8" src='./js/module/BUtils.js'></script>-->
+<!--<script type='text/javascript' charset="UTF-8" src='./js/module/World.js'></script>-->
+<!--<script type='text/javascript' charset="UTF-8" src='./js/module/Pedal.js'></script>-->
+<!--<script type='text/javascript' charset="UTF-8" src='./js/module/Prop.js'></script>-->
+<!--<script type='text/javascript' charset="UTF-8" src='./js/module/Player.js'></script>-->
+<!--<script type='text/javascript' charset="UTF-8" src='./js/OpenScene.js'></script>-->
+<!--<script type='text/javascript' charset="UTF-8" src='./js/OverScene.js'></script>-->
+<!--<script type='text/javascript' charset="UTF-8" src='./js/ShareScene.js'></script>-->
+<!--<script type='text/javascript' charset="UTF-8" src='./js/GameScene.js'></script>-->
+<!--<script type='text/javascript' charset="UTF-8" src='./js/Main.js'></script>-->
+
+<script type="text/javascript" charset="UTF-8" src="./libs/Talk.js"></script>
+</body>
+</html>	
+	

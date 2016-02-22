@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="front-end technicist" content="qingqing" />
+	<title>冠珠陶瓷·卫浴开启立体宣传品牌新战略</title>
+	<meta name="keywords" content="冠珠陶瓷·卫浴开启立体宣传品牌新战略" />
+	<meta name="description" content="冠珠陶瓷·卫浴开启立体宣传品牌新战略" />
+	<meta property="qc:admins" content="354743726136066141236654" />
+	<meta property="wb:webmaster" content="6eb365aa7117c258" />
+	<meta name="front-end technicist" content="qingqing" />
+	<meta name="baidu-site-verification" content="n7iMlq6BOn" />
+	<link type="text/css" rel="stylesheet" href="css/com.css?v=1.0" media="all" />
+</head>
+<body>
+	<h1 class="hide">冠珠陶瓷·卫浴开启立体宣传品牌新战略</h1>
+	<!-- 主要内容 -->
+	<div class="main">
+		<!-- 首页 -->
+		<div class="cn box1">
+			<div class="content">
+				<img src="images/1-1.png" class="img1 bounceInDown1" />
+				<img src="images/1-2.png" class="img2 bounceInDown2" />
+				<img src="images/1-3.png" class="img3 bounceInDown3" />
+			</div>
+		</div>
+		<!-- page2 -->
+		<div class="cn box2">
+		</div>
+		<!-- page3 -->
+		<div class="cn box3">
+			
+		</div>
+		<!-- page4 -->
+		<div class="cn box4">
+		</div>
+		<!-- page5 -->
+		<div class="cn box5">
+		</div>
+		<!-- page6 -->
+		<div class="cn box6">
+			<div class="content">
+				<div id="marquee">
+					<div id="marquee1">
+						<img src="images/lun/1.jpg"/>
+						<img src="images/lun/2.jpg"/>
+						<img src="images/lun/3.jpg"/>
+
+						<img src="images/lun/4.jpg"/>
+						<img src="images/lun/5.jpg"/>
+						<img src="images/lun/6.jpg"/>
+
+						<img src="images/lun/7.jpg"/>
+						<img src="images/lun/8.jpg"/>
+					</div>
+					<div id="marquee2"></div>
+				</div>
+			</div>
+			
+		</div>
+		<!-- page7 -->
+		<div class="cn box7">
+		</div>
+		<script src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			//box6 图片轮滚
+			var speed=20; 
+			var demo=document.getElementById("marquee"); 
+			var demo2=document.getElementById("marquee2"); 
+			var demo1=document.getElementById("marquee1"); 
+			demo2.innerHTML=demo1.innerHTML; 
+			function Marquee(){ 
+				if(demo2.offsetTop-demo.scrollTop<=193)
+				  demo.scrollTop-=demo1.offsetHeight; 
+				else{ 
+				  demo.scrollTop++ ;
+				} 
+			} 
+			var MyMar=setInterval(Marquee,speed); 
+			demo.onmouseover=function() {clearInterval(MyMar)} 
+			demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)} 
+			
+			//box1 动画
+			$(window).scroll(function(){
+				if ($(window).scrollTop() >= 0 && $(window).scrollTop() < 300){
+					$('.img1').addClass('bounceInDown1');
+					$('.img2').addClass('bounceInDown2');
+					$('.img3').addClass('bounceInDown3');
+				} else {
+					$('.img1').removeClass('bounceInDown1');
+					$('.img2').removeClass('bounceInDown2');
+					$('.img3').removeClass('bounceInDown3');
+				}
+			})
+
+		})
+		</script>
+		<!--#include virtual="/public/head.html"-->
+		<!--#include virtual="/public/footer.html"-->
+		<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

@@ -1,0 +1,12 @@
+#sel_wrapper{width: 640px;height: 773px;}
+.l1{position: absolute;left: 0;top: 0;z-index: 2;}
+.l2{position: absolute;right: 0;top: 422px;z-index: 2;}
+.l3{position: absolute;right: 0;bottom: 88px;z-index: -1;}
+#selecthor_mdu .swiper-container {
+    width: 483px;
+    height: 608px;
+}  
+#left{position: absolute;top: 50%;-webkit-transform: translateY(-50%);left: 10px;z-index: 999;}
+#right{position: absolute;top: 50%;-webkit-transform: translateY(-50%);right: 10px;z-index: 999;}
+#selecthor_mdu{display: none;}
+/*#selecthor_mdu{border: 1px solid red;}*/

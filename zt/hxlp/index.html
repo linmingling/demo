@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>红星美凯龙奔跑吧绿色领跑</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/wy-mod-banner.css" media="screen">
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/my.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tabs.js"></script>
+    <script type="text/javascript" src="js/jquery.lazyload.js"></script>
+	<link href="css/main_new.css?v=4.0" rel="stylesheet"> 
+    <script src="js/MyCxcPlug.js" type="text/javascript"></script><!--end 点击弹出层-->
+    <!--滚动条-->
+    <script type="text/javascript" src="js/jquery.sly.js"></script>
+    <script type="text/javascript" src="js/jquery.easing-1.3.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.mousewheel-3.0.2.pack.js"></script>
+	<script type="text/javascript" src="js/jquery.fancybox-1.3.1.js"></script>
+	<script type="text/javascript" src="js/pngobject.js"></script>
+ 	<script type="text/javascript" src="js/koala.min.1.5.js"></script>
+
+	<link rel="stylesheet" href="css/jquery.fancybox-1.3.1.css" type="text/css" />
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
+
+			$("a[rel=example_group]").fancybox({
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+				}
+			});
+
+			
+		});
+	</script>
+    
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <div class="navbar-box">
+            <div style="margin-left:-15%"><img src="images/logo.png" alt=""></div>
+            <div class="home">
+                <a href="javascript:void(0);" onClick="setTab('one',1)"><img src="images/nav-home.png" alt=""></a>
+                <img src="images/nav-1.png" alt="">
+            </div>
+            <div class="about">
+                <a href="javascript:void(0);" onClick="setTab('one',2)"><img src="images/nav-about.png" alt=""></a>
+                <img src="images/nav-1.png" alt="">
+            </div>
+            <div class="run">
+                <a href="javascript:void(0);" onClick="setTab('one',3)"><img src="images/nav-run.png" alt=""></a>
+                <img src="images/nav-1.png" alt="">
+            </div>
+            <div class="view">
+                <a href="javascript:void(0);" onClick="setTab('one',6)"><img src="images/nav-view.png" alt=""></a>
+                <img src="images/nav-1.png" alt="">
+            </div>
+            <div class="aet">
+                <a href="javascript:void(0);" onClick="setTab('one',15)"><img src="images/nav-aet.png" alt=""></a>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <!-- 二级导航栏 -->
+    <div class="navbar-2" id="navbar-2" style="display:none">
+        <div style="margin-left:10%;" class="narbar-2-1">
+            <a href="javascript:void(0);" onClick="setTab('one',3)" >绿色“开跑”</a>
+        </div>
+        <div style="margin-left:2%"><img src="images/jiantoulogo.png" alt=""></div>
+
+        <div style="margin-left:2%" class="narbar-2-2">
+            <a href="javascript:void(0);" onClick="setTab('one',4)" style="padding-left: 2.1%;
+	padding-right:2.1%;">7月2日新闻发布会</a>
+        </div>
+        <div style="margin-left:2%"><img src="images/jiantoulogo.png" alt=""></div>
+
+        <div style="margin-left:2%" class="narbar-2-3">
+            <a href="javascript:void(0);" onClick="setTab('one',5)">7.18-19绿色领跑消费节</a>
+        </div>
+        
+
+    </div>
+
+
+    <!-- 二级导航栏2 -->
+    <div class="navbar2-2" id="navbar2-2" style="display:none;">
+        <div  class="navbar2-2-1">
+            <a href="javascript:void(0);" onClick="setTab('one',2)" >关于绿色领跑</a>
+        </div>
+        <div style="margin-left:2%"><img src="images/jiantoulogo.png" alt=""></div>
+
+        <div style="margin-left:2%" class="navbar2-2-2">
+            <a href="javascript:void(0);" onClick="setTab('one',7)" style="padding-left: 1.9%;
+	padding-right:1.9%;">评审委员会介绍</a>
+        </div>
+        <div style="margin-left:2%"><img src="images/jiantoulogo.png" alt=""></div>
+
+        <div style="margin-left:2%" class="navbar2-2-3" >
+            <a href="javascript:void(0);" onClick="setTab('one',8)" style="padding-left: 3.9%;
+	padding-right:3.9%;">评选标准</a>
+        </div>
+        <div style="margin-left:2%"><img src="images/jiantoulogo.png" alt=""></div>
+
+        <div style="margin-left:2%" class="navbar2-2-4">
+            <a href="javascript:void(0);" onClick="setTab('one',9)" style="padding-left: 3.9%;
+	padding-right:3.9%;">项目启动</a>
+        </div>
+
+    </div>
+    
+    <!-- 三级菜单 -->
+    <div id="caidan3" class="caidan3" style="display:none;">
+        <div style="margin-left:25px">
+            <a href="javascript:void(0);" onClick="setTab('one',9)">评选流程</a>
+        </div>
+        <div style="margin-left:30px">
+            <a href="javascript:void(0);" onClick="setTab('one',10)">品牌申报</a>
+        </div>
+        <div style="margin-left:35px">
+            <a href="javascript:void(0);" onClick="setTab('one',11)">品牌初选</a>
+        </div>
+        <div style="margin-left:30px">
+            <a href="javascript:void(0);" onClick="setTab('one',12)">检测及评估</a>
+        </div>
+        <div style="margin-left:30px">
+            <a href="javascript:void(0);" onClick="setTab('one',13)">综合审评</a>
+        </div>
+    </div>
+
+    <!-- 回顾2013-2014菜单 -->
+    <div id="huigu" class="huigu-tag" style="display:none;">
+        <div>
+        	<a href="javascript:void(0);" onClick="setTab('one',6)" style="padding-left: 2.4%;
+	padding-right:3.9%;">2013年回顾</a>
+        </div>
+        <div style="margin-left:5%"><img src="images/jiantoulogo.png" alt=""></div>
+        <div style="margin-left:5%">
+        	<a href="javascript:void(0);" onClick="setTab('one',14)" style="padding-left: 2.4%;
+	padding-right:3.9%;">2014年回顾</a>
+        </div>
+    </div>
+    
+    <!-- 8月绿色健康跑菜单 -->
+    <div id="by" class="by-tag" style="display:none;">
+        <div>
+        	<a href="javascript:void(0);" onClick="setTab('one',15)" style="padding-left: 3.4%;
+	padding-right:3.9%;">绿色生活 你我开跑</a>
+        </div>
+        <div style="margin-left:3%"><img src="images/jiantoulogo.png" alt=""></div>
+        <div style="margin-left:5%">
+        	<a href="javascript:void(0);" onClick="setTab('one',16)" style="padding-left: 2.4%;
+	padding-right:3.9%;">2015年品牌走访</a>
+        </div>
+    </div>
+
+    <!-- 主体部分 -->
+    <div class="content">
+        <div class="tag" id="tag">
+            <!-- 首页 -->
+            <li class="tag_home" id="tag_one_1">
+                
+            <div class="wy-mod-banner" style="overflow:hidden;">
+            <div id="_banners" class="banners" >
+              <div class="banner banner2"> <img  height="780" src="images/banner2.jpg" alt="2" />
+                <div class="info">
+                  <h3>微云，生活精彩</h3>
+                  <p>收录生活中的点点滴滴，精彩从此刻开始！</p>
+                  <div class="link-download"><span><a href="javascript:switchPage(1)"></a></span> <i class="bor_c"><a href="javascript:switchPage(3)"></a></i></div>
+                </div>
+              </div>
+              <div class="banner banner1"> <img height="780" src="images/banner1.jpg" alt="1" />
+                <div class="info">
+                  <h3><img src="images/wx1.jpg" width="98" height="98"></h3>
+                  <p>收录生活中的点点滴滴，精彩从此刻开始！</p>
+                  <div class="link-download"><em><a href="javascript:switchPage(1)"></a></em></div>
+                </div>
+              </div>
+            </div>
+            <div id="_focus" class="focus"> <a data-index="0" href="javascript:void(0);" class="on"><span class="bg-b"></span><span class="inner"></span></a> <a data-index="1" href="javascript:void(0);"><span class="bg-b"></span><span class="inner"></span></a></div>
+          </div>
+<script type="text/javascript">
+var glume = function(banners_id, focus_id){
+	this.$ctn = $('#' + banners_id);
+	this.$focus = $('#' + focus_id);
+	this.$adLis = null;
+	this.$btns = null;
+	this.switchSpeed = 5;//自动播放间隔(s)
+	this.defOpacity = 1;
+	this.crtIndex = 0;
+	this.adLength = 0;
+	this.timerSwitch = null;
+	this.init();
+};
+glume.prototype = {
+	fnNextIndex:function(){
+		return (this.crtIndex >= this.adLength-1)?0:this.crtIndex+1;
+	},
+	//动画切换
+	fnSwitch:function(toIndex){
+		if(this.crtIndex==toIndex){return;}
+		this.$adLis.css('zIndex', 0);
+		this.$adLis.filter(':eq('+this.crtIndex+')').css('zIndex', 2);
+		this.$adLis.filter(':eq('+toIndex+')').css('zIndex', 1);
+		this.$btns.removeClass('on');
+		this.$btns.filter(':eq('+toIndex+')').addClass('on');
+		var me = this;
+
+		$(this.$adLis[this.crtIndex]).animate({
+			opacity: 0
+		}, 1000, function() {
+			me.crtIndex = toIndex;
+			$(this).css({
+				opacity: me.defOpacity,
+				zIndex: 0
+			});
+		});
+	},
+	fnAutoPlay:function(){
+		this.fnSwitch(this.fnNextIndex());
+	},
+	fnPlay:function(){
+		var me = this;
+		me.timerSwitch = window.setInterval(function() {
+			me.fnAutoPlay();
+		},me.switchSpeed*1000);
+	},
+	fnStopPlay:function(){
+		window.clearTimeout(this.timerSwitch);
+		this.timerSwitch = null;
+	},
+
+	init:function(){
+		this.$adLis = this.$ctn.children();
+		this.$btns = this.$focus.children();
+		this.adLength = this.$adLis.length;
+
+		var me = this;
+		//点击切换
+		this.$focus.on('click', 'a', function(e) {
+			e.preventDefault();
+			var index = parseInt($(this).attr('data-index'), 10)
+			me.fnSwitch(index);
+		});
+		this.$adLis.filter(':eq('+ this.crtIndex +')').css('zIndex', 2);
+		this.fnPlay();
+
+		//hover时暂停动画
+		this.$ctn.hover(function() {
+			me.fnStopPlay();
+		}, function() {
+			me.fnPlay();
+		});
+
+		if($.browser.msie && $.browser.version < 7) {
+			this.$btns.hover(function() {
+				$(this).addClass('hover');
+			},function() {
+				$(this).removeClass('hover');
+			});
+		}
+	}
+};
+var player1 = new glume('_banners', '_focus');    
+</script>
+              
+        </li>
+
+            <!-- 关于绿色领跑 -->
+            <li class="tag_about" id="tag_one_2" style="display:none;">
+                <div class="about-bg">
+                    <div class="run-content">
+                        
+
+                    </div>
+                </div>
+                    
+                
+            </li>
+
+            <!-- 2015绿色领跑 开跑-->
+            <li class="tag_run" id="tag_one_3" style="display:none;">
+                <div class="run-bg">
+                    <div class="run-content">
+                        <div class="tvc-title">
+                            <img src="images/kaipaoG.png">
+                        </div>
+                        <div class="tvc">
+                            <embed src="http://static.video.qq.com/TPout.swf?auto=0&amp;vid=b0159wce8ja" wmode="transparent" width="720px" align="center" border="0" height="400px">
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <!-- 7月2日新闻发布会 -->
+            <li class="tag_run" id="tag_one_4" style="display:none;">
+                <div class="run-bg2">
+                    <div class="run-content">
+                        
+                        <div class="new7-2">
+                            <div class="new7-2-title">
+                                <img src="images/newG.png">
+                            </div>
+
+                            <div class="newbg" style="text-align:center">
+                                <div id="banner2_list">
+                                    <div class="newpic1" >
+                                        <img id="banner2" my="1" src="images/new1.jpg"  />
+                                    </div>
+                                </div>
+                                <div class="newbg2">
+                                    <div class="fangxing" onClick="banner('shang')" id="shang" style="background-color: #c7e8f7"><p style="color:#006ebc" >&lt;</p></div>
+                                    <div class="fangxing" onClick="banner('xia')" id="xia" style="background-color: #006ebc"> <p style="color:#c7e8f7">&gt;</p> </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+
+
+            <li class="tag_run" id="tag_one_5" style="display:none;">
+
+                <div class="run-bg3">
+                    <div class="run-content2">
+                        <div class="xiaofen-left">
+                            <p class="font-big">01  绿色预约特惠</p>
+                            <p class="font-normal">预交100元，领取豪华签到礼品一份；并每品牌可抵用200元货款，</p>
+                            <p class="font-normal">最高抵用2000元。</p>
+                            <p class="font-big">02  绿色补贴- 直降10%</p>
+                            <p class="font-normal">顾客购买绿色领跑品牌产品，可获10%直降贴。</p>
+                            <p class="font-big">03  健康限时抢购</p>
+                            <p class="font-normal">活动当天，绿色产品限时抢购，消费者购买各个品牌特价产品，先</p>
+                            <p class="font-normal">到先买，限量售卖，售完即止。</p>
+                            <p class="font-big">04  享10倍会员积分</p>
+                            <p class="font-normal">顾客在活动绿色领跑品牌购物，凭会员卡，即享10倍会员积分。</p>
+                            <p class="font-big">05  健康运动大礼</p>
+                            <p class="font-normal">购物满2000元，获得一次抽奖机会，可累计——有机会赢取健康运</p>
+                            <p class="font-normal">动大礼，将折叠跑步机、动感单车带回家。</p>
+                            <img src="images/wenzhang.png" alt="" width="100%" height="100%" >
+                        </div>
+                        <div class="xiaofen-light">
+                            <div class="fangxing" onClick="banner3('qian')" style="background-color: #c7e8f7"><p style="color:#006ebc" >&lt;</p></div>
+                            <div class="fangxing" onClick="banner3('hou')" style="background-color: #006ebc"> <p style="color:#c7e8f7">&gt;</p> </div>
+
+                            <div>
+                                
+                                <div class="slidepic" id="photo_list">
+                                	<div class="banner-image" >
+                                		<img src="images/image1.jpg" id="photo" my="1"  />
+                                	</div>
+								</div>
+							    
+                        	</div>
+                        </div>
+                            
+                    </div>
+                </div>
+            </li>
+
+            <li class="tag_about" id="tag_one_7" style="display:none;">
+                <div class="pingweihui-bg">
+                    <div class="run-content">
+                        
+                        <div class="fuhao">
+                            <a onClick="onclick_zj(0)" href="javascript:void(0);"><img  src="images/fuhao2.png" alt="" ></a>
+                            <img id="fuhao_middle1" src="images/fuhao3.png" alt=""  >
+                            <img id="fuhao_middle2" src="images/fuhao4.png" alt=""  >
+                            <a onClick="onclick_zj(1)" href="javascript:void(0);"><img id src="images/fuhao1.png" alt="" ></a>
+                        </div>
+                        <div class="zhuanjia1" id="zhuanjia">
+                            <img id="zhuanjia1" src="images/zhuanjia1.png" alt="" >
+                            <img id="zhuanjia2"  src="images/zhuanjia2.png" alt="" style="display:none" >
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </li>
+
+            <li class="tag_about" id="tag_one_8" style="display:none;">
+                <div class="home-banner">
+                    <div class="pingweihui-bg">
+                        <div class="run-content">
+                            
+                            <div class="fuhao">
+                            <a onClick="onclick_ps(0)" href="javascript:void(0);"><img  src="images/fuhao2.png" alt="" ></a>
+                            <img id="fuhao_ps1" src="images/fuhao3.png" alt=""  >
+                            <img id="fuhao_ps2" src="images/fuhao4.png" alt=""  >
+                            <a onClick="onclick_ps(1)" href="javascript:void(0);"><img id src="images/fuhao1.png" alt="" ></a>
+                        </div>
+                            <div class="zhuanjia2" Id="pingshen">
+                                <a rel="example_group" href="images/pingshen1B.jpg" title="">
+                                	<img id="pingshen1" src="images/pingshen1.png" alt="" >
+                                </a>
+                                <a rel="example_group" href="images/pingshen2B.jpg" title="">
+                                	<img id="pingshen2" src="images/pingshen2.png" alt="" style="display:none">
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    
+                </div>
+            </li>
+
+            <li class="tag_about" id="tag_one_9" style="display:none;">
+                <div class="home-banner">
+                    <div class="pingweihui-bg">
+                        <div class="run-content">
+                            
+                        
+                            <div class="zhuanjia">
+                            	<a rel="example_group" href="images/xiangmu1B.jpg" title="">
+                                	<img src="images/xiangmu1.png" alt="" >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+
+            <li class="tag_about" id="tag_one_10" style="display:none;">
+                <div class="home-banner">
+                    <div class="jiaju-bg">
+                        <div class="run-content">
+                            
+                            <div class="jiaju-title">
+                                <a href="javascript:void(0);" onClick="pinpai(0)">家具</a>
+                                <a href="javascript:void(0);" onClick="pinpai(1)">建材</a>
+                            </div>
+                            <div class="jiaju-content" id="jiaju-content">
+                                <img id="jiajuId" src="images/jiajulogo.png" alt="">
+                                <img id="jiancaiId" src="images/jiancailogo.png" alt="" style="display:none">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+
+            <li class="tag_about" id="tag_one_11" style="display:none;">
+                <div class="home-banner">
+                    <div class="pingweihui-bg">
+                        <div class="run-content">
+                            
+                        
+                            <div class="zhuanjia">
+                                <img src="images/logochuxuan.png" alt="" >
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+
+            <li class="tag_about" id="tag_one_12" style="display:none;">
+                <div class="home-banner">
+                    <div class="pingweihui-bg">
+                        <div class="run-content">
+                            
+                        
+                            <div class="zhuanjia">
+                                <img src="images/jiance.png" alt="" >
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </li>
+
+            <li class="tag_about" id="tag_one_13" style="display:none;">
+                <div class="pingweihui-bg">
+                    <div class="run-content">
+                        
+                    
+                        <div class="zhuanjia">
+                            <img src="images/logochuxuan.png" alt="" >
+                        </div>
+                    </div>
+                </div>
+                    
+            </li>
+
+            <li class="tag_viewback" id="tag_one_6" >
+                <div class="huigu-bg">
+                    <div class="run-content">
+                        
+                        <div class="huigu-content" >
+                            <div class="newbg3">
+                                <div class="fangxing" id="hgshang"  style="background-color: #006ebc" >
+                                    <p onClick="pdfclick('A')" style="color:#c7e8f7"  >A</p>
+                                </div>
+                                <div class="fangxing" id="hgxia" style="background-color: #c7e8f7"> 
+                                    <p onClick="pdfclick('B')" style="color:#006ebc" >B</p> 
+                                </div>
+                            </div>
+                            <div style="float:left">
+                            	<a id="pdfId" target="_blank" href="file/pdfA.pdf"><img src="images/baipishuA.png" alt="" ></a>
+                            </div>
+                            <div style="margin-left:1%;float:left">
+                            	<img src="images/huigu2.png" alt="" >
+                            	<div style="margin-top:-416px;">
+		                            <embed src="http://static.video.qq.com/TPout.swf?auto=0&amp;vid=n0158sf424z" wmode="transparent" width="100%" align="center" border="0" height="400px">
+		                        </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                    
+            </li>
+            
+            
+
+            <li class="tag_viewback" id="tag_one_14" >
+                <div class="huigu-bg">
+                    <div class="run-content">
+                        
+                        <div class="huigu-content" style="padding-left: 9.6%;">
+                            
+                            <div style="float:left">
+								<a  target="_blank" href="file/pdf2014.pdf">
+									<img src="images/huigu1.png" alt="" >
+								</a>
+                            </div>
+                            <div style="margin-left:1%;float:left">
+                            	<img src="images/huigu2.png" alt="" >
+                            	<div style="margin-top:-416px;">
+		                            <embed src="http://static.video.qq.com/TPout.swf?auto=0&amp;vid=n0158sf424z" wmode="transparent" width="100%" align="center" border="0" height="400px">
+		                        </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                    
+            </li>
+
+
+           <li class="tag_viewback" id="tag_one_15" >
+                <div class="by-bg">
+                    <div class="run-content">
+                        
+                        <div class="by-content">
+                            <h5>红星美凯龙绿色健康跑热力开跑</h5>
+                            <div class="byleft">
+		                      <embed src="http://player.youku.com/player.php/sid/XMTMzODA2ODAxNg==/v.swf" wmode="transparent" width="100%" align="center" border="0" height="351px">
+                            </div>
+
+                            	<div class="byright">
+                                   <div id="fsD1" class="focus">
+
+	<div id="D1pic1" class="fPic">
+		<div class="fcon">
+            <a><img src="images/run/a.jpg" /></a>
+            <span class="shadow">
+                <a>跑步，是一种可以让人摆脱杂念，回归生活本身的运动，它属于大众，它跨越年龄、性别甚至国度。但跑步只是大汗淋漓刷马路么？只是为了减低的甩掉脂肪甩掉压力么
+                </a>
+            </span>
+		</div>
+		<div class="fcon">
+            <a><img src="images/run/b.jpg" /></a>
+            <span class="shadow">
+                <a>跑步，是一种可以让人摆脱杂念，回归生活本身的运动，它属于大众，它跨越年龄、性别甚至国度。但跑步只是大汗淋漓刷马路么？只是为了减低的甩掉脂肪甩掉压力么
+                </a>
+            </span>
+		</div>
+		<div class="fcon">
+            <a><img src="images/run/c.jpg" /></a>
+            <span class="shadow">
+                <a>跑步，是一种可以让人摆脱杂念，回归生活本身的运动，它属于大众，它跨越年龄、性别甚至国度。但跑步只是大汗淋漓刷马路么？只是为了减低的甩掉脂肪甩掉压力么
+                </a>
+            </span>
+		</div>
+		<div class="fcon">
+            <a><img src="images/run/d.jpg" /></a>
+            <span class="shadow">
+                <a>跑步，是一种可以让人摆脱杂念，回归生活本身的运动，它属于大众，它跨越年龄、性别甚至国度。但跑步只是大汗淋漓刷马路么？只是为了减低的甩掉脂肪甩掉压力么
+                </a>
+            </span>
+		</div>
+        <div class="fcon">
+            <a><img src="images/run/e.jpg" /></a>
+            <span class="shadow">
+                <a>跑步，是一种可以让人摆脱杂念，回归生活本身的运动，它属于大众，它跨越年龄、性别甚至国度。但跑步只是大汗淋漓刷马路么？只是为了减低的甩掉脂肪甩掉压力么
+                </a>
+            </span>
+        </div>
+        <div class="fcon">
+            <a><img src="images/run/f.jpg" /></a>
+            <span class="shadow">
+                <a>跑步，是一种可以让人摆脱杂念，回归生活本身的运动，它属于大众，它跨越年龄、性别甚至国度。但跑步只是大汗淋漓刷马路么？只是为了减低的甩掉脂肪甩掉压力么
+                </a>
+            </span>
+        </div>
+        <div class="fcon">
+            <a><img src="images/run/g.jpg" /></a>
+            <span class="shadow">
+                <a>跑步，是一种可以让人摆脱杂念，回归生活本身的运动，它属于大众，它跨越年龄、性别甚至国度。但跑步只是大汗淋漓刷马路么？只是为了减低的甩掉脂肪甩掉压力么
+                </a>
+            </span>
+        </div>
+	</div>
+	
+	<div class="fbg">
+		<div class="D1fBt" id="D1fBt">
+			<a href="javascript:void(0)" class="current"><i>1</i></a>
+			<a href="javascript:void(0)"><i>2</i></a>
+			<a href="javascript:void(0)"><i>3</i></a>
+			<a href="javascript:void(0)"><i>4</i></a>
+            <a href="javascript:void(0)"><i>5</i></a>
+            <a href="javascript:void(0)"><i>6</i></a>
+            <a href="javascript:void(0)"><i>7</i></a>
+		</div>
+	</div>
+	
+
+	
+</div>
+<script type="text/javascript">
+Qfast.add('widgets', { path: "js/terminator2.2.min.js", type: "js", requires: ['fx'] });  
+Qfast(false, 'widgets', function () {
+	K.tabs({
+		id: 'fsD1',   //焦点图包裹id  
+		conId: "D1pic1",  //** 大图域包裹id  
+		tabId:"D1fBt",  
+		tabTn:"a",
+		conCn: '.fcon', //** 大图域配置class       
+		auto: 1,   //自动播放 1或0
+		effect: 'fade',   //效果配置
+		eType: 'click', //** 鼠标事件
+		pageBt:true,//是否有按钮切换页码
+		bns: ['.prev', '.next'],//** 前后按钮配置class                          
+		interval: 3000  //** 停顿时间  
+	}) 
+})  
+</script>
+                                 </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                    
+            </li>
+            
+              <li class="tag_viewback" id="tag_one_16" >
+                <div class="by-bg">
+                    <div class="run-content">
+                        
+                        <div class="by-content" style="width:869px;">
+                            <h5>红星美凯龙力推2015家居绿色环保领跑品牌</h5>
+                            <div class="bylefts" style="float:right">
+		                      <embed src="http://static.video.qq.com/TPout.swf?auto=0&amp;vid=p01686vhkf9" wmode="transparent" width="100%" align="center" border="0" height="351px">
+                            </div>
+
+                        <div class="byrights" style="float:left;margin-right:0px;">
+                                   <div id="fsD2" class="focus">
+
+	<div id="D1pic2" class="fPic">
+        <div class="fcon">
+            <a><img src="images/visit/a.jpg" /></a>
+            <span class="shadow" style="height:48px">
+                <a>北京曲美-工厂检验照
+                </a>
+            </span>
+        </div>
+        <div class="fcon">
+            <a><img src="images/visit/b.jpg" /></a>
+            <span class="shadow" style="height:48px">
+                <a>北京曲美-工厂检验照
+                </a>
+            </span>
+        </div>
+        <div class="fcon">
+            <a><img src="images/visit/c.jpg" /></a>
+            <span class="shadow" style="height:48px">
+                <a>杜莎七彩人生-工厂检验照
+                </a>
+            </span>
+        </div>
+        <div class="fcon">
+            <a><img src="images/visit/d.jpg" /></a>
+            <span class="shadow" style="height:48px">
+                <a>杜莎七彩人生-工厂检验照
+                </a>
+            </span>
+        </div>
+        <div class="fcon">
+            <a><img src="images/visit/e.jpg" /></a>
+            <span class="shadow" style="height:48px">
+                <a>恒洁卫浴-工厂检验照
+                </a>
+            </span>
+        </div>
+        <div class="fcon">
+            <a><img src="images/visit/f.jpg" /></a>
+            <span class="shadow" style="height:48px">
+                <a>恒洁卫浴-工厂检验照
+                </a>
+            </span>
+        </div>
+        <div class="fcon">
+            <a><img src="images/visit/g.jpg" /></a>
+            <span class="shadow" style="height:48px">
+                <a>芝华士-工厂检验照
+                </a>
+            </span>
+        </div>
+        <div class="fcon">
+            <a><img src="images/visit/h.jpg" /></a>
+            <span class="shadow" style="height:48px">
+                <a>芝华士-工厂检验照
+                </a>
+            </span>
+        </div>
+	</div>
+	
+	<div class="fbg">
+		<div class="D1fBt" id="D1fBt2">
+			<a href="javascript:void(0)" class="current"><i>1</i></a>
+			<a href="javascript:void(0)"><i>2</i></a>
+			<a href="javascript:void(0)"><i>3</i></a>
+			<a href="javascript:void(0)"><i>4</i></a>
+            <a href="javascript:void(0)"><i>5</i></a>
+            <a href="javascript:void(0)"><i>6</i></a>
+            <a href="javascript:void(0)"><i>7</i></a>
+            <a href="javascript:void(0)"><i>8</i></a>
+		</div>
+	</div>
+	
+
+	
+</div>
+<script type="text/javascript">
+Qfast.add('widgets', { path: "js/terminator2.2.min.js", type: "js", requires: ['fx'] });  
+Qfast(false, 'widgets', function () {
+	K.tabs({
+		id: 'fsD1',   //焦点图包裹id  
+		conId: "D1pic1",  //** 大图域包裹id  
+		tabId:"D1fBt",  
+		tabTn:"a",
+		conCn: '.fcon', //** 大图域配置class       
+		auto: 1,   //自动播放 1或0
+		effect: 'fade',   //效果配置
+		eType: 'click', //** 鼠标事件
+		pageBt:true,//是否有按钮切换页码
+		bns: ['.prev', '.next'],//** 前后按钮配置class                          
+		interval: 3000  //** 停顿时间  
+	}) 
+	K.tabs({
+		id: 'fsD2',   //焦点图包裹id  
+		conId: "D1pic2",  //** 大图域包裹id  
+		tabId:"D1fBt2",  
+		tabTn:"a",
+		conCn: '.fcon', //** 大图域配置class       
+		auto: 1,   //自动播放 1或0
+		effect: 'fade',   //效果配置
+		eType: 'click', //** 鼠标事件
+		pageBt:true,//是否有按钮切换页码
+		bns: ['.prev', '.next'],//** 前后按钮配置class                          
+		interval: 3000  //** 停顿时间  
+	}) 
+})  
+</script>
+                                 </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                    
+            </li>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+   
+    function pdfclick(type){
+        if (type=='B') {
+            $("#hgshang").css('background-color','#c7e8f7');
+            $("#hgxia").css("backgroundColor","#006ebc");
+            $("#hgshang p").css('color','#006ebc');
+            $("#hgxia p").css('color','#c7e8f7');
+            $("#pdfId").attr('href','javascript:void(0);');
+            $("#pdfId img").attr('src','images/baipishuB.png');
+        }
+        else{
+            $("#hgxia").css('background-color','#c7e8f7');
+            $("#hgshang").css("backgroundColor","#006ebc");
+            $("#hgxia p").css('color','#006ebc');
+            $("#hgshang p").css('color','#c7e8f7');
+            $("#pdfId").attr('href','file/pdfA.pdf');
+            $("#pdfId img").attr('src','images/baipishuA.png');
+        }
+
+
+    }
+    function pinpai(key){
+    	//$('#jiaju-content').attr('style','margin-left: 8%');
+        if (key==1) {
+            $("#jiajuId").attr('style','display:none');
+            $("#jiancaiId").attr('style','display:inline-block');
+
+        }
+        else
+        {
+            $("#jiajuId").attr('style','display:inline-block');
+            $("#jiancaiId").attr('style','display:none');
+        }
+
+    }
+    function onclick_zj(key){
+    	//$('#zhuanjia').attr('style','margin-left: 8%');
+        if (key==1) {
+            $("#fuhao_middle2").attr('src','images/fuhao3.png');
+            $("#fuhao_middle1").attr('src','images/fuhao4.png');
+            $("#zhuanjia1").attr('style','display:none');
+            $("#zhuanjia2").attr('style','display:inline-block');
+        }
+        else
+        {
+            $("#fuhao_middle2").attr('src','images/fuhao4.png');
+            $("#fuhao_middle1").attr('src','images/fuhao3.png');
+            $("#zhuanjia2").attr('style','display:none');
+            $("#zhuanjia1").attr('style','display:inline-block');
+        }
+    }
+    function onclick_ps(key){
+    	//$('#pingshen').attr('style','margin-left: 8%');
+        if (key==1) {
+            $("#fuhao_ps2").attr('src','images/fuhao3.png');
+            $("#fuhao_ps1").attr('src','images/fuhao4.png');
+            $("#pingshen1").attr('style','display:none');
+            $("#pingshen2").attr('style','display:inline-block');
+        }
+        else
+        {
+            $("#fuhao_ps2").attr('src','images/fuhao4.png');
+            $("#fuhao_ps1").attr('src','images/fuhao3.png');
+            $("#pingshen2").attr('style','display:none');
+            $("#pingshen1").attr('style','display:inline-block');
+        }
+    }
+    </script>
+    <script type="text/javascript">
+    	function banner3(type){
+    		var i=$('#photo').attr('my');
+    		if(type=='hou')
+    		{
+    			if (i<13) {i++;}
+    		}
+    		else
+    		{
+    			if (i>1) {
+    				i--;
+    			}
+    			
+    		}
+    		var url='images/image'+i+'.jpg';
+    		$("#photo").attr('src',url);
+			$("#photo").attr('my',i);
+    	}
+    		
+
+    	
+
+    </script>
+
+    <script type="text/javascript">
+    	function banner(type){
+    		var i=$('#banner2').attr('my');
+    		if(type=='xia')
+    		{
+    			if (i<5) {i++;}
+    			
+    		}
+    		else
+    		{
+    			if (i>1) {
+    				i--;
+    			}
+    			
+    		}
+    		var url='images/new'+i+'.jpg';
+    		$("#banner2").attr('src',url);
+			$("#banner2").attr('my',i);
+    	}
+
+    </script>
+    
+    <script type="text/javascript">
+        function setTab(name,cursel){
+            for(var i=1; i<=links_len; i++){
+                var menu = document.getElementById(name+i);
+                var menudiv = document.getElementById("tag_"+name+"_"+i);
+                if(i==cursel){
+                    menudiv.style.display="block";
+                }
+                else{
+                    menudiv.style.display="none";
+                }
+            }
+            if (cursel==3||cursel==4||cursel==5) {
+                $("#navbar-2").attr('style','display:block');
+            }
+            else
+            {
+                $("#navbar-2").attr('style','display:none');
+            }
+            if (cursel==2||cursel==9||cursel==8||cursel==7||cursel==10||cursel==11||cursel==12||cursel==13) {
+                $("#navbar2-2").attr('style','display:block');
+            }
+            else
+            {
+                $("#navbar2-2").attr('style','display:none');
+            }
+            if (cursel==9||cursel==10||cursel==11||cursel==12||cursel==13) {
+                $("#caidan3").attr('style','display:block');
+            }
+            else
+            {
+                $("#caidan3").attr('style','display:none');
+            }
+            if (cursel==6||cursel==14) {
+                $("#huigu").attr('style','display:block');
+            }
+            else
+            {
+                $("#huigu").attr('style','display:none');
+            }
+			
+            if (cursel==15||cursel==16) {
+                $("#by").attr('style','display:block');
+            }
+            else
+            {
+                $("#by").attr('style','display:none');
+            }
+
+
+        }
+        function Next(){                                                        
+            cursel++;
+            if (cursel>links_len)cursel=1
+            setTab(name,cursel);
+        } 
+        var name='one';
+        var cursel=1;
+
+        onload=function(){
+            var links = document.getElementById("tag").getElementsByTagName('li');
+            links_len=links.length;
+            
+            setTab(name,cursel);
+            
+        }
+    </script>
+
+    
+    
+    <!--#include virtual="/public/head.html"-->
+    <!--#include virtual="/public/footer.html"-->
+    <!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

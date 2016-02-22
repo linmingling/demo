@@ -1,0 +1,81 @@
+/* 
+html5doctor.com Reset Stylesheet
+v1.4.1 
+2010-03-01
+Author: Richard Clark - http://richclarkdesign.com
+*/
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,
+ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,footer,header,hgroup,
+menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;font-family:微软雅黑;vertical-align:baseline;background:transparent;list-style-type:none;}
+body{line-height:1}
+:focus{outline:1}
+article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{display:block}
+nav ul{list-style:none;list-style-type:none;}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+a{margin:0;padding:0;border:0;font-size:100%;vertical-align:baseline;background:transparent}
+ins{background-color:#ff9;color:#000;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted #000;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #cccccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+textarea{border: 0 none;margin: 0;outline: 0 none;padding: 0;}
+
+/*main*/
+.box1{width: 100%;min-width:1000px;height:592px;background: url(../images/box1.jpg) no-repeat center center;}
+.box2{width: 100%;min-width:1000px;height:806px;background: url(../images/box2.jpg) no-repeat center center;}
+.box3{width: 100%;min-width:1000px;height:944px;background: url(../images/box3.jpg) no-repeat center center;}
+.box4{width: 100%;min-width:1000px;height:715px;background: url(../images/box4.jpg) no-repeat center center;}
+.box5{width: 100%;min-width:1000px;height:943px;background: url(../images/box5.jpg) no-repeat center center;}
+.in{width:1000px;height: 100%;position: relative;margin:0 auto;}
+.hide{display: none;}
+
+.con1{width: 340px;height: 91px;position: absolute;bottom:28px;font-size: 14px;color:#00aaa5;line-height: 24px;left:126px;font-weight: bold;}
+.con2{width: 450px;height: 70px;position: absolute;top:180px;color:#575757;font-size:14px;line-height: 24px;left:46px;}
+.con3{width: 450px;height: 55px;position: absolute;bottom:178px;color:#575757;font-size:14px;line-height: 24px;right:44px;}
+.con4{width: 241px;height: 135px;position: absolute;top:298px;color:#575757;font-size:14px;line-height: 24px;left:133px;}
+.con5{width: 252px;height: 142px;position: absolute;top:151px;color:#575757;font-size:14px;line-height: 24px;right:158px;}
+.con6{width: 238px;height: 153px;position: absolute;bottom:175px;color:#575757;font-size:14px;line-height: 24px;left:266px;}
+.con7{width: 238px;height: 159px;position: absolute;bottom:290px;color:#575757;font-size:14px;line-height: 24px;right:55px;}
+.con8{width: 210px;height: 234px;position: absolute;top:173px;color:#575757;font-size:14px;line-height: 24px;left:228px;}
+.con9{width: 460px;height: 162px;position: absolute;top:205px;color:#575757;font-size:14px;line-height: 24px;right:39px;}
+.con10{width: 208px;height: 100px;position: absolute;top:571px;color:#575757;font-size:14px;line-height: 24px;left:232px;}
+.con11{width: 214px;height: 161px;position: absolute;top:458px;color:#575757;font-size:14px;line-height: 24px;right:16px;}
+.con12{width: 199px;top:182px;color:#575757;font-size:14px;line-height: 24px;left:206px;}
+.con13{width: 200px;top:55px;color:#575757;font-size:14px;line-height: 24px;right:20px;}
+.con14{width: 209px;height: 221px;position: absolute;top:448px;color:#575757;font-size:14px;line-height: 24px;right:22px;}
+.con15{width: 605px;height: 104px;font-size: 14px;line-height:24px;color:#575757;position: absolute;top:94px;left:25px;}
+.con16{width: 602px;height: 201px;font-size: 14px;line-height:24px;color:#575757;position: absolute;top:94px;left:25px;}
+.con17{width: 618px;height: 238px;font-size: 14px;line-height:24px;color:#575757;position: absolute;top:94px;left:25px;overflow: auto;}
+.link{display:inline-block;cursor:pointer;text-decoration: none;width: 55px;height: 23px;background: url(../images/link.png) no-repeat center center;text-align: center;color:#fff;letter-spacing: 2px;}
+.link2{float:right;display:inline-block;text-decoration: none;width: 55px;height: 23px;background: url(../images/link.png) no-repeat center center;text-align: center;color:#fff;letter-spacing: 2px;}
+.v-box{width: 402px;height: 271px;position: absolute;bottom:113px;left:49px;}
+.home{display: block;width: 271px;height: 82px;position: absolute;top:50px;}
+.top{position: fixed;right:0;bottom:111px;width: 50px;height: 50px;background: url(../images/top.png) no-repeat;cursor:pointer;}
+
+/*弹窗*/
+.pop1{width: 655px;height: 218px;background: url(../images/t1.png) no-repeat center center;position: fixed;top:300px;left:50%;margin-left:-328px;z-index:999;}
+.pop2{width: 652px;height: 309px;background: url(../images/t2.png) no-repeat center center;position: fixed;top:193px;left:50%;margin-left:-326px;z-index:999;}
+.pop3{width: 652px;height: 381px;background: url(../images/t3.png) no-repeat center center;position: fixed;top:169px;left:50%;margin-left:-326px;z-index:999;}
+.cls{width: 34px;height: 32px;text-decoration: none;display: block;margin:0 auto;}
+.con16 .cls{width: 34px;height: 32px;text-decoration: none;display: block;margin:0 auto;margin-top: 96px;}
+.pop3 .cls{width: 34px;height: 32px;text-decoration: none;display: block;margin:0 auto;bottom:17px;position: absolute;left:309px;}
+
+
+.c12{width: 254px;height: 240px;left:192px;position: absolute;top:187px;}
+.c12 .scroll_container{overflow:hidden;position:relative;}
+.c12 .scroll_absolute{position:absolute;left:37px;}
+.c12 .scroll_vertical_bar{position:absolute;top:0;right:0;width:10px;height:100%;background:green;margin:0;padding:0;border-radius: 30px;}
+.c12 .scroll_track{position:relative;background-color:#d0edec;border-radius: 30px;}
+.c12 .scroll_drag{position:relative;top:0;left:0;cursor:pointer;background-color:#00aaa5;border-radius: 30px;}
+
+.c13{width: 254px;height: 240px;right:14px;position: absolute;top:55px;}
+.c13 .scroll_container{overflow:hidden;position:relative;}
+.c13 .scroll_absolute{position:absolute;left:37px;}
+.c13 .scroll_vertical_bar{position:absolute;top:0;right:0;width:10px;height:100%;background:green;margin:0;padding:0;border-radius: 30px;}
+.c13 .scroll_track{position:relative;background-color:#d0edec;border-radius: 30px;}
+.c13 .scroll_drag{position:relative;top:0;left:0;cursor:pointer;background-color:#00aaa5;border-radius: 30px;}

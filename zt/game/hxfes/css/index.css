@@ -1,0 +1,5 @@
+body{background: url(../img/bg.jpg) no-repeat;background-size: cover;}
+#ad{margin-top:-13px;}
+#startBtn{position: absolute;z-index: 2;bottom: 0;left: 50%;margin-left: -234.5px;}
+#rankBtn{position: absolute;z-index: 2;bottom: -125px;left: 50%;margin-left: -234.5px;}
+/*#index_mdu{display: none;}*/

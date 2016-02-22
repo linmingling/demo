@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* wy-mod-banner */
+.wy-mod-banner{margin-top:0px;height:780px;position:absolute;overflow:hidden; z-index:1; top:0px; width:100%;}
+.wy-mod-banner .banners{width:1920px;height:780px;overflow:hidden;position:absolute;left:50%;margin-left:-970px;}
+.wy-mod-banner .banner{width:1920px;height:780px;overflow:hidden;position:absolute;left:50%;margin-left:-970px;}
+.wy-mod-banner .banner .info{
+	width:120px;
+	height:316px;
+	position:absolute;
+	right:50%;
+	margin-right:-660px;
+	background:url(img/txt1.png) no-repeat;
+	top:440px;
+}
+.wy-mod-banner .banner2 .info{background-image:url(img/txt2.png);}
+.wy-mod-banner .banner3 .info{background-image:url(img/txt3.png);}
+.wy-mod-banner .banner4 .info{background-image:url(img/txt4.png);}
+.wy-mod-banner .info .link-download{
+	width:400px;
+	height:60px;
+	overflow:hidden;
+	position:absolute;
+	bottom:100px;
+	right:630px;
+	cursor:pointer;
+	text-decoration:none;
+}
+.wy-mod-banner .info .link-download span{
+	position:absolute;
+	display:block;
+	left:15px;
+	cursor:pointer;
+	font-size:28px;
+	line-height:50px;
+	color:white;
+	font-weight:500;
+	font-family:"Microsoft YaHei";
+	width: 171px;
+	height: 55px;
+	top: 2px;
+}
+.wy-mod-banner .banner1 .info .link-download span,
+.wy-mod-banner .banner2 .info .link-download span {color:#3091f2;}
+.wy-mod-banner .info .link-download .bor_c{
+	position:absolute;
+	width:178px;
+	height:53px;
+	right:9px;
+	top:2px;
+	_background-image:url(img/ico_bule.png);
+}
+.wy-mod-banner .banner3 .info .link-download .bor_c,
+.wy-mod-banner .banner4 .info .link-download .bor_c{background-image:url(img/ico_white.32.png);_background-image:url(img/ico_white.png);}
+
+.wy-mod-banner .banner .info h3{display:none;}
+.wy-mod-banner .banner .info p{display:none;}
+.wy-mod-banner .focus{width:960px;margin:0px auto;padding-top:680px;text-align:center;}
+.wy-mod-banner .focus a{text-decoration:none;z-index:3;width:24px;height:74px;position:relative;display:inline-block;*display:inline;overflow:hidden;margin:0px 3px;zoom:1;}
+.wy-mod-banner .focus a .bg-m{z-index:4;color:white;line-height:40px;font-size:40px;position:absolute;display:block;left:2px;top:6px;cursor:pointer; display:none;}
+.wy-mod-banner .focus a .bg-b{background-image:url(img/i_dot.32.png);position:absolute;display:block;left:0px;top:0px;cursor:pointer; width:18px; height:18px;}
+.wy-mod-banner .focus a .inner{background-image:url(img/i_dot_hover.32.png);position:absolute;left:0px;top:0px;z-index:9;opacity:0;display:none\0;+display:none;*display:none; width:18px;height:18px;}
+.wy-mod-banner .focus a.on .inner,.wy-mod-banner .focus a:hover .inner{cursor:pointer;display:block;border:0;-webkit-transition:opacity .3s ease-in-out;-ms-transition:opacity .3s ease-in-out;transition:opacity .3s ease-in-out;opacity:1;}
+.wy-mod-banner .focus .hover .inner{display:block;}
+.yyqg .left {
+	float: left;
+	height: 540px;
+	width: 290px;
+	background-image: url(../images/page4_left1.jpg);
+	background-repeat: no-repeat;
+}

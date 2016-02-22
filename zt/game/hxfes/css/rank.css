@@ -1,0 +1,12 @@
+#rank_list_wrapper{width: 605px;height: 706px;position: absolute;top:220px;}
+#rank_list_wrapper ul{width: 427px;height: 550px;position: absolute;left: 50%;margin-left: -213.5px;top: 120px;}
+#rank_list_wrapper ul div{width:100%;font-size: 1.3rem;margin-bottom: 10px;color: #19642f;}
+#rank_list_wrapper ul div li:nth-child(1){width: 115px;}
+#rank_list_wrapper ul div li:nth-child(2){width: 221px;}
+#rank_list_wrapper ul div li:nth-child(3){width: 115px;}
+#closeBtn,#closerankBtn{position: absolute;z-index: 55;bottom:20px;right: 50px;}
+#pagecon{font-size: 1.6rem;color: #FFFFFF;width: 200px;margin: 20px auto 0;text-align:  center;}
+#pagecon li{width: 100px;}
+#pagecon li:nth-child(1){border-right: 1px solid #FFFFFF;}
+.no_select{color: #b5b5b5;}
+#rank_modul{display: none;position: fixed;top:0;left: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,0.6);z-index: 99}

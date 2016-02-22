@@ -1,0 +1,93 @@
+#selectList div {
+    width: 150px;
+    height: 150px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    margin: 0 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+#selectList .active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    display: block;
+}
+
+#selectList .unactive {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+}
+
+#ruleBot {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#ruleBot img {
+    display: inline;
+    margin-bottom: -10px;
+}
+
+#ruleheight {
+    height: 807px;
+    padding-top: 100px;
+}
+
+#ruleBtn {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    bottom: 50px;
+    -webkit-animation-name: charector-1;/* 动画名称 */
+    -webkit-animation-iteration-count: infinite;/* 动画无限播放 */
+    /*-webkit-animation-timing-function: step-start;/!* 马上跳到动画每一结束桢的状态 *!/*/
+    -webkit-animation-duration: 1000ms;/* 动画运行的时间 */
+}
+
+@-webkit-keyframes charector-1{
+    0% {opacity: 1}
+    25%{opacity: 0.5}
+    50% {opacity: 0}
+    75% {opacity: 0.5}
+    100% {opacity: 0.9}
+}
+
+#ruletxtCon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 55;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+#closeBtn, #closerankBtn {
+    position: absolute;
+    z-index: 55;
+    bottom: 20px;
+    right: 50px;
+}
+
+#ruleTxt {
+    position: absolute;
+    width: 483px;
+    height: 679px;
+    overflow: scroll;
+    z-index: 30;
+    top: 217px;
+    left: 84px
+}

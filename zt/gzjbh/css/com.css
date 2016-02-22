@@ -1,0 +1,158 @@
+/********************* reset Start *********************/
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 12px/1.7 "Microsoft YaHei";color:#333;background-color:#333;}
+a{color:#333;text-decoration:none;outline: none;}
+a:hover{text-decoration:none;color:#0463ab;-webkit-transition:color .3s ease-out;-moz-transition:color .3s ease-out;transition:color .3s ease-out;}
+a img,img{border:0;vertical-align: top;}
+ul,li,input{list-style:none;padding:0;margin:0;vertical-align:middle;}
+input{outline: none;}
+i, em {font-style: normal; }
+table {border-collapse: collapse;border-spacing:0;}
+.hide{display: none;}
+.hideFont{text-indent: -100%;overflow: hidden;display: block;}
+.clear:after{clear: both;content:'.';display: block;visibility:hidden;height:0;}
+.clear{zoom:1; clear: both;}
+
+/********************* reset End *********************/
+
+/*box*/
+.mainWrap{min-width:1000px;max-width:1920px;position: relative;overflow:hidden;background: url(../images/bg.jpg) repeat-y top center;background-attachment: fixed;}
+.mainBox{background-repeat:no-repeat;background-position:top center}
+.insideBox{width:1000px;margin:0 auto;position: relative;}
+.box1{height: 574px;background: url(../images/box1-bg.png) no-repeat center top}
+
+.box2{height: 510px}
+
+.box3{height:600px;}
+.box3 .insideBox{background: url(../images/box3-bg.png) no-repeat left top}
+.box3 .box3-text{width: 520px;padding-top: 68px;margin:10px 0;}
+.box3 .box3-text .big-title{text-indent: 50px}
+.box3 .box3-text .big-title a{font-size: 24px;color: #0463ab;font-weight: bold;}
+.box3 .box3-text .title{margin-top: 20px}
+.box3 .box3-text .title a{font-size: 16px;color: #0463ab;font-weight: bold;}
+.box3 .box3-text .text{text-indent: 2em;font-size: 16px}
+.box3 .box3-right{float:right;margin-top: 50px}
+
+.box4{}
+.box4 .insideBox{padding-top: 70px;background: url(../images/box4-bg.png) no-repeat left top}
+.guestWarp{height: 440px;overflow: hidden;}
+.guestWarp2{height: auto}
+.guestBox{width: 240px;height:210px;padding:2px 2px 0 2px;margin:8px 8px 0 0;background: #fff;float: left;overflow: hidden;position: relative;}
+.guestBox img{width: 240px;height:175px;}
+.guestBox .name{width: 100%;height: 33px;line-height: 33px;text-align: center;}
+.guestBox .info{width:220px;height: 155px;padding:10px;background: #000;color: #fff;position: absolute;top: 2px;left: 2px;opacity: 0}
+.guestBox .info a{color: #fff}
+.guestBox:hover .info{opacity: 1;-webkit-transition:opacity .3s ease-out;-moz-transition:opacity .3s ease-out;transition:opacity .3s ease-out;}
+.box4 .mr0{margin-right:0;}
+.box4 .more{width:195px;height: 31px;margin:20px auto;/* background: url(../images/box4-1.png) no-repeat;cursor: pointer;  */}
+
+.box5{height: 500px}
+.box5 .insideBox{padding-top:70px;background: url(../images/box5-bg.png) no-repeat left top}
+.box5 .box5-swiper{float:left;}
+.box5 .box5-text{width: 400px;float: right}
+.box5 .title{font-size: 24px;font-weight: bold;margin-bottom: 10px}
+.box5 .text{text-indent: 2em;font-size: 13px}
+
+.box6{height: 500px;}
+.box6 .insideBox{padding-top:70px;background: url(../images/box6-bg.png) no-repeat left top}
+.box6 .box6-swiper{float:right;}
+.box6 .box6-text{width: 400px;float: left}
+.box6 .title{font-size: 24px;font-weight: bold;margin-bottom: 10px}
+.box6 .text{text-indent: 2em;font-size: 13px}
+
+.box7{}
+.box7 .insideBox{height: 700px;padding-top:20px;background: url(../images/box7-bg.png) no-repeat left top}
+.box7-swiper{width: 357px;height: 421px;position: relative;overflow: hidden;  margin: 50px 0 0 323px;}
+.box7 .swiper-slide{height: 420px}
+
+.goToTop {position: fixed;bottom: 1%;right: 15%;z-index: 10;width: 48px;height: 48px;border: 1px solid #d2d2d2;  background: url(../images/goToTop.png) no-repeat 0 0;margin-top: 10px;cursor: pointer;}
+.goToTop:hover{background-position:0px -48px;-webkit-transition:background-position .3s ease-out;-moz-transition:background-position .3s ease-out;transition:background-position .3s ease-out;}
+
+.swiper{width: 570px;height: 405px;position: relative;overflow: hidden;}
+.pagination{width:100%;height:30px;position: absolute;bottom: -1px;z-index: 1;text-align: center;}
+.pagination .swiper-pagination-switch {display: inline-block;width: 13px;height: 13px;border-radius: 15px;background: #4d4d4d;margin: 8px 5px;cursor: pointer;}
+.pagination .swiper-active-switch {background: #174299;}
+
+#wrap { margin:30px auto 0;overflow: hidden; zoom: 1; position: relative; }
+.icon-arrow-a-left, .icon-arrow-a-right { background: url(../images/btn.png) no-repeat; }
+.icon-arrow-a-left { background-position: 0 0; height: 58px; width: 35px; }
+.icon-arrow-a-left:hover, .icon-arrow-a-left.arrow-a-left_hover, .icon-arrow-a-left.arrow-a-left-hover {opacity:1; }
+.icon-arrow-a-right { background-position: -40px 0; height: 58px; width: 35px; }
+.icon-arrow-a-right:hover, .icon-arrow-a-right.arrow-a-right_hover, .icon-arrow-a-right.arrow-a-right-hover {opacity:1; }
+#index_b_hero { width: 960px; height: 510px; margin: auto; text-align:center; position: relative; }
+#index_b_hero img { width: 950px; height: 500px; }
+#index_b_hero .heros { width: 9600px; height: 510px; }
+#index_b_hero .hero-wrap { overflow: visible; position: absolute; }
+#index_b_hero .next, #index_b_hero .prev { filter: alpha(Opacity=70); opacity: .7; position: absolute; top: 50%; margin-top: -25px; margin-left: -475px; background-color: #303030; z-index: 3; }
+#index_b_hero .next:hover, #index_b_hero .prev:hover { opacity:1; }
+#index_b_hero .next { margin: -25px 5px 0 0; right: 0; }
+#index_b_hero .disabled { background-color: #eee; }
+#index_b_hero .mask-left, #index_b_hero .mask-right, #index_b_hero .hero { background: #fff; padding: 5px; z-index: 1; position: absolute; top: 0; left: 0; width: 950px; height: 500px; overflow: hidden; left: 1920px; }
+#index_b_hero .mask-right, #index_b_hero .mask-left { z-index: 4; left: -960px; filter: alpha(Opacity=50); opacity: .5; background: #fff; overflow: hidden; }
+#index_b_hero .mask-right { left: 960px; }
+#index_b_hero .active { z-index: 2; left: 0; }
+  
+
+/* ===============================================================
+Basic Swiper Styles 
+================================================================*/
+.swiper-container {
+	margin:0 auto;
+	position:relative;
+	overflow:hidden;
+	-webkit-backface-visibility:hidden;
+	-moz-backface-visibility:hidden;
+	-ms-backface-visibility:hidden;
+	-o-backface-visibility:hidden;
+	backface-visibility:hidden;
+	/* Fix of Webkit flickering */
+	z-index:1;
+}
+.swiper-wrapper {
+	position:relative;
+	width:100%;
+	-webkit-transition-property:-webkit-transform, left, top;
+	-webkit-transition-duration:0s;
+	-webkit-transform:translate3d(0px,0,0);
+	-webkit-transition-timing-function:ease;
+	
+	-moz-transition-property:-moz-transform, left, top;
+	-moz-transition-duration:0s;
+	-moz-transform:translate3d(0px,0,0);
+	-moz-transition-timing-function:ease;
+	
+	-o-transition-property:-o-transform, left, top;
+	-o-transition-duration:0s;
+	-o-transform:translate3d(0px,0,0);
+	-o-transition-timing-function:ease;
+	-o-transform:translate(0px,0px);
+	
+	-ms-transition-property:-ms-transform, left, top;
+	-ms-transition-duration:0s;
+	-ms-transform:translate3d(0px,0,0);
+	-ms-transition-timing-function:ease;
+	
+	transition-property:transform, left, top;
+	transition-duration:0s;
+	transform:translate3d(0px,0,0);
+	transition-timing-function:ease;
+}
+.swiper-free-mode > .swiper-wrapper {
+	-webkit-transition-timing-function: ease-out;
+	-moz-transition-timing-function: ease-out;
+	-ms-transition-timing-function: ease-out;
+	-o-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+	margin: 0 auto;
+}
+.swiper-slide {
+	float: left;
+}
+
+/* IE10 Windows Phone 8 Fixes */
+.swiper-wp8-horizontal {
+	-ms-touch-action: pan-y;
+}
+.swiper-wp8-vertical {
+	-ms-touch-action: pan-x;
+}

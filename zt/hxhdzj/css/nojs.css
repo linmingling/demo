@@ -1,0 +1,16 @@
+.da-slide{
+	position: relative;
+}
+.da-slide h2,
+.da-slide p,
+.da-slide .da-link,
+.da-slide .da-img{
+	opacity: 1;
+	display: block;
+	background-color: #CCC;
+}
+
+.da-dots,
+.da-arrows{
+	display: none;
+}

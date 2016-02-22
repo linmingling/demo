@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="front-end technicist" content="qingqing" />
+	<title>呼博士全民健康睡眠日</title>
+	<meta name="keywords" content="呼博士全民健康睡眠日" />
+	<meta name="description" content="呼博士全民健康睡眠日" />
+	<meta property="qc:admins" content="354743726136066141236654" />
+	<meta property="wb:webmaster" content="6eb365aa7117c258" />
+	<meta name="front-end technicist" content="qingqing" />
+	<meta name="baidu-site-verification" content="n7iMlq6BOn" />
+	<link type="text/css" rel="stylesheet" href="com.css" media="all" />
+	<script src="jquery.min.js"></script>
+</head>
+<body>
+	<!-- 头部 -->
+	<div class="head">
+		<a href="http://www.briair.cn/" target='_blank'><img src="images/hu_logo.png" class="logo"/></a>
+		<img src="images/top.gif" alt="呼博士" />
+		<a href="http://easepal.tmall.com/" target='_blank' class="link1"></a>
+		<!-- 导航 -->
+		<div class="navMain">
+			<div class="nav">
+				<a href="#tab1"><span class="tab1"></span></a>
+				<a href="#tab2"><span class="tab2"></span></a>
+				<a href="#tab3"><span class="tab3"></span></a>
+			</div>
+		</div>
+	</div>
+
+	<!-- 主要内容 -->
+	<div class="main">
+		<div id="tab1">
+			<div class="title1"><img src="images/title1.png" alt="呼博士" /></div>
+			<div class="left">
+				<span class="l_t"><img src="images/o_air.png"></span>
+				<span class="l_m_o"><img src="images/out.png"></span>
+				<span class="l_m_p">
+					<a href="http://easepal.tmall.com/" target='_blank'><img src="images/product.png"></a>
+					<span class="l_m_i">
+						<img class="f_img" src="images/input.png">
+					</span>
+				</span>
+				<span class="l_m_c"><a href="http://easepal.tmall.com/" target='_blank' class="link1"><li></li></a></span>
+			</div>
+			<div class="right"><img src="images/tab_r.png"></div>
+		</div>
+		<div id="tab2">
+			<div class="title2">
+				<a href="http://easepal.tmall.com/" target='_blank'>
+					<img src="images/title2.png" alt="呼博士" />
+				</a>
+			</div>
+			<div class="content">
+				<div class="c_title"><img src="images/c_title.png"  alt="呼博士"/></div>
+				<div class="c_step">
+					<span class="step1"></span><li></li>
+					<span class="step2"></span><li></li>
+					<span class="step3"></span><li></li>
+					<span class="step4"></span>
+				</div>
+			</div>
+		</div>
+		<div id="tab3">
+			<img src="images/title3.png" alt="呼博士" />
+		</div>
+	</div>
+	
+	<!-- 底部 -->
+	<footer>
+		<img src="images/dec.png">
+		<span class="notice"><img src="images/notice.png"></span>
+	</footer>
+	<!--#include virtual="/public/head.html"-->
+	<!--#include virtual="/public/footer.html"-->
+	
+	<script type="text/javascript">
+	$(function() {
+		var animation =function(){
+			$('.l_m_p .l_m_i .f_img').animate({left:'-150px',opacity:1},1000);
+			$('.l_m_p .l_m_i .f_img').animate({left:0,opacity:0},1000);
+
+			$('#tab1 .left .l_t img').animate({opacity:0,top:'-100px'},1500);
+
+			$('#tab1 .left .l_m_o').animate({top:'-50px',opacity:1},1500);
+
+			$('#tab1 .left .l_t img').animate({top:0,opacity:1},1500);
+
+			$('#tab1 .left .l_m_o').animate({top:0,opacity:0},1500);
+			
+		};
+		setInterval(animation,3000);
+	});
+	</script>
+
+	<!--#include virtual="/public/tongji.html"-->
+</body>
+
+</html>

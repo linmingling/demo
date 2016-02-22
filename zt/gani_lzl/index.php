@@ -1,0 +1,318 @@
+<?php
+	define('ROOT_PATH', dirname(__FILE__));
+	require(ROOT_PATH . '../../data/config.php');
+	require_once(ROOT_PATH .'../../data/jssdk.php');
+    $jssdk = new JSSDK();
+    $signPackage = $jssdk->GetSignPackage(); 
+    
+    $agent = $_SERVER['HTTP_USER_AGENT'];
+     if(!strpos($agent,"MicroMessenger")){
+    	echo "<script>alert('请在微信浏览器中打开！')</script>";exit;
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="640">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="browsermode" content="application">
+    <meta name="x5-page-mode" content="app">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="width=640,target-densitydpi=device-dpi,maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript">
+        function setWidth(a) {
+            if (/Andriod/i.test(navigator.userAgent)) {
+                var c, b = window.innerWidth;
+                (b != a) && (c = b / a), document.addEventListener("DOMContentLoaded", function () {
+                    var d = document.getElementsByTagName("body")[0];
+                    d.style.webkitTransformOrigin = "left top";
+                    d.style.webkitTransform = "scale(" + c + ")";
+                }, !1)
+            }
+        }
+        setWidth(640);
+    </script>
+    <link rel="stylesheet" href="css/animate.min.css"/>
+    <link rel="stylesheet" href="css/swiper.3.1.7.min.css"/>
+    <link rel="stylesheet" href="css/global.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" charset="UTF-8" src="libs/jquery-2.1.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="libs/swiper.3.1.7.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="libs/swiper.animate1.0.2.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="libs/touch-0.2.14.min.js"></script>
+    <title>陶业布道者李志林-疯狂砖匠的伟大抱负</title>
+</head>
+<body>
+<div id="LoadModule" class="n_wrapper">
+    <div class="spinner">
+        <div class="spinner-container container1">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+        <div class="spinner-container container2">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+        <div class="spinner-container container3">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+    </div>
+</div>
+<img src="images/Mc_arrow.png" id="Mc_arrow"/>
+<img src="images/Btn_sound1.png" id="Btn_sound" class="SoundAni"/>
+<div id="Mc_content" class="ver n_wrapper"><img src="images/Mc_show1.jpg" alt=""/></div>
+<div class="swiper-container n_wrapper Mc_bg" id="SwiperModule">
+    <div class="swiper-wrapper n_wrapper">
+        <div class="swiper-slide n_wrapper" id="SlidePage1">
+            <div class="ver n_wrapper relative">
+                <p id="P1_Mc_tit" class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s"
+                   swiper-animate-delay="0s"><img src="images/P1_Mc_tit.png" alt=""/></p>
+
+                <div id="P1_Mc_show">
+                    <div class="n_wrapper relative">
+                        <p class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s"
+                           swiper-animate-delay="0s"><img src="images/P1_Mc_show.png" alt=""/></p>
+
+                        <div id="P1_Box" class="ver ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.7s"
+                             swiper-animate-delay="0.5s">
+                            <p><img src="images/P1_txt1.png" alt=""/></p>
+
+                            <p><img src="images/P1_txt2.png" alt=""/></p>
+
+                            <p><img src="images/P1_txt3.png" alt=""/></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide n_wrapper" id="SlidePage2">
+            <div class="ver n_wrapper">
+                <p class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s"
+                   swiper-animate-delay="0s"><img src="images/P2_Mc_show.png" alt=""/></p>
+
+                <p class="TitBox ani" swiper-animate-effect="flipInX" swiper-animate-duration="1s"
+                   swiper-animate-delay="1s"><img src="images/P2_tit.png" alt=""/></p>
+
+                <div class="ver relative InfoBox ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                     swiper-animate-delay="0.5s">
+                    <p><img src="images/Mc_bg_txt.png" alt=""/></p>
+
+                    <p class="TxtBoxL"><img src="images/P2_txt1.png" alt=""/></p>
+
+                    <p class="TxtBoxR"><img src="images/P2_txt2.png" alt=""/></p>
+
+                    <p class="Btn_left"><img src="images/Btn_left2.png" alt=""/></p>
+
+                    <p class="Btn_right"><img src="images/Btn_right1.png" alt=""/></p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide n_wrapper" id="SlidePage3">
+            <div class="ver n_wrapper">
+                <p class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s"
+                   swiper-animate-delay="0s"><img src="images/P3_Mc_show.png" alt=""/></p>
+
+                <p class="TitBox ani" swiper-animate-effect="flipInX" swiper-animate-duration="1s"
+                   swiper-animate-delay="1s"><img src="images/P3_tit.png" alt=""/></p>
+
+                <div class="ver relative InfoBox ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                     swiper-animate-delay="0.5s">
+                    <p><img src="images/Mc_bg_txt.png" alt=""/></p>
+
+                    <p class="TxtBoxL"><img src="images/P3_txt1.png" alt=""/></p>
+
+                    <p class="TxtBoxR"><img src="images/P3_txt2.png" alt=""/></p>
+
+                    <p class="Btn_left"><img src="images/Btn_left2.png" alt=""/></p>
+
+                    <p class="Btn_right"><img src="images/Btn_right1.png" alt=""/></p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide n_wrapper" id="SlidePage4">
+            <div class="ver n_wrapper">
+                <p class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s"
+                   swiper-animate-delay="0s"><img src="images/P4_Mc_show.png" alt=""/></p>
+
+                <p class="TitBox ani" swiper-animate-effect="flipInX" swiper-animate-duration="1s"
+                   swiper-animate-delay="1s"><img src="images/P4_tit.png" alt=""/></p>
+
+                <div class="ver relative InfoBox ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                     swiper-animate-delay="0.5s">
+                    <p><img src="images/Mc_bg_txt.png" alt=""/></p>
+
+                    <p class="TxtBoxL"><img src="images/P4_txt1.png" alt=""/></p>
+
+                    <p class="TxtBoxR"><img src="images/P4_txt2.png" alt=""/></p>
+
+                    <p class="Btn_left"><img src="images/Btn_left2.png" alt=""/></p>
+
+                    <p class="Btn_right"><img src="images/Btn_right1.png" alt=""/></p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide n_wrapper" id="SlidePage5">
+            <div class="ver n_wrapper">
+                <p class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s"
+                   swiper-animate-delay="0s"><img src="images/P5_Mc_show.png" alt=""/></p>
+
+                <p class="TitBox ani" swiper-animate-effect="flipInX" swiper-animate-duration="1s"
+                   swiper-animate-delay="1s"><img src="images/P5_tit.png" alt=""/></p>
+
+                <div class="ver relative ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                     swiper-animate-delay="0.5s">
+                    <p><img src="images/Mc_bg_txt.png" alt=""/></p>
+
+                    <p class="TxtBox" id="P5_txt"><img src="images/P5_txt1.png" alt=""/></p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide n_wrapper" id="SlidePage6">
+            <div class="ver n_wrapper">
+                <p class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s"
+                   swiper-animate-delay="0s"><img src="images/P6_Mc_show.png" alt=""/></p>
+
+                <p class="TitBox ani" swiper-animate-effect="flipInX" swiper-animate-duration="1s"
+                   swiper-animate-delay="1s"><img src="images/P6_tit.png" alt=""/></p>
+
+                <div class="ver relative ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                     swiper-animate-delay="0.5s">
+                    <p><img src="images/Mc_bg_txt.png" alt=""/></p>
+
+                    <p class="TxtBox" id="P6_txt"><img src="images/P6_txt1.png" alt=""/></p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide n_wrapper" id="SlidePage7">
+            <div class="ver n_wrapper">
+                <p class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s"
+                   swiper-animate-delay="0s"><img src="images/P7_Mc_show.png" alt=""/></p>
+
+                <p class="TitBox ani" swiper-animate-effect="flipInX" swiper-animate-duration="1s"
+                   swiper-animate-delay="1s"><img src="images/P7_tit.png" alt=""/></p>
+
+                <div class="ver relative InfoBox ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                     swiper-animate-delay="0.5s">
+                    <p><img src="images/Mc_bg_txt.png" alt=""/></p>
+
+                    <p class="TxtBoxL"><img src="images/P7_txt1.png" alt=""/></p>
+
+                    <p class="TxtBoxR"><img src="images/P7_txt2.png" alt=""/></p>
+
+                    <p class="Btn_left"><img src="images/Btn_left2.png" alt=""/></p>
+
+                    <p class="Btn_right"><img src="images/Btn_right1.png" alt=""/></p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide n_wrapper" id="SlidePage8">
+            <div class="ver n_wrapper">
+                <p class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s"
+                   swiper-animate-delay="0s"><img src="images/P8_Mc_show.png" alt=""/></p>
+
+                <p class="TitBox ani" swiper-animate-effect="flipInX" swiper-animate-duration="1s"
+                   swiper-animate-delay="1s"><img src="images/P8_tit.png" alt=""/></p>
+
+                <div class="ver relative ani" swiper-animate-effect="fadeIn" swiper-animate-duration="0.5s"
+                     swiper-animate-delay="0.5s">
+                    <p><img src="images/Mc_bg_txt.png" alt=""/></p>
+
+                    <p class="TxtBox" id="P8_txt"><img src="images/P8_txt1.png" alt=""/></p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide n_wrapper" id="SlidePage9">
+            <div class="ver n_wrapper">
+                <p class="ani" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.3s"
+                   swiper-animate-delay="0s"><img src="images/P9_tit.png" alt=""/></p>
+
+                <div class="MenuBox relative">
+                    <div class="MenuItem ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.3s"
+                         swiper-animate-delay="0s" id="Btn_menu1"><img src="images/Btn_menu1.png" alt=""/></div>
+
+                    <div class="MenuItem ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.3s"
+                         swiper-animate-delay="0s" id="Btn_menu2"><img src="images/Btn_menu2.png" alt=""/></div>
+
+                    <div class="MenuItem ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.3s"
+                         swiper-animate-delay="0.1s" id="Btn_menu3"><img src="images/Btn_menu3.png" alt=""/></div>
+
+                    <div class="MenuItem ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.3s"
+                         swiper-animate-delay="0.1s" id="Btn_menu4"><img src="images/Btn_menu4.png" alt=""/></div>
+
+                    <div class="MenuItem ani" swiper-animate-effect="fadeInLeft" swiper-animate-duration="0.3s"
+                         swiper-animate-delay="0.2s" id="Btn_menu5"><img src="images/Btn_menu5.png" alt=""/></div>
+
+                    <div class="MenuItem ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.3s"
+                         swiper-animate-delay="0.2s" id="Btn_menu6"><img src="images/Btn_menu6.png" alt=""/></div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide n_wrapper" id="SlidePage10">
+            <div class="ver n_wrapper">
+                <p class="ani" swiper-animate-effect="fadeIn" swiper-animate-duration="1s"
+                   swiper-animate-delay="0s"><img src="images/P10_Mc_show.jpg" alt=""/></p>
+
+                <p id="Mc_info" class="ani" swiper-animate-effect="flipInX" swiper-animate-duration="1s"
+                   swiper-animate-delay="0.5s"><img src="images/Mc_info.png" alt=""/></p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<audio src="sound/Sound_bg.mp3" id="Sound_bg" preload="auto" loop="loop"></audio>
+<script type="text/javascript" charset="UTF-8" src="libs/Main.js"></script>
+
+		
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		
+<script>			
+	//微信分享控制
+	wx.config({
+	  debug: false,
+	  appId: '<?php echo $signPackage["appId"];?>',
+	  timestamp: '<?php echo $signPackage["timestamp"];?>',
+	  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	  signature: '<?php echo $signPackage["signature"];?>',
+	  jsApiList: [
+		'checkJsApi',
+		'onMenuShareTimeline',
+		'onMenuShareAppMessage',
+		'onMenuShareQQ',
+		'onMenuShareWeibo'
+	  ]
+	});
+	
+	wx.ready(function () {
+		var wxData = {
+        "imgUrl": 'http://zt.jia360.com/gani_lzl/images/share.jpg',
+        "link": 'http://zt.jia360.com/gani_lzl/index.php',
+        "desc": "一辈子、一件事、一个有情怀的砖匠！听李志林讲诉如何做到笑看外界风云！",
+        "title": "陶业布道者李志林-疯狂砖匠的伟大抱负"
+		};
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+	});
+</script>
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

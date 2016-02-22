@@ -1,0 +1,261 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>红星美凯龙 箭牌卫浴-智能卫浴节</title>
+<link rel="stylesheet" type="text/css" href="css/main.css?v=2.3">
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<!--倒计时-->
+<script type="text/javascript">
+
+function showTime(deadline,dom) {
+    var countdown = new Date(deadline) - new Date();
+    
+    var restDays = dom.find(".days");
+    var restHours = dom.find(".hours");
+    var restMinutes = dom.find(".minutes");
+    var restSeconds = dom.find(".seconds");
+
+    var timer = setInterval(function() {
+        if(countdown<0){
+            clearInterval(timer);
+            return false;
+        }
+        var days = Math.floor(countdown / 86400000) < 0 ? 0 : Math.floor(countdown / 86400000);
+        var hours = Math.floor((countdown - days * 86400000) / 3600000) < 0 ? 0 : Math.floor((countdown - days * 86400000) / 3600000);
+        var minutes = Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000);
+        var seconds = Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000);          
+        days < 10 ? days = "0" + days : days = days;
+        hours < 10 ? hou000s = "0" + hours : hours = hours;
+        minutes < 10 ? minutes = "0" + minutes : minutes = minutes;
+        seconds < 10 ? seconds = "0" + seconds : seconds = seconds;
+
+        //alert(days+", "+hours+", "+minutes+", "+seconds);
+        restDays.html(days);
+        restHours.html(hours);
+        restMinutes.html(minutes);
+        restSeconds.html(seconds);
+        countdown -= 1000;
+    }, 1000)
+    
+}
+
+$(function(){
+	$(".p_djs").each(function(){
+        showTime($(this).attr("djs"),$(this));
+    });
+});	
+</script><!--time-->
+<script src="js/jquery.tabs.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	$("img[original]").lazyload({ placeholder:"images/color3.gif" });
+	
+	$('.demo1').Tabs();
+	$('.demo2').Tabs({
+		event:'click'
+	});
+	$('.demo3').Tabs({
+		timeout:300
+	});
+	$('.demo4').Tabs({
+		auto:3000
+	});
+	$('.demo5').Tabs({
+		event:'click',
+		callback:lazyloadForPart
+	});
+	//部分区域图片延迟加载
+	function lazyloadForPart(container) {
+		container.find('img').each(function () {
+			var original = $(this).attr("original");
+			if (original) {
+				$(this).attr('src', original).removeAttr('original');
+			}
+		});
+	}
+});	
+</script>
+<script type="text/javascript" src="js/base.js"></script>
+<!--弹出层-->
+<script type="text/javascript" src="js/manhuaDialog.1.0.js"></script>
+<script type="text/javascript">
+$(function (){
+	$("#test").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "　",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 868,									//弹出层的宽度
+		height : 500,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+	$("#test2").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "　",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail2",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 868,									//弹出层的宽度
+		height : 500,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+	$("#test3").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "　",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail3",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 868,									//弹出层的宽度
+		height : 500,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+	$("#test4").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "　",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail4",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 868,									//弹出层的宽度
+		height : 500,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+	$("#test5").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "　",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail5",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 868,									//弹出层的宽度
+		height : 500,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+	$("#test6").manhuaDialog({					       
+		Event : "click",								//触发响应事件
+		title : "　",					            //弹出层的标题
+		type : "id",									//弹出层类型(text、容器ID、URL、Iframe)
+		content : "detail6",								//弹出层的内容获取(text文本、容器ID名称、URL地址、Iframe的地址)
+		width : 868,									//弹出层的宽度
+		height : 500,									//弹出层的高度	
+		scrollTop : 200,								//层滑动的高度也就是弹出层时离顶部滑动的距离
+		isAuto : false,									//是否自动弹出
+		time : 2000,									//设置弹出层时间，前提是isAuto=true
+		isClose : false,  								//是否自动关闭		
+		timeOut : 5000									//设置自动关闭时间，前提是isClose=true	
+	});
+});
+</script>
+</head>
+
+<body>
+ 
+
+<div class="heads" id="pro">
+   <div class="banner01"></div>
+   <div class="banner02"></div>
+</div><!--end heads-->
+
+
+<div class="con1"></div>
+<!--<div class="con2">
+   <div class="cbox">
+      <div class="time-item p_djs" djs="August 29,2015,00:00">
+    	<strong id="day_show" class="days">14</strong>
+         </div>
+   </div>
+</div>-->
+<div class="con3">
+   <div class="item_box_wp">
+		<div class="voice_2">
+			<ul>
+				<li class="li1" id="li1" style="width: 908px;">
+					<div class="fold fb1" style="display: none;">
+					</div>
+					<div class="unfold fbg1" style="display: block;">
+                    
+<div class="ass">
+<center style="font-size:38px; position:absolute; top:340px; left:130px;">
+<a href="javascript:void(0)" id="test">　</a>
+</center>
+<center style="font-size:38px; position:absolute; top:310px; left:475px;">
+<a href="javascript:void(0)" id="test2">　</a>
+</center>
+<center style="font-size:38px; position:absolute; top:430px; left:700px;">
+<a href="javascript:void(0)" id="test3">　</a>
+</center>
+<div id="detail" style="display:none;"><img src="images/c1_gui.png" width="868" height="440"></div>
+<div id="detail2" style="display:none;"><img src="images/c1_yg.png" width="868" height="440"></div>
+<div id="detail3" style="display:none;"><img src="images/c1_mt.png" width="868" height="440"></div>
+</div>
+					</div>
+				</li>
+				<li class="li2" style="width: 92px;">
+					<div class="fold fb2" style="display: block;">
+					</div>
+					<div class="unfold fbg2" style="display: none;">
+<div class="ass">
+<center style="font-size:38px; position:absolute; top:340px; left:35px;">
+<a href="javascript:void(0)" id="test4">　</a>
+</center>
+<center style="font-size:38px; position:absolute; top:210px; left:265px;">
+<a href="javascript:void(0)" id="test5">　</a>
+</center>
+<center style="font-size:38px; position:absolute; top:335px; left:514px;">
+<a href="javascript:void(0)" id="test6">　</a>
+</center>
+<div id="detail4" style="display:none;"><img src="images/c2_yg.png" width="868" height="440"></div>
+<div id="detail5" style="display:none;"><img src="images/c2_zbq.png" width="868" height="440"></div>
+<div id="detail6" style="display:none;"><img src="images/c2_gui.png" width="868" height="440"></div>
+</div>
+					</div>
+				</li>
+				
+			</ul>         
+		</div>
+	</div><!--end item_box_wp-->
+</div>
+<div class="con4">
+   <div class="box demo1">
+			<ul class="tab_menu">
+				<li class="current"><a><p>智能生活</p><b>箭牌有礼</b></a></li>
+				<li><a><p>超值体验</p><b>特价专享</b></a></li>
+                <li><a><b>工厂直供</b><p>智在必得</p></a></li>
+                <li><a><p>厂家任性</p><b>限量抢购</b></a></li>
+                <li><a><p>贴心箭牌</p><b>双重保护</b></a></li>
+                <li><a><p>节日庆典</p><b>奉送智能</b></a></li>
+			</ul>
+			<div class="tab_box">
+				<div class=""><img src="images/x1.png"></div>
+				<div class="hide"><img src="images/x2.png"></div>	
+                <div class="hide"><img src="images/x3.png"></div>	
+                <div class="hide"><img src="images/x4.png"></div>	
+                <div class="hide"><img src="images/x5.png"></div>	
+                <div class="hide"><img src="images/x6.png"></div>	
+			</div>
+		</div>
+</div>
+
+<script src="js/my.js"></script>
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+
+
+</body></html>

@@ -1,0 +1,1818 @@
+﻿<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js ie6 oldie" lang="en">
+    <![endif]-->
+    <!--[if IE 7]>
+    <html class="no-js ie7 oldie" lang="en">
+        <![endif]-->
+        <!--[if IE 8]>
+        <html class="no-js ie8 oldie" lang="en">
+            <![endif]-->
+            <!--[if gt IE 8]>
+            <!-->
+            <html class="no-js" lang="en">
+                <!--<![endif]-->
+<head>
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+                <meta http-equiv="X-UA-Compatible" content="IE=8">
+
+                <title>红星美凯龙-好家居·百城峰惠</title>
+                <link href="css/bootstrap.min.css" rel="stylesheet">
+                <link rel="stylesheet" href="css/wy-mod-banner.css?v=1.1" media="screen">
+                <script src="js/jquery-1.7.2.min.js"></script>
+                <script type="text/javascript" src="js/bootstrap.min.js"></script>
+                <script type="text/javascript" src="js/jcarousel.connected-carousels.js"></script>
+                <script type="text/javascript" src="js/jquery.jcarousel.min.js"></script>
+                <link href="css/main_new.css?v=1.1" rel="stylesheet">
+                <link href="css/main.css?v=1.1" rel="stylesheet">
+                <link rel="stylesheet" href="css/swiper.min.css">
+                <link rel="stylesheet" type="text/css" href="css/jcarousel.connected-carousels.css">
+                <!-- 首页菜单轮播效果 -->
+                <script type="text/javascript">
+        function switchPage(pageIndex) {
+            $('.carousel').carousel(pageIndex);
+        }
+
+        function playAnimation(tag) {
+            var ani1 = $("#page_" + tag + " .ani_step_1");
+            var ani2 = $("#page_" + tag + " .ani_step_2");
+            var ani3 = $("#page_" + tag + " .ani_step_3");
+            var pre_start = ((tag == "home") ? 0 : 300);
+            if (ani1 != null) {
+                ani1.css("opacity", 0);
+                setTimeout(function () {
+                    ani1.animate({ opacity: 1 }, 1000);
+                }, 10 + pre_start);
+            }
+            if (ani2 != null) {
+                ani2.css("opacity", 0);
+                setTimeout(function () {
+                    ani2.animate({ opacity: 1 }, 1000);
+                }, 1500 + pre_start);
+            }
+            if (ani3 != null) {
+                ani3.css("opacity", 0);
+                setTimeout(function () {
+                    $("#page_" + tag + " .ani_step_3").animate({ opacity: 1 }, 1000);
+                }, 3000 + pre_start);
+            }
+        }
+
+
+        $(function () {
+
+        var bindAms = function () {
+
+            $('.carousel').carousel(
+            {
+                "pause": "false",
+                "interval": 0  <!--时间-->
+            });
+
+            $('.carousel').on('slide.bs.carousel', function (event) {
+                var tag = $(event.relatedTarget).attr("tag");
+                var progress = $(event.relatedTarget).attr("progress");
+
+                $('#img_home').attr("src", "images/home.png");
+                $('#img_intro').attr("src", "images/intro.png");
+                $('#img_gift').attr("src", "images/gift.png");
+                $('#img_feedback').attr("src", "images/feedback.png");
+                $('#img_related').attr("src", "images/related.png");
+
+                $('#img_' + tag).attr("src", "images/" + tag + "_selected.png");
+
+                //$("#progress").width(progress + "px");
+                //$("#progress").css('left', (progress / 2) - 400 + "px");
+                $("#progress").animate({ width: progress, left: (progress / 2) - 400 }, 500);
+                playAnimation(tag);
+            });
+
+            $("body,html").animate({
+                scrollTop: ($("#page_home .splash-container").offset().top)
+            }, 10);
+
+            playAnimation("home");
+
+        };
+
+        var banner1 = function () {
+            var $banner = $('#bannerx');
+            var $banner_ul = $('.banner-img', $banner);
+            var $btn = $('.banner-btn', $banner);
+            var $bcircle = $('.banner-circle', $banner);
+            var $btn_a = $btn.find('a')
+            var v_width = $banner.width();
+
+            var page = 1;
+
+            var timer = null;
+            var btnClass = null;
+
+            var page_count = $banner_ul.find('li').length;//把这个值赋给小圆点的个数
+
+            var banner_cir = "<li class='selected' href='#'><a></a></li>";
+            for (var i = 1; i < page_count; i++) {
+                //动态添加小圆点
+                banner_cir += "<li><a href='#'></a></li>";
+            }
+            $('.banner-circle', $banner).append(banner_cir);
+
+            var cirLeft = $bcircle.width() * (-0.5);
+            $bcircle.css({ 'marginLeft': cirLeft });
+
+            $banner_ul.width(page_count * v_width);
+
+            function move(obj, classname) {
+                //手动及自动播放
+                if (!$banner_ul.is(':animated')) {
+                    if (classname == 'prevBtn') {
+                        if (page == 1) {
+                            $banner_ul.animate({ left: -v_width * (page_count - 1) });
+                            page = page_count;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '+=' + v_width }, "slow");
+                            page--;
+                            cirMove();
+                        }
+                    }
+                    else {
+                        if (page == page_count) {
+                            $banner_ul.animate({ left: 0 });
+                            page = 1;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '-=' + v_width }, "slow");
+                            page++;
+                            cirMove();
+                        }
+                    }
+                }
+            }
+
+            function cirMove() {
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner-circle li').eq(page - 1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+            }
+
+            $banner.mouseover(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+            }).mouseout(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+            }).trigger("mouseout");//激活自动播放
+
+            $btn_a.mouseover(function () {
+                //实现透明渐变，阻止冒泡
+                $(this).animate({ opacity: 0.6 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).mouseleave(function () {
+                $(this).animate({ opacity: 0.3 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).click(function () {
+                //手动点击清除计时器
+                btnClass = this.className;
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+                move($(this), this.className);
+            });
+
+            $('.banner-circle li').live('click', function () {
+                var index = $('.banner-circle li').index(this);
+                $banner_ul.animate({ left: -v_width * index }, 'slow');
+                page = index + 1;
+                cirMove();
+            });
+        };
+
+        var banner2 = function () {
+            var $banner = $('.banner2');
+            var $banner_ul = $('.banner2-img');
+            var $btn = $('.banner2-btn');
+            var $btn_a = $btn.find('a')
+            var v_width = $banner.width();
+
+            var page = 1;
+
+            var timer = null;
+            var btnClass = null;
+
+            var page_count = $banner_ul.find('li').length;//把这个值赋给小圆点的个数
+
+            var banner_cir = "<li class='selected' href='#'><a></a></li>";
+            for (var i = 1; i < page_count; i++) {
+                //动态添加小圆点
+                banner_cir += "<li><a href='#'></a></li>";
+            }
+            $('.banner2-circle').append(banner_cir);
+
+            var cirLeft = $('.banner2-circle').width() * (-0.5);
+            $('.banner2-circle').css({ 'marginLeft': cirLeft });
+
+            $banner_ul.width(page_count * v_width);
+
+            function move(obj, classname) {
+                //手动及自动播放
+                if (!$banner_ul.is(':animated')) {
+                    if (classname == 'prevBtn') {
+                        if (page == 1) {
+                            $banner_ul.animate({ left: -v_width * (page_count - 1) });
+                            page = page_count;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '+=' + v_width }, "slow");
+                            page--;
+                            cirMove();
+                        }
+                    }
+                    else {
+                        if (page == page_count) {
+                            $banner_ul.animate({ left: 0 });
+                            page = 1;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '-=' + v_width }, "slow");
+                            page++;
+                            cirMove();
+                        }
+                    }
+                }
+            }
+
+            function cirMove() {
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner2-circle li').eq(page - 1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+            }
+
+            $banner.mouseover(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+            }).mouseout(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+            }).trigger("mouseout");//激活自动播放
+
+            $btn_a.mouseover(function () {
+                //实现透明渐变，阻止冒泡
+                $(this).animate({ opacity: 0.6 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).mouseleave(function () {
+                $(this).animate({ opacity: 0.3 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).click(function () {
+                //手动点击清除计时器
+                btnClass = this.className;
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+                move($(this), this.className);
+            });
+        };
+
+        //init
+        banner1();
+        banner2();
+        bindAms();
+    
+        });
+    </script>
+
+                <!-- tab调用 -->
+                <script type="text/javascript" src="js/jquery.tabs.js"></script>
+                <script type="text/javascript" src="js/jquery.lazyload.js"></script>
+                <script type="text/javascript">
+    $(function(){
+
+        $("img[original]").lazyload({ placeholder:"images/color3.gif" });
+        $('.demo2').Tabs({
+            event:'click'
+        });
+        $('.demo4').Tabs({
+            auto:4000
+        });
+
+        //部分区域图片延迟加载
+        function lazyloadForPart(container) {
+            container.find('img').each(function () {
+                var original = $(this).attr("original");
+                if (original) {
+                    $(this).attr('src', original).removeAttr('original');
+                }
+            });
+        }
+    }); 
+    </script>
+                <!--end 选项卡-->
+
+                <!--倒计时-->
+                <script type="text/javascript">
+
+function showTime(deadline,dom) {
+    var countdown = new Date(deadline) - new Date();
+    
+    var restDays = dom.find(".days");
+    var restHours = dom.find(".hours");
+    var restMinutes = dom.find(".minutes");
+    var restSeconds = dom.find(".seconds");
+
+    var timer = setInterval(function() {
+        if(countdown<0){
+            clearInterval(timer);
+            return false;
+        }
+        var days = Math.floor(countdown / 86400000) < 0 ? 0 : Math.floor(countdown / 86400000);
+        var hours = Math.floor((countdown - days * 86400000) / 3600000) < 0 ? 0 : Math.floor((countdown - days * 86400000) / 3600000);
+        var minutes = Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000);
+        var seconds = Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000);          
+        days < 10 ? days = "0" + days : days = days;
+        hours < 10 ? hou000s = "0" + hours : hours = hours;
+        minutes < 10 ? minutes = "0" + minutes : minutes = minutes;
+        seconds < 10 ? seconds = "0" + seconds : seconds = seconds;
+
+        //alert(days+", "+hours+", "+minutes+", "+seconds);
+        restDays.html(days);
+        restHours.html(hours);
+        restMinutes.html(minutes);
+        restSeconds.html(seconds);
+        countdown -= 1000;
+    }, 1000)
+    
+}
+
+$(function(){
+    $(".p_djs").each(function(){
+        showTime($(this).attr("djs"),$(this));
+    });
+}); 
+</script>
+                <!--time-->
+
+</head>
+<body>
+                <div class="header topnav" id="topNav" >
+                    <div class="mininav">
+                        <a href="http://www.jia360.com/" target="_blank" class="logo" title="腾讯网亚太家居·腾讯家居<">腾讯网亚太家居_腾讯家居</a>
+                        <div class="mr">
+                            <!--<span id="morecity" class="cm">
+                            <p>城市站</p>
+                            <div class="tabcity" id="tabcity"></div>
+                        </span>
+                        <span class="l">|</span>
+                        -->
+                        <span id="hychannel" class="hychannel">
+                            <p>产品中心</p>
+                            <ul>
+                                <a href="http://www.jia360.com/jiaju/" target="_blank">家具</a>
+                                <a href="http://www.jia360.com/weiyu/" target="_blank">卫浴</a>
+                                <a href="http://www.jia360.com/cizhuan/" target="_blank">瓷砖</a>
+                                <a href="http://www.jia360.com/yigui/" target="_blank">衣柜</a>
+                                <a href="http://www.jia360.com/chufang/" target="_blank">厨房</a>
+                                <a href="http://www.jia360.com/huwai/" target="_blank">户外</a>
+                                <a href="http://www.jia360.com/muwu/" target="_blank">木屋</a>
+                                <a href="http://www.jia360.com/diaoding/" target="_blank">吊顶</a>
+                                <a href="http://www.jia360.com/shicai/" target="_blank">石材</a>
+                                <a href="http://www.jia360.com/zhujiaju/" target="_blank">竹家居</a>
+                                <a href="http://www.jia360.com/diban/" target="_blank">地板</a>
+                                <a href="http://www.jia360.com/menchuang/" target="_blank">门窗</a>
+                                <a href="http://www.jia360.com/zhengmu/" target="_blank">整木</a>
+                                <a href="http://www.jia360.com/hongmu/" target="_blank">红木</a>
+                                <a href="http://www.jia360.com/jiashi/" target="_blank">家饰</a>
+                                <a href="http://www.jia360.com/louti/" target="_blank">楼梯</a>
+                                <a href="http://www.jia360.com/shuimian/" target="_blank">睡眠</a>
+                                <a href="http://www.jia360.com/qiangzhi/" target="_blank">墙纸</a>
+                                <a href="http://www.jia360.com/zhaoming/" target="_blank">照明</a>
+                                <a href="http://www.jia360.com/gangmumen/" target="_blank">钢木门</a>
+                                <a href="http://www.jia360.com/cainuo/" target="_blank">采暖</a>
+                                <a href="http://www.jia360.com/shafa/" target="_blank">沙发</a>
+                                <a href="http://www.jia360.com/jiafang/" target="_blank">家纺</a>
+                                <a href="http://www.jia360.com/ditan/" target="_blank">地毯</a>
+                                <a href="http://www.jia360.com/yuanyi/" target="_blank">园艺</a>
+                                <a href="http://www.jia360.com/tuliao/" target="_blank">涂料</a>
+                                <a href="http://www.jia360.com/wujin/" target="_blank">五金</a>
+                                <a href="http://www.jia360.com/ertong/" target="_blank">儿童家具</a>
+                            </ul>
+                        </span>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com/product/picture/" target="_blank" class="nt">图库</a>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com/product/evaluation/" target="_blank" class="nt">评测</a>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com/zhuanti/qgbcqc" target="_blank" class="nt">导购</a>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com/product/fresh/" target="_blank" class="nt">新品</a>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com/homelife/geomantic/" target="_blank" class="nt">风水</a>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com/fitment/idea/" target="_blank" class="nt">配饰</a>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com/fitment/college/" target="_blank" class="nt">案例库</a>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com:80/shejishi/index.html" target="_blank" class="nt">设计师</a>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com/news/video/" target="_blank" class="nt">视频</a>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com/zhuanti/" target="_blank" class="nt">专题</a>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com/news/person/" target="_blank" class="nt">人物</a>
+                        <span class="l">|</span>
+                        <a href="http://news.jia360.com/" target="_blank" class="nt">新闻</a>
+                        <span class="l">|</span>
+                        <a href="http://www.jia360.com/" target="_blank" class="nt">首页</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="ad"></div>
+            <div id="carousel_container" class="carousel slide full_height">
+                <div class="carousel-inner full_height">
+                    <div id="page_home" class="page item active" tag="home" progress="150">
+                        <div id="main">
+                            <div id="splash">
+                                <div class="wy-mod-banner" style="overflow:hidden;">
+                                    <div id="_banners" class="banners" >
+                                        <div class="banner banner1">
+                                            <img  height="686" src="images/banner1.jpg" alt="1" />
+                                        </div>
+                                        <div class="banner banner3">
+                                            <img height="686" src="images/banner3.jpg" alt="2" />
+                                            <div class="info">
+                                                <div class="link-download">
+                                                    <div class="time">
+                                                        <div class="time-item p_djs" djs="June 20,2015,00:00">
+                                                            / 倒计时： <strong id="day_show" class="days">00</strong>
+                                                            天
+                                                        </div>
+                                                        <!--倒计时模块--> </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="banner banner2">
+                                            <img  height="686" src="images/banner2.jpg" alt="3" />
+                                        </div>
+
+                                    </div>
+                                    <div id="_focus" class="focus">
+                                        <a data-index="0" href="javascript:void(0);" class="on">
+                                            <span class="bg-b"></span>
+                                            <span class="inner"></span>
+                                        </a>
+                                        <a data-index="1" href="javascript:void(0);">
+                                            <span class="bg-b"></span>
+                                            <span class="inner"></span>
+                                        </a>
+                                        <a data-index="2" href="javascript:void(0);">
+                                            <span class="bg-b"></span>
+                                            <span class="inner"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <script type="text/javascript">
+var glume = function(banners_id, focus_id){
+    this.$ctn = $('#' + banners_id);
+    this.$focus = $('#' + focus_id);
+    this.$adLis = null;
+    this.$btns = null;
+    this.switchSpeed = 5;//自动播放间隔(s)
+    this.defOpacity = 1;
+    this.crtIndex = 0;
+    this.adLength = 0;
+    this.timerSwitch = null;
+    this.init();
+};
+glume.prototype = {
+    fnNextIndex:function(){
+        return (this.crtIndex >= this.adLength-1)?0:this.crtIndex+1;
+    },
+    //动画切换
+    fnSwitch:function(toIndex){
+        if(this.crtIndex==toIndex){return;}
+        this.$adLis.css('zIndex', 0);
+        this.$adLis.filter(':eq('+this.crtIndex+')').css('zIndex', 2);
+        this.$adLis.filter(':eq('+toIndex+')').css('zIndex', 1);
+        this.$btns.removeClass('on');
+        this.$btns.filter(':eq('+toIndex+')').addClass('on');
+        var me = this;
+
+        $(this.$adLis[this.crtIndex]).animate({
+            opacity: 0
+        }, 1000, function() {
+            me.crtIndex = toIndex;
+            $(this).css({
+                opacity: me.defOpacity,
+                zIndex: 0
+            });
+        });
+    },
+    fnAutoPlay:function(){
+        this.fnSwitch(this.fnNextIndex());
+    },
+    fnPlay:function(){
+        var me = this;
+        me.timerSwitch = window.setInterval(function() {
+            me.fnAutoPlay();
+        },me.switchSpeed*1000);
+    },
+    fnStopPlay:function(){
+        window.clearTimeout(this.timerSwitch);
+        this.timerSwitch = null;
+    },
+
+    init:function(){
+        this.$adLis = this.$ctn.children();
+        this.$btns = this.$focus.children();
+        this.adLength = this.$adLis.length;
+
+        var me = this;
+        //点击切换
+        this.$focus.on('click', 'a', function(e) {
+            e.preventDefault();
+            var index = parseInt($(this).attr('data-index'), 10)
+            me.fnSwitch(index);
+        });
+        this.$adLis.filter(':eq('+ this.crtIndex +')').css('zIndex', 2);
+        this.fnPlay();
+
+        //hover时暂停动画
+        this.$ctn.hover(function() {
+            me.fnStopPlay();
+        }, function() {
+            me.fnPlay();
+        });
+
+        if($.browser.msie && $.browser.version < 7) {
+            this.$btns.hover(function() {
+                $(this).addClass('hover');
+            },function() {
+                $(this).removeClass('hover');
+            });
+        }
+    }
+};
+var player1 = new glume('_banners', '_focus');    
+  </script>
+                                <div class="container splash-container">
+                                    <div id="download_btn_group" class="container ani_step_1">
+                                        <div id="download_place_holder" class="horizental-item" ></div>
+                                    </div>
+                                    <div id="ct_link" class="ani_step_3">
+                                        <p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="page_intro" class="page item" tag="intro" progress="300">
+                        <div id="main">
+                            <div id="splash" class="ani_step_1">
+                                <div class="container splash-container">
+
+                                    <!-- 活动说明 -->
+                                    <div class="main-box demo4">
+                                        <ul class="tab_menu">
+                                            <li class="current">
+                                                <a href="javascript:void(0)" class="a1"></a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" class="a2"></a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" class="a3"></a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" class="a4"></a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" class="a5"></a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:void(0)" class="a6"></a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab_box">
+                                            <div>
+                                                <img src="images/showpic1.png"></div>
+                                            <div class="hide">
+                                                <img src="images/showpic2.png"></div>
+                                            <div class="hide">
+                                                <img src="images/showpic3.png"></div>
+                                            <div class="hide">
+                                                <img src="images/showpic4.png"></div>
+                                            <div class="hide">
+                                                <img src="images/showpic5.png"></div>
+                                            <div class="hide">
+                                                <img src="images/showpic6.png"></div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="page_gift" class="page item" tag="gift" progress="450">
+                        <div id="main">
+                            <div id="splash">
+                                <div class="container splash-container ani_step_1">
+
+                                    <!-- 会员尊享 -->
+                                    <div class="main03">
+                                        <div class="box demo2">
+                                            <ul class="tab_menu">
+                                                <li class="current">
+                                                    <a href="#">
+                                                        <img src="images/ad-logo01.jpg"/>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo02.jpg"/>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo03.jpg"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo04.jpg"></a>
+                                                </li>
+                                                <li id="sLi1">
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo05.jpg"></a>
+                                                </li>
+                                                <li id="sLi2">
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo06.jpg"></a>
+                                                </li>
+                                                <li id="sLi3">
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo07.jpg"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo08.jpg"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo09.jpg"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo10.jpg"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo11.jpg"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo12.jpg"></a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo13.jpg"></a>
+                                                </li>
+                                                <li id="sLi4">
+                                                    <a href="javascript:void(0)">
+                                                        <img src="images/ad-logo14.jpg"></a>
+                                                </li>
+
+                                            </ul>
+                                            <div class="tab_box">
+
+                                                <div class="ad-box">
+                                                    <ul>
+                                                        <li class="list1">
+                                                            <div class="adpic1">
+                                                                <img src="images/langsi1.jpg"></div>
+                                                            <div class="adpic2">
+                                                                <p>朗斯海伦B42</p>
+                                                                <p>900X900X1850</p>
+                                                            </div>
+                                                            <div class="adpic3">
+                                                                <div class="adprice">
+                                                                    <p>特价:2199元/套(含石基)</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list2">
+                                                            <div class="adpic01">
+                                                                <img src="images/langsi2.jpg"></div>
+                                                            <div class="adpic02">
+                                                                <p>朗斯珍妮A31</p>
+                                                                <p>900x900x1900</p>
+                                                            </div>
+                                                            <div class="adpic03">
+                                                                <div class="adprice1">
+                                                                    <p>特价:2899元/套(含石基)</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+
+                                                <div class="ad-box hide">
+                                                    <ul>
+                                                        <li class="list1">
+                                                            <div class="adpic1">
+                                                                <img src="images/顾家.jpg"></div>
+                                                            <div class="adpic2">
+                                                                <p>顾家-雕栏玉砌沙发</p>
+                                                                <p>3+躺</p>
+                                                            </div>
+                                                            <div class="adpic3">
+                                                                <div class="adprice">
+                                                                    <p>以各地经销商价格为准</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ad-box hide">
+                                                    <ul>
+                                                        <li class="list1">
+                                                            <div class="adpic1">
+                                                                <img src="images/圣象1.jpg"></div>
+                                                            <div class="adpic2">
+                                                                <p>圣象-安纳伯格山核桃</p>
+                                                                <p>1060*127*12/1.2</p>
+                                                            </div>
+                                                            <div class="adpic3">
+                                                                <div class="adprice">
+                                                                    <p>以各地经销商价格为准</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list2">
+                                                            <div class="adpic01">
+                                                                <img src="images/圣象2.jpg"></div>
+                                                            <div class="adpic02">
+                                                                <p>圣象-圣丹尼番龙眼</p>
+                                                                <p>2200*205*14.5</p>
+                                                            </div>
+                                                            <div class="adpic03">
+                                                                <div class="adprice1">
+                                                                    <p>以各地经销商价格为准</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ad-box hide">
+                                                    <ul>
+                                                        <li class="list1">
+                                                            <div class="adpic1">
+                                                                <img src="images/索菲亚1.jpg"></div>
+                                                            <div class="adpic2">
+                                                                <p>索菲亚-C2马赛大百叶</p>
+                                                                <p>限高2800</p>
+                                                            </div>
+                                                            <div class="adpic3">
+                                                                <div class="adprice">
+                                                                    <p>特价:799元/平米</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list2">
+                                                            <div class="adpic01">
+                                                                <img src="images/索菲亚2.jpg"></div>
+                                                            <div class="adpic02">
+                                                                <p>索菲亚C8框尼斯百叶</p>
+                                                                <p>限高2800</p>
+                                                            </div>
+                                                            <div class="adpic03">
+                                                                <div class="adprice1">
+                                                                    <p>特价:899元/平米</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="ad-box hide" id="swiper1">
+                                                    <div class="swiper-container">
+                                                        <div class="swiper-wrapper">
+                                                            <div class="swiper-slide">
+                                                                <ul>
+                                                                    <li class="list1">
+                                                                        <div class="adpic1">
+                                                                            <img src="images/喜临门1.jpg"></div>
+                                                                        <div class="adpic2">
+                                                                            <p>喜临门-酷动</p>
+                                                                            <p>X5120-1</p>
+                                                                        </div>
+                                                                        <div class="adpic3">
+                                                                            <div class="adprice">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list2">
+                                                                        <div class="adpic01">
+                                                                            <img src="images/喜临门2.jpg"></div>
+                                                                        <div class="adpic02">
+                                                                            <p>喜临门-酷动</p>
+                                                                            <p>X5120-2</p>
+                                                                        </div>
+                                                                        <div class="adpic03">
+                                                                            <div class="adprice1">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list3">
+                                                                        <div class="adpic001">
+                                                                            <img src="images/喜临门3.jpg"></div>
+                                                                        <div class="adpic002">
+                                                                            <p>喜临门-酷动</p>
+                                                                            <p>X5120-3</p>
+                                                                        </div>
+                                                                        <div class="adpic003">
+                                                                            <div class="adprice2">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <ul>
+                                                                    <li class="list1">
+                                                                        <div class="adpic1">
+                                                                            <img src="images/喜临门西西里1.jpg"></div>
+                                                                        <div class="adpic2">
+                                                                            <p>西西里FR1412</p>
+                                                                            <p>X5120-1</p>
+                                                                        </div>
+                                                                        <div class="adpic3">
+                                                                            <div class="adprice">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list2">
+                                                                        <div class="adpic01">
+                                                                            <img src="images/喜临门西西里2.jpg"></div>
+                                                                        <div class="adpic02">
+                                                                            <p>喜临门-酷动</p>
+                                                                            <p>X5120-2</p>
+                                                                        </div>
+                                                                        <div class="adpic03">
+                                                                            <div class="adprice1">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <!-- Add Pagination -->
+                                                        <div class="swiper-pagination"></div>
+                                                        <!-- Add Arrows -->
+                                                        <div class="swiper-button-next"></div>
+                                                        <div class="swiper-button-prev"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="ad-box hide" id="swiper2">
+                                                    <div class="swiper-container">
+                                                        <div class="swiper-wrapper">
+                                                            <div class="swiper-slide">
+                                                                <ul>
+                                                                    <li class="list1">
+                                                                        <div class="adpic1">
+                                                                            <img src="images/马可波罗1.jpg"></div>
+                                                                        <div class="adpic2">
+                                                                            <p>马可波罗-翠玉石</p>
+                                                                            <p>800X800mm</p>
+                                                                        </div>
+                                                                        <div class="adpic3">
+                                                                            <div class="adprice">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list2">
+                                                                        <div class="adpic01">
+                                                                            <img src="images/马可波罗2.jpg"></div>
+                                                                        <div class="adpic02">
+                                                                            <p>马可波罗-西米</p>
+                                                                            <p>800X800mm</p>
+                                                                        </div>
+                                                                        <div class="adpic03">
+                                                                            <div class="adprice1">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list3">
+                                                                        <div class="adpic001">
+                                                                            <img src="images/马可波罗3.jpg"></div>
+                                                                        <div class="adpic002">
+                                                                            <p>马可波罗-翠玉石</p>
+                                                                            <p>JBSD2T1</p>
+                                                                        </div>
+                                                                        <div class="adpic003">
+                                                                            <div class="adprice2">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                            <div class="swiper-slide">
+                                                                <ul>
+                                                                    <li class="list1">
+                                                                        <div class="adpic1">
+                                                                            <img src="images/马可波罗4.jpg"></div>
+                                                                        <div class="adpic2">
+                                                                            <p>马可波罗-翠玉石</p>
+                                                                            <p>800X800mm</p>
+                                                                        </div>
+                                                                        <div class="adpic3">
+                                                                            <div class="adprice">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list2">
+                                                                        <div class="adpic01">
+                                                                            <img src="images/马可波罗5.jpg"></div>
+                                                                        <div class="adpic02">
+                                                                            <p>马可波罗</p>
+                                                                            <p>800X800mm</p>
+                                                                        </div>
+                                                                        <div class="adpic03">
+                                                                            <div class="adprice1">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list3">
+                                                                        <div class="adpic001">
+                                                                            <img src="images/马可波罗6.jpg"></div>
+                                                                        <div class="adpic002">
+                                                                            <p>马可波罗西米客厅</p>
+                                                                            <p>JBSD2T1</p>
+                                                                        </div>
+                                                                        <div class="adpic003">
+                                                                            <div class="adprice2">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                        </div>
+                                                        <!-- Add Pagination -->
+                                                        <div class="swiper-pagination"></div>
+                                                        <!-- Add Arrows -->
+                                                        <div class="swiper-button-next"></div>
+                                                        <div class="swiper-button-prev"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="ad-box hide" id="swiper3">
+                                                    <div class="swiper-container">
+                                                        <div class="swiper-wrapper">
+                                                            <div class="swiper-slide">
+                                                                <ul>
+                                                                    <li class="list1">
+                                                                        <div class="adpic1">
+                                                                            <img src="images/方太1.jpg"></div>
+                                                                        <div class="adpic2">
+                                                                            <p>方太-水槽洗碗机</p>
+                                                                            <p>JBSD2T-Q1Q2-1-01</p>
+                                                                        </div>
+                                                                        <div class="adpic3">
+                                                                            <div class="adprice">
+                                                                                <p>Q1:10999元/Q2:9299元</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list2">
+                                                                        <div class="adpic01">
+                                                                            <img src="images/方太2.jpg"></div>
+                                                                        <div class="adpic02">
+                                                                            <p>方太-水槽洗碗机</p>
+                                                                            <p>JBSD2T-Q1Q2-1-01</p>
+                                                                        </div>
+                                                                        <div class="adpic03">
+                                                                            <div class="adprice1">
+                                                                                <p>Q1:10999元/Q2:9299元</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list3">
+                                                                        <div class="adpic001">
+                                                                            <img src="images/方太3.jpg"></div>
+                                                                        <div class="adpic002">
+                                                                            <p>方太-水槽洗碗机</p>
+                                                                            <p>JBSD2T-Q1Q2-1-01</p>
+                                                                        </div>
+                                                                        <div class="adpic003">
+                                                                            <div class="adprice2">
+                                                                                <p>Q1:10999元/Q2:9299元</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <ul>
+                                                                    <li class="list1">
+                                                                        <div class="adpic1">
+                                                                            <img src="images/方太4.jpg"></div>
+                                                                        <div class="adpic2">
+                                                                            <p>方太-蒸微一体机</p>
+                                                                            <p>DM2-01</p>
+                                                                        </div>
+                                                                        <div class="adpic3">
+                                                                            <div class="adprice">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list2">
+                                                                        <div class="adpic01">
+                                                                            <img src="images/方太5.jpg"></div>
+                                                                        <div class="adpic02">
+                                                                            <p>方太-蒸微一体机</p>
+                                                                            <p>DM2-02</p>
+                                                                        </div>
+                                                                        <div class="adpic03">
+                                                                            <div class="adprice1">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list3">
+                                                                        <div class="adpic001">
+                                                                            <img src="images/方太6.jpg"></div>
+                                                                        <div class="adpic002">
+                                                                            <p>方太-蒸微一体机</p>
+                                                                            <p>DM2-04</p>
+                                                                        </div>
+                                                                        <div class="adpic003">
+                                                                            <div class="adprice2">
+                                                                                <p>以各地经销商价格为准</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Add Pagination -->
+                                                        <div class="swiper-pagination"></div>
+                                                        <!-- Add Arrows -->
+                                                        <div class="swiper-button-next"></div>
+                                                        <div class="swiper-button-prev"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="ad-box hide">
+                                                    <ul>
+                                                        <li class="list1">
+                                                            <div class="adpic1">
+                                                                <img src="images/TATA1.jpg"></div>
+                                                            <div class="adpic2">
+                                                                <p>TATA-特供001</p>
+                                                                <p>2100*900*240mm</p>
+                                                            </div>
+                                                            <div class="adpic3">
+                                                                <div class="adprice">
+                                                                    <p>特价:1980元/樘</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list2">
+                                                            <div class="adpic01">
+                                                                <img src="images/TATA2.jpg"></div>
+                                                            <div class="adpic02">
+                                                                <p>TATA-特供002</p>
+                                                                <p>2100*900*240mm</p>
+                                                            </div>
+                                                            <div class="adpic03">
+                                                                <div class="adprice1">
+                                                                    <p>特价:1980元/樘</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ad-box hide">
+                                                    <ul>
+                                                        <li class="list1">
+                                                            <div class="adpic1">
+                                                                <img src="images/意风1.jpg"></div>
+                                                            <div class="adpic2">
+                                                                <p>意风-蒂芙尼沙发</p>
+                                                                <p>型号801</p>
+                                                            </div>
+                                                            <div class="adpic3">
+                                                                <div class="adprice">
+                                                                    <p>特价:3980元</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list2">
+                                                            <div class="adpic01">
+                                                                <img src="images/意风2.jpg"></div>
+                                                            <div class="adpic02">
+                                                                <p>意风-卧房</p>
+                                                                <p>特价四件套</p>
+                                                            </div>
+                                                            <div class="adpic03">
+                                                                <div class="adprice1">
+                                                                    <p>特价:4899元</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ad-box hide">
+                                                    <ul>
+                                                        <li class="list1">
+                                                            <div class="adpic1">
+                                                                <img src="images/TOTO1.jpg"></div>
+                                                            <div class="adpic2">
+                                                                <p>TOTO连体座便器</p>
+                                                                <p>CW188B-CB</p>
+                                                            </div>
+                                                            <div class="adpic3">
+                                                                <div class="adprice">
+                                                                    <p>以各地经销商价格为准</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list2">
+                                                            <div class="adpic01">
+                                                                <img src="images/TOTO2.jpg"></div>
+                                                            <div class="adpic02">
+                                                                <p>TOTO温水冲洗电子坐便盖</p>
+                                                                <p></p>
+                                                            </div>
+                                                            <div class="adpic03">
+                                                                <div class="adprice1">
+                                                                    <p>以各地经销商价格为准</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ad-box hide">
+                                                    <ul>
+                                                        <li class="list1">
+                                                            <div class="adpic1">
+                                                                <img src="images/今顶1.jpg"></div>
+                                                            <div class="adpic2">
+                                                                <p>今顶厨房</p>
+                                                                <p>JBSD2T-Q1Q2-1-01</p>
+                                                            </div>
+                                                            <div class="adpic3">
+                                                                <div class="adprice">
+                                                                    <p>特价:899元/套</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list2">
+                                                            <div class="adpic01">
+                                                                <img src="images/今顶2.jpg"></div>
+                                                            <div class="adpic02">
+                                                                <p>今顶卫士LED</p>
+                                                                <p>-328D-6-328x328mm</p>
+                                                            </div>
+                                                            <div class="adpic03">
+                                                                <div class="adprice1">
+                                                                    <p>特价:899元/套</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list3">
+                                                            <div class="adpic001">
+                                                                <img src="images/今顶3.jpg"></div>
+                                                            <div class="adpic002">
+                                                                <p>今顶玉石天成III</p>
+                                                                <p>G32811328x328mm</p>
+                                                            </div>
+                                                            <div class="adpic003">
+                                                                <div class="adprice2">
+                                                                    <p>特价:899元/套</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ad-box hide">
+                                                    <ul>
+                                                        <li class="list1">
+                                                            <div class="adpic1">
+                                                                <img src="images/松堡王国1.jpg"></div>
+                                                            <div class="adpic2">
+                                                                <p>松堡王国-SP-C008</p>
+                                                                <p>SP-C008S单层床</p>
+                                                            </div>
+                                                            <div class="adpic3">
+                                                                <div class="adprice">
+                                                                    <p>特价:2199元</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list2">
+                                                            <div class="adpic01">
+                                                                <img src="images/松堡王国2.jpg"></div>
+                                                            <div class="adpic02">
+                                                                <p>学习桌+学习椅</p>
+                                                                <p>JBSD2T-Q1Q2-1-01</p>
+                                                            </div>
+                                                            <div class="adpic03">
+                                                                <div class="adprice1">
+                                                                    <p>特价:4699元</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="ad-box hide">
+                                                    <ul>
+                                                        <li class="list1">
+                                                            <div class="adpic1">
+                                                                <img src="images/金牌橱柜1.jpg"></div>
+                                                            <div class="adpic2">
+                                                                <p>金牌橱柜-阿玛尼</p>
+                                                                <p>JBSD2T-Q1Q2-1-01</p>
+                                                            </div>
+                                                            <div class="adpic3">
+                                                                <div class="adprice">
+                                                                    <p>特价:6999元/套</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list2">
+                                                            <div class="adpic01">
+                                                                <img src="images/金牌橱柜2.jpg"></div>
+                                                            <div class="adpic02">
+                                                                <p>金牌橱柜-阿玛尼</p>
+                                                                <p>JBSD2T-Q1Q2-1-01</p>
+                                                            </div>
+                                                            <div class="adpic03">
+                                                                <div class="adprice1">
+                                                                    <p>特价:13999元/套</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="ad-box hide" id="swiper4">
+                                                    <div class="swiper-container">
+                                                        <div class="swiper-wrapper">
+                                                            <div class="swiper-slide">
+                                                                <ul>
+                                                                    <li class="list1">
+                                                                        <div class="adpic1">
+                                                                            <img src="images/瑞宝壁纸1.jpg"></div>
+                                                                        <div class="adpic2">
+                                                                            <p>《德哈》系列</p>
+                                                                            <p>0.70×10.05 m±3%-1</p>
+                                                                        </div>
+                                                                        <div class="adpic3">
+                                                                            <div class="adprice">
+                                                                                <p>特价:1158元/卷</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list2">
+                                                                        <div class="adpic01">
+                                                                            <img src="images/瑞宝壁纸2.jpg"></div>
+                                                                        <div class="adpic02">
+                                                                            <p>《德哈》系列</p>
+                                                                            <p>0.70×10.05 m±3%-2</p>
+                                                                        </div>
+                                                                        <div class="adpic03">
+                                                                            <div class="adprice1">
+                                                                                <p>特价:1158元/卷</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list3">
+                                                                        <div class="adpic001">
+                                                                            <img src="images/瑞宝壁纸3.jpg"></div>
+                                                                        <div class="adpic002">
+                                                                            <p>《德哈》系列</p>
+                                                                            <p>0.70×10.05 m±3%-3</p>
+                                                                        </div>
+                                                                        <div class="adpic003">
+                                                                            <div class="adprice2">
+                                                                                <p>特价:1158元/卷</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="swiper-slide">
+                                                                <ul>
+                                                                    <li class="list1">
+                                                                        <div class="adpic1">
+                                                                            <img src="images/瑞宝壁纸4.jpg"></div>
+                                                                        <div class="adpic2">
+                                                                            <p>维也纳之声</p>
+                                                                            <p>10 x 0.53=5.3㎡</p>
+                                                                        </div>
+                                                                        <div class="adpic3">
+                                                                            <div class="adprice">
+                                                                                <p>特价:766/卷</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list2">
+                                                                        <div class="adpic01">
+                                                                            <img src="images/瑞宝壁纸5.jpg"></div>
+                                                                        <div class="adpic02">
+                                                                            <p>维也纳之声</p>
+                                                                            <p>10 x 0.53=5.3㎡</p>
+                                                                        </div>
+                                                                        <div class="adpic03">
+                                                                            <div class="adprice1">
+                                                                                <p>特价:766/卷</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="list3">
+                                                                        <div class="adpic001">
+                                                                            <img src="images/瑞宝壁纸6.jpg"></div>
+                                                                        <div class="adpic002">
+                                                                            <p>瑞宝壁纸-维也纳之声</p>
+                                                                            <p>10 x 0.53=5.3㎡-3</p>
+                                                                        </div>
+                                                                        <div class="adpic003">
+                                                                            <div class="adprice2">
+                                                                                <p>特价:766/卷</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <!-- Add Pagination -->
+                                                        <div class="swiper-pagination"></div>
+                                                        <!-- Add Arrows -->
+                                                        <div class="swiper-button-next"></div>
+                                                        <div class="swiper-button-prev"></div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="page_feedback" class="page item" tag="feedback" progress="600">
+                        <div id="main">
+                            <div id="splash">
+                                <div class="container splash-container ani_step_1">
+
+                                    <!-- 最强对话 -->
+                                    <div class="talk-box">
+                                        <div class="video-box">
+
+                                            <div class="spa">
+                                               <iframe frameborder="0" width="469" height="270" src="http://v.qq.com/iframe/player.html?vid=c015661agym&tiny=0&auto=0" allowfullscreen></iframe>
+                                            </div>
+                                            <div class="connected-carousels">
+                                                <div class="stage">
+                                                    <div class="carousel carousel-stage">
+                                                        <ul>
+                                                            <!--                             <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>红星美凯龙董事副总裁 车建芳</h2>
+                                                                    <p>• 到2014年红星美凯龙已走过28个年头，得益于中国经济及家居行业的发展，也离不开各品牌厂商的大力支持</p>
+                                                                    <p>• 创新的道路上，不要怕别人去学习，一直以来红星的不断创新，也在不断被别人学习，精神和灵魂是学不了的</p>
+                                                                    <p>• 做营销，没有最好的创意和方案，只有真正踏踏实实执行到位，就是最好的方案。放眼未来，做好自己才是最重要的事</p>
+                                                                    <p>• 少看天气预报，踏踏实实做事</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        -->
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>圣象地板副总裁  曾欣</h2>
+                                                                    <p>
+                                                                        <img src="img/v1b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 发挥好红星美凯龙及好家居联盟平台的联手效应，做一次影响家居行业的大事件，资源共享，组织到位，保证战斗力</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>顾家家居董事长  顾江生</h2>
+                                                                    <p >
+                                                                        <img src="img/v2b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 好家居联合红星，做出顾家的品牌，做出好家居的市场表率，携手共进</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>马可波罗瓷砖常务副总裁  谢悦增</h2>
+                                                                    <p>
+                                                                        <img src="img/v3b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 绝不起个大早，赶个晚集，持之以恒，红星美凯龙和好家居联盟，与大平台合作信心十足</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>朗斯卫浴董事长  向伟昌</h2>
+                                                                    <p>
+                                                                        <img src="img/v4b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 输掉的不是一次活动，输掉的人生机会，珍惜机会，创造佳绩</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>索菲亚衣柜副总裁  王飚</h2>
+                                                                    <p>
+                                                                        <img src="img/v5b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 做合力，做1+1大于2的事情，索菲亚乐于奉献，不缺乏协作精神</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>方太电器副总裁  陈浩</h2>
+                                                                    <p>
+                                                                        <img src="img/v6b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 执行是一切行动的保障，认定目标，坚定不移</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>喜临门董事长  陈阿裕</h2>
+                                                                    <p>
+                                                                        <img src="img/v7b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 与红星美凯龙及好家居联盟共享品牌传播资源，打造家居界最强音</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>TATA木门董事长  吴晨曦</h2>
+                                                                    <p>
+                                                                        <img src="img/v8b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 做模范，做创新，做好620</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>金牌橱柜总裁  潘孝贞</h2>
+                                                                    <p>
+                                                                        <img src="img/v9b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 红星美凯龙是品牌最重要的合作通路，相信红星与好家居联盟的强强联手一定能刷新家居界新的历史，打造行业“头条”</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>松堡王国总裁  郭向阳</h2>
+                                                                    <p>
+                                                                        <img src="img/v10b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 通过红星美凯龙及好家居平台，松堡王国实现迅速裂变，小品类也有大作为</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>意风家具董事长  温世权</h2>
+                                                                    <p>
+                                                                        <img src="img/v11b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 做事做企业要学先进 傍大款 走正道，红星与好家居的联合就是正道</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>瑞宝壁纸董事长  王树民</h2>
+                                                                    <p>
+                                                                        <img src="img/v12b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 活动不打折，执行不打折，让利不打折</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>TOTO副总经理  胡晋</h2>
+                                                                    <p>
+                                                                        <img src="img/v13b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">• 两个强大的平台在一起强强联合，希望在合作上面能发生化学效应，做能够留下佳话的活动</p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li>
+                                                            <div class="carbox">
+                                                                <div style="height:330px;width:500px;overflow:auto;">
+                                                                    <h2>今顶吊顶总经理 周建成</h2>
+                                                                    <p>
+                                                                        <img src="img/v14b.jpg" ></p>
+                                                                    <p style="font-family: 微软雅黑;font-size: 14px;">
+                                                                        • 
+                                   620活动在红星的强力背书下 联盟伙伴的共同努力下 全力以赴实实在在干事 把成功当作一种习惯
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="navigation">
+                                                <a href="#" class="prev prev-navigation"></a>
+                                                <a href="#" class="next next-navigation"></a>
+                                                <div class="carousel carousel-navigation">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="img/v4a.png" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v12a.jpg" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v13a.png" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v7a.jpg" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v14a.png" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v6a.jpg" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v2a.png" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v17a.png" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v10a.png" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v19a.png" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v5a.jpg" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v8a.png" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v1a.png" width="126" height="95" alt=""></li>
+                                                        <li>
+                                                            <img src="img/v11a.png" width="126" height="95" alt=""></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="intro-box">
+                                        <div class="intro-content">
+                                            <div class="intro-title">
+                                                <p style="font-family: 微软雅黑;font-size: 32px;">齐聚上海&nbsp相约红星·家居大牌语录</p>
+                                            </div>
+                                          
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="page_related" class="page item" tag="related" progress="750">
+                    <div id="main">
+                        <div id="splash" class="ani_step_1">
+                            <div class="container splash-container">
+                                <div class="qyjs demo2">
+                                    <div class="tab_box">
+                                        <div>
+                                            <div class="title">红星美凯龙</div>
+                                            <div class="show">
+                                                <div id="vertical" class="scrollbox clearfix">
+                                                    <div class="slyWrap example1">
+                                                        <div class="scrollbar" style="border-top:none;">
+                                                            <div class="handle"></div>
+                                                        </div>
+                                                        <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }'>
+                                                            <div style=" padding-left:55px;">
+                                                                <div class="obt">梦想 + 创新  缔造中国家居流通业领导品牌</div>
+                                                                <div align="center">
+                                                                    <img src="images/page5s_03.jpg" ></div>
+                                                                <div class="obt">梦想 + 创新  缔造中国家居流通业领导品牌</div>
+                                                                <p>
+                                                                    这是一个中国家居行业新模式发展的时代——大家居消费时代
+                                                                    <br />
+                                                                    这是一个厂商品牌聚集的时代——家居品牌化时代
+                                                                    <br />
+                                                                    这是一个消费者能有更多选择并获取更多个性化消费体验时代——新体验消费时代
+                                                                    <br />
+                                                                    这是红星美凯龙以规模化效应，为消费者提供更多的优惠、更多的产品选择以及更优质的服务的时代——品牌信赖时代
+                                                                    <br />
+                                                                    这是以Mall的形态促进中国现代商业文明崛起的时代——中国商业新高度的时代
+                                                                </p>
+                                                                <div align="center">
+                                                                    <img src="images/page5s_06.jpg" ></div>
+                                                                <div class="obt">百城时代 相信中国</div>
+                                                                <p>
+                                                                    红星美凯龙连续5年跻身中国民营企业500强前50位
+                                                                    <br />
+                                                                    自1986年创业以来，始终以建设温馨、和谐的家园，
+                                                                    <br />
+                                                                    提升消费者的居家生活品味为己任。
+                                                                    <br />
+                                                                    截至目前，已在北京、上海、天津、南京、长沙、重庆、成都等100余座城市开办了140多家商场。
+                                                                </p>
+                                                                <div align="center">
+                                                                    <img src="images/page5s_08.jpg" ></div>
+                                                                <div class="obt">始于1986，做中国最好的家居品牌</div>
+                                                                <p>
+                                                                    28年来，从“渠道”到“平台”，从店面租赁到自己买地建商场，
+                                                                    <br />
+                                                                    从一家地方家具专营店，到百MALL连锁，创造了许多个“第一”：
+                                                                    <br />
+                                                                    第一个做连锁品牌；第一个做委托管理店；第一个自建商场；
+                                                                    <br />
+                                                                    缔造了全世界单体最大的家居商城，
+                                                                    <br />
+                                                                    无论从规模、影响力还是品牌张力，
+                                                                    <br />
+                                                                    红星美凯龙已然成为中国家居流通业的领导品牌……
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="hide">
+                                            <div class="title">ARIS爱依瑞斯</div>
+                                            <div class="show">
+                                                <div id="vertical2" class="scrollbox clearfix ss2">
+                                                    <div class="slyWrap example1">
+                                                        <div class="scrollbar" style="border-top:none;">
+                                                            <div class="handle"></div>
+                                                        </div>
+                                                        <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }'>
+                                                            <div style=" padding-left:55px;">
+                                                                <div align="center">
+                                                                    <img src="images/page5s_09.jpg" ></div>
+                                                                <p>
+                                                                    爱依瑞斯，中国高端家居领导品牌，意大利名师设计，全球同步流行，19年专注软体家具，聚合沙发软床尖端材质及工艺，打造至尊之作，引领着当今软体家具界的潮流，享誉全球。
+                                                                </p>
+                                                                <div class="obt">马可·焦尔杰蒂简介</div>
+                                                                <div align="center">
+                                                                    <img src="images/page5s_10.jpg" ></div>
+                                                                <p>
+                                                                    Marco Giorgetti，爱依瑞斯首席产品设计师，在意大利设计界近四十年的卓越表现，使他成为国际知名的大师，他执掌的爱依瑞斯产品设计，引领着当今软体家具界的潮流，享誉全球。
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end tab_box-->
+                                    <ul class="tab_menu">
+                                        <li style="margin-top:100px;" class="current">红星美凯龙</li>
+                                        <li style="margin-top:10px;" id="menu2x">ARIS爱依瑞斯</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="topbg"></div>
+
+        <div class="footer" >
+            <div id="navbar">
+                <div class="logobnt">
+                    <a href="http://www.chinaredstar.com/?utm_source=baidu&utm_medium=brand&utm_content=biaoti" target="_blank"></a>
+                </div>
+                <div id="navbtns" class="container" >
+
+                    <div class="navbtn">
+                        <a href="javascript:switchPage(0)">
+                            <img id="img_home" src="images/home_selected.png" alt="首页"></a>
+                    </div>
+                    <div class="navbtn">
+                        <a href="javascript:switchPage(1)">
+                            <img id="img_intro" src="images/intro.png" alt="活动介绍"></a>
+                    </div>
+                    <div class="navbtn">
+                        <a href="javascript:switchPage(2)">
+                            <img id="img_gift" src="images/gift.png" alt="会员专享"></a>
+                    </div>
+                    <div class="navbtn">
+                        <a href="javascript:switchPage(3)">
+                            <img id="img_feedback" src="images/feedback.png" alt="最强对话"></a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- Swiper JS -->
+        <script src="js/swiper.min.js"></script>
+        <script src="js/my.js"></script>
+        <!-- Initialize Swiper -->
+        <script>
+    $('#sLi1').click(function (){
+        setTimeout(function(){
+            var swiper = new Swiper('#swiper1 .swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 30
+            });
+        },200)
+    })
+        $('#sLi2').click(function (){
+        setTimeout(function(){
+            var swiper = new Swiper('#swiper2 .swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 30
+            });
+        },200)
+    })
+        $('#sLi3').click(function (){
+        setTimeout(function(){
+            var swiper = new Swiper('#swiper3 .swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 30
+            });
+        },200)
+    })
+        $('#sLi4').click(function (){
+        setTimeout(function(){
+            var swiper = new Swiper('#swiper4 .swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: '.swiper-pagination',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            spaceBetween: 30
+            });
+        },200)
+    })
+    </script>
+        <!--#include virtual="/public/head.html"-->
+        <!--#include virtual="/public/tongji.html"-->
+        <!--#include virtual="/public/footer.html"-->
+</body>
+    </html>

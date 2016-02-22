@@ -1,0 +1,13 @@
+#mesModule{display: none;}
+#successModuel{display: none;}
+.b_mask{background-color: rgba(0,0,0,0.7);}
+/*mesModule*/
+#mesModule .m_div_1{position: absolute;top: 400px;left: 50%;-webkit-transform: translateX(-50%);-ms-transform: translateX(-50%);-moz-transform: translateX(-50%);transform: translateX(-50%);}
+#mesModule .m_div_1 span{color: #f04f00;font-size: 2rem;font-weight:bold;}
+#mesModule .m_div_2{position: absolute;top: 450px;left: 50%;-webkit-transform: translateX(-50%);-ms-transform: translateX(-50%);-moz-transform: translateX(-50%);transform: translateX(-50%);}
+#phone{position: absolute;outline: 0;left: 50%;-webkit-transform: translateX(-50%);-ms-transform: translateX(-50%);-moz-transform: translateX(-50%);transform: translateX(-50%);background-clip: padding-box;top: 550px;width: 330px;font-size: 2rem;background-color: #ebebeb;border-radius: 50em;text-indent: 25px;}
+::-webkit-input-placeholder {color: #7e7e7e;}
+:-ms-input-placeholder {color: #999;} 
+/*mesModule*/
+
+
