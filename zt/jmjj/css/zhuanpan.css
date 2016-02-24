@@ -1,0 +1,11 @@
+.zp-bg{width: 883px;height: 658px;background: url(../images/zp-bg.png) no-repeat top center;position: relative;}
+.djs{margin-left: 234px;padding-top: 14px;}
+.djs span{width:98px;margin-right: 23px;color: #000;font-size: 60px;display: block;float:left;letter-spacing:10px;text-align: center;}
+
+.zpWarp{position: absolute;top:195px;left: 135px}
+.zpWarp .zhizhen{width:150px;height:150px;position: absolute;top:90px;left: 90px;display: block;z-index: 2;cursor: pointer;}
+.zpForm{width:215px;position: absolute;top:280px;right: 70px;color:#fff;}
+.zpForm input{color: #000;width: 100%}
+.zpForm .form-tips1{color: #5feaff;font-weight: bold}
+.zpForm .form-tips2{color: #5feaff}
+.zpForm .form-btn{width: 100%;height:30px;line-height: 30px;background: #0ea2d6;color: #92f9ff;text-align: center;cursor: pointer;}

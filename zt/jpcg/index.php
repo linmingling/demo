@@ -1,0 +1,418 @@
+<?php
+	define('ROOT_PATH', dirname(__FILE__));
+	require(ROOT_PATH . '../../data/config.php');
+	require_once(ROOT_PATH .'../../data/jssdk.php');
+    $jssdk = new JSSDK();
+    $signPackage = $jssdk->GetSignPackage(); 
+    
+   $agent = $_SERVER['HTTP_USER_AGENT'];
+    if(!strpos($agent,"MicroMessenger")){
+    	echo "<script>alert('请在微信浏览器中打开！')</script>";exit;
+    }
+    
+    /* $_SESSION['arrow_openid'] = '874516';
+    $_SESSION['arrow_wechaname'] = '睡觉多好';
+    $_SESSION['arrow_headurl'] = 'baidu.com'; */
+    
+    
+    if(!$_POST['openid'])
+    //if(!isset($_POST['openid']))
+    {
+    	$openId = $_SESSION['arrow_openid'];
+    	$wechaname = $_SESSION['arrow_wechaname'];
+    	$headurl = $_SESSION['arrow_headurl'];
+    
+    	if(empty($openId))
+    	{
+    		$url = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    		$url = strpos($url,'?') ? $url."&rand=".time() : $url."?rand=".time();
+    		$redirect_url = 'http://www.yoju360.com/api/weixin_oauth.php?scope=snsapi_userinfo&url='.urlencode($url).'&cookie_name=arrow';
+    		echo "<script language=\"javascript\">location.href=\"$redirect_url\"</script>";exit();
+    	}
+    }
+    else
+    {
+    	$openId = $_POST['openid'];
+    	$wechaname = base64_decode($_POST['wechaname']);
+    	$headurl = urldecode($_POST['headimgurl']);
+    	$_SESSION['arrow_openid'] = $openId;
+    	$_SESSION['arrow_wechaname'] = $wechaname;
+    	$_SESSION['arrow_headurl'] = $headurl;
+    }
+    
+    //是否第一次进入
+    $userInfo = 'arrow_user_info';
+    $mem_sql = "select * from $userInfo where openid='{$openId}'";
+    $mem_res = mysqli_query($db, $mem_sql);
+    $mem_row = $mem_res->fetch_assoc();
+    
+    if(empty($mem_row)) //第一次进入
+    {
+    	$sql = "insert into $userInfo (openid,wechaname,headimgurl,add_time) values ('{$openId}','{$wechaname}','{$headurl}','" . date('Y-m-d H:i:s') . "')";
+    	mysqli_query($db, $sql);
+    }
+
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no, email=no" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="true">
+<meta name="MobileOptimized" content="640">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<meta name="full-screen" content="yes">
+<meta name="x5-fullscreen" content="true">
+<meta name="browsermode" content="application">
+<meta name="x5-page-mode" content="app">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="viewport"
+	content="width=640,target-densitydpi=device-dpi,maximum-scale=1.0, user-scalable=no">
+<script type="text/javascript">
+			function setWidth(a) {
+				if (/Andriod/i.test(navigator.userAgent)) {
+					var c, b = window.innerWidth;
+					(b != a) && (c = b / a), document.addEventListener("DOMContentLoaded", function() {
+						var d = document.getElementsByTagName("body")[0];
+						d.style.webkitTransformOrigin = "left top";
+						d.style.webkitTransform = "scale(" + c + ")";
+					}, !1)
+				}
+			}
+			setWidth(640);
+		</script>
+<link rel="stylesheet" href="css/global.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/swiper.css" />
+<link rel="stylesheet" href="css/animate.min.css" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/swiper.3.1.7.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<title></title>
+</head>
+
+<body>
+	<div class="main_md common_md">
+		<div class="n_wrapper relative">
+			<img src="img/mainmd/logo.png" class="main_logo" />
+			<div class="langCon">
+				<div class="relative">
+					<img src="img/mainmd/lang.png" class="lang" />
+					<div class="hand handAni">
+						<img src="img/mainmd/h1.png" id="hand" />
+					</div>
+					<img src="img/mainmd/langname.png" class="main_langname" /> <img
+						src="img/mainmd/start_tips.png" class="main_tips" /> <img
+						src="img/mainmd/startBtn.png" class="main_start" id="main_start" />
+					<img src="img/mainmd/pai.png" class="main_pai" /> <img
+						src="img/mainmd/l.png" class="main_l" /> <img
+						src="img/mainmd/r.png" class="main_r" />
+					<div class="t_center main_txt">
+						<p>每个人追求的人生都会不同，每个人内心深处都有一种力量</p>
+						<p>会拉着你走向未知的理想生活。</p>
+						<p>你渴望的人生模式是什么样的？</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="qa_md common_md">
+		<div class="n_wrapper relative">
+			<img src="img/answer/qa_logo.png" class="qa_logo" />
+			<div class="qaCon">
+				<div class="relative">
+					<img src="img/answer/answerbg.png" />
+					<div class="qa_div" id="qa_div">
+						<section>
+							<h1 class="qa_tit" id="qa_tit"></h1>
+							<div class="qa_div_1" id="qa_div_1">
+								<p class="t_center">
+									<img src="img/answer/one.png" />
+								</p>
+								<p class="f14"></p>
+							</div>
+							<div class="qa_div_2" id="qa_div_2">
+								<p class="t_center">
+									<img src="img/answer/two.png" />
+								</p>
+								<p class="f14"></p>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="end_md common_md">
+		<div class="n_wrapper relative">
+			<div class="share_md">
+				<div class="n_wrapper relative">
+					<img src="img/end/share.png" />
+				</div>
+			</div>
+			<div class="scaleImg">
+				<div class="n_wrapper ver">
+					<div id="scale_div"></div>
+				</div>
+			</div>
+			<img src="img/end/el.png" class="end_el" /> <img src="img/end/er.png"
+				class="end_er" />
+			<div class="endCon">
+				<div class="end_outborder">
+					<div class="end_inborder">
+						<div class="end_div relative">
+							<h1 id="end_tit"></h1>
+							<p class="f16" id="end_txt"></p>
+							<div class="end_player relative" id="end_player">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide"></div>
+									<div class="swiper-slide"></div>
+									<div class="swiper-slide"></div>
+								</div>
+								<div class="end_type">
+									适合<span id="end_type">X</span>类人群的橱柜
+								</div>
+							</div>
+							<img src="img/end/lbtn.png" id="lbtn" /> <img
+								src="img/end/rbtn.png" id="rbtn" /> <img
+								src="img/end/end_jieguo.png" class="end_jieguo" />
+						</div>
+					</div>
+				</div>
+				<div class="end_btnCon">
+					<img src="img/end/end_again.png" id="end_again" /> <img
+						src="img/end/end_hr.png" /> <img src="img/end/end_share.png"
+						id="end_share" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+			document.documentElement.style.height = window.innerHeight + 'px';
+			var canDrag=false;
+			$("#qa_div").bind("touchmove",function(e){
+				if(e.currentTarget.id=="qa_div"){
+					canDrag=true;
+				}
+			});
+			$(document).bind("touchmove",function(){
+				if(canDrag){
+					canDrag=false;
+					return true;
+				}
+				else{
+					return false;
+				}
+				
+			});
+
+			var qaArr = {
+				"1": ["如果朋友约你一起去爬山你马上会想到什么呢？", "背着重重的登山包，挑战险要的崇山峻岭", "穿着轻便的运动鞋，和朋友们在山林里嬉戏打闹"],
+				"2": ["你最愿意跟谁一起外出旅行呢？", "家人或意中人", "志趣相投的朋友"],
+				"3": ["平时外出逛街，除了背个小包包之外，你还会带些什么呢？", "太阳镜或雨伞", "化妆包或相机"],
+				"4": ["上学的时候，你的包包里除了有书本和纸笔之外，还有些什么呢？", "零食或口香糖", "漫画书或小玩意"],
+				"5": ["放学回家的路上通常都是一大群人一起走出学校，你的习惯是怎样的呢？", "只顾埋头赶路，不注意旁边的人", "和同学边走边聊，还东张西望的"],
+				"6": ["体育课要考800米长跑了，你将如何应对呢？", "鼓励自己一定要坚持住，哪怕不及格也要跑完", "听到这个悲惨的消息腿就软了，想想都可怕"],
+				"7": ["周末跟几个死党去传说中的鬼屋探险，才走到一半，手电筒就坏了，这时你会怎样呢？", "觉得更刺激了，坚持走完全程", "劝大家别冒险按原路返回算了"],
+				"8": ["跟朋友一起去森林公园玩耍，临近中午大家都累了，打算坐下来吃午餐，你希望在哪里用餐呢？", "富有自然气息的小木屋或凉亭里", "公园里的特色茶楼或农舍里"],
+				"9": ["你面前有一幅神秘的图画，画面上是一幅古老的建筑，你认为这栋建筑是什么呢？", "教堂或寺庙", "城堡或别墅"],
+				"10": ["你对以下哪个传说比较感兴趣呢？", "从前有一位贵族，在他失去爵位的前一晚，他就将自己毕生的财富都藏到了一个秘密山洞里，就连他的妻子和儿子都不知道藏宝地点在哪里。十年之后，一支探险队根据收集到的一些蛛丝马迹开始了寻找工作", "传说以前有一位住在森林里的仙女，她爱上了人间的男子，结果被上帝罚到人间，变成了一只会说话的蝴蝶，当她找到恋人后才发现他已经变心，于是蝴蝶展开了一系列的疯狂报复行动"],
+				"11": ["下雨天给你的感觉是怎样的呢？", "觉得很扫兴，似乎一天的好心情都给雨淋湿了", "觉得很浪漫，可以在雨中漫步，也可以欣赏雨景"],
+				"12": ["你比较喜欢以下哪个度假地呢？", "温泉度假山庄", "农家度假村"],
+				"13": ["当你体力大量消耗，肚子很饿的时候，你最想吃什么呢？", "妈妈爸爸做的家常菜", "肯德基或麦当劳一类的西式快餐"]
+			};
+			setHtml(1, "left");
+			$("#qa_div_1").bind("click", function() {
+				if ($("#qa_div_1").find("p").eq(1).html() == qaArr[1][1]) {
+					setHtml(3, "center");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[2][1]) {
+					setHtml(4, "center");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[3][1]) {
+					setHtml(6, "left");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[4][1]) {
+					setHtml(5, "left");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[5][1]) {
+					setHtml(6, "left");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[6][1]) {
+					setHtml(10, "left");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[7][1]) {
+					getScore("E");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[8][1]) {
+					setHtml(12, "center");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[9][1]) {
+					setHtml(12, "center");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[10][1]) {
+					setHtml(12, "center");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[11][1]) {
+					getScore("B");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[12][1]) {
+					getScore("D");
+				} else if ($("#qa_div_1").find("p").eq(1).html() == qaArr[13][1]) {
+					getScore("C");
+				}
+			});
+			$("#qa_div_2").bind("click", function() {
+				if ($("#qa_div_2").find("p").eq(1).html() == qaArr[1][2]) {
+					setHtml(2, "center");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[2][2]) {
+					setHtml(5, "left");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[3][2]) {
+					setHtml(5, "left");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[4][2]) {
+					setHtml(7, "left");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[5][2]) {
+					setHtml(8, "left");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[6][2]) {
+					setHtml(9, "center");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[7][2]) {
+					setHtml(11, "left");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[8][2]) {
+					setHtml(11, "left");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[9][2]) {
+					setHtml(13, "center");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[10][2]) {
+					getScore("A");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[11][2]) {
+					getScore("E");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[12][2]) {
+					setHtml(13, "center");
+				} else if ($("#qa_div_2").find("p").eq(1).html() == qaArr[13][2]) {
+					getScore("A");
+				}
+			});
+
+			function setHtml(n, str) {
+				$("#qa_tit").html(qaArr[n][0]);
+				$("#qa_div_1").find("p").eq(1).html(qaArr[n][1]).css("text-align", str);
+				$("#qa_div_2").find("p").eq(1).html(qaArr[n][2]).css("text-align", str);
+			}
+
+			function setEndTxt(str){
+				$("#end_tit").html(endArr[str][0]);
+				$("#end_txt").html(endArr[str][1]);
+				$("#end_type").html(str);
+				$("#end_player .swiper-slide").each(function(i) {
+					$(this).attr("_src",endArr[str][2][i])
+					$(this).css("background-image", endArr[str][2][i]);
+				});
+			}			
+			function getScore(n) {
+				//				n为传进来的ABCDE(大写)
+				$.ajax({
+        			async: false,
+        			url: 'server.php',
+        			data: {act: 'sub', res: n},
+        			type: "post",
+        			dataType: 'json',
+			        error: function (XMLHttpRequest) {
+			            if (XMLHttpRequest.readyState == '0') {
+			                alert("网络异常");
+			            }
+			        }
+			    });
+				
+				
+				$(".qa_md").hide();
+				$(".end_md").css("visibility", "visible");
+				setEndTxt(n);
+			}
+			var endArr = {
+				"A": ["希望能扮演<br />强势领导者角色", "性格活泼的你身体里充满挑战细胞，在人生的道路上，你渴望获得巨大成功，登上领袖宝座，你非常享受那种高高在上超越众人的胜利滋味，平时不管在学校还是交际圈里，你都希望自己能成为人群里最顶尖的人物，若不能拥有辉煌的人生，你就会觉得白白浪费了生命。", ["url(img/end/A/0.png)", "url(img/end/A/1.png)", "url(img/end/A/2.png)"]],
+				"B":["在熟悉的<br />范围里混得开就好","总的来说，你安于平凡又想混得左右逢源，不敢有大的企图，只想征服周遭的朋友，成为团队里的小红人，你有一定的挑战心，若是能攻占自己生活范围里的最高峰，就心满意足了，你会成为自己的人生设定各种目标，此生不求大富大贵，但求在某个领域中有所成就。",["url(img/end/B/0.png)", "url(img/end/B/1.png)", "url(img/end/B/2.png)"]],
+				"C":["对未来<br />充满期望，渴望成长","你天生富有超强的观察力，虽然并不是每件事都亲历亲为，有没有亲身经历过对你来说并不重要，你只在乎通过各种渠道收集情报，经由自己所听所看积累起来的知识能让你不断成长，你对未来充满期待，热爱现实生活，多数时候都以好奇的旁观者姿态去感知大千世界。",["url(img/end/C/0.png)", "url(img/end/C/1.png)", "url(img/end/C/2.png)"]],
+				"D":["喜欢亲历<br />生命中的酸甜苦辣","你的人生模式属于积极感受型，各个阶段的你都会用不同的心态去面对周遭的事物，虽然你并不具备旺盛的斗志，但却能通过特殊的触觉，品位出不一样的人生滋味，生命中的酸甜苦辣能带给你小小的喜悦或是感伤，对于你来说，广泛领略人生的精彩和美丽才是重点哦！",["url(img/end/D/0.png)", "url(img/end/D/1.png)", "url(img/end/D/2.png)"]],
+				"E":["想到处<br />走走看看，学习新知","你好像并无固定的人生模式，因为善变的你拥有超强的好奇心，变数极大，不管是平淡无奇的市井生活还是积极大拼的冒险生活，都能激发你的兴趣，若有机会让你到处走走看看，体验不一样的生活，相信你一定能学到。",["url(img/end/E/0.png)", "url(img/end/E/1.png)", "url(img/end/E/2.png)"]]
+				
+			}
+			var mySwiper = new Swiper('#end_player', {
+				direction: 'horizontal',
+				resistanceRatio: 0.4,
+				autoplay : 3000,
+				autoplayDisableOnInteraction : false,
+				onTap:function(i){
+					$(".scaleImg").show();
+					$("#scale_div").css("background-image",$(".swiper-slide-active").attr("_src"))
+				}
+			});
+//			$(".end_md").hide();
+			var timer=null;
+			var aniIndex=1;
+			timer=setInterval(function(){
+				aniIndex+=1;
+				if(aniIndex>3){aniIndex=1}
+				var str="img/mainmd/h"+aniIndex+".png";
+				
+				$("#hand").attr("src",str)
+			},200);
+			$("#main_start").bind("click",function(){
+				$(".main_md").hide();
+				$(".qa_md").show();
+				clearInterval(timer);
+			});
+			$(".scaleImg").bind("touchstart",function(){
+				$(this).hide();
+			});
+			$(".share_md").bind("touchstart",function(){
+				$(this).hide();
+			});
+			var moveIndex=mySwiper.activeIndex;
+			$("#lbtn").bind("touchstart", function() {
+				moveIndex=mySwiper.activeIndex;
+				moveIndex-=1;
+				if(moveIndex<0){moveIndex=2;}
+				mySwiper.slideTo(moveIndex)
+			});
+			$("#rbtn").bind("touchstart", function() {
+				moveIndex=mySwiper.activeIndex;
+				moveIndex+=1;
+				if(moveIndex>2){moveIndex=0;}
+				mySwiper.slideTo(moveIndex)
+			});
+			$("#end_again").bind("touchstart",function(){
+				//跳回首页
+				window.location.href = window.location.href;
+			});
+			$("#end_share").bind("touchstart",function(){
+				$(".share_md").show();
+			});
+
+			//微信分享控制
+	        wx.config({
+	              debug: false,
+	              appId: '<?php echo $signPackage["appId"];?>',
+	              timestamp: '<?php echo $signPackage["timestamp"];?>',
+	              nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+	              signature: '<?php echo $signPackage["signature"];?>',
+	              jsApiList: [
+	                'checkJsApi',
+	                'onMenuShareTimeline',
+	                'onMenuShareAppMessage',
+	                'onMenuShareQQ',
+	                'onMenuShareWeibo'
+	              ]
+		      });
+	        wx.ready(function () {  
+	            var wxData = {
+	                "imgUrl":'http://zt.jia360.com/jpcg/img/share.png',
+	                "link":'http://zt.jia360.com/jpcg/index.php',
+	                "desc":'快来测一测你的潜在性格，了解适合你的橱柜类型吧！',
+	                "title":'一分钟时间，为自己测一测',
+	                success: function() {
+	                }
+	            };
+	            wx.onMenuShareAppMessage(wxData);
+	            wx.onMenuShareTimeline(wxData);
+	        });
+		</script>
+		
+		<!--#include virtual="/public/tongji.html"-->
+</body>
+
+</html>

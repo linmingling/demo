@@ -1,0 +1,785 @@
+<?php
+define('ROOT_PATH', dirname(__FILE__));
+require(ROOT_PATH . '../../data/config.php');
+
+$prize_sql = "select * from jlf where prize>0 limit 10";
+$prize_res = mysqli_query($db,$prize_sql);
+
+?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="front-end technicist" content="jinger" />
+	<title>嘉力丰 测测你的个性装修类型</title>
+	<meta name="keywords" content="嘉力丰 测测你的个性装修类型">
+	<meta name="description" content="嘉力丰 测测你的个性装修类型">
+	<meta name="front-end technicist" content="jinger">
+	<link type="text/css" rel="stylesheet" href="css/layout.css?vid=1.0" media="all" />
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+ </head>
+
+ <body>
+  	<div class="main" id="b3">
+  		<div class="head">
+			<div class="jianjie-1 f18">
+				简介：在家装设计的过程中，不少消费者选择了对墙面进行装饰，一来可以保护墙体免受损害，二来能进一步美化室内的墙面环境，将家居装修成自己喜欢的风格。<span class="cu">而关于墙面装修的知识，你了解多少呢？</span>
+			</div>
+			<div class="jianjie-2"><img src="images/til-zl.png"></div>
+			<div class="jianjie-3 f18">
+				<div class="zl">
+					<p class="cu">性别 ：</p>
+					<p>男</p><p class="zf"><input type="radio" value="男" name="sex"></p>
+					<p style="margin-left: 5px;">女</p><p class="zf"><input type="radio" value="女" name="sex"></p>
+				</div>
+				<div class="zl" style="margin-left:50px">
+					<p class="cu">婚否 ：</p>
+					<p>是</p><p class="zf"><input type="radio" value="是" name="marry"></p>
+					<p style="margin-left: 5px;">否</p><p class="zf"><input type="radio" value="否" name="marry"></p>
+				</div>
+				<div class="zl" style="margin-left:50px">
+					<p class="cu">收入状况 ：</p>
+					<p>1500-2999</p><p class="zf"><input type="radio" value="1500-2999" name="come"></p>
+					<p style="margin-left: 5px;">3000-6000</p><p class="zf"><input type="radio" value="3000-6000" name="come"></p>
+					<p style="margin-left: 5px;">6000以上</p><p class="zf"><input type="radio" value="6000以上" name="come"></p>
+				</div>
+			</div>
+			<div class="jianjie-4">
+				<img src="images/btn-cs.png" />
+			</div>
+  		</div>
+  		<div class="content" id="b1">
+  			<div class="content-ly">
+	  			<div class="qs-1 an">
+	  				<div class="as" style="margin-top:100px;">
+	  					<p>A、<span>上下班高峰期挤地铁公交</span></p>
+						<p>B、<span>工资低</span></p>
+						<p>C、<span>回南天潮湿发霉的墙壁</span></p>
+						<p>D、<span>至今单身狗</span></p>
+	  				</div>
+	  			</div>
+	  			<div class="qs-2 an">
+	  				<div class="as" style="margin-top:120px;">
+	  					<p class="fl" style="width:180px">A、<span>墙纸</span></p>
+						<p class="fl" style="width:180px">B、<span>乳胶漆</span></p>
+						<p class="fl" style="width:180px">C、<span>硅藻泥</span></p>
+						<p class="fl" style="width:180px">D、<span>其他</span></p>
+	  				</div>
+	  			</div>
+	  			<div class="qs-3 an">
+	  				<div class="as" style="margin-top:90px;">
+	  					<p class="fl" style="width:275px">A、<span>专人接送上下班</span></p>
+						<p class="fl" style="width:120px">B、<span>涨工资</span></p>
+						<p class="fl" style="width:275px">C、<span>一套装修精致的单身公寓</span></p>
+						<p class="fl" style="width:120px">D、<span>其他</span></p>
+	  				</div>
+	  			</div>
+	  			<div class="qs-4 an">
+	  				<div class="as" style="margin-top:120px;">
+	  					<p>A、<span>低调奢华质量好的墙面</span></p>
+						<p>B、<span>总统级无敌大床</span></p>
+						<p>C、<span>舒适宽敞的大厅 </span></p>
+						<p>D、<span>其他</span></p>
+	  				</div>
+	  			</div>
+	  			<div class="qs-5 an">
+	  				<div class="as" style="margin-top:120px;">
+	  					<p class="fl" style="width:200px">A、<span>雍容华贵艳丽系</span></p>
+						<p class="fl" style="width:200px">B、<span>简洁大方淡色系</span></p>
+						<p class="fl" style="width:200px">C、<span>时尚高端个性系</span></p>
+						<p class="fl" style="width:200px">D、<span>3D立体创新系</span></p>
+	  				</div>
+	  			</div>
+	  			<div class="qs-6 an">
+	  				<div class="as" style="margin-top:120px;">
+	  					<p class="fl" style="width:150px">A、<span>主料</span></p>
+						<p class="fl" style="width:220px">B、<span>辅料</span></p>
+						<p class="fl" style="width:150px">C、<span>施工</span></p>
+						<p class="fl" style="width:220px">D、<span>其他</span><input type="text" id="qs-6-oth" class="myinput" /></p>
+						<p class="fl" style="margin-left:240px;width:150px;font-size:14px">（填写意见处）</p>
+	  				</div>
+	  			</div>
+	  			<div class="qs-7 an">
+	  				<div class="as" style="margin-top:90px;">
+	  					<p class="fl" style="width:180px">A、<span>墙基膜</span></p>
+						<p class="fl" style="width:180px">B、<span>墙纸胶</span></p>
+						<p class="fl" style="width:180px">C、<span>墙面漆</span></p>
+						<p class="fl" style="width:180px">D、<span>施工</span></p>
+	  				</div>
+	  			</div>
+	  			<div class="qs-8 an">
+	  				<div class="as" style="margin-top:120px;">
+	  					<p class="fl" style="width:240px">A、<span>保障工程质量</span></p>
+						<p class="fl" style="width:240px">B、<span>保护墙纸</span></p>
+						<p class="fl" style="width:240px">C、<span>保障墙纸使用寿命</span></p>
+						<p class="fl" style="width:240px">D、<span>把墙纸粘在墙上</span></p>
+	  				</div>
+	  			</div>
+	  			<div class="qs-9 an">
+	  				<div class="as" style="margin-top:120px;">
+	  					<p class="fl" style="width:180px">A、<span>大品牌</span></p>
+						<p class="fl" style="width:180px">B、<span>价格高的</span></p>
+						<p class="fl" style="width:180px">C、<span>店主推荐</span></p>
+						<p class="fl" style="width:180px">D、<span>参考网上评论</span></p>
+	  				</div>
+	  			</div>
+	  			<div class="qs-10 an">
+	  				<div class="as" style="margin-top:120px;">
+	  					<p class="fl" style="width:180px">A、<span>都知道</span></p>
+						<p class="fl" style="width:180px">B、<span>知道一些</span></p>
+						<p class="fl" style="width:180px">C、<span>完全不知道 </span></p>
+						<p class="fl" style="width:180px">D、<span>不关心</span></p>
+	  				</div>
+	  			</div>
+	  			<div class="tj-btn an" id="tj"><img src="images/tj-btn.gif" /></div>
+  			</div>
+  		</div>
+  		<div class="zp" id="b2">
+  			<div class="zp-ly">
+  				<div class="zp-title">
+  					<img src="images/zp-title.png" />
+  				</div>
+  				<div class="zp-con">
+  					<div id="zd"><img src="images/zhuan.png" /></div>
+  				</div>
+  				<div class="zp-md">
+  					<p class="f24 cu">中奖名单</p>
+  					<div class="zp-md-bg" id="cn-run">
+  						<ul id="ul-run">
+                        <?php
+                            while($prize_row = $prize_res->fetch_assoc())
+                            {
+                                echo "<li><span>" . mb_substr($prize_row['phone'],0,3) . '****' . mb_substr($prize_row['phone'],-4) . "</span><span class='pl30'>获得奖品：" . $prize_row['prize_name'] . "</span></li>";
+                            }
+                        ?>
+  							
+  						</ul>
+  					</div>
+  				</div>
+  				<div class="zp-gz">
+  					<p class="f24 cu" style="text-align:center">活动规则</p>
+  					<p class="f16 lp1">1. 关注企业二维码，分享朋友圈再得1次机会；</p>
+  					<p class="f16 lp1">2. 请您务必填写真实信息，以便中奖后我们与您联系；</p>
+  					<p class="f16 lp1">3. 奖品为扫地机1个，空气净化器 1个，除螨机 3个，智能运动手环 10个；</p>
+					<p class="f16 lp1">4. 奖品以实物为准；</p>
+  					<p class="f16 lp1">5. 在法律允许范围内，本活动最终解释权归嘉力丰。</p>
+  				</div>
+  				<div class="qrcode"><img src="images/qrcode.png" /></div>
+  			</div>
+  		</div>
+
+  	</div>
+
+  	<div class="navWarp hide" id="navWarp">
+        <div class="nav-con">
+            <p class="z3 fxing cu" >调查问卷</p>
+            <p class="z2 fxing cu" style="margin-top: 15px;">幸运大转盘</p>
+            <p class="z1" style="margin-top: 19px;">返回首页</p>
+        </div>
+    </div>
+
+  <div class="bg"></div>
+  <div class="pop-bg">
+    <div class="pop-ly" id="pop">
+      <div class="pop-title cu">随性而为型</div>
+      <div class="pop-con">文艺情结较为严重，比起价格，更注重于产品的质量。于装修而言，会选择一些口碑较好的品牌来进行装饰。这一类人，在追求质量的同时，更注重其外观感受，整体的协调性。如果条件允许，找一个专业的设计师对自己的小空间进行科学的规划，整体营造一个符合自己气质的小天地也是不错的一个选择。</div>
+    </div>
+    <div class="pop-tip"><img src="images/pop-tip.png" /></div>
+    <div class="pop-text">
+        <p><span>姓名：<input type="text" id="name" class="myinput2"></span><span>手机：<input type="text" id="mobile" class="myinput2"></span></p>
+    </div>
+    <div class="pop-close am" id="pop-close">
+      <img src="images/pop-close.png" />
+    </div>
+    <div class="pop-btn" id="popbtn"><p>马上提交</p></div>
+  </div>
+
+
+	<div class="pop2-bg">
+		<div class="pop-ly" id="pop2">
+			<div class="pop2-title">
+				
+			</div>
+			<div class="pop2-con hide">
+				<p>收货地址：<input type="text" id="address" class="myinput3"></p>
+			</div>
+			<div class="pop2-btn"><p>确定</p></div>
+		</div>
+		<div class="pop-close am" id="pop2-close">
+			<img src="images/pop-close.png" />
+		</div>
+	</div>
+
+  	<script type="text/javascript" src="js/MSClass.js"></script>
+  	<script type="text/javascript" src="js/awardRotate.js"></script>
+  	<script type="text/javascript">
+  	$('#tj').bind('click',function(){
+  		var _sex=$("input[name='sex']:checked").val();
+  		var _marry=$("input[name='marry']:checked").val();
+  		var _come=$("input[name='come']:checked").val();
+  		//参数判断
+  		if(_sex==''||_sex==null)
+  		{
+  			alert('请填写性别！');
+  			return;
+  		}
+  		if(_marry==''||_marry==null)
+  		{
+  			alert('请填写婚否！');
+  			return;
+  		}
+  		if(_come==''||_come==null)
+  		{
+  			alert('请填写收入！');
+  			return;
+  		}
+
+  	//第一题
+  		var _answer1='',_answer2='',_answer3='',_answer4='',_answer5='',_answer6='',_answer7='',_answer8='',_answer9='',_answer10='';
+  		var _group1='',_group2='',_group3='',_group4='',_group5='',_group6='',_group7='',_group8='',_group9='',_group10='';
+  		$('.as').eq(0).find('span').each(function(index){
+  			if($(this).css('color')=='rgb(57, 167, 205)'){
+  				_answer1=$(this).text();
+  				if(index==0){_group1=3}
+  				else if(index==1){_group1=2}
+  				else if(index==2){_group1=1}
+  				else{_group1=0}
+  				return;
+  			}
+
+  		})
+  		if(_answer1==''||_answer1==null){alert('请填写问题一！');return;}
+
+
+  		//第二题
+  		$('.as').eq(1).find('span').each(function(index){
+  			if($(this).css('color')=='rgb(57, 167, 205)'){
+  				_answer2=$(this).text();
+  				if(index==0){_group2=3}
+  				else if(index==1){_group2=2}
+  				else if(index==2){_group2=1}
+  				else{_group2=0}
+  				return;
+  			}
+  		})
+  		if(_answer2==''||_answer2==null){alert('请填写问题二！');return;}
+
+  		//第三题
+  		$('.as').eq(2).find('span').each(function(index){
+  			if($(this).css('color')=='rgb(57, 167, 205)'){
+  				_answer3=$(this).text();
+  				if(index==0){_group3=3}
+  				else if(index==1){_group3=2}
+  				else if(index==2){_group3=1}
+  				else{_group3=0}
+  				return;
+  			}
+  		})
+  		if(_answer3==''||_answer3==null){alert('请填写问题三！');return;}
+
+  		//第四题
+  		$('.as').eq(3).find('span').each(function(index){
+  			if($(this).css('color')=='rgb(57, 167, 205)'){
+  				_answer4=$(this).text();
+  				if(index==0){_group4=3}
+  				else if(index==1){_group4=2}
+  				else if(index==2){_group4=1}
+  				else{_group4=0}
+  				return;
+  			}
+  		})
+  		if(_answer4==''||_answer4==null){alert('请填写问题四！');return;}
+
+  		//第五题
+  		$('.as').eq(4).find('span').each(function(index){
+  			if($(this).css('color')=='rgb(57, 167, 205)'){
+  				_answer5=$(this).text();
+  				if(index==0){_group5=3}
+  				else if(index==1){_group5=2}
+  				else if(index==2){_group5=1}
+  				else{_group5=0}
+  				return;
+  			}
+  		})
+  		if(_answer5==''||_answer5==null){alert('请填写问题五！');return;}
+
+  		//第六题
+  		$('.as').eq(5).find('span').each(function(index){
+  			if($(this).css('color')=='rgb(57, 167, 205)'){
+  				if(index==3)
+  				{
+  					_answer6='其他('+$('#qs-6-oth').val()+')';
+  				}
+  				else{
+  					_answer6=$(this).text();
+  				}
+  				if(index==0){_group6=3}
+  				else if(index==1){_group6=2}
+  				else if(index==2){_group6=1}
+  				else{_group6=0}
+  				return;
+  			}
+  		})
+  		if(_answer6==''||_answer6==null){alert('请填写问题六！');return;}
+
+  		//第七题
+  		$('.as').eq(6).find('span').each(function(index){
+  			if($(this).css('color')=='rgb(57, 167, 205)'){
+  				_answer7=$(this).text();
+  				if(index==0){_group7=3}
+  				else if(index==1){_group7=2}
+  				else if(index==2){_group7=1}
+  				else{_group7=0}
+  				return;
+  			}
+  		})
+  		if(_answer7==''||_answer7==null){alert('请填写问题七！');return;}
+
+  		//第八题
+  		$('.as').eq(7).find('span').each(function(index){
+  			if($(this).css('color')=='rgb(57, 167, 205)'){
+  				_answer8=$(this).text();
+  				if(index==0){_group8=3}
+  				else if(index==1){_group8=2}
+  				else if(index==2){_group8=1}
+  				else{_group8=0}
+  				return;
+  			}
+  		})
+  		if(_answer8==''||_answer8==null){alert('请填写问题八！');return;}
+
+  		//第九题
+  		$('.as').eq(8).find('span').each(function(index){
+  			if($(this).css('color')=='rgb(57, 167, 205)'){
+  				_answer9=$(this).text();
+  				if(index==0){_group9=3}
+  				else if(index==1){_group9=2}
+  				else if(index==2){_group9=1}
+  				else{_group9=0}
+  				return;
+  			}
+  		})
+  		if(_answer9==''||_answer9==null){alert('请填写问题九！');return;}
+
+  		//第十题
+  		$('.as').eq(9).find('span').each(function(index){
+  			if($(this).css('color')=='rgb(57, 167, 205)'){
+  				_answer10=$(this).text();
+  				if(index==0){_group10=3}
+  				else if(index==1){_group10=2}
+  				else if(index==2){_group10=1}
+  				else{_group10=0}
+  				return;
+  			}
+  		})
+  		if(_answer10==''||_answer10==null){alert('请填写问题十！');return;}
+
+  		//数据提交
+  		var _ansStr = 
+  	  		{
+  	  			"1":_answer1,
+  	  			"2":_answer2,
+  	  			"3":_answer3,
+	  			"4":_answer4,
+	  			"5":_answer5,
+  	  			"6":_answer6,
+  	  			"7":_answer7,
+	  			"8":_answer8,
+	  			"9":_answer9,
+  	  			"10":_answer10
+  	  	  	};// 答案json
+  		var _scoreStr = 
+	  		{
+	  			"1":_group1,
+	  			"2":_group2,
+	  			"3":_group3,
+  				"4":_group4,
+  				"5":_group5,
+	  			"6":_group6,
+	  			"7":_group7,
+  				"8":_group8,
+  				"9":_group9,
+	  			"10":_group10
+	  	  	};// 分数json
+    	//function onPostInfo()
+    	//{
+    		$.ajax({
+            	async:false,
+            	url: 'server.php',
+            	data:{
+                	act:'submitAns',
+                	type:'pc',
+    				sex:_sex,
+    				marital:_marry,
+    				income:_come,
+    				scoreStr:_scoreStr,// 分数json串
+    				ansStr:_ansStr// 答案json串
+                	},
+            	type: "post",
+            	dataType:'json',
+            	success:function(result){
+                        console.log(result);
+            		//成功后
+              		switch(result.resType){
+              			case 1:
+          					$('#pop .pop-title').text('随性而为型');
+          					$('#pop .pop-con').text('主要依照自己的性格而定，装修时不一定会严格控制金额或者过分追求品牌，注重的还是个人的兴趣爱好。比较不拘泥于小节，一些决定性的选择上虽然会参考他人的意见，最终还是坚持自己的选择。这一类人希望自己装饰的墙面在当下是自己非常满意的。');
+          					break;
+
+              			case 2:
+              				$('#pop .pop-title').text('文艺青年型');
+              				$('#pop .pop-con').text('文艺情结较为严重，比起价格，更注重于产品的质量。于装修而言，会选择一些口碑较好的品牌来进行装饰。这一类人，在追求质量的同时，更注重其外观感受，整体的协调性。如果条件允许，找一个专业的设计师对自己的小空间进行科学的规划，整体营造一个符合自己气质的小天地也是不错的一个选择。');
+              				break;
+              		
+              			case 3:
+              				$('#pop .pop-title').text('务实生活型');
+              				$('#pop .pop-con').text('生活型的人注重的是生活本身，于品牌、价格、质量中，会选择最为经济实惠的。装修的时候，考虑问题更为全面，会进行多方比较从而得出最为有利于自己的选择。时尚与否、品牌的大小都不会是最后作于决定的关键，关键在于自身的综合利益。');
+              				break;
+
+              			case 4:
+              				$('#pop .pop-title').text('时尚享受型');
+              				$('#pop .pop-con').text('走在时尚的前沿是最重要的，质量不要太差即可，品牌一定要响亮。这一类人会时常关注各类时尚动态，装修时更注重整体的艺术感是否走在时尚的前沿，营造的整体氛围是否符合个人的生活体验。所以在选购材料的时候，会根据店家的推荐来辨别哪一款是流行款，而后再作出抉择。');
+              				break;	
+              			default:
+              				alert('参数错误！');
+                            return false;
+              		}
+              		$('.bg').fadeIn();
+              		$('.pop-bg').fadeIn();
+            	}
+        	});
+    	//} 		
+  				
+  	});
+    //马上提交
+    var _name;
+    var _mobile;
+    $('#popbtn').bind('click',function(){
+      _name=$('#name').val();
+      _mobile=$('#mobile').val();
+      if(_name==''||_mobile==''){
+        alert('姓名或手机号不能为空！');return;
+      }
+
+      $.ajax({
+            async:false,
+            url: 'server.php?check=1',
+            data:{
+                act:'add',
+                name:_name,
+                phone:_mobile
+                },
+            type: "post",
+            dataType:'json',
+            success:function(result){
+                console.log(result);
+                if(result.errcode !=0)
+                {
+                    alert(result.errmsg);
+                }
+                else
+                {
+                    $('.bg').fadeOut();
+                    $('.pop-bg').fadeOut();
+                }
+                
+            }
+        });
+      
+      // $('#b2').fadeIn();
+      // $('html,body').animate({scrollTop: $("#b2").offset().top-50}, 300);
+    })
+
+	$('#pop-close').bind('click',function(){
+		$('.bg').fadeOut();
+  		$('.pop-bg').fadeOut();
+	})
+	var price='';
+	
+
+  function pop2(type,text){
+    switch (type) {
+      case '1': //中奖
+        $('#pop2 .pop2-title').html('<p class="cu">恭喜你，中奖了！</p><p class="f24">获得了'+text+'</p>');
+        $('#pop2 .pop2-title').css('padding-top','150px');
+        price=text;
+        $('#pop2 .pop2-con').show();
+        $('.bg').fadeIn();
+        $('.pop2-bg').fadeIn();
+        break;
+      case '2'://未中奖
+        $('#pop2 .pop2-title').html('<p class="cu">谢谢参与！再接再厉！</p>');
+        $('#pop2 .pop2-title').css('padding-top','200px');
+        $('#pop2 .pop2-con').hide();
+        $('.bg').fadeIn();
+        $('.pop2-bg').fadeIn();
+        break;
+      case '3'://没有参加测试
+        $('#pop2 .pop2-title').html('<p class="cu">您还没有参加测试！</p><p class="f24">温馨提示：请先参加测试获得抽奖机会。</p>');
+        $('#pop2 .pop2-title').css('padding-top','150px');
+        $('#pop2 .pop2-con').hide();
+        $('.bg').fadeIn();
+        $('.pop2-bg').fadeIn();
+        break;
+      case '4'://没有次数
+        $('#pop2 .pop2-title').html('<p class="cu">您的抽奖次数已用完</p>');
+        $('#pop2 .pop2-title').css('padding-top','200px');
+        $('#pop2 .pop2-con').hide();
+        $('.bg').fadeIn();
+        $('.pop2-bg').fadeIn();
+        break;
+      default:
+        alert('参数错误');
+  }}
+
+	//姓名等信息提交
+	$('.pop2-btn p').bind('click',function(){
+		if($('.pop2-con').css('display')=='block'){
+			var _address=$('#address').val();
+            _mobile=$('#mobile').val();
+			var _price=price;
+			//console.log(_price);
+			if(_address==''){
+				alert('地址不能为空！');
+				return;
+			}
+
+            $.ajax({
+                async:false,
+                url: 'server.php',
+                data:{
+                    act:'add',
+                    address:_address,
+                    phone:_mobile
+                    },
+                type: "post",
+                dataType:'json',
+                success:function(result){
+                    console.log(result);
+                    if(result.errcode !=0)
+                    {
+                        alert(result.errmsg);
+                    }
+                    else
+                    {
+                        $('.bg').fadeOut();
+  			            $('.pop2-bg').fadeOut();
+                    }
+                    
+                }
+            });
+
+			  
+		}
+		else{
+			 $('.bg').fadeOut();
+  			$('.pop2-bg').fadeOut();
+		}
+		
+	})
+
+	$('#pop2-close').bind('click',function(){
+		  $('.bg').fadeOut();
+  		$('.pop2-bg').fadeOut();
+	})
+
+//  	var count=3;//次数
+		var vv=true;
+  		$('#zd').bind("click",function(){
+          _name=$('#name').val();
+          _mobile=$('#mobile').val();
+          if(_name==''||_mobile==''){
+            pop2('3','');return;
+          }
+          
+           $.ajax({
+            	async:false,
+            	url: 'server.php',
+            	data:{
+                	act:'start',
+                    phone:_mobile
+                	},
+            	type: "post",
+            	dataType:'json',
+            	success:function(result){
+                    console.log(result);
+                    if(result.errcode !=0)
+                    {
+                        if(result.errcode == 1001)
+                        {
+                            pop2('4','');
+                        }
+                        else
+                        {
+                            alert(result.errmsg);
+                        }
+			    		return false;
+                    }
+                    else
+                    {
+                        if(vv){
+                            switch (result.prize) {
+                                case 1: 
+                                    rotateFunc(0,0,'');
+                                    count=count-1;
+                                    break;
+                                case 2: 
+                                    rotateFunc(1,45,'空气净化器');
+                                    count=count-1;
+                                    break;
+                                case 3: 
+                                    rotateFunc(0,90,'');
+                                    count=count-1;
+                                    break;
+                                case 4: 
+                                    rotateFunc(2,135,'除螨机');
+                                    count=count-1;
+                                    break;
+                                case 5: 
+                                    rotateFunc(0,180,'');
+                                    count=count-1;
+                                    break;
+                                case 6: 
+                                    rotateFunc(3,225,'智能运动手环');
+                                    count=count-1;
+                                    break;
+                                case 7: 
+                                    rotateFunc(0,270,'');
+                                    count=count-1;
+                                    break;
+                                default:
+                                    rotateFunc(4,315,'扫地机');
+                                    count=count-1;
+                            }
+                            vv=false;
+                                
+                         }
+                         return false;
+                    }
+            		
+            	}
+        	});
+
+		});
+
+		    setInterval(function(){ 
+					vv=true;
+				},6000);
+
+		    function rotateFunc(awards,angle,text){  //awards:奖项，angle:奖项对应的角度
+		        $('#zd').stopRotate();
+		        $('#zd').rotate({
+		            angle: 0,
+		            duration: 5000,
+		            animateTo: angle + 1440,  //angle是图片上各奖项对应的角度，1440是让指针固定旋转4圈
+		            callback: function(){
+		            	if(awards==0){
+		            		//zj(awards,'');//第一个为奖项，第二个为奖品名
+                    pop2('2','');
+		            	}
+		            	else{
+		            		//zj(awards,text);
+                    pop2('1',text);  
+		            	}
+		            }
+		        });
+		    }
+
+  		$(function(){
+  			new Marquee({
+	            MSClassID: "cn-run",
+	            ContentID: "ul-run",
+	            Direction: "top",
+	            Step: 2,
+	            Width: 406,
+	            Height: 36,
+	            Timer: 100,
+	            DelayTime: 1000,
+	            WaitTime: 0,
+	            AutoStart: 1
+	        });
+
+  		})
+  		$("[name='sex']").bind('click',function(){
+  			$("[name='sex']").parent('.zf').css('background-position','0 0')
+  			$(this).parent('.zf').css('background-position','0 -30px');
+  		})
+  		$("[name='marry']").bind('click',function(){
+  			$("[name='marry']").parent('.zf').css('background-position','0 0')
+  			$(this).parent('.zf').css('background-position','0 -30px');
+  		})
+  		$("[name='come']").bind('click',function(){
+  			$("[name='come']").parent('.zf').css('background-position','0 0')
+  			$(this).parent('.zf').css('background-position','0 -30px');
+  		})
+
+  		$('.as span').bind('click',function(){
+  			$(this).parent().parent('.as').find('span').removeClass('add');
+  			$(this).addClass('add');
+  			$('html,body').animate({scrollTop: $(this).parent().parent('.as').parent().offset().top+$(this).parent().parent('.as').parent().height()/2}, 300);
+  		})
+  	</script>
+  	<script type="text/javascript">
+      function navposition(){
+      $("#navWarp").addClass("navWarp");
+    }
+    $(function(){
+      navposition();
+      $(window).resize(function(){
+        navposition();
+      })
+      var b1 = $("#b1").offset().top-50;
+      var b2 = $("#b2").offset().top-50;
+      var b3 = $("#b3").offset().top;
+      
+
+      var nav = $("#navWarp");
+      var navP = $(".nav-con p");
+      var win = $(window);
+      win.scroll(function(){
+        if(win.scrollTop()>500){
+          nav.removeClass("hide");
+          nav.addClass("navWarpFix");
+        }else{
+          nav.removeClass("navWarpFix");
+          nav.addClass("hide");
+        }
+        if(win.scrollTop()>b2-10){
+          if($("#b2").css('display')=='block'){
+            $(".fxing").removeClass("red").eq(1).addClass("red");
+          }
+        }
+        else if(win.scrollTop()>b1-10){
+          $(".fxing").removeClass("red").eq(0).addClass("red");
+        }else{
+          $(".fxing").removeClass("red");
+        }
+
+      });
+
+     //定位
+      navP.each(function(){
+        $(this).click(function(){
+          index = $(this).index();
+          //$(this).addClass('hover').siblings().removeClass('hover');
+          switch(index){
+            case 0: $('html,body').animate({scrollTop: b1}, 300);break;
+            case 1: $('html,body').animate({scrollTop: b2}, 300);break;
+            case 2: $('html,body').animate({scrollTop: b3}, 300);break;
+          }
+
+        });
+      });
+
+      $('.jianjie-4 img').bind('click',function(){
+      	$('html,body').animate({scrollTop: $("#b1").offset().top-50}, 500);
+      })
+
+     });
+
+    </script>
+  	
+  	<!--#include virtual="/public/head.html"-->
+	<!--#include virtual="/public/footer.html"-->
+ </body>
+</html>

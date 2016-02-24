@@ -1,0 +1,103 @@
+.container{width: 100%;min-width:960px;max-width: 1920px;height: 7371px;background: url(../img/common/bg.jpg) no-repeat center center;overflow-x: hidden;}/*center center;overflow-x: hidden;*/
+.banner,.midnav,.spring,.hangye,.fazhan,.weilai,.huaxu,.wangqi{width: 960px;margin: 0 auto;}
+/*common*/
+.common_width{width: 944px;margin: 0 auto;padding: 7px 0;}
+/*common*/
+/*banner*/
+/*.banner{height: 900px;border: 1px solid red;}*/
+.banner_logo{margin-top: 110px;}
+.banner_adr{margin-top: 30px;margin-bottom: 33px;}
+/*banner*/
+/*midnav*/
+.midnav{margin-top: 82px;}
+.mid_mes{margin-top: 60px;border: 1px solid #d6d6d6;}
+.midnav ul,.midnav .mid_mes{width: 100%;}
+.midnav ul li{float: left;}
+.mid_shadow{position: absolute;bottom:-25px;left: 0;right: 0;z-index: 2;}
+.mid_mes{height: 338px;}
+.mid_player,.mid_other{width: 480px;height: 338px;overflow: hidden;float: left;}
+.mid_player ul{width: 9999px;position: absolute;left: 0;top: 0;z-index: 2;}
+.mid_player ul li{width: 480px;height: 338px;float: left;display: inline-block;}
+.mid_cir{height: 15px;position: absolute;bottom: 9px;right: 11px;z-index: 3;}
+.mid_cir span{float: left;display: inline-block;margin-right:10px;text-indent: -999px;width: 15px;line-height: 15px;border-radius:100%;background-color: #AFAFAF;overflow: hidden;}
+.mid_cir span:hover{cursor: pointer;}
+.mid_cir .mid_active{background-color: #00aeef;}
+.mid_other_top{border-bottom: 1px solid #d6d6d6;}
+.mid_other_top,.mid_other_bot{height: 169px;width:100%;overflow: hidden;}
+.mid_other_l{width: 401px;height: 100%;float: left;background-color: #ffffff;overflow: hidden;}
+.mid_other_r{width: 79px;height: 100%;float: left;background-color: #FFFFFF;}
+.mid_other_top .mid_other_r{background: url(../img/midnav/midmes.png) repeat-y;}
+.mid_other_bot .mid_other_r{background: url(../img/midnav/midqr.png) repeat-y;}
+.mid_trans{-webkit-transition: -webkit-transform .3s,left .4s;-webkit-transform: rotate(0deg);-ms-transition: -ms-transform .3s,left .4s;-ms-transform: rotate(0deg);-moz-transition: -moz-transform .3s,left .4s;-moz-transform: rotate(0deg);transition:transform .3s,left .4s;transform: rotate(0deg);}
+.mid_other_r span{color: #FFFFFF;left: 32px;text-align: center;position: absolute;bottom: 15px;z-index:3;}
+.mid_show h1{font-size: 15px;text-align: center;}
+.mid_show{padding: 15px 10px;}
+.mid_show,.mid_hide{height:169px;background-color:#FFFFFF;overflow: hidden;}
+.mid_show p{text-align: left;font-size: 13px;text-indent: 30px;margin-top: 5px;}
+.mid_other_top .mid_show p{text-indent: 0;}
+.mid_other_top .mid_show{padding: 15px;}
+.mid_hide{background-color:#FFFFFF;position: absolute;z-index: 3;width: 401px;top: 0;left:401px;bottom: 0;}
+.mid_other_top .mid_hide{background: url(../img/midnav/midbuild.png?c=222) no-repeat #FFFFFF;background-position:right bottom;}
+.mid_blue{background-color: #2ca8ff;padding:0 2px;position: relative;line-height: 20px;display: inline-block;}
+.mid_blue img{position: absolute;z-index: 3;right:-11px;top: 0;}
+.mid_indent{text-indent: 15px;display: inline-block;}
+.mid_hide_pos{margin-left: 20px;margin-top: 30px;}
+.mid_other_bot .mid_hide p{margin-top: 5px;}
+/*midnav*/
+/*spring*/
+.spring{margin-top: 47px;margin-bottom: 47px;}
+.spring_player{width: 472px;background-color: #FFFFFF;border: 4px solid #FFFFFF;float: left;}
+.spring_txt h1{color: #0097ff;font-size: 20px;}
+.spring_txt{width:240px;}
+.spring_txt_name,.spring_txt_pro{width: 176px;padding: 7px 0;margin: 0 auto;height: 74px;}
+.spring_txt_bg{background-color: #f5f5f5;width: 245px;display: table;}
+.spring_txt_pro{vertical-align: middle;display:table-cell;font-size: 13px;padding:0 30px;height: 202px;}
+/*spring*/
+/*hangye weilai*/
+.spring_con,.hangye_con,.fazhan_con,.weilai_con,.huaxu_con,.wangqi_con{width:100%;border: 1px solid #d6d6d6;margin-top: 30px;}
+.common_part1{border: 1px solid #d6d6d6;margin-bottom: 5px;}
+.common_part1_pro div{padding: 10px;width: 430px;}
+.common_part1_pro div h1{color: #0297fe;}
+.common_part1_pro div p{font-size: 14px;color: #4c4c4c;}
+.hangye_part2,.weilai_part2{margin-top: 5px;margin-bottom: 22px;}
+.hangye_name,.weilai_name{color: #FFFFFF;display: table-cell;vertical-align: middle;height: 230px;}
+.hangye_name h1,.weilai_name h1{font-size: 35px;color: #FFFFFF;font-weight:inherit;line-height: 42px;}
+.hangye_name .zhiwei,.weilai_name .zhiwei{font-size: 20px;}
+.hangye_name .jianjie,.weilai_name .jianjie{font-size: 15px;margin-top: 30px;}
+.hangye_bigtxt,.weilai_bigtxt{width: 554px;background-color: #2d8ab5;height: 290px;}
+.hangye_bigtxt_pro,.weilai_bigtxt_pro{padding: 15px;padding-top: 0;padding-right: 5px;margin-top: 15px;margin-right: 15px;height: 245px;overflow: hidden;}
+#hang_mouse,#weilai_mouse{font-size:26px;color: #2d8ab5;position: absolute;left:422px;top: -32px;z-index: 3;}
+#hang_mouse{left: 329px;}
+#hangye_select:hover,#weilai_select:hover{cursor: pointer;}
+/*hangye*/
+/*fazhan*/
+.fazhan{margin-top: 47px;margin-bottom: 47px;}
+.fazhan_commoncon{margin-top: 10px;}
+.fazhan_common{width: 230px;height: 200px;border: 1px solid #D6D6D6;float: left;margin-right:5px;margin-bottom: 20px;overflow: hidden;}
+.fazhan_common:hover{cursor: pointer;}
+.fazhan_common:hover .fazhan_inner_wra{top: 0;}
+.fazhan_inner_wra{position: absolute;top:200px;/*top:0;*/left: 0;width: 230px;height: 200px;z-index: 33;background-color: rgba(0,0,0,.8) !important;background-color:#000000\9;filter:Alpha(opacity=80);-webkit-transition: top .4s ease-out;-ms-transition: top .4s ease-out;-o-transition: top .4s ease-out;transition: top .4s ease-out;}
+.fazhan_inner_wra{color: #FFFFFF;}
+.margin_r_none{margin-right: 0;}
+.fazhan_inner{padding:10px;}
+.fazhan_inner h1{font-size: 16px;color: #0097FF;}
+.fazhan_shadow{bottom: -12px;z-index: 4;left: -3px;position: absolute;}
+/*fazhan*/
+/*huaxu*/
+.huaxu{margin-top: 47px;margin-bottom: 47px;}
+.huaxu_twoimg{width:234px;height: 314px;}
+.huaxu_top div{margin-right: 2px;}
+.huaxu_bot div{margin-right: 4px;margin-top: 3px;}
+.huaxu_margin{margin-top: 4px;}
+/*huaxu*/
+/*wangqi*/
+.wangqi{margin-top: 40px;}
+.wangqi_con{border: 0;}
+/*wangqi*/
+/*sidenav*/
+.sidenav{width: 120px;height: 420px;background: url(../img/sidenav/nav.png) no-repeat;position: fixed;right: 0;top:50%;margin-top: -210px;z-index: 99;}
+.sidenav_nav{width: 90px;margin: 0 auto;margin-top: 80px;}
+.sidenav_nav li{text-align: center;border-bottom: 1px solid #FFFFFF;}
+.sidenav_nav li a{color: #FFFFFF;font-size: 14px;line-height: 37px;}
+
+/*sidenav*/

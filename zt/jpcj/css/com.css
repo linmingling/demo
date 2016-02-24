@@ -1,0 +1,52 @@
+/*初始化*/
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 12px/1.7 "Microsoft YaHei" "SimSun" "Hiragino Sans GB";margin:0;width: 100%;overflow-x:hidden;}
+a{text-decoration:none;outline: none;}
+a:hover{text-decoration:none;-webkit-transition:color .3s ease-out;-moz-transition:color .3s ease-out;transition:color .3s ease-out;}
+a img,img{border:0;vertical-align: top;}
+.hide{display: none;}
+
+.main{min-width: 1000px; max-width: 1920px;overflow: hidden;}
+.box{  background-repeat: no-repeat; background-position: top center;}
+.main .link-1{ width: 40%;height: 368px;display: block;position: absolute;left: 20%;top: 0;}
+.main .part-1{background-color: #fff;background:url(../images/bg1.png) repeat center center;background-size:10px;}
+.main .x-top{position: relative;top:36px;background-image:url(../images/1.png); height: 634px;}
+.main .x-product-1{margin-top:-54px;background-image:url(../images/2.png);  height: 1045px;}
+.main .x-product-2{background-image:url(../images/3.png);  height: 1111px;}
+.main .x-nature{margin-top:-106px;z-index: 10;background-image:url(../images/4.png);height: 1861px;}
+.main .x-ad{width: 1000px;height: 374px;margin:0 auto;position: relative;margin:50px auto;}
+.main .x-ad .x-ad-img{width: 509px;height: 370px;float: left}
+.main .x-ad .x-ad-logo{float: left;width: 157px;height: 217px;background-color:#911F2F;position:relative;}
+.main .x-ad .x-ad-logo img{width: 100%;height: 62px}
+.main .x-ad .x-ad-logo .x-about{color: #fff;position: absolute;bottom: 14px;right: 14px;font-size: 14px;}
+.main .x-ad .x-ad-logo .x-about a{color: #fff}
+.main .x-ad .x-ad-c{float: right;width:324px;  padding-left: 6px;}
+.main .x-ad .x-ad-c p{text-indent:25px;color:#911F2F;font-size: 14px;line-height: 24px;}
+.main .x-ad .x-ad-c .link-2{text-align: right;}
+.main .x-ad .x-ad-c .link-2 a{color:#911F2F;}
+.main .x-ad .x-ad-logo .x-about a:hover,.main .x-ad .x-ad-c .link-2 a:hover{text-decoration: underline;}
+.main .x-ad-2{width: 100%;height:112px;background-color: #911F2F;}
+.main .x-ad-2 .x-ad-c{width: 1000px;margin:0 auto;}
+.main .x-ad-2 .x-1-c{float: left;margin-top: 10px;font-size: 14px}
+.main .x-ad-2 .x-1-c .m-r{margin-right: 20px}
+.main .x-ad-2 .x-1-c .m-r-1{margin-right: 35px}
+.main .x-ad-2 .x-1-c p{line-height: 30px;color: #fff}
+.main .x-ad-2 .x-2-c{float:right;margin:0 auto;}
+
+.main .goToTop {position: fixed;bottom: 1%;right: 15%;z-index: 10;width: 48px;height: 48px;border: 1px solid #d2d2d2;  background: url(../images/goToTop.png) no-repeat 0 0;margin-top: 10px;cursor: pointer;}
+.main .goToTop:hover{background-position:0px -48px;-webkit-transition:background-position .3s ease-out;-moz-transition:background-position .3s ease-out;transition:background-position .3s ease-out;}
+
+
+/* 大屏幕 */
+@media (min-width: 1400px) {
+  .main .goToTop {right: 15%}
+}
+ 
+/* 小屏电脑分辨率 */
+@media (min-width: 1000px) and (max-width: 1399px) {
+   .main .goToTop { right: 2%;}
+   .main .link-1{left: 10%;width: 60%}
+}
+@media (max-width: 999px) {
+   .main .goToTop { right: 2%;}
+}

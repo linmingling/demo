@@ -1,0 +1,430 @@
+/*css reset*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre, 
+form,fieldset,input,textarea,p,blockquote,th,td { 
+    padding: 0; 
+    margin: 0; 
+} 
+table { 
+    border-collapse: collapse; 
+    border-spacing: 0; 
+} 
+fieldset,img { 
+    border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+    font-weight: normal; 
+    font-style: normal; 
+} 
+ol,ul { 
+    list-style: none; 
+} 
+caption,th { 
+    text-align: left; 
+} 
+h1,h2,h3,h4,h5,h6 { 
+    font-weight: normal; 
+    font-size: 100%; 
+} 
+q:before,q:after { 
+    content:”; 
+} 
+abbr,acronym { 
+    border: 0; 
+}
+
+
+/*main*/
+.inside{width: 1000px;height: 100%;margin:0 auto;position: relative;}
+
+.bg1{
+    min-width: 1000px;
+    position: relative;
+    width:100%;
+    height:800px;
+    background:url(../images/bg1.jpg) no-repeat center center;.
+    overflow: hidden;
+}
+
+.bg1 .swf{
+    left:50%;
+    margin-left:-1129px;
+    top:32px;
+    position: absolute;
+    overflow: hidden;  
+}
+
+.bg1 img{
+    position: absolute;
+    margin:770px 0px 0px 426px;
+}
+
+.logo1{
+    width: 337px; 
+    height: 78px;
+    margin:44px 0px 0px 52px;
+    position:absolute;
+    background: url(../images/logo.png) no-repeat;
+}
+
+.title{
+    width: 622px;
+    height: 299px;
+    margin:248px 0px 0px 202px;
+    position:absolute;
+    background: url(../images/title.png) no-repeat;
+}
+
+
+.time{
+    width: 100px;
+    height: 50px;
+    margin:460px 600px;
+    position: absolute;
+}
+
+
+#day_show{
+    font-size:63px;
+    font-weight: bold;
+    font-family: arial;
+    color:#cb8027;
+    letter-spacing:17px;
+}
+
+.nav{
+    width: 157px;
+    height: 359px;
+    margin:250px 990px;
+    position:fixed;
+    background: url(../images/nav.png);
+}
+
+.nav ul{
+    height: 359px;
+    margin:64px 24px;
+    position: absolute;
+}
+
+.nav li{
+    width: 109px;
+    height: 42px;
+    cursor: pointer;
+}
+
+.nav li a{
+    width: 109px;
+    height: 42px;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#goToTop{
+    width: 72px;
+    height: 73px;
+    margin:277px 42px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.bg2{
+    min-width: 1000px;
+    width:100%;
+    height:800px;
+    background:url(../images/bg2.jpg) no-repeat center center;
+}
+
+.text1{
+    width: 832px;
+    height: 110px;
+    font-family: 微软雅黑;
+    font-size:13px;
+    margin:247px 92px;
+    color: #6c513a;
+    position: absolute;
+}
+
+.text1 a{
+    text-decoration: none;
+    color: #6c513a;
+}
+
+.text2 a{
+    text-decoration: none;
+    color: #6c513a;
+}
+
+.text3 a{
+    text-decoration: none;
+    color: #6c513a;
+}
+
+.text4 a{
+    text-decoration: none;
+    color: #6c513a;
+}
+.bg3{
+    min-width: 1000px;
+    width:100%;
+    height:800px;
+    background:url(../images/bg3.jpg) no-repeat center center;
+}
+
+.text2{
+    width: 832px;
+    height: 110px;
+    font-family: 微软雅黑;
+   font-size:13px;
+    margin:135px 92px;
+    color: #6c513a;
+    position: absolute;
+}
+
+.bg4{
+    min-width: 1000px;
+    width:100%;
+    height:800px;
+    background:url(../images/bg4.jpg) no-repeat center center;
+}
+
+
+
+.text3{
+    width: 832px;
+    height: 110px;
+    font-family: 微软雅黑;
+   font-size:13px;
+    margin:98px 92px;
+    color: #6c513a;
+    position: absolute;
+}
+
+
+.text4{
+    width: 832px;
+    height: 110px;
+    font-family: 微软雅黑;
+   font-size:13px;
+    margin:411px 92px;
+    color: #6c513a;
+    position: absolute;
+}
+
+
+
+.bg5{
+    min-width: 1000px;
+    width:100%;
+    height:800px;
+    background:url(../images/bg5.jpg) no-repeat center center;
+}
+
+.text5{
+    width: 832px;
+    height: 110px;
+    font-family: 微软雅黑;
+   font-size:13px;
+    margin:588px 92px;
+    color: #6c513a;
+    position: absolute;
+}
+
+.bg6{
+    min-width: 1000px;
+    width:100%;
+    height:800px;
+    background:url(../images/bg6.jpg) no-repeat center center;
+}
+
+.text6{
+    width: 509px;
+    height: 132px;
+    font-family: 微软雅黑;
+   font-size:13px;
+    margin:0px 397px;
+    color: #6c513a;
+    position: absolute;
+}
+
+.turn{
+    width: 1000px;
+    height: 358px;
+    position: absolute;
+    margin:269px 0px 0px 0px;
+}
+
+.turn .swiper-slide img{
+    margin:0px 0px 0px -160px;
+    border:1px solid #b8a99e;
+}
+
+
+
+
+.bg7{
+    min-width: 1000px;
+    width:100%;
+    height:800px;
+    background:url(../images/bg7.jpg) no-repeat center center;
+}
+
+
+/*报名*/
+.sign{
+    width: 832px;
+    height: 605px;
+    margin:0px 81px;
+    position: relative;
+}
+
+.sign .ct1{
+    width: 198px;
+    height: 29px;
+    margin:4px 136px;
+    position: absolute;
+}
+
+.sign .ct1 .name{
+    width: 198px;
+    height: 25px;
+    position: absolute;
+}
+
+.sign .ct2{
+    width: 297px;
+    height: 29px;
+    margin:5px 454px;
+    position: absolute;
+}
+
+.sign .ct2 .phone{
+    width: 297px;
+    height: 24px;
+    position: absolute;
+}
+
+.letter{
+    width: 791px;
+    height: 213px;
+    margin:193px 22px;
+    position: absolute;
+}
+
+
+
+
+.letter .content1{
+    width: 791px;
+    height: 42px;
+    margin:32px 0px;
+    font-size: 20px;
+    position: absolute;
+    outline:none;
+    border:0;
+    background: transparent;
+    word-wrap:break-word;
+    overflow:hidden;
+}
+
+.letter .content2{
+    width: 791px;
+    height: 42px;
+    margin:103px 0px;
+    font-size: 20px;
+    position: absolute;
+    outline:none;
+    border:0;
+    background: transparent;
+    word-wrap:break-word;
+    overflow:hidden;
+}
+
+.letter .content3{
+    width: 791px;
+    height: 42px;
+    margin:180px 0px;
+    font-size: 20px;
+    position: absolute;
+    outline:none;
+    border:0;
+    background: transparent;
+    overflow:hidden;
+}
+
+.sname{
+    width: 195px;
+    height: 42px;
+    margin:453px 444px;
+    font-size: 20px;
+    position: absolute;
+    outline:none;
+    border:0;
+    background: transparent;
+}
+
+
+.age{
+    width: 92px;
+    height: 42px;
+    margin:454px 709px;
+    font-size: 20px;
+    position: absolute;
+    outline:none;
+    border:0;
+    background: transparent;
+}
+
+.sure{
+    width: 206px;
+    height: 42px;
+    margin:540px 318px;
+    position: absolute;
+    cursor: pointer;
+}
+/*报名end*/
+.bg8{
+    min-width: 1000px;
+    width:100%;
+    height:1200px;
+    background:url(../images/bg8.jpg) no-repeat center center;
+}
+
+.show-box{
+    width: 1000px;
+    height: 753px;
+    position:absolute;
+    margin-top:349px;
+}
+
+
+.bg9{
+    min-width: 1000px;
+    width:100%;
+    height:1000px;
+    background:url(../images/bg9.jpg) no-repeat center center;
+}
+
+
+/* 效果CSS开始 */
+
+#focus_Box{width:1000px;height:683px;position: absolute;margin:312px 0px 0px 0px;}
+#focus_Box ul{width:802px;height:683px;margin:0px 0px 0px 132px;position: absolute;}
+#focus_Box li{z-index:0;position:absolute; width:0px;background:#787878;height:0px;top:146px;cursor:pointer;left:377px;border-radius:4px;box-shadow:1px 1px 12px rgba(200, 200, 200, 1)}
+#focus_Box li img{width:100%;background:url(images/loading.gif) no-repeat center 50%;height:100%;vertical-align:top}
+#focus_Box li p{position:absolute;left:0;bottom:0px;width:100%;height:40px;line-height:40px;background:url(../images/float-bg.png) repeat;text-indent:8px;color:#fff;}
+#focus_Box li p span{display:inline-block;width:243px;height:57px;text-align:center;font-size:24px;font-family: Arial;overflow:hidden;margin:71px 0px 0px 77px;}
+#focus_Box .prev,#focus_Box .next{display:block;z-index:100;overflow:hidden;cursor:pointer;position:absolute;width:52px;height:52px;top:211px;}
+#focus_Box .prev{background:url(../images/btn.png) left bottom no-repeat;left:0px}
+#focus_Box .next{background:url(../images/btn.png) right bottom no-repeat;right:0px} 
+#focus_Box .prev:hover{background-position:left top;}
+#focus_Box .next:hover{background-position:right top;}
+#focus_Box a.imgs-scroll-btn{display:block;position:absolute;z-index:110;top:7px;right:15px;width:51px;height:23px;overflow:hidden;background:url(../images/share-btn.png) no-repeat;text-indent:-999px;}
+/* 效果CSS结束 */
+
+.bg10{
+    min-width: 1000px;
+    width:100%;
+    height:616px;
+    background:url(../images/bg10.jpg) no-repeat center center;
+}
