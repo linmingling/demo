@@ -1,0 +1,33 @@
+.wrap{margin:0 auto; background-size: 100%;position: relative; background: #fee265;}
+
+.one{position: absolute; top:27.05%; left:16%; display:block; width:4rem; height:7rem; }
+.one1{position: absolute; top:27.05%; left:36%; display:block; width:4rem; height:7rem; }
+.one2{position: absolute; top:27.05%; left:60%; display:block; width:4rem; height:7rem; }
+.one3{position: absolute; top:39.3%; left:16%; display:block; width:4rem; height:7rem; }
+.one4{position: absolute; top:39.3%; left:36%; display:block; width:4rem; height:7rem; }
+.one5{position: absolute; top:39.3%; left:60%; display:block; width:4rem; height:7rem; }
+.two1{position: absolute; top:53%; left:8%; display:block; width:4rem; height:6rem;  }
+.two2{position: absolute; top:53%; left:40%; display:block; width:4rem; height:6rem;  }
+.two3{position: absolute; top:53%; left:73%; display:block; width:4rem; height:6rem;  }
+.two4{position: absolute; top:61%; left:25.5%; display:block; width:4rem; height:6rem;  }
+.two5{position: absolute; top:61%; left:62%; display:block; width:4rem; height:6rem;  }
+
+.three1{position: absolute; top:73.5%; left:5%; display:block; width:4rem; height:6rem;  }
+.three2{position: absolute; top:73.5%; left:30%; display:block; width:4rem; height:6rem;  }
+.three3{position: absolute; top:73.5%; left:55%; display:block; width:4rem; height:6rem;  }
+.three4{position: absolute; top:73.5%; left:80%; display:block; width:4rem; height:6rem;  }
+.code{position: fixed; top: 75%; right: 6px; width:8rem; height: 7rem; z-index: 4;}
+.code p{background:#fff;}
+.close{float: right; background:#fff; padding:0 5px;line-height: 16px; font-size: 16px; border: 1px solid #ccc;; line-height: 16px;padding-bottom: 4px;}
+.codei{float:right;}
+.left{ width:6rem;height:3rem; position: absolute; bottom:12.2%; left:16%;}
+.right{ width:6rem;height:3rem; position: absolute; bottom:12.2%; left:65%;}
+
+
+
+.left_l{ position: absolute;height:30px;width:48px;bottom:13.5%;left:43%;}
+.left_s{text-align: center;background: green;}
+
+.right_r{ position: absolute;height:30px;width:40px;bottom:13.5%;left:56%;}
+.right_s{text-align: center;background:red;}
+.pick{ text-align: center; margin-top: 4px;}

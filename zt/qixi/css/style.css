@@ -1,0 +1,309 @@
+/*css reset*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre, 
+form,fieldset,input,textarea,p,blockquote,th,td { 
+    padding: 0; 
+    margin: 0; 
+} 
+table { 
+    border-collapse: collapse; 
+    border-spacing: 0; 
+} 
+fieldset,img { 
+    border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+    font-weight: normal; 
+    font-style: normal; 
+} 
+ol,ul { 
+    list-style: none; 
+} 
+caption,th { 
+    text-align: left; 
+} 
+h1,h2,h3,h4,h5,h6 { 
+    font-weight: normal; 
+    font-size: 100%; 
+} 
+q:before,q:after { 
+    content:”; 
+} 
+abbr,acronym { 
+    border: 0; 
+}
+
+
+/*main*/
+
+.section.a{
+    width:100%;
+    height:785px;
+    background: url(../images/section1.jpg) no-repeat;
+    background-position: center center; 
+}
+
+/*part b*/
+.section.b{
+    width:100%;
+    height:785px;
+    background: url(../images/section2.jpg) no-repeat;
+    background-position: center center; 
+}
+
+.box1{
+    width:1200px;
+    height:783px;
+   /* border: 1px solid red;*/
+    margin:0 auto;
+    position: relative;
+}
+
+#turn1{
+    width: 315px;
+    height: 407px;
+    position:absolute;
+    margin-top:183px;
+}
+
+
+.text1{
+    width: 433px;
+    height: 415px;
+    float: left; 
+    margin:168px 335px; 
+}
+
+.text1 h1,.text2 h1{
+    font-family: 微软雅黑;
+    font-weight: bold;
+    font-size: 19px;
+    text-align: center;
+}
+
+
+.text1 span{
+    font-family: 微软雅黑;
+    font-size: 13px;
+    line-height: 21px;
+    margin:4px 1px;
+    position: absolute;
+}
+
+.text1 span a, .text2 span a{
+    display: inline-block;
+    text-decoration: none;
+    color:red;
+}
+
+.v-box{
+    width:424px;
+    height:285px;
+    margin:231px 778px;
+    position: absolute;
+}
+
+
+/*part c*/
+.section.c{
+    width:100%;
+    height:785px;
+    background: url(../images/section3.jpg) no-repeat;
+    background-position: center center; 
+}
+
+
+.box2{
+    width: 1200px;
+    height: 490px;
+    
+    margin:292px auto 0px auto;
+    position: relative;
+}
+
+#turn2{
+    width: 1200px;
+    height: 490px;
+    margin-right:10px;
+    position: absolute;
+}
+
+#turn2 .swiper-slide img{
+    margin:-1px 100px;
+}
+
+/*part d*/
+.section.d{
+    width:100%;
+    height:785px;
+    background: url(../images/section4.jpg) no-repeat;
+    background-position: center center; 
+}
+
+.box3{
+    width: 1200px;
+    height: 340px;
+    margin:213px auto 0px auto;
+    position: relative;
+    
+}
+
+.box3 img{
+    float:right;
+}
+
+
+/*hover-box*/
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{display:inline-table;}/* Hides from IE-mac \*/
+*html .clearfix{height:1%;}
+.clearfix{display:block;}/* End hide from IE-mac */
+*+html .clearfix{min-height:1%;}
+/* tbox */
+.tbox{width:900px;overflow:hidden;}
+.tbox ul{width:900px;right:298px;position: absolute;}
+.tbox ul li{float:left;display:inline;width:300px;height:207px;overflow:hidden;position:relative;}
+.tbox ul li .photo{width:300px;height:207px;overflow:hidden;}
+.tbox ul li a{    display: inline-block;text-decoration: none;color:#FFFFFF;}
+.tbox .rsp{width:300px;height:207px;overflow:hidden;position: absolute;background:#000000;top:0px;left:0px;}
+.tbox .text{position:absolute;width:300px;height:207px;left:-300px;top:0px;overflow:hidden;}
+.tbox .text h1{font-size: 18px;font-family: 微软雅黑;font-weight:bold;color:#FFFFFF;margin:21px 13px;}
+.tbox .text div{width:221px; font-size: 13px;font-family: 微软雅黑;color:#FFFFFF;margin:11px 13px;}
+
+
+.tbox1{width:900px;overflow:hidden;}
+.tbox1 ul{width:900px;position: absolute;margin:207px 0px}
+.tbox1 ul li{float:left;display:inline;width:300px;height:207px;overflow:hidden;position:relative;}
+.tbox1 ul li .photo{width:300px;height:207px;overflow:hidden;}
+.tbox1 ul li a{    display: inline-block;text-decoration: none;color:#FFFFFF;}
+.tbox1 .rsp{width:300px;height:207px;overflow:hidden;position: absolute;background:#000000;top:0px;left:0px;}
+.tbox1 .text{position:absolute;width:300px;height:207px;left:-300px;top:0px;overflow:hidden;}
+.tbox1 .text h1{font-size: 18px;font-family: 微软雅黑;font-weight:bold;color:#FFFFFF;margin:8px 13px;}
+.tbox1 .text div{width:221px; font-size: 13px;font-family: 微软雅黑;color:#FFFFFF;margin:11px 13px;}
+
+.tbox2{width:1200px;overflow:hidden;float: left;}
+.tbox2 ul{width:1200px;position: absolute;right:-72px;}
+.tbox2 ul li{float:left;display:inline;width:244px;height:198px;overflow:hidden;position:relative;}
+.tbox2 ul li .photo{width:244px;height:198px;overflow:hidden;}
+.tbox2 ul li a{    display: inline-block;text-decoration: none;color:#FFFFFF;}
+.tbox2 .rsp{width:244px;height:198px;overflow:hidden;position: absolute;background:#000000;top:0px;left:0px;}
+.tbox2 .text{position:absolute;width:244px;height:198px;top:0px;overflow:hidden; left: -250px;}
+.tbox2 .text h1{font-size: 19px;font-family: 微软雅黑;color:#FFFFFF;margin:25px 9px;}
+.tbox2 .text div{width:225px; font-size: 8px;font-family: 微软雅黑;color:#FFFFFF;margin:-20px 11px;}
+
+
+
+/*part e*/
+.section.e{
+    width:100%;
+    height:785px;
+    background: url(../images/section5.jpg) no-repeat;
+    background-position: center center; 
+}
+
+.box4{
+    width:1200px;
+    height:410px;
+    /*border: 1px solid red;*/
+    margin:117px auto 0px auto;
+    position: relative;
+}
+
+
+#turn4{
+    width: 650px;
+    height: 409px;
+    position: absolute;
+}
+
+
+
+.text2{
+    width: 517px;
+    height: 409px;
+    float: right; 
+    margin:-15px 0px; 
+    /*border: 1px solid red;*/
+}
+
+
+.text2 span{
+    font-family: 微软雅黑;
+    font-size: 14px;
+    line-height: 20px;
+    margin:15px 17px;
+    position: absolute;
+}
+
+
+/*part f*/
+.section.f{
+    width:100%;
+    height:785px;
+    background: url(../images/section6.jpg) no-repeat;
+    background-position: center center; 
+}
+
+
+.box5{
+    width: 1200px;
+    height: 490px;
+    
+    margin:292px auto 0px auto;
+    position: relative;
+}
+
+#turn5{
+    width: 1200px;
+    height: 490px;
+    margin-right:10px;
+    position: absolute;
+}
+
+#turn5 .swiper-slide img{
+    margin:-1px 100px;
+}
+
+/*part g*/
+.section.g{
+    width:100%;
+    height:785px;
+    background: url(../images/section7.jpg) no-repeat;
+    background-position: center center; 
+}
+
+.box6{
+    width: 1200px;
+    height: 488px;
+    position: relative;
+    margin:210px auto 0px auto;
+}
+
+
+/*part h*/
+.section.h{
+    width:100%;
+    height:785px;
+    background: url(../images/section8.jpg) no-repeat;
+    background-position: center center; 
+    position: relative;
+}
+
+.box8{
+    width: 1400px;
+    height: 533px;
+    margin:-4px auto 0px auto;
+    position: relative;
+    
+}
+
+
+#turn8{
+    width: 1400px;
+    height: 533px;
+    position: absolute;
+}
+
+#turn8 .swiper-slide img{
+    margin:0px 101px;
+}

@@ -1,0 +1,208 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新房子 大作战</title>
+<meta name="keywords" content="新房子 大作战" />
+<meta name="description" content="新房子 大作战" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="css/com.css"  />
+
+
+
+</head>
+<body>
+    <!-- 游戏界面 -->
+    <div id="game" class="game page hide">
+        <img src="images/gameBg.jpg" class="gameBg" />
+        <div class="gameBottomBox">
+            <img src="images/gameBottom.png" class="gameBottom" />
+            <div class="time"><span id="time">0</span>秒</div>
+            <div class="score"><span id="score">0</span>分</div>
+            <img src="images/wind.png" class="wind" />
+        </div>
+        <div class="ballBox" id="ballBox">
+            <!-- <span class="ball ball1" score="10"></span>
+            <span class="ball ball2" score="10"></span>
+            <span class="ball ball3" score="10"></span>
+            <span class="ball ball4" score="10"></span> -->
+        </div>
+    </div>
+
+    <!-- 开始界面 -->
+    <div id="index" class="index page">
+    	<img src="images/indexTitle.png" class="indexTitle" />
+    	<div class="indexAnim">
+    		<img src="images/index1.png" class="index1" />
+    		<img src="images/wind.png" class="wind hide" />
+    	</div>
+    	<div class="btnBox">
+    		<p><img src="images/startBtn.png" class="startBtn" id="startBtn" /></p>
+    		<p><img src="images/logo.png" class="logo" /></p>
+    		<p>
+    			<img src="images/rankBtn.png" class="rankBtn" />
+    			<img src="images/cashBtn.png" class="cashBtn" />
+    		</p>
+    	</div>
+    </div>
+	
+	<!-- 规则界面 -->
+    <div id="rule" class="rule page blackBg hide">
+    	<div class="ruleWarp tcStyle1">
+    		<div class="tcHead">
+    			<img src="images/ruleTitle.png" />
+    		</div>
+    		<div class="ruleMain">
+    			<p>1. 限时35秒</p>
+    			<p>净化器开启后，有害物质从屏幕上方往下掉落，<span class="orange">击中有害物质</span>，净化器吸入得分。每消灭一个获得<span class="orange">10积分</span>，接到<span class="orange">甲醛积分翻倍</span>！</p>
+    			<p>2. 兑奖方式</p>
+    			<p>8月17日-9月17日期间，每期获奖名单将在开奖日公布（<span class="orange">用户不得重复获奖</span>），请关注微信号[<span class="orange">呼博士</span>]查阅获奖名单。每期获奖者请在开奖日后的三个工作日内回复个人信息至</p>
+    			<p>1. 限时35秒</p>
+    			<p>净化器开启后，有害物质从屏幕上方往下掉落，<span class="orange">击中有害物质</span>，净化器吸入得分。每消灭一个获得<span class="orange">10积分</span>，接到<span class="orange">甲醛积分翻倍</span>！</p>
+    			<p>2. 兑奖方式</p>
+    			<p>8月17日-9月17日期间，每期获奖名单将在开奖日公布（<span class="orange">用户不得重复获奖</span>），请关注微信号[<span class="orange">呼博士</span>]查阅获奖名单。每期获奖者请在开奖日后的三个工作日内回复个人信息至</p>
+    		</div>
+    		<div class="close">
+    			<img src="images/close.png" />
+    		</div>
+    	</div>
+    </div>
+
+    <!-- 排行榜界面 -->
+    <div id="rank" class="rank page blackBg hide">
+    	<div class="rankWarp tcStyle1">
+    		<div class="tcHead">
+    			<img src="images/rankTitle.png" />
+    		</div>
+    		<div class="rankHead">
+    			<span class="hover">1</span>
+    			<span>2</span>
+    			<span>3</span>
+    		</div>
+    		<div class="rankMain">
+    			<p class="cf head"><span class="r1">名次</span><span class="r2">名称</span><span class="r3">分数</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明王小明王小明王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">1</span><span class="r2">王小明</span><span class="r3">999</span></p>
+                <p class="cf"><span class="r1">10</span><span class="r2">王小明</span><span class="r3">9999</span></p>
+    		</div>
+    		<div class="close">
+    			<img src="images/return.png" />
+    		</div>
+    	</div>
+    </div>
+
+    <!-- 现金券界面 -->
+    <div id="cash" class="cash page blackBg hide">
+    	<div class="cashWarp tcStyle1">
+    		<div class="tcHead">
+    			<img src="images/cashTitle.png" />
+    		</div>
+    		<div class="close">
+    			<img src="images/close.png" />
+    		</div>
+    		<div class="cashMain">
+    			<div class="cs1 cashBox">
+    				<p class="big">100元现金券</p>
+    				<p>领券码：xxxxxxxxxx</p>
+    			</div>
+    			<div class="cs2 cashBox">
+    				<p class="big">50元现金券</p>
+    				<p>领券码：xxxxxxxxxx</p>
+    			</div>
+    			<div class="cs3 cashBox">
+    				<p class="big">200元现金券</p>
+    				<p>领券码：xxxxxxxxxx</p>
+    			</div>
+    		</div>
+    		<div class="cashBtn">
+    			<a href="http://mall.jd.com/index-123759.html">立即使用</a>
+    			<span>使用规则</span>
+    		</div>
+    	</div>
+    </div>
+
+    <!-- 现金券使用规则界面 -->
+    <div id="cashRule" class="cashRule page blackBg hide">
+    	<div class="cashRuleWarp">
+    		<div class="close">
+    			<img src="images/return2.png" />
+    		</div>
+    		<p class="title">使用规则</p>
+    		<p>1、现金券使用时间截止到2015年10月31日，过期自动作废；</p>
+    		<p>2、现金券仅限在呼博士京东旗舰店使用，全店通用；</p>
+    		<p>3、现金券不能叠加使用，单笔订单最多只能使用一张优惠券；</p>
+    		<p>4、现金券可与店铺自身优惠活动叠加使用；</p>
+    		<p>5、本券不能兑换现金，不能找补；</p>
+    		<p>6、现金券使用前可咨询客服；</p>
+    		<p>7、最终解释权归BRI呼博士所有。 </p>
+    	</div>
+    </div>
+
+    <!-- 结束界面 -->
+    <div id="gameOver" class="gameOver page blackBg hide">
+    	<img src="images/overTitle.png" class="overTitle" />
+    	<p>新房甲醛怪被你消灭了，获得<span class="orange">500积分</span>，</p>
+    	<p>恭喜你获得</p>
+    	<div class="getCash">
+    		<div class="getCashBox cs1">
+    			<p class="big">100元现金券</p>
+    			<p>领券码：xxxxxxxxxx</p>
+    		</div>
+    		<a href="#">点击立即使用</a>
+    	</div>
+    	<div class="btnBox">
+    		<a href="#"><img src="images/overBtn1.png" class="" /></a>
+    		<img src="images/overBtn2.png" class="" />
+    		<img src="images/overBtn3.png" class="" />
+    	</div>
+    </div>
+
+    <!-- 分享界面 -->
+    <div id="shareTips" class="shareTips page blackBg hide">
+    	<img src="images/shareTips.png" />
+    </div>
+
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/game.js"></script>
+<!-- 
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<script>
+	//微信分享控制
+	wx.config({
+	      debug: false,
+	      appId: '<?php echo $signPackage["appId"];?>',
+		  timestamp: <?php echo $signPackage["timestamp"];?>,
+		  nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+          signature: '<?php echo $signPackage["signature"];?>',
+	      jsApiList: [
+	        'onMenuShareTimeline',
+	        'onMenuShareAppMessage',
+	        'onMenuShareQQ',
+	        'onMenuShareWeibo'
+	      ]
+	  });
+	wx.ready(function () {
+		var wxData = {
+			"imgUrl":'http://zt.jia360.com/newhouse/images/share.jpg',
+			"link":'http://zt.jia360.com/newhouse',
+			"desc":"新房子 大作战",
+			"title":"新房子 大作战"
+		};
+		wx.onMenuShareAppMessage(wxData);
+		wx.onMenuShareTimeline(wxData);
+	});
+	</script>
+	 -->
+<!--#include virtual="/public/tongji.html"-->
+
+</body>
+</html>

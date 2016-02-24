@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="refresh" content="0; url='http://zt.jia360.com/ny/index.php'">
+	<title>南洋胡氏-抽奖</title>
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+	<div class="bg1">
+		<div class="in">
+
+		</div>
+	</div>
+
+
+	<div class="bg2">
+	    <div class="in">
+
+	         <!--倒计时-->
+			 <div class="time">
+	           <div class="time-item p_djs" djs="July 17,2015,15:00">
+		    	   <strong id="day_show" class="days">0</strong>
+		    	   <strong id="hour_show" class="hours">00</strong>
+		     	   <strong id="minute_show" class="minutes">00</strong>
+		           <strong id="second_show" class="seconds">00</strong>
+		      </div>
+	         </div>
+	         <!-- 倒计时 -->
+
+           <!-- 抽奖结束时间 -->
+<!--             <div class="time2">
+	           <div class="time-item2 f_djs" fdjs="July 17,2015,15:30">
+		    	   <strong id="day_show1" class="days1">0</strong>
+		    	   <strong id="hour_show1" class="hours1">00</strong>
+		     	   <strong id="minute_show1" class="minutes1">00</strong>
+		           <strong id="second_show1" class="seconds1">00</strong>
+		      </div>
+	         </div>
+ -->
+            <!-- 抽奖 -->
+					<div class="result">
+						<!-- <div class="d1"><p id="personNum">参与人数:533</p></div> -->
+						<div class="d2">
+							<div class="numberbox">
+								<div class="number">
+								</div>
+								<div class="number">
+								</div>
+								<div class="number">
+								</div>
+								<div class="hidden">
+									
+								</div>
+								<div class="number">
+								</div>
+								<div class="number">
+								</div>
+								<div class="number">
+								</div>
+								<div class="number">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="submit">
+						<a href="javascript:;" class="submitBtn"></a>
+					</div>
+
+					<div class="fin hide"></div><!-- 活动结束 -->
+
+	          <div class="w-list" id='showWinner'>
+		          <p class="wl"><span class="w-name">胡**</span><span class="w-num">132****4993</span><span class="price">健康之旅2日游</span></p>
+		          <p class="wl"><span class="w-name">胡**</span><span class="w-num">132****4993</span><span class="price">健康之旅2日游</span></p>
+		          <p class="wl"><span class="w-name">胡**</span><span class="w-num">132****4993</span><span class="price">健康之旅2日游</span></p>
+		          <p class="wl"><span class="w-name">胡**</span><span class="w-num">132****4993</span><span class="price">健康之旅2日游</span></p>
+				  <p class="wl"><span class="w-name">胡**</span><span class="w-num">132****4993</span><span class="price">健康之旅2日游</span></p>
+		          <p class="wl"><span class="w-name">胡**</span><span class="w-num">132****4993</span><span class="price">健康之旅2日游</span></p>
+		          <p class="wl"><span class="w-name">胡**</span><span class="w-num">132****4993</span><span class="price">健康之旅2日游</span></p>
+	          </div>
+	          <!-- 抽奖end -->
+
+
+	          
+
+	         <!-- 报名 -->
+	         <div class="sign" id="sign">
+				<div class="txtbox">
+	               <div class="fbox"><label>姓　名：</label><input name="name" type="text" id="name"/></div>
+	               <div class="fbox"><label>手机号：</label><input name="phone" type="text" id="phone"/></div>
+
+	               <div class="fbox" id="city-box"><label>城　市：</label>
+	                <select name="city" class="city-select" id="city-select" onchange="addOther(this.options[this.options.selectedIndex].value);">
+	                  <?php foreach($city_rows as $k=>$v){ ?>
+	                  <option value="<?php echo $v;?>"><?php echo $v;?></option>
+	                  <?php } ?>
+	                  <option value="其他城市">其他城市</option>
+	                  <input class="qtcs hide" name="othercity" id="othercity" type="text" />
+	                </select>
+	               </div>
+	               
+	               <div class="fbox"><label>专卖店：</label><input name="shopname" type="text" id="shopname" /></div>
+	               <div class="fbox"><label>订单号：</label><input name="ordersn" type="text" id="ordersn" /></div>
+	               <div class="fbox"><label>验证码：</label><input name="captcha" type="text" id="captcha" /></div>
+	            </div>
+
+	            <div class="sure" id="submit_btn"></div>
+            </div>
+            <!-- 报名 -->
+		</div>
+	</div>
+	<div class="bg3">
+		<div class="in">
+		  <!-- 报名列表 -->
+		  <marquee direction="up"  scrolldelay="300" class="sign-user">
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+			  <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+			  <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+			  <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		      <p class="su"><span class="s-name">胡**</span><span class="s-num">132****4993</span></p>
+		    </marquee>
+		</div>
+	</div>
+	<div class="bg4"><div class="in"></div></div>
+
+
+
+		
+		<script>
+		//var resultNumber="15874152812";
+		// var deal_url='/index.php?g=User&m=Report_activity&a=save_tel&token=<?=$token?>&code_id=<?=$code_id?>';
+		$(document).ready(function(){
+			getRewardNum();
+			showTextNum();
+			setInterval("showTextNum()",5000);
+			//showTextNum();
+			
+		});
+		$(document).keydown(function(event){ 
+			//doIt();
+		}); 
+		//得到用户人数
+       function showTextNum(){
+       		$.ajax({
+				   type: "GET",
+				   // url: '/index.php?g=User&m=Report_activity&a=count&token=<?=$token?>&code_id=<?=$code_id?>&r='+Math.random(),
+				   dataType: 'json',
+				   //async:false, 默认true,为异步
+				   success: function(res0){
+					    //alert(res0);
+				   		var num=parseInt(res0.num);
+				   		// num=num+200;
+				   		//alert(res0);
+				   		$("title").html(res0.info.title);
+				   		$("#personNum").html("参与人数:"+num);
+				   		$('body').css('background', res0.info.bg_color);
+				   		$('#bg').css('background', "url("+res0.info.img+") center center no-repeat");
+				   }
+				});
+       }
+       var resArr=new Array();
+       //得到抽奖结果
+       function getRewardNum(){
+       		$.ajax({
+				   type: "GET",
+				   // url: '/index.php?g=User&m=Report_activity&a=report_list&token=<?=$token?>&code_id=<?=$code_id?>&r='+Math.random(),
+				   //data: status=1,
+				   //async:false, 默认true,为异步
+				   success: function(res){
+				   		if(res!=''&&res!=null&&res!='null'){
+				   			//alert(res);
+				   			resArr=res.split("#");
+				   		}
+				   }
+				});
+       }
+		</script>
+
+
+<script>
+//手机号抽奖JS
+$(function(){
+	setupNumberbox();
+	$(".submitBtn").click(function(){
+		doIt();
+	});
+
+});
+
+function doIt(){
+	var btnObj=$(".submitBtn");
+	if(running==0){
+			numberStart(btnObj);
+		}else{
+			numberOver(btnObj);
+		}
+}
+
+function numberStart(obj){
+	var rdNum=parseInt(resArr.length*Math.random());
+	if(rdNum==resArr.length){rdNum=rdNum-1;}
+	// resultNumber=resArr[rdNum];
+	resultNumber="15874152812";
+	resArr.splice(rdNum,1);
+	if (resultNumber == undefined) {
+		alert('奖池中的号码已全部中过奖了');return;
+	}
+	obj.addClass('stop');
+	startAction();
+	// $.ajax({
+	// 	type: "GET",
+	// 	url: "test.php?ac=result",
+	// 	data:'text',
+	// 	//data: status=1,
+	// 	//async:false, 默认true,为异步
+	// 	success: function(result){
+	// 		resultNumber = result;
+	// 	}
+	// });
+	
+}
+ 
+
+function numberOver(obj){
+	obj.removeClass('stop');
+	stopAction(resultNumber);
+}
+
+
+/*main*/
+//
+
+/*call*/
+//
+function setupNumberbox(){
+	var html=' <div> <span>0</span> <span>1</span> <span>2</span> <span>3</span> <span>4</span> <span>5</span> <span>6</span> <span>7</span> <span>8</span> <span>9</span> </div>';
+	$(".numberbox").find(".number").each(function(){
+		$(this).append(html);
+	});
+}
+
+var running=0;
+function startAction(){
+	$(".numberbox").find(".number").each(function(i){
+		scroll(this, random(100, 100));
+	});
+
+	running=1;
+}
+function scroll(object, speed){
+	var span=$(object).find("div > span").first().clone();
+	$(object).find("div").append(span);
+	
+	$(object).find("div").stop().animate({top:-54}, speed, "linear", function(){
+		$(object).find("div > span").first().remove();
+		$(object).find("div").css("top",0);
+
+		if(running==0){
+			var n=$(object).find("div > span").first().html();
+			var _n=$(object).data("-data-number-");
+			if(n==_n){
+				return;
+			}
+		}
+		scroll(object, speed);
+	});
+}
+
+var tmpContent;
+function stopAction(number){
+	var list=number.split("").slice(0, 3).concat(number.split("").slice(7, 11));
+	$(".numberbox").find(".number").each(function(i){
+		var n=list[i];
+		$(this).data("-data-number-", n);
+	});
+	var showNumRes=number.substr(0,3)+"****"+number.substr(7);
+	tmpContent="<span>"+showNumRes+"</span>";
+	window.setTimeout("addWinnerNum()",1200);
+	// $.ajax({
+	//  	type: "GET",
+	//  	url: deal_url+'&user_number='+number,
+	//  	//data: status=1,
+	//  	//async:false, 默认true,为异步
+	//  	success: function(result){
+	// 		if (result) {
+ //               window.setTimeout("addWinnerNum()",1200);
+	//  	     } else {
+	// 	       window.setTimeout("addWinnerNum()",1200);
+	//          } 
+	//      }
+	//  });
+	running=0;
+}
+
+function addWinnerNum(){
+	$("#showWinner").append(tmpContent);
+	
+}
+//get random number
+function random(min,max){
+    return Math.floor(min+Math.random()*(max-min));
+}
+</script>
+
+
+
+
+
+
+<script>
+// 其他城市
+function addOther(v)
+{
+    if(v == '其他城市')
+    {
+        $("#othercity").show();
+    }
+    else
+    {
+        $("#othercity").hide();
+    }
+}
+
+
+// countdown
+function showTime(deadline,dom) {
+    var countdown = new Date(deadline) - new Date();
+
+    var restDays = dom.find(".days");
+    var restHours = dom.find(".hours");
+    var restMinutes = dom.find(".minutes");
+    var restSeconds = dom.find(".seconds");
+
+
+    var timer = setInterval(function() {
+        if(countdown<0){
+            clearInterval(timer);
+            return false;
+        }
+        var days = Math.floor(countdown / 86400000) < 0 ? 0 : Math.floor(countdown / 86400000);
+        var hours = Math.floor((countdown - days * 86400000) / 3600000) < 0 ? 0 : Math.floor((countdown - days * 86400000) / 3600000);
+        var minutes = Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000);
+        var seconds = Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000);          
+        // days < 10 ? days = "0" + days : days = days;
+        hours < 10 ? hours = "0" + hours : hours = hours;
+        minutes < 10 ? minutes = "0" + minutes : minutes = minutes;
+        seconds < 10 ? seconds = "0" + seconds : seconds = seconds;
+
+        //alert(days+", "+hours+", "+minutes+", "+seconds);
+        restDays.html(days);
+        restHours.html(hours);
+        restMinutes.html(minutes);
+        restSeconds.html(seconds);
+        countdown -= 1000;
+    }, 1000)
+
+}
+
+$(function(){
+	$(".p_djs").each(function(){
+        showTime($(this).attr("djs"),$(this));
+    });
+});	
+
+// function showTime(deadline2,dom) {
+//     var countdown2 =new Date(deadline2) - new Date2();
+//     var restDays2 = dom.find(".days1");
+//     var restHours2 = dom.find(".hours1");
+//     var restMinutes2 = dom.find(".minutes1");
+//     var restSeconds2 = dom.find(".seconds1");
+
+//     var timer = setInterval(function() {
+//         if(countdown2<0){
+//             clearInterval(timer);
+//             return false;
+//         }
+//         var days1 = Math.floor(countdown2 / 86400000) < 0 ? 0 : Math.floor(countdown2 / 86400000);
+//         var hours1 = Math.floor((countdown2 - days1 * 86400000) / 3600000) < 0 ? 0 : Math.floor((countdown2 - days1 * 86400000) / 3600000);
+//         var minutes1 = Math.floor((countdown2 - days1 * 86400000 - hours1 * 3600000) / 60000) < 0 ? 0 : Math.floor((countdown2 - days1 * 86400000 - hours1 * 3600000) / 60000);
+//         var seconds1 = Math.floor((countdown2 - days1 * 86400000 - hours1 * 3600000 - minutes1 * 60000) / 1000) < 0 ? 0 : Math.floor((countdown2 - days1 * 86400000 - hours1 * 3600000 - minutes1 * 60000) / 1000);          
+//         // days < 10 ? days = "0" + days : days = days;
+//         hours < 10 ? hou000s = "0" + hours : hours = hours;
+//         minutes < 10 ? minutes = "0" + minutes : minutes = minutes;
+//         seconds < 10 ? seconds = "0" + seconds : seconds = seconds;
+
+//         //alert(days+", "+hours+", "+minutes+", "+seconds);
+//         restDays2.html(days1);
+//         restHours2.html(hours1);
+//         restMinutes2.html(minutes1);
+//         restSeconds2.html(seconds1);
+//         countdown2 -= 1000;
+//     }, 1000)
+    
+// }
+
+
+// $(function(){
+// 	$(".f_djs").each(function(){
+//         showTime($(this).attr("fdjs"),$(this));
+//     });
+// });	
+
+
+</script>
+	    <!--#include virtual="/public/head.html"-->
+        <!--#include virtual="/public/tongji.html"-->
+        <!--#include virtual="/public/footer.html"-->
+</body>
+</html>

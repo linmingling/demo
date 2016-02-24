@@ -1,0 +1,997 @@
+/*Normalize*/
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+*html,
+*html body
+
+/* 修正IE6振动bug */
+{
+    background-image: url(about:blank);
+    background-attachment: fixed;
+}
+
+body {
+    font-family: "微软雅黑", "Hiragino Sans GB", Arial, Lucida, Verdana, SimSun, Helvetica, sans-serif;    /*font-size : 62.5%; px数值除以10，然后换上em作为单位*/
+
+    /*min-width:980px;*/
+    font-size: 13px;
+}
+
+a,
+img {
+    border: none;
+    text-decoration: none;
+}
+
+a {
+    blr: expression(this.onFocus=this.blur());
+}
+
+/*去掉a标签的虚线框，避免出现奇怪的选中区域*/
+
+/*a:active {test:expression(target="_blank");}*/:focus {
+    outline: 0;
+}
+
+label {
+    cursor: pointer;
+}
+
+img {
+    vertical-align: middle;
+}
+
+table {
+    empty-cells: show;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+h1 {
+    font-size: 1.6em;
+}
+
+h2,
+h3,
+h4 {
+    font-size: 1.4em;
+}
+
+h5,
+h6 {
+    font-size: 1.2em;
+}
+
+input {
+    border: none;
+}
+
+textarea {
+    overflow: scroll;
+}
+
+a,
+input,
+textarea,
+.hover-delay {
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", Arial, Lucida, Verdana, SimSun, Helvetica, sans-serif;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+input.none-radius {
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+//去掉输入框的叉叉
+
+.clear {
+    clear: both;
+}
+
+.txt-indent {
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+input[type=text],
+input[type=tel],
+input[type=email] {
+    -webkit-appearance: none;
+    box-shadow: none;
+}
+
+.hide {
+    display: none;
+}
+
+/*Normalize end*/
+
+/*main*/
+.in {
+    width: 1000px;
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.bg1 {
+    width: 100%;
+    height: 628px;
+    margin-top: 19px;
+    background: url(../images/bg1.png) no-repeat center center;
+    min-width: 1000px;
+}
+
+.bg2 {
+    width: 100%;
+    height: 691px;
+    background: url(../images/bg2.png) no-repeat center center;
+    min-width: 1000px;
+}
+
+.bg3 {
+    width: 100%;
+    height: 580px;
+    background: url(../images/bg3.png) no-repeat center center;
+    min-width: 1000px;
+}
+
+.bg4 {
+    width: 100%;
+    height: 736px;
+    background: url(../images/bg4.png) no-repeat center center;
+    min-width: 1000px;
+}
+
+.bg5 {
+    width: 100%;
+    height: 634px;
+    background: url(../images/bg5.png) no-repeat center center;
+    min-width: 1000px;
+}
+
+.bg6 {
+    width: 100%;
+    height: 653px;
+    background: url(../images/bg6.png) no-repeat center center;
+    min-width: 1000px;
+}
+
+.bg7 {
+    width: 100%;
+    height: 900px;
+    background: url(../images/bg7.png) no-repeat center center;
+    min-width: 1000px;
+}
+
+.bg8 {
+    width: 100%;
+    height: 802px;
+    background: url(../images/bg8.png) no-repeat center center;
+    min-width: 1000px;
+}
+
+.link0 {
+    display: block;
+    text-decoration: none;
+    width: 274px;
+    height: 55px;
+    bottom: 28px;
+    left: 380px;
+    position: absolute;
+}
+
+.numbox {
+    width: 525px;
+    height: 214px;
+    position: absolute;
+    top: 195px;
+    left: 400px;
+}
+
+.textbox {
+    width: 998px;
+    height: 214px;
+    position: absolute;
+    left: 0;
+    top: 195px;
+}
+
+.textbox2 {
+    width: 775px;
+    height: 89px;
+    position: absolute;
+    left: 216px;
+    bottom: 131px;
+    background-color:#fff;
+}
+
+.mn {
+    width: 117px;
+    height: 50px;
+    font-size: 40px;
+    color: #d60830;
+    text-align: center;
+    line-height: 50px;
+    position: relative;
+    font-weight: bold;
+}
+
+.text1 {
+    width: 373px;
+    height: 56px;
+    margin-left: 369px;
+    color: #fff000;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.text2 {
+    width: 323px;
+    height: 56px;
+    margin-left: 222px;
+    margin-top: 74px;
+    color: #d60830;
+    font-size: 26px;
+}
+
+.text3 {
+    width: 318px;
+    height: 56px;
+    margin-left: 533px;
+    margin-top: -57px;
+    color: #d60830;
+    font-size: 26px;
+}
+
+.text4 {
+    width: 385px;
+    height: 56px;
+    color: #d60830;
+    font-size: 26px;
+    margin-left: 182px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.mm {
+    width: 372px;
+    height: 56px;
+    position: absolute;
+}
+
+.bm {
+    left: 115px;
+    color: #fff;
+    position: absolute;
+}
+
+.rs {
+    left: -26px;
+    top: 123px;
+    position: absolute;
+}
+
+.ss {
+    right: -36px;
+    bottom: 40px;
+    position: absolute;
+}
+
+.zs{
+    right:61px;
+    position: absolute;
+   top:-4px;
+    display: inline-block;
+}
+
+.dd {
+    left: 171px;
+    bottom: 6px;
+    position: absolute;
+}
+
+.datebox {
+    width: 1000px;
+    height: 340px;
+    position: absolute;
+    top: 224px;
+}
+
+.datebox .tab_menu {
+    width: 220px;
+    margin-top: 24px;
+    overflow: hidden;
+}
+
+.datebox ul li {
+    width: 220px;
+    height: 101px;
+    text-align: center;
+    line-height: 101px;
+    font-size: 20px;
+    background-color: #e3e3e3;
+    margin-bottom: 1px;
+}
+
+.datebox ul li.hover1 {
+    background-color: #e7283b;
+    color: #fff;
+}
+
+
+
+.tri {
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-right: 16px solid #fff;
+    border-bottom: 12px solid transparent;
+    position: absolute;
+    left: -16px;
+    top: 64px;
+}
+
+.tri2 {
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-right: 16px solid #fff;
+    border-bottom: 12px solid transparent;
+    position: absolute;
+    left: -16px;
+    top: 167px;
+}
+
+.tri3 {
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-right: 16px solid #fff;
+    border-bottom: 12px solid transparent;
+    position: absolute;
+    left: -16px;
+    bottom: 59px;
+}
+
+.datebox .tab_box {
+    width: 780px;
+    height: 340px;
+    background-color: #fff;
+    position: absolute;
+    top: 0px;
+    right: 0;
+}
+
+.news {
+    width: 660px;
+    height: 230px;
+    padding: 60px;
+    overflow: hidden;
+    position: relative;
+}
+
+.n1 {
+    width: 660px;
+    border-bottom: 1px dashed #999999;
+    position: relative;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+}
+
+.n2 {
+    width: 660px;
+    position: relative;
+}
+
+.gun{
+    height:235px;
+    overflow: hidden;
+}
+
+.hea{
+    height: 2000px;
+    position: relative;
+    z-index: 3;
+    margin-top: 344px;
+}
+.tle {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+
+.con {
+    margin-top: 15px;
+    color: #999999;
+    font-size: 17px;
+}
+
+.jqqd{
+    font-size: 50px;
+    color:#e7283b;
+   text-align: center;
+   margin:68px auto;
+}
+
+.link {
+    display: block;
+    width: 63px;
+    height: 20px;
+    background-color: #999999;
+    color: #fff;
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.dayline {
+    width: 889px;
+    height: 406px;
+    position: absolute;
+    top: 180px;
+    left: 57px;
+}
+
+.dayline .tab_menu {
+    width: 380px;
+    margin-left: 259px;
+    overflow: hidden;
+}
+
+.dayline ul li {
+    width: 123px;
+    height: 43px;
+    margin-right: 1px;
+    background-color: #870009;
+    text-align: center;
+    line-height: 44px;
+    font-size: 23px;
+    font-family: Arial;
+    float: left;
+}
+
+.dayline ul li.current {
+    background-color: #fff000;
+    color: #d60830;
+}
+
+.dayline .tab_box {
+    width: 889px;
+    height: 287px;
+    position: absolute;
+    top: 86px;
+    left: 0px;
+}
+
+.line1,
+.line2,
+.line3 {
+    position: relative;
+    width: 889px;
+    height: 287px;
+    color: #fff;
+}
+
+.event {
+    font-weight: bold;
+    font-size: 24px;
+    width: 130px;
+    height: 52px;
+}
+
+.sub {
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+.sub2 {
+    text-align: center;
+}
+
+.time {
+    font-size: 14px;
+    width: 80px;
+    text-align: center;
+}
+
+.time1 {
+    position: absolute;
+    bottom: 100px;
+    left: 50px;
+}
+
+.event1 {
+    left: 25px;
+    position: absolute;
+}
+
+.time2 {
+    position: absolute;
+    top: 118px;
+    left: 228px;
+}
+
+.event2 {
+    left: 203px;
+    bottom: 0;
+    position: absolute;
+}
+
+.time3 {
+    position: absolute;
+    bottom: 100px;
+    left: 405px;
+}
+
+.event3 {
+    left: 378px;
+    position: absolute;
+}
+
+.time4 {
+    position: absolute;
+    bottom: 146px;
+    right: 226px;
+}
+
+.event4 {
+    right: 200px;
+    bottom: 0;
+    position: absolute;
+}
+
+.time5 {
+    position: absolute;
+    bottom: 100px;
+    right: 50px;
+}
+
+.event5 {
+    right: 0px;
+    position: absolute;
+}
+
+/*导航*/
+.hnnav {
+    width: 155px;
+    height: 553px;
+    background: url(../images/nav.png) no-repeat center center;
+    position: fixed;
+    right: 15px;
+    top: 67px;
+    z-index: 1;
+    color: #fff;
+}
+
+.hnnav .hnlist {
+    width: 145px;
+    margin: 251px 0 0 0px;
+}
+
+.hnnav .hnlist p {
+    height: 42px;
+    line-height: 42px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.hnnav .hnlist .topi {
+    position: relative;
+}
+
+.hnnav .hnlist i {
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 13px solid #fff;
+    position: absolute;
+    top: 11px;
+    right: 22px;
+}
+
+.hnnav .hnlist .code2 {
+    width: 100px;
+    height: 153px;
+    margin-top: 17px;
+    margin-left: 10px;
+}
+
+/*3D轮播*/
+.focus_Box {
+    width: 970px;
+    height: 344px;
+    position: absolute;
+    top: 248px;
+    left: 19px;
+}
+
+.focus_Box ul {
+    width: 970px;
+    height: 344px;
+}
+
+.focus_Box li {
+    z-index: 0;
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    top: 146px;
+    cursor: pointer;
+    left: 377px;
+}
+
+.focus_Box li img {
+    width: 100%;
+    height: 100%;
+    vertical-align: top
+}
+
+.focus_Box li p span {
+    display: inline-block;
+    width: 243px;
+    height: 57px;
+    text-align: center;
+    font-size: 24px;
+    font-family: Arial;
+    overflow: hidden;
+    margin: 71px 0px 0px 77px;
+}
+
+.focus_Box .prev,
+.focus_Box .next {
+    display: block;
+    z-index: 100;
+    overflow: hidden;
+    cursor: pointer;
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    top: 141px;
+}
+
+.focus_Box .prev {
+    display: block;
+    width: 63px;
+    height: 63px;
+    background: url(../images/btnl.png) left bottom no-repeat;
+    left: -16px;
+}
+
+.focus_Box .next {
+    display: block;
+    width: 63px;
+    height: 63px;
+    background: url(../images/btnr.png) right bottom no-repeat;
+    right: -7px;
+}
+
+.focus_Box .prev:hover {
+    background-position: left top;
+}
+
+.focus_Box .next:hover {
+    background-position: right top;
+}
+
+.faq {
+    width: 949px;
+    height: 268px;
+    bottom: 88px;
+    position: absolute;
+    padding-top: 93px;
+    padding-left: 27px;
+}
+
+.text {
+    width: 584px;
+    height: 268px;
+    float: left;
+}
+
+.vd {
+    width: 343px;
+    height: 268px;
+    float: right;
+}
+
+.a1 {
+    height: 85px;
+    width: 584px;
+    border-bottom: 1px dashed #999999;
+    position: relative;
+    margin-bottom: 9px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+
+.content {
+    margin-top: 5px;
+    color: #999999;
+}
+
+.picbox {
+    width: 926px;
+    height: 484px;
+    position: absolute;
+    bottom: 115px;
+    padding-left: 40px;
+    padding-top: 60px;
+}
+
+.picbox .tab_menu {
+    width: 163px;
+    height: 483px;
+    overflow: hidden;
+    padding: 30px 0px 30px 6px;
+    background-color: #b61c20;
+    float: right;
+}
+
+.picbox ul li {
+    width: 140px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    color: #fff;
+    font-size: 17px;
+}
+
+.picbox ul li.hover {
+    background-color: #eb383e;
+}
+
+.picbox .tab_box {
+    width: 737px;
+    height: 484px;
+    float: left;
+}
+
+.swiper1 {
+    width: 737px;
+    height: 484px;
+    overflow: hidden;
+}
+
+.swiper1 img {
+    width: 737px;
+    height: 484px;
+}
+
+.swiper1 .arrow {
+    width: 53px;
+    height: 52px;
+    display: block;
+    position: absolute;
+    top: 268px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.swiper1 .arrow-left {
+    left: 39px;
+    background-image: url(../images/btl.png);
+    background-position: top left
+}
+
+.swiper1 .arrow-right {
+    right: 189px;
+    background-image: url(../images/btr.png);
+    background-position: top right
+}
+
+
+.zb{
+    width: 1012px;
+    height: 409px;
+    position: absolute;
+    bottom:131px;
+    background: url(../images/zb.png) no-repeat center center;
+    left: -5px;
+}
+.week1 {
+    width: 222px;
+    height: 313px;
+    position: absolute;
+    bottom: 143px;
+    left: 10px;
+    cursor: pointer;
+}
+
+.week2 {
+    width: 222px;
+    height: 313px;
+    position: absolute;
+    bottom: 143px;
+    left: 262px;
+    cursor: pointer;
+}
+
+.week3 {
+    width: 222px;
+    height: 313px;
+    position: absolute;
+    bottom: 143px;
+    right: 262px;
+    cursor: pointer;
+}
+
+.week4 {
+    width: 222px;
+    height: 313px;
+    position: absolute;
+    bottom: 143px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Basic Swiper Styles */
+.swiper-container {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;  /* Fix of Webkit flickering */
+    z-index: 1;
+}
+
+.swiper-wrapper {
+    position: relative;
+    width: 100%;
+    -webkit-transition-property: -webkit-transform, left, top;
+    -webkit-transition-duration: 0s;
+    -webkit-transform: translate3d(0px, 0, 0);
+    -webkit-transition-timing-function: ease;
+    -moz-transition-property: -moz-transform, left, top;
+    -moz-transition-duration: 0s;
+    -moz-transform: translate3d(0px, 0, 0);
+    -moz-transition-timing-function: ease;
+    -o-transition-property: -o-transform, left, top;
+    -o-transition-duration: 0s;
+    -o-transform: translate3d(0px, 0, 0);
+    -o-transition-timing-function: ease;
+    -o-transform: translate(0px, 0px);
+    -ms-transition-property: -ms-transform, left, top;
+    -ms-transition-duration: 0s;
+    -ms-transform: translate3d(0px, 0, 0);
+    -ms-transition-timing-function: ease;
+    transition-property: transform, left, top;
+    transition-duration: 0s;
+    transform: translate3d(0px, 0, 0);
+    transition-timing-function: ease;
+}
+
+.swiper-free-mode > .swiper-wrapper {
+    -webkit-transition-timing-function: ease-out;
+    -moz-transition-timing-function: ease-out;
+    -ms-transition-timing-function: ease-out;
+    -o-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    margin: 0 auto;
+}
+
+.swiper-slide {
+    float: left;
+}
+
+.swiper-pages {
+    height: 100%;
+}
+
+.scroll-container {
+    height: 100%;
+    width: 100%;
+}
+
+.scroll-container .swiper-slide {
+    width: 100%;
+}
+
+.page-inner {
+    padding: 15px 20px;
+}
+
+.swiper-slide .title {
+    font-style: italic;
+    font-size: 42px;
+    margin-top: 80px;
+    margin-bottom: 0;
+    line-height: 45px;
+    text-align: center;
+}
+
+/* IE10 Windows Phone 8 Fixes */
+.swiper-wp8-horizontal {
+    -ms-touch-action: pan-y;
+}
+
+.swiper-wp8-vertical {
+    -ms-touch-action: pan-x;
+}
+
+.picbox .tab_menu .scroll_container {
+    overflow: hidden;
+    position: relative;
+}
+
+.picbox .tab_menu .scroll_absolute {
+    position: absolute;
+}
+
+.picbox .tab_menu .scroll_vertical_bar {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    width: 8px;
+    height: 100%;
+    margin-right: 0px;
+    padding: 0;
+}
+
+.picbox .tab_menu .scroll_track {
+    position: relative;
+    background-color: #d0292d;
+}
+
+.picbox .tab_menu .scroll_drag {
+    position: relative;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    background-color: #eb383e;
+}
+
+.bga,
+.bgb,
+.bgc,
+.bgd {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: url(../images/black_bg.png) repeat;
+    z-index: 1;
+}
+
+.w1 {
+    width: 400px;
+    height: 707px;
+    overflow: auto;
+    margin: 47px auto;
+}
+
+.bga img,
+.bgb img,
+.bgc img,
+.bgd img {
+    width: 100%;
+}

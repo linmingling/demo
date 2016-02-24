@@ -1,0 +1,636 @@
+<!-- <?php
+    require_once "../data/jssdk.php";
+    $jssdk = new JSSDK();
+    $signPackage = $jssdk->GetSignPackage();
+?>-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>七夕家装节-天天有礼</title>
+	<meta name="keywords" content="七夕家装节-天天有礼">
+	<meta name="description" content="七夕家装节-天天有礼">
+	<meta name="front-end technicist" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+	<link type="text/css" rel="stylesheet" href="css/layout.css?vid=2.3" media="all" /> 
+	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+	
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		function showPage(){
+		    $('#divPageLoading').remove();
+		    $('#by').css("opacity","1");
+		}
+	</script>
+ </head>
+ 
+ <body onload="showPage();">
+	 <div id="divPageLoading" class="PageLoading">
+		 <div class="PageLoading-pic">
+		 	 <img src="images/load-title.png" width="320px"/>
+		     <p>加载中<span class="dotting"></span></p>
+		 </div>
+	</div>
+ 	<div class="main" id="by" style="opacity:0">
+
+ 		<div class="title cf">
+ 			<div class="btn-dh"><a onclick="dhjp('')"><img src="images/btn-dh.png" width="100%" ></a></div>
+ 			<div class="btn-logo"><img src="images/logo.png" width="100%"></div>
+ 			<div class="btn-yjb"><a onclick="yjb('')"><img src="images/btn-yjb.png" width="100%" ></a></div>
+ 		</div>
+ 		<div class="logo">
+ 			<div>
+ 				<img src="images/title.png" width="80%" >
+ 			</div>
+ 			<div class="logo-bg">
+ 				<img src="images/logo-bg.png" width="100%" >
+ 			</div>
+ 		</div>
+ 		<div class="lhj-bg">
+ 			<div class="lhj-kg">
+ 				<div class="lhj-kg1 open"><img src="images/kg.png" width="100%" height="100%"></div>
+ 				<div class="lhj-kg2" id="music">
+ 					<img src="images/kg2.gif" width="100%" height="100%">
+	                <audio id="musicBox" autoplay loop="true" src="music.mp3" >
+	                    <source src="song.ogg" type="audio/ogg" />
+	                    <source src="song.mp3" type="audio/mpeg" />
+	                </audio>
+ 				</div>
+ 			</div>
+ 			<div class="lhj-gd">
+ 				<div class="tu" ></div>
+			    <div class="tu" ></div>
+			    <div class="tu" ></div>
+			    <div class="tu" ></div>
+			    <div class="tu" ></div>
+ 			</div>
+ 			
+			<div class="lhj-xs">
+				<div class="lhj-xs-con lhj-xs-cs">
+					<p id="csxs">0</p>
+				</div>
+				<div class="lhj-xs-con lhj-xs-jf" style="margin-left:30px">
+					<p id="jfxs">0</p>
+				</div>
+			</div>
+			<div class="lhj-yg">
+ 				<div><img src="images/yaogang.png" width="100%" height="100%"></div>
+ 			</div>
+ 				
+			<div class="lhj-tz">
+				<a onclick="zd('50')">
+					<img src="images/50.png" width="80%" >
+				</a>
+				<a onclick="zd('150')">
+					<img src="images/150.png" width="80%" >
+				</a>
+				<a onclick="zd('200')">
+					<img src="images/200.png" width="80%" >
+				</a>
+				<a onclick="zd('500')">
+					<img src="images/500.png" width="80%" >
+				</a>
+			</div>
+ 		</div>
+
+ 		<div class="money" id="moneyid">
+ 			<div onclick="jianqian(this)" style="visibility:hidden">
+ 				<img src="images/money.png" width="100%" height="100%" >
+ 			</div>
+ 			<div onclick="jianqian(this)" style="visibility:hidden">
+ 				<img src="images/money.png" width="100%" height="100%">
+ 			</div>
+ 			<div onclick="jianqian(this)" style="visibility:hidden">
+ 				<img src="images/money.png" width="100%" height="100%">
+ 			</div>
+ 			<div onclick="jianqian(this)" style="visibility:hidden">
+ 				<img src="images/money.png" width="100%" height="100%">
+ 			</div>
+ 			<div onclick="jianqian(this)" style="visibility:hidden">
+ 				<img src="images/money.png" width="100%" height="100%">
+ 			</div>
+	
+ 		</div>
+
+ 		<div class="bottom cf">
+ 			<div class="btn-gz" onclick="gz('')">
+ 				<img src="images/btn-gz.png" width="100%" >
+ 			</div>
+ 			<div class="btn-hb">
+ 				<a href="http://group.yoju360.com/phone/qixi/index.html&from=jiajuyoxi"><img src="images/btn-hb.png" width="100%" ></a>
+ 			</div>
+ 			<div class="btn-bq">
+ 				<img src="images/bq.png" width="50%" >
+ 			</div>
+ 		</div>
+
+ 		<div class="bg" id="bg">
+ 			<div><p>点击空白处返回</p></div>
+ 		</div>
+
+ 		<div class="tan-gz" id="gz">
+ 			<div>
+	 			<p>5个七夕LOGO同时出现，积分是下注的10倍；</p>
+				<p>4个七夕LOGO同时出现，积分是下注的5倍；</p>
+				<p>3个七夕LOGO同时出现，积分是下注的3倍；</p>
+				<p>2个七夕LOGO同时出现，积分是下注的2倍；</p>
+				<p>第一天登陆送100积分，第二天登陆送200积分，由此类推，每天登陆最高送500积分；</p>
+				<p>游戏分享到朋友圈或发送给朋友即可获得100积分；</p>
+				<p>点击【报名领积分】，参加七夕家装节送100积分；</p>
+				<p>满9000积分即可兑换礼品；</p>
+				<p>同一微信ID只能兑换一次商品；</p>
+				<p>活动截止日期为2015年8月31日；</p>
+			</div>
+ 		</div>
+
+ 		<div class="tan-yjb" id="yjb">
+ 			<div class="tan-yjb-con">
+	 			<div>
+		 			<div class="b1">1</div>
+		 			<div class="b2"><p>腾讯家居</p></div>
+		 			<div class="b3"><img src="images/tb1.png" width="20px"></div>
+		 			<div class="b4">90</div>
+				</div>
+				<div>
+		 			<div class="b1">2</div>
+		 			<div class="b2"><p>腾讯家居2</p></div>
+		 			<div class="b3"><img src="images/tb1.png" width="20px"></div>
+		 			<div class="b4">90</div>
+				</div>
+				<div>
+		 			<div class="b1">3</div>
+		 			<div class="b2"><p>腾讯家居3</p></div>
+		 			<div class="b3"><img src="images/tb1.png" width="20px"></div>
+		 			<div class="b4">90</div>
+				</div>
+				<div>
+		 			<div class="b1">4</div>
+		 			<div class="b2"><p>腾讯家居4</p></div>
+		 			<div class="b3"><img src="images/tb1.png" width="20px"></div>
+		 			<div class="b4">90</div>
+				</div>
+				<div>
+		 			<div class="b1">5</div>
+		 			<div class="b2"><p>腾讯家居4</p></div>
+		 			<div class="b3"><img src="images/tb1.png" width="20px"></div>
+		 			<div class="b4">90</div>
+				</div>
+				<div>
+		 			<div class="b1">6</div>
+		 			<div class="b2"><p>腾讯家居4</p></div>
+		 			<div class="b3"><img src="images/tb1.png" width="20px"></div>
+		 			<div class="b4">90</div>
+				</div>
+				<div>
+		 			<div class="b1">7</div>
+		 			<div class="b2"><p>腾讯家居4</p></div>
+		 			<div class="b3"><img src="images/tb1.png" width="20px"></div>
+		 			<div class="b4">90</div>
+				</div>
+			</div>
+			<div class="tan-yjb-banner">
+				<div id="scrollDiv">
+					 <ul>
+			            <li>团团圆圆1兑换了20元现金红包</li>
+			            <li>团团圆圆2兑换了20元现金红包</li>
+			            <li>团团圆圆3兑换了20元现金红包</li>
+			            <li>团团圆圆4兑换了20元现金红包</li>
+			            <li>团团圆圆5兑换了20元现金红包</li>
+			            <li>团团圆圆6兑换了20元现金红包</li>
+			        </ul>
+				</div>
+			</div>
+
+ 		</div>
+
+ 		<div class="tan-qrcode" id="dhjp">
+	 		<div style="margin:124px auto 0px;">
+	 			<img src="images/qrcode.png" width="130px" style="padding-bottom: 64px;"> 
+ 			</div>
+ 			<div style="width: 120px;margin:-56px auto 0;">
+	 			<p style="font-size:16px">长按二维码</p>
+	 			<p>进入公众号兑换礼品</p>
+ 			</div>
+ 		</div>
+
+ 		<div class="tan-jf" id="jf">
+ 			<div>
+ 				<p style="font-size:22px">BINGO！</p>
+ 				<p style="font-size:16px" id="jf-con">大自然给您派钱！</p>
+ 				<p style="font-size:30px;margin-left:-25px">+<font id="jfnum">0</font></p>
+ 			</div>
+ 		</div>
+
+ 		<div class="tan-qd" id="qd">
+ 			<div class="tan-qd-con">
+ 				<p>第<font id="qdts"></font>天签到</p>
+ 				<p style="font-size:46px;margin-left:-15px">+<font id="qdnum"></font></p>
+ 			</div>
+ 			<div class="tan-qd-btn"><img src="images/btn.png" width="100%" height="100%"></div>
+ 		</div>
+
+ 		<div class="tan-gg" id="gg">
+ 			<div class="tan-gg-con">
+ 				<div class="tan-gg-title">提示</div>
+ 				<div class="tan-gg-content"></div>
+ 			</div>
+ 		</div>
+
+	<input type="hidden" value="true" id="isBegin" />
+	
+
+ 	</div>
+
+ 	<script type="text/javascript">
+	 	$(function(){
+
+	 		/*var height=window.innerHeight;
+	        if(height>=700)
+	        {
+	        	$("#by").css('min-height',height+20+'px');
+	        }
+	        else if(height>=600){
+				$("#by").css('min-height',height+60+'px');
+	        }
+	        else if(height>=500){
+				$("#by").css('min-height',height+100+'px');
+	        }
+		    else{
+				$("#by").css('min-height',height+200+'px');
+			}*/
+			
+			var wh = $(window).height();
+			var bh = $("#by").height();
+			//console.log("bh:"+bh+",wh:"+wh);
+			if(wh>bh){
+	        	$("#by").css({'height':wh});
+	        }
+
+	        var musicBox = $("#musicBox");
+	        musicBox[0].play();
+	        //签到
+	        qd('1','100');
+	        //次数
+	        cs(7);
+
+
+		});
+ 		$('.btn-gz').click(function(){
+ 			$(this).find('img').attr('src','images/btn-gz-h.png');
+ 			$(".btn-gz").hover(
+				function(){
+					
+				},
+				function(){
+					$('.btn-gz').find('img').attr('src','images/btn-gz.png');
+				}
+			);
+ 		})
+ 		$('.btn-hb').click(function(){
+ 			alert('跳转');
+ 		// 	$(this).find('img').attr('src','images/btn-hb-h.png');
+ 		// 	$(".btn-hb").hover(
+			// 	function(){
+					
+			// 	},
+			// 	function(){
+			// 		$('.btn-hb').find('img').attr('src','images/btn-hb.png');
+			// 	}
+			// );
+ 		})
+ 		
+		function zd (number) {
+			//清除未捡起金币
+			//$("#moneyid div").css('visibility','hidden');
+
+			var radnum='0,1,2,3,4,';//0-6代表出现的产品，共7个
+			var u = 70;
+			var rdm=5;
+
+			if($("#isBegin").val()=='false') return false;
+			//判断积分是否足够参加
+			if(parseInt($("#jfxs").text())<parseInt(number))
+			{
+				gg('<p>积分不足</p>');
+				return false;
+			}
+			
+			$("#isBegin").val('false');
+			$(".tu").css('backgroundPositionY',0);
+
+			//减掉投入的积分
+			jianfen('-',parseInt(number));
+			//转动时间内，金币掉落
+			if($("#csxs").text().charAt($("#csxs").text().length - 1)=='7')
+			{
+				if($("#moneyid div"))
+				var f=setInterval(function(){ 
+					jinbi('');
+				},4000);
+			}
+
+			var num_arr = radnum.split(',');
+			$(".tu").each(function(index){
+				var  _num= $(this);
+				setTimeout(function(){
+					_num.animate({ 
+						backgroundPositionY: (u*700) - (u*num_arr[index])//可以控制转到速度
+					},{
+						duration: 1000*rdm,//时间为：1秒*rdm
+						easing: "easeInOutCirc",
+						complete: function(){
+							if(index==4) {
+								//清除定时器
+								window.clearInterval(f); 
+								$("#isBegin").val('true');
+								//分数
+								var max_num=0;
+								for(var i = 0,len = num_arr.length;i<len;i++){
+									if(num_arr[i]=='0'){max_num++;}
+								}
+								// var str;
+						  		// tr=radnum.replace(/;/g,'');
+								// var obj = {};
+								// var arr = [];
+								// var letter;
+								// for(var i = 0,len = str.length;i<len;i++){
+								// letter = str[i];
+								// if(!obj[letter]){
+								// obj[letter] = 1;
+								// }else{
+								// obj[letter]++;
+								// }
+								// }
+								// var max_key,max_num=0;
+								// for(key in obj){
+								// if(max_num <obj[key]){
+								// max_num = obj[key];
+								// max_key = key;
+								// }
+								// }
+								// //alert('数字：'+max_key+'　次数：'+max_num);
+								switch(max_num){
+									case 5:
+										number=parseInt(number)*10;
+										break;
+									case 4:
+										number=parseInt(number)*5;
+										break;
+									case 3:
+										number=parseInt(number)*3;
+										break;
+									case 2:
+										number=parseInt(number)*2;
+										break;
+									default:
+										number=0;
+								}
+								jianfen('+',parseInt(number));
+								//次数
+								var csnum=$("#csxs").text();
+								cs(parseInt(csnum)+1);
+								//结果
+								gg('<p>恭喜你获取</p><p>+'+number+'积分</p>');
+							}
+
+						}
+					});
+				}, index * 300);//控制先后时间
+			});
+			
+			
+		};	
+
+ 		//金币掉落
+ 		function jianqian(obj){
+ 			var rdm=Math.round(Math.random()*3+1);
+ 			var num=0;
+ 			switch(rdm){
+				case 1:
+					num=100;
+					break;
+				case 2:
+					num=200;
+					break;
+				case 3:
+					num=300;
+					break;
+				case 4:
+					num=500;
+					break;
+				default:
+					num=100;
+			}
+
+ 			var _jf=$("#jf");
+        	var _bg = $("#bg");
+        	var _jfnum=$("#jfnum");
+
+        	var _jfcon=$("#jf-con");
+        	//随机数
+        	var rdm2=Math.round(Math.random()*3+1);
+ 			switch(rdm2){
+				case 1:
+					_jfcon.text('大自然给您派钱');
+					break;
+				case 2:
+					_jfcon.text('美的给您派钱');
+					break;
+				case 3:
+					_jfcon.text('芬琳漆给您派钱');
+					break;
+				case 4:
+					_jfcon.text('马克波罗给您派钱');
+					break;
+				default:
+					_jfcon.text('奥普给您派钱');
+			}
+        	
+			
+        	$(obj).css('visibility','hidden');
+
+			_jfnum.text(num);
+        	_bg.fadeIn();
+        	_jf.fadeIn();
+        	jianfen('+',num);
+        	
+
+        	_bg.click(function(){
+	            _bg.fadeOut();
+	            _jf.fadeOut();
+			});
+ 		}
+ 		//公共弹窗
+ 		function gg(con){
+ 			var _gg=$("#gg");
+			var _content=$(".tan-gg-content");
+        	var _bg = $("#bg");
+
+        	_bg.fadeIn();
+        	_gg.fadeIn();
+        	_content.html(con);
+
+        	_bg.click(function(){
+	            _bg.fadeOut();
+	            _gg.fadeOut();
+			});
+		}
+		//赢家榜
+ 		function yjb(){
+			var _yjb=$("#yjb");
+        	var _bg = $("#bg");
+
+        	_bg.fadeIn();
+        	_yjb.fadeIn();
+
+        	_bg.click(function(){
+	            _bg.fadeOut();
+	            _yjb.fadeOut();
+			});
+		}
+		//规则
+		function gz(){
+			var _gz=$("#gz");
+        	var _bg = $("#bg");
+
+        	_bg.fadeIn();
+        	_gz.fadeIn();
+
+        	_bg.click(function(){
+	            _bg.fadeOut();
+	            _gz.fadeOut();
+			});
+		}
+		//兑换奖品
+		function dhjp(){
+			var _dhjp=$("#dhjp");
+        	var _bg = $("#bg");
+
+        	_bg.fadeIn();
+        	_dhjp.fadeIn();
+
+        	_bg.click(function(){
+	            _bg.fadeOut();
+	            _dhjp.fadeOut();
+			});
+		}
+		//当前积分
+		function jianfen(type,number){
+			var _jfxs=$("#jfxs");
+			var fs=0;
+			if(type=='+'){
+				fs=parseInt(_jfxs.text())+number;
+			}
+			else{
+				fs=parseInt(_jfxs.text())-number;
+			}
+			$("#jfxs").text(fs);
+
+		}
+		//次数
+		function cs(num){
+			var _csxs=$('#csxs');
+			_csxs.text(num);
+		}
+		//签到
+		function qd(day,num){
+			var _qd=$("#qd");
+        	var _bg = $("#bg");
+        	var _qdts=$("#qdts");
+        	var _qdnum=$("#qdnum");
+        	var _btn=$('.tan-qd-btn');
+
+        	_bg.fadeIn();
+        	_qd.fadeIn();
+        	_qdts.text(day);
+        	_qdnum.text(num);
+
+        	//积分
+        	jianfen('+',parseInt(num));
+
+        	_bg.click(function(){
+	            _bg.fadeOut();
+	            _qd.fadeOut();
+			});
+			_btn.click(function(){
+	            _bg.fadeOut();
+	            _qd.fadeOut();
+			});
+		}
+		//金币出现
+		function jinbi(){
+			var _moneyid=$("#moneyid div");
+			for(var i=0;i<5;i++){
+				if(_moneyid.eq(i).css('visibility')=='visible'){
+
+				}
+				else{
+					_moneyid.eq(i).css('visibility','visible');
+					break;
+				}
+			}
+			
+		}
+ 	</script>
+ 	<script type="text/javascript">
+    	//文字滚动
+        function AutoScroll(obj) {
+            $(obj).find("ul:first").animate({
+                marginTop: "-25px"
+            }, 2000, function() {
+                $(this).css({ marginTop: "0px" }).find("li:first").appendTo(this);
+            });
+        }
+        $(document).ready(function() {
+            var myar = setInterval('AutoScroll("#scrollDiv")', 1000)
+            //$("#scrollDiv").hover(function() { clearInterval(myar); }, function() { myar = setInterval('AutoScroll("#scrollDiv")', 1000) }); 
+            //当鼠标放上去的时候，滚动停止，鼠标离开的时候滚动开始
+        });
+
+        //音乐播放
+        $(".lhj-kg1").click(function(){
+            if($(this).hasClass("open")){
+            	$(this).find('img').attr('src','images/kg-h.png');
+                $(this).removeClass("open").addClass("close");
+                $("#music").find('img').css('visibility','hidden');
+                musicBox.pause();
+            }else{
+            	$(this).find('img').attr('src','images/kg.png');
+                $(this).removeClass("close").addClass("open");
+                $("#music").find('img').css('visibility','visible');
+                musicBox.play();
+            }
+        }); 
+    </script>
+    <!--<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+     <script>
+       //微信分享控制
+          wx.config({
+          debug: false,
+          appId: '<?php echo $signPackage["appId"];?>',
+          timestamp: '<?php echo $signPackage["timestamp"];?>',
+          nonceStr: '<?php echo $signPackage["nonceStr"];?>',
+          signature: '<?php echo $signPackage["signature"];?>',
+          jsApiList: [
+            'checkJsApi',
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo'
+          ]
+      });
+        wx.ready(function () {
+            var wxData = {
+                "imgUrl":'http://zt.jia360.com/qx_lhj/images/fx.jpg',
+                "link":'http://zt.jia360.com/qx_lhj/index.php',
+                "desc":"七夕家装节放大招，免费领取现金红包，净水机热水器等更大好礼！亲们快快抢福利……",
+                "title":"七夕家装节！天天有礼抢现金！ "
+            };
+            wx.onMenuShareAppMessage(wxData);
+            wx.onMenuShareTimeline(wxData);
+        });
+    </script>-->
+  	
+ </body>
+</html>

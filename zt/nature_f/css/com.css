@@ -1,0 +1,28 @@
+/*初始化*/
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 12px/1.7 "Microsoft YaHei" "SimSun" "Hiragino Sans GB";background-color:#132267;margin:0;width: 100%;overflow-x:hidden;}
+a{text-decoration:none;outline: none;}
+a:hover{text-decoration:none;-webkit-transition:color .3s ease-out;-moz-transition:color .3s ease-out;transition:color .3s ease-out;}
+a img,img{border:0;vertical-align: top;}
+.hide{display: none;}
+.main{width: 100%;height: 2850px;margin-top: 36px;background:url('../images/bg.jpg') no-repeat center top;background-size:100% 100%;overflow: hidden;}
+
+/*首页*/
+.black{color: #000;font-size: 24px;padding: 0 2px;letter-spacing: 0;font-family: "fantasy","Microsoft YaHei";font-weight: bold;}
+.main .cn{width: 1027px;position: relative;}
+.main .cn1{width:1000px;}
+.main .cn1  p{line-height: 40px;color: #3E3735;font-size: 24px;letter-spacing: 2px;  padding-left: 11px;}
+.box1{margin: 94px auto 0 auto;height: 89px;}
+.box1 .img1{float: left; }
+.box1 .img2{float: right; }
+.box2{margin: 77px auto 0 auto;}
+.box3{width:800px;margin: 97px auto 0 auto;}
+.box3 .w1{font-size: 40px;text-align: center;color:#3E3735;}
+.box4{margin: 112px auto 0 auto;}
+.box5{margin: 70px auto 0 auto;height:255px}
+.box5 .box5-l{float:left;}
+.box5 .box5-r{float:right;margin-top:35px}
+.box6{margin: 35px auto 0 auto;}
+.box7{margin: 63px auto 0 auto;}
+.box8{margin: 68px auto 0 auto;}
+.box9{margin: 136px auto 0 auto;width:1219px;}

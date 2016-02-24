@@ -1,0 +1,29 @@
+.fp-controlArrow{display:none}
+#fp-nav.right{right:0}
+body{background:url(../img/common/bg.jpg) center center}
+.jieshao{width: 1000px;margin: 0 auto;line-height: 2.5;}
+.hr{width: 100%;height: 2px;background-color: #5a4d4c;}
+.dashiji{height:650px;width: 1015px;margin: 0 auto;}
+.da_tit{position: absolute;top:100px;left: 50%;margin-left: -118px;}
+.slide{text-align: center;}
+.da_select{width: 100px;height: 30px;position: absolute;left: 50%;margin-left: -50px;bottom:80px;z-index: 999999999;}
+.da_select li:hover{cursor: pointer;}
+.da_select li{display: inline-block;margin: 10px;width: 12px;line-height: 12px;background-color: #868686;border-radius: 50%;text-indent: -999px;}
+.da_select .da_active{width: 17px;line-height: 17px;background-color: #e3c393;}
+.shangxi{width: 922px;margin: 0 auto;}
+.shangxin_sel{width: 920px;border: 1px solid #e8e8e8;background-color: #FFFFFF;line-height: 118px;margin-top: 30px;}
+.shangxin_sel a{margin-left: 100px;}
+.md_common{width: 930px;margin: 0 auto;}
+.pian_common{line-height: 2;background-color: #4a3532;width:initial;color: #FFFFFF;width: 150px;text-align: center;border-radius: 8px;margin: 0 auto;letter-spacing: 3px;margin-bottom: 20px;}
+.list_common{width: 930px;margin: 0 auto;height: 501px;}
+.a_common{float: left;margin-right:19px;margin-bottom: 15px;border: 1px solid #cbcbcb;border-radius: 3px;display: inline-block;width: 295px;padding-top:4px;padding-bottom: 8px;line-height: 1;}
+.a_common div{height: 100px;background-color: #FFFFFF;width: 290px;margin: 0 auto;border-radius: 3px;-webkit-transition: all 1s;}
+.a_common:hover .a_common_scale{display: block\9;-webkit-transform: scale(1);-ms-transform: scale(1);-moz-transform: scale(1);transform: scale(1);opacity: 1;}
+.a_common .a_common_scale{display: none\9;-webkit-transform: scale(0);-webkit-transition: -webkit-transform .8s,opacity 1s;-ms-transform: scale(0);-ms-transition: -ms-transform .8s,opacity 1s;-moz-transform: scale(0);-moz-transition: -moz-transform .8s,opacity 1s;transform: scale(0);transition:transform .8s,opacity 1s;opacity: 0;width: 295px;height: 180px;position: absolute;top:-20px;left: -3px;z-index: 999999;border:3px solid #cbcbcb;}
+.a_common_chi{font-size: 16px;color: #811c1d;font-weight: bold;text-indent: 5px;margin-top: 6px;}
+.a_common_eng{font-size: 13px;color: #868686;text-indent: 5px;margin-top: 3px;}
+.none_margin{margin: 0;}
+.a_common_shadow{position: absolute;z-index: 8;bottom:-14px;left:6px;}
+.moye{width: 950px;height: 500px;border: 2px solid #b6aaa1;margin: 0 auto;}
+.moye_wra{width: 924px;height: 486px;border: 2px solid #b6aaa1;margin: 0 auto;margin-top: 5px;}
+.moye_index{font-size: 16px;width: 134px;display: inline-block;color: #b6aaa1;font-weight: normal;border: 1px solid #b6aaa1;border-radius: 5px;margin-top: 223px;}

@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>礼品领取</title>
+<meta name="keywords" content="礼品领取" />
+<meta name="description" content="礼品领取" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="css/com.css" />
+
+</head>
+<body>
+<div class="cn-spinner" id="loading" style=" opacity: 1;">
+	<div class="spinner">
+
+		<div class="spinner-container container1">
+			<div class="circle1"></div>
+			<div class="circle2"></div>
+			<div class="circle3"></div>
+			<div class="circle4"></div>
+		</div>
+		<div class="spinner-container container2">
+			<div class="circle1"></div>
+			<div class="circle2"></div>
+			<div class="circle3"></div>
+			<div class="circle4"></div>
+		</div>
+		<div class="spinner-container container3">
+			<div class="circle1"></div>
+			<div class="circle2"></div>
+			<div class="circle3"></div>
+			<div class="circle4"></div>
+		</div>
+	</div>
+</div>
+
+<div class="swiper-container swiper-pages" id="swiper-container1">
+	<div class="swiper-wrapper" id="wrapper">
+		  <div class="swiper-slide page-1 ps1">
+			  <div class="container">
+				<div class="am am1">
+				  <img src="images/title.png"/>
+				</div>
+				<div class="sh-form">
+					<p><label>姓名：</label><input type="text" name="name"  id="name" value="" placeholder="请填写姓名" onclick="focus" ></p>
+
+					<p><label>电话：</label><input type="text" name="phone" id="phone" value="" placeholder="请填写电话号码">
+					</p>
+
+					<p><label>省份：</label><select name="province" id="province" placeholder="请选择省份">
+						<option value=""></option>
+						
+					</select></p>
+
+					<p><label>城市：</label><select name="city" id="city" placeholder="请选择城市">
+						<option value=""></option>
+						
+					</select></p>
+
+					<p><label>地区：</label><select name="area" id="area" placeholder="请选择地区">
+
+					<option value=""></option></select></p>
+					
+					<p><label>地址：</label><input type="text" name="address" id="address"value=""placeholder="请填写地址">
+					</p>
+
+
+					 <a href="javascript:void(0);" class="sure"><img src="images/btn.png" ></a>
+				</div>
+
+					
+					
+			  </div>
+		  </div>
+
+
+	</div>
+</div>
+
+		<div class="successed hide"><img src="images/sure.png"  alt=""></div>
+
+<!-- <div class="cn-slidetips next">
+    <div class="slidetips">
+        <a href="javascript:void(0);" title="NEXT" id="next">
+            <img src="images/tip.png" />
+        </a>
+    </div>
+</div>
+ -->
+
+<script src="js/zepto.min.js"></script>
+<script src="js/idangerous.swiper-2.1.min.js"></script>
+<script src="js/my.js"></script>
+<script>
+	 $(function(){
+        $('input').click(function(){
+            $(this).focus();        
+        })
+
+    });
+       
+ 
+	 $(function(){
+        $('.sure').click(function(){
+            $(".successed").show();        
+        })
+
+    });
+       
+
+</script>
+
+
+<!--#include virtual="/public/tongji.html"-->
+
+</body>
+</html>

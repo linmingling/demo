@@ -1,0 +1,151 @@
+﻿@charset "utf-8";
+/* common*/
+body {height:100%;  font: 12px/1.75  \5FAE\8F6F\96C5\9ED1;}
+div, html, body, p, ul, ol, li, a, form, img, table, td, h1, h2, h3, h4, h5, h6, blockquote, header, section, footer, aside, nav, article, figure, figcaption, dl, dt, dd {margin:0;padding:0;} 
+header, section, footer, aside, nav, article, figure, figcaption {display: block;}
+table {border-collapse:collapse;}
+img {border:none;}
+ul, li {list-style:none;}
+input:focus, textarea:focus {outline:none;}
+.cf:before,.cf:after{content:"";display:table;}.cf:after{clear:both;}.cf{zoom:1;}
+body,a,a:link{color:#333;}
+a,a:link{text-decoration:none;}
+a:hover{color:red;text-decoration:underline;}
+.ctl{float:left;}
+.ctr{float:right;}
+
+/* 共用部分 */
+.hide{display: none}
+.page{width: 100%;height: 100%;max-width:640px;position: absolute;overflow: hidden;}
+.blackBg{background: url(../images/blackBg.png) repeat;}
+.orange{color: #ef6205}
+/* 开始页面 */
+.index{background: url(../images/indexBg.jpg) no-repeat;background-size: 100% 100%}
+.index .indexTitle{width: 100%;}
+.index .btnBox{width: 60%;position: absolute;left: 20%;bottom: 5%;text-align: center;}
+.index .startBtn{width: 100%}
+.index .logo{width: 45%;margin:10px 0;}
+.index .rankBtn, .index .cashBtn{width: 49%}
+.index .indexAnim{}
+.index .indexAnim .index1{width: 100%;position: absolute;top: 40%}
+.index .indexAnim .wind{width: 50%;position: absolute;bottom: 20%;left: 25%}
+
+
+.tcStyle1{width:80%;padding:10% 5% 5% 5%;margin:10% 5%;background: url(../images/tcBg.png) no-repeat;background-size: 100% 100%}
+.tcStyle1 .tcHead{position: absolute;top: -6%}
+.tcStyle1 .tcHead img{width: 100%}
+/* 排行榜 */
+.rankWarp{position: relative;}
+.rankWarp .rankHead{position: absolute;top:10px;right:30px;}
+.rankWarp .rankHead span{background: #000;color: #fff;border-radius: 3px;padding:2px 7px;}
+.rankWarp .rankHead .hover{background: #d13b7d}
+.rankWarp .rankMain{margin-bottom: 20px}
+.rankWarp .rankMain .head{border-bottom: 1px solid #aaa;padding:3px 0;}
+.rankWarp .rankMain p{height: 20px;overflow: hidden;margin: 5px 0 0 }
+.rankWarp .rankMain .r1{width: 19%;float: left;}
+.rankWarp .rankMain .r2{width: 60%;float: left;}
+.rankWarp .rankMain .r3{width: 20%;float: left;}
+.rankWarp .close{width:24%;text-align: center;position: absolute;bottom: -25px;left: 43%}
+.rankWarp .close img{width: 100%}
+
+
+/* 游戏规则 */
+.ruleWarp{position: relative;}
+.ruleWarp .ruleMain{max-height: 250px;overflow-y:scroll;margin-bottom: 30px}
+.ruleWarp .close{width:20%;text-align: center;position: absolute;bottom: -25px;left: 40%}
+.ruleWarp .close img{width: 100%}
+
+/* 现金券 */
+.cashWarp{position: relative;}
+.cashWarp .cashMain{max-height: 250px;overflow-y:scroll;margin-bottom: 30px}
+.cashWarp .close{width:18%;text-align: center;position: absolute;top: -15px;right: 0%}
+.cashWarp .close img{width: 100%}
+.cashWarp .cashMain{margin:10px 0}
+.cashWarp .cashMain .cashBox{width: 90%;margin:5px auto;font-size: 16px;color: #fff;background: url(../images/logo2.png) no-repeat 10px center;background-size:  auto 80%;text-indent: 70px;}
+.cashWarp .cashMain .cashBox .big{font-size: 20px;font-weight: 700}
+.cashWarp .cashMain .cs1{background-color: #ffaf15}
+.cashWarp .cashMain .cs2{background-color: #1cb9b0}
+.cashWarp .cashMain .cs3{background-color: #ef6205}
+.cashWarp .cashBtn{font-size: 20px;text-align: center}
+.cashWarp .cashBtn a{width:60%;background: #000;color: #fff;display: block;margin:0 auto;font-weight: 700}
+
+/* 现金券规则 */
+.cashRule{width: 100%;height: 100%;position: absolute;background: url(../images/blackBg2.png) repeat;color: #fff}
+.cashRuleWarp{margin:15% 5%;position: relative;font-size: 14px;}
+.cashRuleWarp .title{font-size: 20px;font-weight: 700;margin-bottom: 10px}
+.cashRuleWarp .close{width:20%;position: absolute;top: 0;right:0;}
+.cashRuleWarp .close img{width: 100%}
+
+
+/* 分享提示 */
+.shareTips img{width: 100%}
+
+
+/* 游戏结束 */
+.gameOver{color: #fff}
+.gameOver .overTitle{width: 100%}
+.gameOver p{width: 70%;margin:0 auto;}
+.gameOver .btnBox{width: 60%;margin:0 auto;}
+.gameOver .btnBox img{width: 100%;margin:5px 0;}
+
+
+/* 游戏 */
+
+.game{}
+.game .gameBg{width: 100%;height: 100%;-webkit-filter: grayscale(100%);filter: grayscale(100%); }
+
+.game .gameBottomBox{width: 90%;position: absolute;left: 5%;bottom: 5%}
+.game .gameBottomBox img{width: 100%}
+.game .gameBottomBox .time, .game .gameBottomBox .score{width: 50px;height:40px;line-height: 40px;text-align: center;position: absolute;bottom: 25%;border:1px dotted #20a3cf;color: #20a3cf;border-radius: 100px;}
+.game .gameBottomBox .time{left: 15%;}
+.game .gameBottomBox .time span{color: #f1ee00;font-size: 16px}
+.game .gameBottomBox .score{right: 15%;}
+.game .gameBottomBox .score span{color: #0bfcc0;font-size: 16px}
+.game .gameBottomBox .wind{width: 50%;position: absolute;bottom: 50%;left: 25%}
+.game .ballBox{width: 100%;height: 80%;position: absolute;left: 0;top: 0}
+.game .ball{display: block;position: absolute;top:-80px;left: 0}
+.game .ball1{width: 57px;height: 51px;background: url(../images/ball1.png) no-repeat;background-size: 100% 100%}
+.game .ball2{width:30px;height: 25px;background: url(../images/ball2.png) no-repeat;background-size: 100% 100%}
+.game .ball3{width: 80px;height: 74px;background: url(../images/ball3.png) no-repeat;background-size: 100% 100%}
+.game .ball4{width: 58px;height: 51px;background: url(../images/ball4.png) no-repeat;background-size: 100% 100%}
+
+.game .ball{
+	-webkit-animation-name:ball;
+	-webkit-animation-duration:2s;
+	
+	-webkit-animation-timing-function:ease-in;
+	-webkit-animation-fill-mode:both;
+	animation-name:ball;
+	animation-duration:2s;
+	
+	animation-timing-function:ease-in;
+	animation-fill-mode:both;
+}
+
+@-webkit-keyframes ball {
+	0% {
+		top:-80px;
+	}
+	99% {
+		opacity: 1;
+		top:100%;
+	}
+	100% {
+		opacity: 0;
+		top:100%;
+	}
+}
+@keyframes ball {
+	0% {
+		top:-80px;
+	}
+	99% {
+		opacity: 1;
+		top:100%;
+	}
+	100% {
+		opacity: 0;
+		top:100%;
+	}
+}
+

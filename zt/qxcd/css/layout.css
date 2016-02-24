@@ -1,0 +1,197 @@
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 14px/1.7 "Microsoft YaHei";color:#fff;background-color:#fff;}
+a{text-decoration:none;outline: none;}
+a img,img{border:0;vertical-align: top;}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:focus {
+    text-decoration: none;
+}
+
+/*********************分隔线************************/
+.main{
+	min-width:1200px;
+	max-width:1920px;
+	position: relative;
+	overflow:hidden;
+}
+.head{
+	background: url(../images/head-bg.jpg) no-repeat center top;
+	height: 596px;
+}
+.content{
+	background: url(../images/content-bg.jpg) no-repeat center top;
+	height: 3201px;
+}
+.nav-bg{
+	min-width: 1060px;
+    margin: 0 auto;
+    position: relative;
+    height: 100px;
+    padding-top: 480px;
+    width: 800px;
+}
+.nav{
+	background: url(../images/nav-bg.png) no-repeat center top;
+	height: 80px;
+	width: 640px;
+}
+.nav img{
+	padding-top: 10px;
+	padding-left: 8px;
+}
+.box1-com{
+	width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+.box1{
+	background: url(../images/box1-bg.png) no-repeat center top;
+	height: 1133px;
+	min-width: 1060px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 20px;
+}
+.box1-content{
+    padding-top: 120px;
+    height: 230px;
+}
+.box1-banner{
+	padding-top: 20px;
+}
+.box2-1{
+	margin: 0 auto;
+    width: 915px;
+    height: 565px;
+    padding-top: 125px;
+}
+.hdjj{
+	float: left;
+	width: 462px;
+}
+.hdjj-font{
+	padding-left: 3%;
+    padding-top: 2%;
+}
+.bmrk{
+	background: url(../images/btn1-bg.png?vid=1.1) no-repeat center top;
+	width: 269px;
+	height: 186px;
+	float: left;
+	padding-left: 70px;
+}
+.bmrk img{
+	margin: 60px auto;
+	padding-left: 10px;
+}
+.qr-code{
+	width: 162px;
+	height: 222px;
+	float: left;
+	padding-left: 25px;
+}
+.cypp{
+    padding-top: 20px;
+}
+.pinpai{
+    padding-top: 20px;
+}
+.qdys{
+	padding-top: 50px;
+}
+
+.box2{
+	background: url(../images/box2-bg.png) no-repeat center top;
+	height: 770px;
+	min-width: 1060px;
+    margin: 0 auto;
+    position: relative;
+}
+.box3{
+	background: url(../images/box3-bg.png) no-repeat center top;
+	height: 1150px;
+	min-width: 1060px;
+    margin: 0 auto;
+    position: relative;
+}
+.box3-title{
+	padding-left: 580px;
+    padding-top: 22px;
+}
+.box3-content{
+	padding-top: 50px;
+    padding-left: 40px;
+    font-size: 14px;
+}
+.cypp3{
+    padding-top: 50px;
+}
+.pinpai2{
+    padding-top: 10px;
+}
+.sj{
+	background: url(../images/sj-bg.png) no-repeat center top;
+	width: 1059px;
+	height: 631px;
+	float: left;
+	
+}
+.zcje{
+	padding-top: 22px;
+    padding-left: 40px;
+    width: 520px;
+    float: left;
+}
+.cjbl{
+	padding-top: 22px;
+	float: left;
+}
+
+.bottom{
+	width: 1060px;
+	height: 86px;
+}
+
+/****************************/
+.title img{
+	float: left;
+}
+.title p{
+	font-size: 18px;
+	padding-left: 30px;
+	line-height: normal;
+}
+.font-color{
+	color: #ff7800;
+}
+
+/*默认样式，主要是position:fixed实现屏幕绝对定位*/
+#gotoTop{display:none;position:fixed;top:80%;left:50%;cursor:pointer;margin-top:-50px;margin-left:540px;width:40px;height:40px;text-align:center;}
+/*用CSS表达式(expression)来实现ie6下position:fixed效果*/
+#gotoTop{_position:absolute;_top:expression(documentElement.scrollTop + documentElement.clientHeight * 3/4 + "px")}
+/*鼠标进入的反馈效果*/
+#gotoTop.hover{background:#5CB542;color:#fff;text-decoration:none;}
+
+
+
+/* focus_Box */
+#focus_Box{position:relative;width:1000px;height:308px;}
+#focus_Box ul{position:relative;width:1000px;height:308px}
+#focus_Box li{z-index:0;position:absolute; width:0px;background:#787878;height:0px;top:146px;cursor:pointer;left:377px;border-radius:4px;box-shadow:1px 1px 12px rgba(200, 200, 200, 1)}
+#focus_Box li img{width:100%;background:url(../images/loading.gif) no-repeat center 50%;height:100%;vertical-align:top}
+
+#focus_Box .prev,#focus_Box .next{display:block;z-index:100;overflow:hidden;cursor:pointer;position:absolute;width:52px;height:52px;top:131px;}
+#focus_Box .prev{background:url(../images/btn.png) left bottom no-repeat;left:0px}
+#focus_Box .next{background:url(../images/btn.png) right bottom no-repeat;right:0px} 
+#focus_Box .prev:hover{background-position:left top;}
+#focus_Box .next:hover{background-position:right top;}
+#focus_Box a.imgs-scroll-btn{display:block;position:absolute;z-index:110;top:7px;right:15px;width:51px;height:23px;overflow:hidden;background:url(images/share-btn.png) no-repeat;text-indent:-999px;}
+
+
+

@@ -1,0 +1,34 @@
+.topnav{padding:0 0;height:36px;background:#000;background:rgba(0,0,0,.85);position:fixed;top:0;left:0;z-index:2;width:100%;box-shadow:0 3px 8px rgba(0,0,0,.3)}
+.topnav .logo{display:block;position:absolute;left:0;top:5px;width:181px;height:26px;background:url(http://zt.jia360.com/public/images/logo.png) no-repeat;overflow:hidden;text-indent:-9999px}
+.mininav{width:1000px;height:30px;margin:0 auto;position:relative;z-index:999999}
+.mininav,.mininav .hychannel p.up,.mininav .hychannel ul a,.mininav .hychannel ul a:link,.mininav a,.mininav a:link{color:#ccc}
+.mininav .hychannel ul a:hover,.mininav a:hover{color:#fff;transition:all .5s;-moz-transition:all .5s;-webkit-transition:all .5s;-o-transition:all .5s}
+.mininav a:hover{text-decoration:underline}
+.mininav .yt{display:inline-block;float:left;height:30px;border-left:1px solid #ebebeb;border-right:1px solid #ebebeb;line-height:30px;padding:0 10px}
+.mininav .mr{margin-left:185px;font-family:SimSun,"宋体"}
+.mininav .l{float:right;line-height:36px}
+.mininav .nt{float:right;padding:0 5px;line-height:36px;position:relative;z-index:99999}
+.mininav .cm{float:right;width:66px;height:36px;position:relative}
+.mininav .cm p{width:66px;height:36px;line-height:36px;text-indent:6px;background:url(http://zt.jia360.com/public/images/yt_ico_c.png) 40px 6px no-repeat;color:#fff;cursor:pointer;position:absolute;z-index:99999;left:0;top:0}
+.mininav .cmhover p{background:url(http://zt.jia360.com/public/images/yt_ico_c.png) 40px -28px no-repeat}
+.tabcity{display:none;width:410px;padding:0 20px;color:#9b763b;position:absolute;right:0;top:34px;z-index:999999;overflow:hidden}
+.tabcity .ht{width:400px;height:30px;line-height:30px;font-weight:700;position:relative;z-index:9999}
+.tabcity .ht .l{display:block;width:332px;height:10px;overflow:hidden;border-bottom:1px solid #9b763b;position:absolute;right:0;top:6px}
+.tabcity .ht a,.tabcity .ht b{line-height:30px;font-weight:400}
+.tabcity .ht span b{margin-right:5px}
+.tabcity .cityall{height:120px}
+.tabcity .citylist{float:left;width:68px;position:relative;z-index:9999}
+.tabcity .citylist li{line-height:20px;color:#999}
+.tabcity .citylist li a{color:#333}
+.tabcity .citylist li b{color:#af874b}
+.tabcity .citylist li span{padding-right:8px;font-size:14px;font-weight:700}
+.tabcity .citylist li span.n{font-size:12px;font-weight:400}
+.tabcity .tcmask{width:450px;height:260px;background:#f5f0e8;opacity:.9;filter:alpha(opacity=90);position:absolute;left:0;top:2px;z-index:999}
+.mininav .hychannel{float:right;width:78px;height:36px;position:relative;top:0;z-index:999999}
+.mininav .hychannel p{width:78px;height:36px;line-height:36px;text-indent:8px;background:url(http://zt.jia360.com/public/images/tico.png) 60px 9px no-repeat;cursor:pointer;position:absolute;z-index:99999;left:0;top:0;color:#ccc;-webkit-margin-before:0;-webkit-margin-after:0}
+.mininav .hychannel p{height:36px;transition:all .5s;-moz-transition:all .5s;-webkit-transition:all .5s;-o-transition:all .5s}
+.mininav .hychannel p.up{background:url(http://zt.jia360.com/public/images/tico.png) 60px -18px no-repeat}
+.mininav .hychannel ul.tg{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);opacity:1;display:block}
+.mininav .hychannel ul{width:310px;padding:5px 10px;background:rgba(0,0,0,.6);position:absolute;z-index:999;right:-3px;top:35px;border:1px solid #000;border-top:none;opacity:0;-webkit-transform:scale(0);-webkit-transition:all .3s cubic-bezier(.4,.83,.32,1.33);-webkit-transform-origin:right top;-moz-transform:scale(0);-moz-transition:all .3s cubic-bezier(.4,.83,.32,1.33);-moz-transform-origin:right top;-ms-transform:scale(0);-ms-transition:all .3s cubic-bezier(.4,.83,.32,1.33);-ms-transform-origin:right top;box-shadow:0 1px 5px rgba(0,0,0,.2)}
+.mininav .hychannel ul.whz{width:140px}
+.mininav .hychannel ul a{display:inline-block;height:22px;line-height:22px;padding:0 7px}

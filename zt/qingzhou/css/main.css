@@ -1,0 +1,198 @@
+/*css reset*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre, 
+form,fieldset,input,textarea,p,blockquote,th,td { 
+    padding: 0; 
+    margin: 0; 
+} 
+table { 
+    border-collapse: collapse; 
+    border-spacing: 0; 
+} 
+fieldset,img { 
+    border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+    font-weight: normal; 
+    font-style: normal; 
+} 
+ol,ul { 
+    list-style: none; 
+} 
+caption,th { 
+    text-align: left; 
+} 
+h1,h2,h3,h4,h5,h6 { 
+    font-weight: normal; 
+    font-size: 100%; 
+} 
+q:before,q:after { 
+    content:”; 
+} 
+abbr,acronym { 
+    border: 0; 
+}
+
+
+/*background*/
+.bg{
+    width:100%;
+    height:674px;
+    background: url(../images/bg.jpg) no-repeat;
+    background-position: center center;
+}
+
+.main-box{
+    width:1130px;
+    height:674px;
+    margin: 0 auto;
+    background: url(../images/nav-box.jpg) no-repeat;
+}
+
+/*.nav-box{
+    width:260px;
+    height:674px;
+    float:left;
+    background: url(../images/nav-box.jpg) no-repeat;
+}*/
+
+.tab_box{
+    width:860px;
+    height:501px;
+    margin-top:150px;
+    float:right;
+    /*border:1px solid red;*/
+}
+
+.tab_menu{
+    margin-top:150px;
+    width:260px;
+    height:510px;
+    float:left;
+}
+
+.tab_menu li{
+    width:260px;
+    height:40px;
+    float:left;
+    line-height:42px;
+    color:#474747;
+    text-align:center;
+    cursor:pointer;
+    font-family: 微软雅黑;
+    font-size: 14px;
+}
+
+
+
+.tab_menu li.current{
+    color:white;
+    background:#171717;
+}
+
+
+.tab_menu a:hover span,.tab_menu a:active span{
+    color:#c76f07;
+}
+
+.tab_box .hide{display:none;}
+
+
+/*产品介绍页*/
+.intro{
+    width:600px;
+    height:100px;
+    background: #000000;
+    float: left;
+    margin-top:-5px;
+}
+
+.intro1{
+    width:600px;
+    height:100px;
+    background: #000000;
+    float: left;
+    margin-top:-5px;
+}
+
+.intro .scroll_container {
+    overflow: hidden;
+    position: relative;
+}
+
+.intro .scroll_absolute {
+    position: absolute;
+}
+
+.intro .scroll_vertical_bar {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    width: 8px;
+    height: 100%;
+    margin-right: 0px;
+    padding: 0;
+}
+
+
+
+.intro .scroll_track {
+    position: relative;
+    background-color: #171717;
+}
+
+.intro .scroll_drag {
+    position: relative;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    background-color: #f08200;
+}
+
+/*popup layer*/
+/* example */
+.example{width:300px;height:300px;;margin:-403px 299px;position: absolute;top: 0;right: 0;z-index: 1;margin: 0 0;}
+.example1{width:300px;height:300px;;margin:-403px 299px;position: absolute;top: 0;right: 0;z-index: 1;margin: 0 0;}
+.example2{width:300px;height:300px;;margin:-403px 299px;position: absolute;top: 0;right: 0;z-index: 1;margin: 0 0;}
+.example3{width:300px;height:300px;;margin:-403px 299px;position: absolute;top: 0;right: 0;z-index: 1;margin: 0 0;}
+.example4{width:300px;height:300px;;margin:-403px 299px;position: absolute;top: 0;right: 0;z-index: 1;margin: 0 0;}
+.example5{width:300px;height:300px;;margin:-403px 299px;position: absolute;top: 0;right: 0;z-index: 1;margin: 0 0;}
+.example6{width:300px;height:300px;;margin:-403px 299px;position: absolute;top: 0;right: 0;z-index: 1;margin: 0 0;}
+.example .tigger{display:block;width:179px;background:url(../images/tube.png);cursor:pointer;height:19px; margin:0px 122px;z-index:999999;}
+.example1 .tigger1{display:block;width:179px;background:url(../images/tube.png);cursor:pointer;height:19px; margin:0px 122px;z-index:999999;}
+.example2 .tigger2{display:block;width:179px;background:url(../images/tube.png);cursor:pointer;height:19px; margin:0px 122px;z-index:999999;}
+.example3 .tigger3{display:block;width:179px;background:url(../images/tube.png);cursor:pointer;height:19px; margin:0px 122px;z-index:999999;}
+.example4 .tigger4{display:block;width:179px;background:url(../images/tube.png);cursor:pointer;height:19px; margin:0px 122px;z-index:999999;}
+.example5 .tigger5{display:block;width:179px;background:url(../images/tube.png);cursor:pointer;height:19px; margin:0px 122px;z-index:999999;}
+.example6 .tigger6{display:block;width:179px;background:url(../images/tube.png);cursor:pointer;height:19px; margin:0px 122px;z-index:999999;}
+/* blk */
+.blk{width:300px;height:300px;position:absolute;}
+.blk1{width:300px;height:300px;position:absolute;}
+.blk2{width:300px;height:300px;position:absolute;}
+.blk3{width:300px;height:300px;position:absolute;}
+.blk4{width:300px;height:300px;position:absolute;}
+.blk5{width:300px;height:300px;position:absolute;}
+.blk6{width:300px;height:300px;position:absolute;}
+.blk .main{width:300px;height:300px;position:absolute;background:#1d1d1d;}
+.blk1 .main{width:300px;height:300px;position:absolute;background:#1d1d1d;}
+.blk2 .main{width:300px;height:300px;position:absolute;background:#1d1d1d;}
+.blk3 .main{width:300px;height:300px;position:absolute;background:#1d1d1d;}
+.blk4 .main{width:300px;height:300px;position:absolute;background:#1d1d1d;}
+.blk5 .main{width:300px;height:300px;position:absolute;background:#1d1d1d;}
+.blk6 .main{width:300px;height:300px;position:absolute;background:#1d1d1d;}
+a.closeBtn{position:absolute;top:280px;right:0px;width:20px;height:20px;background: url(../images/close.png);}
+a.closeBtn1{position:absolute;top:280px;right:0px;width:20px;height:20px;background: url(../images/close.png);}
+a.closeBtn2{position:absolute;top:280px;right:0px;width:20px;height:20px;background: url(../images/close.png);}
+a.closeBtn3{position:absolute;top:280px;right:0px;width:20px;height:20px;background: url(../images/close.png);}
+a.closeBtn4{position:absolute;top:280px;right:0px;width:20px;height:20px;background: url(../images/close.png);}
+a.closeBtn5{position:absolute;top:280px;right:0px;width:20px;height:20px;background: url(../images/close.png);}
+a.closeBtn6{position:absolute;top:280px;right:0px;width:20px;height:20px;background: url(../images/close.png);}
+
+
+#swiper1{position: relative;}
+#swiper2{position: relative;}
+#swiper3{position: relative;}
+#swiper4{position: relative;}
+#swiper5{position: relative;}
+#swiper6{position: relative;}
+#swiper7{position: relative;}

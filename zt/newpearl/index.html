@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="front-end technicist" content="jinger" />
+	<title>奔跑吧，新明珠</title>
+	<meta name="keywords" content="奔跑吧 新明珠">
+	<meta name="description" content="奔跑吧 新明珠">
+	<meta name="front-end technicist" content="jinger">
+	<link type="text/css" rel="stylesheet" href="css/com.css?v=1.6" media="all" />
+</head>
+
+<body>
+	<h1 class="hide">奔跑吧 新明珠</h1>
+	<div class="mainWrap" id="mainWarp">
+		<div class="insideBox">
+			<!-- 导航 -->
+			<div class="nav clear">
+				<a href="index.html" class="navA navA1">首页</a>
+				<a href="rule.html" class="navA navA2">奔跑吧，新明珠</a>
+				<a href="info.html" class="navA navA3">企业介绍</a>
+				<a href="rank.html" class="navA navA4">排行榜</a>
+			</div>
+			<!-- 内容 -->
+			<div class="indexWarp">
+				<div class="mainText">奔跑吧新明珠</div>
+				<div class="ewmBtn">
+					<img src="images/index/ewm.png" class="ewm" />
+				</div>
+				<img src="images/boy.png" class="boy" />
+				<img src="images/girl.png" class="girl" />
+			</div>
+		</div>
+	</div>
+
+<script src="js/jquery-1.8.3.min.js"></script>
+
+<script>
+	$(function(){
+		wh = $(window).height();
+		//$("#mainWarp .insideBox").height($(window).height()-201)
+		if(wh<700){
+			$("#mainWarp .insideBox").height(500)
+		}else{
+			$("#mainWarp .insideBox").height($(window).height()-201)
+		}
+	});
+</script>
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>大自然-客户管理为中心的终端营销体系落地特训营</title>
+<meta name="keywords" content="大自然-客户管理为中心的终端营销体系落地特训营" />
+<meta name="description" content="大自然-客户管理为中心的终端营销体系落地特训营" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link rel="stylesheet" type="text/css"  href="css/com.css"  />
+
+
+</head>
+<body>
+       <div class="cn-spinner" id="loading" style=" opacity: 1;">
+        <div class="spinner">
+
+            <div class="spinner-container container1">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container2">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+            <div class="spinner-container container3">
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+                <div class="circle3"></div>
+                <div class="circle4"></div>
+            </div>
+        </div>
+
+    </div>
+
+       <div class="swiper-container swiper-pages" id="swiper-container1">
+            <div class="swiper-wrapper" id="wrapper">
+
+                  <div class="swiper-slide page-1">
+					  <div class="container">
+						<div class="wraper" id="wraper1" >
+							<div class="am am1">
+								<div class="layer"  data-depth="0.2">
+									<img src="images/bg1.jpg" />
+								</div>
+							</div>
+						</div>
+					  </div>
+                  </div>
+
+                  <div class="swiper-slide page-2">
+					  <div class="container">
+						<div class="wraper" id="wraper2">
+							<div class="am am1">
+								<img src="images/bg2.jpg"  class="animation an1" data-item="an1" data-delay="200" data-animation="bounceInLeft" />
+							</div>
+						</div>
+					  </div>                
+				  </div>
+
+                  <div class="swiper-slide page-3">
+                      <div class="container">
+						<div class="wraper" id="wraper3">
+							<div class="am am1">
+								<img src="images/bg3.jpg"  class="animation an1" data-item="an1" data-delay="200" data-animation="bounceInLeft" />
+							</div>
+						</div>
+                      </div>
+                  </div>
+                
+				  <div class="swiper-slide page-4">
+                      <div class="container">
+							<div class="wraper" id="wraper4">
+								<div class="am am1">
+									<img src="images/bg4.jpg"  class="animation an1" data-item="an1" data-delay="200" data-animation="bounceInLeft" />
+								</div>
+								
+							</div>
+                        </div>
+                  </div>
+
+                 
+					
+				  <div class="swiper-slide page-5">
+                      <div class="container">
+							<div class="wraper" id="wraper5">
+								<div class="am am1">
+									<img src="images/bg5.jpg"  class="animation an1" data-item="an1" data-delay="200" data-animation="bounceInLeft" />
+								</div>
+								
+							</div>
+                        </div>
+                  </div>
+				  
+				  <div class="swiper-slide page-6">
+                      <div class="container">
+							<div class="wraper" id="wraper6">
+								<div class="am am1">
+									<img src="images/bg6.jpg"  class="animation an1" data-item="an1" data-delay="200" data-animation="bounceInLeft" />
+								</div>
+								
+							</div>
+                        </div>
+                  </div>
+				  
+				  <div class="swiper-slide page-7">
+					  <div class="container">
+						  <div class="wraper" id="wraper7">
+								<div class="am am1">
+									<img src="images/bg7.jpg"  class="animation an1" data-item="an1" data-delay="200" data-animation="bounceInLeft" />
+								</div>
+								<!--#include virtual="/public/Copyright.html"-->
+								
+						  </div>
+					  </div>
+                  </div>
+				  
+           </div>
+        </div>
+		<div class="down hide" id="next"></div>
+		<div class="hide" id="music">
+			<a href="javascript:void(0)" class="open musicBtn" ></a>
+			<audio class="audio hide"  id="musicBox" preload="metadata" loop="false" src="images/music.mp3" ></audio> 
+		</div>
+        
+<script src="js/zepto.min.js"></script>
+<script src="js/idangerous.swiper-2.1.min.js"></script>
+<script src="js/my.js"></script>
+<script src="js/WeixinApi.js"></script>
+<script>
+$(function(){
+	
+	//音乐播放
+	var musicBox = document.getElementById("musicBox");
+	musicBox.play();
+	$("#music .musicBtn").click(function(){
+		if($(this).hasClass("open")){
+			$(this).removeClass("open").addClass("close");
+			musicBox.pause();
+		}else{
+			$(this).removeClass("close").addClass("open");
+			musicBox.play();
+		}
+	});
+   //微信分享控制
+	WeixinApi.ready(function(Api){
+		var link = (location.href).split('&p=');
+		var wxData = {
+			"imgUrl":"",
+			"link":link[0],
+			"desc":"客户管理为中心的终端营销体系落地特训营",
+			"title":"大自然"
+		};
+		
+		// 用户点开右上角popup菜单后，点击分享给好友，会执行下面这个代码
+		Api.shareToFriend(wxData);
+	 
+		// 点击分享到朋友圈，会执行下面这个代码
+		Api.shareToTimeline(wxData);
+	 
+		// 点击分享到腾讯微博，会执行下面这个代码
+		Api.shareToWeibo(wxDat);
+		
+		// iOS上，可以直接调用这个API进行分享，一句话搞定
+        Api.generalShare(wxData,wxCallbacks);
+	});
+});
+</script>
+
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

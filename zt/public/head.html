@@ -1,0 +1,80 @@
+<style type="text/css">
+ @charset "utf-8";
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0}
+body{font: 12px/1.7 "Microsoft YaHei" "SimSun" "Hiragino Sans GB"}
+html body{color:inherit;}
+a{color:#505050;text-decoration:none}
+a:hover{color:#af874b;text-decoration:none}
+em{font-style:normal}
+li{list-style:none;}
+img{border:0;outline: 0;vertical-align:middle;}
+html body img{vertical-align: middle;}
+table{border-collapse:collapse;border-spacing:0}
+p{word-wrap:break-word}
+.clear{clear: both;}
+.block{display:block}
+.inlineblock{display:inline-block;}
+.none{display:none}
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.relative{position: relative;}
+.t_c{text-align: center;}
+.t_l{text-align: left;}
+.t_r{text-align: right;}
+.bold{font-weight: bold;}
+.noborder{border: 0;}
+.wh100{width: 100%;height: 100%;}
+.vermid{vertical-align: middle;}
+.w1280{width: 1280px;margin: 0 auto;}
+.w980{width: 980px;margin: 0 auto;}
+.header{position: fixed;left:0;right: 0;top: 0;z-index:9999;background-color: #fafafa;border-bottom: 1px solid #ebebeb;line-height: 30px;height: 30px;-webkit-transition: top .5s;-ms-transition: top .5s;-moz-transition: top .5s;transition: top .5s;}
+.header_line{margin: 0 10px;}
+.header_rotate{margin-left: 5px;width: 8px;height: 4px;}
+.header_rotate img{margin-bottom: 2px;-webkit-transition:-webkit-transform .7s;-ms-transition:-ms-transform .7s;-moz-transition:-moz-transform .7s;transition:transform .7s;}
+.header_tag_left .header_logo{margin-right: 40px;float: left;text-align: center;font-size: 0;}
+.header_tag_left a{outline: 0;}
+.header_tag_con,.header_tag_a_last{width: 74px;display: inline-block;float: left;text-align: center;border: 1px solid #FAFAFA;border-top: 0;border-bottom: 0;}
+.header_tag_con:hover{background-color:#ffffff;border: 1px solid #ebebeb;border-top: 0;border-bottom: 0;}
+.header_tag_con:hover .header_rotate img{-webkit-transform: rotate(180deg);-ms-transform: rotate(180deg);-moz-transform: rotate(180deg);transform: rotate(180deg);}
+.header_extend{border: 1px solid #ebebeb;background-color: #FFFFFF;opacity: 0;-webkit-transition:opacity .4s,visibility .8s;-ms-transition:opacity .4s,visibility .8s;-moz-transition:opacity .4s,visibility .8s;transition:opacity .4s,visibility .8s;visibility: hidden;border-top: 0;position: absolute;z-index:99999;top: 30px;left: -1px;width: 89px;}
+.header_tag_con:hover .header_extend{opacity: 1;visibility: visible;-webkit-transition:opacity .8s,visibility .4s;-ms-transition:opacity .8s,visibility .4s;-moz-transition:opacity .8s,visibility .4s;transition:opacity .8s,visibility .4s;}
+.header_extend a{float: left;display: inline-block;width: 100%;height: 26px;line-height: 26px;text-align: center;border-top: 1px solid #EBEBEB;background-color: #FFFFFF;}
+.header_extend .noborder{border: 0;}
+.header_extend .column{width: 44px;}
+.footer{width: 100%;height: 59px;background-color: #FAFAFA;color: #505050;border-top: 1px solid #EBEBEB;z-index: 9;}
+.footer .w1280,.footer .w980{background-color: #FAFAFA;height:100%;}
+.footer_share{min-width: 255px;}
+.footer_ued img{margin-bottom: 2.5px;margin-left: 5px;+margin-bottom: -2px;}
+.footer_ued{margin-right: 47px;display: inline-block;height: 100%;float: left;}
+.footer_icon{display: inline-block;float: left;}
+.footer_icon a{margin-left: 6px;display: inline-block;}
+.footer_ued,.footer_icon{padding-top: 15px;}
+.footer_copyright{margin-top: 10px;}
+.footer .wxqr{height: 177px;width:140px;visibility: hidden;position: absolute;z-index:-1;top: -176px;left:-38px;overflow: hidden;background: url(http://zt.jia360.com/public/img/footer/wxqr.png?c=2) no-repeat;background-position: 0 176px;-webkit-transition: background-position .4s,visibility .4s;-ms-transition: background-position .4s,visibility .4s;-moz-transition: background-position .4s,visibility .4s;transition: background-position .4s,visibility .4s;}
+.footer_ued:hover .wxqr{background-position: 0 0;visibility: visible;}
+.footer_ued:hover{color:#505050;}
+</style>
+		<!--header-->
+		<div class="header">
+			<div class="w1280">
+				<div class="w980">
+					<div class="header_tag">
+						<div class="fl header_tag_left relative">
+							<a href="http://www.jia360.com/" class="header_logo">
+								<img src="http://zt.jia360.com/public/img/header/logo.png" width="79" height="22" />
+							</a>
+						</div>
+						<div class="fr header_tag_right">
+							<a href="http://zt.jia360.com/qmjjg_pc/" target="_blank">全民家居购</a>
+							<span class="header_line">|</span>
+							<a href="http://group.yoju360.com/qxzj/index" target="_blank">七夕家装节</a>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--header-->
+		<script type="text/javascript">
+(function($){$.initHeader=function(opt,par){var parent=$(par);var notextend=function(obj){var div=$("<div class='header_tag_a_last'></div>");div.append("<a target='_blank' href='"+obj.href+"'>"+obj.type+"</a>");parent.append(div)};for(var j in opt){if(opt[j].extend==false){notextend(opt[j]);continue};var header_tag_con=$("<div class='header_tag_con relative'></div>");header_tag_con.append("<a href='javascript:void(0)' class='wh100 inlineblock'>"+opt[j].type+"<span class='header_rotate'><img src='http://zt.jia360.com/public/img/header/rotate.png' width='8' height='4'/></span></a>");var header_extend=$("<div class='header_extend'></div>");for(var x in opt[j].typeArr){header_extend.append("<a target='_blank' href='"+opt[j].typeArr[x].href+"'>"+opt[j].typeArr[x].name+"</a>")};var column=opt[j].column;if(column){header_extend.find("a").addClass("column")};header_tag_con.append(header_extend);var clear=$("<div class='clear'></div>");parent.append(header_tag_con)};parent.append(clear)}})(jQuery);(function(){var decorateList={"type":"装饰","typeArr":{0:{"name":"搭配","href":"http://zx.yoju360.com/"},1:{"name":"设计师","href":"http://www.jia360.com/shejishi/index.html"},2:{"name":"团购","href":"http://www.yoju360.com/group/"},3:{"name":"案例库","href":"http://zx.yoju360.com/case"}}};var consultationList={"type":"资讯","typeArr":{0:{"name":"新闻","href":"http://news.jia360.com/"},1:{"name":"访谈","href":"http://news.jia360.com/person/"},2:{"name":"众说","href":"http://zhongshuo.jia360.com/"},3:{"name":"专题","href":"http://www.jia360.com/zhuanti/"}}};var productList={"type":"产品","typeArr":{0:{"name":"抢购","href":"http://www.yoju360.com/?sr=jia_qg"},1:{"name":"导购","href":"http://www.jia360.com/product/guide/"},2:{"name":"评测","href":"http://www.jia360.com/product/evaluation/"},3:{"name":"软装","href":"http://www.jia360.com/ruanzhuang/"},4:{"name":"高端家居","href":"http://www.jia360.com/gaoduan/"}}};var industryList={"type":"行业","column":2,"typeArr":{0:{"name":"家具","href":"http://www.jia360.com/jiaju/"},1:{"name":"卫浴","href":"http://www.jia360.com/weiyu/"},2:{"name":"瓷砖","href":"http://www.jia360.com/cizhuan/"},3:{"name":"厨房","href":"http://www.jia360.com/chufang/"},4:{"name":"地板","href":"http://www.jia360.com/diban/"},5:{"name":"衣柜","href":"http://www.jia360.com/yigui/"},6:{"name":"门窗","href":"http://www.jia360.com/menchuang/"},7:{"name":"吊顶","href":"http://www.jia360.com/diaoding/"},8:{"name":"卖场","href":"http://www.jia360.com/diy/market/"},9:{"name":"墙面","href":"http://www.jia360.com/qiangmian/"},10:{"name":"红木","href":"http://www.jia360.com/hongmu/"},11:{"name":"户外","href":"http://www.jia360.com/huwai/"}}};var classicList={"type":"经典案例","extend":false,"href":"http://www.jia360.com/zhuanti/topics/"};$.initHeader([consultationList,productList,industryList,decorateList,classicList],".header_tag_left")})();(function(){var scrollTop;$(window).bind("scroll",function(){scrollTop=document.documentElement.scrollTop+document.body.scrollTop;if(scrollTop>300){$(".header").css("top","-31px")}else{$(".header").css("top","0px")}})})();
+		</script>	

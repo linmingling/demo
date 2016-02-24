@@ -1,0 +1,8 @@
+.foot_zt{position:fixed;bottom:0;left:0;right:0;z-index:2;width:100%;color:#fff;background-color:#000;overflow:hidden}
+.foot_zt .box{width:100%;margin-right:auto;margin-left:auto;overflow:hidden;margin:8px auto;width:973px}
+.foot_zt #babout,.foot_zt #copyright{line-height:25px;height:25px;text-align:center;-webkit-margin-after:0;-webkit-margin-before:0;text-align:right}
+.box_r{float:right}
+.box_l{float:left}
+.foot_zt #copy{text-align:left;font-size:14px;color:#9b9d9d;height:45px;margin:0 auto;color:#fff}
+.foot_zt a{color:#fff}
+.foot_zt p{word-wrap:break-word;color:#fff}

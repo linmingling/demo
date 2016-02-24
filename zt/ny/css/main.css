@@ -1,0 +1,418 @@
+/*css reset*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre, 
+form,fieldset,input,textarea,p,blockquote,th,td { 
+    padding: 0; 
+    margin: 0; 
+} 
+table { 
+    border-collapse: collapse; 
+    border-spacing: 0; 
+} 
+fieldset,img { 
+    border: 0; 
+} 
+address,caption,cite,code,dfn,em,strong,th,var { 
+    font-weight: normal; 
+    font-style: normal; 
+} 
+ol,ul { 
+    list-style: none; 
+} 
+caption,th { 
+    text-align: left; 
+} 
+h1,h2,h3,h4,h5,h6 { 
+    font-weight: normal; 
+    font-size: 100%; 
+} 
+q:before,q:after { 
+    content:”; 
+} 
+abbr,acronym { 
+    border: 0; 
+}
+
+
+/*main*/
+.in{width: 1000px;height: 100%;margin:0 auto;position: relative;}
+.bg1{
+    min-width: 1000px;
+    width: 100%;
+    height: 800px;
+    background: url(../images/bg1.jpg) no-repeat center center;
+}
+
+.bg2{
+    min-width: 1000px;
+    width: 100%;
+    height: 1200px;
+    background: url(../images/bg2.jpg) no-repeat center center;
+}
+
+/*countdown*/
+.time{
+    width: 677px;
+    height: 108px;
+    margin:240px 0px 0px 144px;
+    position: absolute;
+}
+
+.time2{
+    width: 677px;
+    height: 108px;
+    margin:240px 0px 0px 144px;
+    position: absolute;
+}
+
+.time-item strong{
+  color: white;
+  line-height: 75px;
+  font-size: 96px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  margin-left: 18px;
+  border-radius: 5px;
+  display: block;
+  width: 101px;
+  padding-top: 0;
+  padding-bottom: 0;
+  float: left;
+  text-align: center;
+  letter-spacing: 0px
+}
+
+
+
+#day_show{
+  margin-top: 21px;
+  margin-left: 10px;
+}
+
+#hour_show{
+    margin-left:77px;
+    margin-top:18px;
+}
+#minute_show{
+    margin-left:75px;
+    margin-top:18px;
+}
+
+#second_show{
+    margin-left:70px;
+    margin-top:18px;
+}
+
+.time-item2 strong{
+  color: white;
+  line-height: 75px;
+  font-size: 96px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  margin-left: 18px;
+  border-radius: 5px;
+  display: block;
+  width: 101px;
+  padding-top: 0;
+  padding-bottom: 0;
+  float: left;
+  text-align: center;
+  letter-spacing: 0px
+}
+
+#day_show1{
+  margin-top: 21px;
+  margin-left: 10px;
+}
+
+#hour_show1{
+    margin-left:70px;
+    margin-top:18px;
+}
+#minute_show1{
+    margin-left:75px;
+    margin-top:18px;
+}
+
+#second_show1{
+    margin-left:70px;
+    margin-top:18px;
+}
+
+
+
+/*sign*/
+
+.sign{
+    width: 405px;
+    height: 364px;
+    margin:706px 0px 0px 45px;
+    position: absolute;
+}
+.sign .txtbox{
+    width: 405px;
+    height: 266px;
+    position: absolute;
+   
+}
+
+
+.sign .fbox{
+    width: 405px;
+    height: 31px;
+    margin-bottom: 16px;
+}
+
+.sign .fbox input{
+  outline: none;
+  font-size: 16px;
+  height: 26px;
+  width: 235px;
+  margin:0px 0px 0px 116px;
+
+}
+
+.sign .fbox label{
+  font-size: 14px;
+  line-height: 19px;
+  color: #000;
+  padding-left: 56px;
+  float: left;
+  height:0;
+}
+
+.sign .fbox input{
+  outline: none;
+  font-size: 16px;
+  height: 26px;
+  width: 231px;
+  margin:0px 0px 0px 120px;
+}
+
+.sign .fbox input#shopname{
+    margin:0px 0px 0px 122px;
+}
+.sign .fbox input#ordersn{
+    margin:0px 0px 0px 122px;
+}
+.sign .fbox input#captcha{
+    margin:-1px 0px 0px 122px;
+}
+
+.sign .fbox select{
+    width: 107px;
+    height: 27px;
+    margin:-1px 0px 0px 120px;
+}
+
+.sign .fbox .qtcs{
+    width: 106px;
+    height: 23px;
+    margin:-2px 0px 0px 19px;
+}
+
+.sign .fbox .qtcs.hide{
+    display: none;
+}
+
+.sign .sure{
+    width: 177px;
+    height: 51px;
+    margin:310px 0px 0px 230px;
+    cursor:pointer;
+}
+
+/*抽奖*/
+
+.result{
+   width: 1000px;
+   height: 176px;
+   top:392px;
+   position: absolute;
+}
+
+
+.result .d2{
+  height: 128px;
+  padding-top:31px;
+  text-align: center;
+}
+
+.result .numberbox{
+  display:inline-block;
+  width: 881px;
+}
+
+
+.number{
+width: 79px;
+height: 129px;
+display: inline-block;
+overflow: hidden;
+position: relative;
+float:left;
+}
+
+.number > div > span{
+    width: 79px;
+    height: 129px;
+    line-height: 124px;
+    letter-spacing: 10px;
+    display: inline-block;
+    font-size:102px;
+    font-family: 微软雅黑;
+    font-weight: bold;
+    text-align: center;
+    float:left;
+    color:#ffe0af;
+}
+
+
+.result .d2 .numberbox .hidden{
+  width: 323px;
+  height: 129px;
+  display: inline-block;
+  vertical-align: top;
+  margin:0px 0px 0px 4px;
+  float:left;
+}
+
+
+
+
+/*win-list*/
+
+.w-list{
+    width: 335px;
+    height: 309px;
+    position: absolute;
+    margin:712px 0px 0px 588px;
+}
+
+
+
+.w-list p.wl{
+  width: 325px;
+  height: 27px;
+  margin-bottom:16px;.
+  text-align: center;
+}
+
+.w-list p.wl .w-name{
+  font-family: 微软雅黑;
+  font-size: 16px;
+  color:#ffe0af;
+  display: inline-block;
+  padding-left:10px;
+  margin-right:22px;
+}
+
+.w-list p.wl .w-num{
+  font-family: 微软雅黑;
+  font-size: 16px;
+  color:#ffe0af;
+  display: inline-block;
+  padding-left:10px;
+  margin-right:24px;
+}
+
+.w-list p.wl .price{
+  font-family: 微软雅黑;
+  font-size: 16px;
+  color:#ffe0af;
+  display: inline-block;
+  padding-left:10px;
+}
+
+
+/*抽奖结束*/
+.fin{
+  width: 1000px;
+  height: 205px;
+  top: 367px;
+  position: absolute;
+  background: url(../images/fin.jpg) no-repeat;
+  left:-1px;
+}
+
+.fin.hide{
+  display: none;
+}
+
+
+/*join-list*/
+
+.sign-user{
+    width: 167px;
+    height: 349px;
+    position: absolute;
+    margin:650px 0px 0px 736px;
+}
+
+.sign-user p.su{
+  width: 158px;
+  height: 20px;
+  margin-bottom:5px;.
+  text-align: center;
+}
+
+.sign-user p.su .s-name{
+  font-family: 微软雅黑;
+  font-size:13px;
+  display: inline-block;
+  padding-left:19px;
+  margin-right:21px;
+}
+
+.sign-user p.su .s-num{
+  font-family: 微软雅黑;
+  font-size:13px;
+  display: inline-block;
+  padding-left:5px;
+
+}
+
+
+
+
+
+
+
+
+.submit {
+    width: 305px;
+    height: 72px;
+    position: absolute;
+    top: 577px;
+    left: 50%;
+    margin-left: -150px;
+  }
+
+.submit a.submitBtn {
+    width: 305px;
+    height: 72px;
+    display: inline-block;
+    color:#000;
+  }
+
+.submit a.submitBtn.stop{
+    width: 305px;
+    height: 72px;
+    display: inline-block;
+    color:#ffe0af;
+}
+
+
+.bg3{
+  min-width: 1000px;
+    width: 100%;
+    height: 1200px;
+    background: url(../images/bg3.jpg) no-repeat center center;
+}
+
+
+
+.bg4{
+  min-width: 1000px;
+    width: 100%;
+    height: 864px;
+    background: url(../images/bg4.jpg) no-repeat center center;
+}

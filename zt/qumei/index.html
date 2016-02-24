@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/global.css" />
+		<link rel="stylesheet" type="text/css" href="css/layout.css" />
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<title>曲美家居双11购物节</title>
+	</head>
+
+	<body>
+		<div class="container relative">
+			<div class="leftDl">
+				<div class="wh100 relative">
+					<img src="img/common/left.png"/>
+					<a href="javascript:void(0);" class="left_2"><img src="img/common/1.png"/></a>
+					<a href="javascript:void(0);" class="left_3"><img src="img/common/2.png"/></a>
+					<a href="javascript:void(0);" class="left_4"><img src="img/common/3.png"/></a>
+				</div>
+				
+			</div>
+			<div class="rightDl">
+				<img src="img/common/right.png" usemap="#rightmap" hidefocus="true" />
+				<map name="rightmap" id="rightmap">
+					<area shape="poly" coords="33,236,110,236,110,253,33,253" href="http://www.qumei.com/" />
+				</map>
+			</div>
+			<!--<img src="img/common/lball.png" class="lball" />
+			<img src="img/common/rball.png" class="rball" />-->
+			<!--banner-->
+			<div class="banner wrapper">
+				<div class="wh100 relative">
+					<div class="slg"><img src="img/banner/slg.png" /></div>
+					<div class="cloud"><img src="img/banner/cloud.png" /></div>
+					<div class="airball"><img src="img/banner/airball.png" /></div>
+				</div>
+			</div>
+			<!--banner-->
+			<!--gonglue-->
+			<div class="gonglue wrapper">
+				<div class="t_c">
+					<img src="img/gonglue/gong.png" usemap="#gongmap" hidefocus="true" />
+					<map name="gongmap" id="gongtmap">
+						<area shape="poly" coords="87,318,190,296,194,323,87,345" href="http://www.qumei.com/" alt="" class="side_a1" />
+					</map>
+				</div>
+			</div>
+			<!--gonglue-->
+			<!--youhui-->
+			<div class="youhui wrapper">
+				<div class="t_c relative">
+					<img src="img/youhui/you.png" />
+					<img src="img/youhui/bao.png" class="bao" />
+					<img src="img/youhui/qr.png" class="qr" />
+				</div>
+			</div>
+			<!--youhui-->
+			<div class="comp wrapper">
+				<div class="t_c relative">
+					<img src="img/comp/com.png" />
+					<a href="http://www.qumei.com/"><img src="img/comp/linkto.png" class="linkto" /></a>
+				</div>
+			</div>
+		</div>
+			<!--#include virtual="/public/head.html"-->
+			<!--#include virtual="/public/footer.html"-->
+	</body>
+	<script>
+
+	$(window).scroll(function(){
+		scrollTop=Math.max(parseInt($("html,body").scrollTop()),Math.abs(parseInt($("html,body").offset().top)));
+		if(scrollTop<380){
+			$(".leftDl").hide();
+			$(".rightDl").hide();
+		}
+		else{
+			$(".leftDl").show();
+			$(".rightDl").show();
+		}
+	});
+		$(window).bind("mousewheel",function(){
+			$("html,body").stop();
+		});
+		$(".left_2").bind("click", function() {
+			$("html,body").animate({
+				"scrollTop": "1070"
+			});
+		});
+		$(".left_3").bind("click", function() {
+			$("html,body").animate({
+				"scrollTop": "1970"
+			});
+		});
+		$(".left_4").bind("click", function() {
+			$("html,body").animate({
+				"scrollTop": "2900"
+			});
+		});
+
+	</script>
+
+</html>

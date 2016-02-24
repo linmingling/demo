@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="front-end technicist" content="jinger" />
+	<title>奔跑吧，新明珠</title>
+	<meta name="keywords" content="奔跑吧 新明珠">
+	<meta name="description" content="奔跑吧 新明珠">
+	<meta name="front-end technicist" content="jinger">
+	<link type="text/css" rel="stylesheet" href="css/com.css?v=1.6" media="all" />
+</head>
+
+<body>
+	<h1 class="hide">奔跑吧 新明珠</h1>
+	<div class="mainWrap" id="mainWarp">
+		<div class="insideBox">
+			<!-- 导航 -->
+			<div class="nav clear">
+				<a href="index.html" class="navA navA1">首页</a>
+				<a href="rule.html" class="navA navA2">奔跑吧，新明珠</a>
+				<a href="info.html" class="navA navA3">企业介绍</a>
+				<a href="rank.html" class="navA navA4">排行榜</a>
+			</div>
+			<!-- 内容 -->
+			<div class="infoWarp">
+				<div class="info">
+					<p>新明珠陶瓷集团始建于1992年，注册资金8亿元，经过转制、兼并、自建园区扩张和全国区域性布点发展，从一间小厂开始做大做强，发展成为专业生产陶瓷墙地砖及卫生洁具的现代化企业，并延伸到房地产与家装设计、酒店、红酒、高尔夫运动等领域，成为中国陶瓷产业链的领跑者。</p>
+					<p>如今的新明珠，在继续做强做优建筑陶瓷墙地砖的道路上不断创新前行！“大器天成，厚德筑家”的新明珠地产不断发展壮大，并延伸到家装设计，造福千家万户！以陶瓷应用展示为主体，以金融为纽带，以五星级酒店、高尔夫球场、红酒文化为载体的世界陶瓷商贸平台正在崛起！ </p>
+					<p class="bold">树百年品牌，打造百年企业，我们大道同行！</p>
+				</div>
+				<div class="ewmBtn">
+					<img src="images/ewmLeft.png" class="ewm" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="js/jquery-1.8.3.min.js"></script>
+
+<script>
+	$(function(){
+		wh = $(window).height();
+		if(wh<700){
+			$("#mainWarp .insideBox").height(500)
+		}else{
+			$("#mainWarp .insideBox").height($(window).height()-201)
+		}
+	});
+</script>
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

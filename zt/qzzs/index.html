@@ -1,0 +1,875 @@
+﻿<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>轻舟装饰0元装修</title>
+    <link href="css/bootstrap.min.css?v=1.2" rel="stylesheet">
+    <link rel="stylesheet" href="css/wy-mod-banner.css" media="screen">
+    <script src="js/jquery-1.7.2.min.js"></script>
+    
+    <script type="text/javascript" src="js/my.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<link href="css/main_new.css?v=1.0" rel="stylesheet"> 
+    <script type="text/javascript">
+        function switchPage(pageIndex) {
+            $('.carousel').carousel(pageIndex);
+        }
+
+        function playAnimation(tag) {
+            var ani1 = $("#page_" + tag + " .ani_step_1");
+            var ani2 = $("#page_" + tag + " .ani_step_2");
+            var ani3 = $("#page_" + tag + " .ani_step_3");
+            var pre_start = ((tag == "home") ? 0 : 300);
+            if (ani1 != null) {
+                ani1.css("opacity", 0);
+                setTimeout(function () {
+                    ani1.animate({ opacity: 1 }, 1000);
+                }, 10 + pre_start);
+            }
+            if (ani2 != null) {
+                ani2.css("opacity", 0);
+                setTimeout(function () {
+                    ani2.animate({ opacity: 1 }, 1000);
+                }, 1500 + pre_start);
+            }
+            if (ani3 != null) {
+                ani3.css("opacity", 0);
+                setTimeout(function () {
+                    $("#page_" + tag + " .ani_step_3").animate({ opacity: 1 }, 1000);
+                }, 3000 + pre_start);
+            }
+        }
+
+
+        $(function () {
+
+        var bindAms = function () {
+
+            $('.carousel').carousel(
+            {
+                "pause": "false",
+                "interval": 200000
+            });
+
+            $('.carousel').on('slide.bs.carousel', function (event) {
+                var tag = $(event.relatedTarget).attr("tag");
+                var progress = $(event.relatedTarget).attr("progress");
+
+                $('#img_home').attr("src", "images/home.png");
+                $('#img_intro').attr("src", "images/intro.png");
+                $('#img_gift').attr("src", "images/gift.png");
+                $('#img_feedback').attr("src", "images/feedback.png");
+                $('#img_related').attr("src", "images/related.png");
+
+                $('#img_' + tag).attr("src", "images/" + tag + "_selected.png");
+
+                //$("#progress").width(progress + "px");
+                //$("#progress").css('left', (progress / 2) - 400 + "px");
+                $("#progress").animate({ width: progress, left: (progress / 2) - 400 }, 500);
+                playAnimation(tag);
+            });
+
+            $("body,html").animate({
+                scrollTop: ($("#page_home .splash-container").offset().top)
+            }, 10);
+
+            playAnimation("home");
+
+        };
+
+        var banner1 = function () {
+            var $banner = $('#bannerx');
+            var $banner_ul = $('.banner-img', $banner);
+            var $btn = $('.banner-btn', $banner);
+            var $bcircle = $('.banner-circle', $banner);
+            var $btn_a = $btn.find('a')
+            var v_width = $banner.width();
+
+            var page = 1;
+
+            var timer = null;
+            var btnClass = null;
+
+            var page_count = $banner_ul.find('li').length;//把这个值赋给小圆点的个数
+
+            var banner_cir = "<li class='selected' href='#'><a></a></li>";
+            for (var i = 1; i < page_count; i++) {
+                //动态添加小圆点
+                banner_cir += "<li><a href='#'></a></li>";
+            }
+            $('.banner-circle', $banner).append(banner_cir);
+
+            var cirLeft = $bcircle.width() * (-0.5);
+            $bcircle.css({ 'marginLeft': cirLeft });
+
+            $banner_ul.width(page_count * v_width);
+
+            function move(obj, classname) {
+                //手动及自动播放
+                if (!$banner_ul.is(':animated')) {
+                    if (classname == 'prevBtn') {
+                        if (page == 1) {
+                            $banner_ul.animate({ left: -v_width * (page_count - 1) });
+                            page = page_count;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '+=' + v_width }, "slow");
+                            page--;
+                            cirMove();
+                        }
+                    }
+                    else {
+                        if (page == page_count) {
+                            $banner_ul.animate({ left: 0 });
+                            page = 1;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '-=' + v_width }, "slow");
+                            page++;
+                            cirMove();
+                        }
+                    }
+                }
+            }
+
+            function cirMove() {
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner-circle li').eq(page - 1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+            }
+
+            $banner.mouseover(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+            }).mouseout(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+            }).trigger("mouseout");//激活自动播放
+
+            $btn_a.mouseover(function () {
+                //实现透明渐变，阻止冒泡
+                $(this).animate({ opacity: 0.6 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).mouseleave(function () {
+                $(this).animate({ opacity: 0.3 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).click(function () {
+                //手动点击清除计时器
+                btnClass = this.className;
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+                move($(this), this.className);
+            });
+
+            $('.banner-circle li').live('click', function () {
+                var index = $('.banner-circle li').index(this);
+                $banner_ul.animate({ left: -v_width * index }, 'slow');
+                page = index + 1;
+                cirMove();
+            });
+        };
+
+        var banner2 = function () {
+            var $banner = $('.banner2');
+            var $banner_ul = $('.banner2-img');
+            var $btn = $('.banner2-btn');
+            var $btn_a = $btn.find('a')
+            var v_width = $banner.width();
+
+            var page = 1;
+
+            var timer = null;
+            var btnClass = null;
+
+            var page_count = $banner_ul.find('li').length;//把这个值赋给小圆点的个数
+
+            var banner_cir = "<li class='selected' href='#'><a></a></li>";
+            for (var i = 1; i < page_count; i++) {
+                //动态添加小圆点
+                banner_cir += "<li><a href='#'></a></li>";
+            }
+            $('.banner2-circle').append(banner_cir);
+
+            var cirLeft = $('.banner2-circle').width() * (-0.5);
+            $('.banner2-circle').css({ 'marginLeft': cirLeft });
+
+            $banner_ul.width(page_count * v_width);
+
+            function move(obj, classname) {
+                //手动及自动播放
+                if (!$banner_ul.is(':animated')) {
+                    if (classname == 'prevBtn') {
+                        if (page == 1) {
+                            $banner_ul.animate({ left: -v_width * (page_count - 1) });
+                            page = page_count;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '+=' + v_width }, "slow");
+                            page--;
+                            cirMove();
+                        }
+                    }
+                    else {
+                        if (page == page_count) {
+                            $banner_ul.animate({ left: 0 });
+                            page = 1;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '-=' + v_width }, "slow");
+                            page++;
+                            cirMove();
+                        }
+                    }
+                }
+            }
+
+            function cirMove() {
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner2-circle li').eq(page - 1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+            }
+
+            $banner.mouseover(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+            }).mouseout(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+            }).trigger("mouseout");//激活自动播放
+
+            $btn_a.mouseover(function () {
+                //实现透明渐变，阻止冒泡
+                $(this).animate({ opacity: 0.6 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).mouseleave(function () {
+                $(this).animate({ opacity: 0.3 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).click(function () {
+                //手动点击清除计时器
+                btnClass = this.className;
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+                move($(this), this.className);
+            });
+        };
+		
+		
+		var banner3 = function () {
+            var $banner = $('.banner3');
+            var $banner_ul = $('.banner3-img');
+            var $btn = $('.banner3-btn');
+            var $btn_a = $btn.find('a')
+            var v_width = $banner.width();
+
+            var page = 1;
+
+            var timer = null;
+            var btnClass = null;
+
+            var page_count = $banner_ul.find('li').length;//把这个值赋给小圆点的个数
+
+           
+
+            $banner_ul.width(page_count * v_width);
+
+            function move(obj, classname) {
+                //手动及自动播放
+                if (!$banner_ul.is(':animated')) {
+                    if (classname == 'prevBtn') {
+                        if (page == 1) {
+                            $banner_ul.animate({ left: -v_width * (page_count - 1) });
+                            page = page_count;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '+=' + v_width }, "slow");
+                            page--;
+                            cirMove();
+                        }
+                    }
+                    else {
+                        if (page == page_count) {
+                            $banner_ul.animate({ left: 0 });
+                            page = 1;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '-=' + v_width }, "slow");
+                            page++;
+                            cirMove();
+                        }
+                    }
+                }
+            }
+
+           
+
+            $banner.mouseover(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+            }).mouseout(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+            }).trigger("mouseout");//激活自动播放
+
+            $btn_a.mouseover(function () {
+                //实现透明渐变，阻止冒泡
+                $(this).animate({ opacity: 0.6 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).mouseleave(function () {
+                $(this).animate({ opacity: 0.3 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).click(function () {
+                //手动点击清除计时器
+                btnClass = this.className;
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+                move($(this), this.className);
+            });
+        };
+		
+		
+
+        //init
+        banner1();
+        banner2();
+		banner3();
+        bindAms();
+    
+        });
+
+    </script>
+
+
+<script src="js/MyCxcPlug.js" type="text/javascript"></script><!--end 点击弹出层-->
+
+<!--滚动条-->
+<script type="text/javascript" src="js/jquery.sly.js"></script>
+<script type="text/javascript" src="js/jquery.easing-1.3.min.js"></script>
+<script type="text/javascript">
+$(function($){
+
+
+  
+
+	// 占位符项目来填充列表的功能
+	function populate(container, count, offset){
+		var output = '';
+		offset = isNaN(offset) ? 0 : offset;
+		for(var i = 0; i<count; i++ ){
+			output += '<li>'+(offset+i)+'</li>';
+		}
+		return $(output).appendTo(container);
+	}
+
+	// 填充列表项
+	$('ul[data-items]').each(function(i,e){
+		var items = parseInt($(e).data('items'), 10);
+		populate(e, items);
+	});
+
+	var isBindScroll = false;
+	var bindScroll = function (id) {
+	    if (isBindScroll) { return false; }
+	    isBindSroll = true;
+	    id=id || "vertical";
+	    var $section = $("#" +id);
+	  
+	    var $frame = $section.find('.frame'),
+			$ul = $frame.find('ul').eq(0),
+			$scrollbar = $section.find('.scrollbar'),
+			$buttons = $section.find('.controlbar [data-action]');
+			
+
+	    populate($ul, 10);
+
+	    // 控制
+	    $buttons.on('click', function (e) {
+	        var action = $(this).data('action');
+	        switch (action) {
+	            case 'reset':
+	                $frame.sly('toStart');
+	                setTimeout(function () {
+	                    $ul.find('li').slice(10).remove();
+	                    $frame.sly('reload');
+	                }, 200);
+	                break;
+	            default:
+	                $frame.sly(action);
+	        }
+	    });
+
+	    $section.find(".slyWrap").each(function (i, e) {
+	        var cont = $(this),
+				frame = cont.find(".sly"),
+				slidee = frame.find("ul"),
+				scrollbar = cont.find(".scrollbar"),
+				pagesbar = cont.find(".pages"),
+				options = frame.data("options"),
+				controls = cont.find(".controls"),
+				prevButton = controls.find(".prev"),
+				nextButton = controls.find(".next"),
+				prevPageButton = controls.find(".prevPage"),
+				nextPageButton = controls.find(".nextPage");
+
+	        options = $.extend({}, options, {
+	            scrollBar: scrollbar,
+	            pagesBar: pagesbar,
+	            prev: prevButton,
+	            next: nextButton,
+	            prevPage: prevPageButton,
+	            nextPage: nextPageButton,
+	            disabledClass: 'btn-disabled'
+	        });
+
+	        frame.sly(options);
+
+	        cont.find("button").click(function () {
+	            var action = $(this).data('action'),
+				arg = $(this).data('arg');
+	            switch (action) {
+	                case 'add':
+	                    slidee.append(slidee.children().slice(-1).clone().removeClass().text(function (i, text) {
+	                        return text / 1 + 1;
+	                    }));
+	                    frame.sly('reload');
+	                    break;
+	                case 'remove':
+	                    slidee.find("li").slice(-1).remove();
+	                    frame.sly('reload');
+	                    break;
+	                default:
+	                    frame.sly(action, arg);
+	            }
+	        });
+
+	    });
+	};
+
+
+	$("#navbtnX").on("click", function () {
+	    setTimeout(bindScroll,200);
+	});
+	$("#menu2x").on("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical2");
+	    }, 200);
+	});
+	// 主要调用部分
+	$(document).on('activated',function(event){
+		
+	}).trigger('activated');
+	
+
+});
+</script><!--end滚动条-->
+
+    
+<script type="text/javascript">
+$(function(){
+
+	$('.food_img ul li').hover(function(){
+		$(this).children('.box2').stop(true,true).delay(100).animate({'top':0,opacity:0.8},300);
+	},function(){
+		$(this).children('.box2').stop(true,true).animate({'top':-200,opacity:0},200);
+	})
+	
+})
+</script>
+</head>
+<body>
+<div class="header topnav" id="topNav" >
+        <div class="mininav">
+            <a href="http://www.jia360.com/" target="_blank" class="logo" title="腾讯网亚太家居·腾讯家居<">腾讯网亚太家居_腾讯家居</a>
+            <div class="mr">
+                <!--<span id="morecity" class="cm">
+                    <p>城市站</p>
+                    <div class="tabcity" id="tabcity"></div>
+                </span>
+                <span class="l">|</span>-->
+                <span id="hychannel" class="hychannel">
+                    <p>产品中心</p>
+                    <ul>
+                        <a href="http://www.jia360.com/jiaju/" target="_blank">家具</a>
+                        <a href="http://www.jia360.com/weiyu/" target="_blank">卫浴</a>
+                        <a href="http://www.jia360.com/cizhuan/" target="_blank">瓷砖</a>
+                        <a href="http://www.jia360.com/yigui/" target="_blank">衣柜</a>
+                        <a href="http://www.jia360.com/chufang/" target="_blank">厨房</a>
+                        <a href="http://www.jia360.com/huwai/" target="_blank">户外</a>
+                        <a href="http://www.jia360.com/muwu/" target="_blank">木屋</a>
+                        <a href="http://www.jia360.com/diaoding/" target="_blank">吊顶</a>
+                        <a href="http://www.jia360.com/shicai/" target="_blank">石材</a>
+                        <a href="http://www.jia360.com/zhujiaju/" target="_blank">竹家居</a>
+                        <a href="http://www.jia360.com/diban/" target="_blank">地板</a>
+                        <a href="http://www.jia360.com/menchuang/" target="_blank">门窗</a>
+                        <a href="http://www.jia360.com/zhengmu/" target="_blank">整木</a>
+                        <a href="http://www.jia360.com/hongmu/" target="_blank">红木</a>
+                        <a href="http://www.jia360.com/jiashi/" target="_blank">家饰</a>
+                        <a href="http://www.jia360.com/louti/" target="_blank">楼梯</a>
+                        <a href="http://www.jia360.com/shuimian/" target="_blank">睡眠</a>
+                        <a href="http://www.jia360.com/qiangzhi/" target="_blank">墙纸</a>
+                        <a href="http://www.jia360.com/zhaoming/" target="_blank">照明</a>
+                        <a href="http://www.jia360.com/gangmumen/" target="_blank">钢木门</a>
+                        <a href="http://www.jia360.com/cainuo/" target="_blank">采暖</a>
+                        <a href="http://www.jia360.com/shafa/" target="_blank">沙发</a>
+                        <a href="http://www.jia360.com/jiafang/" target="_blank">家纺</a>
+                        <a href="http://www.jia360.com/ditan/" target="_blank">地毯</a>
+                        <a href="http://www.jia360.com/yuanyi/" target="_blank">园艺</a>
+                        <a href="http://www.jia360.com/tuliao/" target="_blank">涂料</a>
+                        <a href="http://www.jia360.com/wujin/" target="_blank">五金</a>
+                        <a href="http://www.jia360.com/ertong/" target="_blank">儿童家具</a>
+                    </ul>
+                </span>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/picture/" target="_blank" class="nt">图库</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/evaluation/" target="_blank" class="nt">评测</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/zhuanti/qgbcqc" target="_blank" class="nt">导购</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/fresh/" target="_blank" class="nt">新品</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/homelife/geomantic/" target="_blank" class="nt">风水</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/fitment/idea/" target="_blank" class="nt">配饰</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/fitment/college/" target="_blank" class="nt">案例库</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com:80/shejishi/index.html" target="_blank" class="nt">设计师</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/news/video/" target="_blank" class="nt">视频</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/zhuanti/" target="_blank" class="nt">专题</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/news/person/" target="_blank" class="nt">人物</a>
+                <span class="l">|</span>
+                <a href="http://news.jia360.com/" target="_blank" class="nt">新闻</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/" target="_blank" class="nt">首页</a>
+
+            </div>
+        </div>
+    </div>
+    
+<div class="zxzx"> <a href="http://wpa.qq.com/msgrd?V=3&amp;uin=525968575&amp;Site=613在线咨询&amp;Menu=yes" target="_blank"><img src="images/zxzx.jpg" /></a></div>
+<div id="ad"></div>
+<div id="carousel_container" class="carousel slide full_height">
+  <div class="carousel-inner full_height">
+    <div id="page_home" class="page item active" tag="home" progress="150">
+      <div id="main">
+        <div id="splash">
+          
+ 
+          <div class="container splash-container">
+             <div class="mainimg">
+                <img src="images/mainimg.png" width="530" height="590">
+                <div id="bntser"><span id="close4"><img src="images/ImgClose.png" /></span>
+                  
+                    <div class="ctxt">
+                      <p><img src="images/wds.png" width="800" height="210" /></p>
+                    </div>
+                  </div><!--end #bntser-->
+                <div class="tc1">
+                    <p class="bnts"></p>
+                 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page_intro" class="page item" tag="intro" progress="300">
+      <div id="main">
+        <div id="splash" class="ani_step_1">
+          <div class="container splash-container">
+            <div class="zhons">
+              <div class="left">
+                <div class="box">
+                  <div class="banner" id="bannerx">
+                    <div class="banner-btn"> <a href="javascript:;" class="prevBtn"><i></i></a> <a href="javascript:;" class="nextBtn"><i></i></a></div>
+                    <ul class="banner-img">
+                      <li><a href="#"><img src="images/n6.jpg"></a></li>
+                      <li><a href="#"><img src="images/n1.jpg" /></a></li>
+                      <li><a href="#"><img src="images/n2.jpg"></a></li>
+                      <li><a href="#"><img src="images/n3.jpg"></a></li>
+                      <li><a href="#"><img src="images/n4.jpg"></a></li>
+                      <li><a href="#"><img src="images/n5.jpg"></a></li>
+                      <li><a href="#"><img src="images/n7.jpg"></a></li>
+                    </ul>
+                    <ul class="banner-circle">
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page_gift" class="page item" tag="gift" progress="450">
+      <div id="main">
+        <div id="splash">
+          <div class="container splash-container ani_step_1">
+            <div class="hdcp">
+             <div id="Monver"><span id="close"><img src="images/ImgClose.png" /></span>
+                    <div class="cbt">回龙观公园悦府（92平米）现代简约设计案例</div>
+                    <div class="ctxt">
+                      <p><b>案例地址：</b>公园悦府　　　　<b>房屋户型：</b>三室两厅一厨两卫</p>
+                      <p><b>户型面积：</b>92平米　　　　　<b>装修造价：</b>14万</p>
+                      <p><b>装修风格：</b>简约风格　　　　<b>轻舟设计师：</b>	魏拥军</p>
+                      <p>　</p>
+                      <p><b>家庭环境：</b>男主人是软件工程师，喜欢简洁明朗的生活空间，女主人是公司白领，特别热爱生活。客户喜欢以黑白灰现代装饰元素、在装饰材料上要求环保、设计风格上要求简约中又有变化，生活品质上要求高档生活氛围。业主在黑白灰的主体色彩上追求渐变效果，从视觉设计让房子变的更大气。</p>
+                      <p><b>3Y设计户型分析：</b>客厅、餐厅、门厅、阳台、原结构没有分隔。整个空间需要细微调整。</p>
+                      <p><b>设计说明：</b>以简洁的表现形式来满足业主对空间环境那种感性的、本能的和理性的需求，这是当今国际社会流行的设计风格——简洁明快的简约主义。而现代人快节奏、高频率、满负荷，已让人到了无可复加的接受地步。人们在这日趋繁忙的生活中，渴望得到一种能彻底放松、以简洁和纯净来调节转换精神的空间，这是人们在互补意识支配下，所产生的亟欲摆脱繁琐、复杂、追求简单和自然的心理。</p>
+                      <p><b>代表人群：</b>追求优雅与浪漫、简洁明快与艺术表现的人。</p>
+                      <p><b>适合户型：</b>比较开阔的住宅、公寓、别墅。</p>
+                    </div>
+                  </div><!--end #Monver-->
+                  
+                  <div id="Monver2"><span id="close2"><img src="images/ImgClose.png" /></span>
+                    <div class="ms"><img src="images/m2.jpg" /></div>
+                  </div><!--end #Monver2-->
+                  
+                  <div id="Monver3"><span id="close3"><img src="images/ImgClose.png" /></span>
+                    <div class="ms"><img src="images/m3.jpg" /></div>
+                  </div><!--end #Monver3-->
+                  <script type="text/javascript">
+			$(document).ready(function(){
+				$(".bnts").click(function(){
+					Popuplayer({
+						LayerId:"bntser",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close4",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv").click(function(){
+					Popuplayer({
+						LayerId:"Monver",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv2").click(function(){
+					Popuplayer({
+						LayerId:"Monver2",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close2",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+				$(".Monv3").click(function(){
+					Popuplayer({
+						LayerId:"Monver3",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close3",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+			});
+			</script>
+               <div class="food_img">
+	<ul>
+		<li style="width:199px; height:299px;"> 
+        <div class="banner2" id="banner2">
+                    <div class="banner2-btn"> <a href="javascript:;" class="prevBtn"><i></i></a> <a href="javascript:;" class="nextBtn"><i></i></a></div>
+                    <ul class="banner2-img">
+                      <li style=" width:199px; height:299px;"><p class="Monv"><img src="images/gezi_01.jpg"/><</p></li>
+                      <li style=" width:199px; height:299px;"><p class="Monv2"><img src="images/gezi_01a.jpg"/></p></li>
+                      <li style=" width:199px; height:299px;"><p class="Monv3"><img src="images/gezi_01b.jpg"/></p></li>
+                    </ul>
+                   
+                  </div>
+			
+		</li>
+		<li style="width:400px; height:200px; margin-top:99px;"> 
+			<img src="images/gezi_02.jpg"/>
+			<div class="box2">
+				<h3>客厅及餐厅</h3>
+                <b>（餐桌背景效果）设计案例</b>
+				<p>客厅与餐桌墙面色彩的完美过渡从视觉上实现了区域的划分，同时与地板颜色相呼应，可谓是低调的华丽。餐桌背景墙的咖色镜子装饰完美诠释了何谓简约不简单，也给人以空间扩充之感。</p>
+			</div>
+		</li>
+		<li style="width:200px; height:200px; margin-top:99px;"> 
+			<img src="images/gezi_03.jpg"/>
+			<div class="box2">
+				<h3>主卧室</h3>
+                <b>（壁纸、墙漆）  设计案例</b>
+				<p>主卧室根据客户对颜色的喜爱，设计师对色彩进行了局部调整，用咖色、米色、白色、藕荷色、相间的色彩进行过度，使整个空间色彩比较协调舒适。</p>
+			</div>
+		</li>
+		<li style="width:200px; height:200px; margin-top:99px;"> 
+			<img src="images/gezi_04.jpg"/>
+			<div class="box2">
+				<h3>主卧室</h3>
+                <b>（卧室壁纸效果） 设计案例</b>
+				<p>主卧室根据客户对颜色的喜爱，设计师对色彩进行了局部调整，用咖色、米色、白色、相间的色彩进行过度，使整个空间色彩比较协调舒适。</p>
+			</div>
+		</li>
+		<li style="width:199px; height:200px;"> 
+			<img src="images/gezi_05.jpg"/>
+			<div class="box2">
+				<h3>卫生间</h3>
+                <b>（灯光冷色） 设计案例</b>
+				<p>将浅灰色墙砖和浅黑地砖、黑白色浴室柜进行综合搭配，体现卫生间的空间实用性和利用率，地面使用高亮度微晶石防滑地砖体现空间效果。</p>
+			</div>
+		</li>
+		<li style="width:201px; height:200px;"> 
+			<img src="images/gezi_06.jpg"/>
+			<div class="box2">
+				<h3>厨房</h3>
+                <b>简约厨房 设计案例</b>
+				<p>厨房根据空间基本需求，按照正常的格局布局，墙面的灰色瓷砖、白色台面、白色的橱柜柜体，体现出厨房的简洁、明快的效果</p>
+			</div>
+		</li>
+		<li style="width:399px; height:200px;"> 
+			<img src="images/gezi_07.jpg"/>
+			<div class="box2">
+				<h3>客厅及过道</h3>
+                <b>公园悦府（92平米）现代 简约 客厅（餐桌背景效果）设计案例</b>
+				<p>客厅与过道相邻，功能区区分不明显。设计师通过顶部吊顶以及餐桌背景墙的凹凸设计，横纵两向增强空间层次感，自然不落痕迹地实现了区域划分。</p>
+			</div>
+		</li>
+		<li style="width:200px; height:200px;"> 
+			<img src="images/gezi_08.jpg"/>
+			<div class="box2">
+				<h3>儿童房</h3>
+                <b>（墙面色彩） 设计案例</b>
+				<p>儿童房根据客户基本需求，按照正常的格局布局，墙面的硅藻泥、白色家具、柚木色的复合地板，通过儿童喜欢的色彩来体现出房间的简洁、明快的效果。</p>
+			</div>
+		</li>
+	</ul>
+</div><!--end-->
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="page_related" class="page item" tag="related" progress="750">
+      <div id="main">
+        <div id="splash" class="ani_step_1">
+          <div class="container splash-container">
+            <div class="qyjs">
+            
+              <div class="banner3" id="banner3">
+                    <div class="banner3-btn"> <a href="javascript:;" class="prevBtn"><i></i></a> <a href="javascript:;" class="nextBtn"><i></i></a></div>
+                    <ul class="banner3-img">
+                      <li><a href="#"><img src="images/p1.jpg" /></a></li>
+                      <li><a href="#"><img src="images/p2.jpg"></a></li>
+                      <li><a href="#"><img src="images/p3.jpg"></a></li>
+                      <li><a href="#"><img src="images/p4.jpg"></a></li>
+                      <li><a href="#"><img src="images/p5.jpg"></a></li>
+                      <li><a href="#"><img src="images/p6.jpg"></a></li>
+                      <li><a href="#"><img src="images/p7.jpg"></a></li>
+                      <li><a href="#"><img src="images/p8.jpg"></a></li>
+                      <li><a href="#"><img src="images/p9.jpg"></a></li>
+                      <li><a href="#"><img src="images/p10.jpg"></a></li>
+                    </ul>
+                   
+              </div>
+                  
+              <div class="tab_bg"></div>
+              <div class="tab_boxs">
+               
+
+                  <div class="show">
+                     <div class="titles">轻舟装饰</div>
+                    <div id="vertical" class="scrollbox clearfix">
+                      <div class="slyWrap example1">
+                        <div class="scrollbar" style="border-top:none;">
+                          <div class="handle"></div>
+                        </div>
+                        <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }'>
+                          <div style=" padding-left:25px;">
+                            
+                            <p>北京轻舟世纪建筑装饰工程有限公司，是一家从事建筑装饰专业设计与施工的企业。自成立以来，业务范围从家庭装饰装修逐步扩展到公共建筑项目装饰装修领域，是拥有国家建委颁发的专业资质等级证书的知名装饰企业。是中国建筑装饰协会会员单位，北京建筑装饰协会理事单位。多次荣获全国及北京装饰协会诚信企业称号和百余项工程名优奖项。</p>
+                            <p>多年以来，轻舟装饰公司秉承"创新、务实、团结、共赢"的企业文化理念，锐意进取，在装饰领域中屡创辉煌。</p>
+                            <p>轻舟装饰以北京为核心，构建了遍布京城的十二家分公司、直属专营部、高端设计楼与遍布全国近百个特许加盟和直营分公司，构成轻舟企业庞大的服务网络。"为客户提供完整、细致的家居产品与服务"是轻舟企业的经营宗旨。</p>
+                            <p>2009年轻舟公司陆续推出轻舟"低碳.家居"时尚生活、轻舟"3Y"设计体系、轻舟"生态.工程"体系。轻舟系列体系最重要的最用是：改变了家装公司过去传统式"被动环保"局面，为消费者开创了第一个"主动环保"的家装企业。让家装从过去的保持材料环保性能，提升为自主研发、生产材料的环保性能。</p>
+                            <p>2010年轻舟"低碳.环保"家居产品将在家装、精装非居住性建筑项目中惊醒广泛的应用，配合完整完善的主材代办体系、丰富优质的集成系列产品、环保优质工程、项目监理管控、五巡八检制度、双向互动式客户服务、便捷顺畅的网络客户信息平台以及行业中唯一一家三年质量保修企业，为客户提供整合完整的解决方案和家居环境服务体系，使"绝不让装修打乱您的生活"</p>
+                            <p>轻舟企业的今天：以"品轻舟科技、享维家服务"，唱响企业人文底蕴。</p>
+                            <p>轻舟企业：是专业为中国家庭提供"环保、低碳、健康、细致时尚的设计、施工、集成产品"全方位服务为己任。</p>
+                            <p>轻舟企业：是首家科技专利产品研发、生产的家装企业。</p>
+                            <p>轻舟企业：是引领低碳家居、环保产品生产、市场投入的企业。</p>
+                            <p>"轻舟维家"的诞生，是传承高品质生活方式的服务体系。</p>
+                            <p>"做中国最具影响力的企业，事先从优秀到卓越"是轻舟企业的目标。</p>
+                            <p>未来轻舟（中国）----专注于生活品质建设，更励志于社会健康发展。</p>
+                   
+                    
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               
+            
+                  
+                  
+                </div>
+
+              <!--end tab_box-->
+ 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer" >
+    <div id="navbar">
+        <div class="logobnt"><a href="http://www.qingzhou.net.cn" target="_blank"></a></div>
+		<div id="navbtns" class="container" >
+			<div class="navbtn">
+				<a href="javascript:switchPage(0)">
+					<img id="img_home" src="images/home_selected.png" alt="首页">
+				</a>
+			</div>
+			<div class="navbtn">
+				<a href="javascript:switchPage(1)">
+					<img id="img_intro" src="images/intro.png" alt="活动介绍">
+				</a>
+			</div>
+			<div class="navbtn">
+				<a href="javascript:switchPage(2)">
+					<img id="img_gift" src="images/gift.png" alt="活动产品">
+				</a>
+			</div>
+			<div class="navbtn" id="navbtnX">
+				<a href="javascript:switchPage(3)">
+					<img id="img_related" src="images/related.png" alt="1元抢购">
+				</a>
+			</div>
+			
+		</div>
+    </div>
+</div>
+</div>
+
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>
