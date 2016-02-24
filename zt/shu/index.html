@@ -1,0 +1,247 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta charset="utf-8">
+<title>(●—●)我拍大白得了0.00分，分数越高送大白！</title>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="full-screen" content="yes">
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-fullscreen" content="true">
+<meta name="360-fullscreen" content="true">
+<link rel="stylesheet" href="css/com.css">
+<link rel="stylesheet" href="css/shu.css">
+</head>
+<body>
+	<!--第一页 start-->
+	<div class="page1 page">
+		<div id="page1">
+			<img src="images/p-1.png" class="img">
+			<img src="images/1-1.png" class="star_btn" id="star_btn" />
+			<img src="images/1-2.png" class="rank_btn" id="rank_btn"/>
+		</div>
+	</div>
+	<!--第二页 start-->
+	<div id="page2" class="page2 page hide">
+		<img src="images/r1.png" class="img">
+		<img src="images/2-2.png" class="next" id="next1"/>
+		<img src="images/know.png" class="know" />
+	</div>
+	<!--第三页 start-->
+	<div id="page3" class="page2 page hide">
+		<img src="images/r2.png" class="img">
+		<img src="images/2-2.png" class="next" id="next2"/>
+		<img src="images/know.png" class="know" />
+	</div>
+	<!--第三页 start-->
+	<div id="page4" class="page2 page hide">
+		<img src="images/r3.png" class="img">
+		<img src="images/2-1.png" class="next" id="prev"/>
+		<img src="images/know.png" class="know" />
+	</div>
+	<!-- 第四页 排行榜 -->
+	<div id="page5" class="rank tc hide">
+		<p class="head">
+			<span class="title"><img src="images/fen.png"></span>
+			<span class="r">
+				<span class="rk" witch="0">1期</span>
+				<span class="rk" witch="1">2期</span>
+				<span class="rk" witch="2">3期</span>
+				<span class="rk" witch="3">4期</span>
+			</span>
+		</p>
+		<div class="rank_main">
+			<p class="clear">
+				<span class="rList1 title">名次</span>
+				<span class="rList2 title">名称</span>
+				<span class="rList3 title">分数</span>
+			</p>
+			<p class="clear">
+				<span class="rList1">1</span>
+				<span class="rList2">名字</span>
+				<span class="rList3">分数</span>
+			</p>
+			<p class="clear">
+				<span class="rList1">2</span>
+				<span class="rList2">名字</span>
+				<span class="rList3">分数</span>
+			</p>
+			<p class="clear">
+				<span class="rList1">3</span>
+				<span class="rList2">名字</span>
+				<span class="rList3">分数</span>
+			</p>
+			<p class="clear">
+				<span class="rList1">4</span>
+				<span class="rList2">名字</span>
+				<span class="rList3">分数</span>
+			</p>
+			<p class="clear">
+				<span class="rList1">5</span>
+				<span class="rList2">名字</span>
+				<span class="rList3">分数</span>
+			</p>
+			<p class="clear">
+				<span class="rList1">6</span>
+				<span class="rList2">名字</span>
+				<span class="rList3">分数</span>
+			</p>
+			<p class="clear">
+				<span class="rList1">7</span>
+				<span class="rList2">名字</span>
+				<span class="rList3">分数</span>
+			</p>
+			<p class="clear">
+				<span class="rList1">8</span>
+				<span class="rList2">名字</span>
+				<span class="rList3">分数</span>
+			</p>
+			<p class="clear">
+				<span class="rList1">9</span>
+				<span class="rList2">名字</span>
+				<span class="rList3">分数</span>
+			</p>
+			<p class="clear">
+				<span class="rList1">10</span>
+				<span class="rList2">名字</span>
+				<span class="rList3">分数</span>
+			</p>
+		</div>
+		<div class="rank_btn_box">
+			<span class="o-rank rank_btn" id="o-rank">上期排名</span>
+			<span class="n-rank rank_btn" id="n-rank">即时排名</span>
+			<span class="return rank_btn" id="return">返回</span>
+		</div>
+	</div>
+	<!-- 游戏开始 -->
+	<div id="container" class="splash" style="width: 320px; height: 568px;display:none">
+		<canvas id="canvas" width="640" height="1136" style="width: 320px; height: 568px;"><span>Browser does not support the canvas.</span></canvas>
+	</div>
+	<div id="preload"></div>
+	<!-- 游戏end -->
+<script src="js/zepto.min.js"></script>	
+<script type="text/javascript">
+	var test = new Array(
+		new Array("1","名字","111"),
+		new Array("2","名字","222"),
+		new Array("3","名字","333"),
+		new Array("4","名字","444"),
+		new Array("5","名字","555"),
+		new Array("6","名字","666"),
+		new Array("7","名字","分数"),
+		new Array("8","名字","分数"),
+		new Array("9","名字","分数"),
+		new Array("10","名字","分数")
+	);
+	function FS_hje(f){
+		console.log(f);
+	}
+	function rank(i){
+		//i 为-1 0-3；0-3对应请求第1-4期，-1请求本期
+
+		$.ajax({
+			async:true,
+		 	url: "",
+		 	data: "",
+		 	type: 'post',
+		 	dataType:'json',
+		 	success:function(result){
+				//需要返回当前显示第几期，0-3
+				$("#page5 .head .rk").removeClass("r-c");
+				$("#page5 .head .rk").eq(0).addClass("r-c");
+				//test为返回的排行榜
+				var list = '<p class="clear"><span class="rList1 title">名次</span><span class="rList2 title">名称</span><span class="rList3 title">分数</span></p>';
+		 		for(var j=0;j<test.length;j++){
+					list += '<p class="clear"><span class="rList1 ">'+test[j][0]+'</span><span class="rList2">'+test[j][1]+'</span><span class="rList3">'+test[j][2]+'</span></p>';
+				}
+				$("#page5 .rank_main").html(list);
+		 	
+			},
+		 	error:function(result){
+		 		
+		 	}
+			
+		});
+		
+	}
+	$(function(){
+		$('.star_btn').click(function(){
+			$('#page1').hide();
+        	$('#page2').show();
+    	});
+    	$('#rank_btn').click(function(){
+			$('#page1').hide();
+        	$('#page5').show();
+			rank(-1);
+    	});
+		$('#return').click(function(){
+			$('#page1').show();
+        	$('#page5').hide();
+    	});
+		$("#page5 .head .rk").click(function(){
+			rank($(this).index());
+		});
+		$("#o-rank").click(function(){
+			var i = $("#page5 .head .r-c").index();
+			if(i > 0){
+				rank(i-1);
+			}
+		});
+		$("#n-rank").click(function(){
+			rank(-1);
+		});
+    	// 游戏规则翻页
+    	$('#next1').click(function(){
+			$('#page2').hide();
+        	$('#page3').show();
+    	});
+    	$('#next2').click(function(){
+			$('#page3').hide();
+        	$('#page4').show();
+    	});
+    	$('#prev').click(function(){
+			$('#page4').hide();
+        	$('#page3').show();
+    	});
+    	$('.know').click(function(){
+    		$('#container').show();
+    		$('.page').hide();
+			star_hje();
+    	});
+	});
+</script>
+<script src="js/shu.js"></script>
+<script language="javascript">
+		
+	function goHome(){
+
+	}
+	function clickMore(){
+
+	}
+	function dp_share(){
+
+	}
+	function dp_Ranking(){
+
+	}
+
+	function showAd(){
+	}
+	function hideAd(){
+	}
+	
+
+	function dp_submitScore(score){
+
+	}
+
+
+	</script>
+</div>
+</body>
+</html>

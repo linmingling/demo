@@ -1,0 +1,40 @@
+.clear:after{clear: both;content:'.';display: block;visibility:hidden;height:0;}
+.clear{zoom:1; clear: both;}
+.hide{display:none}
+#gameDiv{width:100%; height:100%;margin: 0 auto; background: #fff; position:absolute;}
+.r{float: right;}
+/*part1*/
+.page1{width:100%;height:100%;position:absolute;top:0;left:0;overflow:hidden}
+.page1 .img{width:100%}
+.page1{background:url(../images/bg.jpg) no-repeat;background-size:100% 100%;position: relative;}
+.page1 .star_btn,.page1 .rank_btn{width: 40%;position: absolute;bottom: 18%}
+.page1 .star_btn{margin-right: 10%;left: 7%}
+.page1 .rank_btn{right: 7%}
+/*part2*/
+.page2{width:100%;height:100%;position:absolute;top:0;left:0}
+.page2 .img{position: relative;top:5%;left:5%;width:90%}
+.page2 .next,.page2 .know{width: 35%;position: relative;bottom: 4%}
+.page2 .next{margin-right: 10%;left: 12%}
+.page2 .know{right: -4%}
+/*part3 排行榜*/
+.tc{width:90%;position:absolute;top:3%;left:5%;background: #fff;}
+.tc .tc_bg{width:100%;}
+.tc .head{width: 100%;margin: 10px 0;height: 32px;border-bottom: 1px solid #f2f2f2;}
+.tc .head img{width: 40%;position: absolute;left: 12px;}
+.tc .head .rk{background: #BDBDBD;color: #fff;width: 25px;height: 25px;line-height: 25px;border-radius: 50%;display: inline-block;text-align: center;font-size: 12px;margin-left: 5px;}
+.tc .head .r-c{background:#02ADFA;color: #fff}
+.tc .head .r{margin-right: 10px}
+.tc .rank_head{width:100%;position:absolute;top:0;left:0;z-index:1}
+.tc .rank_main{width:90%;margin-left:5%;text-align: center;}
+.tc .clear .title{color: #333}
+.tc .rank_main .rList1{width:25%;float:left}
+.tc .rank_main .rList2{width:40%;float:left}
+.tc .rank_main .rList3{width:35%;float:left}
+.tc .rank_main p{color:#FF6D00;font-weight:bold;margin:8px 0 0 0}
+
+.tc .rank_btn_box{margin:10px 10%}
+.tc .rank_btn{width:46%;height:35px;line-height:35px;text-align:center;margin-bottom:10px;font-weight:bold;font-size:18px;display:block;background:#00aeff;color:#fff;font-size:}
+.tc .o-rank{float:left}
+.tc .n-rank{float:right}
+.tc .return{margin-left:27.5%;float:left}
+

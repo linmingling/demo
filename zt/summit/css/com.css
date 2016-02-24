@@ -1,0 +1,191 @@
+/********************* reset Start *********************/
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 12px/1.7 "Microsoft YaHei";color:#333;background-color:#fff;}
+a{color:#333;text-decoration:none;outline: none;}
+a:hover{text-decoration:none;color:#d91c1c;-webkit-transition:color .3s ease-out;-moz-transition:color .3s ease-out;transition:color .3s ease-out;}
+a img,img{border:0;vertical-align: top;}
+ul,li,input{list-style:none;padding:0;margin:0;vertical-align:middle;}
+input{outline: none;}
+i, em {font-style: normal; }
+table {border-collapse: collapse;border-spacing:0;}
+.hide{display: none;}
+.hideFont{text-indent: -100%;overflow: hidden;display: block;}
+.clear:after{clear: both;content:'.';display: block;visibility:hidden;height:0;}
+.clear{zoom:1; clear: both;}
+.f14{font-size: 14px}
+
+/********************* reset End *********************/
+
+/*box*/
+.mainWrap{min-width:1000px;max-width:1920px;position: relative;overflow:hidden}
+.mainBox{background-repeat:no-repeat;background-position:top center}
+.insideBox{width:1000px;margin:0 auto;position: relative;}
+.box1{height: 60px;margin-top: 40px;background: #fff}
+.box2{height: 449px;background: url(../images/box2-bg.jpg) no-repeat center top}
+.box3{height: 461px;background: url(../images/box3-bg.jpg) no-repeat center top}
+.box4{height: 580px;background: url(../images/box4-bg.jpg) no-repeat center top}
+.box5{height: 539px;background: url(../images/box5-bg.jpg) no-repeat center top}
+.box6{height: 540px;background: url(../images/box6-bg.jpg) no-repeat center top}
+.box7{height: 707px;background: url(../images/box7-bg.jpg) no-repeat center top}
+
+/*公用*/
+.mainBox .title{height: 57px;line-height: 57px;background: #e62129;color: #fff;border-top: 1px solid #e1e1e1;font-size: 24px;position: relative;}
+.mainBox .title span{padding: 7px 15px;margin:0 10px;font-size: 18px;background:  url(../images/title-icon.png) no-repeat center center;}
+.mainBox .title i{width: 0;height: 0;border-bottom: 21px solid #fff;border-left: 21px solid transparent;position: absolute;bottom: 0;right: 0;}
+.mainBox .main{background-color: #f4f4f4;border: 1px solid #e1e1e1;border-top: 3px solid #99080e;}
+.mainBox .line{width: 1000px;height: 14px;background: url(../images/line.png) no-repeat center left;margin:10px 0;}
+
+.swiper1{width: 420px;height: 300px;border: 10px solid #e1e1e1;position: absolute;overflow: hidden;}
+.swiper1 img{width: 420px;height: 300px;}
+.swiper1 .arrow{width: 20px;height: 300px;display: block;position: absolute;top: 0;z-index: 1;background-image: url(../images/arrow-s.png);cursor: pointer;}
+.swiper1 .arrow-left{left: 0;background-position: top left}
+.swiper1 .arrow-right{right: 0;background-position: top right}
+
+
+.box1 .insideBox{background: url(../images/logo.png) no-repeat left center;}
+.box1 .topNav{height: 60px;line-height: 60px;color: #808080;float: right;}
+.box1 .topNav span{margin-left: 25px;cursor: pointer;}
+
+.box3 .b3Main{height: 360px;position: relative;}
+.box3 .text{width: 480px;margin-left:20px}
+.box3 .swiper1{right: 20px;top: 30px;}
+
+.tabHead{height: 40px;background:#e1e1e1;text-align:center;color: #858585;padding-left: 10px}
+.tabHead span{float: left;}
+.tabHead .hover{background:#f4f4f4;color: #e62129}
+.tabMain .sTitle{color: #e62129;font-size: 18px;text-indent: 20px;margin-top: 5px}
+
+.box4 .b4Main{position: relative;}
+.box4 .b4Main .tabHead span{height:40px;line-height:40px;padding:0 18px}
+.box4 .b4Main .tabMain{height: 397px;background: url(../images/box4-bg2.jpg) no-repeat bottom left;}
+.box4 .text{width: 480px;margin-left:20px}
+.box4 .swiper1{right: 20px;top: 114px;}
+.box4 .news{height: 40px;line-height: 40px;}
+.box4 .news a{width: 46%;margin:0 2%;float: left;}
+
+.box5 .b5Main{position: relative;}
+.box5 .b5Main .tabHead span{height:40px;line-height:40px;padding:0 55px}
+.box5 .b5Main .tabMain{height: 397px;background: url(../images/box5-bg2.jpg) no-repeat bottom left;}
+.box5 .text{width: 480px;margin-left:20px}
+.box5 .img{width: 420px;height: 300px;border: 10px solid #e1e1e1;position: absolute;overflow: hidden;right: 20px;top: 110px;}
+
+.box6 .b6Main{height:445px;position: relative;}
+.box6 .b6Main .tabHead span{height:40px;line-height:40px;padding:0 29px}
+.box6 .b6Main .tabHead .sp{line-height: 20px}
+.box6 .text{width: 500px;margin-left:20px}
+.box6 .text .swiper-container{height: 320px}
+.box6 .swiper-slide{padding-right:15px;}
+.box6 .img{width: 420px;height: 300px;border: 10px solid #e1e1e1;position: absolute;overflow: hidden;right: 20px;top: 110px;}
+.swiper-scrollbar {
+  width: 15px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: rgba(225,225,225,1)
+}
+.swiper-scrollbar-drag {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: rgba(230,33,41,1);
+  
+}
+.swiper-scrollbar-cursor-drag {
+  cursor: move;
+}
+
+.box7 .b7Main{height: 538px;position: relative;}
+.box7 .swiper{width: 998px;height: 538px;}
+.box7 .swiper img{width: 998px;height: 538px;}
+.box7 .swiper .arrow{width: 50px;height: 537px;display: block;position: absolute;top: 0;z-index: 1;background-image: url(../images/arrow.png);cursor: pointer;}
+.box7 .swiper .arrow-left{left: 0;background-position: top left}
+.box7 .swiper .arrow-right{right: 0;background-position: top right}
+
+.goToTop {position: fixed;bottom: 1%;right: 15%;z-index: 10;width: 48px;height: 48px;  background: url(../images/goToTop.png) no-repeat 0 0;margin-top: 10px;cursor: pointer;}
+
+
+
+ /* Basic Swiper Styles */
+.swiper-container {
+  margin:0 auto;
+  position:relative;
+  overflow:hidden;
+  -webkit-backface-visibility:hidden;
+  -moz-backface-visibility:hidden;
+  -ms-backface-visibility:hidden;
+  -o-backface-visibility:hidden;
+  backface-visibility:hidden;
+  /* Fix of Webkit flickering */
+  z-index:1;
+}
+.swiper-wrapper {
+  position:relative;
+  width:100%;
+  -webkit-transition-property:-webkit-transform, left, top;
+  -webkit-transition-duration:0s;
+  -webkit-transform:translate3d(0px,0,0);
+  -webkit-transition-timing-function:ease;
+  
+  -moz-transition-property:-moz-transform, left, top;
+  -moz-transition-duration:0s;
+  -moz-transform:translate3d(0px,0,0);
+  -moz-transition-timing-function:ease;
+  
+  -o-transition-property:-o-transform, left, top;
+  -o-transition-duration:0s;
+  -o-transform:translate3d(0px,0,0);
+  -o-transition-timing-function:ease;
+  -o-transform:translate(0px,0px);
+  
+  -ms-transition-property:-ms-transform, left, top;
+  -ms-transition-duration:0s;
+  -ms-transform:translate3d(0px,0,0);
+  -ms-transition-timing-function:ease;
+  
+  transition-property:transform, left, top;
+  transition-duration:0s;
+  transform:translate3d(0px,0,0);
+  transition-timing-function:ease;
+}
+.swiper-free-mode > .swiper-wrapper {
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  -ms-transition-timing-function: ease-out;
+  -o-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+  margin: 0 auto;
+}
+.swiper-slide {
+  float: left;
+}
+.swiper-pages {
+  height: 100%;
+}
+.scroll-container {
+  height: 100%;
+  width: 100%;
+}
+.scroll-container .swiper-slide {
+  width: 100%;
+}
+.page-inner {
+  padding: 15px 20px;
+}
+.swiper-slide .title {
+font-style: italic;
+font-size: 42px;
+margin-top: 80px;
+margin-bottom: 0;
+line-height: 45px;
+text-align:center;
+}
+
+/* IE10 Windows Phone 8 Fixes */
+.swiper-wp8-horizontal {
+  -ms-touch-action: pan-y;
+}
+.swiper-wp8-vertical {
+  -ms-touch-action: pan-x;
+} 

@@ -1,0 +1,34 @@
+body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}
+body{font: 12px/1.7 "Microsoft YaHei" "SimSun" "Hiragino Sans GB"}
+a{color:#505050;text-decoration:none}
+a:hover{color:#af874b;text-decoration:none}
+em{font-style:normal}
+li{list-style:none;}
+img{border:0;vertical-align:middle;}
+table{border-collapse:collapse;border-spacing:0}
+p{word-wrap:break-word}
+.clear{clear: both;}
+.dis{display:block}
+.adis{display:inline-block;}
+.undis{display:none}
+.clearfix:before,
+.clearfix:after {content: "."; display: block; height: 0; visibility: hidden;}
+.clearfix:after {clear: both;}
+.clearfix {zoom: 1;} /* IE < 8 */
+.ytArea:after,mtab:after {content:"";display:table;clear:both}
+.ytArea,.mtab {*zoom:1}
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.relative{position: relative;}
+.t_c{text-align: center;}
+.t_l{text-align: left;}
+.t_r{text-align: right;}
+.f36{font-size: 36px;}
+.f18{font-size: 18px;}
+.f17{font-size: 17px;}
+.f16{font-size: 16px;}
+.f14{font-size: 14px;}
+.wh100{width: 100%;height: 100%;}
+
+
+

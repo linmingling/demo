@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>短信验证码demo</title>
+<link rel="stylesheet" type="text/css" href="css/com.css" />
+<link rel="stylesheet" type="text/css" href="css/login.css" />
+</head>
+</body>
+<div class="warp" id="warp">
+	<div class="main">
+		<div id="pwd_tips" class="pwd_tips tc hide">
+		<div class="tc_head">
+			<p>手机号码短信验证码demo</p>
+			<!-- <span class="close">×</span> -->
+		</div>
+		<div class="tc_main">
+			<div class="inputWarp">
+				<p class="nameBox">手机号码：<input type="text" class="tel" placeholder="请输入手机号码"/></p>
+				<p class="verifyBox">验证码：<input type="text" class="password" placeholder="请输入验证码"/><span id="getCode" class="able">获取验证码</span></p>
+			</div>
+			<p class="bm">确认</p>
+			<p id="tips" style="color:red"></p>
+		</div>
+		</div>
+	</div>
+</div>
+<!--遮罩层-->
+<div id="black_bg" class="mask hide"></div>
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var getCodeFlag = true;
+function djs(i){
+	if(i>0){
+		i--
+		$("#getCode").removeClass("able").addClass("disable").html(i+"秒后可获取");
+		setTimeout(function(){
+			djs(i);
+		},1000);
+		getCodeFlag = true;
+	}else{
+		$("#getCode").removeClass("disable").addClass("able").html("获取验证码");
+		getCodeFlag = true;
+	}	
+}
+$(function(){
+	var getCode = $("#getCode");
+	
+	$('.mask').show();
+	$('.pwd_tips').show();
+
+	getCode.click(function(){
+		if(getCodeFlag){
+			//getCodeFlag = false;
+			getCodeFlag = true;
+			var tel = $(".tc_main .tel").val();
+			if(!tel){
+				$("#tips").html('请填写手机号码！');
+				getCodeFlag = true;
+				return;
+			} 
+			var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+			if(!mob.test(tel)){
+				$("#tips").html('手机号码错误！');
+				getCodeFlag = true;
+				return;
+			} else {
+				//发短信
+				$.ajax({
+					async:true,
+				 	url: 'server.php',
+				 	data: {act:'getVerify', tel:tel},
+				 	type: 'post',
+				 	dataType:'json',
+				 	success:function(result){
+				 		$("#tips").html('');
+				 		alert(result.errmsg);
+				 		if(!result.errcode){
+				 			djs(60);
+				 		}
+				 	},
+				 	error:function(){
+				 		$("#tips").html("");
+				 		$("#tips").html('请求超时！');return;
+					}
+				});
+			}
+		} else {
+			return false;
+		}
+		
+	});
+
+	$('.bm').click(function(){
+		var tel = $(".tc_main .tel").val();
+		var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+		var verify = $(".tc_main .password").val();
+		if(!mob.test(tel)){
+			$("#tips").html('请填写手机号码');return;
+		}
+		if(!verify){
+			$("#tips").html('请输入验证码');return;
+		}
+		$.ajax({
+			async:false,
+		 	url: 'server.php',
+		 	data: {act:'submit', phone:tel, verify:verify},
+		 	type: 'post',
+		 	dataType:'json',
+		 	success:function(result){
+		 		$("#tips").html('');
+		 		$("#getCode").removeClass("disable").addClass("able").html("获取验证码");
+		 		alert(result.errmsg);
+		 	},
+		 	error:function(){
+		 		$("#tips").html("");
+		 		$("#tips").html('请求超时！');
+			}
+		});
+	});
+});
+</script>
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

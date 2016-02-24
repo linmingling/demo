@@ -1,0 +1,107 @@
+/********************* reset Start *********************/
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 12px/1.7 "Microsoft YaHei";color:#333;background-color:#fff;}
+a{color:#fff;text-decoration:none;outline: none;}
+a:hover{text-decoration:none;color:#d91c1c;-webkit-transition:color .3s ease-out;-moz-transition:color .3s ease-out;transition:color .3s ease-out;}
+a img,img{border:0;vertical-align: top;}
+ul,li,input{list-style:none;padding:0;margin:0;vertical-align:middle;}
+input{outline: none;}
+i, em {font-style: normal; }
+table {border-collapse: collapse;border-spacing:0;}
+.hide{display: none;}
+.hideFont{text-indent: -100%;overflow: hidden;display: block;}
+.clear:after{clear: both;content:'.';display: block;visibility:hidden;height:0;}
+.clear{zoom:1; clear: both;}
+
+/********************* reset End *********************/
+
+/*box*/
+.mainWrap{min-width:1200px;max-width:1920px;position: relative;overflow:hidden}
+.mainBox{background-repeat:no-repeat;background-position:top center}
+.insideBox{width:1200px;margin:0 auto;position: relative;}
+.box1{height: 803px;background: url(../images/box1-bg.jpg) no-repeat center top}
+.box1 .logo{width:337px;height: 137px;display: block;position: absolute;left: 0;top: 0;background: url(../images/box1-1.png) no-repeat center top}
+.box1 .seal{width:220px;height: 240px;display: block;position: absolute;right: 20px;top: 0;background: url(../images/box1-2.png) no-repeat center top}
+.box1 .box1-2{margin: 170px auto 0 100px;}
+.box1 p{width: 1000px;font-size: 18px;margin:15px auto 0 auto;}
+.box1 .tips{font-size: 14px;margin-top: 65px;text-align: right}
+.box1 .tips span{margin-left: 20px}
+
+.box2{height:1011px;background: url(../images/box2-bg.png) no-repeat center top}
+.box2 .box2-1{margin-left: 850px;margin-top: 20px}
+.box2-tab{}
+.box2-tab .select{margin:70px 0 20px 0}
+.box2-tab .select span{width:276px;height:84px;line-height:84px;font-size: 36px;border-top: 1px solid #b1b1b1;border-bottom: 1px solid #898989;color: #fff;background: #3b3b3b;display: block;float:left;text-align: center;margin:0 12px;position: relative;}
+.box2-tab .select .hover{background: #d52c2c;border-top: 1px solid #eeabab;border-bottom: 1px solid #e68080;}
+.box2-tab .select .hover i{width: 100%;height: 3px;background: #d52c2c;border-top: 1px solid #eeabab;border-bottom: 1px solid #e68080;display: block;position: absolute;bottom: -10px}
+.box2-tab .selectInfo{font-size: 22px}
+.box2-tab .selectInfo p{margin:60px 12px 0 12px;}
+
+.topic{height: 80px;line-height: 80px;font-size: 40px;color: #fff}
+.option .select{font-size: 40px;margin-bottom: 20px;background: url(../images/select.png) no-repeat left center;text-indent: 60px;}
+.option1{margin:110px 0 0 740px}
+
+.box3{height:652px;background: url(../images/box3-bg.jpg) no-repeat center top}
+.box3 .topic{margin-left: 335px}
+
+.box4{height:1258px;background: url(../images/box4-bg.jpg) no-repeat center top}
+.box4-1{width:1200px;margin:200px auto 0 auto;}
+.box4-2{margin:70px 0 0 0;}
+.box4-3{margin:70px 0 0 60px}
+.box4-4{margin:100px 0 0 0;}
+.box4-5{margin:100px 0 0 60px}
+
+.box5{height:627px;background: url(../images/box5-bg.jpg) no-repeat center top}
+.box5 .topic{margin-left: 50px}
+
+.box6{height:1203px;background: url(../images/box6-bg.png) #fff no-repeat center top}
+.box6-tab{padding-top: 370px}
+.box6-tab .select{width:920px;margin:0 auto 20px auto}
+.box6-tab .select span{width:276px;height:84px;line-height:84px;font-size: 36px;border-top: 1px solid #b1b1b1;border-bottom: 1px solid #898989;color: #fff;background: #3b3b3b;display: block;float:left;text-align: center;margin:0 12px;position: relative;}
+.box6-tab .select .hover{background: #d52c2c;border-top: 1px solid #eeabab;border-bottom: 1px solid #e68080;}
+.box6-tab .select .hover i{width: 100%;height: 3px;background: #d52c2c;border-top: 1px solid #eeabab;border-bottom: 1px solid #e68080;display: block;position: absolute;bottom: -10px}
+
+.box7{height:277px;padding-top: 22px;background: url(../images/box7-bg.jpg) #fff no-repeat center top}
+.box7 .topic{margin-left: 310px}
+.box7 .option{margin-top: 50px}
+.box7 .option .select{padding-left: 60px;margin-left: 50px;}
+
+.box8{height:1659px;background: url(../images/box8-bg.jpg) #fff no-repeat center top}
+.box8 .text{width:1105px;padding-top: 525px;font-size: 19px;margin:0 auto;}
+.box8 .text .strong{font-weight: bold}
+.box8 .box8-1{margin-top:120px;}
+
+.box9{height:252px;padding-top: 22px;background: url(../images/box9-bg.jpg) #fff no-repeat center top}
+.box9 .topic{margin-left: 295px;font-size: 28px}
+.box9 .option{margin-top: 50px}
+.box9 .option .select{padding-left: 60px;margin-left: 50px;font-size: 28px}
+
+.box10{height:710px;background: url(../images/box10-bg.jpg) #fff no-repeat center top}
+.box10 .text{width:1000px;padding-top:270px;margin:0 auto;font-size: 18px}
+.box10 .strong{font-size: 24px;font-weight: bold;margin-top: 10px}
+.box10 .line{width:100%;height: 40px;border-bottom:1px solid #909090;}
+.box10 .submit{width: 100%;height: 50px;line-height: 50px;font-size: 28px;color: #fff;background: #3b3b3b;text-align: center;margin-top: 30px}
+
+.box11{height: 730px}
+.box11 img{margin:0 155px;}
+
+.navWarp{width: 242px;height: 358px;position: absolute;top:890px;background: url(../images/nav.png) no-repeat top center;display: block;}
+.navWarpInside{margin:48px auto 0 auto;text-align: center;}
+.navWarpInside p{height: 38px;line-height: 38px;font-size: 20px;position: relative;z-index: 1;cursor: pointer;}
+.navWarpInside .strong{font-weight: bold}
+.navWarpInside img{position: absolute;bottom:-5px;left: 32px;z-index: -1;;display: none}
+.navWarpInside .hover{color:#d91c1c;}
+.navWarpInside .hover img{display: block;}
+.navWarpInside .z1{z-index: 1}
+.navWarpInside .z2{z-index: 2}
+.navWarpInside .z3{z-index: 3}
+.navWarpInside .z4{z-index: 4}
+.navWarpInside .z5{z-index: 5}
+.navWarpInside .z6{z-index: 6}
+
+.navWarpFix{position: fixed;top:0;}
+
+.goToTop {position: fixed;bottom: 1%;right: 15%;z-index: 10;width: 48px;height: 48px;border: 1px solid #d2d2d2;  background: url(../images/goToTop.png) no-repeat 0 0;margin-top: 10px;cursor: pointer;}
+.goToTop:hover{background-position:0px -48px;-webkit-transition:background-position .3s ease-out;-moz-transition:background-position .3s ease-out;transition:background-position .3s ease-out;}
+
+  

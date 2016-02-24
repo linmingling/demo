@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>新标家居</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+</head>
+<body>
+	<div class="bg bg1">
+		<div class="in">
+			<!-- 头部 -->
+			<div class="nav">
+				<div class="logo cl"></div>
+				<div class="navlist cr">
+					<span class="ps1 ps" id="ps1">首页</span>
+					<span class="ps2 ps" id="ps2">新标产业</span>
+					<span class="ps3 ps" id="ps3">免费预约量尺</span>
+					<span class="ps4 ps" id="ps4">为什么选择新标?</span>
+				</div>
+			</div>
+			<!-- 首页 -->
+			<div class="box1 boxx" id="box1">
+				<div class="icon">
+					<div id="icon1"><img src="images/tle.png" height="507" width="783" alt=""></div>
+					<div id="icon2"><img src="images/sub.png" height="156" width="476" alt=""></div>
+				</div>
+				<div class="ku"><img src="images/koo.png" height="631" width="557" alt=""></div>
+				<!-- flash -->
+			    <object class="swf" id="swf"  height="900" width="1920">
+					<param name="movie" value="images/940.swf" >
+					<param name="quality" value="high">
+					<param NAME="wmode" VALUE="transparent">
+					<embed src="images/940.swf"  wmode="transparent" height="900" width="1920"></embed>
+				</object>
+			</div>
+
+			<!-- 新标产业 -->
+			<div class="box2 boxx hide" id="box2">	
+					<div class="nav2">
+						<span class="pd1 ad tap" id="pd1">铝门系列</span>
+						<span class="pd2 ad" id="pd2">铝木生态门系列</span>
+						<span class="pd3 ad" id="pd3">整体衣柜系列</span>
+						<span class="pd4 ad" id="pd4">阳光房系列</span>
+					</div>		
+					<div id="focus_Box1" class="focus_Box">
+							<span class="prev">&nbsp;</span>
+							<span class="next">&nbsp;</span>
+						<ul>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/1.jpg" height="492" width="815" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/2.jpg" height="492" width="492" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/3.jpg" height="492" width="369" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/4.jpg" height="492" width="815" alt=""></a>
+							</li>
+						</ul>
+					</div>
+					<div id="focus_Box2" class="focus_Box hide">
+							<span class="prev">&nbsp;</span>
+							<span class="next">&nbsp;</span>
+						<ul>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/5.jpg" height="492" width="815" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/6.png" height="492" width="547" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/7.png" height="492" width="492" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/8.png" height="492" width="407" alt=""></a>
+							</li>
+						</ul>
+					</div>
+					<div id="focus_Box3" class="focus_Box hide">
+							<span class="prev">&nbsp;</span>
+							<span class="next">&nbsp;</span>
+						<ul>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/9.jpg" height="492" width="815" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/10.jpg" height="492" width="815" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/11.png" height="492" width="815" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/12.png" height="492" width="549" alt=""></a>
+							</li>
+						</ul>
+					</div>
+					<div id="focus_Box4" class="focus_Box hide">
+							<span class="prev">&nbsp;</span>
+							<span class="next">&nbsp;</span>
+						<ul>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/13.jpg" height="492" width="815" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/14.jpg" height="492" width="815" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/15.jpg" height="492" width="815" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/16.jpg" height="492" width="815" alt=""></a>
+							</li>
+							<li>
+								<a href="javascript:void(0);"><img src="images/fb/17.jpg" height="492" width="815" alt=""></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			<!-- 预约量尺 -->
+			<div class="box3 boxx hide" id="box3">
+				<div class="formbg">
+					<div class="form">
+						<p class="ct cl">
+							<span class="til">您的姓名：</span><input type="text"  value="" id="name" class="cr">
+						</p>
+						<p class="ct cl">
+							<span class="til">您的手机号：</span ><input type="tel"  value="" id="tel" class="cr">
+						</p>
+						<p class="cs cl">
+							<span class="til">省份：</span><select class="province" id="province"><option value="0">请选择省</option></select>
+							<span class="til2">城市：</span><select class="city" id="city"><option value="0">请选择市</option></select>
+						</p>
+						<p class="ct cl">
+							<span class="til">需求：</span>
+							<span class="need" id="need">
+								<span class="chk" value="门"></span>门
+								<span class="chk" value="窗"></span>窗
+								<span class="chk" value="衣柜"></span>衣柜
+								<span class="chk" value="其他"></span>其他
+								<input type="hidden" value="" id="need">
+							</span>
+						</p>
+					</div>
+					<div class="sure" id="sure"></div>
+				</div>
+			</div>
+
+			<!-- 为什么选新标 -->
+			<div class="box4 boxx hide" id="box4">
+				<div class="al">
+					<ul>
+						<li class="d1">
+							<div class="tn1"></div>
+							<div class="imgTop">
+								<div class="more">
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/b1.png" height="403" width="191" alt=""></a>
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/b2.png" height="403" width="191" alt=""></a>
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/b3.png" height="403" width="191" alt=""></a>
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/b4.png" height="403" width="191" alt=""></a>
+								</div>
+							</div>			
+						</li>
+						<li class="d2">
+							<div class="tn2"></div>	
+							<div class="imgTop">
+								<div class="more">
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/g1.png" height="403" width="191" alt=""></a>
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/g2.png" height="403" width="191" alt=""></a>
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/g3.png" height="403" width="191" alt=""></a>
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/g4.png" height="403" width="191" alt=""></a>
+								</div>
+							</div>							
+						</li>
+						<li class="d3">
+							<div class="tn3"></div>	
+							<div class="imgTop">
+								<div class="more">
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/c1.png" height="403" width="191" alt=""></a>
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/c2.png" height="403" width="191" alt=""></a>
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/c3.png" height="403" width="191" alt=""></a>
+									<a href="http://www.gdxinbiao.com/" target="_blank;" class="link"><img src="images/pd/c4.png" height="403" width="191" alt=""></a>
+								</div>
+							</div>							
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="tbg hide">
+		<div class="bbg"></div>
+		<div class="form2bg">
+			<div class="form2">
+				<p class="ca cl">
+					<span class="tl">您的姓名：</span><input type="text"  value="" id="name2" class="cr">
+				</p>
+				<p class="ca cl">
+					<span class="tl">您的手机号：</span ><input type="tel"  value="" id="tel2" class="cr">
+				</p>
+				<p class="cf cl">
+					<span class="tl2">省份：</span><select class="province" id="province2"><option value="0">请选择省</option></select>
+					<span class="tl2">城市：</span><select class="city" id="city2"><option value="0">请选择市</option></select>
+				</p>
+				<p class="ca cl">
+					<span class="tl3">需求：</span>
+					<span class="need2" id="need2">
+						<span class="chk" value="门"></span>门
+						<span class="chk" value="窗"></span>窗
+						<span class="chk" value="衣柜"></span>衣柜
+						<span class="chk" value="其他"></span>其他
+						<input type="hidden" value="" id="need2">
+					</span>
+				</p>
+				<p class="sure2"></p>				
+			</div>
+		</div>
+	</div>
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/ZoomPic.js"></script>
+<script>
+
+$(function(){
+
+		// 导航
+		$('#ps1').click(function(){
+			$('.bg').removeClass('bg2 bg3').addClass('bg1');
+			$('.boxx').hide();
+			$('#box1').show();
+			$('.ps').removeClass('ch1 ch2 ch3');			
+		})
+
+		$('#ps2').click(function(){
+			$('.boxx').hide();
+			$('.bg').removeClass('bg1 bg3').addClass('bg2');
+			$('#box2').show();
+			$('#ps2').addClass('ch1');
+			$('.ps').removeClass('ch2 ch3');
+		})
+		$('#ps3').click(function(){
+			$('.boxx').hide();
+			$('.bg').removeClass('bg1 bg3').addClass('bg2');
+			$('#box3').show();
+			$('#ps3').addClass('ch2');
+			$('.ps').removeClass('ch1 ch3');
+		})
+
+		$('#ps4').click(function(){
+			$('.boxx').hide();
+			$('.bg').removeClass('bg1').addClass('bg3');
+			$('#box4').show();
+			$('#ps4').addClass('ch3');
+			$('.ps').removeClass('ch1 ch2');
+			// 产品手风琴
+			var _index4=0;
+
+			$(".al ul li").mouseover(function(){
+				_index4=$(this).index();
+				$(this).stop().css({"z-index":1}).animate({width:900},500).siblings("li").stop().animate({"width":50,"z-index":0},500);
+			});
+
+			$(".al ul li").mouseout(function(){
+				$(this).stop().animate({width:50},500);
+				$('.d3').stop().animate({width:900},500);
+
+			});
+
+		})
+
+
+		// animation
+		$('#icon1').addClass('zoomIn')
+		$('#icon2').addClass('zoomIn')
+
+		if($(window).height()<780){
+			$(".in").height(780)
+		}else if($(window).height()<890){
+			$(".in").height($(window).height())
+		}else{
+			$(".in").height($(window).height()-111)
+		}
+
+		// 产品轮播导航
+		$('#pd1').click(function(){
+			$('.ad').removeClass('tap');
+			$('.focus_Box').hide();
+			$(this).addClass('tap');
+			$('#focus_Box1').show();
+		});
+		$('#pd2').click(function(){
+			$('.focus_Box').hide();
+			$('.ad').removeClass('tap');
+			$('#pd2').addClass('tap');
+			$('#focus_Box2').show();
+		});
+		$('#pd3').click(function(){
+			$('.focus_Box').hide();
+			$('.ad').removeClass('tap');
+			$('#pd3').addClass('tap');
+			$('#focus_Box3').show();
+		});
+		$('#pd4').click(function(){
+			$('.focus_Box').hide();
+			$('.ad').removeClass('tap');
+			$('#pd4').addClass('tap');
+			$('#focus_Box4').show();
+		});
+
+
+		// 多选
+	    $('.form .chk').each(function(index){
+		        $(this).click(function(){
+		            if ($(this).hasClass('checked')){
+
+		                $(this).removeClass('checked');
+		               
+		            } else {
+		            	$(this).addClass('checked');               
+		                if(index==0 || index ==1 || index ==2){
+		                    $('.form .chk').eq(3).removeClass('checked');             		                              
+		                }  else if(index==3){
+		                	$('.form .chk').removeClass('checked');
+		                	$(this).addClass('checked');               
+		                }
+		            }
+		            
+		        })
+	    });
+
+	    $('.form2 .chk').each(function(index){
+		        $(this).click(function(){
+		            if ($(this).hasClass('checked')){
+
+		                $(this).removeClass('checked');
+		               
+		            } else {
+		            	$(this).addClass('checked');               
+		                if(index==0 || index ==1 || index ==2){
+		                    $('.form2 .chk').eq(3).removeClass('checked');             		                              
+		                }  else if(index==3){
+		                	$('.form2 .chk').removeClass('checked');
+		                	$(this).addClass('checked');               
+		                }
+		            }
+		            
+		        })
+	    });
+
+
+
+	    //预约报名信息
+	    $('.sure').click(function(){
+	        //报名信息1
+	        var name = returnVal('name');
+	        var tel = returnVal('tel');
+	        // 获取省
+			var pro = $('#province');
+			var province = $('#province option[value='+pro.val()+']').html();
+	        // 获取市
+			var ciy = $('#city');
+			var city = $('#city option[value='+ciy.val()+']').html();
+	        //复选框
+	        var need ="";
+	        $('.need .checked').each(function(){
+	        	if(need == ""){
+	        		need += $(this).attr("value");
+	        	}else{
+	        		need += ","+$(this).attr("value");
+	        	}
+	        	
+	        });
+	        if(checkForm(name,tel,province,city,need)){
+	             $.ajax({
+	             	async:false,
+	                 url: 'server.php',
+	                 data:{act:'submit',name:name,phone:tel,province:province,city:city,need:need},
+	                 type: "post",
+	                 dataType:'json',
+	                 success:function(result){
+	                	alert(result.errmsg);
+	                 }
+	           }); 
+	        }
+	    });
+
+	    //return value
+	    function returnVal(id){
+	        return $('#'+id).val();
+		}
+
+		// 预约验证表单
+	    function checkForm(name,tel,province,city,need){
+	        var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+	        var telp = /^0\d{2,3}-?\d{7,8}$/;
+	        if(name == ""){
+	           alert("请输入姓名！");
+	           return false;
+	        }
+	        //判断电话格式
+	        if(tel == ""){
+	            alert("请输入电话！");
+	            return false;
+	        }else if(!telp.test(tel) && !mob.test(tel)){
+	            alert("请输入正确的电话！");
+	            return false;
+	        }
+	        if(province == "请选择省"){
+	            alert("请选择省份！");
+	            return false;
+	        }
+	        if(city == "请选择市"){
+	            alert("请选择城市！");
+	            return false;
+	        }
+            if(need== ""){
+	            alert("请选择需求！");
+	            return false;
+        }
+	        return true;
+    	}
+
+
+		//请求省
+		$.ajax({
+			async:false,
+			type:'get',
+			url : 'http://pay.yoju360.com/phone/Ext/region/1',  //对应省的地址
+			dataType : 'jsonp',
+			jsonp:"callback",
+			success  : function(data) {
+				if(data.state ==  1){
+					var option = "<option value='0'>请选择省</option>";
+					var list = data.data;
+					for(var i in list){
+						option = option + '<option value="'+i+'" pro="'+list[i]+'">'+list[i]+'</option>';
+					}
+					$("#province").html(option);
+				}
+			},
+			error : function() {
+				alert("服务器忙，请刷新！")
+			}
+		});
+
+		//请求市
+		$("#province").change(function(){
+			if($("#province").val() != 0){
+				$.ajax({
+					async:false,
+					type:'get',
+					url : 'http://pay.yoju360.com/phone/Ext/region/'+$("#province").val(),
+					dataType : 'jsonp',
+					jsonp:"callback",
+					success  : function(data) {	
+						if(data.state ==  1){
+							var option = "<option value='0'>请选择市</option>";
+							var list = data.data;
+							for(var i in list){
+								option = option + '<option value="'+i+'" ciy="'+list[i]+'">'+list[i]+'</option>';
+							}
+							$("#city").html(option);
+						}
+					},
+					error : function() {
+						alert("服务器忙，请重试！")
+					}
+				});
+			}else{
+				$("#addressForm .qu").html("<option value='0'>请选择区</option>");
+			}
+		});
+
+
+
+		$('.focus_Box li img').click(function(){
+			$('.tbg').show();
+			$('.bbg').click(function(){
+				$('.tbg').hide();
+				$(".form2 input").val("");
+			})
+		})
+		// 弹出报名
+	    $('.sure2').click(function(){
+	        //报名信息1
+	        var name = returnVal('name2');
+	        var tel = returnVal('tel2');
+	        // 获取省
+			var pro2 = $('#province2');
+			var province = $('#province2 option[value='+pro2.val()+']').html();
+	        // 获取市
+			var ciy2 = $('#city2');
+			var city = $('#city2 option[value='+ciy2.val()+']').html();
+	        //复选框
+	        var need ="";
+	        $('.need2 .checked').each(function(){
+	        	if(need == ""){
+	        		need += $(this).attr("value");
+	        	}else{
+	        		need += ","+$(this).attr("value");
+	        	}
+	        	
+	        });
+	        if(checkForm(name,tel,province,city,need)){
+	             $.ajax({
+	             	async:false,
+	                 url: 'server.php',
+	                 data:{act:'submit',name:name,phone:tel,province:province,city:city,need:need},
+	                 type: "post",
+	                 dataType:'json',
+	                 success:function(result){
+	                 	alert(result.errmsg);
+	                 	$('.tbg').hide();
+	                 }
+	           });
+	        }
+	    });
+
+		//请求省
+		$.ajax({
+			async:false,
+			type:'get',
+			url : 'http://pay.yoju360.com/phone/Ext/region/1',  //对应省的地址
+			dataType : 'jsonp',
+			jsonp:"callback",
+			success  : function(data) {
+				if(data.state ==  1){
+					var option = "<option value='0'>请选择省</option>";
+					var list = data.data;
+					for(var i in list){
+						option = option + '<option value="'+i+'" pro2="'+list[i]+'">'+list[i]+'</option>';
+					}
+					$("#province2").html(option);
+				}
+			},
+			error : function() {
+				alert("服务器忙，请刷新！")
+			}
+		});
+
+		//请求市
+		$("#province2").change(function(){
+			if($("#province2").val() != 0){
+				$.ajax({
+					async:false,
+					type:'get',
+					url : 'http://pay.yoju360.com/phone/Ext/region/'+$("#province2").val(),
+					dataType : 'jsonp',
+					jsonp:"callback",
+					success  : function(data) {	
+						if(data.state ==  1){
+							var option = "<option value='0'>请选择市</option>";
+							var list = data.data;
+							for(var i in list){
+								option = option + '<option value="'+i+'" ciy2="'+list[i]+'">'+list[i]+'</option>';
+							}
+							$("#city2").html(option);
+						}
+					},
+					error : function() {
+						alert("服务器忙，请重试！")
+					}
+				});
+			}else{
+				$("#addressForm .qu").html("<option value='0'>请选择区</option>");
+			}
+		});
+
+});
+</script>
+	    <!--#include virtual="/public/head.html"-->
+        <!--#include virtual="/public/tongji.html"-->
+        <!--#include virtual="/public/footer.html"-->
+</body>
+</html>

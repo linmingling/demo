@@ -1,0 +1,106 @@
+/* common xiaohe*/
+::-webkit-scrollbar/*整体部分*/
+{
+width: 5px;
+height:0px;
+}
+
+::-webkit-scrollbar-track/*滑动轨道*/
+{
+border-radius: 0px;
+background: #ce866f;
+}
+
+::-webkit-scrollbar-thumb/*滑块*/
+{
+background: #f4d1bd;
+}
+
+
+/********************* reset Start *********************/
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 12px/1.7 "SimSun";color:#fff;background-color:#f7f7f7;}
+a{color:#fff;text-decoration:none;outline: none;}
+a:hover{text-decoration:none;color:#3494d7;-webkit-transition:color .3s ease-out;-moz-transition:color .3s ease-out;transition:color .3s ease-out;}
+a img,img{border:0;vertical-align: top;}
+ul,li,input{list-style:none;padding:0;margin:0;vertical-align:middle;}
+input{outline: none;}
+i, em {font-style: normal; }
+table {border-collapse: collapse;border-spacing:0;}
+.hide{display: none;}
+.hideFont{text-indent: -100%;overflow: hidden;display: block;}
+.fix{*zoom:1;}
+.fix:after{content: ".";width: 0;height: 0;font-size: 0;visibility: hidden;overflow: hidden;clear: both;display: block;}
+.clear:after{clear: both;content:'.';display: block;visibility:hidden;height:0;}
+.clear{zoom:1; clear: both;}
+
+/*box*/
+.mainWrap{min-width:1000px;max-width:1920px;background:#fff;overflow:hidden}
+.mainBox{background-repeat:no-repeat;background-position:bottom center}
+.insideBox{width:1000px;margin:0 auto;position: relative;}
+.box1{height:747px;background-image:url(../images/box1_bg.jpg)}
+.box1 .insideBox{position:relative}
+.box1 a{width:463px;height:131px;display:block;position:absolute;left:274px;top:0}
+.box2{height:333px}
+.box2 img{width:1000px;height:333px}
+.box3{height:169px;background:#1e9b1e}
+.box3 img{width:1000px;height:169px}
+.box4{height:230px;}
+.box4 img{width:1000px;height:97px;margin-top:40px}
+.box5{height:680px;padding-top:43px;background-image:url(../images/box5_bg.jpg);position:relative}
+.box5 img{width:1000px}
+.box5 .box5_title{width:210px;height:110px;position:absolute;top:-50px;left:50%;margin-left:-105px}
+.box6{height:758px;background-image:url(../images/box6_bg.jpg);}
+.box6 .insideBox{height:758px;position:relative}
+.box6 .box6_title{width:245px;height:75px;margin:30px 0 30px 377px}
+.box6 .box6_nav{width:100%}
+.box6 .box6_nav span{width:250px;height:60px;display:block;float:left;cursor:pointer;background:url(../images/box6_nav.png) no-repeat }
+.box6 .box6_nav .nav1{background-position:0 0 }
+.box6 .box6_nav .nav2{background-position:-250px 0 }
+.box6 .box6_nav .nav3{background-position:-500px 0 }
+.box6 .box6_nav .nav4{background-position:-750px 0 }
+.box6 .box6_nav span:hover, .box6 .box6_nav .hover{height:90px;background-position-y:10px;-webkit-transition:all .3s ease-out;-moz-transition:all .3s ease-out;transition:all .3s ease-out;}
+.box6 .box6_main{width:1000px;height:515px;position:absolute;left:0;bottom:0}
+.box6 .box6_main .product{width:1000px;height:515px;display:none}
+.box6 .box6_main .product1{display:block}
+.box6 .box6_main .product1 img{margin-left:-23px;cursor: pointer;}
+.box6 .box6_main .product2 img{margin-left:-23px;cursor: pointer;}
+.box6 .box6_main .product3 img{width:298px;float:left;margin-right:20px}
+.box6 .box6_main .product4 img{width:298px;float:left;margin-right:20px}
+.box6 .box6_main .product3 .box6_text{width:670px;height:450px;padding-right:10px;overflow-y:scroll;float:left;margin-top:20px}
+.box6 .box6_main .product4 .box6_text{width:680px;height:450px;float:left;margin-top:20px}
+.box6 .box6_main .product p{font-size:14px}
+.box6 .box6_main .product .box6_stitle{font-size:36px;font-weight:bold;margin-bottom:5px;padding-left:30px;background:url(../images/icon.png) no-repeat left center;}
+
+.box6 .box6_main .product .back{position: absolute;  top: 80px;right: 0px;cursor: pointer;}
+.box6 .box6_main .product1_c img,.box6 .box6_main .product2_c img{margin-left: 0px;}
+.box6 .product1_c .p-t1{width: 100%;margin-bottom: 20px;margin-top: 35px;font-size: 18px;line-height: 30px;text-align: center}
+.box6 .product2_c .p-t2{width: 100%;margin-bottom: 20px;margin-top:5px;font-size: 18px;line-height: 30px;}
+.box6 .box6_main .box6_text1{height:280px;padding-right:10px;overflow-y:scroll;}
+
+.box6 .product1_c p{line-height:28px;color: #fff;font-size: 12px;text-align:left;}
+.box6 .product2_c p{line-height: 24px;color: #fff;font-size: 12px;text-align:left;}
+.phone{position: fixed;right: 0px;top: 40%;}
+.phone a{width: 100%;position: absolute;top: 98px;height: 40px;cursor: pointer;}
+
+.box7{height:1447px;padding-top:50px;background:#fff6d3}
+.box8{height:630px;background-image:url(../images/box8_bg.jpg);}
+.box8 .box8_title{width:284px;height:95px;margin:40px 0 40px 358px}
+.box8 .swiper{width:870px;margin-left:62px;position:relative;  overflow: hidden;}
+.box8 .swiper-container{height: 225px;width: 287px;overflow: visible;}
+.box8 .swiper-slide{width:284px;height:225px;float:left}
+.box8 .swiper-slide .img_box {width:100%;height:100%}
+.box8 .swiper-slide img{width:100%;height:100%}
+.box8 .arrow{background:url(../images/arrow.png) no-repeat}
+.box8 .swiper-button-next{background-position:-20px 6px;right:0px}
+.box8 .swiper-button-prev{background-position:4px 6px;left:0px}
+.box8 .swiper-button-next,.box8 .swiper-button-prev{top: 74%;}
+.box9{height:800px;background:#38c07f;}
+.box9 .insideBox{position:relative}
+.box9 .box9_bg{width:1049px;height:820px;position:absolute;left:-25px;top:-85px}
+.box9 .box9_text{width:450px;float:right;margin-top:20px;margin-right:25px;font-size:14px}
+
+
+
+/********************* reset End *********************/
+

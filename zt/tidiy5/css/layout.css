@@ -1,0 +1,51 @@
+.container{width: 100%;height: 5665px;background: url(../img/bg.jpg?c=22) center center no-repeat;}
+.banner{width: 100%;height: 703px;background: url(../img/banner.png?c=11) center center no-repeat;}
+.w1100{width: 1100px;margin: 0 auto;height: 100%;}
+.common_zhen{width: 165px;line-height: 35px;font-size: 25px;font-weight: bold;color: #ffffff;text-indent: 98px;background:#d82126;margin-bottom: 10px;}
+.common_zhen img{position: absolute;top: -15px;left: 10px;}
+.common_hover{position: relative;z-index: 3;}
+.common_hover .hover{position: absolute;left: 0;top: 0;right: 0;bottom: 0;opacity: 0;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);z-index: 3;-webkit-transition: opacity .7s;-ms-transition: opacity .7s;-moz-transition: opacity .7s;transition: opacity .7s;}
+.common_hover .hover:hover{opacity: 1;cursor: pointer;filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);}
+/*rumour1*/
+.rumour1{height: 893px;max-height: 893px;}
+.rumour1 .common_zhen{float: left;margin-top: 290px;margin-left: 15px;}
+.r1_tit{position: absolute;top: -35px;left: 0;z-index: 9;}
+.r1_txt{width: 500px;color: #000000;float: left;clear: left;margin-left: 15px;font-size: 16px;line-height: 1.4;}
+.r1_txt span{color: #d82126;font-weight: bold;}
+.r1_hover1{margin-top: -20px;}
+.r1_hover2{margin-top: 60px;}
+.r1_shili{margin-top: 13px;margin-left: 13px;}
+/*rumour1*/
+/*rumour2*/
+.rumour2{margin-top: 40px;margin-bottom: 57px;}
+.rumour2_wra div{margin-top: 35px;}
+/*rumour2*/
+/*rumour6*/
+.rumour6 .common_zhen{background:none;color: #D82126;margin: 10px auto;}
+.rumour6_txt{width: 300px;font-size: 16px;line-height: 1.4;}
+.rumour6_tip{position: absolute;right: -20px;bottom: -18px;}
+.rumour6 .common_hover{margin-top: 30px;}
+.r6_hover_con{width: 1079px;margin: 0 auto;}
+.r6_hover_con .common_hover{float: left;margin-right: 59px;}
+.r6_hover_con .r6_hover3{margin-right: 0;}
+.r6_shadow{position: absolute;bottom: -10px;left: -10px;z-index: -1;}
+/*rumour6*/
+/*rumour7*/
+.rumour7{margin-top: 65px;margin-bottom: 0px;}
+.r7_txt{width: 450px;position: absolute;top: 210px;left:40px;z-index: 3;font-size: 16px;line-height: 1.4;}
+/*rumour7*/
+/*rumour8*/
+.rumour8{margin-bottom: 80px;}
+.r8_con{margin-left: -50px;}
+.r8_txt{position: absolute;bottom:0px;right:170px;z-index: 3;width: 400px;font-size: 16px;line-height: 1.4;}
+/*rumour8*/
+/*rumour9*/
+.r9_txt{width: 400px;font-size: 16px;line-height: 1.4;position: absolute;z-index: 3;bottom: 0px;left: 30px;}
+/*rumour9*/
+/*rumour10*/
+.rumour10{margin-top: 40px;}
+.r10_txt{width: 400px;font-size: 16px;line-height: 1.4;position: absolute;z-index: 3;bottom: 20px;right: 100px;text-align: left;}
+/*rumour10*/
+.end{margin-top: 40px;}
+
+

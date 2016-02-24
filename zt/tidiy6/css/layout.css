@@ -1,0 +1,44 @@
+.container{max-width: 1920px;width: 100%;overflow-x: hidden;height: 4512px;background: url(../img/common/bg.jpg) no-repeat center top;overflow-y: hidden;}
+.w980{width:980px;height: 100%;margin: 0 auto;}
+.w1000{width: 1000px;height: 100%;margin: 0 auto;}
+.banner{height: 624px;}
+.banner_tit{position: absolute;bottom: 0;z-index: 2;left: 50%;margin-left: -460.5px;}
+.banner_logo{position: absolute;top: 51px;z-index: 2;left: -50px;}
+.one_wra{width: 1003px;height: 399px;background: url(../img/one/bg.png) no-repeat;}
+.one_plane{position: absolute;top: 150px;left: 120px;-webkit-transform: scale(.2) translate(-2000px);opacity: 0;-webkit-transition: all 1s;-ms-transform: scale(.2) translate(-2000px);-ms-transition: all 1s;-moz-transform: scale(.2) translate(-2000px);-moz-transition: all 1s;transform: scale(.2) translate(-2000px);transition: all 1s;}
+.stone_plane{-webkit-transform: scale(.2) translate(-2000px);opacity: 0;-webkit-transition: all 1s;-ms-transform: scale(.2) translate(-2000px);-ms-transition: all 1s;-moz-transform: scale(.2) translate(-2000px);-moz-transition: all 1s;transform: scale(.2) translate(-2000px);transition: all 1s;}
+.one_txt{width: 962px;height: 1292px;background: url(../img/one/txtBg.png) no-repeat;margin-top: -50px;}
+.myPlayer{margin: 0 auto;}
+.onePlayerCon{position: absolute;top: 650px;left: 100px;z-index: 2;}
+.common_long{width: 935px;height: 213px;background-image:url(../img/one/long.png);}
+.one .common_long{position: absolute;bottom: 70px;left: 12px;}
+
+.two{margin-top: 107px;}
+.two_wra{width: 859px;height: 419px;background: url(../img/two/bg.png?v=33) no-repeat;}
+.feidie{position: absolute;top: 105px;left: 140px;z-index: 22;opacity: 0;-webkit-transform: scale(.2) translate(-2000px);-webkit-transition: all 1s;-ms-transform: scale(.2) translate(-2000px);-ms-transition: all 1s;-moz-transform: scale(.2) translate(-2000px);-moz-transition: all 1s;transform: scale(.2) translate(-2000px);transition: all 1s;}
+.stone_feidie{-webkit-transform: scale(.2) translate(2000px);opacity: 0;-webkit-transition: all 1s;-ms-transform: scale(.2) translate(2000px);-ms-transition: all 1s;-moz-transform: scale(.2) translate(2000px);-moz-transition: all 1s;transform: scale(.2) translate(2000px);transition: all 1s;}
+.stoneend,.stoneend2{-webkit-transform: translateY(2000px);-webkit-transition: all 1s;-ms-transform: translateY(2000px);-ms-transition: all 1s;-moz-transform: translateY(2000px);-moz-transition: all 1s;-transform: translateY(2000px);transition: all 1s;}
+
+
+.two_txt{width: 962px;height: 1063px;background: url(../img/two/0/txtBg.png) no-repeat;}
+.two .common_long{position: absolute;bottom: 70px;left: 12px;z-index: 2;background-image: url(../img/two/1/quanpao.png);}
+.common_two_player{position: absolute;z-index: 2;bottom: 420px;left: 100px;}
+.partWra{visibility: hidden;width: 100%;height: 100%;position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
+.partWra .partTwoList{position: absolute;top:237px;width: 366px;left: 310px;}
+.partWra .partTwoList li{float: left;cursor: pointer;font-size: 23px;color: #ffffff;margin-right: 10px;}
+.partWra .seltxt:hover{font-weight: bold;}
+.partTwoWra .common_two_player{visibility: hidden;}
+.partWra .listName{text-shadow:0 0 5px #aedcff;position: absolute;width: 270px;font-size: 30px;color: #FFFFFF;left: 50%;margin-left: -135px;z-index: 2;top: 325px;text-align: center;}
+.product_name{font-size: 22px;font-weight: bold;color: #FFFFFF;border: 1px solid #FFFFFF;box-shadow:0 0 8px #aedcff;width: 177px;text-align: center;position: absolute;z-index: 2;top: 680px;left: 50%;margin-left: -88.5px;text-align: center;}
+.zhenshen{width: 740px;height: 59px;overflow-y: scroll;color: #FFFFFF;font-size: 15px;line-height: 1.4;position: absolute;z-index: 33;left: 190px;top:138px;}
+
+.partThreeWra .partTwoList{top: 315px;left:355px;}
+.partThreeWra .listName{top: 405px;}
+.partThreeWra .product_name{width: 200px;margin-left: -100px;top: 725px;}
+.partThreeWra .common_two_player{visibility: hidden;}
+
+.tabBg{width: 973px;height: 42px;background: url(../img/two/tabBg.png) no-repeat;padding-left:150px;margin-top: 20px;margin-bottom: 10px;}
+.btn{width: 209px;height: 58px;float: left;margin-right: 23px;margin-top: -20px;cursor: pointer;}
+.off{opacity: .5;}
+
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/global.css" />
+		<link rel="stylesheet" href="css/layout.css" />
+		<script type="text/javascript" src="js/js/jquery-1.7.2.min.js" ></script>
+		<title>2015年穗宝集团商务精英会</title>
+	</head>
+	<body>
+		<div class="container">
+			<img src="img/bot.jpg" id="bot"/>
+			<div class="logo">
+				<a href="http://www.suibao.com"><img src="img/logo.png"/></a>
+				
+			</div>
+			<div class="t_c" >
+				<a href="http://www.suibao.com"><img src="img/1.png" /></a>
+				
+			</div>
+			<div class="t_c" style="margin-top: 50px;">
+				<div class="zhaokai relative">
+					<a href="javascript:void(0);" class="live"><img src="img/live.jpg"/></a>
+					<a href="http://www.jia360.com/syzx/Article//20151013/1444728219922.html" class="det"><img src="img/det.jpg"/></a>
+				</div>		
+			</div>
+			<div class="t_c">
+				<img src="img/3.png"/>
+			</div>
+			<div class="t_c">
+				<img src="img/4.png"/>
+			</div>
+			<div class="t_c">
+				<img src="img/5.png"/>	
+				<div class="player relative">
+					<div class="p_1">
+						<div class="relative showImg">
+							<img src="img/player/1.jpg"/>
+							<img src="img/player/1_1.jpg" class="comone_img" />
+						</div>
+					</div>
+					<div class="p_2">
+						<div class="relative showImg">
+							<img src="img/player/2.jpg"/>
+							<img src="img/player/2_1.jpg" class="comone_img"/>
+						</div>
+					</div>
+					<div class="p_3">
+						<div class="relative showImg">
+							<img src="img/player/3.jpg"/>
+							<img src="img/player/3_1.jpg" class="comone_img"/>
+						</div>
+					</div>
+					<div class="p_4">
+						<div class="relative showImg">
+							<img src="img/player/4.jpg"/>
+							<img src="img/player/4_1.jpg" class="comone_img"/>
+						</div>
+					</div>	
+					<div class="p_5">
+						<div class="relative showImg">
+							<img src="img/player/5.jpg"/>
+							<img src="img/player/5_1.jpg" class="comone_img"/>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+			<!--#include virtual="/public/head.html"-->
+			<!--#include virtual="/public/footer.html"-->
+	</body>
+	<script>
+	$(".live").bind("click",function(){
+		alert("穗宝+新闻发布会将于2015年11月6日上午9点开始，敬请期待")
+	})
+		$(window).scroll(function(){
+			scrollTop=Math.max(parseInt($("html,body").scrollTop()),Math.abs(parseInt($("html,body").offset().top)));
+			if(scrollTop>=200){
+				$("#bot").show();
+			}
+			else{
+				$("#bot").hide();
+			}
+		});
+		$("#bot").click(function(){
+			window.scrollTo(0,0);
+		});
+	</script>
+</html>

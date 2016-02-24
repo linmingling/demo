@@ -1,0 +1,50 @@
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font-family:"Microsoft YaHei","Helvetica", sans-serif;margin:0px;padding:0;border:0px;;background-color: #fafafa;color:#333;font-size:12px}
+a:hover{text-decoration:none;}
+a{text-decoration:none;outline:none}
+.clearfix {*zoom: 1;padding: 5px;}
+.clearfix:before,.clearfix:after{display: table;line-height: 0;content: "";}
+.clearfix:after{clear: both;}
+.orange{color:#FF6325}
+.red{color:#c70000}
+.grey{color:#999}
+.l{float:left}
+.r{float:right}
+.hide{display:none}
+.px{padding: 5px;}
+.tx{float: left;line-height: 30px;}
+
+
+.warp{width:100%;max-width:695px;margin:0 auto;background:#f5f5f5;overflow:hidden}
+
+/*mainBox*/
+.mainBox{width:100%;background:#fff;margin-top:20px}
+.mainBox img{width:100%}
+
+.baoming{width:94%;padding:50px 3%}
+.baoming .title{font-size:20px;color:#555;text-align: center;font-weight: bolder;}
+.baoming .place{text-indent:20px;background:url(../images/sprite.png) no-repeat 0 -78px;background-size:35px auto}
+.baoming .time{text-indent:20px;background:url(../images/sprite.png) no-repeat 0 -113px;background-size:35px auto}
+.baoming .hx{width:100%;height:0px;background:#f2f2f2;margin:5px 0}
+.baoming p{padding:5px 0}
+.grey span{display:inline-block;}
+.baoming .name{width:100%;height:30px;border:1px solid #e1e1e1;border-radius:3px;}
+.baoming .add_time{width:29%;height:30px;border:1px solid #e1e1e1;border-radius:3px;background-position: 0 -110px;}
+.baoming .text{width:90%;height:30px;border:1px solid #e1e1e1;border-radius:3px;}
+.baoming .text_img{width:40%;height:30px;border:1px solid #e1e1e1;border-radius:3px;}
+.baoming .desc{width:99%;height:30px;border:1px solid #e1e1e1;border-radius:3px;}
+.baoming .bmBtn{cursor:pointer;width:100%;height:30px;line-height:30px;padding:0;margin:10px 0;font-size:14px;border-radius:3px;color:#fff;background:#44B549;text-align:center}
+.baoming .bmBtn_fh{cursor:pointer;width:100%;height:30px;line-height:30px;padding:0;margin:10px 0;font-size:14px;border-radius:3px;color:#fff;background:#e7e8eb;text-align:center;color:#000}
+.bmBtn:hover{background:#2F9833;}
+.bmBtn_fh:hover{background:#DFDFDF;}
+
+.tips{width:90%;padding:10px 5%;text-align:center;color:#fff;position:fixed;top:0;left:0;background:url(../images/orange_bg.png) repeat}
+.success_tips{width:90%;padding:10px 5%;text-align:center;color:#fff;position:fixed;top:0;left:0;background:url(../images/success_bg.png) repeat}
+
+.list_time{float: left;}
+.list_title{margin-left: 20px;width: 240px;overflow: hidden;}
+.list_edit{cursor:pointer;float: right;margin-right: 5%;}
+.list_jinru{float: right;cursor:pointer;margin-right: 10px;}
+
+.btnGrayS {cursor: pointer;display: inline-block;text-align: center;overflow: visible;border-radius: 3px;background-color: #44B549;color: #fff;padding: 2px 8px 2px 8px;font-size: 14px;line-height: 26px;}
+.btnGrayS:hover{background:#2F9833;}

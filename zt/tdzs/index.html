@@ -1,0 +1,920 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>特地陶瓷-内蒙古植树公益之旅</title>
+<link rel="stylesheet" type="text/css" href="css/main.css?v=2.6">
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	var pro_top = $("#pro").offset().top;
+	var news_top = $("#news").offset().top;
+	var ser_top = $("#ser").offset().top;
+	var con_top = $("#con").offset().top;
+	var job_top = $("#job").offset().top;
+	//alert(tops);
+	$(window).scroll(function(){
+		var scroH = $(this).scrollTop();
+		if(scroH>=job_top){
+			set_cur(".job");
+		}else if(scroH>=con_top){
+			set_cur(".con");
+		}else if(scroH>=ser_top){
+			set_cur(".ser");
+		}else if(scroH>=news_top){
+			set_cur(".news");
+		}else if(scroH>=pro_top){
+			set_cur(".pro");
+		}
+	});
+	
+	$(".nav li a,.links li a").click(function() {
+		var el = $(this).attr('class');
+     	$('html, body').animate({
+         	scrollTop: $("#"+el).offset().top
+     	}, 300);
+		$(this).addClass("cur").parent().siblings().find("a").removeClass("cur");	
+ 	});
+	
+});
+
+function set_cur(n){
+	if($(".nav a").hasClass("cur")){
+		$(".nav a").removeClass("cur");
+	}
+	$(".nav a"+n).addClass("cur");
+}
+
+</script>
+
+<script type="text/javascript" src="js/jquery.sly.js"></script>
+<script type="text/javascript" src="js/jquery.easing-1.3.min.js"></script>
+<script type="text/javascript">
+$(function($){
+
+	// 占位符项目来填充列表的功能
+	function populate(container, count, offset){
+		var output = '';
+		offset = isNaN(offset) ? 0 : offset;
+		for(var i = 0; i<count; i++ ){
+			output += '<li>'+(offset+i)+'</li>';
+		}
+		return $(output).appendTo(container);
+	}
+
+	// 填充列表项
+	$('ul[data-items]').each(function(i,e){
+		var items = parseInt($(e).data('items'), 10);
+		populate(e, items);
+	});
+
+	// 主要调用部分
+	$(document).on('activated',function(event){
+		var $section = $(".scrollbox");
+		var $frame = $section.find('.frame'),
+			$ul = $frame.find('ul').eq(0),
+			$scrollbar = $section.find('.scrollbar'),
+			$buttons = $section.find('.controlbar [data-action]');
+		
+		populate($ul, 10);
+			
+		// 控制
+		$buttons.on('click',function(e){
+			var action = $(this).data('action');
+			switch(action){
+				case 'reset':
+				$frame.sly('toStart');
+				setTimeout(function(){
+					$ul.find('li').slice(10).remove();
+					$frame.sly('reload');
+				}, 200);
+				break;
+				default:
+				$frame.sly(action);
+			}
+		});
+		
+		$section.find(".slyWrap").each(function(i,e){
+			var cont = $(this),
+				frame = cont.find(".sly"),
+				slidee = frame.find("ul"),
+				scrollbar = cont.find(".scrollbar"),
+				pagesbar = cont.find(".pages"),
+				options = frame.data("options"),
+				controls = cont.find(".controls"),
+				prevButton = controls.find(".prev"),
+				nextButton = controls.find(".next"),
+				prevPageButton = controls.find(".prevPage"),
+				nextPageButton = controls.find(".nextPage");
+
+			options = $.extend({},options,{
+				scrollBar: scrollbar,
+				pagesBar: pagesbar,
+				prev: prevButton,
+				next: nextButton,
+				prevPage: prevPageButton,
+				nextPage: nextPageButton,
+				disabledClass: 'btn-disabled'
+			});
+
+			frame.sly( options );
+
+			cont.find("button").click(function(){
+				var action = $(this).data('action'),
+				arg = $(this).data('arg');
+				switch(action){
+					case 'add':
+					slidee.append(slidee.children().slice(-1).clone().removeClass().text(function(i,text){
+						return text/1 + 1;
+					}));
+					frame.sly('reload');
+					break;
+					case 'remove':
+					slidee.find("li").slice(-1).remove();
+					frame.sly('reload');
+					break;
+					default:
+					frame.sly(action, arg);
+				}
+			});
+
+		});
+	
+	}).trigger('activated');
+	
+});
+</script>
+
+
+<!--图片播放-->
+<script type="text/javascript">
+$(function(){
+        var $banner=$('.banner');
+        var $banner_ul=$('.banner-img');
+        var $btn=$('.banner-btn');
+        var $btn_a=$btn.find('a')
+        var v_width=$banner.width();
+        
+        var page=1;
+        
+        var timer=null;
+        var btnClass=null;
+
+        var page_count=$banner_ul.find('li').length;//把这个值赋给小圆点的个数
+        
+        var banner_cir="<li class='selected' href='#'><a></a></li>";
+        for(var i=1;i<page_count;i++){
+                //动态添加小圆点
+                banner_cir+="<li><a href='#'></a></li>";
+                }
+        $('.banner-circle').append(banner_cir);
+        
+        var cirLeft=$('.banner-circle').width()*(-0.5);
+        $('.banner-circle').css({'marginLeft':cirLeft});
+        
+        $banner_ul.width(page_count*v_width);
+        
+        function move(obj,classname){
+                //手动及自动播放
+        if(!$banner_ul.is(':animated')){
+                if(classname=='prevBtn'){
+                        if(page==1){
+                                        $banner_ul.animate({left:-v_width*(page_count-1)});
+                                        page=page_count; 
+                                        cirMove();
+                        }
+                        else{
+                                        $banner_ul.animate({left:'+='+v_width},"slow");
+                                        page--;
+                                        cirMove();
+                        }        
+                }
+                else{
+                        if(page==page_count){
+                                        $banner_ul.animate({left:0});
+                                        page=1;
+                                        cirMove();
+                                }
+                        else{
+                                        $banner_ul.animate({left:'-='+v_width},"slow");
+                                        page++;
+                                        cirMove();
+                                }
+                        }
+                }
+        }
+        
+        function cirMove(){
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner-circle li').eq(page-1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+        }
+        
+        $banner.mouseover(function(){
+                $btn.css({'display':'block'});
+                clearInterval(timer);
+                                }).mouseout(function(){
+                $btn.css({'display':'block'});                
+                clearInterval(timer);
+                timer=setInterval(move,3000);
+                                }).trigger("mouseout");//激活自动播放
+
+        $btn_a.mouseover(function(){
+                //实现透明渐变，阻止冒泡
+                        $(this).animate({opacity:0.9},'fast');
+                        $btn.css({'display':'block'});
+                         return false;
+                }).mouseleave(function(){
+                        $(this).animate({opacity:0.6},'fast');
+                        $btn.css({'display':'block'});
+                         return false;
+                }).click(function(){
+                        //手动点击清除计时器
+                        btnClass=this.className;
+                        clearInterval(timer);
+                        timer=setInterval(move,3000);
+                        move($(this),this.className);
+                });
+                
+        $('.banner-circle li').live('click',function(){
+                        var index=$('.banner-circle li').index(this);
+                        $banner_ul.animate({left:-v_width*index},'slow');
+                        page=index+1;
+                        cirMove();
+                });
+});
+
+$(function(){
+        var $banner=$('.banner2');
+        var $banner_ul=$('.banner2-img');
+        var $btn=$('.banner2-btn');
+        var $btn_a=$btn.find('a')
+        var v_width=$banner.width();
+        
+        var page=1;
+        
+        var timer=null;
+        var btnClass=null;
+
+        var page_count=$banner_ul.find('li').length;//把这个值赋给小圆点的个数
+        
+        var banner_cir="<li class='selected' href='#'><a></a></li>";
+        for(var i=1;i<page_count;i++){
+                //动态添加小圆点
+                banner_cir+="<li><a href='#'></a></li>";
+                }
+        $('.banner2-circle').append(banner_cir);
+        
+        var cirLeft=$('.banner2-circle').width()*(-0.5);
+        $('.banner2-circle').css({'marginLeft':cirLeft});
+        
+        $banner_ul.width(page_count*v_width);
+        
+        function move(obj,classname){
+                //手动及自动播放
+        if(!$banner_ul.is(':animated')){
+                if(classname=='prevBtn'){
+                        if(page==1){
+                                        $banner_ul.animate({left:-v_width*(page_count-1)});
+                                        page=page_count; 
+                                        cirMove();
+                        }
+                        else{
+                                        $banner_ul.animate({left:'+='+v_width},"slow");
+                                        page--;
+                                        cirMove();
+                        }        
+                }
+                else{
+                        if(page==page_count){
+                                        $banner_ul.animate({left:0});
+                                        page=1;
+                                        cirMove();
+                                }
+                        else{
+                                        $banner_ul.animate({left:'-='+v_width},"slow");
+                                        page++;
+                                        cirMove();
+                                }
+                        }
+                }
+        }
+        
+        function cirMove(){
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner2-circle li').eq(page-1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+        }
+        
+        $banner.mouseover(function(){
+                $btn.css({'display':'block'});
+                clearInterval(timer);
+                                }).mouseout(function(){
+                $btn.css({'display':'block'});                
+                clearInterval(timer);
+                timer=setInterval(move,3000);
+                                }).trigger("mouseout");//激活自动播放
+
+        $btn_a.mouseover(function(){
+                //实现透明渐变，阻止冒泡
+                        $(this).animate({opacity:0.6},'fast');
+                        $btn.css({'display':'block'});
+                         return false;
+                }).mouseleave(function(){
+                        $(this).animate({opacity:0.3},'fast');
+                        $btn.css({'display':'block'});
+                         return false;
+                }).click(function(){
+                        //手动点击清除计时器
+                        btnClass=this.className;
+                        clearInterval(timer);
+                        timer=setInterval(move,3000);
+                        move($(this),this.className);
+                });
+                
+        $('.banner2-circle li').live('click',function(){
+                        var index=$('.banner2-circle li').index(this);
+                        $banner_ul.animate({left:-v_width*index},'slow');
+                        page=index+1;
+                        cirMove();
+                });
+});
+</script>
+<script src="js/jquery.tabs.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	$("img[original]").lazyload({ placeholder:"images/color3.gif" });
+	
+	$('.demo1').Tabs();
+	$('.demo2').Tabs({
+		event:'click'
+	});
+	$('.demo3').Tabs({
+		timeout:300
+	});
+	$('.demo4').Tabs({
+		auto:4000
+	});
+	$('.demo5').Tabs({
+		event:'click',
+		callback:lazyloadForPart
+	});
+	//部分区域图片延迟加载
+	function lazyloadForPart(container) {
+		container.find('img').each(function () {
+			var original = $(this).attr("original");
+			if (original) {
+				$(this).attr('src', original).removeAttr('original');
+			}
+		});
+	}
+});	
+</script>
+<style type="text/css">
+ul,li{ margin:0; padding:0; list-style:none;}
+.wrapper{
+	width:100%;
+	overflow:hidden;
+	
+}
+.content{
+	width:1400px;
+	height:929px;
+	margin:0 auto;
+}
+#scene{
+	height: 940px;
+    list-style: none outside none;
+    margin: 20px auto 0 auto;
+    padding: 0;
+    width: 100%;
+	position:relative;
+	}
+.layer{ display:block;}
+.swing-4 {
+  -webkit-animation: swing 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -moz-animation: swing 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation: swing 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+
+.swing-4i {
+  -webkit-animation: swing4i 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -moz-animation: swing4i 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation: swing4i 2s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+  
+@-webkit-keyframes swing {
+  0% {
+    -webkit-transform: rotateZ(10deg);
+    -moz-transform: rotateZ(10deg);
+    transform: rotateZ(10deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-10deg);
+    -moz-transform: rotateZ(-10deg);
+    transform: rotateZ(-10deg); } }
+
+@-moz-keyframes swing {
+  0% {
+    -webkit-transform: rotateZ(10deg);
+    -moz-transform: rotateZ(10deg);
+    transform: rotateZ(10deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-10deg);
+    -moz-transform: rotateZ(-10deg);
+    transform: rotateZ(-10deg); } }
+
+@-ms-keyframes swing {
+  0% {
+    -webkit-transform: rotateZ(10deg);
+    -moz-transform: rotateZ(10deg);
+    transform: rotateZ(10deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-10deg);
+    -moz-transform: rotateZ(-10deg);
+    transform: rotateZ(-10deg); } }
+
+@keyframes swing {
+  0% {
+    -webkit-transform: rotateZ(10deg);
+    -moz-transform: rotateZ(10deg);
+    transform: rotateZ(10deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-10deg);
+    -moz-transform: rotateZ(-10deg);
+    transform: rotateZ(-10deg); } }
+
+
+/**/
+
+
+@-webkit-keyframes swing4i {
+  0% {
+    -webkit-transform: rotateZ(-10deg);
+    -moz-transform: rotateZ(-10deg);
+    transform: rotateZ(-10deg); }
+
+  100% {
+    -webkit-transform: rotateZ(10deg);
+    -moz-transform: rotateZ(10deg);
+    transform: rotateZ(10deg); } }
+
+@-moz-keyframes swing4i {
+  0% {
+    -webkit-transform: rotateZ(-10deg);
+    -moz-transform: rotateZ(-10deg);
+    transform: rotateZ(-10deg); }
+
+  100% {
+    -webkit-transform: rotateZ(10deg);
+    -moz-transform: rotateZ(10deg);
+    transform: rotateZ(10deg); } }
+
+@-ms-keyframes swing4i {
+  0% {
+    -webkit-transform: rotateZ(-10deg);
+    -moz-transform: rotateZ(-10deg);
+    transform: rotateZ(-10deg); }
+
+  100% {
+    -webkit-transform: rotateZ(10deg);
+    -moz-transform: rotateZ(10deg);
+    transform: rotateZ(10deg); } }
+
+@keyframes swing4i {
+  0% {
+    -webkit-transform: rotateZ(-10deg);
+    -moz-transform: rotateZ(-10deg);
+    transform: rotateZ(-10deg); }
+
+  100% {
+    -webkit-transform: rotateZ(10deg);
+    -moz-transform: rotateZ(10deg);
+    transform: rotateZ(10deg); } }
+
+
+/**/
+  
+.swing-2 {
+  -webkit-animation: swing2 4s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -moz-animation: swing2 4s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation: swing2 4s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+  
+.swing-6 {
+  -webkit-animation: swing6 3s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -moz-animation: swing6 3s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation: swing6 3s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+
+.swing-6i {
+  -webkit-animation: swing6i 3s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -moz-animation: swing6i 3s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation: swing6i 3s infinite alternate cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+  
+@-webkit-keyframes swing2 {
+  0% {
+    -webkit-transform: rotateZ(3deg);
+    -moz-transform: rotateZ(3deg);
+    transform: rotateZ(3deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-3deg);
+    -moz-transform: rotateZ(-3deg);
+    transform: rotateZ(-3deg); } }
+
+@-moz-keyframes swing2 {
+  0% {
+    -webkit-transform: rotateZ(3deg);
+    -moz-transform: rotateZ(3deg);
+    transform: rotateZ(3deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-3deg);
+    -moz-transform: rotateZ(-3deg);
+    transform: rotateZ(-3deg); } }
+
+@-ms-keyframes swing2 {
+  0% {
+    -webkit-transform: rotateZ(3deg);
+    -moz-transform: rotateZ(3deg);
+    transform: rotateZ(3deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-3deg);
+    -moz-transform: rotateZ(-3deg);
+    transform: rotateZ(-3deg); } }
+
+@keyframes swing2 {
+  0% {
+    -webkit-transform: rotateZ(3deg);
+    -moz-transform: rotateZ(3deg);
+    transform: rotateZ(3deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-3deg);
+    -moz-transform: rotateZ(-3deg);
+    transform: rotateZ(-3deg); } }
+
+
+/**/
+
+
+@-webkit-keyframes swing6 {
+  0% {
+    -webkit-transform: rotateZ(40deg);
+    -moz-transform: rotateZ(40deg);
+    transform: rotateZ(40deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-40deg);
+    -moz-transform: rotateZ(-40deg);
+    transform: rotateZ(-40deg); } }
+
+@-moz-keyframes swing6 {
+  0% {
+    -webkit-transform: rotateZ(40deg);
+    -moz-transform: rotateZ(40deg);
+    transform: rotateZ(40deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-40deg);
+    -moz-transform: rotateZ(-40deg);
+    transform: rotateZ(-40deg); } }
+
+@-ms-keyframes swing6 {
+  0% {
+    -webkit-transform: rotateZ(40deg);
+    -moz-transform: rotateZ(40deg);
+    transform: rotateZ(40deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-40deg);
+    -moz-transform: rotateZ(-40deg);
+    transform: rotateZ(-40deg); } }
+
+@keyframes swing6 {
+  0% {
+    -webkit-transform: rotateZ(40deg);
+    -moz-transform: rotateZ(40deg);
+    transform: rotateZ(40deg); }
+
+  100% {
+    -webkit-transform: rotateZ(-40deg);
+    -moz-transform: rotateZ(-40deg);
+    transform: rotateZ(-40deg); } }
+
+
+/**/
+
+
+@-webkit-keyframes swing6i {
+  0% {
+    -webkit-transform: rotateZ(-40deg);
+    -moz-transform: rotateZ(-40deg);
+    transform: rotateZ(-40deg); }
+
+  100% {
+    -webkit-transform: rotateZ(40deg);
+    -moz-transform: rotateZ(40deg);
+    transform: rotateZ(40deg); } }
+
+@-moz-keyframes swing6i {
+  0% {
+    -webkit-transform: rotateZ(-40deg);
+    -moz-transform: rotateZ(-40deg);
+    transform: rotateZ(-40deg); }
+
+  100% {
+    -webkit-transform: rotateZ(40deg);
+    -moz-transform: rotateZ(40deg);
+    transform: rotateZ(40deg); } }
+
+@-ms-keyframes swing6i {
+  0% {
+    -webkit-transform: rotateZ(-40deg);
+    -moz-transform: rotateZ(-40deg);
+    transform: rotateZ(-40deg); }
+
+  100% {
+    -webkit-transform: rotateZ(40deg);
+    -moz-transform: rotateZ(40deg);
+    transform: rotateZ(40deg); } }
+
+@keyframes swing6i {
+  0% {
+    -webkit-transform: rotateZ(-40deg);
+    -moz-transform: rotateZ(-40deg);
+    transform: rotateZ(-40deg); }
+
+  100% {
+    -webkit-transform: rotateZ(40deg);
+    -moz-transform: rotateZ(40deg);
+    transform: rotateZ(40deg); } }
+  
+  
+</style>
+</head>
+
+<body>
+ 
+
+
+
+        
+<div class="heads" id="pro">
+   <div class="topbox" id="a5">
+    <div class="content">
+<ul id="scene">
+            
+            <li class="layer" data-depth="0.10">
+            	<div style="width:130px; height:135px; position:absolute; top:18px; left:230px;"><a href="http://www.jiushengboard.com/" target="_blank"><img src="images/t0.png" /></a></div>
+            </li>
+
+<li class="layer" data-depth="0">
+            	<div style="width:1400px; height:480px; position:absolute; top:262px; left:0px;"><img src="images/t3.png"/></div>
+                
+            </li>
+            <li class="layer" data-depth="0.08">
+            	<div style="width:690px; height:170px; position:absolute; top:100px; left:360px;"><img src="images/t1.png" /></div>
+                
+            </li>
+<li class="layer" data-depth="0.2">
+            	<div style=" width:1920px; height:630px;position:absolute; top:0; left:50%; margin-left:-960px; z-index:999999;"><img src="images/t2.png" width="1920" height="600" /></div>
+                
+                
+            </li>
+
+
+        </ul>
+    </div>
+  </div><!--end topbox-->
+</div><!--end heads-->
+
+
+
+<div class="daoyu" id="news">
+  <div class="boxss">
+  
+  
+  <div id="nav_left_layout">
+  <ul class="nav">
+<table width="100%" border="0" cellpadding="0" cellspacing="4" style="margin-top:8px;">
+  <tr>
+    <td align="center"><img src="images/weix.jpg" /></td>
+  </tr>
+  <tr>
+    <td align="center">扫描二维码 进入官网</td>
+  </tr>
+</table>
+	<li><a class="pro">TOP</a></li>
+	<li><a class="news">企业简介</a></li>
+	<li><a class="ser">十年植树 绿色公益路</a></li>
+	<li><a class="con">产品鉴赏</a></li>
+	<li><a class="job">特地说</a></li>
+</ul>
+  </div>
+  <script type="text/javascript"> 
+$.fn.smartFloat = function() {
+	var position = function(element) {
+		var top = element.position().top, pos = element.css("position");
+		$(window).scroll(function() {
+			var scrolls = $(this).scrollTop();
+			if (scrolls > top) {
+				if (window.XMLHttpRequest) {
+					element.css({
+						position: "fixed",
+						top: 0
+					});	
+				} else {
+					element.css({
+						top: scrolls
+					});	
+				}
+			}else {
+				element.css({
+					position: pos,
+					top: top
+				});	
+			}
+		});
+};
+	return $(this).each(function() {
+		position($(this));						 
+	});
+};
+//绑定
+$("#nav_left_layout").smartFloat();
+</script>
+  
+  
+    <div class="right">
+      
+<div id="vertical" class="scrollbox clearfix">
+                 <div class="slyWrap example1">
+                   <div class="scrollbar">
+                     <div class="handle"></div>
+                   </div>
+                   <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }'>
+                     <div style=" padding-left:15px;">
+                       <p>广东特地陶瓷有限公司，2002年创建于广东佛山，是以专业化、国际化为经营导向的高端建筑陶瓷生产企业。目前拥有三大现代化的生产基地，分别位于佛山三水、江西景德镇、肇庆广宁，同时还拥有代表业界领先水平的I&I（研发）中心和2000余平方的产品配件加工中心。精选的原料、精良的装备、精湛的工艺、精细的管理，铸就了特地陶瓷的精粹品质。
+特地陶瓷在十余年的发展中一直坚持原创，在自主创新研发的道路上遥遥领先，在30年建陶行业7大技术突破中，有5项诞生于特地，同时还参与并主导制订了3项国家标准，获批准专利多达100余项，为整个建筑陶瓷行业的发展做出了不可估量的贡献。</p>
+                       <p>特地陶瓷，从“你”出发，以“特地为你，量身定制”为品牌核心价值诉求，以极具深度的瓷尚洞察及妙笔生花的陶瓷语言，为都市新贵，量身定制独具风格的美学空间。在产品方面现涵盖抛金砖、微晶玻化石、大理石、微晶石、全抛釉、玻化砖、仿古砖、木纹砖、负离子功能釉面砖等，成为产品线最宽的建陶品牌之一。特地陶瓷凭借优质的生产、研发、设计能力，成为万科、招商、保利、碧桂园等国内外多家知名地产公司、设计机构的战略合作品牌。</p>
+                       <p>特地陶瓷凭质量创品牌，服务赢市场，在行业和消费者中树立了良好的口碑，先后荣获“国家高新重点技术企业”、“中国著名品牌”、“中国陶瓷十大品牌”、“广东省著名商标”等荣誉；并连续五年荣获“中国500最具价值品牌”，品牌价值高达67.35亿元。是行业首批通过ISO9001、ISO14001国际质量环境管理双认证、瓷质产品“国家3C强制性认证”的高端建筑陶瓷生产企业。</p>
+                       <p>作为一家高端建筑陶瓷生产企业，除了做好产品，特地陶瓷还想为社会做得更多，十年来，特地积极参与赈灾、助学、植树等公益事业，自2006年起，率先在行业中启动内蒙古四子王旗双百万“特地绿垦基地”绿化工程，十年来特地总是如期而至的植树种草，为内蒙古建立起一道绿色的屏障，完成了十年之约。</p>
+                       <p>“原创引领瓷尚”，成就了今天的特地，“定制造就大牌”将成就特地的深远未来。</p>
+                     </div>
+                   </div>
+                   
+                   
+                 </div>
+        </div>
+               
+     </div>
+  </div>
+</div>
+
+<div class="vide">
+   <div class="box"><iframe frameborder="0" width="925" height="510" src="http://v.qq.com/iframe/player.html?vid=f0115o1fqhm&tiny=0&auto=0" allowfullscreen></iframe></div>
+</div>
+
+<div class="snzs" id="ser">
+   <div class="boxs demo4">
+			<ul class="tab_menu">
+				<li class="current">第<br />一<br />期</li>
+				<li>第<br />二<br />期</li>
+				<li>第<br />三<br />期</li>
+				<li>第<br />四<br />期</li>
+                <li>第<br />五<br />期</li>
+                <li>第<br />六<br />期</li>
+                <li>第<br />七<br />期</li>
+                <li>第<br />八<br />期</li>
+                <li>第<br />九<br />期</li>
+                <li>第<br />十<br />期</li>
+			</ul>
+			<div class="tab_box">
+				<div><img src="images/x1.png" width="700" height="530" /></div>
+				<div class="hide"><img src="images/x2.png" width="700" height="530" /></div>
+				<div class="hide"><img src="images/x3.png" width="700" height="530" /></div>
+				<div class="hide"><img src="images/x4.png" width="700" height="530" /></div>
+                <div class="hide"><img src="images/x5.png" width="700" height="530" /></div>
+                <div class="hide"><img src="images/x6.png" width="700" height="530" /></div>
+                <div class="hide"><img src="images/x7.png" width="700" height="530" /></div>
+                <div class="hide"><img src="images/x8.png" width="700" height="530" /></div>
+                <div class="hide"><img src="images/x9.png" width="700" height="530" /></div>
+                <div class="hide"><img src="images/x10.png" width="700" height="530" /></div>
+			</div>
+		</div><!--demo4 end-->
+</div>
+
+<div class="wen">
+   <div class="vox">
+      <ul>
+         <li><a href="http://www.jia360.com/cizhuan/20150714/1436856839594.html" target="_blank">· 2015年特地陶瓷第十期内蒙古植树公益之旅即将启幕</a></li>
+         <li><a href="http://www.jia360.com/cizhuan/20150812/1439349453785.html" target="_blank">· 公益植树整十年 坚持是一种态度</a></li>
+         <li><a href="http://www.jia360.com/cizhuan/20150812/1439349884129.html" target="_blank">· 特地陶瓷公益之旅丨内蒙古草原上盛开的油菜花海</a></li>
+         <li><a href="http://www.jia360.com/cizhuan/20150812/1439350469926.html" target="_blank">· 特地陶瓷公益事业在行动，2015第十期内蒙古植树圆满成功</a></li>
+      </ul>
+   </div>
+   <div class="sas" id="con"></div>
+</div>
+
+<div class="cps">
+   <div class="box">
+        <div class="cenx">
+        
+   <div class="banner">
+	<div class="banner-btn">
+		<a href="javascript:;" class="prevBtn"><i></i></a>
+		<a href="javascript:;" class="nextBtn"><i></i></a>
+	</div>
+	<ul class="banner-img">
+		<li>
+           <div class="bleft">
+              <div class="bbt">印象山水8R110</div>
+              <div class="xlw" style="width:280px; height:495px; overflow:auto;"><img src="images/r110s.jpg" /></div>
+           </div>
+           <div class="imgs"><img src="images/r110.jpg"></div>
+        </li>
+		<li>
+           <div class="bleft">
+              <div class="bbt">山林神话8R331</div>
+              <div class="xlw" style="width:280px; height:495px; overflow:auto;"><img src="images/r331s.jpg" /></div>
+           </div>
+           <div class="imgs"><img src="images/r331.jpg"></div>
+        </li>
+		<li>
+           <div class="bleft">
+              <div class="bbt">欧式情怀8R336</div>
+              <div class="xlw" style="width:280px; height:495px; overflow:auto;"><img src="images/r336s.jpg" /></div>
+           </div>
+           <div class="imgs"><img src="images/r336.jpg"></div>
+        </li>
+        <li>
+           <div class="bleft">
+              <div class="bbt">莫奈花园8R332</div>
+              <div class="xlw" style="width:280px; height:495px; overflow:auto;"><img src="images/r332s.jpg" /></div>
+           </div>
+           <div class="imgs"><img src="images/r332.jpg"></div>
+        </li>
+        <li>
+           <div class="bleft">
+              <div class="bbt">金风玉露8R330</div>
+              <div class="xlw" style="width:280px; height:495px; overflow:auto;"><img src="images/r330s.jpg" /></div>
+           </div>
+           <div class="imgs"><img src="images/r330.jpg"></div>
+        </li>
+        <li>
+           <div class="bleft">
+              <div class="bbt">步步生莲8R333</div>
+              <div class="xlw" style="width:280px; height:495px; overflow:auto;"><img src="images/r333s.jpg" /></div>
+           </div>
+           <div class="imgs"><img src="images/r333.jpg"></div>
+        </li>
+        <li>
+           <div class="bleft">
+              <div class="bbt">8R335黄金海岸</div>
+              <div class="xlw" style="width:280px; height:495px; overflow:auto;"><img src="images/r335s.jpg" /></div>
+           </div>
+           <div class="imgs"><img src="images/r335.jpg"></div>
+        </li>
+        <li>
+           <div class="bleft">
+              <div class="bbt">格子情缘8R334</div>
+              <div class="xlw" style="width:280px; height:495px; overflow:auto;"><img src="images/r334s.jpg" /></div>
+           </div>
+           <div class="imgs"><img src="images/r334.jpg"></div>
+        </li>
+
+
+	</ul>
+</div>
+        </div>
+        
+  </div>
+</div>
+
+<div class="tds" id="job">
+   <div class="xlink"><a href="http://www.jia360.com/cizhuan/20140901/1409565543204.html" target="_blank"></a></div>
+</div>
+
+<div class="jw">
+  <div class="spa"><iframe frameborder="0" width="925" height="510" src="http://v.qq.com/iframe/player.html?vid=t01605rf81s&tiny=0&auto=0" allowfullscreen></iframe></div>
+</div> 
+
+
+
+<script type="text/javascript" src="js/jquery.parallax.js"></script>
+<script type="text/javascript">
+	$('#scene').parallax();
+</script>
+<script src="js/my.js"></script>
+    <!--#include virtual="/public/head.html"-->
+	<!--#include virtual="/public/footer.html"-->
+	<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>
+	
