@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>樱花卫厨专题</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<link href="css/main_new.css?v=1.5" rel="stylesheet">
+	<script>
+		//var loginFlag = false;
+		//var loginHelper = null;
+		$(document).ready(function(){
+			$('.carousel').carousel(
+				{
+					"pause":"false",
+					"interval":0
+				}
+			);
+			
+			$('.carousel').on('slide.bs.carousel', function (event) {
+				var tag = $(event.relatedTarget).attr("tag");
+				var progress = $(event.relatedTarget).attr("progress");
+				
+				$('#img_home').attr("src", "images/home.png");
+				$('#img_intro').attr("src", "images/intro.png");
+				$('#img_gift').attr("src", "images/gift.png");
+				$('#img_feedback').attr("src", "images/feedback.png");
+				$('#img_related').attr("src", "images/related.png");
+				
+				$('#img_' + tag).attr("src", "images/" + tag + "_selected.png");
+				
+				//$("#progress").width(progress + "px");
+				//$("#progress").css('left', (progress / 2) - 400 + "px");
+				$("#progress").animate({width: progress, left: (progress / 2) - 400}, 500);
+				playAnimation(tag);
+			});
+			
+			$("body,html").animate({
+               scrollTop:($("#page_home .splash-container").offset().top)
+            },10);
+			
+			playAnimation("home");
+			
+		}); 
+		
+		function switchPage(pageIndex){
+			$('.carousel').carousel(pageIndex);
+		}
+		
+		function playAnimation(tag){
+			var ani1 = $("#page_" + tag + " .ani_step_1");
+			var ani2 = $("#page_" + tag + " .ani_step_2");
+			var ani3 = $("#page_" + tag + " .ani_step_3");
+			var pre_start = ((tag == "home") ? 0 : 300);
+			if(ani1 != null){
+				ani1.css("opacity", 0);
+				setTimeout(function(){
+					ani1.animate({opacity: 1}, 1000);
+				}, 10 + pre_start);
+			}
+			if(ani2 != null){
+				ani2.css("opacity", 0);
+				setTimeout(function(){
+					ani2.animate({opacity: 1}, 1000);
+				}, 1500 + pre_start);
+			}
+			if(ani3 != null){
+				ani3.css("opacity", 0);
+				setTimeout(function(){
+					$("#page_" + tag + " .ani_step_3").animate({opacity: 1}, 1000);
+				}, 3000 + pre_start);
+			}
+		}
+	</script>
+    
+<script src="js/jquery.tabs.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	$("img[original]").lazyload({ placeholder:"images/color3.gif" });
+	
+	$('.demo1').Tabs();
+	$('.demo2').Tabs({
+		event:'click'
+	});
+	$('.demo3').Tabs({
+		timeout:300
+	});
+	$('.demo4').Tabs({
+		auto:3000
+	});
+	$('.demo5').Tabs({
+		event:'click',
+		callback:lazyloadForPart
+	});
+	//部分区域图片延迟加载
+	function lazyloadForPart(container) {
+		container.find('img').each(function () {
+			var original = $(this).attr("original");
+			if (original) {
+				$(this).attr('src', original).removeAttr('original');
+			}
+		});
+	}
+});	
+</script>
+</head>
+<body onLoad="window.location.href='#top';">
+<div id="ad"></div>
+<div id="carousel_container" class="carousel slide full_height">
+	<div class="carousel-inner full_height">
+		<div id="page_home" class="page item active" tag="home" progress="0">
+			<div id="main">
+				<div id="splash">
+					<div class="container splash-container">
+					  <img src="images/p1.png" alt="" class="ani_step_2"/>
+					  <div id="download_btn_group" class="container ani_step_1">
+			    
+							
+							<div class="horizental-item">
+								<div id="splash_download_qrcode">
+									<img class="qrcode" src="images/wx.jpg" alt="二维码下载">
+									<div id="qrcode_hint">
+									  <p>扫码去拼澡</p>
+									  <p>还赢热水器！</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<div id="ct_link" class="ani_step_3">
+					
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="page_intro" class="page item" tag="intro" progress="0">
+			<div id="main">
+				<!--<div id="splash" class="ani_step_1">
+					<div class="container splash-container">
+						<img src="images/intro_splash.png" alt=""/>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<div id="page_gift" class="page item" tag="gift" progress="0">
+			<div id="main">
+				<div id="splash">
+					<div class="p3s ani_step_2">
+						
+                        <div class="box demo4">
+			
+			<div class="tab_box">
+				<div><img src="images/xxk1.png" ></div>
+				<div class="hide">
+					<img src="images/xxk2.png" >
+				</div>
+				<div class="hide">
+					<img src="images/xxk3.png" >
+				</div>
+				<div class="hide">
+					<img src="images/xxk4.png">
+				</div>
+                
+			</div>
+            <ul class="tab_menu">
+				<li class="current"><a></a></li>
+				<li><a></a></li>
+				<li><a></a></li>
+				<li><a></a></li>
+			</ul>
+		</div><!--end demo4-->
+                        
+					</div>
+				
+					
+				</div>
+			</div>
+		</div>
+		<div id="page_feedback" class="page item" tag="feedback" progress="0">
+			<div id="main">
+				<div id="splash">
+					<div class="container splash-container ani_step_2">
+						<img src="images/p4.png" ">
+					</div>
+				
+				
+			  </div>
+			</div>
+		</div>
+		<div id="page_related" class="page item" tag="related" progress="0">
+			<div id="main">
+				<div id="splash" class="ani_step_1">
+					<div class="container splash-container">
+						<div class="horizental-item">
+							<div class="p5box">
+                               <div class="t1"><img src="images/p5.jpg" width="868" height="187"></div>
+                               <div class="t2">目前，樱花已在全国设立了60多家分公司，密植1000多家专业服务中心。同时，樱花更以维护消费者权益为己任，1978年开始的樱花吸油烟机“永久免费送油网”服务和1986年开始的樱花热水器“永久免费安全检查”服务，书写了人类商业史上的传奇篇章。</div>
+                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><iframe frameborder="0" width="425" height="240" src="http://v.qq.com/iframe/player.html?vid=w0158diwlik&tiny=0&auto=0" allowfullscreen></iframe></td>
+    <td><iframe frameborder="0" width="425" height="240" src="http://v.qq.com/iframe/player.html?vid=k0158lvsqer&tiny=0&auto=0" allowfullscreen></iframe></td>
+  </tr>
+</table>
+
+                            </div>
+						</div>
+						
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer" >
+    <div id="navbar">
+		
+		<div id="navbtns" class="container" >
+	  <div class="navbtn">
+				<a href="javascript:switchPage(0)">
+					<img id="img_home" src="images/home_selected.png" alt="">
+				</a>
+			</div>
+			<div class="navbtn">
+				<a href="javascript:switchPage(1)">
+					<img id="img_intro" src="images/intro.png" alt="">
+				</a>
+			</div>
+			<div class="navbtn">
+				<a href="javascript:switchPage(2)">
+					<img id="img_gift" src="images/gift.png" alt="">
+				</a>
+			</div>
+			<div class="navbtn">
+				<a href="javascript:switchPage(3)">
+					<img id="img_feedback" src="images/feedback.png" alt="">
+				</a>
+			</div>
+			<div class="navbtn">
+				<a href="javascript:switchPage(4)">
+					<img id="img_related" src="images/related.png" alt="">
+				</a>
+			</div>
+		</div>
+    </div>
+</div>
+</div>
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

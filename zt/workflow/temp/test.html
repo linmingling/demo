@@ -1,0 +1,231 @@
+﻿<html>
+<head>
+<title>test</title>
+</head>
+<style>
+body{
+	margin:0 auto;
+	height:100%;
+}
+.content{
+	text-align:center;
+	width:1000px;
+	height:100%;
+	position:relative;
+	margin:0 auto;
+}
+.tab{
+	text-align:center;
+	position:relative;
+	margin:0px auto;
+	width:410px;
+	height:110px;
+	border:1px solid;
+	margin-top:20px;
+}
+.bm{
+	height:50px;
+	width:80px;
+	background:green;
+	position:absolute;
+	top:60px;
+	color:white;
+}
+.name{
+	height:50px;
+	width:80px;
+	background:black;
+	position:absolute;
+	top:60px;
+	left:80px;
+	color:white;
+	background-image:url(2.png);
+}
+.header{
+	height:30px;
+	width:250px;
+	position:absolute;
+	background:green;
+	left:160px;
+}
+.wdate{
+	height:50px;
+	width:250px;
+	position:absolute;
+	background:white;
+	left:160px;
+	top:60px;
+	background:url(1.png);
+}
+.day{
+	height:30px;
+	width:250px;
+	position:absolute;
+	background:blue;
+	left:160px;
+	top:30px;
+}
+.sq{
+	float:left;
+	width:50px;
+	height:30px;
+	text-align:center;
+	color:white;
+	margin-top:5px;
+}
+.test{
+	width:160px;
+	height:60px;
+	position:absolute;
+	background:url(3.png);
+}
+</style>
+<body>
+	<div class="content">
+		<div class="tab" id="tab">
+			<div class="test" onclick="btn()">
+			</div>
+			<div class="header">
+				<div>
+					<button style="width:20px;height:30px;float:left" onclick="l_click()"><</button>
+					<button style="width:20px;height:30px;float:right" onclick="r_click()">></button>
+				</div>
+				<div style="text-align:center;font-size:20px;color:white;margin-top:3px;"><span id="time">time here</span></div>
+			</div>
+			<div class="bm" id="bm"></div>
+			<div class="name" id="name"></div>
+			<div class="day">
+				<div class="sq"><span>一</span></div>
+				<div class="sq"><span>二</span></div>
+				<div class="sq"><span>三</span></div>
+				<div class="sq"><span>四</span></div>
+				<div class="sq"><span>五</span></div>
+			</div>
+			<div class="wdate" id="wdate"></div>
+		</div>
+	</div>
+</body>
+<script>
+
+w=50;
+h=50;
+
+var member=[["张三","1"],["李四","1"],["王五","1"],["赵一","2"],["李二","1"],["钱六","2"],["郑七","3"]];//职员名称，部门编号
+var bb=[['设计部',4],['技术部',2],['行政部',1]];//部门名称（根据编号排序由小到大），部门人数
+var t=1123;//初始周一时间
+var busy=[[0,1123,1],[0,1125,3],[1,1127,4],[2,1124,2],[3,1125,3],[4,1126,1],[5,1123,3],[4,1124,4]];//职员编号，日期，忙碌状态
+
+
+function bm_sort(){
+	var temp=[];
+	for(var i=0;i<member.length;i++){
+		for(var j=i;j<member.length;j++){
+			if(member[i][1]>member[j][1]){
+				temp=member[j];
+				member[j]=member[i];
+				member[i]=temp;
+			}
+		}
+	}
+}
+function drawTable(){
+	var tab=document.getElementById("tab");	
+	var name=document.getElementById("name");	
+	var bm=document.getElementById("bm");
+	var wdate=document.getElementById("wdate");
+	var high=member.length;
+	tab.style.height=(high*50)+60;
+	name.style.height=high*50;
+	bm.style.height=high*50;
+	wdate.style.height=high*50;
+}
+function createTask(){
+	var wdate=document.getElementById("wdate");	
+	for(var i=0;i<5;i++){
+		for(var j=0;j<member.length;j++){
+			bg="url(bg.png)";
+			div=document.createElement("div");
+			div.style.width=w;
+			div.style.height=h;
+			//div.style.backgroundImage=bg;
+			div.style.position="absolute";
+			div.style.marginLeft=i*w;
+			div.style.marginTop=j*h;
+			div.setAttribute("name",j+""+(t+i));
+			wdate.appendChild(div);
+		}
+	}
+}
+function changeTask(){
+	for(var i=0;i<busy.length;i++){
+		var temp=busy[i][0]+""+busy[i][1];
+		var task=document.getElementsByName(temp)[0];
+		var isbusy="";
+		if(busy[i][2]==2){
+			isbusy="yellow";
+		}else if(busy[i][2]==3){
+			isbusy="red";
+		}else if(busy[i][2]==4){
+			isbusy="purple";
+		}
+		task.style.background=isbusy;
+	}
+}
+function createBm(){
+	var bm=document.getElementById("bm");
+	var color=["green","blue","orange"];
+	var n=0;	
+	for(var i=0;i<bb.length;i++){
+		div=document.createElement("div");
+		div.style.width=80;
+		div.style.height=h*bb[i][1];
+		div.style.background=color[n];
+		div.setAttribute("name","bm");
+		div.innerHTML=bb[i][0];
+		bm.appendChild(div);
+		n++;
+		if(n==3)n=0;
+	}
+}
+function createPerson(){
+	var name=document.getElementById("name");
+	for(var i=0;i<member.length;i++){
+		div=document.createElement("div");
+		div.style.width=80;
+		div.style.height=h;
+		div.style.position="absolute";
+		div.style.marginTop=(i*h)+15;
+		div.setAttribute("name","name");
+		div.innerHTML=member[i][0];
+		name.appendChild(div);
+	}
+}
+
+function l_click(){
+	t=t-7;
+	set_time();
+}
+function r_click(){
+	t=t+7;
+	set_time();
+}
+function set_time(){
+	var time=document.getElementById("time");
+	var txt=t+"";
+	var txt1=txt.substring(txt.length,txt.length-2);
+	var txt2=txt.substring(0,2);
+	var txt=txt2+"."+txt1+"-"+txt2+"."+(parseInt(txt1)+4);
+	time.innerHTML=txt;
+}
+
+function btn(){
+	drawTable();
+	bm_sort();
+	createPerson()
+	createBm();
+	createTask();
+	set_time();
+	changeTask();
+}
+</script>
+</html>

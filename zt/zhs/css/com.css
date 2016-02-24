@@ -1,0 +1,44 @@
+* { margin: 0; padding: 0; }
+    canvas { display: block; margin:0px auto;}
+    html, body { height: 100%; width: 100%; overflow-y:hidden;}
+    body{background: url(../image/bg.png);background-size: 100% 100%;}
+    .cf:before,.cf:after{content:"";display:table;}.cf:after{clear:both;}.cf{zoom:1;}
+
+    /*结束页面*/
+    #scoreItem{display:none;background: url(../image/black_bg.png); background-size:100% 100%;background-repeat: no-repeat; width: 100%; height: 100%; position: absolute; left:0; top:0px; overflow: hidden;  z-index: 1}
+    #scoreItem .shareTips{width: 100%;opacity: 0}
+    #scoreItem .stShow{opacity: 1}
+    #scoreItem .scoreWarp{width:300px;height: 140px;padding-top:160px;margin:0 auto;text-align: center;background: url(../image/score.png);background-size: 100% 100%}
+    #scoreItem .text{font-size: 20px}
+    #scoreItem .text span{border:3px solid #fff;border-radius: 50px;padding:10px;background: #bf0707;color: #fff}
+    #scoreItem .again, #scoreItem .shareBtn{width: 45%;margin-top: 30px}
+
+    #model{position: fixed; top: 0; left: 0; bottom: 0; right: 0; background: black; z-index: 1001;opacity: 0.3; display: none;}
+    #over{opacity: 1; background: transparent; display: none;}
+    #over img{position: absolute; left: 50%; margin-left: -660px; zoom:0.2; top:10px;}
+    #timeBar{width:320px; margin:45px auto 0px; overflow: hidden; position: absolute; height: 6px; left: 50%; margin-left: -160px; display: none;}
+    #timeBar span{width: 100%;height: 1px;margin: 2px auto;background: #2187E7;position: absolute;box-shadow: 0px 0px 10px 1px rgba(0, 198, 255, 0.7);}
+
+    #demoCanvas{width:100%;height: 100%}
+    
+    .index{/* display:none; */width: 100%;height: 100%;background: url(../image/bg.png);background-size: 100% 100%;position: absolute;top:0;left: 0}
+    .index .startBtn{width:35%;position: absolute;bottom: 20%;left:10% }
+    .index .rankBtn{width:35%;position: absolute;bottom: 20%;left:55% }
+
+    .rule{width:100%;height: 100%;position: absolute;top:0;left: 0;display: none;}
+    .rule .ruleWarp{width: 80%;height: 70%;margin:15% auto;background: #fff;border:1px solid #ececec;}
+    .rule .ruleWarp .ruleHead{width: 100%}
+    .rule .ruleWarp .ruleMain{width: 90%;height:70%;margin:10px auto;overflow-y:scroll }
+    .rule .ruleWarp .know{width: 40%;margin:0 30%;}
+
+    .rank{width:100%;height: 100%;position: absolute;top:0;left: 0;display: none}
+    .rank .rankWarp{width: 80%;margin:15% auto 0 auto;background: #fff;border:1px solid #ececec;position: relative;}
+    .rank .rankWarp .close{width: 50px;height: 50px;position: absolute;right: 0;top: 0}
+    .rank .rankWarp .rankHead{width: 100%}
+    .rank .rankMain{width: 90%;margin:20px auto;color: #ff6d00}
+    .rank .rankMain .tl{color: #000}
+    .rank .rankMain p{margin-top: 7px;height: 18px;overflow: hidden;}
+    .rank .rankMain span{float: left;overflow: hidden}
+    .rank .rankMain .l1{width: 18%}
+    .rank .rankMain .l2{width: 60%}
+    .rank .rankMain .l3{width: 22%;text-align: right;}

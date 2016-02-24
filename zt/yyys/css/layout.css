@@ -1,0 +1,84 @@
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,caption,tbody,tfoot,thead{border:0;font-size:100%;font-weight:normal;margin:0;padding:0;}
+body{font: 12px/1.7 "Microsoft YaHei";color:#333;background-color:#fff;}
+a{text-decoration:none;outline: none;}
+a img,img{border:0;vertical-align: top;}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+a:focus {
+    text-decoration: none;
+}
+
+/*********************分隔线************************/
+.main{
+	min-width:1200px;
+	max-width:1920px;
+	position: relative;
+	overflow:hidden;
+	background: url(../images/bg.jpg) no-repeat center top;
+	/*background-size: 100% auto;*/
+}
+
+.box1{
+	width: 1200px;
+	height: 800px;
+	margin: 200px auto 0;
+}
+.box1 div{
+	position: relative;
+}
+.box1-1{
+	width: 400px;
+    height: 64px;
+    margin-left: 8%;
+}
+.box1-2{
+	width: 1100px;
+    margin: 100px auto 0;
+    margin-left: 8%;
+}
+.box1-3{
+	margin: 10px auto 0;
+    width: 465px;
+}
+.box1-4{
+	width: 250px;
+	padding-left: 900px;
+    margin-top: -100px;
+}
+.box2{
+	width: 1134px;
+	margin: 50px auto 0;
+	/*height: 2000px;*/
+}
+.box2-1{
+	height: 540px;
+	text-align: center;
+}
+.box2-1-2{
+	color: #fff600;
+	font-size: 48px;
+	margin: 0 auto;
+    width: 690px;
+}
+.box2-1-1{
+	color: #fff;
+	font-size: 40px;
+	margin: 20px auto;
+    width: 690px;
+}
+/*.box2-1-1 div{
+	float: left;
+}*/
+.box2-2{
+	height: 100px;
+}
+
+
+
+
+

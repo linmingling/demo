@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>好莱客世界无醛日</title>
+<link href="css/style.css?v=2.4" rel="stylesheet" />
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/my.js"></script>
+
+<script type="text/javascript">
+$(function(){ 
+	$('li').hover(function() {
+	    $(this).addClass('on');
+	    var wl = $(this).find('img').attr('width');
+	    if (wl < 190) {
+	        $(this).find('.in').css('left', '-60')
+	    } else {
+	        $(this).find('.in').css('left', -wl / 4)
+	    }
+	},
+	function() {
+	    $(this).animate({
+	        height: "510px"
+	    },
+	    100).removeClass('on');
+	    $(this).find('.in').css('left', '0')
+	});
+})
+</script>
+
+
+
+<script>
+$(function(){
+
+	var tophtml="<div id=\"izl_rmenu\" class=\"izl-rmenu\"><div class=\"btn btn-wx\"><img class=\"pic\" src=\"images/weixin.jpg\" onclick=\"window.location.href=\'http://%77%77%77%2e%73%75%63%61%69%6a%69%61%79%75%61%6e%2e%63%6f%6d\'\"/></div><div class=\"btn btn-top\"></div></div>";
+	$("#top").html(tophtml);
+	$("#izl_rmenu").each(function(){
+		$(this).find(".btn-wx").mouseenter(function(){
+			$(this).find(".pic").fadeIn("fast");
+		});
+		$(this).find(".btn-wx").mouseleave(function(){
+			$(this).find(".pic").fadeOut("fast");
+		});
+		$(this).find(".btn-phone").mouseenter(function(){
+			$(this).find(".phone").fadeIn("fast");
+		});
+		$(this).find(".btn-phone").mouseleave(function(){
+			$(this).find(".phone").fadeOut("fast");
+		});
+		$(this).find(".btn-top").click(function(){
+			$("html, body").animate({
+				"scroll-top":0
+			},"fast");
+		});
+	});
+	var lastRmenuStatus=false;
+	$(window).scroll(function(){//bug
+		var _top=$(window).scrollTop();
+		if(_top>200){
+			$("#izl_rmenu").data("expanded",true);
+		}else{
+			$("#izl_rmenu").data("expanded",false);
+		}
+		if($("#izl_rmenu").data("expanded")!=lastRmenuStatus){
+			lastRmenuStatus=$("#izl_rmenu").data("expanded");
+			if(lastRmenuStatus){
+				$("#izl_rmenu .btn-top").slideDown();
+			}else{
+				$("#izl_rmenu .btn-top").slideUp();
+			}
+		}
+	});
+});
+</script>
+<script type="text/javascript">
+$(function(){
+        var $banner=$('.banner');
+        var $banner_ul=$('.banner-img');
+        var $btn=$('.banner-btn');
+        var $btn_a=$btn.find('a')
+        var v_width=$banner.width();
+        
+        var page=1;
+        
+        var timer=null;
+        var btnClass=null;
+
+        var page_count=$banner_ul.find('li').length;//把这个值赋给小圆点的个数
+        
+        var banner_cir="<li class='selected' href='#'><a></a></li>";
+        for(var i=1;i<page_count;i++){
+                //动态添加小圆点
+                banner_cir+="<li><a href='#'></a></li>";
+                }
+        $('.banner-circle').append(banner_cir);
+        
+        var cirLeft=$('.banner-circle').width()*(-0.5);
+        $('.banner-circle').css({'marginLeft':cirLeft});
+        
+        $banner_ul.width(page_count*v_width);
+        
+        function move(obj,classname){
+                //手动及自动播放
+        if(!$banner_ul.is(':animated')){
+                if(classname=='prevBtn'){
+                        if(page==1){
+                                        $banner_ul.animate({left:-v_width*(page_count-1)});
+                                        page=page_count; 
+                                        cirMove();
+                        }
+                        else{
+                                        $banner_ul.animate({left:'+='+v_width},"slow");
+                                        page--;
+                                        cirMove();
+                        }        
+                }
+                else{
+                        if(page==page_count){
+                                        $banner_ul.animate({left:0});
+                                        page=1;
+                                        cirMove();
+                                }
+                        else{
+                                        $banner_ul.animate({left:'-='+v_width},"slow");
+                                        page++;
+                                        cirMove();
+                                }
+                        }
+                }
+        }
+        
+        function cirMove(){
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner-circle li').eq(page-1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+        }
+        
+        $banner.mouseover(function(){
+                $btn.css({'display':'block'});
+                clearInterval(timer);
+                                }).mouseout(function(){
+                $btn.css({'display':'block'});                
+                clearInterval(timer);
+                timer=setInterval(move,10000);
+                                }).trigger("mouseout");//激活自动播放
+
+        $btn_a.mouseover(function(){
+                //实现透明渐变，阻止冒泡
+                        $(this).animate({opacity:0.6},'fast');
+                        $btn.css({'display':'block'});
+                         return false;
+                }).mouseleave(function(){
+                        $(this).animate({opacity:0.3},'fast');
+                        $btn.css({'display':'block'});
+                         return false;
+                }).click(function(){
+                        //手动点击清除计时器
+                        btnClass=this.className;
+                        clearInterval(timer);
+                        timer=setInterval(move,8000);
+                        move($(this),this.className);
+                });
+                
+        $('.banner-circle li').live('click',function(){
+                        var index=$('.banner-circle li').index(this);
+                        $banner_ul.animate({left:-v_width*index},'slow');
+                        page=index+1;
+                        cirMove();
+                });
+});
+
+$(function(){
+        var $banner=$('.banner2');
+        var $banner_ul=$('.banner2-img');
+        var $btn=$('.banner2-btn');
+        var $btn_a=$btn.find('a')
+        var v_width=$banner.width();
+        
+        var page=1;
+        
+        var timer=null;
+        var btnClass=null;
+
+        var page_count=$banner_ul.find('li').length;//把这个值赋给小圆点的个数
+        
+        var banner_cir="<li class='selected' href='#'><a></a></li>";
+        for(var i=1;i<page_count;i++){
+                //动态添加小圆点
+                banner_cir+="<li><a href='#'></a></li>";
+                }
+        $('.banner2-circle').append(banner_cir);
+        
+        var cirLeft=$('.banner2-circle').width()*(-0.5);
+        $('.banner2-circle').css({'marginLeft':cirLeft});
+        
+        $banner_ul.width(page_count*v_width);
+        
+        function move(obj,classname){
+                //手动及自动播放
+        if(!$banner_ul.is(':animated')){
+                if(classname=='prevBtn'){
+                        if(page==1){
+                                        $banner_ul.animate({left:-v_width*(page_count-1)});
+                                        page=page_count; 
+                                        cirMove();
+                        }
+                        else{
+                                        $banner_ul.animate({left:'+='+v_width},"slow");
+                                        page--;
+                                        cirMove();
+                        }        
+                }
+                else{
+                        if(page==page_count){
+                                        $banner_ul.animate({left:0});
+                                        page=1;
+                                        cirMove();
+                                }
+                        else{
+                                        $banner_ul.animate({left:'-='+v_width},"slow");
+                                        page++;
+                                        cirMove();
+                                }
+                        }
+                }
+        }
+        
+        function cirMove(){
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner2-circle li').eq(page-1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+        }
+        
+        $banner.mouseover(function(){
+                $btn.css({'display':'block'});
+                clearInterval(timer);
+                                }).mouseout(function(){
+                $btn.css({'display':'block'});                
+                clearInterval(timer);
+                timer=setInterval(move,8000);
+                                }).trigger("mouseout");//激活自动播放
+
+        $btn_a.mouseover(function(){
+                //实现透明渐变，阻止冒泡
+                        $(this).animate({opacity:0.6},'fast');
+                        $btn.css({'display':'block'});
+                         return false;
+                }).mouseleave(function(){
+                        $(this).animate({opacity:0.3},'fast');
+                        $btn.css({'display':'block'});
+                         return false;
+                }).click(function(){
+                        //手动点击清除计时器
+                        btnClass=this.className;
+                        clearInterval(timer);
+                        timer=setInterval(move,8000);
+                        move($(this),this.className);
+                });
+                
+        $('.banner2-circle li').live('click',function(){
+                        var index=$('.banner2-circle li').index(this);
+                        $banner_ul.animate({left:-v_width*index},'slow');
+                        page=index+1;
+                        cirMove();
+                });
+});
+</script><!--图片切换-->
+
+</head>
+<body>
+<div class="header topnav" id="topNav">
+        <div class="mininav">
+            <a href="http://www.jia360.com/" target="_blank" class="logo" title="腾讯网亚太家居·腾讯家居<">腾讯网亚太家居_腾讯家居</a>
+            <div class="mr">
+                <!--<span id="morecity" class="cm">
+                    <p>城市站</p>
+                    <div class="tabcity" id="tabcity"></div>
+                </span>
+                <span class="l">|</span>-->
+                <span id="hychannel" class="hychannel">
+                    <p>产品中心</p>
+                    <ul>
+                        <a href="http://www.jia360.com/jiaju/" target="_blank">家具</a>
+                        <a href="http://www.jia360.com/weiyu/" target="_blank">卫浴</a>
+                        <a href="http://www.jia360.com/cizhuan/" target="_blank">瓷砖</a>
+                        <a href="http://www.jia360.com/yigui/" target="_blank">衣柜</a>
+                        <a href="http://www.jia360.com/chufang/" target="_blank">厨房</a>
+                        <a href="http://www.jia360.com/huwai/" target="_blank">户外</a>
+                        <a href="http://www.jia360.com/muwu/" target="_blank">木屋</a>
+                        <a href="http://www.jia360.com/diaoding/" target="_blank">吊顶</a>
+                        <a href="http://www.jia360.com/shicai/" target="_blank">石材</a>
+                        <a href="http://www.jia360.com/zhujiaju/" target="_blank">竹家居</a>
+                        <a href="http://www.jia360.com/diban/" target="_blank">地板</a>
+                        <a href="http://www.jia360.com/menchuang/" target="_blank">门窗</a>
+                        <a href="http://www.jia360.com/zhengmu/" target="_blank">整木</a>
+                        <a href="http://www.jia360.com/hongmu/" target="_blank">红木</a>
+                        <a href="http://www.jia360.com/jiashi/" target="_blank">家饰</a>
+                        <a href="http://www.jia360.com/louti/" target="_blank">楼梯</a>
+                        <a href="http://www.jia360.com/shuimian/" target="_blank">睡眠</a>
+                        <a href="http://www.jia360.com/qiangzhi/" target="_blank">墙纸</a>
+                        <a href="http://www.jia360.com/zhaoming/" target="_blank">照明</a>
+                        <a href="http://www.jia360.com/gangmumen/" target="_blank">钢木门</a>
+                        <a href="http://www.jia360.com/cainuo/" target="_blank">采暖</a>
+                        <a href="http://www.jia360.com/shafa/" target="_blank">沙发</a>
+                        <a href="http://www.jia360.com/jiafang/" target="_blank">家纺</a>
+                        <a href="http://www.jia360.com/ditan/" target="_blank">地毯</a>
+                        <a href="http://www.jia360.com/yuanyi/" target="_blank">园艺</a>
+                        <a href="http://www.jia360.com/tuliao/" target="_blank">涂料</a>
+                        <a href="http://www.jia360.com/wujin/" target="_blank">五金</a>
+                        <a href="http://www.jia360.com/ertong/" target="_blank">儿童家具</a>
+                    </ul>
+                </span>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/picture/" target="_blank" class="nt">图库</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/evaluation/" target="_blank" class="nt">评测</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/zhuanti/qgbcqc" target="_blank" class="nt">导购</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/fresh/" target="_blank" class="nt">新品</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/homelife/geomantic/" target="_blank" class="nt">风水</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/fitment/idea/" target="_blank" class="nt">配饰</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/fitment/college/" target="_blank" class="nt">案例库</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com:80/shejishi/index.html" target="_blank" class="nt">设计师</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/news/video/" target="_blank" class="nt">视频</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/zhuanti/" target="_blank" class="nt">专题</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/news/person/" target="_blank" class="nt">人物</a>
+                <span class="l">|</span>
+                <a href="http://news.jia360.com/" target="_blank" class="nt">新闻</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/" target="_blank" class="nt">首页</a>
+
+            </div>
+        </div>
+    </div>
+    
+    
+    
+<div id="pic1" num="1">
+  <div class="nag">
+<!--    <div  class="ac active"><b></b></div>
+    <div class="ac"><b></b></div>
+    <div class="ac"><b></b></div>
+    <div class="ac"><b></b></div>
+    <div class="ac"><b></b></div>
+    <div class="ac"><b></b></div>-->
+      <div class="rt">
+
+<div id="top"></div>
+
+      </div>
+  </div>
+  
+  <!-- <div style="position: fixed; z-index:7; width:100%; height:800px; background:;">
+	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="800px" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" >
+		<param name="movie" value="images/index.swf" />  
+		<param name="quality" value="high" />
+		<param name="wmode" value="transparent" />
+		<embed src="images/index.swf" width="100%" height="800px"  pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent"></embed>
+	</object>
+</div> -->
+ <div class="divtop"> <img id="btntop" class="btntop" src="images/top.png" /> </div>
+  <div class="back a1">
+  
+    <div class="deng" id="n2p"><img src="images/logo1.jpg" width="175" height="57"><img src="images/logo2.jpg" width="175" height="57"></div>
+    <div class="a1box" id="n1p"><div class="shuye"></div></div>
+    <div class="dq"></div>
+  </div>
+
+  <div class="back a2" id="cn1">
+  
+    <!--<div id="n1yue3" class="yue3"></div>-->
+    <div class="main">
+        <div class="iframe" style="width:1000px;margin: 8% auto">
+            <iframe src="after.html" frameborder="no" scrolling="no"  style="border:0; width:1000px; height:445px;z-index:100"></iframe>
+        </div>
+    </div><!--end main-->
+    
+  </div>
+    
+  <div class="back a3" id="cn2">
+    <div class="main3"> 
+      <div class="show">
+      <div class="banner-btn">
+		<a href="javascript:;" class="prevBtn"><i></i></a>
+		<a href="javascript:;" class="nextBtn"><i></i></a>
+</div>
+         <div class="banner">
+	
+	<ul class="banner-img">
+		<li><a target="_blank"><img src="images/gd1.png"></a></li>
+		<li><a target="_blank"><img src="images/gd2.png"></a></li>
+	</ul>
+	
+</div><!--end banner-->
+      </div>
+    </div><!--end main3-->
+  </div>
+    
+  <div class="back a4">
+  <div class="main">    
+
+    </div><!--end main-->
+  </div>
+  
+  <div class="back a5">
+  <div class="main"> 
+        <div id="probox">
+          <ul id="pro">
+            <li id="li01" class="lishow">
+              <div class="inner"> <span class="tjlm">无醛无忧·超值爱心卡</span>
+                <div class="grp">
+                  <h4>无醛无忧·超值爱心卡</h4>
+                  <p>活动期间，消费者预购50元爱心卡即可领取价值128元高档礼品一份，活动当天即可抵用426元（特价产品不可用）</p>
+                </div>
+              </div>
+            </li>
+            <li id="li02" class="pic2">
+              <div class="inner"> <span class="cctg">世界无醛，选原态</span>
+                <div class="grp">
+                  <h4>世界无醛，选原态</h4>
+                  <p>活动期间，消费者预购50元爱心卡即可领取价值128元高档礼品一份，活动当天即可抵用426元（特价产品不可用）</p>
+                </div>
+              </div>
+            </li>
+            <li id="li03">
+              <div class="inner"> <span class="wxlm">E0级风暴，底价特供</span>
+                <div class="grp">
+                  <h4>E0级风暴，底价特供</h4>
+                  <p>活动期间，特推出E0级颗粒板799元／平（投影面积，银沙榆、西子红）（T1框上下平板中间300高FA/FB /FC 百叶；不含五金配件） </p>
+                </div>
+              </div>
+            </li>
+            <li id="li04">
+              <div class="inner"> <span class="bk">爆款原态衣柜·红星定制</span>
+                <div class="grp">
+                  <h4>爆款原态衣柜·红星定制</h4>
+                  <p>爆款衣柜：4月26日宣布</p>
+                  <p>银沙榆，高2.6米，宽1.8米</p>
+                  <p>带一个衣通，一个抽屉，一个格子架</p>
+                </div>
+              </div>
+            </li>
+            <li id="li05">
+              <div class="inner"> <span class="yt">原态之旅 全家游米兰</span>
+                <div class="grp">
+                  <h4>原态之旅 全家游米兰</h4>
+                  <p>活动期间，凡购买原态系列家具1万元以上者，皆有机会获得全家米兰游大奖。</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<script type="text/javascript">
+$(function(){
+	
+	$('#li01').hover(function(){
+		$(this).animate({'left':'0'},300).addClass('lishow');
+		$('#li02').animate({'left':'560px','font-size':'0'},300).removeClass('lishow');
+		$('#li03').animate({'left':'715px','font-size':'0'},300).removeClass('lishow');
+		$('#li04').animate({'left':'870px','font-size':'0'},300).removeClass('lishow');
+		$('#li05').animate({'left':'1025px','font-size':'0'},300).removeClass('lishow');
+	});
+	
+	$('#li02').hover(function(){
+		$(this).animate({'left':'145px','font-size':'14px'},300).addClass('lishow');
+		$('#li01').animate({'left':'0','font-size':'0px'},300).removeClass('lishow');
+		$('#li03').animate({'left':'715px','font-size':'0'},300).removeClass('lishow');
+		$('#li04').animate({'left':'870px','font-size':'0'},300).removeClass('lishow');
+		$('#li05').animate({'left':'1025px','font-size':'0'},300).removeClass('lishow');
+	});
+	
+	$('#li03').hover(function(){
+		$(this).animate({'left':'290px','font-size':'14px'},300).addClass('lishow');
+		$('#li01').animate({'left':'0','font-size':'0'},300).removeClass('lishow');
+		$('#li02').animate({'left':'145px','font-size':'0'},300).removeClass('lishow');
+		$('#li04').animate({'left':'870px','font-size':'0'},300).removeClass('lishow');
+		$('#li05').animate({'left':'1025px','font-size':'0'},300).removeClass('lishow');
+	});
+	$('#li04').hover(function(){
+		$(this).animate({'left':'435px','font-size':'14px'},300).addClass('lishow');
+		$('#li01').animate({'left':'0','font-size':'0'},300).removeClass('lishow');
+		$('#li02').animate({'left':'145px','font-size':'0'},300).removeClass('lishow');
+		$('#li03').animate({'left':'290px','font-size':'0'},300).removeClass('lishow');
+		$('#li05').animate({'left':'1025px','font-size':'0'},300).removeClass('lishow');
+	});
+	$('#li05').hover(function(){
+		$('#li01').animate({'left':'0','font-size':'0'},300).removeClass('lishow');
+		$('#li02').animate({'left':'145px','font-size':'0'},300).removeClass('lishow');
+		$('#li03').animate({'left':'290px','font-size':'0'},300).removeClass('lishow');				  
+		$('#li04').animate({'left':'435px','font-size':'0'},300).removeClass('lishow');
+		$(this).animate({'left':'580px','font-size':'14px'},300).addClass('lishow');
+	});
+	
+});
+</script>
+    </div><!--end main-->
+    
+    <div class="foots" style="display:">
+    <div class="ued">腾讯网·亚太家居UED出品</div>
+  <div class="box">
+     <div class="left"><p id="babout">
+            <a href="http://www.jia360.com/about.html" target="_blank" title="关于亚太家居网" rel="nofollow">关于我们</a> |
+            <a href="http://www.jia360.com/contact.html" target="_blank" title="联系亚太家居网" rel="nofollow">联系我们</a> |
+            <a href="http://www.jia360.com/zhaoshang/2012-08-17/" target="_blank" title="招商加盟" rel="nofollow">招商加盟</a> |
+            <a href="http://www.jia360.com/zhaopin/20130112/" target="_blank" title="招贤纳士" rel="nofollow">招贤纳士</a> |    <a href="http://www.jia360.com/adnav/" target="_blank" title="广告咨询" rel="nofollow">广告咨询</a> |
+            <a href="http://www.jia360.com/maps.html" target="_blank" title="网站地图" rel="nofollow">网站地图</a> |
+            <a href="http://www.jia360.com/links.html" target="_blank" title="友情链接" rel="nofollow">友情链接</a> |
+            <a href="http://www.jia360.com/announce.html" target="_blank" title="免责声明" rel="nofollow">免责声明</a>
+        </p></div>
+        <div class="right"><p>Copyright 2009-2015  版权所有深圳亚太传媒股份有限公司 腾讯网亚太家居UED团队</p></div>
+  </div>
+</div>
+
+
+
+  </div>
+  
+  
+  
+
+
+
+  
+  
+  
+</div>
+<script language="javascript" type="text/javascript" src="js/jquery.easing.js"></script>
+<script>
+	//var index_img=0;
+	/*$(".a1_img img").eq(0).fadeIn("slow");
+	setInterval(function(){
+		var index_0=index_img;
+		index_img=index_img+1;
+		if(index_img>=3) index_img=0;
+		$(".a1_img img").eq(index_0).fadeOut("slow");
+		$(".a1_img img").eq(index_img).fadeIn("slow");
+		$("#a1_a").attr("class","a_"+index_img)
+	},5000);*/
+
+	function $en(tit){return encodeURIComponent(tit)}
+	var title="好莱客世界无醛日";
+	//var url="#";
+	var pic="images/iconpic.png";
+
+	var h=$(window).height();
+	var w=$(window).width();
+	//var h1=(h1-500<30?30:h-580)+"px";
+	//$(".divtop").css("bottom",h1);
+
+	$(".back").css("height",h+"px");
+	$(".nag").css("top",$(window).scrollTop() + 190 +"px");
+	
+	
+	var yueAnimate={
+		lbyFun:function(){
+			$("#n11img").css({"width": "65px","height": "5px","top": "260px","margin-left": "-32px","opacity":"0"});
+			$("#n1p").css({"opacity":"0"});
+			$("#n2p").css({"opacity":"0"});
+			$(".dq").css({"opacity":"0","bottom":"-80px"});
+			$(".dq").animate({
+				"bottom": y-100+"px",
+				"opacity":"1","bottom":"60px"
+			},2400,'easeInCubic');
+			var y=460;
+			
+			$("#n1p").animate({
+				"opacity": 1
+			},3800,'easeInCubic',function(){
+			});
+			$("#n2p").animate({
+				"opacity": 1
+			},800,'easeInCubic',function(){
+			});
+			
+		},
+		btntop :function(){
+
+			$("#btntop").css({"margin-top": "0px"});
+			$("#btntop").animate({
+				"margin-top": "30px"
+			},1000,'easeOutBounce');
+			
+		},
+		yue :function(id,left,right,time){
+
+			
+			$(id).animate({
+				"margin-left": right
+			},time,function(){
+				$(id).animate({
+					"margin-left": left
+				},time);
+			});
+		},
+		hjFun:function(){
+			$("#hjimg").css("top",($(window).height()+545)+"px");
+			$("#hjimg").css("margin-left","-824px");
+			$("#n2yue1").css("margin-left","-560px");
+			$("#n2yue2").css("margin-left","55px");
+			$("#hjimg").animate({
+				"top": "230px",
+				"margin-left":"-340px"
+			},1000,'easeInOutQuint');
+		},
+		yuFun:function(){
+			var x=$(window).width()/2-500+220;
+			x=x<210?210:x;
+			var y=460;
+			$(".yutop").css("top",(h+60)+"px");
+			$(".yu2").css({"left": "10px","top": "360px","opacity":"0"});
+			$(".yu2").animate({
+				"left": y-300+"px",
+				"opacity":"1",
+			},2400,'easeInCubic');
+			$(".yu3").css({"right": "0px","top": "60px","opacity":"0"});
+			$(".yu3").animate({
+				"top": y-420+"px",
+				"opacity":"1",
+			},2400,'easeInCubic');
+			var y=10;
+			$(".a2").css({"opacity":"0"});
+			$(".a2").animate({
+				"opacity": "1"
+			},1000,'easeInCubic');
+			
+			
+		},
+		n5imgFun:function(){
+			var x=$(window).width()/3-500+210;
+			x=x<210?210:x;
+			var y=460;
+			$(".yu1").css({"right": "0px","top": "60px","opacity":"0"});
+			$(".yu1").animate({
+				"top": y-420+"px",
+				"opacity":"1"
+			},2400,'easeInCubic');
+            var y=10;
+			$(".a3").css({"opacity":"0"});
+			$(".a3").animate({
+				"opacity": "1"
+			},1000,'easeInCubic');
+		},
+		n6imgFun:function(){
+			var x=$(window).width()/2-500+220;
+			x=x<210?210:x;
+			var y=460;
+			$(".yu4").css({"left": "0px","top": "60px","opacity":"0"});
+			$(".yu4").animate({
+				"top": y-420+"px",
+				"opacity": "1"
+			},2400,'easeInCubic');
+			var y=10;
+			$(".a4").css({"opacity":"0"});
+			$(".a4").animate({
+				"opacity": "1"
+			},1000,'easeInCubic');
+		},
+		n7imgFun:function(){
+			var x=$(window).width()/3-500+210;
+			x=x<210?210:x;
+			var y=460;
+			$(".yu5").css({"right": "0px","top": "60px","opacity":"0"});
+			$(".yu5").animate({
+				"top": y-380+"px",
+				"opacity":"1"
+			},1800,'easeInCubic');
+			$(".wx").css({"right": "0px","top": "480px","opacity":"0","height": "0px"});
+			$(".wx").animate({
+			    "top": y-20+"px",
+				"opacity":"1",
+				"height": "177px"
+			},3000,'easeInCubic');
+            var y=460;
+			
+			$(".a5").css({"opacity":"0"});
+			$(".a5").animate({
+				"opacity": "1"
+			},1000,'easeInCubic');
+
+		},
+		
+		
+	}
+	
+	//鼠标滚动事件 
+	var shubiao=true;
+	var wheel = function(event) {  
+		var delta = 0;  
+		if (!event)
+			event = window.event;  
+		if (event.wheelDelta) {
+			delta = event.wheelDelta / 120;
+		} else if (event.detail) {
+			delta = -event.detail / 3;
+		}
+		if (delta) handle(delta);
+		if (event.preventDefault) event.preventDefault();  
+		event.returnValue = false;  
+	}
+	if (window.addEventListener) window.addEventListener('DOMMouseScroll', wheel, false);
+	document.onmousewheel = wheel;
+	var $f=true;
+	var handle = function(delta) {
+		if(!shubiao) return;
+		shubiao=false;
+		var random_num = Math.floor((Math.random() * 100) + 50);
+		if (delta < 0) {
+			PicWheelScroll(1);
+			$f=false;
+			 //console.log("鼠标滑轮向下滚动：" + delta + "次！"); // 1  
+			return false;  
+		} else {
+			$f=true;
+			PicWheelScroll(0);
+			//console.log("鼠标滑轮向上滚动：" + delta + "次！"); // -1  
+			return false;  
+		}
+	}
+	$(".ac").each(function(i){
+		$(this).click(function(){
+			$(".ac").removeClass("active");
+			$(".ac").eq(i).addClass("active");
+			var num=i+1;
+			if(num=="5") $("#btntop").hide();
+			else $("#btntop").show();
+			gotoAnchor($(".a"+num));
+			getAnchroFun(num);
+		})
+	})
+	var PicWheelScroll = function(n){
+		
+		var num=$("#pic1").attr("num");
+		
+		if((num===5&&n===1) || (num===1&&n===0)) return;
+		if(n==1){
+			if(num<5) num++;
+		}else{
+			if(num>1) num--;
+		}
+
+		$(".ac").removeClass("active");
+		$(".ac").eq(num-1).addClass("active");
+
+		if(num=="5") $("#btntop").hide();
+		else $("#btntop").show();
+		gotoAnchor($(".a"+num));
+		getAnchroFun(num);
+	}
+
+	yueAnimate.yue("#n1yue3","-510px","-150px",10000);
+	yueAnimate.yue("#n2yue1","-560px","-375px",10000);
+	yueAnimate.yue("#n2yue2","55px","260px",10000);
+	yueAnimate.yue("#n4yue1","-240px","-160px",10000);
+	yueAnimate.yue("#n4yue2","120px","230px",10000);
+	setInterval(function(){
+		yueAnimate.yue("#n1yue3","-510px","-300px",10000);
+
+		yueAnimate.yue("#n2yue1","-560px","-375px",10000);
+		yueAnimate.yue("#n2yue2","55px","260px",10000);
+
+		yueAnimate.yue("#n4yue1","-240px","-160px",10000);
+		yueAnimate.yue("#n4yue2","120px","230px",10000);
+	},22000);
+
+	setInterval(yueAnimate.btntop,2000);
+	var nowNum = 1;
+	var getAnchroFun = function (num) {
+	    if (nowNum == num) { return;}
+		var h=$(window).height();
+		var h=(h-500<30?30:h-580)+"px";
+		$(".divtop").css("bottom","20px");
+		var n = $("#pic1").attr("num");
+       
+		nowNum = num;
+		switch(parseInt(num)){
+			case 1:
+				if(n==1&&$f) return false;
+				yueAnimate.lbyFun();
+				break;
+			case 2:
+				yueAnimate.yuFun();
+				break;
+			case 3:
+				yueAnimate.n5imgFun();
+				break;
+			case 4:
+			    yueAnimate.n6imgFun();
+				break;
+			case 5:
+			    yueAnimate.n7imgFun();
+				break;
+
+					
+		}
+		$("#pic1").attr("num",num);
+	}
+	var gotoAnchor = function(selector,isauto){
+		var anchor = $(selector);
+		if (anchor.length < 0) return;
+		var $win=$(window);
+		var $body = $(window.document.documentElement);
+		var ua = navigator.userAgent.toLowerCase();
+		if (ua.indexOf("webkit") > -1) {
+			$body = $(window.document.body)
+		}
+		var pos=anchor.offset();
+		if (isauto) {
+			var t = pos.top - $win.scrollTop(); //相对于屏幕显示区
+			var t2 = $win.height() - t;
+			if (t2 < anchor.outerHeight()) {
+				$body.animate({"scrollTop": pos.top}, "normal");
+			}
+			return;
+		}
+		$body.animate({"scrollTop": pos.top},{queue :false,complete: function(){shubiao=true;}});
+	}
+	gotoAnchor($(".a1"));
+	yueAnimate.lbyFun();
+	$(window).resize(function(){
+		var h=$(window).height();
+		$(".back").css("height",h+"px");
+		var n=$("#pic1").attr("num");
+		var h1=(h-500<30?30:h-580)+"px";
+		//if(n==1) $(".divtop").css("bottom",h1);
+		//else 
+		$(".divtop").css("bottom","30px");
+		gotoAnchor($(".a"+n));
+	});
+	$(".divtop").click(function(){
+		var n=$("#pic1").attr("num");
+		if(n=="4") $("#btntop").hide();
+		n=parseInt(n)+1;
+		if(n==6) {return;}
+		$(".ac").removeClass("active");
+		$(".ac").eq(n-1).addClass("active");
+		gotoAnchor($(".a"+n));
+		getAnchroFun(n);
+		$("#pic1").attr("num",n);
+	})
+
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4f801a3be05fbee10700404e0e020f21";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>

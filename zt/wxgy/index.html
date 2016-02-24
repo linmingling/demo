@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>伟星管业-施工安装有“讲究”</title>
+
+<link type="text/css" rel="stylesheet" href="css/jquery.fullPage.css">
+<link type="text/css" rel="stylesheet" href="css/style.css?v=3.4">
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$.fn.fullpage({
+		slidesColor: ['#0075D1', '#C2E5FF', '#FDF6E1', '#E9E9E9', '#F3F3F3', '#F9F3DC'],
+		anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6'],
+		menu: '#menu',
+		afterRender: function(){
+			$('.screen-main span').each(function(){
+				var $rel = $(this).attr('rel');
+				var $arr = $rel.split(',');
+				$(this).animate({
+					left: $arr[2] + 'px',
+					top: $arr[3] + 'px'
+				}, 500);
+			});
+			$('.inner a').each(function(){
+				var $rel = $(this).attr('rel');
+				var $arr = $rel.split(',');
+				$(this).animate({
+					left: $arr[0] + 'px',
+					top: $arr[1] + 'px'
+				}, 500);
+			});
+		},
+		afterLoad: function(anchorLink, index){
+			if(index == 1){
+				$('.screen-main span').each(function(){
+					var $rel = $(this).attr('rel');
+					var $arr = $rel.split(',');
+					$(this).animate({
+						left: $arr[2] + 'px',
+						top: $arr[3] + 'px'
+					}, 500);
+				});
+			}
+			if(index == 2 || index == 3 || index == 4 || index == 5){
+				$('.inner').eq(index - 2).find('a').each(function(){
+					var $rel = $(this).attr('rel');
+					var $arr = $rel.split(',');
+					$(this).animate({
+						left: $arr[2] + 'px',
+						top: $arr[3] + 'px'
+					}, 500);
+				});
+			}
+			if(index == 6){
+				$('.zanzhu-con a').fadeIn(1000);
+			}
+		},
+		onLeave: function(index, direction){
+			if(index == 1){
+				$('.screen-main span').each(function(){
+					var $rel = $(this).attr('rel');
+					var $arr = $rel.split(',');
+					$(this).animate({
+						left: $arr[0] + 'px',
+						top: $arr[1] + 'px'
+					}, 500);
+				});
+			}
+			if(index == 2 || index == 3 || index == 4 || index == 5){
+				$('.inner').eq(index - 2).find('a').each(function(){
+					var $rel = $(this).attr('rel');
+					var $arr = $rel.split(',');
+					$(this).animate({
+						left: $arr[0] + 'px',
+						top: $arr[1] + 'px'
+					}, 500);
+				});
+			}
+			if(index == 6){
+				$('.zanzhu-con a').fadeOut(1000);
+			}
+		}
+	});
+});
+</script>
+<script src="js/jquery.tabs.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	$("img[original]").lazyload({ placeholder:"images/color3.gif" });
+	
+	$('.demo1').Tabs();
+	$('.demo2').Tabs({
+	});
+	$('.demo3').Tabs({
+	});
+	$('.demo4').Tabs({
+		auto:3000
+	});
+	$('.demo5').Tabs({
+		event:'click',
+		callback:lazyloadForPart
+	});
+	//部分区域图片延迟加载
+	function lazyloadForPart(container) {
+		container.find('img').each(function () {
+			var original = $(this).attr("original");
+			if (original) {
+				$(this).attr('src', original).removeAttr('original');
+			}
+		});
+	}
+});	
+</script>
+</head>
+<body>
+
+<ul id="menu">
+	<li data-menuanchor="page1" class="active"><a href="#page1"></a></li>
+	<li data-menuanchor="page2"><a href="#page2"></a></li>
+	<li data-menuanchor="page3"><a href="#page3"></a></li>
+	<li data-menuanchor="page4"><a href="#page4"></a></li>
+	<li data-menuanchor="page5"><a href="#page5"></a></li>
+</ul>
+
+<div class="section section1">
+   <div class="icobox"><img src="images/icon.png" width="180" height="70" /></div>
+	<div class="screen-main">
+		<span class="shi1" rel="-301,-255,70,70" onmouseover="this.style.cursor='pointer'" onclick="document.location='http://www.jia360.com/chufang/20150811/1439277802726.html';"></span>
+		<span class="shi2" rel="1387,-359,207,155" onmouseover="this.style.cursor='pointer'" onclick="document.location='http://www.jia360.com/chufang/20150811/1439277802726.html';"></span>
+		<span class="shi3" rel="-619,-359,810,80"></span>
+
+	</div>
+</div>
+<div class="section page2">
+   <div class="icobox"><img src="images/icon.png" width="180" height="70" /></div>
+	<div class="science-inner">
+		<div class="box demo1">
+			<ul class="tab_menu">
+				<li class="current" style="width:300px;"><a><b>1、</b>铺设原则</a><div class="sjx"></div></li>
+				<li style="width:600px;"><a><b>2、</b>安装方法：“一步一卡” 捍卫管道</a><div class="sjx"></div></li>
+		  </ul>
+			<div class="tab_box">
+				<div>
+					<img src="images/page2_2.png" />
+				</div>
+				<div class="hide">
+                    <img src="images/page2_3.png" />
+					<!--<div class="ns1"><div class="ntxt">【伟星提供施工规范标准号】热水管外径口25，间距管卡30公分，若间距过长则会造成管道变形影响使用寿命；冷水管25，管卡间距60公分；建筑给水用聚丙烯管道工程技术规范GB/T50349-2005</div></div>		
+                    <div class="ns2"><div class="ntxt">同时冷热管道之间必须要留一定距离，避免相爱相杀：冷-热水管必须分开两槽铺设，间距5公分；如果铺设在同一槽内，导致问题：出现冷凝水导致墙壁潮湿</div></div>			-->
+				</div>	
+			</div>
+		</div><!--demo1 end-->
+	</div>
+</div>
+<div class="section page3">
+<div class="icobox"><img src="images/icon.png" width="180" height="70" /></div>
+	<div class="famous-inner">
+		<div class="box demo3">
+			<ul class="tab_menu">
+				<li class="current" style="width:600px;"><a><b>3、</b>焊接：三点一线，绝不漏水</a><div class="sjx"></div></li>
+				<li style="width:300px;"><a><b>4、</b>”面子工程”</a><div class="sjx"></div></li>
+		  </ul>
+			<div class="tab_box">
+				<div>
+		      <img src="images/page3_3.png" /></div>
+				<div class="hide">
+					<img src="images/page3_4.png" />
+				</div>	
+			</div>
+		</div><!--demo3 end-->
+	</div>
+</div>
+<div class="section page4">
+<div class="icobox"><img src="images/icon.png" width="180" height="70" /></div>
+	<div class="social-inner inner">
+	
+	</div>
+</div>
+<div class="section page5">
+<div class="icobox"><img src="images/icon.png" width="180" height="70" /></div>
+	<a href="http://www.jia360.com/chufang/20150811/1439277802726.html" target="_blank" class="dsh"></a>
+	</div>
+</div>
+
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+
+</body>
+</html>
