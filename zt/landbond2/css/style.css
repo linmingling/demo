@@ -1,0 +1,200 @@
+html,body,div,span,strong,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,code,del,dfn,em,img,q,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0}
+body{font: 12px/1.7 "Microsoft YaHei" "SimSun" "Hiragino Sans GB"}
+a{color:#505050;text-decoration:none}
+a:hover{color:#af874b;text-decoration:none}
+em{font-style:normal}
+li{list-style:none;}
+img{border:0;outline: 0;vertical-align:middle;}
+html body img{vertical-align: middle;}
+table{border-collapse:collapse;border-spacing:0}
+p{word-wrap:break-word}
+.clear{clear: both;}
+.block{display:block}
+.inlineblock{display:inline-block;}
+.none{display:none}
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.relative{position: relative;}
+.t_c{text-align: center;}
+.t_l{text-align: left;}
+.t_r{text-align: right;}
+.bold{font-weight: bold;}
+.noborder{border: 0;}
+
+.content{
+	height:5000px;
+	margin:0 auto;
+	text-align:center;
+	background:url(../images/bg.png?v=1.0) center top no-repeat;
+}
+.box{
+	width:1280px;
+	margin:0 auto;
+	text-align:center;
+	padding-top:60px;
+}
+.i_head{
+	width:1280px;
+	height:613px;
+	background:url(../images/top1.png?v=1.0);
+	position:absolute;
+	z-index:2;
+}
+.head_title1{
+	width:560px;
+	height:447px;
+	background:url(../images/top3.png?v=1.0);
+	z-index:3;
+	position:absolute;
+	margin-left:580px;
+	margin-top:170px;
+	
+}
+.head_title2{
+	width:498px;
+	height:349px;
+	background:url(../images/top4.png?v=1.0);
+	z-index:3;
+	position:absolute;
+	margin-left:640px;
+	margin-top:220px;
+	display:none;
+}
+.l_arr{
+	width:21px;
+	height:47px;
+	background:url(../images/l_arr.png?v=1.0);
+	position:absolute;
+	top:450px;
+	margin-left:580px;
+	z-index:3;
+}
+.r_arr{
+	width:21px;
+	height:47px;
+	background:url(../images/r_arr.png?v=1.0);
+	position:absolute;
+	margin-right:100px;
+	top:450px;
+	margin-left:1140px;
+	z-index:3;
+}
+.head_navi{
+	width:252px;
+	height:120px;	
+	border:5px solid white;
+	background:#d91a20;
+	margin-left:65px;
+	margin-top:660px;
+	float:left;
+}
+.navi_white{
+	color:white;
+	font-size:30px;
+}
+.navi_yellow{
+	color:#fff400;
+	font-size:42px;
+	font-weight:bold;
+}
+.mid{
+	margin:0 auto;
+	width:1000px;
+	margin-top:850px;
+}
+.wz{
+	width:389px;
+	height:112px;	
+	background:url(../images/wz.png?v=1.0);
+	margin-left:300px;
+	margin-top:20px;
+}
+.img1{
+	width:690px;
+	margin:0 auto;
+}
+.img1 img{
+	width:200px;
+	height:140px;
+	margin-left:36px;
+	margin-top:28px;
+}
+.img2{
+	width:690px;
+	margin:0 auto;
+}
+.img2 img{
+	width:200px;
+	height:140px;
+	margin-left:36px;
+	margin-top:15px;
+}
+.img3{
+	width:925px;
+	margin:0 auto;
+	margin-left:34px;
+	margin-top:2px;
+}
+.img3 img{
+	width:200px;
+	height:140px;
+	margin-left:35px;
+	margin-top:31px;
+	float:left;
+}
+.mid1{
+	background:url(../images/mid1.png?v=1.0);
+	width:1000px;
+	height:279px;
+	margin-top:100px;
+	color:white;
+	font-size:24px;
+	padding-top:240px;
+}
+.mid1 div{
+	margin-top:15px;
+	margin-left:-320px;
+}
+.bot{
+	margin:0 auto;
+	width:1000px;
+}
+.bot1{
+	width:455px;
+	height:370px;	
+	background:url(../images/bot1.png?v=1.0);
+	margin-top:80px;
+	margin-left:280px;
+}
+.bot_wz{
+	color:white;
+	font-size:30px;
+}
+.bot2{
+	width:802px;
+	height:279px;	
+	background:url(../images/bot2.png?v=1.0);
+	margin-left:100px;
+	margin-top:100px;
+}
+.gotop{
+	width:40px;
+	height:40px;
+	background:url(../images/gotop.png?v=1.0);
+	position:fixed;
+	bottom:50px;
+	margin-left:1200px;
+}
+@media (max-width: 1500px){
+	.gotop{
+		right:10px;
+	}
+}
+.big_img{
+	width:540px;
+	height:360px;
+	position:absolute;
+	box-shadow:0px 0px 20px;
+	background:url("../images/b1.png?v=1.0");
+	display:none;
+}

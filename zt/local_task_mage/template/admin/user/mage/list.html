@@ -1,0 +1,252 @@
+<{include file="<{$config['layout']}>/header.tpl" title=foo}>
+<{include file="<{$config['layout']}>/topNav.tpl" title=foo}>
+<!-- container begin-->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <div class="main-container-inner">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+        <!--left nav begin-->
+        <{include file="<{$config['layout']}>/leftNav.tpl" title=foo}>
+        <!-- left nav end-->
+
+        <div class="main-content">
+            <{include file="<{$config['layout']}>/breadCrumbs.tpl" title=foo}>
+
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        Tables
+                        <small>
+                            <i class="icon-double-angle-right"></i>
+                            Static &amp; Dynamic Tables
+                        </small>
+                    </h1>
+                </div>
+                <!-- /.page-header -->
+                <div class="col-xs-12">
+                <div class="table-responsive">
+                <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th class="center">
+                        <label>
+                            <input type="checkbox" class="ace">
+                            <span class="lbl"></span>
+                        </label>
+                    </th>
+                    <th>用户名</th>
+                    <th>手机号</th>
+                    <th class="hidden-480">部门</th>
+                    <th>
+                        <i class="icon-time bigger-110 hidden-480"></i>
+                        创建时间
+                    </th>
+                    <th class="hidden-480">状态</th>
+
+                    <th>用户类型</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <{if $data}>
+                    <{foreach $data as $list}>
+                    <tr>
+                        <td class="center">
+                            <label>
+                                <input type="checkbox" class="ace">
+                                <span class="lbl"></span>
+                            </label>
+                        </td>
+
+                        <td>
+                            <a href="<{$config['sUrl']}>&a=edit&uid=<{$list['id']}>"><{$list['name']}></a>
+                        </td>
+                        <td><{$list['phone']}></td>
+                        <td class="hidden-480"><{$list['org_name']}></td>
+                        <td><{$list['add_time']|date_format:"%Y, %m %d"}></td>
+
+                        <td class="hidden-480">
+                            <span class="label label-sm label-success">
+                                <{if $list['user_type']}>
+                                    <{if $list['user_type'] == 1}>管理员<{/if}>
+                                    <{if $list['user_type'] == 2}>普通用户<{/if}>
+                                <{/if}>
+                            </span>
+                        </td>
+
+                        <td>
+                            <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                <button class="btn btn-xs btn-success">
+                                    <i class="icon-ok bigger-120"></i>
+                                </button>
+
+                                <button class="btn btn-xs btn-info">
+                                    <i class="icon-edit bigger-120"></i>
+                                </button>
+
+                                <button class="btn btn-xs btn-danger">
+                                    <i class="icon-trash bigger-120"></i>
+                                </button>
+
+                                <button class="btn btn-xs btn-warning">
+                                    <i class="icon-flag bigger-120"></i>
+                                </button>
+                            </div>
+
+                            <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                <div class="inline position-relative">
+                                    <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-cog icon-only bigger-110"></i>
+                                    </button>
+
+                                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
+                                        <li>
+                                            <a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
+                                                                                    <span class="blue">
+                                                                                        <i class="icon-zoom-in bigger-120"></i>
+                                                                                    </span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
+                                                                                    <span class="green">
+                                                                                        <i class="icon-edit bigger-120"></i>
+                                                                                    </span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
+                                                                                    <span class="red">
+                                                                                        <i class="icon-trash bigger-120"></i>
+                                                                                    </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <{foreachelse}>
+                    没有数据!
+                <{/foreach}>
+                <{/if}>
+                </tbody>
+                </table>
+                    <div class="row"><div class="col-sm-6">
+                        <div class="dataTables_info" id="sample-table-2_info">Showing <{$pager['currentPage']}> to <{$pager['limit']}> of <{$pager['count']}> entries</div></div>
+                        <div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap">
+                            <ul class="pagination">
+                                <{$pager['page']}>
+                            </ul>
+                    </div>
+                        </div>
+                    </div>
+                </div><!-- /.table-responsive -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.page-content -->
+        </div>
+        <!-- /.main-content -->
+    </div>
+    <!-- /.main-container-inner -->
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="icon-double-angle-up icon-only bigger-110"></i>
+    </a>
+</div>
+<!-- container end-->
+ <!--start scripts-->
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+
+<script src="<{$config['jsUrl']}>/jquery-2.0.3.min.js"></script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="<{$config['jsUrl']}>/jquery-1.10.2.min.js"></script>
+<![endif]-->
+
+<!--[if !IE]> -->
+
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='<{$config['jsUrl']}>/jquery-2.0.3.min.js'>"+"<"+"/script>");
+</script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='<{$config['jsUrl']}>/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+    if("ontouchend" in document) document.write("<script src='<{$config['jsUrl']}>/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+</script>
+<script src="<{$config['jsUrl']}>/bootstrap.min.js"></script>
+<script src="<{$config['jsUrl']}>/typeahead-bs2.min.js"></script>
+
+<!-- page specific plugin scripts -->
+
+<script src="<{$config['jsUrl']}>/jquery.dataTables.min.js"></script>
+<script src="<{$config['jsUrl']}>/jquery.dataTables.bootstrap.js"></script>
+
+<!-- ace scripts -->
+
+<script src="<{$config['jsUrl']}>/ace-elements.min.js"></script>
+<script src="<{$config['jsUrl']}>/ace.min.js"></script>
+
+<!-- inline scripts related to this page -->
+
+<script type="text/javascript">
+    jQuery(function($) {
+        var oTable1 = $('#sample-table-2').dataTable( {
+            "aoColumns": [
+                { "bSortable": false },
+                null, null,null, null, null,
+                { "bSortable": false }
+            ] } );
+
+
+        $('table th input:checkbox').on('click' , function(){
+            var that = this;
+            $(this).closest('table').find('tr > td:first-child input:checkbox')
+                    .each(function(){
+                        this.checked = that.checked;
+                        $(this).closest('tr').toggleClass('selected');
+                    });
+
+        });
+
+
+        $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+        function tooltip_placement(context, source) {
+            var $source = $(source);
+            var $parent = $source.closest('table')
+            var off1 = $parent.offset();
+            var w1 = $parent.width();
+
+            var off2 = $source.offset();
+            var w2 = $source.width();
+
+            if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+            return 'left';
+        }
+    })
+</script>
+<!-- end scripts-->
+<{include file="<{$config['layout']}>/footer.tpl"}>

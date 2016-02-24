@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="front-end technicist" content="jinger" />
+	<title>战五一礼全城，德意丽博橱柜 感恩回馈 礼献全国</title>
+	<meta name="keywords" content="战五一礼全城，德意丽博橱柜 感恩回馈 礼献全国">
+	<meta name="description" content="战五一礼全城，德意丽博橱柜 感恩回馈 礼献全国">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" type="text/css" href="css/demo.css?v=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.1" />
+    <script src="js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
+    <script type="text/javascript" src="js/my.js"></script>
+    <!--产品 js文件-->
+   
+    <script type="text/javascript" src="js/jquery.luara.0.0.1.min.js"></script>
+    <!--滚动条-->
+    <script type="text/javascript" src="js/jquery.sly.js"></script>
+    <script type="text/javascript" src="js/jquery.easing-1.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cslider.js?version=1.0"></script>
+    <script type="text/javascript">
+        $(function() {
+            // 适应小屏幕
+            var _h= $(window).height();
+            $('.da-slider').css('max-height',_h);
+            if(_h<640){
+                $('.foots').css('position','relative');
+                $('.wx').css('bottom','-1%');
+                $('.da-arrows span.da-arrows-prev').css('left','5%');
+                $('.da-arrows span.da-arrows-next').css('right','5%');
+            }
+            
+            $('#da-slider').cslider();
+        });
+    </script>   
+    <script type="text/javascript">
+    $(function($){
+
+    	// 占位符项目来填充列表的功能
+    	function populate(container, count, offset){
+    		var output = '';
+    		offset = isNaN(offset) ? 0 : offset;
+    		for(var i = 0; i<count; i++ ){
+    			output += '<li>'+(offset+i)+'</li>';
+    		}
+    		return $(output).appendTo(container);
+    	}
+
+    	// 填充列表项
+    	$('ul[data-items]').each(function(i,e){
+    		var items = parseInt($(e).data('items'), 10);
+    		populate(e, items);
+    	});
+
+    	// 主要调用部分
+    	$(document).on('activated',function(event){
+    		var $section = $(".scrollbox");
+    		var $frame = $section.find('.frame'),
+    			$ul = $frame.find('ul').eq(0),
+    			$scrollbar = $section.find('.scrollbar'),
+    			$buttons = $section.find('.controlbar [data-action]');
+    		
+    		populate($ul, 10);
+    			
+    		// 控制
+    		$buttons.on('click',function(e){
+    			var action = $(this).data('action');
+    			switch(action){
+    				case 'reset':
+    				$frame.sly('toStart');
+    				setTimeout(function(){
+    					$ul.find('li').slice(10).remove();
+    					$frame.sly('reload');
+    				}, 200);
+    				break;
+    				default:
+    				$frame.sly(action);
+    			}
+    		});
+    		
+    		$section.find(".slyWrap").each(function(i,e){
+    			var cont = $(this),
+    				frame = cont.find(".sly"),
+    				slidee = frame.find("ul"),
+    				scrollbar = cont.find(".scrollbar"),
+    				pagesbar = cont.find(".pages"),
+    				options = frame.data("options"),
+    				controls = cont.find(".controls"),
+    				prevButton = controls.find(".prev"),
+    				nextButton = controls.find(".next"),
+    				prevPageButton = controls.find(".prevPage"),
+    				nextPageButton = controls.find(".nextPage");
+
+    			options = $.extend({},options,{
+    				scrollBar: scrollbar,
+    				pagesBar: pagesbar,
+    				prev: prevButton,
+    				next: nextButton,
+    				prevPage: prevPageButton,
+    				nextPage: nextPageButton,
+    				disabledClass: 'btn-disabled'
+    			});
+
+    			frame.sly( options );
+
+    			cont.find("button").click(function(){
+    				var action = $(this).data('action'),
+    				arg = $(this).data('arg');
+    				switch(action){
+    					case 'add':
+    					slidee.append(slidee.children().slice(-1).clone().removeClass().text(function(i,text){
+    						return text/1 + 1;
+    					}));
+    					frame.sly('reload');
+    					break;
+    					case 'remove':
+    					slidee.find("li").slice(-1).remove();
+    					frame.sly('reload');
+    					break;
+    					default:
+    					frame.sly(action, arg);
+    				}
+    			});
+
+    		});
+    	
+    	}).trigger('activated');
+    	
+    });
+    </script><!--end滚动条-->
+	<link href='http://fonts.useso.com/css?family=Economica:700,400italic' rel='stylesheet' type='text/css'>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>战五一礼全城，德意丽博橱柜 感恩回馈 礼献全国</title>
+    <noscript>
+		<link rel="stylesheet" type="text/css" href="css/nojs.css" />
+	</noscript>
+</head>
+<body>
+    <div class="header topnav" id="topNav">
+        <div class="mininav">
+            <a href="http://www.jia360.com/" target="_blank" class="logo" title="腾讯网亚太家居·腾讯家居<">腾讯网亚太家居_腾讯家居</a>
+            <div class="mr">
+                <!--<span id="morecity" class="cm">
+                    <p>城市站</p>
+                    <div class="tabcity" id="tabcity"></div>
+                </span>
+                <span class="l">|</span>-->
+                <span id="hychannel" class="hychannel">
+                    <p>产品中心</p>
+                    <ul>
+                        <a href="http://www.jia360.com/jiaju/" target="_blank">家具</a>
+                        <a href="http://www.jia360.com/weiyu/" target="_blank">卫浴</a>
+                        <a href="http://www.jia360.com/cizhuan/" target="_blank">瓷砖</a>
+                        <a href="http://www.jia360.com/yigui/" target="_blank">衣柜</a>
+                        <a href="http://www.jia360.com/chufang/" target="_blank">厨房</a>
+                        <a href="http://www.jia360.com/huwai/" target="_blank">户外</a>
+                        <a href="http://www.jia360.com/muwu/" target="_blank">木屋</a>
+                        <a href="http://www.jia360.com/diaoding/" target="_blank">吊顶</a>
+                        <a href="http://www.jia360.com/shicai/" target="_blank">石材</a>
+                        <a href="http://www.jia360.com/zhujiaju/" target="_blank">竹家居</a>
+                        <a href="http://www.jia360.com/diban/" target="_blank">地板</a>
+                        <a href="http://www.jia360.com/menchuang/" target="_blank">门窗</a>
+                        <a href="http://www.jia360.com/zhengmu/" target="_blank">整木</a>
+                        <a href="http://www.jia360.com/hongmu/" target="_blank">红木</a>
+                        <a href="http://www.jia360.com/jiashi/" target="_blank">家饰</a>
+                        <a href="http://www.jia360.com/louti/" target="_blank">楼梯</a>
+                        <a href="http://www.jia360.com/shuimian/" target="_blank">睡眠</a>
+                        <a href="http://www.jia360.com/qiangzhi/" target="_blank">墙纸</a>
+                        <a href="http://www.jia360.com/zhaoming/" target="_blank">照明</a>
+                        <a href="http://www.jia360.com/gangmumen/" target="_blank">钢木门</a>
+                        <a href="http://www.jia360.com/cainuo/" target="_blank">采暖</a>
+                        <a href="http://www.jia360.com/shafa/" target="_blank">沙发</a>
+                        <a href="http://www.jia360.com/jiafang/" target="_blank">家纺</a>
+                        <a href="http://www.jia360.com/ditan/" target="_blank">地毯</a>
+                        <a href="http://www.jia360.com/yuanyi/" target="_blank">园艺</a>
+                        <a href="http://www.jia360.com/tuliao/" target="_blank">涂料</a>
+                        <a href="http://www.jia360.com/wujin/" target="_blank">五金</a>
+                        <a href="http://www.jia360.com/ertong/" target="_blank">儿童家具</a>
+                    </ul>
+                </span>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/picture/" target="_blank" class="nt">图库</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/evaluation/" target="_blank" class="nt">评测</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/zhuanti/qgbcqc" target="_blank" class="nt">导购</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/fresh/" target="_blank" class="nt">新品</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/homelife/geomantic/" target="_blank" class="nt">风水</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/fitment/idea/" target="_blank" class="nt">配饰</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/fitment/college/" target="_blank" class="nt">案例库</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com:80/shejishi/index.html" target="_blank" class="nt">设计师</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/news/video/" target="_blank" class="nt">视频</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/zhuanti/" target="_blank" class="nt">专题</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/news/person/" target="_blank" class="nt">人物</a>
+                <span class="l">|</span>
+                <a href="http://news.jia360.com/" target="_blank" class="nt">新闻</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/" target="_blank" class="nt">首页</a>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+	    <div id="da-slider" class="da-slider">
+				<div class="da-slide">
+				  <span class="da-img"><img src="images/1.png" alt="image01" /></span>
+				</div>
+				<div class="da-slide">
+    			    <h2>导语</h2>
+    				<p>　　随着一年一度的“五一”大促来临，各大建材商场的氛围也如同这气温开始逐步上升。品牌商家纷纷摩拳擦掌，准备激烈开战。广大消费者也希望抓住契机，购买到性价比最高的产品。<br />　　借此机会感恩新老客户十多年来的关心和支持，德意丽博橱柜携多款畅销精品献礼全国。丽博总部工厂诚挚让利，全国门店感恩回馈，奉上重重惊喜好礼，此外更有高端产品低价劲爆亮相，促销力度可谓实属罕见。</p>
+                    <a class="da-link"><img src="images/wx.png" width="168" height="115"></a>
+                </div>
+				<div class="da-slide">
+					<div class="da-img">
+                       <div class="cpzs">
+                          <!--Luara图片切换骨架begin-->
+                            <div class="p-tab1 ex">
+                                <ul>
+                                    <li class="li">
+                                        <div class="li-div">
+                                            <div class="ex-left">
+                                                <img src="images/p/1-1.jpg">
+                                                <img src="images/p/1-2.jpg" class="hide">
+                                                <img src="images/p/1-3.jpg" class="hide">
+                                                <img src="images/p/1-4.jpg" class="hide">
+                                            </div>
+                                            <div class="ex-right">
+                                                <div class="r-top"><img src="images/p/1-1.png"></div>
+                                                <div class="r-bottom">
+                                                    <em><img src="images/p/right/1.jpg"></em>
+                                                    <em><img src="images/p/right/2.jpg"></em>
+                                                    <em><img src="images/p/right/4.png"></em>
+                                                    <em><img src="images/p/right/3.jpg"></em>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <script>
+                                $(function(){
+                                    $('.p-tab1 .li .r-bottom em').eq(0).addClass('hover');
+                                    $('.p-tab1 .li .r-bottom em').each(function(index){
+                                         $(this).hover(function(){
+                                            $(this).addClass('hover').siblings().removeClass('hover');
+                                             $('.p-tab1 .li .ex-left img').eq(index).show().siblings().hide();
+                                         });   
+                                    });
+                                });
+                            </script>
+                        <!--Luara图片切换骨架end-->
+                       </div>
+                    </div>
+				</div>
+                <div class="da-slide">
+                    <div class="da-img">
+                       <div class="cpzs">
+                          <!--Luara图片切换骨架begin-->
+                            <div class="p-tab2 ex">
+                                <ul>
+                                    <li class="li">
+                                        <div  class="li-div">
+                                            <div class="ex-left">
+                                                <img src="images/p/2-1.jpg">
+                                                <img src="images/p/2-2.jpg" class="hide">
+                                                <img src="images/p/2-3.jpg" class="hide">
+                                                <img src="images/p/2-4.jpg" class="hide">
+                                            </div>
+                                            <div class="ex-right">
+                                                <div class="r-top"><img src="images/p/1-2.png"></div>
+                                                <div class="r-bottom">
+                                                    <em><img src="images/p/right/5.jpg"></em>
+                                                    <em><img src="images/p/right/6.jpg"></em>
+                                                    <em><img src="images/p/right/7.jpg"></em>
+                                                    <em><img src="images/p/right/8.png"></em>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <script>
+                                $(function(){
+                                    $('.p-tab2 .li .r-bottom em').eq(0).addClass('hover');
+                                    $('.p-tab2 .li .r-bottom em').each(function(index){
+                                         $(this).hover(function(){
+                                            $(this).addClass('hover').siblings().removeClass('hover');
+                                             $('.p-tab2 .li .ex-left img').eq(index).show().siblings().hide();
+                                         });   
+                                    });
+                                });
+                            </script>
+                        <!--Luara图片切换骨架end-->
+                       </div>
+                    </div>
+                </div>
+				<div class="da-slide">
+					<div class="da-img">
+                        <div class="cpzs cpbg">
+                             <!--Luara图片切换骨架begin-->
+                            <div class="example2">
+                                <ul>
+                                    <li><a href="http://www.chinarebon.com" target="_blank"><img src="images/4.png" alt="1"/></a></li>
+                                </ul>
+                            </div>
+                            <script>
+                                $(function(){
+                                    <!--调用Luara示例-->
+                                    $(".example2").luara({width:"1000",height:"380",interval:1500,selected:"seleted",deriction:"left"});
+
+                                });
+                            </script>
+                            <!--Luara图片切换骨架end-->
+                        </div>
+                    </div>
+				</div>
+                <div class="da-slide">
+					<div class="da-img">
+                         <div class="cpzs zjlb">
+                         <!--滚动条-->
+                              <div id="vertical" class="scrollbox clearfix">
+                                 <div class="slyWrap example1" style=" width:580px; margin-top:60px;">
+                                   <div class="scrollbar" style="border-top:none;">
+                                     <div class="handle"></div>
+                                   </div>
+                                   <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }'style=" width:530px;">
+                                   <div style=" padding-left:15px;">
+                                       <div class="linbox">
+                                       <ul>
+
+                                       <li>德意控股集团有限公司成立于1992年11月，涵盖整体橱柜、厨卫电器、地产开发、物业管理等领域，20余年来，德意契合时代的脉搏，依托非凡的创新能力，通过提供时尚高端的差异化产品和全方位的精诚服务，带给消费者愉悦的生活体验，从而赢得持续的成长以及社会各界的广泛认可，实现了企业稳健快速的发展。</li>
+                                       <li>杭州丽博橱柜有限公司于2002年正式成立，凭借德意集团在厨房领域的积累和综合实力，丽博橱柜以高起点进入橱柜行业，专注生产整体橱柜、衣柜、浴柜等橱柜系列产品，同时以德意电器专供厨房电器为配套，以得天独厚的优势迅速成为行业先锋，经过十余年的发展，现已成为一家极具竞争力、位居行业前列的一流品牌家居企业。投资2.8亿元新建占地106亩、建筑面积达8万余平方的生产基地，引进了全球领先的德国豪迈生产线，拥有覆盖生产、销售、服务全过程的数字、图形一体化信息管理系统，是中国最现代化和最具规模的橱柜生产专业企业之一。</li>
+                                       <li>丽博致力于优雅生活的缔造，坚持100%原创的设计理念，打造高端品质厨房，在行业内牢牢树立了高端橱柜的重要位置。多年来丽博在中国高端橱柜市场占有率排名前列，并出口远销美洲、欧洲、澳洲、非洲、中东及东南亚等十多个国家和地区，将高雅、时尚的厨房艺术体验带入了千家万户。</li>
+                                      </ul>
+                                </div>
+                             </div>
+                           </div>
+                         </div>
+                    </div>
+              
+                 <!--end 滚动条-->
+                 </div>
+            </div>
+		</div>
+        <!-- 导航 -->
+		<nav class="da-arrows">
+			<span class="da-arrows-prev"></span>
+			<span class="da-arrows-next"></span>
+        </nav>
+        <div class="logos"><a href="http://www.chinarebon.com" target="_blank"></a></div>
+          <nav class="da-dots" style="z-index:2001">
+              <span style="margin-left:150px;;" class="da-dots-current">首页</span>|
+              <span>导语</span>|
+              <span>产品展示</span>|
+              <span>产品优惠</span>|
+              <span>走进丽博</span>
+          </nav>
+	    </div>
+    </div>
+    <!-- content end -->
+    <div class="wx"></div>
+    <div class="foots" style="display:">  
+        <div class="ued">腾讯网·亚太家居UED出品</div>
+        <div class="box">
+            <div class="left">
+                 <p id="babout">
+                    <a href="http://www.jia360.com/about.html" target="_blank" title="关于亚太家居网" rel="nofollow">关于我们</a> |
+                    <a href="http://www.jia360.com/contact.html" target="_blank" title="联系亚太家居网" rel="nofollow">联系我们</a> |
+                    <a href="http://www.jia360.com/zhaoshang/2012-08-17/" target="_blank" title="招商加盟" rel="nofollow">招商加盟</a> |
+                    <a href="http://www.jia360.com/zhaopin/20130112/" target="_blank" title="招贤纳士" rel="nofollow">招贤纳士</a> |    <a href="http://www.jia360.com/adnav/" target="_blank" title="广告咨询" rel="nofollow">广告咨询</a> |
+                    <a href="http://www.jia360.com/maps.html" target="_blank" title="网站地图" rel="nofollow">网站地图</a> |
+                    <a href="http://www.jia360.com/links.html" target="_blank" title="友情链接" rel="nofollow">友情链接</a> |
+                    <a href="http://www.jia360.com/announce.html" target="_blank" title="免责声明" rel="nofollow">免责声明</a>
+                </p>
+            </div>
+            <div class="right">
+                <p>Copyright 2009-2015  版权所有深圳市亚太传媒网络技术开发有限公司</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

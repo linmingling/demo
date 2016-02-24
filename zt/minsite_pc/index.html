@@ -1,0 +1,1161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>红星美凯龙爱依瑞斯</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/wy-mod-banner.css" media="screen">
+    <script src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+
+    /* ajax请求操作  */
+   /* function ajax(p_url, p_data, p_type) {
+        var results;
+        $.ajax({
+            async:false,
+            url:p_url,
+            data:p_data,
+            type: p_type,
+            dataType:'json',
+
+            success:function(result){
+                results = result;
+            }       
+        });
+        return results;
+    }*/
+    /*function changeVerify() {
+        var quest_url = 'http://u.jia360.com/Users/verify.html';
+        if (quest_url.indexOf('?') >= 0) {
+            var mark = '&';
+        } else {
+            var mark = '?';
+        }
+        quest_url += mark + 'version=' + Math.random();
+        $('#verify_img').attr('src', quest_url);
+    }
+     //验证码
+    function checkyzm() {
+        var yzm = $.trim($('#yzm').val());
+        var check_verify_url = 'http://u.jia360.com/Users/checkVerify.html';
+        var result = ajax(check_verify_url, {code: yzm, ajax: true}, 'post');
+        if (!result['code']) {
+            alert('验证码错误');
+            changeVerify();
+            return false;
+        } else {
+            return true;
+        }
+    } */
+    //动态生成省市区
+    function create_address(classid, type, html_classid)
+    {
+        var ajax_url = "http://tao.jia360.com/data/html/select.php";
+        var pid = $(classid).val();;
+        var option_html = '';
+        $.ajax({
+            url: ajax_url,
+            data:{type:type,parent:pid},
+            async: false,
+            type: "post",
+            dataType:'json',
+            success:function(result){
+                option_html += '<option value="0">请选择</option>'; 
+                for (var i=0;i<result.length;i++)
+                {
+                    option_html += '<option value="' + result[i] +'">' + result[i] +'</option>';
+                }
+                $(html_classid).html(option_html);
+            }
+        });
+    }
+    $(function(){
+      
+         //提交报名
+        $("#saveBtn").click(function(){
+            var name = $("#name").val();
+            var mobile = $("#tel").val();
+            var province = $("#province").val();
+            var city = $("#city").val();
+            var area = $("#area").val();
+
+            var ajax_data = {
+					type      : 2,
+                    name      : name,          
+                    phone     : mobile,           
+                    province  : province,            
+                    city      : city,              
+                    area      : area
+            };
+           
+            if(checkForm(name,mobile,province,city,area)){
+                ajax_url = "http://u.jia360.com/Active/checkform.html";
+                 $.ajax({
+                    type:"get",
+                    async: false,
+                    url:ajax_url, 
+                    data:ajax_data,      
+                    timeout: 5000,
+                    cache:false,
+                    dataType:'jsonp',
+                    jsonp: 'callback',
+                    success:function(result){
+                         //result为报名数
+                        if (!result.code){
+                            alert(result.msg);
+                            $('#count').html(result.count);
+                        } else {
+                            alert('系统繁忙，报名失败！');
+                        }
+                    },
+                    error: function(xhr) {console.log(xhr)}
+                  });
+
+               
+            }
+        });
+        
+        //ajax获取已报名人数
+          $.ajax({
+            type:"get",
+            async: false,
+            url:"http://u.jia360.com/Search/allcount.html",       
+            timeout: 5000,
+            dataType:'jsonp',
+            jsonp: 'callback',
+            success:function(result){
+                 //result为报名数
+                $('#count').html(result);
+            },
+          });
+           function checkForm(name,tel,province,city,area){
+            var mob = /^0{0,1}(13[0-9]|14[0-9]|15[0-9]|18[0-9])[0-9]{8}$/;
+            var telp = /^0\d{2,3}-?\d{7,8}$/;
+            //判断收货人是否为空
+            if(name == ""){
+                alert("请输入姓名！");
+                return false;
+            } 
+            //判断电话格式
+            if(tel == ""){
+                alert("请输入电话！");
+                return false;
+            }else if(!telp.test(tel) && !mob.test(tel)){
+                alert("请输入正确的电话！");
+                return false;
+            }
+            //判断省市区是否已选择
+            if(province == "0"){
+                alert("请选择省份！");
+                return false;
+            }else if(city == "0"){
+                alert("请选择城市！");
+                return false;
+            } 
+            //判断活动商城
+            if(area == ""){
+               alert("请选择活动商城！");
+                return false;
+            }
+           // checkyzm();
+            return true;
+        }
+     })
+    </script>
+    <script type="text/javascript" src="js/my.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<link href="css/main_new.css?version=1" rel="stylesheet"> 
+    <script type="text/javascript">
+        function switchPage(pageIndex) {
+            $('.carousel').carousel(pageIndex);
+        }
+
+        function playAnimation(tag) {
+            var ani1 = $("#page_" + tag + " .ani_step_1");
+            var ani2 = $("#page_" + tag + " .ani_step_2");
+            var ani3 = $("#page_" + tag + " .ani_step_3");
+            var pre_start = ((tag == "home") ? 0 : 300);
+            if (ani1 != null) {
+                ani1.css("opacity", 0);
+                setTimeout(function () {
+                    ani1.animate({ opacity: 1 }, 1000);
+                }, 10 + pre_start);
+            }
+            if (ani2 != null) {
+                ani2.css("opacity", 0);
+                setTimeout(function () {
+                    ani2.animate({ opacity: 1 }, 1000);
+                }, 1500 + pre_start);
+            }
+            if (ani3 != null) {
+                ani3.css("opacity", 0);
+                setTimeout(function () {
+                    $("#page_" + tag + " .ani_step_3").animate({ opacity: 1 }, 1000);
+                }, 3000 + pre_start);
+            }
+        }
+
+
+        $(function () {
+
+        var bindAms = function () {
+
+            $('.carousel').carousel(
+            {
+                "pause": "false",
+                "interval": 200000
+            });
+
+            $('.carousel').on('slide.bs.carousel', function (event) {
+                var tag = $(event.relatedTarget).attr("tag");
+                var progress = $(event.relatedTarget).attr("progress");
+
+                $('#img_home').attr("src", "images/home.png");
+                $('#img_intro').attr("src", "images/intro.png");
+                $('#img_gift').attr("src", "images/gift.png");
+                $('#img_feedback').attr("src", "images/feedback.png");
+                $('#img_related').attr("src", "images/related.png");
+
+                $('#img_' + tag).attr("src", "images/" + tag + "_selected.png");
+
+                //$("#progress").width(progress + "px");
+                //$("#progress").css('left', (progress / 2) - 400 + "px");
+                $("#progress").animate({ width: progress, left: (progress / 2) - 400 }, 500);
+                playAnimation(tag);
+            });
+
+            $("body,html").animate({
+                scrollTop: ($("#page_home .splash-container").offset().top)
+            }, 10);
+
+            playAnimation("home");
+
+        };
+
+        var banner1 = function () {
+            var $banner = $('#bannerx');
+            var $banner_ul = $('.banner-img', $banner);
+            var $btn = $('.banner-btn', $banner);
+            var $bcircle = $('.banner-circle', $banner);
+            var $btn_a = $btn.find('a')
+            var v_width = $banner.width();
+
+            var page = 1;
+
+            var timer = null;
+            var btnClass = null;
+
+            var page_count = $banner_ul.find('li').length;//把这个值赋给小圆点的个数
+
+            var banner_cir = "<li class='selected' href='#'><a></a></li>";
+            for (var i = 1; i < page_count; i++) {
+                //动态添加小圆点
+                banner_cir += "<li><a href='#'></a></li>";
+            }
+            $('.banner-circle', $banner).append(banner_cir);
+
+            var cirLeft = $bcircle.width() * (-0.5);
+            $bcircle.css({ 'marginLeft': cirLeft });
+
+            $banner_ul.width(page_count * v_width);
+
+            function move(obj, classname) {
+                //手动及自动播放
+                if (!$banner_ul.is(':animated')) {
+                    if (classname == 'prevBtn') {
+                        if (page == 1) {
+                            $banner_ul.animate({ left: -v_width * (page_count - 1) });
+                            page = page_count;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '+=' + v_width }, "slow");
+                            page--;
+                            cirMove();
+                        }
+                    }
+                    else {
+                        if (page == page_count) {
+                            $banner_ul.animate({ left: 0 });
+                            page = 1;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '-=' + v_width }, "slow");
+                            page++;
+                            cirMove();
+                        }
+                    }
+                }
+            }
+
+            function cirMove() {
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner-circle li').eq(page - 1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+            }
+
+            $banner.mouseover(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+            }).mouseout(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+            }).trigger("mouseout");//激活自动播放
+
+            $btn_a.mouseover(function () {
+                //实现透明渐变，阻止冒泡
+                $(this).animate({ opacity: 0.6 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).mouseleave(function () {
+                $(this).animate({ opacity: 0.3 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).click(function () {
+                //手动点击清除计时器
+                btnClass = this.className;
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+                move($(this), this.className);
+            });
+
+            $('.banner-circle li').live('click', function () {
+                var index = $('.banner-circle li').index(this);
+                $banner_ul.animate({ left: -v_width * index }, 'slow');
+                page = index + 1;
+                cirMove();
+            });
+        };
+
+        var banner2 = function () {
+            var $banner = $('.banner2');
+            var $banner_ul = $('.banner2-img');
+            var $btn = $('.banner2-btn');
+            var $btn_a = $btn.find('a')
+            var v_width = $banner.width();
+
+            var page = 1;
+
+            var timer = null;
+            var btnClass = null;
+
+            var page_count = $banner_ul.find('li').length;//把这个值赋给小圆点的个数
+
+            var banner_cir = "<li class='selected' href='#'><a></a></li>";
+            for (var i = 1; i < page_count; i++) {
+                //动态添加小圆点
+                banner_cir += "<li><a href='#'></a></li>";
+            }
+            $('.banner2-circle').append(banner_cir);
+
+            var cirLeft = $('.banner2-circle').width() * (-0.5);
+            $('.banner2-circle').css({ 'marginLeft': cirLeft });
+
+            $banner_ul.width(page_count * v_width);
+
+            function move(obj, classname) {
+                //手动及自动播放
+                if (!$banner_ul.is(':animated')) {
+                    if (classname == 'prevBtn') {
+                        if (page == 1) {
+                            $banner_ul.animate({ left: -v_width * (page_count - 1) });
+                            page = page_count;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '+=' + v_width }, "slow");
+                            page--;
+                            cirMove();
+                        }
+                    }
+                    else {
+                        if (page == page_count) {
+                            $banner_ul.animate({ left: 0 });
+                            page = 1;
+                            cirMove();
+                        }
+                        else {
+                            $banner_ul.animate({ left: '-=' + v_width }, "slow");
+                            page++;
+                            cirMove();
+                        }
+                    }
+                }
+            }
+
+            function cirMove() {
+                //检测page的值，使当前的page与selected的小圆点一致
+                $('.banner2-circle li').eq(page - 1).addClass('selected')
+                                                                                                .siblings().removeClass('selected');
+            }
+
+            $banner.mouseover(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+            }).mouseout(function () {
+                $btn.css({ 'display': 'block' });
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+            }).trigger("mouseout");//激活自动播放
+
+            $btn_a.mouseover(function () {
+                //实现透明渐变，阻止冒泡
+                $(this).animate({ opacity: 0.6 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).mouseleave(function () {
+                $(this).animate({ opacity: 0.3 }, 'fast');
+                $btn.css({ 'display': 'block' });
+                return false;
+            }).click(function () {
+                //手动点击清除计时器
+                btnClass = this.className;
+                clearInterval(timer);
+                timer = setInterval(move, 3000);
+                move($(this), this.className);
+            });
+        };
+
+        //init
+        banner1();
+        banner2();
+        bindAms();
+    
+        });
+
+    </script>
+
+<script type="text/javascript" src="js/jquery.tabs.js"></script>
+<script type="text/javascript" src="js/jquery.lazyload.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	$("img[original]").lazyload({ placeholder:"images/color3.gif" });
+	$('.demo2').Tabs({
+		event:'click'
+	});
+	$('.demo4').Tabs({
+		auto:4000
+	});
+
+	//部分区域图片延迟加载
+	function lazyloadForPart(container) {
+		container.find('img').each(function () {
+			var original = $(this).attr("original");
+			if (original) {
+				$(this).attr('src', original).removeAttr('original');
+			}
+		});
+	}
+});	
+</script><!--end 选项卡-->
+<script src="js/MyCxcPlug.js" type="text/javascript"></script><!--end 点击弹出层-->
+
+<!--滚动条-->
+<script type="text/javascript" src="js/jquery.sly.js"></script>
+<script type="text/javascript" src="js/jquery.easing-1.3.min.js"></script>
+<script type="text/javascript">
+$(function($){
+
+
+  
+
+	// 占位符项目来填充列表的功能
+	function populate(container, count, offset){
+		var output = '';
+		offset = isNaN(offset) ? 0 : offset;
+		for(var i = 0; i<count; i++ ){
+			output += '<li>'+(offset+i)+'</li>';
+		}
+		return $(output).appendTo(container);
+	}
+
+	// 填充列表项
+	$('ul[data-items]').each(function(i,e){
+		var items = parseInt($(e).data('items'), 10);
+		populate(e, items);
+	});
+
+	var isBindScroll = false;
+	var bindScroll = function (id) {
+	    if (isBindScroll) { return false; }
+	    isBindSroll = true;
+	    id=id || "vertical";
+	    var $section = $("#" +id);
+	  
+	    var $frame = $section.find('.frame'),
+			$ul = $frame.find('ul').eq(0),
+			$scrollbar = $section.find('.scrollbar'),
+			$buttons = $section.find('.controlbar [data-action]');
+			
+
+	    populate($ul, 10);
+
+	    // 控制
+	    $buttons.on('click', function (e) {
+	        var action = $(this).data('action');
+	        switch (action) {
+	            case 'reset':
+	                $frame.sly('toStart');
+	                setTimeout(function () {
+	                    $ul.find('li').slice(10).remove();
+	                    $frame.sly('reload');
+	                }, 200);
+	                break;
+	            default:
+	                $frame.sly(action);
+	        }
+	    });
+
+	    $section.find(".slyWrap").each(function (i, e) {
+	        var cont = $(this),
+				frame = cont.find(".sly"),
+				slidee = frame.find("ul"),
+				scrollbar = cont.find(".scrollbar"),
+				pagesbar = cont.find(".pages"),
+				options = frame.data("options"),
+				controls = cont.find(".controls"),
+				prevButton = controls.find(".prev"),
+				nextButton = controls.find(".next"),
+				prevPageButton = controls.find(".prevPage"),
+				nextPageButton = controls.find(".nextPage");
+
+	        options = $.extend({}, options, {
+	            scrollBar: scrollbar,
+	            pagesBar: pagesbar,
+	            prev: prevButton,
+	            next: nextButton,
+	            prevPage: prevPageButton,
+	            nextPage: nextPageButton,
+	            disabledClass: 'btn-disabled'
+	        });
+
+	        frame.sly(options);
+
+	        cont.find("button").click(function () {
+	            var action = $(this).data('action'),
+				arg = $(this).data('arg');
+	            switch (action) {
+	                case 'add':
+	                    slidee.append(slidee.children().slice(-1).clone().removeClass().text(function (i, text) {
+	                        return text / 1 + 1;
+	                    }));
+	                    frame.sly('reload');
+	                    break;
+	                case 'remove':
+	                    slidee.find("li").slice(-1).remove();
+	                    frame.sly('reload');
+	                    break;
+	                default:
+	                    frame.sly(action, arg);
+	            }
+	        });
+
+	    });
+	};
+
+
+	$("#navbtnX").on("click", function () {
+	    setTimeout(bindScroll,200);
+	});
+	$("#menu2x").on("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical2");
+	    }, 200);
+	});
+	// 主要调用部分
+	$(document).on('activated',function(event){
+		
+	}).trigger('activated');
+	
+
+});
+</script><!--end滚动条-->
+	<script src="js/jq.snow.js"></script>
+    <!--下面是调用方法和参数说明-->
+	<script>
+	$(function(){
+	    $.fn.snow({
+	        imgUrl: "images/icon.png",      //雪花图片地址
+            isImg:true,     //雪花是否图片
+			minSize: 20,		//雪花的最小尺寸
+			maxSize: 80, 	//雪花的最大尺寸
+			newOn: 800		//雪花出现的频率 这个数值越小雪花越多
+		});
+	});
+	</script>
+    
+<!--倒计时-->
+<script type="text/javascript">
+
+var intDiff = parseInt(1080060);//倒计时总秒数量
+
+function timer(intDiff){
+	window.setInterval(function(){
+	var day=0,
+		hour=0,
+		minute=0,
+		second=0;//时间默认值		
+	if(intDiff > 0){
+		day = Math.floor(intDiff / (60 * 60 * 24));
+		hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
+		minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
+		second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
+	}
+	if (minute <= 9) minute = '0' + minute;
+	if (second <= 9) second = '0' + second;
+	$('#day_show').html(day+"天");
+	$('#hour_show').html('<s id="h"></s>'+hour+'时');
+	$('#minute_show').html('<s></s>'+minute+'分');
+	$('#second_show').html('<s></s>'+second+'秒');
+	intDiff--;
+	}, 1000);
+} 
+
+$(function(){
+	timer(intDiff);
+});	
+</script>
+</head>
+<body style="overflow:hidden">
+<div class="header topnav" id="topNav" >
+        <div class="mininav">
+            <a href="http://www.jia360.com/" target="_blank" class="logo" title="腾讯网亚太家居·腾讯家居<">腾讯网亚太家居_腾讯家居</a>
+            <div class="mr">
+                <!--<span id="morecity" class="cm">
+                    <p>城市站</p>
+                    <div class="tabcity" id="tabcity"></div>
+                </span>
+                <span class="l">|</span>-->
+                <span id="hychannel" class="hychannel">
+                    <p>产品中心</p>
+                    <ul>
+                        <a href="http://www.jia360.com/jiaju/" target="_blank">家具</a>
+                        <a href="http://www.jia360.com/weiyu/" target="_blank">卫浴</a>
+                        <a href="http://www.jia360.com/cizhuan/" target="_blank">瓷砖</a>
+                        <a href="http://www.jia360.com/yigui/" target="_blank">衣柜</a>
+                        <a href="http://www.jia360.com/chufang/" target="_blank">厨房</a>
+                        <a href="http://www.jia360.com/huwai/" target="_blank">户外</a>
+                        <a href="http://www.jia360.com/muwu/" target="_blank">木屋</a>
+                        <a href="http://www.jia360.com/diaoding/" target="_blank">吊顶</a>
+                        <a href="http://www.jia360.com/shicai/" target="_blank">石材</a>
+                        <a href="http://www.jia360.com/zhujiaju/" target="_blank">竹家居</a>
+                        <a href="http://www.jia360.com/diban/" target="_blank">地板</a>
+                        <a href="http://www.jia360.com/menchuang/" target="_blank">门窗</a>
+                        <a href="http://www.jia360.com/zhengmu/" target="_blank">整木</a>
+                        <a href="http://www.jia360.com/hongmu/" target="_blank">红木</a>
+                        <a href="http://www.jia360.com/jiashi/" target="_blank">家饰</a>
+                        <a href="http://www.jia360.com/louti/" target="_blank">楼梯</a>
+                        <a href="http://www.jia360.com/shuimian/" target="_blank">睡眠</a>
+                        <a href="http://www.jia360.com/qiangzhi/" target="_blank">墙纸</a>
+                        <a href="http://www.jia360.com/zhaoming/" target="_blank">照明</a>
+                        <a href="http://www.jia360.com/gangmumen/" target="_blank">钢木门</a>
+                        <a href="http://www.jia360.com/cainuo/" target="_blank">采暖</a>
+                        <a href="http://www.jia360.com/shafa/" target="_blank">沙发</a>
+                        <a href="http://www.jia360.com/jiafang/" target="_blank">家纺</a>
+                        <a href="http://www.jia360.com/ditan/" target="_blank">地毯</a>
+                        <a href="http://www.jia360.com/yuanyi/" target="_blank">园艺</a>
+                        <a href="http://www.jia360.com/tuliao/" target="_blank">涂料</a>
+                        <a href="http://www.jia360.com/wujin/" target="_blank">五金</a>
+                        <a href="http://www.jia360.com/ertong/" target="_blank">儿童家具</a>
+                    </ul>
+                </span>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/picture/" target="_blank" class="nt">图库</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/evaluation/" target="_blank" class="nt">评测</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/zhuanti/qgbcqc" target="_blank" class="nt">导购</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/product/fresh/" target="_blank" class="nt">新品</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/homelife/geomantic/" target="_blank" class="nt">风水</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/fitment/idea/" target="_blank" class="nt">配饰</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/fitment/college/" target="_blank" class="nt">案例库</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com:80/shejishi/index.html" target="_blank" class="nt">设计师</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/news/video/" target="_blank" class="nt">视频</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/zhuanti/" target="_blank" class="nt">专题</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/news/person/" target="_blank" class="nt">人物</a>
+                <span class="l">|</span>
+                <a href="http://news.jia360.com/" target="_blank" class="nt">新闻</a>
+                <span class="l">|</span>
+                <a href="http://www.jia360.com/" target="_blank" class="nt">首页</a>
+
+            </div>
+        </div>
+    </div>
+    
+    
+<div id="ad"></div>
+<div id="carousel_container" class="carousel slide full_height">
+  <div class="carousel-inner full_height">
+    <div id="page_home" class="page item active" tag="home" progress="150">
+      <div id="main">
+        <div id="splash">
+          <div class="wy-mod-banner" style="overflow:hidden;">
+            <div id="_banners" class="banners">
+              <div class="banner banner2"> <img width="100%" height="780" src="images/banner2.jpg" alt="2" />
+                <div class="info">
+                  <h3>微云，生活精彩</h3>
+                  <p>收录生活中的点点滴滴，精彩从此刻开始！</p>
+                  <div class="link-download"><span><a href="javascript:switchPage(1)">　　　　　　　　</a></span> <i class="bor_c"><a href="javascript:switchPage(3)">　　　　　　　　</a></i></div> 
+                </div>
+              </div>
+              <div class="banner banner1"> <img width="100%" height="780" src="images/banner1.jpg" alt="1" />
+                <div class="info">
+                  <h3><img src="images/wx1.jpg" width="98" height="98"></h3>
+                  <p>收录生活中的点点滴滴，精彩从此刻开始！</p>
+                  <div class="link-download"><em><a href="javascript:switchPage(1)">　　　　　　　　</a></em></div> 
+                </div>
+              </div>
+            </div>
+            <div id="_focus" class="focus"> <a data-index="0" href="javascript:void(0);" class="on"><span class="bg-b"></span><span class="inner"></span></a> <a data-index="1" href="javascript:void(0);"><span class="bg-b"></span><span class="inner"></span></a> </div>
+          </div>
+          <script type="text/javascript">
+var glume = function(banners_id, focus_id){
+	this.$ctn = $('#' + banners_id);
+	this.$focus = $('#' + focus_id);
+	this.$adLis = null;
+	this.$btns = null;
+	this.switchSpeed = 5;//自动播放间隔(s)
+	this.defOpacity = 1;
+	this.crtIndex = 0;
+	this.adLength = 0;
+	this.timerSwitch = null;
+	this.init();
+};
+glume.prototype = {
+	fnNextIndex:function(){
+		return (this.crtIndex >= this.adLength-1)?0:this.crtIndex+1;
+	},
+	//动画切换
+	fnSwitch:function(toIndex){
+		if(this.crtIndex==toIndex){return;}
+		this.$adLis.css('zIndex', 0);
+		this.$adLis.filter(':eq('+this.crtIndex+')').css('zIndex', 2);
+		this.$adLis.filter(':eq('+toIndex+')').css('zIndex', 1);
+		this.$btns.removeClass('on');
+		this.$btns.filter(':eq('+toIndex+')').addClass('on');
+		var me = this;
+
+		$(this.$adLis[this.crtIndex]).animate({
+			opacity: 0
+		}, 1000, function() {
+			me.crtIndex = toIndex;
+			$(this).css({
+				opacity: me.defOpacity,
+				zIndex: 0
+			});
+		});
+	},
+	fnAutoPlay:function(){
+		this.fnSwitch(this.fnNextIndex());
+	},
+	fnPlay:function(){
+		var me = this;
+		me.timerSwitch = window.setInterval(function() {
+			me.fnAutoPlay();
+		},me.switchSpeed*1000);
+	},
+	fnStopPlay:function(){
+		window.clearTimeout(this.timerSwitch);
+		this.timerSwitch = null;
+	},
+
+	init:function(){
+		this.$adLis = this.$ctn.children();
+		this.$btns = this.$focus.children();
+		this.adLength = this.$adLis.length;
+
+		var me = this;
+		//点击切换
+		this.$focus.on('click', 'a', function(e) {
+			e.preventDefault();
+			var index = parseInt($(this).attr('data-index'), 10)
+			me.fnSwitch(index);
+		});
+		this.$adLis.filter(':eq('+ this.crtIndex +')').css('zIndex', 2);
+		this.fnPlay();
+
+		//hover时暂停动画
+		this.$ctn.hover(function() {
+			me.fnStopPlay();
+		}, function() {
+			me.fnPlay();
+		});
+
+		if($.browser.msie && $.browser.version < 7) {
+			this.$btns.hover(function() {
+				$(this).addClass('hover');
+			},function() {
+				$(this).removeClass('hover');
+			});
+		}
+	}
+};
+var player1 = new glume('_banners', '_focus');    
+  </script>
+          <div class="container splash-container">
+            <div id="download_btn_group" class="container ani_step_1">
+              <div id="download_place_holder" class="horizental-item" ></div>
+            </div>
+            <div id="ct_link" class="ani_step_3">
+              <p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page_intro" class="page item" tag="intro" progress="300">
+      <div id="main">
+        <div id="splash" class="ani_step_1">
+          <div class="container splash-container">
+            <div class="zhons">
+              <div class="left">
+                <div class="title"><span>时间：1月2日    地点：红星美凯龙商场</span><b>活动简介</b></div>
+                <div class="box">
+                  <div class="banner" id="bannerx">
+                    <div class="banner-btn"> <a href="javascript:;" class="prevBtn"><i></i></a> <a href="javascript:;" class="nextBtn"><i></i></a> </div>
+                    <ul class="banner-img">
+                      <li><a href="#"><img src="images/jy01.jpg" /></a></li>
+                      <li><a href="#"><img src="images/jy02.jpg"></a></li>
+                      <li><a href="#"><img src="images/jy03.jpg"></a></li>
+                      <li><a href="#"><img src="images/jy04.jpg"></a></li>
+                      <li><a href="#"><img src="images/jy05.jpg"></a></li>
+                    </ul>
+                    <ul class="banner-circle">
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="right">
+                 <div class="bt"></div>
+                 <div class="con">
+                   <div class="cbt">参与网络报名，到店有惊喜<br />本活动已有  <span id="count">2000</span>  人报名</div>
+                  <div class="cbox"><div class="name" >真实姓名：</div><input class="sr" name="" type="text" id="name"></div>
+                    <div class="cbox"><div class="name" >联系电话：</div><input class="sr" name="" type="text" id="tel"></div>
+                    <div class="cbox"><div class="name" >所在省市：</div>
+                    <select class="sr" name="" id="province" onChange="create_address('#province', 1, '#city')">
+                          <option value="0">请选择省市</option>
+                          <option value="内蒙古">内蒙古</option>
+                          <option value="新疆">新疆</option>
+                          <option value="上海">上海</option>
+                          <option value="宁夏">宁夏</option>
+                          <option value="河南">河南</option>
+                          <option value="河北">河北</option>
+                          <option value="湖北">湖北</option>
+                          <option value="湖南">湖南</option>
+                          <option value="山东">山东</option>
+                          <option value="四川">四川</option>
+                          <option value="云南">云南</option>
+                          <option value="重庆">重庆</option>
+                          <option value="陕西">陕西</option>
+                          <option value="北京">北京</option>
+                          <option value="天津">天津</option>
+                          <option value="辽宁">辽宁</option>
+                          <option value="安徽">安徽</option>
+                          <option value="江苏">江苏</option>
+                          <option value="浙江">浙江</option>
+                    </select></div>
+                    <div class="cbox"><div class="name">所在城市：</div>
+                    <select class="sr" name="" id="city" onChange="create_address('#city', 2, '#area')">
+                       
+                    </select>
+                    </div>
+                    <div class="cbox"><div class="name">活动商场：</div>
+                    <select class="sr" name="" id="area">
+                    </select>
+                    </div>
+                 <!--  <div class="cbox"><div class="name">验证码：</div><input class="sr2" name="" type="text" id="yzm"><div class="yzm"><img src="http://u.jia360.com/Users/verify.html" style="width:100%" onClick="changeVerify(alert('111'))" id="verify_img"></div></div> -->
+                 <a href="#" id="saveBtn"><img src="images/page2_img02.jpg" width="290" height="72"></a>
+                 </div><!--end con-->
+                 <div class="ewms"><img src="images/page2_img03.jpg" width="290" height="116"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page_gift" class="page item" tag="gift" progress="450">
+      <div id="main">
+        <div id="splash">
+          <div class="container splash-container ani_step_1">
+              <div class="hdcp demo4">
+                    <div class="tab_box">
+				<div>
+                     <div class="title">女神套餐：14800元</div>
+                     <div class="pic"><img src="images/ns01.jpg" width="690" height="480"></div>
+				</div>
+                
+                
+                
+				<div class="hide">
+					<div class="title">女神爱沙发：斯克洛沙发5580元</div>
+                     <div class="pic"><img src="images/ns02.jpg" width="690" height="480"></div>
+				</div>
+				<div class="hide">
+					<div class="title">女神爱软床：格兰德软床4999元</div>
+                     <div class="pic"><img src="images/ns03.jpg" width="690" height="480"></div>
+				</div>
+				<div class="hide">
+					<div class="title">女神爆款套餐：27800元</div>
+                     <div class="pic"><img src="images/ns04.jpg" width="690" height="480"></div>
+				</div>
+                <div class="hide">
+					<div class="title">女神爆款套餐：39800元</div>
+                     <div class="pic"><img src="images/ns05.jpg" width="690" height="480"></div>
+				</div>
+                <div class="hide">
+					<div class="title">女神板式套餐：19999元</div>
+                     <div class="pic"><img src="images/ns06.jpg" width="690" height="480"></div>
+				</div>
+                <div class="hide">
+					<div class="title">女神爱沙发：19800元</div>
+                     <div class="pic"><img src="images/ns07.jpg" width="690" height="480"></div>
+				</div>
+                <div class="hide">
+					<div class="title">女神爆款套餐：25800元</div>
+                     <div class="pic"><img src="images/ns08.jpg" width="690" height="480"></div>
+				</div>
+                <div class="hide">
+					<div class="title">女神爱沙发:9980元</div>
+                     <div class="pic"><img src="images/ns09.jpg" width="690" height="480"></div>
+				</div>
+                <div class="hide">
+					<div class="title">女神套餐：28800元</div>
+                     <div class="pic"><img src="images/ns10.jpg" width="690" height="480"></div>
+				</div>
+                <div class="hide">
+					<div class="title">女神爱软床：8980元</div>
+                     <div class="pic"><img src="images/ns11.jpg" width="690" height="480"></div>
+				</div>
+                <div class="hide">
+					<div class="title">女神套餐：45800元</div>
+                     <div class="pic"><img src="images/ns12.jpg" width="690" height="480"></div>
+				</div>
+			</div><!--end tab_box-->
+              <div class="lbt"></div>
+              <div class="ht"></div>
+               <div class="lbt2"></div>
+
+             
+                   <ul class="tab_menu">
+                        
+			    	<li class="current">女神套餐：14800元</li>
+			    	<li>女神爱沙发：斯克洛沙发5580元</li>
+			    	<li>女神爱软床：格兰德软床4999元</li>
+			     	<li>女神爆款套餐：27800元</li>
+                    <li>女神爆款套餐：39800元</li>  
+                    <li style="margin-top:78px;">女神板式套餐：19999元</li> 
+                    <li>女神爱沙发：19800元</li> 
+                    <li>女神爆款套餐：25800元</li> 
+                    <li>女神爱沙发:9980元</li> 
+                    <li>女神套餐：28800元</li> 
+                    <li>女神爱软床：8980元</li> 
+                    <li>女神套餐：45800元</li> 
+	            </ul>
+   
+
+               
+            
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page_feedback" class="page item" tag="feedback" progress="600">
+      <div id="main">
+        <div id="splash">
+          <div class="container splash-container ani_step_1">
+           <div class="yyqg">
+                <div class="left">
+                   <div class="bnt">
+                      
+                      <p class="Monv"></p>
+			<div id="Monver"><span id="close"><img src="images/ImgClose.png" /></span>
+               <div class="cbt">活动规则</div>
+               <div class="ctxt">
+                  <p>活动时间：2014年12月22日12点-2014年1月3日24点；</p>
+                  <p>1扫一扫二维码进入爱依瑞斯“1元抢购”或者进入“深圳亚太淘家居”公众号，点击菜单栏中“1元抢购”选项进入活动页面，并选择1款产品参与活动；</p>
+                  <p>2进入活动页面，选定产品并点击“我要砍价”按钮进入产品砍价页面，点击“帮自己砍价一次”即已为自己降价一次；</p>
+                  <p>3完成帮自己降价后点击按钮“邀请好友帮忙降价”，根据页面提示转发到朋友圈、微信群或指定好友帮忙降价，帮降人数不限制,每人每天至多能帮别人砍10次。</p>
+               </div>
+            </div>
+
+			<script type="text/javascript">
+			$(document).ready(function(){
+				$(".Monv").click(function(){
+					Popuplayer({
+						LayerId:"Monver",//层ID
+						Masklayer:"cxc",//遮罩层ID
+						CloseID:"close",//退出id
+						Fun:function(){} //关闭时是否回调函数
+					});
+				});
+			});
+			</script> 
+                      
+                   </div>
+                </div><!--end left-->
+                <div class="right">
+                   <div class="con1">
+                      <div class="cleft">
+                         <div class="bt">距离活动开始仅剩：<span id="day_show">0</span>  <span id="hour_show">0</span>  <span id="minute_show">0</span> <span id="second_show">0</span> </div>
+                         <div class="pic"><img src="images/page4_right_pic.jpg" width="390" height="340"></div>
+                      </div>
+                      <div class="cright">
+                         <div class="name">精美镶钻抱枕</div>
+                         <div class="infos">
+                            <div class="in1">优惠价：￥260  |  限量：50</div>
+                            <div class="in2"><b>最低价：</b><span>￥1</span></div>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="con2">
+                      <div class="ccl">1885<span>人</span></div>
+                      <div class="ccr">358.00<span>元</span></div>
+                   </div>
+                </div><!--end right-->
+                
+            </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div id="page_related" class="page item" tag="related" progress="750">
+      <div id="main">
+        <div id="splash" class="ani_step_1">
+          <div class="container splash-container">
+            
+            
+            <div class="qyjs demo2">
+                    <div class="tab_box">
+				<div>
+                     <div class="title">红星美凯龙</div>
+                     <div class="show">
+
+         <div id="vertical" class="scrollbox clearfix">
+                 <div class="slyWrap example1">
+                   <div class="scrollbar" style="border-top:none;">
+                     <div class="handle"></div>
+                   </div>
+                   <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }'>
+                     <div style=" padding-left:55px;">
+                        <div class="obt">梦想 + 创新  缔造中国家居流通业领导品牌</div>
+                        <div align="center"><img src="images/page5s_03.jpg" ></div>
+                        <div class="obt">梦想 + 创新  缔造中国家居流通业领导品牌</div>
+                       <p>这是一个中国家居行业新模式发展的时代——大家居消费时代<br />
+这是一个厂商品牌聚集的时代——家居品牌化时代<br />
+这是一个消费者能有更多选择并获取更多个性化消费体验时代——新体验消费时代<br />
+这是红星美凯龙以规模化效应，为消费者提供更多的优惠、更多的产品选择以及更优质的服务的时代——品牌信赖时代<br />
+这是以Mall的形态促进中国现代商业文明崛起的时代——中国商业新高度的时代</p>
+                        <div align="center"><img src="images/page5s_06.jpg" ></div>
+                        <div class="obt">百城时代 相信中国</div>
+                        <p>红星美凯龙连续5年跻身中国民营企业500强前50位<br />
+自1986年创业以来，始终以建设温馨、和谐的家园，<br />
+提升消费者的居家生活品味为己任。<br />
+截至目前，已在北京、上海、天津、南京、长沙、重庆、成都等100余座城市开办了140多家商场。</p>
+                        <div align="center"><img src="images/page5s_08.jpg" ></div>
+                        <div class="obt">始于1986，做中国最好的家居品牌</div>
+                        <p>28年来，从“渠道”到“平台”，从店面租赁到自己买地建商场，<br />
+从一家地方家具专营店，到百MALL连锁，创造了许多个“第一”：<br />
+第一个做连锁品牌；第一个做委托管理店；第一个自建商场；<br />
+缔造了全世界单体最大的家居商城，<br />
+无论从规模、影响力还是品牌张力，<br />
+红星美凯龙已然成为中国家居流通业的领导品牌……</p>
+                     </div>
+                   </div>
+                 </div>
+              </div>
+
+                     </div>
+				</div>
+                
+                
+               
+                <div class="hide">
+					<div class="title">ARIS爱依瑞斯</div>
+                    <div class="show">
+
+         <div id="vertical2" class="scrollbox clearfix ss2">
+                 <div class="slyWrap example1">
+                   <div class="scrollbar" style="border-top:none;">
+                     <div class="handle"></div>
+                   </div>
+                   <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }'>
+                     <div style=" padding-left:55px;">
+                        <div align="center"><img src="images/page5s_09.jpg" ></div>
+                       <p>爱依瑞斯，中国高端家居领导品牌，意大利名师设计，全球同步流行，19年专注软体家具，聚合沙发软床尖端材质及工艺，打造至尊之作，引领着当今软体家具界的潮流，享誉全球。</p>
+                        <div class="obt">马可·焦尔杰蒂简介</div>
+                        <div align="center"><img src="images/page5s_10.jpg" ></div>
+                        <p>Marco Giorgetti，爱依瑞斯首席产品设计师，在意大利设计界近四十年的卓越表现，使他成为国际知名的大师，他执掌的爱依瑞斯产品设计，引领着当今软体家具界的潮流，享誉全球。</p>
+                     </div>
+                   </div>
+                 </div>
+              </div>
+
+                     </div>
+				</div>
+			</div><!--end tab_box-->
+
+
+             
+                   <ul class="tab_menu">
+			    	<li style="margin-top:100px;" class="current">红星美凯龙</li>
+			    	<li style="margin-top:10px;" id="menu2x">ARIS爱依瑞斯</li>
+	            </ul>
+              </div>
+            
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer" >
+    <div id="navbar">
+        <div class="logobnt"><a href="http://www.chinaredstar.com/?utm_source=baidu&utm_medium=brand&utm_content=biaoti" target="_blank"></a><a href="http://www.chinaaris.com/" target="_blank"></a></div>
+		<div id="navbtns" class="container" >
+			<div class="navbtn">
+				<a href="javascript:switchPage(0)">
+					<img id="img_home" src="images/home_selected.png" alt="首页">
+				</a>
+			</div>
+			<div class="navbtn">
+				<a href="javascript:switchPage(1)">
+					<img id="img_intro" src="images/intro.png" alt="活动介绍">
+				</a>
+			</div>
+			<div class="navbtn">
+				<a href="javascript:switchPage(2)">
+					<img id="img_gift" src="images/gift.png" alt="活动产品">
+				</a>
+			</div>
+			<div class="navbtn">
+				<a href="javascript:switchPage(3)">
+					<img id="img_feedback" src="images/feedback.png" alt="1元抢购">
+				</a>
+			</div>
+			<div class="navbtn" id="navbtnX">
+				<a href="javascript:switchPage(4)">
+					<img id="img_related" src="images/related.png" alt="企业介绍">
+				</a>
+			</div>
+		</div>
+    </div>
+</div>
+</div>
+</body>
+</html>

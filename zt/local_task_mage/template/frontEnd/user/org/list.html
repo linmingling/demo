@@ -1,0 +1,11 @@
+<{include file="<{$config['layout']}>/header.tpl" title=foo}>
+<{foreach from=$orgs key=k item=value }>
+    <{foreach from=$value key=k2 item=value2 }>
+    一维key=<{$k2}>  一维value=<{$value2}><br />
+    <{foreachelse}>
+    nothin
+    <{/foreach}>
+<{foreachelse}>
+nothin
+<{/foreach}>
+<{include file="<{$config['layout']}>/footer.tpl"}>

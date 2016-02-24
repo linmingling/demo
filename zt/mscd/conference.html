@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>慕思6.18世界除螨日</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/other.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/wy-mod-banner.css" media="screen">
+    <script src="js/jquery-1.7.2.min.js"></script>
+
+    <script src="js/jquery.tabs.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script type="text/javascript" src="js/my.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<link href="css/main_new.css?version=1" rel="stylesheet"> 
+    <script type="text/javascript">
+    $(function(){
+        $('.conference-nav').Tabs({
+        event:'click'
+        });
+    });
+
+    function showTime(deadline,dom) {
+        var countdown = new Date(deadline) - new Date();
+        
+        var restDays = dom.find(".days");
+        var restHours = dom.find(".hours");
+        var restMinutes = dom.find(".minutes");
+        var restSeconds = dom.find(".seconds");
+
+        var timer = setInterval(function() {
+            if(countdown<0){
+                clearInterval(timer);
+                
+                return false;
+            }
+            var days = Math.floor(countdown / 86400000) < 0 ? 0 : Math.floor(countdown / 86400000);
+            var hours = Math.floor((countdown - days * 86400000) / 3600000) < 0 ? 0 : Math.floor((countdown - days * 86400000) / 3600000);
+            var minutes = Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000) / 60000);
+            var seconds = Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000) < 0 ? 0 : Math.floor((countdown - days * 86400000 - hours * 3600000 - minutes * 60000) / 1000);          
+            days < 10 ? days =  (days+1) : days = days;
+            hours < 10 ? hou000s = "0" + hours : hours = hours;
+            minutes < 10 ? minutes = "0" + minutes : minutes = minutes;
+            seconds < 10 ? seconds = "0" + seconds : seconds = seconds;
+
+            //alert(days+", "+hours+", "+minutes+", "+seconds);
+            restDays.html(days);
+            restHours.html(hours);
+            restMinutes.html(minutes);
+            restSeconds.html(seconds);
+            countdown -= 1000;
+        }, 1000)
+        
+    }
+
+    $(function(){
+        $(".p_djs").each(function(){
+
+            var countLoad = new Date($(this).attr("djs"))- new Date();
+            if(countLoad<0)
+            {
+                document.getElementById('conference-after').style.display='block';
+                document.getElementById('conference-before').style.display='none';
+            }
+
+            showTime($(this).attr("djs"),$(this));
+        });
+    }); 
+
+    function ScrollDivUp(){document.getElementById('tab_menu').scrollTop -= 2;}
+    function ScrollDivDown(){document.getElementById('tab_menu').scrollTop += 2;}
+
+	</script>
+    <style>
+        .foot_zt{position:relative;z-index:1;top:200px;}
+        .tab_menu{
+            width: 157px;
+            height: 341px;
+            position: relative;
+            top: 56px;
+            left: 22px;
+            float: left;
+            overflow: hidden;
+        }
+        .select-img{
+            margin-bottom: 5px;
+        }
+        .img-title{
+            background: url("images/fabu-img-title.jpg");
+            width: 147px;
+            height: 24px;
+            position: relative;
+            top: -4px;
+            text-align: center;
+            font-size: 14px;
+            color: #ffffff;
+            line-height: 22px;
+            overflow: hidden
+        }
+        .current .select-img{
+        }
+        .tab_box{
+            background: url("images/fabu-content-title.png");
+            width: 334px;
+            height:398px;
+            position: relative;
+            left: 35px;
+            float: left;
+            line-height: 20px;
+        }
+        .tab_box div{
+            width: 334px;
+            height: 341px;
+            font-size: 14px;
+            position: relative;
+            top: 56px;
+            padding: 12px;
+        }
+        .conference-cont{
+            
+        }
+        .days{
+            background: url("images/count-view.jpg");
+            width: 77px;
+            height: 86px;
+            display: block;
+            font-family: 'Arial';
+            font-size:72px;
+            color: #000000;
+            text-align: center;
+            line-height: 80px;
+            position: relative;
+            top: -85px;
+            left: 185px;
+        }
+        .day-font{
+            float:left;
+            position:absolute;
+            top:0px;
+            left:280px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="navs">
+            <div><a href="index.html">首页</a></div>
+            <div><a href="about.html">螨虫大起底</a></div>
+            <div><a href="action.html">除螨行动</a></div>
+            <div><a href="conference.html"  class="selected">除螨发布会</a></div>
+            <div><a href="life.html">生活“没螨”</a></div>
+            <div><a href="update.html">睡眠升级</a></div>
+        </div>
+        <div class="logo"></div>
+        <div class="title"></div>
+        <!--发布前-->
+        <div class="conference-before" style="" id="conference-before">
+            <div class="conference-before-title"></div>
+            <div class="conference-before-bg p_djs" djs="June 18,2015,00:01"><div style="font-family:'宋体';font-size:48px;position:absolute;left:220px;top:300px;">倒计时:<a id="day_show" class="days"></a><span class="day-font">天</span></div></div>
+        </div>
+
+        <!--发布后-->
+        <div class="conference-after" style="display:none" id="conference-after">
+            <div class="conference-after-title"></div>
+            <div class="conference-after-right-title"></div>
+            <div class="conference-left-box ">
+                <!--tab-->
+                <div class="conference-nav" style="position: relative;">
+                    <a href="javascript: void(0);" class="conference-prev" onmouseover="ScrollDivUp_T=setInterval(ScrollDivUp,10);" onmouseout="clearInterval(ScrollDivUp_T)"></a>
+                    <a href="javascript: void(0);" class="conference-next" onmouseover="ScrollDivDown_T=setInterval(ScrollDivDown,10);" onmouseout="clearInterval(ScrollDivDown_T)"></a>
+
+                    <ul class="tab_menu" style="overflow-y: scroll;overflow:hidden;" id="tab_menu">
+                        <li class="current"><div class="select-img"><img src="images/conf-1.jpg" alt="" width="147" height="88" ><div class="img-title">会场一角</div></div></li>
+                        <!-- <li><div class="select-img"><img src="images/conf-2.jpg" alt="" width="147" height="88"><div class="img-title">现场直播</div></div></li> -->
+                        <li><div class="select-img"><img src="images/conf-3.jpg" alt="" width="147" height="88"><div class="img-title">嘉宾开始签到了</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-4.jpg" alt="" width="147" height="88"><div class="img-title">主持人也靓丽的风景</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-5.jpg" alt="" width="147" height="88"><div class="img-title">传说中的除螨设备</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-6.jpg" alt="" width="147" height="88"><div class="img-title">红星美凯龙董事副总裁</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-7.jpg" alt="" width="147" height="88"><div class="img-title">又来一拨嘉宾</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-8.jpg" alt="" width="147" height="88"><div class="img-title">零点研究咨询集团刘巍然</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-9.jpg" alt="" width="147" height="88"><div class="img-title">慕思产品展示</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-10.jpg" alt="" width="147" height="88"><div class="img-title">除螨团队亮相</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-11.jpg" alt="" width="147" height="88"><div class="img-title">除螨团队亮相</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-12.jpg" alt="" width="147" height="88"><div class="img-title">慕思董事长王炳坤</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-13.jpg" alt="" width="147" height="88"><div class="img-title">除螨日启动仪式</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-14.jpg" alt="" width="147" height="88"><div class="img-title">慕思运营总经理盛艳</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-15.jpg" alt="" width="147" height="88"><div class="img-title">慕思总裁姚吉庆</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-16.jpg" alt="" width="147" height="88"><div class="img-title">Jacqueline Berger</div></div></li>
+                        <li><div class="select-img"><img src="images/conf-17.jpg" alt="" width="147" height="88"><div class="img-title">调研白皮书</div></div></li>
+                    </ul>
+                    <div class="tab_box">
+                            <div>2015年6月18日，首届“世界除螨日暨除螨标准发布会”在北京钓鱼台国宾馆举行。“世界除螨日”由健康睡眠领军品牌慕思携手中国睡眠研究会、红星美凯龙等机构联合发起，中国卫计委、中国环保部提供权威指导，旨在向社会大众普及螨虫的危机以及除螨措施，打造健康舒适的睡眠环境的公益性活动，并确定每年6月18日为“世界除螨日”。<img src="images/conf-18.jpg" alt="" width="300" height="155"></div>
+                            <div class="hide">慕思寝室用品有限公司成立于2004年，定位为全球健康睡眠资源整合者，专业致力于人体健康睡眠研究，从事整套健康睡眠系统的研发、生产及营销。慕思设计理念源自欧洲，公司聘请法国知名设计师Moris作为首席设计师，将人体工程学和睡眠环境学融入到寝具的设计中。
+慕思是全球健康睡眠系统的首创者，是中国发展速度最快的品牌，目前在全球已经拥有1600多家专卖店。慕思是中国健康睡眠产业的领导品牌，是全球健康睡眠资源的整合者，目前已广泛与瑞士DOC、比利时Artilat和RAKO、德国Otten、意大利Figino、意大利Bedding S.R.L和LAMBORGHINI等国际优秀寝具供应商建立起了长期合作关系。
+慕思确立了"整合全球资源，成为全球最受尊重的健康睡眠品牌引领者"愿景，以"让人们睡得更好"为使命，践行"客户满意、整合创新、合作共赢"
+                            </div>
+                            <div class="hide">慕思寝室用品有限公司成立于2004年，定位为全球健康睡眠资源整合者，专业致力于人体健康睡眠研究，从事整套健康睡眠系统的研发、生产及营销。慕思设计理念源自欧洲，公司聘请法国知名设计师Moris作为首席设计师，将人体工程学和睡眠环境学融入到寝具的设计中。
+慕思是全球健康睡眠系统的首创者，是中国发展速度最快的品牌，目前在全球已经拥有1600多家专卖店。慕思是中国健康睡眠产业的领导品牌，是全球健康睡眠资源的整合者，目前已广泛与瑞士DOC、比利时Artilat和RAKO、德国Otten、意大利Figino、意大利Bedding S.R.L和LAMBORGHINI等国际优秀寝具供应商建立起了长期合作关系。
+慕思确立了"整合全球资源，成为全球最受尊重的健康睡眠品牌引领者"愿景，以"让人们睡得更好"为使命，践行"客户满意、整合创新、合作共赢"</div>
+                            <div class="hide">慕思寝室用品有限公司成立于2004年，定位为全球健康睡眠资源整合者，专业致力于人体健康睡眠研究，从事整套健康睡眠系统的研发、生产及营销。慕思设计理念源自欧洲，公司聘请法国知名设计师Moris作为首席设计师，将人体工程学和睡眠环境学融入到寝具的设计中。
+慕思是全球健康睡眠系统的首创者，是中国发展速度最快的品牌，目前在全球已经拥有1600多家专卖店。慕思是中国健康睡眠产业的领导品牌，是全球健康睡眠资源的整合者，目前已广泛与瑞士DOC、比利时Artilat和RAKO、德国Otten、意大利Figino、意大利Bedding S.R.L和LAMBORGHINI等国际优秀寝具供应商建立起了长期合作关系。
+慕思确立了"整合全球资源，成为全球最受尊重的健康睡眠品牌引领者"愿景，以"让人们睡得更好"为使命，践行"客户满意、整合创新、合作共赢"</div>
+                            <div class="hide">慕思寝室用品有限公司成立于2004年，定位为全球健康睡眠资源整合者，专业致力于人体健康睡眠研究，从事整套健康睡眠系统的研发、生产及营销。慕思设计理念源自欧洲，公司聘请法国知名设计师Moris作为首席设计师，将人体工程学和睡眠环境学融入到寝具的设计中。
+慕思是全球健康睡眠系统的首创者，是中国发展速度最快的品牌，目前在全球已经拥有1600多家专卖店。慕思是中国健康睡眠产业的领导品牌，是全球健康睡眠资源的整合者，目前已广泛与瑞士DOC、比利时Artilat和RAKO、德国Otten、意大利Figino、意大利Bedding S.R.L和LAMBORGHINI等国际优秀寝具供应商建立起了长期合作关系。
+慕思确立了"整合全球资源，成为全球最受尊重的健康睡眠品牌引领者"愿景，以"让人们睡得更好"为使命，践行"客户满意、整合创新、合作共赢"</div>
+                            <div class="hide">慕思寝室用品有限公司成立于2004年，定位为全球健康睡眠资源整合者，专业致力于人体健康睡眠研究，从事整套健康睡眠系统的研发、生产及营销。慕思设计理念源自欧洲，公司聘请法国知名设计师Moris作为首席设计师，将人体工程学和睡眠环境学融入到寝具的设计中。
+慕思是全球健康睡眠系统的首创者，是中国发展速度最快的品牌，目前在全球已经拥有1600多家专卖店。慕思是中国健康睡眠产业的领导品牌，是全球健康睡眠资源的整合者，目前已广泛与瑞士DOC、比利时Artilat和RAKO、德国Otten、意大利Figino、意大利Bedding S.R.L和LAMBORGHINI等国际优秀寝具供应商建立起了长期合作关系。
+慕思确立了"整合全球资源，成为全球最受尊重的健康睡眠品牌引领者"愿景，以"让人们睡得更好"为使命，践行"客户满意、整合创新、合作共赢"</div>
+                            <div class="hide">慕思寝室用品有限公司成立于2004年，定位为全球健康睡眠资源整合者，专业致力于人体健康睡眠研究，从事整套健康睡眠系统的研发、生产及营销。慕思设计理念源自欧洲，公司聘请法国知名设计师Moris作为首席设计师，将人体工程学和睡眠环境学融入到寝具的设计中。
+慕思是全球健康睡眠系统的首创者，是中国发展速度最快的品牌，目前在全球已经拥有1600多家专卖店。慕思是中国健康睡眠产业的领导品牌，是全球健康睡眠资源的整合者，目前已广泛与瑞士DOC、比利时Artilat和RAKO、德国Otten、意大利Figino、意大利Bedding S.R.L和LAMBORGHINI等国际优秀寝具供应商建立起了长期合作关系。
+慕思确立了"整合全球资源，成为全球最受尊重的健康睡眠品牌引领者"愿景，以"让人们睡得更好"为使命，践行"客户满意、整合创新、合作共赢"</div>
+                            <div class="hide">慕思寝室用品有限公司成立于2004年，定位为全球健康睡眠资源整合者，专业致力于人体健康睡眠研究，从事整套健康睡眠系统的研发、生产及营销。慕思设计理念源自欧洲，公司聘请法国知名设计师Moris作为首席设计师，将人体工程学和睡眠环境学融入到寝具的设计中。
+慕思是全球健康睡眠系统的首创者，是中国发展速度最快的品牌，目前在全球已经拥有1600多家专卖店。慕思是中国健康睡眠产业的领导品牌，是全球健康睡眠资源的整合者，目前已广泛与瑞士DOC、比利时Artilat和RAKO、德国Otten、意大利Figino、意大利Bedding S.R.L和LAMBORGHINI等国际优秀寝具供应商建立起了长期合作关系。
+慕思确立了"整合全球资源，成为全球最受尊重的健康睡眠品牌引领者"愿景，以"让人们睡得更好"为使命，践行"客户满意、整合创新、合作共赢"</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="conference-right-box">
+               <!--  这里写大图地址
+               <div class="con-img-box"><img src="images/sch2.jpg" width='440' height="436"></div>
+               图片链接写在下方
+               <a href="file/report.pdf" target="_blank"><div class="con-img-glass"></div></a> -->
+                <a href="file/report.pdf" target="_blank" class="con-img-box"><img src="images/sch2.jpg" width='440' height="436"></a>
+            </div>
+        </div>
+    </div>
+    <div ></div>
+
+
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

@@ -1,0 +1,1583 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>两天来了</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" type="text/css"  href="css/style.css"  />
+<link rel="stylesheet" type="text/css"  href="css/idangerous.swiper.css"  />
+<script type="text/javascript" src="js/idangerous.swiper-2.1.min.js"></script>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script src="js/jquery.tabs.js"></script>
+<script src="js/jquery.lazyload.js"></script>
+<!--滚动条-->
+<script type="text/javascript" src="js/jquery.sly.js"></script>
+<script type="text/javascript" src="js/jquery.easing-1.3.min.js"></script>
+<!--滚动条-->
+<script type="text/javascript" src="js/jquery.sly.js"></script>
+<script type="text/javascript" src="js/jquery.easing-1.3.min.js"></script>
+<script type="text/javascript">
+$(function($){
+
+
+  
+
+	// 占位符项目来填充列表的功能
+	function populate(container, count, offset){
+		var output = '';
+		offset = isNaN(offset) ? 0 : offset;
+		for(var i = 0; i<count; i++ ){
+			output += '<li>'+(offset+i)+'</li>';
+		}
+		return $(output).appendTo(container);
+	}
+
+	// 填充列表项
+	$('ul[data-items]').each(function(i,e){
+		var items = parseInt($(e).data('items'), 10);
+		populate(e, items);
+	});
+
+	var isBindScroll = false;
+	var bindScroll = function (id) {
+	    if (isBindScroll) { return false; }
+	    isBindSroll = true;
+	    id=id || "vertical";
+	    var $section = $("#" +id);
+	  
+	    var $frame = $section.find('.frame'),
+			$ul = $frame.find('ul').eq(0),
+			$scrollbar = $section.find('.scrollbar'),
+			$buttons = $section.find('.controlbar [data-action]');
+			
+
+	    populate($ul, 10);
+
+	    // 控制
+	    $buttons.on('click', function (e) {
+	        var action = $(this).data('action');
+	        switch (action) {
+	            case 'reset':
+	                $frame.sly('toStart');
+	                setTimeout(function () {
+	                    $ul.find('li').slice(10).remove();
+	                    $frame.sly('reload');
+	                }, 200);
+	                break;
+	            default:
+	                $frame.sly(action);
+	        }
+	    });
+
+	    $section.find(".slyWrap").each(function(i,e){
+			var cont = $(this),
+				frame = cont.find(".sly"),
+				slidee = frame.find("ul"),
+				scrollbar = cont.find(".scrollbar"),
+				pagesbar = cont.find(".pages"),
+				options = frame.data("options"),
+				controls = cont.find(".controls"),
+				prevButton = controls.find(".prev"),
+				nextButton = controls.find(".next"),
+				prevPageButton = controls.find(".prevPage"),
+				nextPageButton = controls.find(".nextPage");
+
+			options = $.extend({},options,{
+				scrollBar: scrollbar,
+				pagesBar: pagesbar,
+				prev: prevButton,
+				next: nextButton,
+				prevPage: prevPageButton,
+				nextPage: nextPageButton,
+				disabledClass: 'btn-disabled'
+			});
+
+	        frame.sly(options);
+
+	        cont.find("button").click(function () {
+	            var action = $(this).data('action'),
+				arg = $(this).data('arg');
+	            switch (action) {
+	                case 'add':
+	                    slidee.append(slidee.children().slice(-1).clone().removeClass().text(function (i, text) {
+	                        return text / 1 + 1;
+	                    }));
+	                    frame.sly('reload');
+	                    break;
+	                case 'remove':
+	                    slidee.find("li").slice(-1).remove();
+	                    frame.sly('reload');
+	                    break;
+	                default:
+	                    frame.sly(action, arg);
+	            }
+	        });
+
+	    });
+	};
+
+    $("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical");
+	    }, 200);
+	});
+
+    $("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical3");
+	    }, 200);
+	});
+	
+    $("#m2").on("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical12");
+	    }, 200);
+	});
+	$("#m3").on("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical13");
+	    }, 200);
+	});
+	$("#m4").on("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical14");
+	    }, 200);
+	});
+	
+	$("#menu2x").on("click", function () {
+	    setTimeout(function () {
+	        bindScroll("vertical15");	    
+		}, 200);
+	});
+	// 主要调用部分
+	$(document).on('activated',function(event){
+		
+	}).trigger('activated');
+	
+
+});
+</script><!--end滚动条-->
+<script type="text/javascript">
+$(function(){
+
+  $("img[original]").lazyload({ placeholder:"images/color3.gif" });
+  
+  $('.demo1').Tabs();
+  $('.demo2').Tabs();
+  $('.demo3').Tabs({
+    event:'click'
+  });
+  $('.demo4').Tabs({
+    auto:3000
+  });
+  $('.demo5').Tabs({
+    event:'click',
+    callback:lazyloadForPart
+  });
+  //部分区域图片延迟加载
+  function lazyloadForPart(container) {
+    container.find('img').each(function () {
+      var original = $(this).attr("original");
+      if (original) {
+        $(this).attr('src', original).removeAttr('original');
+      }
+    });
+  }
+}); 
+$(function(){
+	// 品牌
+  var mySwiper = new Swiper('#swiper',{
+    loop:true,
+    grabCursor: true,
+    paginationClickable: true,
+   /* autoplay: 7000*/
+  });
+  $('.arrowLeft').on('click', function(e){
+    e.preventDefault();
+    mySwiper.swipePrev();
+  });
+  $('.arrowRight').on('click', function(e){
+    e.preventDefault();
+    mySwiper.swipeNext();
+  });
+  $("#showBox").mouseenter(function(){
+    mySwiper.stopAutoplay();
+  });
+  $("#sshowBox").mouseleave(function(){
+    mySwiper.startAutoplay();
+  });
+  var size = $('.swiper-slide').size() -3;
+  // 品牌链接产品
+  $('#tab_menu li').each(function(index){
+        $(this).click(function(){
+            if (index ==5) {
+              mySwiper.swipeTo(index+1);
+            } else if(index == 6) { 
+              mySwiper.swipeTo(index+1);
+            } else if(index == 7) { 
+              mySwiper.swipeTo(index+2);
+      			} else if(index >7 && index <=9) {
+                    mySwiper.swipeTo(index+3);
+      			} else if(index >=10 && index <=13) {
+                    mySwiper.swipeTo(index+4);
+      			}else if(index ==14) {
+                    mySwiper.swipeTo(index+6);
+            }else if(index ==15) {
+                    mySwiper.swipeTo(index+7);
+            }else if(index >=16 && index <18) {
+                    mySwiper.swipeTo(index+8);
+            }else if(index >=18) {
+                    mySwiper.swipeTo(size);
+            } else {
+              mySwiper.swipeTo(index);
+            } 
+            
+        });
+   });
+  //滚动切换
+  $('.r_t li').each(function(index){
+          $(this).click(function(){
+             $('#sly_tab .linbox').eq(index).show().siblings().hide();
+             $(this).css({'color':'#EB008B'}).siblings().css({'color':'#444'});
+          });
+     });
+  //亚太家居-通用导航
+    var   $hy = $("#hychannel"),
+    $p = $hy.find('p'),
+    $ul = $hy.find('ul');
+
+    $hy.hover(function () {
+      $p.toggleClass('up');
+      $ul.toggleClass('tg');
+
+    });
+});
+</script>
+</head>
+<body>
+   <div class="heads">
+      	<!-- 导航 -->
+      	<div id="nav">
+            <a href="#cn1"><span class="span1 m-r"><img src="images/nav/t1.png" alt="两天来了" /></span></a>
+            <a href="#cn2"><span class="span2 m-r"><img src="images/nav/t2.png" alt="两天来了" /></span></a>
+            <a href="#cn3"><span class="span3 m-r"><img src="images/nav/t3.png" alt="两天来了" /></span></a>
+            <a href="#cn4"><span class="span4"><img src="images/nav/t4.png" alt="两天来了" /></span></a>
+        </div>
+  </div>
+    <div class="content">
+         <div class="cn cn1" id="cn1">
+            <div class="wraper">
+              <div class="title"></div>
+              <div class="xbox">
+                 <div class="box demo1">
+                    <ul class="tab_menu">
+                      <li class="current">大牌大变身</li> 
+                      <li>大牌专享价</li> 
+                      <li>大牌送红包</li> 
+                      <li>大牌大补贴</li> 
+                      <li>大牌有金喜</li> 
+                    </ul>
+                    <div class="tab_box">
+                      <div>
+                        <div class="bt1"><b>大牌大变身</b><span class="fc">交100变2500</span></div>
+                                  <div class="txt">
+                                     <p>凭《大牌之夜手册》即可享受</p>
+                                     <p>好礼一：购买《大牌之夜手册》即可领取<span class="fc">礼品1份</span> </p>
+                                     <p>好礼二：3月27日凭《大牌之夜手册》签到，即可领取价值<span class="fc">精美礼品1份</span> </p>
+                                     <p>好礼三：凭《大牌之夜手册》购买产品，即可参加<span class="fc">抽金条大奖</span></p>
+                                     <p>好礼四：购买《大牌之夜手册》可获<span class="fc">25大品牌总值2500元折后抵用券</span> </p>
+                                  </div>
+                      </div>
+                      <div class="hide">
+                        <div class="bt1"><b>大牌专享价</b><span class="fc">独享千万爆款</span></div>
+                            <div class="txt">
+                               <p>顾客凭《大牌之夜手册》，<span class="fc">可购买全场特价爆款产品，产品工厂直供</span>，价格仅限大牌之夜活动，<span class="fc">全年价格最低。</span> </p>
+                            </div>
+                      </div>
+                      <div class="hide">
+                        <div class="bt1"><b>大牌送红包</b><span class="fc">狂送千个红包</span></div>
+                            <div class="txt">
+                              
+                               <p>大牌之夜购买任意品牌产品，<span class="fc">单笔交款满2000元，下单即可参与红包</span>抢不停活动（现场设置红包墙，抓取红包），最高可获500元，<span class="fc">100%           中奖</span>，限前1000名。 </p>
+                            </div>
+                      </div>
+                      <div class="hide">
+                        <div class="bt1"><b>大牌大补贴</b><span class="fc">底价补贴18%</span></div>
+                            <div class="txt">
+                              
+                               <p>大牌之夜购买任意品牌产品，交齐全款，即可在成交价基础上，最高再享有<span class="fc">18%的直降补贴。</span> </p>
+                            </div>
+                      </div>
+                      <div class="hide">
+                           <div class="bt1"><b>大牌有金喜</b><span class="fc">喜赢羊年金条</span></div>
+                          <div class="txt">
+                             <p>特等奖：<span class="fc">羊年纪念金条一根    2名</span></p>
+                             <p>一等奖：<span class="fc">名牌32寸液晶电视   3名</span></p>
+                             <p>二等奖：<span class="fc">名牌洗衣机              5名</span>  </p>     
+                             <p>三等奖：<span class="fc">名牌吸尘器              20名</span>  </p>
+                             <p><br /> </p>
+                             <p>大牌之夜下单顾客，满2000元即可获得抽奖券一张，可累积。<span class="fc">凭抽奖券，有机会赢取羊年纪念版金条一根，并可参加全场奖项抽取。</span></p>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <!--end xbox-->
+            </div>
+        </div>
+        
+         <div class=".cn2" id="cn2">
+            <div class="wraper">
+               <div class="title"></div>
+               <div class="xbox">
+                 <div class="box demo2">
+                    <ul class="tab_menu" id="tab_menu">
+                        <li><img src="images/Brand/p1.jpg" /></li>
+                        <li><img src="images/Brand/p13.jpg" /></li> 
+                        <li><img src="images/Brand/p3.jpg" /></li> 
+                        <li><img src="images/Brand/p4.jpg" /></li> 
+                        <li><img src="images/Brand/p23.jpg" /></li> 
+                        <li><img src="images/Brand/p9.jpg" /></li> 
+                        <li><img src="images/Brand/p8.jpg" /></li> 
+                        <li><img src="images/Brand/p11.jpg" /></li> 
+                        <li><img src="images/Brand/p15.jpg" /></li>   
+                        <li><img src="images/Brand/p17.jpg" /></li> 
+                         <li><img src="images/Brand/p18.jpg" /></li> 
+                         <li><img src="images/Brand/p20.jpg" /></li>  
+                         <li><img src="images/Brand/p21.jpg" /></li>
+                       <li><img src="images/Brand/p22.jpg" /></li> 
+                          
+                        <li><img src="images/Brand/p5.jpg" /></li> 
+                        
+                        <li><img src="images/Brand/p7.jpg" /></li> 
+                        <li><img src="images/Brand/p26.jpg" /></li> 
+                        <li><img src="images/Brand/p27.jpg" /></li> 
+                       <li><img src="images/Brand/p6.jpg" /></li> 
+                        <li><img src="images/Brand/p12.jpg" /></li> 
+                        <li><img src="images/Brand/p2.jpg" /></li>
+                        
+                        <li><img src="images/Brand/p14.jpg" /></li> 
+                        
+                        <li><img src="images/Brand/p16.jpg" /></li> 
+                        
+                       
+                        <li><img src="images/Brand/p19.jpg" /></li> 
+                       
+                         
+                        
+                        <li><img src="images/Brand/p24.jpg" /></li> 
+                        <li><img src="images/Brand/p25.jpg" /></li> 
+                    </ul>
+                    <div class="showBox">
+                      <div class="s_title"><img src="images/p_title.png" alt="春天来了" /></div>
+                      <!-- 品牌产品 -->
+                      <a class="arrowLeft arrow" href="#"></a> 
+                      <a class="arrowRight arrow" href="#"></a>
+                      <div class="showBoxMain">
+                          
+                          <div class="swiper-container" id="swiper" style="display:;">
+                              <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p1/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">左右沙发产品</p>
+                                        <p class="p_name">ＺＹ２１７５－１</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>9200</del></span>           
+                                           <span class="prefer">特价 7680</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p1/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">左右沙发产品</p>
+                                        <p class="p_name">ZY布艺-341 转二件</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>7000</del></span>           
+                                           <span class="prefer">特价 5180</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p2/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">芝华仕爱蒙产品</p>
+                                        <p class="p_name">奥尔巴尼护背床垫+里约床架</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>19999</del></span>           
+                                           <span class="prefer">特价 7999</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p2/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">芝华仕贵族系列</p>
+                                        <p class="p_name">丹尼尔转角沙发 </p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>19999</del></span>           
+                                           <span class="prefer">特价 8999</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p2/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">芝华仕时尚系列</p>
+                                        <p class="p_name">伊迪丝L型转角沙发</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>13999</del></span>           
+                                           <span class="prefer">特价 4999</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p3/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">博洛尼产品</p>
+                                        <p class="p_name">博洛尼·勃艮第套餐厨电</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>25600</del></span>           
+                                           <span class="prefer">特价 12800</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p4/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">非同产品</p>
+                                        <p class="p_name">非同·米兰</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>14800</del></span>           
+                                           <span class="prefer">特价 9880</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p5/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">朗斯产品</p>
+                                        <p class="p_name">海伦B42（900x900x1850）</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>3267</del></span>           
+                                           <span class="prefer">特价 2199</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p5/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">朗斯产品</p>
+                                        <p class="p_name">海伦B42（1000x1000x1850</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>3630</del></span>           
+                                           <span class="prefer">特价 2299</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p5/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">朗斯产品</p>
+                                        <p class="p_name">朗斯·花洒L6886</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>5780</del></span>           
+                                           <span class="prefer">特价 2999</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p5/4.jpg"/>
+                                        </a>
+                                        <p class="b_name">朗斯产品</p>
+                                        <p class="p_name">诺曼P22</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>1328/平</del></span>           
+                                           <span class="prefer">特价898/平</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p5/5.jpg"/>
+                                        </a>
+                                        <p class="b_name">朗斯产品</p>
+                                        <p class="p_name">珍妮A31（ 900x900x1900）</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>4058</del></span>           
+                                           <span class="prefer">特价 2899</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p5/6.jpg"/>
+                                        </a>
+                                        <p class="b_name">朗斯产品</p>
+                                        <p class="p_name">珍妮A31（1000x1000x1900</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>4491/平</del></span>           
+                                           <span class="prefer">特价 2999</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p5/7.jpg"/>
+                                        </a>
+                                        <p class="b_name">朗斯产品</p>
+                                        <p class="p_name">珍妮P31</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>1545/平</del></span>           
+                                           <span class="prefer">特价 1098</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                 <div class="swiper-slide">
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p6/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">舒达产品</p>
+                                        <p class="p_name">冠军之选+2016床架</p>
+                                        <p class="price"	>
+                                           <span class="orgin">原价：<del>22343</del></span>           
+                                           <span class="prefer">特价12566</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p6/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">舒达产品</p>
+                                        <p class="p_name">羊年特供床垫-阳阳床垫1</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>10121</del></span>           
+                                           <span class="prefer">特价 7999</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p6/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">舒达产品</p>
+                                        <p class="p_name">羊年特供床垫-阳阳床垫-2</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>11643</del></span>           
+                                           <span class="prefer">特价 8484</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p7/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">慕思产品</p>
+                                        <p class="p_name">3D3D-12+K-1+DR-333</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>20559</del></span>           
+                                           <span class="prefer">特价 13980</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p7/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">慕思产品</p>
+                                        <p class="p_name">3D3D-12+K-1+DR-333</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>20559</del></span>           
+                                           <span class="prefer">特价 13980</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p7/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">慕思产品</p>
+                                        <p class="p_name">0769QB-018+Q-1+1Q</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>30383</del></span>           
+                                           <span class="prefer">特价 20660</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p7/4.jpg"/>
+                                        </a>
+                                        <p class="b_name">慕思产品</p>
+                                        <p class="p_name">V6  VB-019-</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>8116</del></span>           
+                                           <span class="prefer">特价 5843</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p7/5.jpg"/>
+                                        </a>
+                                        <p class="b_name">慕思产品</p>
+                                        <p class="p_name">歌蒂娅DB-46-</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>14392</del></span>           
+                                           <span class="prefer">特价 9788</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p7/6.jpg"/>
+                                        </a>
+                                        <p class="b_name">慕思产品</p>
+                                        <p class="p_name">凯奇KB-82+K-1+1B</p>
+                                        <p class="price">
+                                           <span class="orgin">原价：<del>11136</del></span>           
+                                           <span class="prefer">特价 7572</span>
+                                        </p>
+                                    </div>   
+                                </div>
+                                <!--方太
+                                <div class="swiper-slide">
+                                </div>-->
+                                <!--多喜爱
+                                <div class="swiper-slide">
+                                </div>-->
+                                <!--箭牌卫浴-->
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p14/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">箭牌卫浴</p>
+                                        <p class="p_name">AB1116MD+AK1002</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2999</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p14/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">箭牌卫浴</p>
+                                        <p class="p_name">AB1116MD+AK1002</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2999</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p14/3.png"/>
+                                        </a>
+                                        <p class="b_name">箭牌卫浴</p>
+                                        <p class="p_name">AB1119</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 4999</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p14/4.jpg"/>
+                                        </a>
+                                        <p class="b_name">箭牌卫浴</p>
+                                        <p class="p_name">ADL50T02N</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 128</span>
+                                        </p>
+                                    </div> 
+                                </div>
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p14/5.jpg"/>
+                                        </a>
+                                        <p class="b_name">箭牌卫浴</p>
+                                        <p class="p_name">AB1116MD+AK1002</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2999</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p14/6.jpg"/>
+                                        </a>
+                                        <p class="b_name">箭牌卫浴</p>
+                                        <p class="p_name">花洒AMG13S805</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 1288</span>
+                                        </p>
+                                    </div>     
+                                </div>
+                                <!--七彩人生
+                                <div class="swiper-slide">
+                                </div>-->
+                                <!--芝华仕
+                                <div class="swiper-slide">
+                                </div>-->
+                                <!--品格
+                                <div class="swiper-slide">
+                                </div>-->
+                                <!--曲美-->
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p8/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">曲美产品</p>
+                                        <p class="p_name">FB-2014C-B1-180</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 1680</span>
+                                        </p>
+                                    </div>   
+                                    
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p8/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">曲美产品</p>
+                                        <p class="p_name">FB-2014C-S2-Z1组合沙发</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 3999</span>
+                                        </p>
+                                    </div>   
+                                </div>
+                                <!--世友地板
+                                <div class="swiper-slide">
+                                </div>-->
+                                <!--大自然-->
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p9/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">大自然地板</p>
+                                        <p class="p_name">APG康德美学1号 华盛顿恋曲 </p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 289</span>
+                                        </p>
+                                    </div>   
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p9/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">大自然地板</p>
+                                        <p class="p_name">北美野生原木 栎木</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 376</span>
+                                        </p>
+                                    </div>   
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p9/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">大自然地板</p>
+                                        <p class="p_name">南美野生原木二翅豆精品V9</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 466</span>
+                                        </p>
+                                    </div>   
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p9/4.jpg"/>
+                                        </a>
+                                        <p class="b_name">大自然地板</p>
+                                        <p class="p_name">橡树之约</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 159</span>
+                                        </p>
+                                    </div>   
+                                </div>
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p9/5.jpg"/>
+                                        </a>
+                                        <p class="b_name">大自然地板</p>
+                                        <p class="p_name">心心橡印</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 159</span>
+                                        </p>
+                                    </div> 
+                                </div>
+                                <!--浪鲸卫浴-->
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p10/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">浪鲸卫浴</p>
+                                        <p class="p_name">花洒FT03001</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 8折</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p10/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">浪鲸卫浴</p>
+                                        <p class="p_name">浴室柜BF8787</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 8折</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p10/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">浪鲸卫浴</p>
+                                        <p class="p_name">座便器CO1081</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 8折</span>
+                                        </p>
+                                    </div> 
+                                </div>
+                                <!--友邦吊顶
+                                <div class="swiper-slide">
+                                </div>-->
+                                <!--仁豪-->
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p11/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">仁豪居品</p>
+                                        <p class="p_name">迪诺雅特供爆款</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 999</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p11/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">仁豪居品</p>
+                                        <p class="p_name">摩迪卡 爆款</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 1888</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p11/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">仁豪居品</p>
+                                        <p class="p_name">摩迪卡爆款－英伦阳光</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2388</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p11/4.jpg"/>
+                                        </a>
+                                        <p class="b_name">仁豪居品</p>
+                                        <p class="p_name">普罗达爆款</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 5888</span>
+                                        </p>
+                                    </div> 
+                                </div>
+                                <!--索菲亚-->
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p12/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">索菲亚衣柜</p>
+                                        <p class="p_name">716次卧-C2马上大百叶</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 799</span>
+                                        </p>
+                                    </div> 
+                                </div>
+                                <!--梦天木门-->
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">FJ-1B（2）</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2480</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">FJ-1Z （1）</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2480</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">FJ-1Z（2）</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2480</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/4.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">FJ-2Z(2)</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2480</span>
+                                        </p>
+                                    </div> 
+                                </div>
+                                <div class="swiper-slide">
+                                     <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/5.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">FM-2Y（两扇推拉）</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 4500</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/6.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">FS-1B(1)</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2380</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/7.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">FS-1Z（5）</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2380</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/8.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">M03-1B</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2980</span>
+                                        </p>
+                                    </div> 
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/9.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">M03-2B-P</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2980</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/10.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">M03-2Z-P</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价 2680</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/11.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">M51-4Z-P（顺贴 拼花）</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价2680</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p13/12.jpg"/>
+                                        </a>
+                                        <p class="b_name">梦天木门</p>
+                                        <p class="p_name">M51-11B-P（顺贴 拼花）</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价2680</span>
+                                        </p>
+                                    </div> 
+                                </div>
+                                 <!--东鹏-->
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p16/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">东鹏瓷砖</p>
+                                        <p class="p_name">翡翠石</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价8.8折</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p16/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">东鹏瓷砖</p>
+                                        <p class="p_name">纳福娜</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价88.8</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p16/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">东鹏瓷砖</p>
+                                        <p class="p_name">伊朗白玉</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价128.8</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p16/4.jpg"/>
+                                        </a>
+                                        <p class="b_name">东鹏瓷砖</p>
+                                        <p class="p_name">意大利木纹</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价98.8</span>
+                                        </p>
+                                    </div> 
+                                 </div>
+                                 <div class="swiper-slide">
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p16/5.jpg"/>
+                                        </a>
+                                        <p class="b_name">东鹏瓷砖</p>
+                                        <p class="p_name">云海玉</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价108.8</span>
+                                        </p>
+                                    </div> 
+                                </div>
+                                <!--多喜爱-->
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p15/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">喜爱多</p>
+                                        <p class="p_name">F我爱我家A100</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价1899</span>
+                                        </p>
+                                    </div> 
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p15/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">喜爱多</p>
+                                        <p class="p_name">多喜爱8A123功能床</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价1899</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p15/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">喜爱多</p>
+                                        <p class="p_name">多喜爱8A929</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer" style=" font-size:12px;">请咨询各地经销商</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p15/4.jpg"/>
+                                        </a>
+                                        <p class="b_name">喜爱多</p>
+                                        <p class="p_name">多喜爱功能床DA123</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价4780</span>
+                                        </p>
+                                    </div>   
+                                </div>
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p15/5.jpg"/>
+                                        </a>
+                                        <p class="b_name">喜爱多</p>
+                                        <p class="p_name">多喜爱</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价5680</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p15/6.jpg"/>
+                                        </a>
+                                        <p class="b_name">喜爱多</p>
+                                        <p class="p_name">我爱我家FA73</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价6680</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p15/7.jpg"/>
+                                        </a>
+                                        <p class="b_name">喜爱多</p>
+                                        <p class="p_name">我爱我家功能床SA100</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">特价4780</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--柏森家具-->
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p17/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">柏森家具</p>
+                                        <p class="p_name">大观-1503床+1503床头柜</p>
+                                        <p class="price">
+                                           <span class="orgin">5套以上</span>           
+                                           <span class="prefer">8.5折</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p17/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">柏森家具</p>
+                                        <p class="p_name">钒美国际-S1603沙发</p>
+                                        <p class="price">
+                                           <span class="orgin">3套以上</span>           
+                                           <span class="prefer">8.5折</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p17/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">柏森家具</p>
+                                        <p class="p_name">钒美国际T1607餐台P1609C餐椅</p>
+                                        <p class="price">
+                                           <span class="orgin">5套以上</span>           
+                                           <span class="prefer">8.5折</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p17/4.jpg"/>
+                                        </a>
+                                        <p class="b_name">柏森家具</p>
+                                        <p class="p_name">亚图-1803餐台+1802餐椅</p>
+                                        <p class="price">
+                                           <span class="orgin">3套以上</span>           
+                                           <span class="prefer">8.5折</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--<div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p17/5.jpg"/>
+                                        </a>
+                                        <p class="b_name">柏森家具</p>
+                                        <p class="p_name">印象虎斑-1212床</p>
+                                        <p class="price">
+                                           <span class="orgin">3套以上</span>           
+                                           <span class="prefer">8.5折</span>
+                                        </p>
+                                    </div>
+                                </div>-->
+                                <!--恒洁-->
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p18/1.jpg"/>
+                                        </a>
+                                        <p class="b_name">恒洁卫浴</p>
+                                        <p class="p_name">花洒-HL2000-59</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">499-599</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p18/2.jpg"/>
+                                        </a>
+                                        <p class="b_name">恒洁卫浴</p>
+                                        <p class="p_name">智能盖板H0931</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">1999-2199</span>
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p18/3.jpg"/>
+                                        </a>
+                                        <p class="b_name">恒洁卫浴</p>
+                                        <p class="p_name">智能马桶H0993</p>
+                                        <p class="price">
+                                           <span class="orgin">价格：以落地商场提供为准</span>           
+                                           
+                                        </p>
+                                    </div>
+                                    <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p18/4.jpg"/>
+                                        </a>
+                                        <p class="b_name">恒洁卫浴</p>
+                                        <p class="p_name">坐便器H0127</p>
+                                        <p class="price">
+                                           <span class="orgin"></span>           
+                                           <span class="prefer">599-699</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                   <div class="item">
+                                        <a href="" target="_blank">
+                                          <img class="lazy" src="images/product/p18/5.jpg"/>
+                                        </a>
+                                        <p class="b_name">恒洁卫浴</p>
+                                        <p class="p_name">坐便器H0142D</p>
+                                        <p class="price">
+                                           <span class="orgin">价格：以落地商场提供为准</span>  
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--马可波罗-->
+                                <!-- 敬请期待 -->
+                                <div class="swiper-slide" style="text-align: center;color: #ED008C; font-size: 32px;margin-top: 85px;">
+                                    敬请期待
+                                </div>
+                                
+                                
+
+                              </div>
+                          </div>
+                        </div>
+                      <!--产品 end -->
+                    </div>
+                 </div>
+              </div>
+            </div>
+        </div>
+
+         <div class="cn cn3" id="cn3">
+            <img src="images/box3.png">
+        </div>
+        <div class="cn cn4" id="cn4">
+            <div class="title"><img src="images/box4_title.png"></div>
+            <div class="main4">
+              <div class="c_left">
+                  <p class="common_title">大牌之夜 闪耀全城</p>
+                  <!-- 图片展示 -->
+                  <div id="home_banner">
+                      <object width="480" align="middle" height="350" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+                <param value="http://static.video.qq.com/TPout.swf?vid=n01492g33gi&auto=0" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" name="movie">
+                <param value="high" name="quality">
+                <param value="always" name="allowScriptAccess">
+                <param value="internal" name="allowNetworking">
+                <param value="transparent" name="wmode">
+                <embed width="480" height="350" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" allownetworking="internal" allowscriptaccess="always" quality="high" src="http://static.video.qq.com/TPout.swf?vid=n01492g33gi&auto=0" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">
+                </object>
+                    </div>
+                    <!-- 图片展示end -->
+              </div>
+              <div class="c_right demo3">
+               <p class="common_title">大牌驾到</p>
+               <ul class="tab_menu">
+                      <li class="current">・100变2500 “2天来了”红星美凯龙掀家居风暴</li>
+                      <li id="m2">・家具大牌云集 红星美凯龙“2天来了”开春大促</li>
+                      <li id="m3">・红星美凯龙“2天来了” 大牌厨卫产品任你挑 </li>
+                      <li id="m4">・“2天来了”红星美凯龙开春大促 挑战家居“双11” </li>
+                      
+                   </ul>
+               <div class="tab_box">
+                      
+                   
+                   
+                  <div>
+                 <div id="vertical" class="scrollbox clearfix">
+                 <div class="slyWrap example1" style="width:480px;">
+                   <div class="scrollbar" style="border-top:none;">
+                     <div class="handle"></div>
+                   </div>
+                   <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }' style="width:455px; ">
+                   <div style=" padding-left:18px;"> 
+                       <div class="linbox">
+                           <h3>家居大牌云集 红星美凯龙“2天来了”开春大促</h3>
+                              <p><br /></p>
+                              <p><img src="http://pic.jia360.com/ueditor/jsp/upload/201503/23/19211427088034810.jpg" width="380" /></p>
+                              <p><br /></p>
+                            <p>新春伊始，家居行业的新一轮购物风暴即将来袭，2015年3月27日18:00—3月29日，中国家居业的第一品牌红星美凯龙迎来了第三届“2天来了”——大牌之夜全国大规模促销盛宴。活动将一如既往将家居产品超低价进行到底，更有众多优惠红包抽奖等活动，让人喜上眉梢，惊叫连连。届时“大牌之夜”将有四大活动轮番来袭，惊喜不断震撼消费者的心脏与眼球。</p>
+                            <p><br /></p>
+                              <p><img src="http://pic.jia360.com/ueditor/jsp/upload/201503/23/18251427088035240.jpg" width="380" /></p>
+                              <p><br /></p>
+                              <p><b>大牌大变身 100变2500</b></p>
+                              <p><br /></p>
+                              <p>希望享受大变现金的乐趣吗？《大牌之夜手册》就是变现法宝。来红星美凯龙的顾客只要预交100元，即可获得一份《大牌之夜手册》，购买25大品牌可获总值2500元折后抵用券。凭借手册签到，可领取精美礼品1份，更可参加抽金条大奖。</p>
+                              <p><br /></p>
+                              <p><b>大牌专享价 独享千万爆款</b></p>
+                              <p><br /></p>
+                              <p>顾客凭《大牌之夜手册》，可购买全场特价爆款产品，产品工厂直供，价格仅限大牌之夜活动，全年价格最低。</p>
+                              
+                              <p><br /></p>
+                              <p><b>大牌专享价 独享千万爆款</b></p>
+                              <p><br /></p>
+                              <p>顾客凭《大牌之夜手册》，可购买全场特价爆款产品，产品工厂直供，价格仅限大牌之夜活动，全年价格最低。</p>
+                              
+                              <p><br /></p>
+                              <p><b>大牌送红包狂送千个红包</b></p>
+                              <p><br /></p>
+                              <p>大牌之夜购买任意品牌产品，单笔交款满2000元，下单即可参与红包抢不停活动（现场设置红包墙，抓取红包），最高可获500元，100% 中奖，限前1000名。</p>
+                              
+                              <p><br /></p>
+                              <p><b>大牌大补贴底价补贴18%</b></p>
+                              <p><br /></p>
+                              <p>大牌之夜购买任意品牌产品，交齐全款，即可在成交价基础上，最高再享有18%的直降补贴。</p>
+                              
+                              <p><br /></p>
+                              <p><b>大牌有金喜喜赢羊年金条</b></p>
+                              <p><br />
+                              特等奖：羊年纪念金条一根 2名<br />一等奖：名牌32寸液晶电视 3名<br />二等奖：名牌洗衣机 5名<br />三等奖：名牌吸尘器 20名</p>
+                              <p><br /></p>
+                              <p>大牌之夜下单顾客，满2000元即可获得抽奖券一张，可累积。凭抽奖券，有机会赢取羊年纪念版金条一根，并可参加全场奖项抽取。</p>
+
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+      </div>
+     </div>
+      
+                      <div class="hide">
+                          <div id="vertical12" class="scrollbox clearfix">
+                 <div class="slyWrap example1" style="width:480px;">
+                   <div class="scrollbar" style="border-top:none;">
+                     <div class="handle"></div>
+                   </div>
+                   <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }' style="width:455px; ">
+                   <div style=" padding-left:18px;"> 
+                       <div class="linbox">
+                           <h3>家居大牌云集 红星美凯龙“2天来了”开春大促</h3>
+                              <p><br /></p>
+                            <p>2015年3月27日-29日，家居卖场领头雁红星美凯龙即将开启全国性大规模促销活动——“2天来了”，本次活动以超大的规模和优惠力度，掀起家居行业3月促销的最高潮。参与此活动的品牌中也不乏家具大牌的身影。</p>
+                              <p><br /></p>
+                             <p>柏森LD（B-W）、乌金木语、印象虎斑、大观、亚图、汎美国际，六个精品套餐产品为你打造高品质的家居环境。由于柏森这次是铁了心要让利消费者，所以提供的优惠产品很多，下图仅为部分产品，更多优惠产品来红星美凯龙“2天来了”活动现场就对了。</p>	
+                             <p><br /></p>
+                             <p><img src="http://pic.jia360.com/ueditor/jsp/upload/201503/16/58891426510093887.jpg" alt="1" width="370" height="auto" /></p>
+                              <p><br /></p>
+                              <p>产品名称：LD</p>
+                              <p>促销信息：2015年3月，正价产品提货累计满10万，额外再享受5%优惠。</p>
+                              <div class="gd"><a href="http://www.jia360.com/2015/0316/1426509488920.html" target="_blank">阅读更多</a></div>
+
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+      </div>
+                    </div>
+                    
+                      <div class="hide">
+                              <div id="vertical13" class="scrollbox clearfix">
+                 <div class="slyWrap example1" style=" width:480px;">
+                   <div class="scrollbar" style="border-top:none;">
+                     <div class="handle"></div>
+                   </div>
+                   <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }' style="width:455px;">
+                   <div style=" padding-left:18px;">
+                       <div class="linbox">
+                          <h3>红星美凯龙“2天来了” 大牌厨卫产品任你挑</h3>
+                              <p><br /></p>
+                              <p>3月27日-29日，红星美凯龙携手国内25家一线家居建材品牌发起“2天来了”大型主题促销活动。东鹏、箭牌、朗斯、浪鲸、恒洁等卫浴界大牌也齐聚“2天来了”，纷纷推出特别优惠产品，为消费者带来最优质的产品和服务。</p>
+                              <p><br /></p>
+                              <p>东鹏本次带来了云海玉、伊朗白玉、意大利木纹、纳福娜、翡翠石等五款产品。花色美，价格优，您还等什么？</p>
+                              <p><br /></p>
+                              <p><img src="http://pic.jia360.com/ueditor/jsp/upload/201503/16/70881426506733811.jpg" alt="1" width="370" height="auto" /></p>
+                              <p>产品名称：伊朗白玉</p><p>产品价格/元：128.8</p><p>规格：800*800</p>
+                              <p><br /></p>
+                              <p><img src="http://pic.jia360.com/ueditor/jsp/upload/201503/16/62661426506756080.jpg" alt="1" width="370" height="auto" /></p>
+                              <p>产品名称：云海玉</p><p>产品价格/元：128.8</p><p>规格：800*800</p>
+                              <p><br /></p>
+                              <div class="gd"><a href="http://www.jia360.com/2015/0316/1426507132736.html" target="_blank">阅读更多</a></div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+      </div>
+                    </div><!--end hide-->
+                      
+                  <div class="hide">
+                          <div id="vertical14" class="scrollbox clearfix">
+                 <div class="slyWrap example1" style=" width:480px;">
+                   <div class="scrollbar" style="border-top:none;">
+                     <div class="handle"></div>
+                   </div>
+                   <div class="sly" data-options='{ "scrollBy": 100, "startAt": 1 }' style="width:455px;">
+                   <div style=" padding-left:18px;">
+                       <div class="linbox">
+                          <h3>“2天来了”红星美凯龙开春大促 挑战家居“双11”</h3>
+                          <p><br /></p>
+                          <p>每年购物疯狂时，莫过淘宝“双11”剁手日，所有的疯狂，在这一日如洪水般爆发，创下一个又一个惊人的销售奇迹。2015新年伊始，抢红包的手指似乎还未恢复原状，消费的激情却又涌上心头。</p>
+                          <p><br /></p>
+                          <p>2015年3月27日-29日，家居卖场领头雁的红星美凯龙即将开启全国性大规模促销活动——“2天来了”。此次活动，红星美凯龙将携手国内25家一线知名品牌，以超大的规模和优惠力度，掀起家居行业3月促销的最高潮。</p>
+                          <p><br /></p>
+                          <p>本届“2天来了”，红星美凯龙将在全国百城门店同时举行，各大品牌将全力参与，涉及沙发、橱柜、衣柜、卫浴、地板、木门等各式品类，聚集了如慕思、芝华仕、左右、顾家、舒达、索非亚、欧派、博洛尼等众多知名品牌，以前所未有的抄底价格和史无前例的规模，致力为消费者提供全方位、多层次的选择，使消费者可一站式选购最优质、最齐全的家居产品。</p>
+                          <p><br /></p>
+                          <p>值得一提的是，此次活动有别于以往，本届“2天来了“特别增设了”大牌之夜“夜购活动，将于3月27日晚间开启，让消费者提前释放消费激情。当晚，将有众多优惠让你跌破眼球，惊喜连连。</p>
+                          <p><br /></p>
+                          <p>“大牌之夜”活动中，不仅有让你意想不到的千万特供爆款产品，还可享受底价之上18%的补贴优惠，更有超过1000个现金红包及羊年金条等你来取，可谓好礼不断，超值抢购。众多品牌，最优质齐全的产品，超低的价格，尽在“大牌之夜”。</p>
+                          <p><br /></p>
+                          <p>除此之外，“2天来了”活动期间，各大品牌将齐“放价”，意想不到的爆款底价产品，返现、超低折扣等惊喜优惠，彻底点燃消费热情，掀起3月家居狂欢风暴。</p>
+                          <p><br /></p>
+                          <p>“2天来了”主题促销活动是家居第一流通平台红星美凯龙推出的专属年度大型营销活动，自今年已是第三届举办。2013年的第一届“2天来了”购物节初一亮相，便以其大规模及力度赢得了消费者的关注，更创下了15亿的销售成绩，成为业界神话。2014年，红星美凯龙更是再次刷新历史，第二届”2天来了”活动以超过20亿的成交纪录，震撼了中国家居市场。2015年，第三届“2天来了”主题大促如期而至，致力于为消费者提供者品质、绿色、安全产品，倡导时尚、快乐家居生活的红星美凯龙，将再次出击，为消费者提供实惠的同时，更会严格把控产品质量，真正从消费者利益出发，使消费者在新的一年里拥有更加美好、高品质的家居生活。</p>
+                          <p><br /></p>
+                          <p>红星美凯龙作为国内家居市场龙头企业，目前已在全国90多个城市开办了150多家商场，拥有家居行业最广泛的渠道资源，及最大的行业号召力、资源整合能力。“2天来了”这一消费狂欢节作为团结厂商联合营销的催化剂，必将为品牌及消费者带来福利，达成互惠。</p>
+                          <p><br /></p>
+                          <p>红星美凯龙一直以来将提升中国家居品味视为己任，引领消费者从低端家居向品质家居的升级。在“金三银四”的家装旺季，红星美凯龙此次开春大促，无论是在规模力度上还是成交记录上，必将再次刷新记录，成为家居界营销新典范。</p>
+                          <p><br /></p>
+                          <p>3月27—29日，疯狂的”2天来了“，你来吗？</p>
+                          
+
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+      </div>
+                    </div><!--end hide-->
+                   </div><!--end tab_box-->
+             </div>
+            </div>
+        </div>
+        <!-- box5 -->
+        
+        <div class="cn6" id="cn6">
+             <div class="common_title">现场花絮</div>
+                  <div class="c6_slide">
+
+              <!-- 图片展示 -->
+                    <div id="home_banner2">
+                        <a id="big_a2"><div id="big_img2"></div></a>  
+                        <div class="relative">
+                          <div id="small_img2">
+                            <div class="maxwidth2">
+                              <a id="small_pre2"><img src="images/left.png" width="24" height="76" /></a>
+                              <div id="small_imgs2">
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/1.jpg" l="" theid="69"> <img src="images/hua/1.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/2.jpg" l="" theid="69"> <img src="images/hua/2.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/4.jpg" l="" theid="69"> <img src="images/hua/4.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/5.jpg" l="" theid="69"> <img src="images/hua/5.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/6.jpg" l="" theid="69"> <img src="images/hua/6.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/7.jpg" l="" theid="69"> <img src="images/hua/7.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/8.jpg" l="" theid="69"> <img src="images/hua/8.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/9.jpg" l="" theid="69"> <img src="images/hua/9.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/10.jpg" l="" theid="69"> <img src="images/hua/10.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/12.jpg" l="" theid="69"> <img src="images/hua/12.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/13.jpg" l="" theid="69"> <img src="images/hua/13.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/14.jpg" l="" theid="69"> <img src="images/hua/14.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/15.jpg" l="" theid="69"> <img src="images/hua/15.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/16.jpg" l="" theid="69"> <img src="images/hua/16.jpg"/></div></a>
+                               <a href="javascript:;" class="item"><div class="img" b="images/hua/17.jpg" l="" theid="69"> <img src="images/hua/17.jpg"/></div></a>
+                              </div>
+                              <a id="small_next2"><img src="images/right.png" width="24" height="76" /></a>
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- 图片展示end -->
+                    </div>  
+               </div>
+          </div>
+
+    </div>
+        
+  </div>
+</div>
+<!--#include virtual="/public/head.html"-->
+<!--#include virtual="/public/footer.html"-->
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

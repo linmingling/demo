@@ -1,0 +1,173 @@
+<{include file="<{$config['layout']}>/header.tpl" title=foo}>
+<body>
+
+	<div class="content">
+		<div class="tab" id="tab">
+			<div class="test">
+				<img src="<{$config['publicUrl']}>/images/3.png">
+			</div>
+			<div class="header">
+				<div style="width:220px;margin-left:140px;">
+					<a href="#" style="float:left" class="button" onclick="l_click()"><</a>
+					<a href="#" style="float:right" class="button" onclick="r_click()">></a>
+				</div>
+				<div style="text-align:center;font-size:20px;color:black;margin-top:3px;"><span id="time">time here</span></div>
+			</div>
+			<div class="bm" id="bm"></div>
+			<div class="name" id="name"></div>
+			<div class="day">
+				<div class="sq"><span>一</span></div>
+				<div class="sq"><span>二</span></div>
+				<div class="sq"><span>三</span></div>
+				<div class="sq"><span>四</span></div>
+				<div class="sq"><span>五</span></div>
+				<div class="sq"><span>一</span></div>
+				<div class="sq"><span>二</span></div>
+				<div class="sq"><span>三</span></div>
+				<div class="sq"><span>四</span></div>
+				<div class="sq"><span>五</span></div>
+			</div>
+			<div class="wdate" id="wdate"></div>
+		</div>
+	</div>
+</body>
+<script>
+
+w=50;
+h=50;
+
+var member= eval('(' + '<{$userJson}>' + ')');//[["张三","1"],["李四","1"],["王五","1"],["赵一","2"],["李二","1"],["钱六","2"]];//职员名称，部门编号
+var bb=eval('(' + '<{$orgJson}>' + ')');//[['设计部',4],['技术部',2]];//部门名称（根据编号排序由小到大），部门人数
+var busy=eval('(' + '<{$bushJson}>' + ')');//[[6,1123,1],[6,1125,3],[1,1127,4],[2,1124,2],[3,1125,3],[4,1126,1],[5,1123,3],[4,1124,4],[3,1127,4],[3,1129,4],[3,1130,4],[4,1128,2],[2,1130,2]];//职员编号，日期，忙碌状态
+var t=parseInt("<{$monDay}>");//1123;//初始周一时间
+
+function bm_sort(){
+	var temp=[];
+	for(var i=0;i<member.length;i++){
+		for(var j=i;j<member.length;j++){
+			if(member[i][1]>member[j][1]){
+				temp=member[j];
+				member[j]=member[i];
+				member[i]=temp;
+			}
+		}
+	}
+}
+function drawTable(){
+	var tab=document.getElementById("tab");	
+	var name=document.getElementById("name");	
+	var bm=document.getElementById("bm");
+	var wdate=document.getElementById("wdate");
+	var high=member.length;
+	tab.style.height=(high*50)+60;
+	name.style.height=high*50;
+	bm.style.height=high*50;
+	wdate.style.height=high*50;
+}
+function createTask(){
+	var wdate=document.getElementById("wdate");	
+	for(var i=0;i<10;i++){
+		for(var j=1;j<member.length+1;j++){
+			div=document.createElement("div");
+			if(i==4){
+				div.style.borderRight="1px solid red";
+			}else{
+				div.style.borderRight="1px solid grey";
+			}
+			div.style.width=w;
+			div.style.height=h;
+			//div.style.backgroundImage=bg;
+			div.style.position="absolute";
+			div.style.marginLeft=i*w;
+			div.style.marginTop=(j-1)*h;
+			div.setAttribute("id",j+""+(t+i));
+			wdate.appendChild(div);
+		}
+	}
+}
+function changeTask(){
+	for(var i=0;i<busy.length;i++){
+		var temp=busy[i][0]+""+busy[i][1];
+		var task=document.getElementById(temp);
+		var isbusy="";
+		if(busy[i][2]==2){
+			isbusy="yellow";
+		}else if(busy[i][2]==3){
+			isbusy="red";
+		}else if(busy[i][2]==4){
+			isbusy="purple";
+		}
+		task.style.background=isbusy;
+	}
+}
+function createBm(){
+	var bm=document.getElementById("bm");
+	var n=0;	
+	for(var i=0;i<bb.length;i++){
+		div=document.createElement("div");
+		div.style.width=80;
+		div.style.background="url(public/frontEnd/images/6.png) no-repeat";
+		div.style.height=(h*bb[i][1])-((h*bb[i][1])/2-8);
+		div.style.paddingTop=(h*bb[i][1])/2-8;
+		div.setAttribute("name","bm");
+		div.innerHTML=bb[i][0];
+		bm.appendChild(div);
+		n++;
+		if(n==3)n=0;
+	}
+}
+function createPerson(){
+	var name=document.getElementById("name");
+	for(var i=0;i<member.length;i++){
+		div=document.createElement("div");
+		div.style.width=80;
+		div.style.height=h;
+		div.style.position="absolute";
+		div.style.marginTop=(i*h)+15;
+		div.setAttribute("name","name");
+		div.innerHTML=member[i][0];
+		name.appendChild(div);
+	}
+}
+
+function l_click(){
+	t=t-7;
+	set_time();
+	timePage(7);
+}
+function r_click(){
+	t=t+7;
+	set_time();
+	timePage(-7);
+}
+
+functioin timePage(page)
+{
+	$.get("<{$currentUrl}>", { stime: "", etime: "" , page:page}, function(result){
+		
+	});
+}
+
+function set_time(){
+	var time=document.getElementById("time");
+	var txt=t+"";
+	var txt1=txt.substring(txt.length,txt.length-2);
+	var txt2=txt.substring(0,2);
+	var txt=txt2+"."+txt1+"-"+txt2+"."+(parseInt(txt1)+9);
+	console.log(txt);
+	time.innerHTML=txt;
+}
+
+function btn(){
+	drawTable();
+	bm_sort();
+	createPerson()
+	createBm();
+	createTask();
+	set_time();
+	changeTask();
+}
+
+btn();
+</script>
+<{include file="<{$config['layout']}>/footer.tpl"}>

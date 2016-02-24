@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>红星微信现场直播发布端 </title>
+<link rel="stylesheet" type="text/css" href="css/com.css" />
+<link rel="stylesheet" type="text/css" href="../public/kindeditor/themes/default/default.css" />
+<script src="../public/kindeditor/kindeditor.js" type="text/javascript"></script>
+<script src="../public/kindeditor/lang/zh_CN.js" type="text/javascript"></script>
+<script>
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('#info', {
+autoHeightMode : true,
+allowMediaUpload : false,
+allowFlashUpload : false,
+items : [
+'source','|','undo','redo','|','hr','fontsize','formatblock','forecolor','hilitecolor','removeformat', '|',
+'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist','insertunorderedlist', 'indent','outdent','lineheight','clearhtml','|',
+'emoticons', 'image','media','flash','link', 'unlink','baidumap','table','template','code','|','cut','wordpaste','|','preview','print','quickformat','fullscreen']
+});
+});
+</script>
+</head>
+
+</body>
+<div class="warp" id="warp">
+
+	<div class="main">
+		<div class="mainBox baoming" id="box1">
+			
+			<p class="title">红星美凯龙“两天来了”活动微信现场直播发布端</p>
+			<p class="place grey">直播地址：<a href="./" target="_blank" style="color:#FF6325;">点击进入</a></p>
+			<div class="hx"></div>
+			<div class="clearfix">
+				<input type="text" class="name l" placeholder="请输入标题"/><br/><br/><br/>
+				<textarea id="info" class="desc r"></textarea>
+			</div>
+			<p class="bmBtn">发布</p>
+			<!-- <p class="grey" style="text-align: center;">最近发布的10条信息</p> -->
+			<p class="time grey">最近发布的10条信息</p>
+			<div class="news_list">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--提示层-->
+<div id="tips" class="tips hide"></div>
+
+<div id="test" style="background:#000;color:#fff;position:fixed;top:50px;left:50px"></div>
+
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+var sto;
+function tips(text){
+	$("#tips").html(text);
+	$("#tips").fadeIn();
+	clearTimeout(sto);
+	sto = setTimeout(function(){
+		$("#tips").stop().fadeOut();
+	},4000);
+}
+
+$(function(){
+	  $.ajax({
+			async:false,
+		 	url: 'server.php',
+		 	data: {act:'ajax_list',type:1},
+		 	type: 'post',
+		 	dataType:'json',
+		 	success:function(result){
+		 		var info_list = result;
+		 		if(info_list){
+		 			$(".live-list").empty();
+					for(var j=0;j<info_list.length;j++){
+						$(".news_list").append(
+							'<p class="grey">发布时间：'+info_list[j]['md_time']+info_list[j]['hi_time']+
+							'<span style="margin-left: 20px;">标题：'+info_list[j]['title']+'</span>'+
+				         	'<span style="float: right;cursor:pointer" class="del" id="'+info_list[j]['id']+'">删除</span></p>'
+				         );
+					}
+				}
+		 	}
+		});
+	  del();
+	  function del(){
+		  $('.news_list .del').each(function(index){
+			  $(this).click(function(){
+				  var id = $(this).attr('id');
+				   $.ajax({
+						async:false,
+					 	url: 'server.php',
+					 	data: {act:'ajax_del',id:id},
+					 	type: 'post',
+					 	dataType:'json',
+					 	success:function(result){
+					 		if(!parseInt(result.code)){
+					 			tips(result.msg);return;
+					 		}
+					 		$('.news_list p').eq(index).remove();
+					 	}
+					}); 
+				});
+			});
+	  }
+	$("#box1 .bmBtn").click(function(){
+		var name = $("#box1 .name").val();
+		var desc = editor.html();
+		if(name == ""){
+			tips("标题不能为空");
+		}else if(editor.isEmpty()){
+			tips("简介不能为空");
+		}else{
+			$(this).attr('disabled',false); 
+			//存数据
+				$.ajax({
+					async:true,
+				 	url: 'server.php',
+				 	data: {act:'submit', name:name, info:desc},
+				 	type: 'post',
+				 	dataType:'json',
+				 	success:function(result){
+				 		if(!parseInt(result.code)){
+				 			tips(result.msg);return;
+				 		}
+				 		$(".news_list").prepend(
+								'<p class="grey">发布时间：'+result['time']+
+								'<span style="margin-left: 20px;">标题：'+name+'</span>'+
+					         	'<span style="float: right;cursor:pointer" class="del" id="'+result['id']+'">删除</span></p>'
+					    );
+				 		del();
+				 		tips("发布成功");
+				 		$(this).attr('disabled',true); 
+				 	}
+				});
+		}
+	});
+});
+</script>
+<!--#include virtual="/public/tongji.html"-->
+</body>
+</html>

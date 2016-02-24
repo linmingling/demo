@@ -1,0 +1,305 @@
+body {
+	background:url('../images/bg2.jpg') no-repeat center center fixed;
+}
+
+.wrap {
+	width: 1000px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.navs {
+	width: 624px;
+	height: 38px;
+	position: relative;
+	top: 68px;
+	border-top: 1px solid;
+	border-bottom: 1px solid; 
+}
+.navs div {
+	width: 104px;
+	float: left;
+	text-align: center;
+	font-size:14px;
+	line-height: 34px;
+	
+}
+.navs div  {
+	color: #ffffff;
+}
+.navs div a:hover{
+	display: block;
+	width: 100%;
+	height: 37px;
+	color: rgb(202,229,63);
+	border-bottom: 2px solid rgb(202,229,63); 
+	text-decoration:none;
+}
+.selected{
+	display: block;
+	width: 100%;
+	height: 37px;
+	color: rgb(202,229,63);
+	border-bottom: 2px solid rgb(202,229,63); 
+	text-decoration:none;
+}
+.logo{
+	background:url('../images/logo.png');
+	width: 373px;
+	height: 55px;
+	float: right;
+	position: relative;
+	top: 20px;
+}
+.about-bug{
+	background:url('../images/about_bug.png');
+	width: 1001px;
+	height: 605px;
+	float: right;
+	position: relative;
+	top: 60px;
+}
+.action{
+	background:url('../images/action.png');
+	width: 1000px;
+	height: 542px;
+	float: right;
+	position: relative;
+	top: 60px;
+}
+.life-title{
+	background:url('../images/life-title.png');
+	width: 1002px;
+	height: 118px;
+	float: left;
+	position: relative;
+	top: 60px;
+}
+.life-qrcode{
+	background:url('../images/life-qrcode.png');
+	width: 362px;
+	height: 420px;
+	float: left;
+	position: relative;
+	top: 78px;
+}
+.life-vedio{
+	float: left;
+	position: relative;
+	top: 78px;
+	left: 3px;
+}
+.conference-before-title{
+	background:url('../images/conference-before-title.png');
+	width: 1000px;
+	height: 56px;
+	float: left;
+	position: relative;
+	top: 60px;
+}
+.conference-before-bg{
+	background:url('../images/conference-before-bg.png');
+	width: 1000px;
+	height: 447px;
+	float: left;
+	position: relative;
+	top: 90px;
+}
+.conference-before-bg div{
+	color: rgb(219,255,34);
+	font-weight: bold;
+	font-size: 40px;
+	position: relative;
+	top: 70%;
+	left: 30%;
+}
+.conference-after-title{
+	background:url('../images/conference-after-title.png');
+	width: 449px;
+	height: 111px;
+	float: left;
+	position: relative;
+	top: 120px;
+}
+.conference-after-right-title{
+	background:url('../images/conference-after-right-title.png');
+	width: 431px;
+	height: 81px;
+	float: right;
+	position: relative;
+	top: 102px;
+}
+.conference-left-box{
+	background: #ffffff;
+	width: 541px;
+	height: 447px;
+	position: relative;
+	top: 142px;
+	float: left;
+}
+.conference-nav{
+	position: relative;
+}
+
+.conference-right-box{
+	background: #ffffff;
+	width: 450px;
+	height: 447px;
+	position: relative;
+	top: 117px;
+	float: right;
+}
+.con-img-box{
+	width: 440px;
+	height: 437px;
+	overflow: hidden;
+	position: absolute;
+	z-index: 1;
+	margin: 5px 5px;
+}
+.con-img-glass{
+	background: url('../images/fabu-img-glass.jpg');
+	width: 450px;
+	height: 447px;
+	position: absolute;
+	z-index: 2;
+	filter:alpha(opacity=50); /*IE滤镜，透明度50%*/
+	-moz-opacity:0.5; /*Firefox私有，透明度50%*/
+	opacity:0.5;/*其他，透明度50%*/
+}
+.update-title{
+	background:url('../images/update-title.png');
+	width: 1000px;
+	height: 117px;
+	float: left;
+	position: relative;
+	top: 60px;
+}
+.update-container{
+	width: 1000px;
+}
+
+.update-select-btn{
+	width: 147px;
+	height: 48px;
+	position: relative;
+	top: -420px;
+	float: right;
+}
+.select-left{
+	background: url('../images/select-left.png');
+	float: left;
+	width: 73px;
+	height:48px;
+}
+.select-right{
+	background: url('../images/select-right.png');
+	float: right;
+	width: 73px;
+	height:48px;
+}
+.select-a{
+	background: url('../images/select-a.png');
+	width: 307px;
+	height: 88px;
+}
+.current .select-a{
+	background: url('../images/selected-a.jpg') !important;
+	width: 339px;
+	height: 89px;
+	position: relative;
+	left: -32px;
+}
+.select-b{
+	background: url('../images/select-b.png');
+	width: 307px;
+	height: 88px;
+}
+.current .select-b{
+	background: url('../images/selected-b.jpg') !important;
+	width: 339px;
+	height: 89px;
+	position: relative;
+	left: -32px;
+}
+.select-c{
+	background: url('../images/select-c.png');
+	width: 307px;
+	height: 88px;
+}
+.current .select-c{
+	background: url('../images/selected-c.jpg') !important;
+	width: 339px;
+	height: 89px;
+	position: relative;
+	left: -32px;
+}
+.select-d{
+	background: url('../images/select-d.png');
+	width: 307px;
+	height: 88px;
+}
+.current .select-d{
+	background: url('../images/selected-d.jpg') !important;
+	width: 339px;
+	height: 89px;
+	position: relative;
+	top: -2px;
+	left: -32px;
+}
+.select-e{
+	background: url('../images/select-e.png');
+	width: 307px;
+	height: 88px;
+}
+.current .select-e{
+	background: url('../images/selected-e.jpg') !important;
+	width: 339px;
+	height: 89px;
+	position: relative;
+	left: -32px;
+}
+
+.update-a{
+	background: url('../images/update-a.jpg');
+	width: 683px;
+	height: 440px;
+}
+.update-b{
+	background: url('../images/update-b.jpg');
+	width: 683px;
+	height: 440px;
+}
+.update-c{
+	background: url('../images/update-c.jpg');
+	width: 683px;
+	height: 440px;
+}
+.update-d{
+	background: url('../images/update-d.jpg');
+	width: 683px;
+	height: 440px;
+}
+.update-e{
+	background: url('../images/update-e.jpg');
+	width: 683px;
+	height: 440px;
+}
+.conference-prev{
+	background: url('../images/conference-prev.png');
+	display: block;
+	width: 20px;
+	height: 10px;
+	position: absolute;
+	left: 83px;
+	top: 35px;
+}
+.conference-next{
+	background: url('../images/conference-next.png');
+	display: block;
+	width: 20px;
+	height: 13px;
+	position: absolute;
+	left: 83px;
+	top: 405px;
+}

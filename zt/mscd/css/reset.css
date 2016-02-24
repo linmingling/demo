@@ -1,0 +1,46 @@
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none outside none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: none;
+}
+:focus {
+    outline: 0 none;
+}
+ins {
+    text-decoration: none;
+}
+del {
+    text-decoration: line-through;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+body {
+    color: #8A8A8A;
+    font-family: "Microsoft YaHei" ! important;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+ul, li, p, h1, h2, span {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style-type: none;
+}
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+img {
+    border: 0 none;
+}
